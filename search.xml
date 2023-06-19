@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>inline关键字</title>
+      <link href="/2023/06/19/inline-guan-jian-zi/"/>
+      <url>/2023/06/19/inline-guan-jian-zi/</url>
+      
+        <content type="html"><![CDATA[<h2 id="inline关键字"><a href="#inline关键字" class="headerlink" title="inline关键字"></a>inline关键字</h2><p>在函数声明和定义加上，使之称为内联函数。如果一些简单的函数直接在类中声明并且定义，编译器可以将其优化为内联函数。</p><p>注：内联函数可以减少函数的执行时间：原因是它可以在使用时直接进行替换（像宏一样展开），从而避免出现参数压栈、代码生成等操作，但是如果函数体过大，编译器就不会将其作为内联函数，即使加了关键字inline，同时内联函数不能递归。</p><p>inline关键字声明的函数依旧是函数，所以会有类型检查，可以消除C语言宏的一些缺点。</p><p>关键字inline必须与函数定义放在一起才能使函数成为内联函数，仅仅将inline放在函数声明前面不起任何作用。inline是一种“用于实现”的关键字，而不是一种“用于声明”的关键字。</p><h2 id="慎用-inline"><a href="#慎用-inline" class="headerlink" title="慎用 inline"></a>慎用 inline</h2><p>内联能提高函数的执行效率，为什么不把所有的函数都定义成内联函数？如果所有的函数都是内联函数，还用得着”内联”这个关键字吗？  内联是以<strong>代码膨胀（复制）</strong>为代价，仅仅省去了函数调用的开销，从而提高函数的执行效率。  如果执行函数体内代码的时间，相比于函数调用的开销较大，那么效率的收获会很少。另一方面，每一处内联函数的调用都要复制代码，将使程序的总代码量增大，消耗更多的内存空间，是以空间换时间，这是一种常用的手段，因为时间总是更加宝贵的。</p><p><strong>以下情况不宜使用内联：</strong>  （1）如果函数体内的代码<strong>比较长</strong>，使用内联将导致<strong>内存消耗代价较高</strong>。  （2）如果函数体内出现<strong>循环</strong>，那么执行函数体内代码的时间要比函数调用的开销大。类的构造函数和析构函数容易让人误解成使用内联更有效。要当心<strong>构造函数和析构函数可能会隐藏一些行为</strong>，如”偷偷地”执行了<strong>基类或成员对象</strong>的构造函数和析构函数。所以<strong>不要随便地将构造函数和析构函数的定义体放在类声明中</strong>。一个好的编译器将会根据函数的定义体，自动地取消不值得的内联（这进一步说明了 inline 不应该出现在函数的声明中）。</p><h2 id="使用参考"><a href="#使用参考" class="headerlink" title="使用参考"></a>使用参考</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span>  </span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span>  </span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  <span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">display</span><span class="params">()</span></span>;</span><br><span class="line">  string name;</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">Person::display</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  cout &lt;&lt; <span class="string">&quot;name:&quot;</span> &lt;&lt; name &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  Person person;</span><br><span class="line">  person.name = <span class="string">&quot;Erin&quot;</span>;</span><br><span class="line">  person.<span class="built_in">display</span>();</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//如果将display直接在类内定义，会被自动关联为inline函数</span></span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> c++ </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>test</title>
       <link href="/2023/06/19/test/"/>
       <url>/2023/06/19/test/</url>
