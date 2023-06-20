@@ -1,0 +1,1104 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="JavaScript知识点(根据例子来学习), AllenMirac">
+    <meta name="description" content="立即执行函数1234(function()&amp;#123;  document.write(&amp;quot;通常将匿名函数与事件处理程序一起使用&amp;quot;)&amp;#125;)();
+
+input标签、rowspan123456789101112131">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>JavaScript知识点(根据例子来学习) | AllenMirac</title>
+    <link rel="icon" type="image/jpeg" href="/favicon.jpg">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">AllenMirac</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">AllenMirac</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/allenmirac" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/allenmirac" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">JavaScript知识点(根据例子来学习)</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E5%89%8D%E7%AB%AF/">
+                                <span class="chip bg-color">前端</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2023-06-20
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    8.1k
+                </div>
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="立即执行函数"><a href="#立即执行函数" class="headerlink" title="立即执行函数"></a>立即执行函数</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(function()&#123;</span><br><span class="line">  document.write(<span class="string">&quot;通常将匿名函数与事件处理程序一起使用&quot;</span>)</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="input标签、rowspan"><a href="#input标签、rowspan" class="headerlink" title="input标签、rowspan"></a>input标签、rowspan</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;shiyan&lt;/title&gt;</span><br><span class="line">    &lt;link rel=&quot;stylesheet&quot; href=&quot;./page1.css&quot;&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    id 前台拿数据，name 后台拿数据</span><br><span class="line">    时间：&lt;input type=&quot;time&quot; placeholder=&quot;请输入时间&quot; autofocus&gt;&lt;br&gt;</span><br><span class="line">    日期：&lt;input type=&quot;date&quot; placeholder=&quot;请输入日期&quot;&gt;&lt;br&gt;</span><br><span class="line">    数字：&lt;input type=&quot;number&quot; placeholder=&quot;输入数字&quot; value=&quot;0&quot; max=&quot;100&quot; min=&quot;-100&quot; step=&quot;20&quot;&gt;&lt;br&gt;</span><br><span class="line">    日期时间:&lt;input type=&quot;datetime_local&quot; placeholder=&quot;日期时间&quot;&gt;</span><br><span class="line">    搜索：&lt;input type=&quot;search&quot; required pattern=&quot;[0-9][a-z]&#123;2&#125;&quot;&gt;!!!!!!!!!!!!!!</span><br><span class="line">    邮箱：&lt;input type=&quot;email&quot;&gt;</span><br><span class="line">    网址：&lt;input type=&quot;url&quot;&gt;</span><br><span class="line">    滑块：&lt;input type=&quot;range&quot;&gt;</span><br><span class="line">    颜色：&lt;input type=&quot;color&quot;&gt;</span><br><span class="line">    音频:loop autopaly, muted</span><br><span class="line">    (10.21)：&lt;audio src=&quot;&quot; controls&gt;&lt;/audio&gt;</span><br><span class="line">    视频：</span><br><span class="line">    &lt;video src=&quot;&quot; controls&gt;&lt;/video&gt;</span><br><span class="line">    &lt;table border=&quot;1&quot; &gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;th&gt;分类&lt;/th&gt;</span><br><span class="line">            &lt;th&gt;技能&lt;/th&gt;</span><br><span class="line">            &lt;th&gt;分数&lt;/th&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td rowspan=&quot;3&quot;&gt;编程语言&lt;/td&gt;</span><br><span class="line">            &lt;td&gt;JavaScript&lt;/td&gt;</span><br><span class="line">            &lt;td&gt;8&lt;/td&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td&gt;C++&lt;/td&gt;</span><br><span class="line">            &lt;td&gt;7&lt;/td&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td&gt;Swift&lt;/td&gt;</span><br><span class="line">            &lt;td&gt;8&lt;/td&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td rowspan=&quot;2&quot;&gt;产品设计&lt;/td&gt;</span><br><span class="line">            &lt;td&gt;PhotoShop&lt;/td&gt;</span><br><span class="line">            &lt;td&gt;6&lt;/td&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td&gt;Axure&lt;/td&gt;</span><br><span class="line">            &lt;td&gt;5&lt;/td&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td rowspan=&quot;2&quot;&gt;销售&lt;/td&gt;</span><br><span class="line">            &lt;td&gt;社交媒体&lt;/td&gt;</span><br><span class="line">            &lt;td&gt;3&lt;/td&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td&gt;C++&lt;/td&gt;</span><br><span class="line">            &lt;td&gt;7&lt;/td&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">    &lt;/table&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="选择器、伪类选择器a-hover"><a href="#选择器、伪类选择器a-hover" class="headerlink" title="选择器、伪类选择器a:hover"></a>选择器、伪类选择器a:hover</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        p &#123;</span><br><span class="line">            background-color: orange;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #p2 &#123;</span><br><span class="line">            color: red;</span><br><span class="line">            background-color: cadetblue;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        .para &#123;</span><br><span class="line">            color: blue;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        p.para2 &#123;</span><br><span class="line">            color: aliceblue;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #div h2&#123;</span><br><span class="line">            color:aqua;</span><br><span class="line">            background:gray;</span><br><span class="line">        &#125;</span><br><span class="line">        /* 未访问前 */</span><br><span class="line">        a:link&#123;</span><br><span class="line">            color:pink;</span><br><span class="line">        &#125;</span><br><span class="line">        /* 访问以后 */</span><br><span class="line">        a:visited&#123;</span><br><span class="line">            color:aqua;</span><br><span class="line">        &#125;</span><br><span class="line">        /* 鼠标悬停 */</span><br><span class="line">        a:hover&#123;</span><br><span class="line">            color:firebrick;</span><br><span class="line">            font-size: 30px;</span><br><span class="line">        &#125;</span><br><span class="line">        /* 点中时 */</span><br><span class="line">        a:active&#123;</span><br><span class="line">            color:red;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;p id=&quot;p1&quot;&gt;这是一个段落&lt;/p&gt;</span><br><span class="line">    &lt;hr&gt;</span><br><span class="line">    &lt;p class=&quot;para&quot; id=&quot;p2&quot;&gt;这是第二个段落&lt;/p&gt;</span><br><span class="line">    &lt;hr&gt;</span><br><span class="line">    &lt;p class=&quot;para2&quot;&gt;这是三个段落&lt;/p&gt;</span><br><span class="line">    &lt;div id=&quot;div&quot;&gt;</span><br><span class="line">        &lt;h2&gt;标题1&lt;/h2&gt;</span><br><span class="line">        &lt;h2&gt;标题1&lt;/h2&gt;</span><br><span class="line">        &lt;h2&gt;标题1&lt;/h2&gt;</span><br><span class="line">        &lt;h2&gt;标题1&lt;/h2&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;a href=&quot;https://www.baidu.com&quot;&gt;百度链接&lt;/a&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">  &lt;title&gt;&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  函数</span><br><span class="line">  1、函数定义 与调用</span><br><span class="line">  2、函数参数 、arguments</span><br><span class="line">  3、return 返回值 结束</span><br><span class="line">  4、作用域  ：全局变量 、局部变量&lt;br&gt;</span><br><span class="line">  &lt;button name=&quot;button&quot; id=&#x27;btn1&#x27;&gt;点击&lt;/button&gt;&lt;br&gt;&lt;br&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    //1 定义 方法1 </span><br><span class="line">    // document.write(&quot;123&quot;);</span><br><span class="line">    //方法2  函数表达式  (匿名函数)</span><br><span class="line">    var w=function()&#123;</span><br><span class="line">      document.write(&quot;通常将匿名函数与事件处理程序一起使用&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">    // w();</span><br><span class="line">    // document.write(&quot;123&quot;)</span><br><span class="line">    //通常将匿名函数与事件处理程序一起使用</span><br><span class="line">    btn1.onlick=function()&#123;</span><br><span class="line">      w();</span><br><span class="line">    &#125;;</span><br><span class="line">    //自调用函数-立即执行函数</span><br><span class="line">    (function()&#123;</span><br><span class="line">      document.write(&quot;通常将匿名函数与事件处理程序一起使用&quot;)</span><br><span class="line">    &#125;)();</span><br><span class="line">    document.write(&quot;&lt;br&gt;&quot;)</span><br><span class="line">    //2 函数参数  直接写形参名字</span><br><span class="line">    function write(name1, name)&#123;</span><br><span class="line">      document.write(&quot;hello,&quot;+name1+&quot;&lt;br&gt;&quot;);</span><br><span class="line">      document.write(&quot;hello,&quot;+name+&quot;&lt;br&gt;&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    write(123,23)</span><br><span class="line">    </span><br><span class="line">    //实参个数多于形参:只出现前面的</span><br><span class="line">    // write(1,2,3,4)</span><br><span class="line">    //实参少于形参:出现undefined</span><br><span class="line">    // write(123)</span><br><span class="line">    // arguments 对象</span><br><span class="line">    // 函数有一个名为 arguments 的内置对象。实参赋给形参使用这个参数来接收.</span><br><span class="line">    //arguments 对象类似于数组的结构（可以遍历，可以用下标访问）。</span><br><span class="line">    //如果函数调用的参数太多，则可以使用 arguments 对象来得到这些参数。</span><br><span class="line">    function f(a, b)&#123;</span><br><span class="line">      // document.write(arguments.length+&quot;&lt;br&gt;&quot;)</span><br><span class="line">      // document.write(arguments[0]+&quot;&lt;br&gt;&quot;)</span><br><span class="line">      // document.write(arguments[1]+&quot;&lt;br&gt;&quot;)</span><br><span class="line">      // document.write(arguments[3])</span><br><span class="line">      var max=arguments[0]</span><br><span class="line">      for(var i=1; i&lt;arguments.length; i++)&#123;</span><br><span class="line">        if(arguments[i]&gt;max)</span><br><span class="line">          max=arguments[i]</span><br><span class="line">      &#125;</span><br><span class="line">      document.write(max)</span><br><span class="line">    &#125;</span><br><span class="line">    f(1,2,234,3)</span><br><span class="line">    document.write(&quot;&lt;br&gt;&quot;)</span><br><span class="line">    var m = new Map([[1, &#x27;x&#x27;], [2, &#x27;y&#x27;], [3, &#x27;z&#x27;]]);</span><br><span class="line">    m.forEach(function (value, key, map) &#123;</span><br><span class="line">      document.write(value+key+map+&quot;&lt;br&gt;&quot;);</span><br><span class="line">    &#125;);</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">  </span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="变量作用域"><a href="#变量作用域" class="headerlink" title="变量作用域"></a>变量作用域</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;&lt;/title&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    JavaScript 中，变量的作用域有 全局作用域 和 局部作用域 两种。</span><br><span class="line">    1、全局变量   函数外定义的变量   没有用 var定义的变量(let)   window对象定义的变量(window.c=1)</span><br><span class="line">    2、局部变量  函数内用var定义的变量  </span><br><span class="line">                形参</span><br><span class="line">    变量的生命周期</span><br><span class="line">      全局变量活得和您的应用程序（窗口、网页）一样久。</span><br><span class="line">      局部变量活得不长。它们在函数调用时创建，在函数完成后被删除。			</span><br><span class="line">    &lt;script&gt;			</span><br><span class="line">      //1  全局变量</span><br><span class="line">      </span><br><span class="line">      var str1=&quot; 1我是全局&quot;</span><br><span class="line">      document.write(str1)</span><br><span class="line">      </span><br><span class="line">      function fn1()&#123;</span><br><span class="line">        var str2=&quot;我是局部&quot;  //2  局部变量  使用var在函数内部定义的变量</span><br><span class="line">        let s=&quot;123&quot;</span><br><span class="line">      &#125;</span><br><span class="line">      fn1();</span><br><span class="line">      console.log(str1);</span><br><span class="line">      // console.log(s);</span><br><span class="line">      //6  以下程序运行结果是:</span><br><span class="line">      //对Js而言，只要变量是在同一个范围（函数）里，就视为已经声明，</span><br><span class="line">      //哪怕是在变量声明前就使用</span><br><span class="line">      /*	 var num1=10;</span><br><span class="line">        function fn2()&#123;</span><br><span class="line"></span><br><span class="line">          //因为num1是局部的 fn1内部的。所以提升到fn1函数最前面声明</span><br><span class="line">          console.log(num1);//输出？undefined</span><br><span class="line"></span><br><span class="line">          var num1=20;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">      fn2()*/</span><br><span class="line"></span><br><span class="line">      var a=&quot;1111&quot;</span><br><span class="line">      function fn3()&#123;				</span><br><span class="line">        console.log(a);</span><br><span class="line">        var a=&quot;2222&quot;</span><br><span class="line">        console.log(a);					</span><br><span class="line">      &#125;</span><br><span class="line">      fn3();</span><br><span class="line">      </span><br><span class="line">    &lt;/script&gt;</span><br><span class="line"></span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="获取元素"><a href="#获取元素" class="headerlink" title="获取元素"></a>获取元素</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">  &lt;title&gt;&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">  查找元素方法：</span><br><span class="line">  1 通过 id 查找元素&lt;br&gt;</span><br><span class="line">  &lt;p id=&quot;intro&quot;&gt;Hello!&lt;/p&gt;&lt;button name=&quot;button&quot; id=&#x27;btn0&#x27;&gt;确定&lt;/button&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    var p = document.getElementById(&quot;para&quot;);</span><br><span class="line">    // document.write();</span><br><span class="line">    var btn0 = document.getElementById(&quot;btn0&quot;);</span><br><span class="line">    btn0.click = function () &#123;</span><br><span class="line">      document.write(&quot;nihao&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">  &lt;hr&gt;</span><br><span class="line">  2、通过标签名查找元素&lt;br&gt;</span><br><span class="line"></span><br><span class="line">  &lt;ul&gt;</span><br><span class="line">    &lt;li&gt;【#回应何时开学#】&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;【#回应何时开学#】&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;【#回应何时开学#】&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;【#回应何时开学#】&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;【#回应何时开学#】&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;【#回应何时开学#】&lt;/li&gt;</span><br><span class="line">  &lt;/ul&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    var lis = document.getElementsByTagName(&#x27;li&#x27;);</span><br><span class="line">    console.log(lis);</span><br><span class="line">    for (var i = 0; i &lt; lis.length; i++) &#123;</span><br><span class="line">      if (i % 2 == 0) &#123;</span><br><span class="line">        lis[i].style.background = &quot;blue&quot;;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">  &lt;hr&gt;</span><br><span class="line">  3 html5新增的 通过 CSS 选择器查找 HTML 元素:&lt;br&gt;</span><br><span class="line">  querySelectorAll() 方法 :查找匹配指定 CSS 选择器（id、类名、标签等）的所有 HTML 元素&lt;br&gt;</span><br><span class="line">  querySelector() 方法 :查找匹配指定 CSS 选择器的第一个 HTML 元素&lt;br&gt;</span><br><span class="line">  &lt;p id=&quot;p1&quot;&gt;Hello!&lt;/p&gt;</span><br><span class="line">  &lt;button name=&quot;button&quot; id=&#x27;btn1&#x27;&gt;确定&lt;/button&gt;</span><br><span class="line">  &lt;p class=&quot;imp&quot;&gt;Hello!&lt;/p&gt;</span><br><span class="line">  &lt;p class=&quot;imp&quot;&gt;world!&lt;/p&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    //querySelectorAll() 方法  获得class为imp的元素   .不能少</span><br><span class="line">    var p1 = document.querySelectorAll(&#x27;.imp&#x27;)</span><br><span class="line">    console.log(p1)</span><br><span class="line">    //querySelector（）方法   获得id为btn1的元素 #不能少</span><br><span class="line">    var p2 = document.querySelector(&#x27;#btn1&#x27;)</span><br><span class="line">    console.log(p2)</span><br><span class="line">    var ps = document.querySelectorAll(&quot;.imp&quot;);</span><br><span class="line">    console.log(ps);</span><br><span class="line">    ps[1].innerHTML = &quot;123456789&quot;;</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">  &lt;title&gt;面向对象&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  1、什么是JavaScript对象？</span><br><span class="line">    对象是有(属性)和(方法)的集合。</span><br><span class="line">  2、创建对象的三种方式：&lt;br&gt;</span><br><span class="line">  01、使用new object()方式</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    //创建</span><br><span class="line">    var person = new Object();</span><br><span class="line">    // console.log(person)</span><br><span class="line">    // console.log(typeof(person))</span><br><span class="line">    //设置属性和方法 </span><br><span class="line">    person.name=&quot;123&quot;</span><br><span class="line">    person.age = 18;</span><br><span class="line">    //设置方法 </span><br><span class="line">    person.say=function()&#123;</span><br><span class="line">      console.log(&quot;say&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">    //访问属性</span><br><span class="line">    // console.log(person.name)</span><br><span class="line">    // console.log(person.age)		</span><br><span class="line">    //调用方法</span><br><span class="line">    // person.say()</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">  &lt;br&gt; </span><br><span class="line">  01 使用字面量定义</span><br><span class="line">  var 对象=&#123;</span><br><span class="line">    //键值对的形式  键 属性名 ：值 属性值，</span><br><span class="line">    属性名 ：值，</span><br><span class="line">    //方法 冒号后面跟着一个匿名函数。</span><br><span class="line">    方法:function()&#123;</span><br><span class="line">      </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    var person = &#123;</span><br><span class="line">      name:&quot;123&quot;,</span><br><span class="line">      age:123,</span><br><span class="line">      say:function()&#123;</span><br><span class="line">        console.log(&quot;say&quot;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    // person.say()</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">  &lt;br&gt;</span><br><span class="line">  3、使用自定义的构造函数声明多个类型特点一致的对象</span><br><span class="line">  //构造函数的语法格式：</span><br><span class="line">  // function 构造函数名()&#123;</span><br><span class="line">  // 	this.属性=值;</span><br><span class="line">  // 	this.方法=function()&#123;&#125;</span><br><span class="line">  // &#125;</span><br><span class="line">  //new 构造函数名(); 函数名首字母要大写</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    //1创建构造函数</span><br><span class="line">    function Person(name, age)&#123;</span><br><span class="line">      // console.log(this);</span><br><span class="line">      this.name = name;</span><br><span class="line">      this.age = age;</span><br><span class="line">      this.say=function()&#123;</span><br><span class="line">        console.log(&quot;say&quot;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    //2通过构造函数new对象</span><br><span class="line">    var p1 = new Person(&quot;hzy&quot;, 18)</span><br><span class="line">    var p2 = new Person(&quot;hhh&quot;, 21)</span><br><span class="line">    // console.log(p1.say())</span><br><span class="line">    // p2.say()</span><br><span class="line">    //3属性访问访问2:[&#x27;属性名&#x27;]</span><br><span class="line">    // console.log(p1[&#x27;name&#x27;])</span><br><span class="line">    //01什么时候 必须用[&#x27;属性名&#x27;]</span><br><span class="line">    //属性名里包含特殊字符:</span><br><span class="line">    var obj=&#123;	&#125;</span><br><span class="line">    obj[&#x27;content-type&#x27;]=&#x27;text/css&#x27;</span><br><span class="line">    // obj.c-c=&#x27;123&#x27;//错误</span><br><span class="line">    //属性名不确定</span><br><span class="line">    var Name=&#x27;123&#x27;</span><br><span class="line">    obj.Name=20;</span><br><span class="line">    // console.log(obj.Name)</span><br><span class="line">    // for in 遍历属性</span><br><span class="line">    //for(变量 in 对象)&#123;</span><br><span class="line">    //&#125;</span><br><span class="line">    // for(var i in obj)&#123;</span><br><span class="line">      // console.log(&#x27;====&#x27;, i, obj.i)//undefine</span><br><span class="line">      // console.log(&#x27;====&#x27;, i, obj[i])</span><br><span class="line">    // &#125;</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">  4、相关问题-对象赋值与引用</span><br><span class="line">  内存：</span><br><span class="line">    栈：局部变量  全局变量</span><br><span class="line">    堆：对象</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    //01基本数据类型 在内存中的存储</span><br><span class="line">    var a=10</span><br><span class="line">    var b=a</span><br><span class="line">    b=20;</span><br><span class="line">    console.log(a)</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    //02复杂数据类型 在内存中存储</span><br><span class="line">    var obj1=&#123;name:&quot;Tom&quot;&#125;</span><br><span class="line">    var obj2=obj1</span><br><span class="line">    obj1.name=&#x27;123&#x27;</span><br><span class="line">    console.log(obj2.name)</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line"></span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    //03基本数据类型作为函数参数</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    //04复杂数据类型作为函数参数</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="Math库"><a href="#Math库" class="headerlink" title="Math库"></a>Math库</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;&lt;/title&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    Math 对象</span><br><span class="line">    Math 对象用于执行数学任务。&lt;br&gt;</span><br><span class="line">    </span><br><span class="line">    使用 Math 的属性和方法的语法：&lt;br&gt;</span><br><span class="line">    var pi_value=Math.PI;</span><br><span class="line">    var sqrt_value=Math.sqrt(15);&lt;br&gt;&lt;br&gt;</span><br><span class="line">    &lt;hr&gt;</span><br><span class="line">    &lt;script&gt;			</span><br><span class="line">      var i;</span><br><span class="line">      i=Math.round(5/2) //四舍五入			</span><br><span class="line">      //取整 向下取整</span><br><span class="line">      i=Math.floor(5/2)</span><br><span class="line">      //绝对值</span><br><span class="line">      Math.abs(-100)</span><br><span class="line">      //随机数 0-1之间</span><br><span class="line">      i=Math.random()</span><br><span class="line">      //产生0-10之间的随机数？</span><br><span class="line">      i=Math.random()*10</span><br><span class="line">      //产生5-10之间的随机数？</span><br><span class="line">      i=Math.random()*5+5</span><br><span class="line">      </span><br><span class="line">      //公式：取x到y之间的随机数:;</span><br><span class="line">      //Math.random()*(y-x)+x</span><br><span class="line"></span><br><span class="line">      //问题：如何产生0到10之间的随机整数？</span><br><span class="line">      </span><br><span class="line">      //方法：先产生0-    之间的随机数 然后        .		</span><br><span class="line">      </span><br><span class="line">      document.write(i);</span><br><span class="line">      //alert(i);</span><br><span class="line">      </span><br><span class="line">      /*练习  写一个随机点菜的小程序</span><br><span class="line">      1 创建一个数组 </span><br><span class="line">      2 随机产生数组下标</span><br><span class="line">      3 将下标对应的数组元素 输出来.</span><br><span class="line">      js中定义数组:var arr=[&quot;鱼头豆腐&quot;,&quot;红烧排骨&quot;,&quot;土豆丝&quot;,&quot;西红柿鸡蛋汤&quot;,&quot;鸦片鱼头&quot;,&quot;小鸡炖蘑菇&quot;]</span><br><span class="line">      */</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="静态成员"><a href="#静态成员" class="headerlink" title="静态成员"></a>静态成员</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">  &lt;title&gt;&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">  1、静态成员</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    function Person(name, age) &#123;</span><br><span class="line">      this.name = name;</span><br><span class="line">      this.age = age;</span><br><span class="line">      //静态属性 类名.属性</span><br><span class="line">      if (!Person.count) &#123;</span><br><span class="line">        Person.count = 0;</span><br><span class="line">      &#125;</span><br><span class="line">      Person.count++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /*设置一个属性 计算创建出多少对象</span><br><span class="line">      需要静态成员-判定在构造函数上的属性和方法</span><br><span class="line">    */</span><br><span class="line">    Person.print = function()&#123;</span><br><span class="line">      alert(&quot;创建了&quot;+Person.count+&quot;对象&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">    var p1=new Person(&#x27;qwe&#x27;, 123)</span><br><span class="line">    var p2 = new Person(&#x27;qw&#x27;, 1)</span><br><span class="line">    console.log(Person.count)</span><br><span class="line">    Person.print()</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="特殊的引用类型：Boolean、Number-和-String"><a href="#特殊的引用类型：Boolean、Number-和-String" class="headerlink" title="特殊的引用类型：Boolean、Number 和 String"></a>特殊的引用类型：Boolean、Number 和 String</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;&lt;/title&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    为了便于操作基本类型值，js还提供了 3 个特殊的引用类型：Boolean、Number 和 String。</span><br><span class="line">    Number 对象：基本包装类型  提供数字的对象（包括整数、浮点数等）</span><br><span class="line">    1、NaN属性：非数字（(Not a Number)。）	</span><br><span class="line">    </span><br><span class="line">    2、isNaN（）函数：判断是否为非数字</span><br><span class="line">    </span><br><span class="line">    3、toString()：把数字转为字符串</span><br><span class="line">    </span><br><span class="line">    4、把变量转换为数值</span><br><span class="line">    这三种 JavaScript 方法可用于将变量转换为数字：</span><br><span class="line"></span><br><span class="line">      Number() 方法  可用于把其他类型转换为数值</span><br><span class="line">      parseInt() 方法 解析一段字符串并返回整型数值。允许空格。只返回首个数字：</span><br><span class="line">      parseFloat() 方法  解析一段字符串并返回数值。允许空格。只返回首个数字：</span><br><span class="line">    &lt;br&gt;&lt;br&gt;&lt;hr&gt;&lt;br&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">      //1 NaN属性</span><br><span class="line">      </span><br><span class="line">        </span><br><span class="line">      //document.writeln(&quot;===============&lt;br&gt;&quot;)	</span><br><span class="line">      </span><br><span class="line">      //2  isNaN 判断是否为非数字</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">      //3、toString()：把数字转为字符串	</span><br><span class="line"></span><br><span class="line">      //n不是数字吗？怎么会有方法</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">      // 4 Number() 方法  可用于把 其它类型转换为数值</span><br><span class="line">          //布尔类型</span><br><span class="line">      </span><br><span class="line">          //数字组成的字符串</span><br><span class="line">            </span><br><span class="line">        //日期对象</span><br><span class="line">        </span><br><span class="line">         //字母+数字字符串</span><br><span class="line">         </span><br><span class="line">        //5 parseInt() 方法 解析一段字符串并返回整型数值。允许空格。只返回首个数字</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="静态成员-1"><a href="#静态成员-1" class="headerlink" title="静态成员"></a>静态成员</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">  &lt;title&gt;&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">  1、静态成员</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    function Person(name, age) &#123;</span><br><span class="line">      this.name = name;</span><br><span class="line">      this.age = age;</span><br><span class="line">      //静态属性 类名.属性</span><br><span class="line">      if (!Person.count) &#123;</span><br><span class="line">        Person.count = 0;</span><br><span class="line">      &#125;</span><br><span class="line">      Person.count++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /*设置一个属性 计算创建出多少对象</span><br><span class="line">      需要静态成员-判定在构造函数上的属性和方法</span><br><span class="line">    */</span><br><span class="line">    Person.print = function()&#123;</span><br><span class="line">      alert(&quot;创建了&quot;+Person.count+&quot;对象&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">    var p1=new Person(&#x27;qwe&#x27;, 123)</span><br><span class="line">    var p2 = new Person(&#x27;qw&#x27;, 1)</span><br><span class="line">    console.log(Person.count)</span><br><span class="line">    Person.print()</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="原型prototype"><a href="#原型prototype" class="headerlink" title="原型prototype"></a>原型prototype</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;&lt;/title&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    </span><br><span class="line">    2、构造函数问题：存在浪费内存空间问题</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">      function Person(name,age)&#123;</span><br><span class="line">        this.name=name;</span><br><span class="line">        this.age=age;</span><br><span class="line">        this.say=function()&#123;</span><br><span class="line">          console.log(&#x27;hello&#x27;);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      //浪费内存空间问题</span><br><span class="line">      var p1 = new Person(&#x27;abc&#x27;, 123)</span><br><span class="line">      var p2 = new Person(&#x27;ab&#x27;, 12)</span><br><span class="line">      // console.log(p1)</span><br><span class="line">      // console.log(p2)</span><br><span class="line">      </span><br><span class="line">      //===严格相等</span><br><span class="line">      //如果两个值都引用同一个对象或是函数，那么相等，否则不相等</span><br><span class="line">      // console.log(p1.say===p2.say)</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">    3 构造函数原型prototype </span><br><span class="line">    通过原型来实现所有对象共享方法。</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">      function Person(name,age)&#123;</span><br><span class="line">        this.name=name;</span><br><span class="line">        this.age=age;				</span><br><span class="line">      &#125;</span><br><span class="line">      //每个构造函数 都有一个prototype属性,指向另外一个对象.</span><br><span class="line">      console.dir(Person)</span><br><span class="line">      //我们可以把共有的方法,直接定义在prototype对象上,让所有对象实例共享.</span><br><span class="line">      //通过原型添加方法</span><br><span class="line">      Person.prototype.say = function()&#123;</span><br><span class="line">        alert(&quot;hello&quot;)</span><br><span class="line">      &#125;</span><br><span class="line">      var p1=new Person(&quot;tom&quot;,10);</span><br><span class="line">      var p2=new Person(&quot;jerry&quot;,10);</span><br><span class="line">      </span><br><span class="line">      console.log(p1.say===p2.say)</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="基于原型链的继承"><a href="#基于原型链的继承" class="headerlink" title="基于原型链的继承"></a>基于原型链的继承</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;&lt;/title&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    1 基于原型链的继承</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">      function Person(age)&#123;</span><br><span class="line">        this.age=age				</span><br><span class="line">      &#125;</span><br><span class="line">      Person.prototype.say=function()&#123;</span><br><span class="line">        alert(&#x27;hello world&#x27;);</span><br><span class="line">      &#125;</span><br><span class="line">      </span><br><span class="line">      function Student()&#123;</span><br><span class="line">      &#125;</span><br><span class="line">      //继承</span><br><span class="line">      //1 构造父类的实例</span><br><span class="line">      var p1=new Person(20)</span><br><span class="line">      //2 设置为子类的原型对象</span><br><span class="line">      Student.prototype=p1</span><br><span class="line">      问题：Student.prototype.constructor指向哪个构造函数</span><br><span class="line">      // console.log(Student.prototype.constructor===p1.constructor)</span><br><span class="line">      //3 修复子类函数原型的constructor指针即可</span><br><span class="line">      Student.prototype.constructor=Student;</span><br><span class="line"></span><br><span class="line">      var stu1=new Student()</span><br><span class="line">      // stu1.say()</span><br><span class="line">      // console.log(stu1.age)</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">    &lt;br&gt;</span><br><span class="line">    2 存在问题：实例共享引用类型，新创建的对象都有“玩游戏”这个变量，如p1、p2</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">      function Parent() &#123;</span><br><span class="line">        	this.newArr = [&quot;唱歌&quot;, &quot;跑步&quot;];</span><br><span class="line">      &#125;</span><br><span class="line">      function Child() &#123;</span><br><span class="line">        	this.name = &quot;abc&quot;;</span><br><span class="line">      &#125;</span><br><span class="line">      Child.prototype = new Parent()</span><br><span class="line">      Child.prototype.constructor = Child</span><br><span class="line">      // 对于属性不希望继承</span><br><span class="line">      var p1 = new Child()</span><br><span class="line">      p1.newArr.push(&quot;玩游戏&quot;)</span><br><span class="line">      // console.log(p1.newArr);///</span><br><span class="line"></span><br><span class="line">      var p2 = new Child();</span><br><span class="line">      // console.log(p2.newArr)</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">    &lt;br&gt;</span><br><span class="line">    3 call函数</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">      //call函数</span><br><span class="line">      var demo1=&#123;</span><br><span class="line">        name:&#x27;好人:&#x27;,</span><br><span class="line">        showABC:function(param1,param2)&#123;</span><br><span class="line">          console.log(this.name,param1,param2)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      demo1.showABC(&#x27;张三&#x27;,&#x27;李四&#x27;)</span><br><span class="line">      var demo2=&#123;</span><br><span class="line">        name:&#x27;坏人&#x27;</span><br><span class="line">      &#125;</span><br><span class="line">      //call来让demo2对象 借用demo1的showABC方法</span><br><span class="line">      demo1.showABC.call(demo2, &quot;1&quot;, &#x27;2&#x27;)</span><br><span class="line">      </span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">    &lt;br&gt;</span><br><span class="line">    4 利用构造函数继承属性</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">      function Father(uname,age)&#123;</span><br><span class="line">        this.uname=uname;</span><br><span class="line">        this.age=age;</span><br><span class="line">        console.log(uname, age)</span><br><span class="line">      &#125;</span><br><span class="line">      // Son想要继承Father的属性</span><br><span class="line">      function Son(name, age)&#123;</span><br><span class="line">        Father.call(this, name, age)</span><br><span class="line">      &#125;</span><br><span class="line">      console.log(Son(12, 2))</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">    </span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="对象原型proto"><a href="#对象原型proto" class="headerlink" title="对象原型proto"></a>对象原型proto</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;&lt;/title&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    </span><br><span class="line">    4 对象原型__proto__</span><br><span class="line">      请问为什么对象 可以访问原型里的方法？		</span><br><span class="line">      原因：每个对象都有一个属性__proto__指向原型prototype,</span><br><span class="line">      所以可以使用原型对象里的方法</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">      function Person(name,age)&#123;</span><br><span class="line">        this.name=name;</span><br><span class="line">        this.age=age;				</span><br><span class="line">      &#125;</span><br><span class="line">      Person.prototype.sayHello = function()&#123;</span><br><span class="line">        alert(&quot;Hello&quot;)</span><br><span class="line">      &#125;</span><br><span class="line">      var p1=new Person(&quot;tom&quot;,10);</span><br><span class="line">      var p2=new Person(&quot;jerry&quot;,10);</span><br><span class="line">      // 输出__proto__属性</span><br><span class="line">      // console.log(p1.__proto__)</span><br><span class="line">      // console.log(p1.__proto__===p2.__proto__)</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">    &lt;br&gt;</span><br><span class="line">    5 原型对象的constructor构造函数</span><br><span class="line">      原型对象里面都有一个属性</span><br><span class="line">      constructor属性,constructor我们称为构造函数</span><br><span class="line">      因为它指回构造函数本身.</span><br><span class="line">      &lt;script&gt;</span><br><span class="line">        // console.log(Person.prototype.constructor)</span><br><span class="line">        //有时候 我们需要用写代码让constructor指向原来的构造函数</span><br><span class="line">        Person.prototype = &#123;</span><br><span class="line">          eat: function()&#123;&#125;,</span><br><span class="line">          study:function()&#123;&#125;,</span><br><span class="line">          toString:function()&#123;&#125;</span><br><span class="line">        &#125;</span><br><span class="line">        // Person.prototype.toString = function()&#123;</span><br><span class="line">        // 	alert(&quot;alert&quot;)</span><br><span class="line">        // &#125;</span><br><span class="line">        //打印 constructor指向了?</span><br><span class="line">        // consoel.log(Person.prototype.constructor)</span><br><span class="line">        </span><br><span class="line">        //可以手动让constructor指向原来的构造函数</span><br><span class="line">        </span><br><span class="line">        // 父亲的父亲的父亲</span><br><span class="line">        // null 继承</span><br><span class="line">        console.log(p1.__proto__.toString()===p1.__proto__.__proto__.toString())</span><br><span class="line">        console.log(p1.__proto__.__proto__.toString())</span><br><span class="line">      &lt;/script&gt;</span><br><span class="line">      &lt;br&gt;</span><br><span class="line">      6 原型对象的应用  扩展内置对象方法</span><br><span class="line">        数组也有原型对象</span><br><span class="line">      &lt;script&gt;</span><br><span class="line">        Array.prototype.sun = function()&#123;</span><br><span class="line">          var sum=0</span><br><span class="line">          for(var i=0; i&gt;this.length; i++)&#123;</span><br><span class="line">            sum+=i;</span><br><span class="line">          &#125;</span><br><span class="line">          console.log(&#x27;sum: &#x27;+sum)</span><br><span class="line">          return sum</span><br><span class="line">        &#125;</span><br><span class="line">        var arr = [1, 2, 3, 4, 5]</span><br><span class="line">        console.log(arr.__proto__)</span><br><span class="line">      &lt;/script&gt;</span><br><span class="line">      </span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="ES6的类"><a href="#ES6的类" class="headerlink" title="ES6的类"></a>ES6的类</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;上课&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    1、箭头函数</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        var fn = function()&#123;</span><br><span class="line">            console.log(&quot;1&quot;)</span><br><span class="line">        &#125;</span><br><span class="line">        var fn1=()=&gt;&#123;</span><br><span class="line">            console.log(&quot;fn1&quot;)</span><br><span class="line">        &#125;</span><br><span class="line">        // fn()</span><br><span class="line">        // fn1()</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">    &lt;br&gt;</span><br><span class="line">    2、es6中标准的类</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        class Person&#123;</span><br><span class="line">            name=&quot;23&quot;</span><br><span class="line">            age=&quot;20&quot;</span><br><span class="line">            // say=function()&#123;</span><br><span class="line">            //     console.log(name, age)</span><br><span class="line">            // &#125;</span><br><span class="line"></span><br><span class="line">            //将函数直接添加到原型Prototype上面</span><br><span class="line">            say()&#123;</span><br><span class="line">                console.log(name, age)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        var p1 = new Person()</span><br><span class="line">        // console.log(p1)</span><br><span class="line">        // console.log(p1.prototype===p1.__proto__)</span><br><span class="line"></span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">    &lt;br&gt;</span><br><span class="line">    3、静态成员</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        class Student&#123;</span><br><span class="line">            name=&quot;2&quot;</span><br><span class="line">            static count=0</span><br><span class="line">            static doCount()&#123;</span><br><span class="line">                if(!Student.count)&#123;</span><br><span class="line">                    Student.count=0</span><br><span class="line">                &#125;</span><br><span class="line">                Student.count++</span><br><span class="line">                console.log(&quot;当前对象的个数是&quot;+Student.count)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        var s1 = new Student();</span><br><span class="line">        // Student.doCount()</span><br><span class="line">        var s1=new Student();</span><br><span class="line">        // Student.doCount()</span><br><span class="line">        // console.log(s1===s1)</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">    &lt;br&gt;</span><br><span class="line">    4、类中的构造函数</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        class Teacher&#123;</span><br><span class="line">            // name=&quot;tea&quot;</span><br><span class="line">            // age=999</span><br><span class="line">            //私有属性 #+属性名</span><br><span class="line">            #name</span><br><span class="line">            #age</span><br><span class="line">            getAge()&#123;</span><br><span class="line">                return this.#age</span><br><span class="line">            &#125;</span><br><span class="line">            set age(age)&#123;</span><br><span class="line">                if(age&gt;0 &amp;&amp; age&lt;200)</span><br><span class="line">                    this.#age=age</span><br><span class="line">                else</span><br><span class="line">                    console.log(&quot;数据错误&quot;)</span><br><span class="line">            &#125;</span><br><span class="line">            get name()&#123;</span><br><span class="line">                return this.#name</span><br><span class="line">            &#125;</span><br><span class="line">            set name(name)&#123;</span><br><span class="line">                this.#name=name</span><br><span class="line">            &#125;</span><br><span class="line">            constructor(name, age)&#123;//可以不用写属性</span><br><span class="line">                this.#name=name</span><br><span class="line">                this.#age=age</span><br><span class="line">            &#125;</span><br><span class="line">            // Uncaught SyntaxError: A class may only have one constructor</span><br><span class="line">            // constructor(name, age, ls)&#123;</span><br><span class="line">            //     this.name=name</span><br><span class="line">            //     this.age=age</span><br><span class="line">            //     this.ls = ls</span><br><span class="line">            // &#125;</span><br><span class="line">            say()&#123;</span><br><span class="line">                console.log(this.name, this.age, this.#name, this.#age)//</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        var t1 = new Teacher(&quot;t&quot;, 123, &quot;2&quot;,&#x27;23&#x27;)</span><br><span class="line">        // console.log(t1.getAge())</span><br><span class="line">        // t1.say()</span><br><span class="line">        // t1.age=10</span><br><span class="line">        // t1.say()</span><br><span class="line">        // console.log(t1.age2)</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">    &lt;br&gt;</span><br><span class="line">    5、继承</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        class S extends Teacher&#123;</span><br><span class="line">            constructor(name, age)&#123;</span><br><span class="line">                super(name, age)</span><br><span class="line">                </span><br><span class="line">            &#125;</span><br><span class="line">            say()&#123;</span><br><span class="line">                console.log(this.age)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        var s = new S(&#x27;2&#x27;, &#x27;3&#x27;)</span><br><span class="line">        // s.say()</span><br><span class="line">        console.log(S.prototype)</span><br><span class="line">        console.log(S.__proto__)</span><br><span class="line">        console.log(S.__proto__.__proto__)</span><br><span class="line">        console.log(S.__proto__.__proto__.__proto__)</span><br><span class="line">        console.log(S.__proto__.__proto__.__proto__.__proto__)</span><br><span class="line"></span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="定时器"><a href="#定时器" class="headerlink" title="定时器"></a>定时器</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;&lt;/title&gt;</span><br><span class="line">    </span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    BOM:浏览器对象模型 window对象 顶级对象</span><br><span class="line">    </span><br><span class="line">    1、window对象的方法：setInterval(调用函数，毫秒数)  定时器</span><br><span class="line">      方法可按照指定的周期（以毫秒计）来调用函数或计算表达式。</span><br><span class="line">      注意：调用函数有3中写法：</span><br><span class="line">              函数        函数名       字符串（&#x27;函数名（）&#x27;）</span><br><span class="line">    &lt;br&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">      //1 函数 js函数可以作为参数</span><br><span class="line">      //window可以省略</span><br><span class="line">      // setInterval(function()&#123;</span><br><span class="line">      // 	console.log(&quot;hello&quot;)</span><br><span class="line">      // &#125;, 3000)</span><br><span class="line">      //2 函数名</span><br><span class="line">      function sayHello()&#123;</span><br><span class="line">        alert(&#x27;hello&#x27;);</span><br><span class="line">      &#125;</span><br><span class="line">      // setInterval(sayHello, 3000)</span><br><span class="line">      //3 字符串（&#x27;函数名（）&#x27;)</span><br><span class="line">      var tid = setInterval(&quot;alert(&#x27;hello&#x27;)&quot;, 3000)</span><br><span class="line">      </span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">    </span><br><span class="line">    2、取消定时器： clearInterval() </span><br><span class="line">      由 setInterval() 返回的 ID 值可用作 clearInterval() 方法的参数。&lt;br&gt;</span><br><span class="line">      </span><br><span class="line">      &lt;button id=&#x27;btn1&#x27;&gt;开启&lt;/button&gt;</span><br><span class="line">      &lt;button id=&#x27;btn2&#x27;&gt;关闭&lt;/button&gt;</span><br><span class="line">      &lt;script&gt;</span><br><span class="line">        var btn2=document.getElementById(&quot;btn2&quot;);</span><br><span class="line">        var btn1=document.querySelector()</span><br><span class="line">        btn2.onclick=function()&#123;</span><br><span class="line">          clearInterval(tid)</span><br><span class="line">        &#125;</span><br><span class="line">          </span><br><span class="line">      &lt;/script&gt;</span><br><span class="line">    </span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="函数中this指针"><a href="#函数中this指针" class="headerlink" title="函数中this指针"></a>函数中this指针</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;&lt;/title&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    1、this是什么？</span><br><span class="line">    函数中的this指函数的实际调用对象。&lt;hr&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">      // console.log(this)</span><br><span class="line">      // var obj=&#123;name:&quot;123&quot;&#125;</span><br><span class="line">      // obj.fn = function()&#123;</span><br><span class="line">      // 	console.log(this)</span><br><span class="line">      // 	console.log(this.name)</span><br><span class="line">      // &#125;</span><br><span class="line">      // // obj.fn()</span><br><span class="line">      // // setTimeout(obj.fn, 1000)</span><br><span class="line">      // console.log(typeof(obj))</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">    2、箭头函数的this</span><br><span class="line">    箭头函数没有自己的this,它的this是外层作用域的this&lt;hr&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">      function fn1()&#123;</span><br><span class="line">        console.log(&quot;fn1-&quot;,this);</span><br><span class="line">      &#125;</span><br><span class="line">      var fn2=()=&gt;&#123;</span><br><span class="line">        console.log(&quot;fn2&quot;,this);</span><br><span class="line">      &#125;</span><br><span class="line">      // fn1()</span><br><span class="line">      // fn2()</span><br><span class="line">      var obj1=&#123;</span><br><span class="line">        name:&quot;124&quot;,</span><br><span class="line">        fn1,</span><br><span class="line">        fn2,</span><br><span class="line">        fn3:()=&gt;&#123;</span><br><span class="line">          console.log(this)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      // obj1.fn1()//类的this</span><br><span class="line">      // obj1.fn2()//外部的window</span><br><span class="line">      // obj1.fn3()//同样也是外部的window</span><br><span class="line">      var obj2=&#123;</span><br><span class="line">        obj1</span><br><span class="line">      &#125;</span><br><span class="line">      console.log(obj2.obj1.fn1())</span><br><span class="line">      console.log(obj2.obj1.fn2())</span><br><span class="line">      console.log(obj2.obj1.fn3())</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">    3、 函数是Function类的实例</span><br><span class="line">    可以通过new Function动态创建函数对象。</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">      var add= new Function(&quot;x&quot;, &quot;y&quot;, &quot;return x+y&quot;)</span><br><span class="line">      console.log(add(1, 2))</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;&lt;/title&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    1、js中函数可以作为参数传递&lt;br&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">      function say (str) &#123;</span><br><span class="line">        alert(str);</span><br><span class="line">      &#125;</span><br><span class="line">      //01方法函数作为参数</span><br><span class="line">      // 高阶函数</span><br><span class="line">      function fn(fun, str)&#123;</span><br><span class="line">        fun(str)</span><br><span class="line">      &#125;</span><br><span class="line">      // fn(say, &quot;123&quot;)</span><br><span class="line">      // setInterval(say, 3000, &quot;1&quot;)</span><br><span class="line">      //02直接将匿名函数作为参数传递给fn1方法</span><br><span class="line">      </span><br><span class="line">      // fn(function(str)&#123;</span><br><span class="line">      // 	alert(str)</span><br><span class="line">      // &#125;, &quot;1111111&quot;)</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">    &lt;br&gt;</span><br><span class="line">    2、函数作为返回值</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">      /*希望test1函数执行时，可以记录一条日志</span><br><span class="line">      开闭原则：对扩展开放，对修改关闭</span><br><span class="line">      在不修改原函数的基础上，增加此功能。</span><br><span class="line">      可以通过函数作为返回值 来动态生成一个新函数*/</span><br><span class="line">      function test1()&#123;</span><br><span class="line">        var str=&quot;heollo&quot;</span><br><span class="line">        console.log(str)</span><br><span class="line">      &#125;</span><br><span class="line">      function outer(fun)&#123;</span><br><span class="line">        return ()=&gt;&#123;</span><br><span class="line">          console.log(&quot;添加日志------------&quot;)</span><br><span class="line">          fun()</span><br><span class="line">        &#125;//返回值是函数</span><br><span class="line">      &#125;</span><br><span class="line">      outer(test1)//返回值是函数</span><br><span class="line">      var f1=outer(test1)//接受返回值</span><br><span class="line">      f1()</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">    3、什么高阶函数&lt;br&gt;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">  &lt;title&gt;&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  闭包</span><br><span class="line">  01 什么是闭包：函数A中 有一个函数B，函数B中可以访问函数A中定义的变量</span><br><span class="line">  或者数据，此时就形成了闭包。</span><br><span class="line">  02 闭包的功能： 使函数内部的变量在函数执行完后，仍然存活在内存中</span><br><span class="line">  （延长了局部变量的生命周期）</span><br><span class="line">        让函数外部可以操作函数内部的数据</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    //1定义一个闭包</span><br><span class="line">    function A()&#123;</span><br><span class="line">      var num=123</span><br><span class="line">      function B()&#123;</span><br><span class="line">        console.log(num)</span><br><span class="line">      &#125;</span><br><span class="line">      B()</span><br><span class="line">    &#125;</span><br><span class="line">    // A()//打断点之后会出现，Closure (A)，闭包</span><br><span class="line">    // console.log(num)</span><br><span class="line"></span><br><span class="line">    //2 在f1 外部来访问n;</span><br><span class="line">    function f1()&#123;</span><br><span class="line">      var n=10</span><br><span class="line">      return function()&#123;</span><br><span class="line">        console.log(n)</span><br><span class="line">        return n;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    // console.log(n);</span><br><span class="line">    </span><br><span class="line">    //console.log(&quot;函数外 输出局部变量n的值：&quot;+ );</span><br><span class="line">    </span><br><span class="line">    /*闭包的功能： 使函数内部的变量在函数执行完后，</span><br><span class="line">    仍然存活在内存中（延长了局部变量的生命周期）</span><br><span class="line">    让函数外部可以操作函数内部的数据*/</span><br><span class="line">    </span><br><span class="line">    //3 函数执行完后 局部变量就自动释放了 ？为什么还能访问？</span><br><span class="line">    var f2=f1()</span><br><span class="line">    f2()//延长了n的作用周期</span><br><span class="line">    </span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="闭包案例"><a href="#闭包案例" class="headerlink" title="闭包案例"></a>闭包案例</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">  &lt;title&gt;&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">  1、案例一&lt;br&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    /*	function f1()&#123;</span><br><span class="line">        var num=10;</span><br><span class="line">        num++;</span><br><span class="line">        console.log(num);</span><br><span class="line">      &#125;</span><br><span class="line">      //运行结果是？</span><br><span class="line">      f1()  //11</span><br><span class="line">      f1()  //11 12			</span><br><span class="line">      f1()*/</span><br><span class="line"></span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">  如何实现累加？-闭包</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    function f2() &#123;</span><br><span class="line">      var n = 10</span><br><span class="line">      return function () &#123;</span><br><span class="line">        n++</span><br><span class="line">        return n</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    var ff = f2()</span><br><span class="line">    // console.log(ff())</span><br><span class="line">    // console.log(ff())</span><br><span class="line">    // console.log(ff())</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">  &lt;hr&gt;</span><br><span class="line">  2、案例二：下来3个按钮，点击其中一个，提示&quot;点击的是第n个按钮&quot;：&lt;br&gt;</span><br><span class="line">  &lt;button&gt;桔子1&lt;/button&gt;</span><br><span class="line">  &lt;button&gt;苹果2&lt;/button&gt;</span><br><span class="line">  &lt;button&gt;梨子3&lt;/button&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    //html5 通过css选择器获得页面元素</span><br><span class="line">    var btns = document.querySelectorAll(&quot;button&quot;)</span><br><span class="line">    // console.log(btns)</span><br><span class="line">    // for(var i=0; i&lt;btns.length; i++)&#123;</span><br><span class="line">    // 	btns[i].index=i+1;</span><br><span class="line">    // 	// 注册事件</span><br><span class="line">    // 	btns[i].οnclick=function()&#123;</span><br><span class="line">    // 		alert(&quot;点击了第&quot;+this.index+&quot;个按钮&quot;)</span><br><span class="line">    // 	&#125;</span><br><span class="line">    // &#125;</span><br><span class="line">    // console.log(i)</span><br><span class="line">    //闭包来获得按钮的索引</span><br><span class="line">    for (var i = 0; i &lt; btns.length; i++) &#123;</span><br><span class="line">      (function (index) &#123;</span><br><span class="line">        btns[index].onclick = function () &#123;</span><br><span class="line">          alert(&quot;点击了第&quot; + (index+1) + &quot;个按钮&quot;)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)(i + 1);</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p>闭包：实现可以持续分别点赞。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        h1&#123;</span><br><span class="line">            color: aquamarine;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    3、案例三&lt;hr&gt;</span><br><span class="line">    &lt;h1&gt;请给下列新闻投票&lt;/h1&gt;</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">        &lt;li&gt;北京冬奥会火种抵达北京&lt;button&gt;投票&lt;/button&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;31省区市新增本土确诊17例。&lt;button&gt;投票&lt;/button&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;互联网公司校招名额大幅增加 核心岗位首次开放&lt;button&gt;投票&lt;/button&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;多地取暖用煤价格涨超2倍&lt;button&gt;投票&lt;/button&gt;&lt;/li&gt;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        var count = new Array()</span><br><span class="line">        count[0]=0</span><br><span class="line">        count[1]=0</span><br><span class="line">        count[2]=0</span><br><span class="line">        count[3]=0</span><br><span class="line">        var buttons = document.querySelectorAll(&quot;button&quot;)</span><br><span class="line">        // 闭包方法1</span><br><span class="line">        // function clickCount(i)&#123;</span><br><span class="line">        //     var n=count[i];</span><br><span class="line">        //     return function add()&#123;</span><br><span class="line">        //         count[i]++;</span><br><span class="line">        //         n++;</span><br><span class="line">        //         return n</span><br><span class="line">        //     &#125;</span><br><span class="line">        // &#125;</span><br><span class="line">        // for(var i=0; i&lt;buttons.length; i++)&#123;</span><br><span class="line">        //     let add1=clickCount(i)</span><br><span class="line">        //     buttons[i].οnclick=function()&#123;</span><br><span class="line">        //         this.innerHTML=add1()+&quot;票&quot;</span><br><span class="line">        //     &#125;</span><br><span class="line">        // &#125;</span><br><span class="line">        // 闭包方法2</span><br><span class="line">        // for(var i=0; i&lt;buttons.length; i++)&#123;</span><br><span class="line">        //     (function(i)&#123;</span><br><span class="line">        //         var n=0</span><br><span class="line">        //         buttons[i].οnclick=function()&#123;</span><br><span class="line">        //             n++</span><br><span class="line">        //             this.innerHTML=n+&quot;票&quot;</span><br><span class="line">        //         &#125;</span><br><span class="line">        //     &#125;)(i)</span><br><span class="line">        // &#125;</span><br><span class="line">        // 闭包方法3</span><br><span class="line">        for(var i=0, j=1; i&lt;buttons.length; i++)&#123;</span><br><span class="line">            (function(num)&#123;</span><br><span class="line">                buttons[i].onclick=function()&#123;</span><br><span class="line">                    this.innerHTML=num+&quot;票&quot;</span><br><span class="line">                    num++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;)(j)</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">        var rex = new RegExp(/abc/);</span><br><span class="line">        var f1=rex.test(&#x27;abc&#x27;)</span><br><span class="line">        var f2=rex.test(&quot;abcdd&quot;)</span><br><span class="line">        console.log(f1, f2)</span><br><span class="line"></span><br><span class="line">        var reg=/abb/</span><br><span class="line">        var s=reg.exec(&#x27;abbbbb&#x27;)//搜索字符串并且返回已找到的文本</span><br><span class="line">        console.log(s)</span><br><span class="line"></span><br><span class="line">        var rg=/[a-z]/</span><br><span class="line">        var reg=/[a-zA-Z]&#123;2&#125;/</span><br><span class="line">        var s=reg.exec(&#x27;a1a1v1b&#x27;)</span><br><span class="line">        console.log(s)</span><br><span class="line">        var reg=/[zo*]/ //贪婪模式 ?结束贪婪模式</span><br><span class="line">        var reg=/a&#123;3&#125;$/</span><br><span class="line">        var reg=/s/</span><br><span class="line">        var s=reg.exec(&quot;vaaa&quot;)</span><br><span class="line">        console.log(s)</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="事件监听"><a href="#事件监听" class="headerlink" title="事件监听"></a>事件监听</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">  &lt;title&gt;&lt;/title&gt;</span><br><span class="line">  &lt;style&gt;</span><br><span class="line">    #div1 &#123;</span><br><span class="line">      width: 200px;</span><br><span class="line">      height: 200px;</span><br><span class="line">      background: beige;</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">  1、event事件对象：是浏览器在事件触发时所创建的对象。</span><br><span class="line">  这个对象封装了事件相关的各种信息。</span><br><span class="line">  -通过事件对象 可以获取事件的各种信息。</span><br><span class="line">  &lt;hr&gt;</span><br><span class="line">  2、Dom中存在着多种不同类型的时间对象-他们的父对象都是Event</span><br><span class="line">  &lt;hr&gt;</span><br><span class="line"></span><br><span class="line">  &lt;div id=&#x27;div1&#x27;&gt;&lt;/div&gt;&lt;br&gt;</span><br><span class="line">  &lt;button id=&#x27;btn1&#x27;&gt;按钮1&lt;/button&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    var div1 = document.getElementById(&#x27;div1&#x27;);</span><br><span class="line">      var div1 = document.getElementById(&quot;div1&quot;)</span><br><span class="line">      var btn1 = document.getElementById(&quot;btn1&quot;)</span><br><span class="line">      // console.log(div1, btn1)		</span><br><span class="line">      </span><br><span class="line">      </span><br><span class="line">      div1.onclick=function(event)&#123;</span><br><span class="line">        // console.log(event)</span><br><span class="line">        //target 触发事件的对象</span><br><span class="line">        console.log(event.target)</span><br><span class="line">        //this</span><br><span class="line">        // console.log(this)</span><br><span class="line">        div1.textContext=event.clientX+&quot;  &quot;+event.clientY</span><br><span class="line">      &#125;</span><br><span class="line">      //事件的另外一种方式:监听事件 绑定多个方法</span><br><span class="line">      btn1.addEventListener(&#x27;click&#x27;, function()&#123;</span><br><span class="line">        alert(&quot;1234&quot;)</span><br><span class="line">      &#125;)</span><br><span class="line">      btn1.addEventListener(&#x27;click&#x27;, function()&#123;</span><br><span class="line">        alert(&quot;12345&quot;)</span><br><span class="line">      &#125;)</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="事件冒泡"><a href="#事件冒泡" class="headerlink" title="事件冒泡"></a>事件冒泡</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">  &lt;title&gt;&lt;/title&gt;</span><br><span class="line">  &lt;style&gt;</span><br><span class="line">    #div1 &#123;</span><br><span class="line">      width: 300px;</span><br><span class="line">      height: 300px;</span><br><span class="line">      background: red;</span><br><span class="line">    &#125;</span><br><span class="line">    #div2&#123;</span><br><span class="line">      width: 200px;</span><br><span class="line">      height:100px;</span><br><span class="line">      background-color: aqua;</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">  3、 事件冒泡:(bubble)是指事件向上传导</span><br><span class="line">  当元素的事件被触发后，其父元素上的相同事件也同时触发。</span><br><span class="line">  事件冒泡的存在简化了代码的编写，但是有时我们并不希望冒泡存在。</span><br><span class="line">  取消事件冒泡：event.stopPropagation()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  &lt;div id=&#x27;div1&#x27;&gt;</span><br><span class="line">    &lt;div id=&quot;div2&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;&lt;br&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    var div1 = document.getElementById(&#x27;div1&#x27;);</span><br><span class="line">    div1.onclick = function (ev) &#123;</span><br><span class="line">      alert(&quot;div1&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">    var div2 = document.getElementById(&#x27;div2&#x27;);</span><br><span class="line">    div2.onclick = function (ev) &#123;</span><br><span class="line">      // 取消默认行为</span><br><span class="line">      ev.stopPropagation()</span><br><span class="line">      alert(&quot;div123&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">  4 取消默认行为。</span><br><span class="line">  &lt;a id=&#x27;a1&#x27; href=&quot;https://www.ahut.edu.cn&quot;&gt;安工大&lt;/a&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    var a1 = document.getElementById(&#x27;a1&#x27;);</span><br><span class="line">    a1.onclick=function(ev)&#123;</span><br><span class="line">      alert(&quot;安工大&quot;)</span><br><span class="line">      </span><br><span class="line">      //取消跳转的默认行为</span><br><span class="line">      // 1.return false</span><br><span class="line">      // 2.ev.preventDefault()</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="实现光标跟随效果"><a href="#实现光标跟随效果" class="headerlink" title="实现光标跟随效果"></a>实现光标跟随效果</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">  &lt;title&gt;实验四&lt;/title&gt;</span><br><span class="line">  &lt;style&gt;</span><br><span class="line">    div &#123;</span><br><span class="line">      width: 20px;</span><br><span class="line">      height: 20px;</span><br><span class="line">      background-color: bisque;</span><br><span class="line">      position: absolute;</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;div class=&quot;div&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div class=&quot;div&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div class=&quot;div&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div class=&quot;div&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div class=&quot;div&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div class=&quot;div&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div class=&quot;div&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div class=&quot;div&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div class=&quot;div&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div class=&quot;div&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div class=&quot;div&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div class=&quot;div&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div class=&quot;div&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div class=&quot;div&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div class=&quot;div&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div class=&quot;div&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    var divs=document.querySelectorAll(&quot;.div&quot;) </span><br><span class="line">    // console.log(divs.length)</span><br><span class="line">    document.onmousemove = function (ev) &#123;  </span><br><span class="line">      divs[0].style.left=ev.clientX+&quot;px&quot;</span><br><span class="line">      divs[0].style.top=ev.clientY+&quot;px&quot;</span><br><span class="line">      for(var i=15; i&gt;0; i--)&#123;</span><br><span class="line">        divs[i].style.left=divs[i-1].style.left</span><br><span class="line">        divs[i].style.top=divs[i-1].style.top</span><br><span class="line">      &#125;</span><br><span class="line">      // for(var i=1; i&lt;16; i++)&#123;</span><br><span class="line">      //   divs[i].style.left=divs[i-1].style.left</span><br><span class="line">      //   divs[i].style.top=divs[i-1].style.top</span><br><span class="line">      // &#125;</span><br><span class="line">    &#125;  </span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">  解题思路：</span><br><span class="line">  </span><br><span class="line">  1. 多个div跟随光标，第一个div的位置 始终是 光标移动到的位置。</span><br><span class="line">  </span><br><span class="line">  2. 第二个div，当移动的过程中，会到第一个div之前的位置，第三个div 会到第二个div 之前的位置。</span><br><span class="line">  </span><br><span class="line">  3.前一个div的位置赋给当前的div  :</span><br><span class="line">  obj.offsetTop 指 obj 相对于父元素上侧位置，整型   </span><br><span class="line">  obj.offsetLeft 指 obj 相对于父元素左侧位置，整型</span><br><span class="line">           </span><br><span class="line">  4.最后开始，在第一个div 还没移动的时候，第10个去到第9个，第9个去到第8个的位置......最后再把第一个移动到光标的位置。</span><br><span class="line">  </span><br><span class="line">  标签: JS</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">AllenMirac</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://allenmirac.github.io/2023/06/20/javascript-zhi-shi-dian-gen-ju-li-zi-lai-xue-xi/">https://allenmirac.github.io/2023/06/20/javascript-zhi-shi-dian-gen-ju-li-zi-lai-xue-xi/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">AllenMirac</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E5%89%8D%E7%AB%AF/">
+                                    <span class="chip bg-color">前端</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="qq,qzone,wechat,weibo,douban,linkedin,twitter,facebook,google" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2023/06/20/java-de-shu-ru-he-shu-chu/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Java的输入和输出">
+                        
+                        <span class="card-title">Java的输入和输出</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-06-20
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            AllenMirac
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2023/06/20/io-duo-lu-fu-yong-selectpollepoll/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="I/O多路复用（select/poll/epoll）">
+                        
+                        <span class="card-title">I/O多路复用（select/poll/epoll）</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-06-20
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            AllenMirac
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2023</span>
+            
+            <a href="/about" target="_blank">AllenMirac</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+                <span id="translate">|&nbsp;繁/简：</span><a id="translateLink" href="javascript:translatePage();">繁</a>
+            
+            <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">55.4k</span>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/allenmirac" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:2049829115@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2049829115" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 2049829115" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+        <script type="text/javascript" src="/js/tw_cn.js"></script>
+        <script type="text/javascript">
+          var defaultEncoding = 2; //网站编写字体是否繁体，1-繁体，2-简体
+          var translateDelay = 0; //延迟时间,若不在前, 要设定延迟翻译时间, 如100表示100ms,默认为0
+          var cookieDomain = "https://allenmirac.github.io"; //Cookie地址, 一定要设定, 通常为你的网址
+          var msgToTraditionalChinese = "繁"; //此处可以更改为你想要显示的文字
+          var msgToSimplifiedChinese = "简"; //同上，但两处均不建议更改
+          var translateButtonId = "translateLink"; //默认互换id
+          translateInitilization();
+        </script>
+    
+    
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

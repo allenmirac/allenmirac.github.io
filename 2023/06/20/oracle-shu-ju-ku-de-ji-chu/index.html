@@ -1,0 +1,1216 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Oracle数据库的基础, AllenMirac">
+    <meta name="description" content="小知识点1、decOracle 数据类型：decimal | dec (presicion，scale) p是精度，代表有效位数，scale表示小数部分的范围，比如dec(8, 2)代表8位整数部分，2位小数部分。
+2、nvl语法
+NVL(">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>Oracle数据库的基础 | AllenMirac</title>
+    <link rel="icon" type="image/jpeg" href="/favicon.jpg">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">AllenMirac</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">AllenMirac</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/allenmirac" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/allenmirac" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Oracle数据库的基础</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                <span class="chip bg-color">数据库</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2023-06-20
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    4.8k
+                </div>
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="小知识点"><a href="#小知识点" class="headerlink" title="小知识点"></a>小知识点</h1><h2 id="1、dec"><a href="#1、dec" class="headerlink" title="1、dec"></a>1、dec</h2><p>Oracle 数据类型：decimal | dec (presicion，scale) p是精度，代表有效位数，scale表示小数部分的范围，比如dec(8, 2)代表8位整数部分，2位小数部分。</p>
+<h2 id="2、nvl"><a href="#2、nvl" class="headerlink" title="2、nvl"></a>2、nvl</h2><p>语法</p>
+<p>NVL(eExpression1, eExpression2)</p>
+<p>从两个表达式返回一个非 null 值。</p>
+<p>参数</p>
+<p>eExpression1, eExpression2</p>
+<p>如果 eExpression1 的计算结果为 null 值，则eExpression2。如果 eExpression1 的计算结果不是 null 值，则返回 eExpression1。eExpression1 和 eExpression2 可以是任意一种数据类型。如果 eExpression1 与 eExpression2 的结果皆为 null 值，则 NVL( ) 返回 .NULL.</p>
+<h2 id="3、minus"><a href="#3、minus" class="headerlink" title="3、minus"></a>3、minus</h2><p>“minus”直接翻译为中文是“减”的意思，在Oracle中也是用来做减法操作的，只不过它不是传统意义上对数字的减法，而是对查询结果集的减法。 A minus B就意味着将结果集A去除结果集B中所包含的所有记录后的结果，即在A中存在，而在B中不存在的记录。</p>
+<h2 id="4、连接join"><a href="#4、连接join" class="headerlink" title="4、连接join"></a>4、连接join</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/lightningmn/article/details/52805457">各种join的详细简单的解释</a></p>
+<h2 id="5、数据库设计范式"><a href="#5、数据库设计范式" class="headerlink" title="5、数据库设计范式"></a>5、数据库设计范式</h2><h3 id="数据库设计第一范式：（设计出没有数据冗余和数据维护异常的数据库结构）"><a href="#数据库设计第一范式：（设计出没有数据冗余和数据维护异常的数据库结构）" class="headerlink" title="数据库设计第一范式：（设计出没有数据冗余和数据维护异常的数据库结构）"></a>数据库设计第一范式：（设计出没有数据冗余和数据维护异常的数据库结构）</h3><p>1、数据库表中的所有字段都只具有单一属性</p>
+<p>2、单一属性的列是由基本的数据类型所构成的</p>
+<p>3、设计出来的表都是简单的二维表</p>
+<h3 id="数据库设计第二范式："><a href="#数据库设计第二范式：" class="headerlink" title="数据库设计第二范式："></a>数据库设计第二范式：</h3><p>要求一个表中只具有一个业务主键，也就是说符合第二范式的表中不能存在非主键列对只对部分主键的依赖关系</p>
+<h3 id="数据库设计第三范式："><a href="#数据库设计第三范式：" class="headerlink" title="数据库设计第三范式："></a>数据库设计第三范式：</h3><p>指每一个非主属性既不部分依赖于也不传递依赖于业务主键，也就是在第二范式的基础上消除了非主键属性对主键的传递依赖</p>
+<h1 id="数据库概念"><a href="#数据库概念" class="headerlink" title="数据库概念"></a>数据库概念</h1><p>长期储存在计算机内，有组织，可共享的大量数据的集合，就是数据库</p>
+<p>数据库管理系统，（DBMS，databace mangement system），用于创建操作和管理数据库的应用程序</p>
+<p>:xx,dnmcg2IR</p>
+<p>数据库用来管理数据，QQ为什么能这么厉害，就是因为他有很多数据，这些数据是商业机密，使用数据库存储数据占用存储空间小，并且查询数据快Alter TABLE XS ADD ENG CHAR(20); –添加新的列</p>
+<p><img src="https://img-blog.csdnimg.cn/15e4006db5584c11b08101a50cb98bfa.png" alt="15e4006db5584c11b08101a50cb98bfa.png"></p>
+<h1 id="数据库操作语言"><a href="#数据库操作语言" class="headerlink" title="数据库操作语言"></a>数据库操作语言</h1><p><img src="https://img-blog.csdnimg.cn/09d8361536ab4cb38ed17e0299698244.png" alt="09d8361536ab4cb38ed17e0299698244.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/33e3ef2a636d4fb58cf0b625aa5bd9c7.png" alt="33e3ef2a636d4fb58cf0b625aa5bd9c7.png"></p>
+<h1 id="关系的基本概念"><a href="#关系的基本概念" class="headerlink" title="关系的基本概念"></a>关系的基本概念</h1><p><img src="https://img-blog.csdnimg.cn/c2df04e0503c423aa999b03861a20362.png" alt="c2df04e0503c423aa999b03861a20362.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/039fd6a233844267a107fa07024aa4f0.png" alt="039fd6a233844267a107fa07024aa4f0.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/ea7ac41a57374271a169b6adfd48f5bd.png" alt="ea7ac41a57374271a169b6adfd48f5bd.png"></p>
+<p>自己的某一个属性（或属性集合）在其他表中是主码，则在自己表中这个属性（或属性集合）是外码</p>
+<h1 id="实体完整性"><a href="#实体完整性" class="headerlink" title="实体完整性"></a>实体完整性</h1><p>实体完整性：（primary key）不能是空值，不能重复</p>
+<p><img src="https://img-blog.csdnimg.cn/8302813b572c481b801a2869363a4d4a.png" alt="8302813b572c481b801a2869363a4d4a.png"></p>
+<h1 id="参照完整性：（foreign-key）可以是空值，"><a href="#参照完整性：（foreign-key）可以是空值，" class="headerlink" title="参照完整性：（foreign key）可以是空值，"></a>参照完整性：（foreign key）可以是空值，</h1><p><img src="https://img-blog.csdnimg.cn/8fdabac448584a039ed135d6eba7c81f.png" alt="8fdabac448584a039ed135d6eba7c81f.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/dff81e2cc37748e188ed3ebf4ffd7cf2.png" alt="dff81e2cc37748e188ed3ebf4ffd7cf2.png"></p>
+<p>select id)</p>
+<p>from xs</p>
+<p>where to_char(birthday,’yyyy-mm-dd’) &#x3D;’2002-06-28’;</p>
+<p>将日期转化成char类型</p>
+<h1 id="一些函数控制字符"><a href="#一些函数控制字符" class="headerlink" title="一些函数控制字符"></a>一些函数控制字符</h1><p><img src="https://img-blog.csdnimg.cn/fb0f9125543d4da5bc2b768a0e552eb9.png" alt="fb0f9125543d4da5bc2b768a0e552eb9.png"></p>
+<h1 id="dual"><a href="#dual" class="headerlink" title="dual"></a>dual</h1><p><img src="https://img-blog.csdnimg.cn/94b6e9c83d014a889e77de691d9e3670.png" alt="94b6e9c83d014a889e77de691d9e3670.png"></p>
+<p>dual是一个一行一列的虚拟表，常用来计算表达式</p>
+<p><img src="https://img-blog.csdnimg.cn/038b7d1d14df47278f4c8e2a3ca2eb5f.png" alt="038b7d1d14df47278f4c8e2a3ca2eb5f.png"></p>
+<h1 id="desc关键字"><a href="#desc关键字" class="headerlink" title="desc关键字"></a>desc关键字</h1><p>desc 查看表的结构，</p>
+<p><img src="https://img-blog.csdnimg.cn/fafe7f4917d545d58157d142942bda99.png" alt="fafe7f4917d545d58157d142942bda99.png"></p>
+<p>Alter TABLE XS ADD ENG CHAR(20); –添加新的列</p>
+<p>UPDATE XS SET ENG&#x3D;’ENGLISH’ WHERE DEPT&#x3D;’计算机’;将dept&#x3D;计算机的ENG改为‘english’ SELECT SNAME, LOWER(ENG) AS LOW_ENG–将eng属性改为小写，重新命名成LOW_ENG,函数LOWER</p>
+<p>FROM XS WHERE DEPT&#x3D;’计算机’;</p>
+<p>commit; –&gt;提交数据</p>
+<p>  rollback; –&gt;回滚数据</p>
+<p>select * from user_tables;–查询用户下的所有表</p>
+<h1 id="having和-where的区别："><a href="#having和-where的区别：" class="headerlink" title="having和 where的区别："></a>having和 where的区别：</h1><p>where在数据分组前进行过滤，having在数据分组过后进行过滤，</p>
+<p>使用having时应该结合Group by语句，where 用于标准的行级过滤</p>
+<h1 id="2022-3-9"><a href="#2022-3-9" class="headerlink" title="2022 3-9"></a>2022 3-9</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">--2022 3-9</span><br><span class="line">create table stu</span><br><span class="line">(SNO CHAR(6) PRIMARY KEY,</span><br><span class="line">SNAME VARCHAR2(10) UNIQUE,</span><br><span class="line">DEPT VARCHAR2(20) NOT NULL,</span><br><span class="line">SEX VARCHAR2(4) DEFAULT(&#x27;男&#x27;),</span><br><span class="line">TOTALCREDIT NUMBER(3, 0) CHECK(TOTALCREDIT&gt;=0)</span><br><span class="line">);</span><br><span class="line">insert into stu values (&#x27;100001&#x27;,&#x27;hzy&#x27;, &#x27;jsj&#x27;, &#x27;女&#x27;, &#x27;100&#x27;);</span><br><span class="line">insert into stu values (&#x27;100001&#x27;,&#x27;hzz&#x27;, &#x27;jsj&#x27;, &#x27;女&#x27;, &#x27;100&#x27;);</span><br><span class="line">insert into stu(sno,dept) values(&#x27;111&#x27;,&#x27;rjgc&#x27;);</span><br><span class="line">select * from stu;</span><br><span class="line">update stu set sname=&#x27;hjj&#x27; where sno=&#x27;111&#x27;;</span><br><span class="line">select * from stu;</span><br><span class="line">alter table stu modify sname varchar2(20);</span><br><span class="line">alter table stu modify sno char(10);</span><br><span class="line">alter table stu add nativeplace varchar2(20);</span><br><span class="line">alter table stu drop column nativeplace;</span><br><span class="line">alter table stu drop CONSTRAINT SYS_c007069;</span><br><span class="line">alter table stu add constraint stu_sname_unique unique(sname);</span><br><span class="line">create table stu1</span><br><span class="line">as</span><br><span class="line">select * from stu;</span><br><span class="line">drop table stu1;</span><br><span class="line">insert into stu values(&#x27;100002&#x27;, &#x27;张三&#x27;,  &#x27;计算机&#x27;,&#x27;男&#x27;, &#x27;10&#x27;);</span><br><span class="line">--INSERT INTO stu(sno, )</span><br><span class="line">update stu</span><br><span class="line">set sex=sex+10;</span><br><span class="line">update stu</span><br><span class="line">set dept=&#x27;软件工程&#x27;</span><br><span class="line">where sname=&#x27;张三&#x27;;</span><br><span class="line">delete from stu</span><br><span class="line">where TOTALCREDIT is null;</span><br><span class="line">commit;</span><br><span class="line">rollback;</span><br><span class="line">select * from xs;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://img-blog.csdnimg.cn/fa5a15a3bf3b4f3b81e3065b1f7c73f2.png" alt="fa5a15a3bf3b4f3b81e3065b1f7c73f2.png"></p>
+<h1 id="小知识点："><a href="#小知识点：" class="headerlink" title="小知识点："></a>小知识点：</h1><p>利用已有数据表建立一个新表，但不复制数据:</p>
+<p>create TABLE S1</p>
+<p>AS</p>
+<p>SELECT * FROM STUDENT WHERE 1&#x3D;0;</p>
+<p><img src="https://img-blog.csdnimg.cn/4f2d9b6cd537477d862f33a6a762ab1a.png" alt="4f2d9b6cd537477d862f33a6a762ab1a.png"></p>
+<p>UPDATE STU SET TOTALCREDIT&#x3D;NVL(TOTALCREDIT, 0)+2;</p>
+<p>NVL(TOTALCREDIT, 0):如果totalcredit不是空，就用原来的值，是空，就用0来代替；</p>
+<p>FROM ZLGC WHERE CATEGORY&#x3D;’课程思政示范课程’ AND COUNT(CATEGORY)&gt;50 GROUP BY SCHOOL,CATEGORY ORDER BY COUNT(CATEGORY) DESC</p>
+<p>ERROR: ORA-00934: 此处不允许使用分组函数</p>
+<p><img src="https://img-blog.csdnimg.cn/682e669c3da14131afbd5fbd801f7673.png" alt="682e669c3da14131afbd5fbd801f7673.png"></p>
+<p>要使用having 来过滤分组</p>
+<h1 id="2022-3-19数据库实验心得"><a href="#2022-3-19数据库实验心得" class="headerlink" title="2022-3-19数据库实验心得"></a>2022-3-19数据库实验心得</h1><p>在本次实验中，我遇到的问题首先是1-1题目中extract函数的使用，通过从网上查询知道了，我学习到该函数的作用是将年份从date中分离出来单独计算从而得到年龄，第二个问题是2-4题目中过滤学生人数小于3的的语句，不能在group by 语句前面加where来过滤，如果使用了，错误信息是这样的，</p>
+<p><img src="https://img-blog.csdnimg.cn/2bc12af0dac646d285de4421a091a22e.png" alt="2bc12af0dac646d285de4421a091a22e.png"></p>
+<p>查阅资料后学习到了，有group by 语句时where中不能使用聚合函数来过滤数据，此时只能使用having语句，并且having语句只能跟在group by 语句后面。这两个问题是我在本次实验中遇到的最大的难题，解决了之后，真的学习到了很多。</p>
+<p>在本次实验中，我首先在创建user用户时就遇到了，用户名或角色名是不存在的问题，然后我先想着改一下用户名为users，结果成功了，后来才从老师那里得知是用户过期了的原因，要重新编辑用户信息才可以。</p>
+<p>然后我在1-4题目中遇到了对设置组合主键，外键操作的不熟练问题，还有就是对于alter table tablename add colname VARCHAR(20)（添加列）;alter table tablename drop column colname（删除列）;alter table tablename drop constraint SYS_C007120;（去除限制）add constraint UQ_CNAME UNIQUE(CNAME)（添加限制）;这几个操作的不熟练，最后遇到的问题是赋值一表的结构到一个新表（不复制数据），从网上查阅资料后，知道了</p>
+<p>最关键的一步是：SELECT * FROM STUDENT WHERE 1&#x3D;0;设置一个不可能的条件，选择之后，就不会剩下数据了。解决了这些问题后，有很大的收获。</p>
+<h1 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h1><p>里面存储的是SQL语句，不是查询结果</p>
+<p>创建视图后不显示结果，要通过select语句来查询</p>
+<p><img src="https://img-blog.csdnimg.cn/9293cda35f98419d99478094baa9258e.png" alt="9293cda35f98419d99478094baa9258e.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/91378483b1f242bdb11607af8c751e13.png" alt="91378483b1f242bdb11607af8c751e13.png"></p>
+<p>视图的作用：简化查询语句</p>
+<p><img src="https://img-blog.csdnimg.cn/144c129584974adb8aafe47ccc35adff.png" alt="144c129584974adb8aafe47ccc35adff.png"></p>
+<p>有些视图可以更新，有些不可以</p>
+<p>SELECT * FROM A NATURAL JOIN B WHERE B.B &#x3D; A.B;</p>
+<p><img src="https://img-blog.csdnimg.cn/92bb37464bbb4673a0be9fbc733367b5.png" alt="92bb37464bbb4673a0be9fbc733367b5.png"></p>
+<h1 id="联结表"><a href="#联结表" class="headerlink" title="联结表"></a>联结表</h1><p>sql的left join 、right join 、inner join之间的区别</p>
+<p>　　left join(左联接) 返回包括左表中的所有记录和右表中联结字段相等的记录 </p>
+<p>　　right join(右联接) 返回包括右表中的所有记录和左表中联结字段相等的记录</p>
+<p>　　inner join(等值连接) 只返回两个表中联结字段相等的行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">左连接</span><br><span class="line">SELECT *</span><br><span class="line">FROM student  # 主表（不会受到影响）</span><br><span class="line">LEFT JOIN score  # 辅表（只有满足条件的才会显示）</span><br><span class="line">ON student.ID = score.SID右连接SELECT *</span><br><span class="line">FROM student  # 主表（只有满足条件的才会显示）</span><br><span class="line">RIGHT JOIN score  # 辅表（不会受到影响）</span><br><span class="line">ON student.ID = score.SID</span><br><span class="line">全连接（是个笛卡尔积？）</span><br><span class="line">SELECT *</span><br><span class="line">FROM student</span><br><span class="line">FULL JOIN score</span><br><span class="line">select sname, cname, tname, grade</span><br><span class="line">--自连接  ：只返回两张表连接列的匹配项。</span><br><span class="line">--以下三种查询结果一样。</span><br><span class="line">select * from student s inner join class c on s.classid=c.id; </span><br><span class="line">select * from student s join class c on s.classid=c.id;</span><br><span class="line">select * from student s,class c where s.classid=c.id;</span><br><span class="line">--笛卡儿乘积连接 ：即不加任何条件，达到 M*N 的结果集。</span><br><span class="line">--以下两种查询结果一样。</span><br><span class="line">select * from student s cross join class c;</span><br><span class="line">select * from student,class;</span><br><span class="line">--加上条件，产生跟自连接一样的结果。</span><br><span class="line">select * from student s cross join class c where s.classid=c.id;</span><br></pre></td></tr></table></figure>
+
+
+<p>自然连接要注意：</p>
+<p>SELECT * FROM A NATURAL JOIN B WHERE B.B &#x3D; A.B;</p>
+<p>SELECT * FROM A NATURAL JOIN B on B.B &#x3D; A.B;</p>
+<p>这两种方法都会报错，不能有限制条件。因为自然连接它自动的进行了等值比较，所以不需要加上限制条件让他们的连接起来，自然连接是一种特殊的等值连接。</p>
+<p><img src="https://img-blog.csdnimg.cn/17a828df928a41c88f0cf77da8c419ed.png" alt="17a828df928a41c88f0cf77da8c419ed.png"></p>
+<h1 id="自然连接与等值连接的区别："><a href="#自然连接与等值连接的区别：" class="headerlink" title="自然连接与等值连接的区别："></a>自然连接与等值连接的区别：</h1><p><a target="_blank" rel="noopener" href="https://zhidao.baidu.com/question/429546959.html">sql server 等值连接和自然连接的 用法_百度知道 (baidu.com)</a></p>
+<p>SELECT * FROM A, B WHERE A.B&#x3D;B.B;</p>
+<p>这是等值连接，相同的属性列会保存</p>
+<p>自然连接是一种特殊的等值内连接，它是由系统根据两表的同名字段自动作等值比较的内连接，不需要用ON关键字指定连接条件</p>
+<p><img src="https://img-blog.csdnimg.cn/f05ca09c4af44eac8406ba1c77d55cbf.png" alt="f05ca09c4af44eac8406ba1c77d55cbf.png"></p>
+<p>SELECT * FROM A NATURAL JOIN B ;</p>
+<p>这是自然连接，自然连接是一种将相同属性列删除的等值连接</p>
+<p><img src="https://img-blog.csdnimg.cn/05a3412b170c479cb9d6558842859bd2.png" alt="05a3412b170c479cb9d6558842859bd2.png"></p>
+<p>自然连接四个表 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FROM STUDENT NATURAL JOIN SCORE NATURAL JOIN COURSE NATURAL JOIN TEACH WHERE COURSE.CNAME=&#x27;数学分析&#x27; and TEACH.TNAME=&#x27;严敏&#x27;;</span><br></pre></td></tr></table></figure>
+
+<h1 id="ANY-ALL"><a href="#ANY-ALL" class="headerlink" title="ANY ALL"></a>ANY ALL</h1><p><img src="https://img-blog.csdnimg.cn/4f1fe1ece8444b5caf81e7aca6e9244e.png" alt="4f1fe1ece8444b5caf81e7aca6e9244e.png"></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zl111_1/article/details/54980639">ANY ALL的区别</a></p>
+<p>总结成一句话就是：all 是满足所有的， and and and；any 是满足其中一个就可以，or or or</p>
+<h1 id="2022-实验三总结"><a href="#2022-实验三总结" class="headerlink" title="2022-实验三总结"></a>2022-实验三总结</h1><p>在这次实验过程中遇到的问题就很多了，首先第一题就来了一个下马威，分不清三种连接的区别，搞得无从下手，最后自己弄了两个表才弄懂了前两个的区别，如下图：等值连接相同的属性会保留，而自然连接就会将它们合并，自然连接是一种特殊的等值连接，终于理解了，自己找了几个小时。还有一个就是join后面总是忘掉加上on条件，报了三四次缺少关键字错误才发现，我学会了，做这种题目时要首先弄清楚概念就很好下手了。然后就是left join 、right join、full join ，区分这几个，首先区分：主表（不会受到影响）， 辅表（只有满足条件的才会显示），left join 左为主表，右辅表；right join 则相反，最后的not exists的双重否定，更是搞得稀里糊涂，现在还是有点不明白。每一次实验都是一次不错的成长。</p>
+<p>数据放到表中，表再放到库中</p>
+<p>表中的列相当于类中的属性， 每一行相当于对象</p>
+<p><img src="https://img-blog.csdnimg.cn/8be32587e3dc49f88d283b41c11d4537.png" alt="8be32587e3dc49f88d283b41c11d4537.png"></p>
+<p>‘%’会过滤掉空值：</p>
+<p>SELECT * FROM XS;</p>
+<p>SELECT * FROM XS WHERE REMARKS LIKE ‘%’;</p>
+<h1 id="2022-3-30"><a href="#2022-3-30" class="headerlink" title="2022-3-30"></a>2022-3-30</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">--2022-3-30</span><br><span class="line">create index idx_xs_sname on xs(sname);--索引只创建，不自己使用，由系统调用</span><br><span class="line">select * FROM XS WHERE SNAME LIKE &#x27;_%&#x27;;</span><br><span class="line">--视图：安全（设置用户权限），简化使用，保存的是查询语句</span><br><span class="line">--视图(VIEW)也被称作虚表，即虚拟的表，是一组数据的逻辑表示,其本质是对应于一条SELECT语句，</span><br><span class="line">--结果集被赋予一个名字，即视图名字。视图本身并不包含任何数据，它只包含映射到基表的一个查询语句，</span><br><span class="line">--当基表数据发生变化，视图数据也随之变化。</span><br><span class="line">SELECT * FROM XS WHERE DEPT=&#x27;计算机&#x27;;--创建视图</span><br><span class="line">--计算区分度</span><br><span class="line">SELECT count (DISTINCT(SNAME))/count(*) FROM XS;</span><br><span class="line"></span><br><span class="line">--计算区分度</span><br><span class="line">--WITH CHECK OPTION 子句强制所有数据修改语句均根据视图执行，</span><br><span class="line">--以符合定义视图的 SELECT 语句中所设的条件。</span><br><span class="line">--WITH CHECK OPTION的作用?</span><br><span class="line">--1.对于update,有with check option，要保证update后，数据要被视图查询出来；</span><br><span class="line">--2.对于delete,有无with check option都一样；</span><br><span class="line">--4.对于insert,有with check option，要保证insert后，数据要被视图查询出来；</span><br><span class="line">--5.对于没有where 子句的视图，使用with check option是多余的。</span><br><span class="line"> </span><br><span class="line">SELECT *FROM XS;</span><br><span class="line">CREATE VIEW DEPT3</span><br><span class="line">AS</span><br><span class="line">SELECT *FROM XS WHERE TOTALCREDIT&gt;70 WITH CHECK OPTION;</span><br><span class="line">UPDATE DEPT3</span><br><span class="line">SET TOTALCREDIT=60</span><br><span class="line">WHERE SNAME=&#x27;林一帆&#x27;;</span><br></pre></td></tr></table></figure>
+
+<h1 id="PL-x2F-SQL"><a href="#PL-x2F-SQL" class="headerlink" title="PL&#x2F;SQL:"></a>PL&#x2F;SQL:</h1><p>PL&#x2F;SQL也是一种程序语言，叫做过程化SQL语言（Procedural Language&#x2F;SQL）。PL&#x2F;SQL是Oracle数据库对SQL语句的扩展。在普通SQL语句的使用上增加了编程语言的特点，所以PL&#x2F;SQL就是把数据操作和查询语句组织在PL&#x2F;SQL代码的过程性单元中，通过逻辑判断、循环等操作实现复杂的功能或者计算的程序语言。PL&#x2F;SQL是Oracle对标准数据库语言SQL的过程化扩充，它将数据库技术和过程化程序设计语言联系起来（通俗的说，SQL与编程语言的混血儿），是一种应用开发语言，可使用循环，分支处理数据，将SQL的数据操纵功能与过程化语言数据处理功能结合起来.PL&#x2F;SQL的使用，使SQL成为一种高级程序设计语言，支持高级语言的块操作，条件判断，循环语句，嵌套等，与数据库核心的数据类型集成，使SQL 的程序设计效率更高.</p>
+<h1 id="select-选择了一些列之后，如果里面有聚合函数，后面一定要有group函数否则会报错，原因如下："><a href="#select-选择了一些列之后，如果里面有聚合函数，后面一定要有group函数否则会报错，原因如下：" class="headerlink" title="select 选择了一些列之后，如果里面有聚合函数，后面一定要有group函数否则会报错，原因如下："></a>select 选择了一些列之后，如果里面有聚合函数，后面一定要有group函数否则会报错，原因如下：</h1><p>最近写SQL的时候，有遇到过报出 ORA-00937的问题。</p>
+<p>解释：</p>
+<p>select 列表项中除了包含聚合函数外，还包含了表的某些列，那么你将必须使用group by语句，否则语法通不过。</p>
+<p>例如：</p>
+<p>SQL&gt;</p>
+<p>1 select deptno,job,avg(sal)</p>
+<p>2 from emp</p>
+<p>3 ;</p>
+<p>ERROR 位于第 1 行:</p>
+<p>ORA-00937: 非单组分组函数</p>
+<p>其实这里也非常容易理解，你既然指定了聚合函数，又同时制定了其他列，还想不按照指定的列来分组，你到底想让oracle怎么做呢？</p>
+<p>这根本就得不出结果。就像你需要统计班上男女生的人数，但是又不能分组，只能在一条数据里表示出来，怎么能办得到呢？</p>
+<p>所以这里的group by是必须的。</p>
+<p>上面的错误纠正为：</p>
+<p>select deptno,job,avg(sal) from emp group by deptno,job;</p>
+<p>就OK了</p>
+<p>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/linwei_1029/article/details/5868082">聚合函数与列同时选择，需要Group</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">create sequence table1_id</span><br><span class="line">minvalue 1             --自增字段最小值</span><br><span class="line">nomaxvalue           --最大值 没有就算nomaxvalue</span><br><span class="line">increment by 1      --每次增值1</span><br><span class="line">start with 1           --起始值</span><br><span class="line">nocache;             --不缓存</span><br><span class="line">CREATE SEQUENCE TABLE_ID--创建顺序表</span><br><span class="line">MINVALUE 1--最小值</span><br><span class="line">NOMAXVALUE--无最大值</span><br><span class="line">INCREMENT BY 1--递增量</span><br><span class="line">START WITH 1--起始值</span><br><span class="line">NOCACHE;--无缓存</span><br><span class="line">--第三步：创建触发器</span><br><span class="line">create or replace trigger SCORE1trigger</span><br><span class="line">before insert on SCORE1 for each row</span><br><span class="line">begin</span><br><span class="line">select table1_id.nextval into:new.sid from dual;</span><br><span class="line">end SCORE1trigger;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Mysql中：</span><br><span class="line">create table UserTable (</span><br><span class="line">USERID INT(4) PRIMARY KEY AUTO_INCREMENT NOT NULL,</span><br><span class="line">UNAME VARCHAR(20) NOT NULL,</span><br><span class="line">UPASSWARD VARCHAR(20) NOT NULL</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h1 id="2022-4-2实验四总结"><a href="#2022-4-2实验四总结" class="headerlink" title="2022-4-2实验四总结"></a>2022-4-2实验四总结</h1><p> 在本次实验中，我首先遇到的问题是创建视图时，带上WITH CHECK OPTION选项与不带的区别：如果根据视图来更改数据，一定要符合创建视图的时候的where 的条件。第二个是创建两个字段的视图 grade_avg_view，select 选择了一些列之后，如果里面有聚合函数，后面一定要有group函数否则会报错。最后一个是设置自增型的主键，在mysql中使用AUTO_INCREMENT 可以直接创建，但是在Oracle中要先创建一个递增序列，然后再创建一个触发器才可以。</p>
+<h1 id="索引，范式和锁"><a href="#索引，范式和锁" class="headerlink" title="索引，范式和锁"></a>索引，范式和锁</h1><p>索引：每个表如果设置了主键就会有有一个主键索引，在Mysql中，使用的时InnoDB引擎，每一个索引就是一颗B+树，也可以创建非主键索引，二级索引，二级索引和主键索引的不同之处在于其叶子节点上保存的值不一样，表中所有字段的值都被完整的保存在主键索引的叶子节点上，但是二级索引的叶子节点只保存对应主键的值。这里的叶子节点上只保存了主键的值，所以还需要通过获得的主键 ID 值再回到主键索引上查出所有字段的值，这个过程称作回表。</p>
+<ul>
+<li>数据库方面，能会基本的增删改查即可，外带一些基本概念，比如事务怎么处理，JDBC里批处理怎么处理。</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/10a6d9b39c07447986018076661b827f.png" alt="10a6d9b39c07447986018076661b827f.png"></p>
+<p>创建表时，凡是能通过计算出来的字段都不要把它当成属性列；</p>
+<h1 id="创建函数、过程"><a href="#创建函数、过程" class="headerlink" title="创建函数、过程"></a>创建函数、过程</h1><p>存储过程不一定要有返回值，函数一定要有</p>
+<p>注意存储过程in out inout 三种参数类型，而函数只有in</p>
+<p> 创建函数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">CREATE OR REPLACE FUNCTION COUNT_CREDIT(STUNO in VARCHAR2) RETURN NUMBER</span><br><span class="line">AS</span><br><span class="line">CRED NUMBER:=0;</span><br><span class="line">TOTAL_CRED NUMBER:=0;</span><br><span class="line">BEGIN</span><br><span class="line">FOR STUCUR IN(SELECT SNO, CNO, GRADE FROM cj WHERE SNO=STUNO </span><br><span class="line">AND GRADE&gt;=60) LOOP</span><br><span class="line">SELECT CREDIT INTO CRED FROM KC WHERE CNO=STUCUR.CNO;</span><br><span class="line">TOTAL_CRED:=TOTAL_CRED+CRED;</span><br><span class="line">END LOOP;</span><br><span class="line">RETURN TOTAL_CRED;</span><br><span class="line">END COUNT_CREDIT;</span><br><span class="line"></span><br><span class="line">作业</span><br><span class="line">create or replace function count_credit(stuno in varchar2) return varchar2</span><br><span class="line">as </span><br><span class="line">cred number:=0;</span><br><span class="line">total_cred number:=0;</span><br><span class="line">begin</span><br><span class="line">  for stucur in(select sno, cno, grade from score where sno=stuno and grade &gt;60) loop</span><br><span class="line">    select credit into cred from course where cno=stucur.cno;</span><br><span class="line">    total_cred:=total_cred+cred;</span><br><span class="line">  end loop;</span><br><span class="line">  return total_cred;</span><br><span class="line">end count_credit;</span><br><span class="line"></span><br><span class="line">函数的执行：</span><br><span class="line">1、select COUNT_CREDIT(&#x27;96001&#x27;) as total_credit from dual;</span><br><span class="line">2、variable a number(10, 0)--声明变量</span><br><span class="line">begin</span><br><span class="line">:a:=COUNT_CREDIT(&#x27;96001&#x27;);</span><br><span class="line">end;</span><br><span class="line">/</span><br><span class="line">后面加上一句：</span><br><span class="line">print a;</span><br></pre></td></tr></table></figure>
+
+
+<p>创建过程：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">create or replace procedure count_credi</span><br><span class="line">(stusno in varchar2 , creditj out number )--warning：in out</span><br><span class="line">as</span><br><span class="line">cred number:=0;</span><br><span class="line">total_cred number:=0;</span><br><span class="line">begin</span><br><span class="line">for cjcur in (select * from cj where sno= stusno) loop</span><br><span class="line">select credit into cred from kc where cno=cjcur.cno;</span><br><span class="line">total_cred:=total_cred+cred*cjcur.grade;</span><br><span class="line">end loop;</span><br><span class="line">creditj:=total_cred/count_credit(stusno);</span><br><span class="line">end count_credi;</span><br><span class="line"></span><br><span class="line">作业</span><br><span class="line">create or replace procedure pro_findname(tmpname in VARCHAR2) as</span><br><span class="line">begin</span><br><span class="line">  for stucur in(select sno,sname from student where sname like tmpname ) loop</span><br><span class="line">   dbms_output.put_line(stucur.sno || &#x27;&#x27; ||stucur.sname);-- </span><br><span class="line">  end loop;</span><br><span class="line">  null;</span><br><span class="line">end pro_findname;</span><br><span class="line"></span><br><span class="line">set serveroutput off</span><br><span class="line">1、set serveroutput on</span><br><span class="line">begin</span><br><span class="line">  pro_findname(&#x27;%马%&#x27;);</span><br><span class="line">end;</span><br><span class="line">/</span><br><span class="line">2、exec pro_findname(&#x27;%马%&#x27;);--注意这里的调用时使用%，而不是在存储过程中</span><br></pre></td></tr></table></figure>
+
+
+<p>触发器：</p>
+<p>触发器的用法</p>
+<p>触发器与存储过程和函数不同，函数和存储过程需要用户显示调用，触发器时在某个事件发生时，自动的隐式的完成，所以叫触发或者点火（firing）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">create or replace trigger sum_credit </span><br><span class="line">after insert on  score</span><br><span class="line">for each row</span><br><span class="line">begin</span><br><span class="line">  update student </span><br><span class="line">  set TOTALCREDIT=TOTALCREDIT+(select credit from course where cno=:new.cno)</span><br><span class="line">  where sno=:new.sno and :new.grade&gt;60;</span><br><span class="line">  null;</span><br><span class="line">end;</span><br></pre></td></tr></table></figure>
+
+
+<p>触发器的语法 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">create trigger &lt;触发器名称&gt;</span><br><span class="line">&#123; before | after&#125;          # 之前或者之后出发</span><br><span class="line">insert | update | delete   # 指明了激活触发程序的语句的类型</span><br><span class="line">on &lt;表名&gt;                   # 操作哪张表</span><br><span class="line">for each row  # 触发器的执行间隔，for each row</span><br><span class="line">--通知触发器每隔一行执行一次动作，</span><br><span class="line">--而不是对整个表执行一次。</span><br><span class="line">&lt;触发器SQL语句&gt;</span><br></pre></td></tr></table></figure>
+
+<h1 id="dbms-output-put-line的用法"><a href="#dbms-output-put-line的用法" class="headerlink" title="dbms_output.put_line的用法"></a>dbms_output.put_line的用法</h1><p>涉及到的知识点如下： 1、enable：在serveroutput on的情况下，用来使dbms_output生效(默认即打开) 2、disable：在serveroutput on的情况下，用来使dbms_output失效 3、put：将内容写到内存，等到put_line时一起输出 4、put_line：不用多说了，输出字符 5、new_line：作为一行的结束，可以理解为写入buffer时的换行符 6、get_line(value, index)：获取缓冲区的单行信息 7、get_lines(array, index)：以数组形式来获取缓冲区的多行信息</p>
+<p>oracle系统包—-dbms_output用法</p>
+<p><a target="_blank" rel="noopener" href="https://blog.51cto.com/u_15127666/3474569">博客</a></p>
+<h1 id="E-R图转关系模式"><a href="#E-R图转关系模式" class="headerlink" title="E-R图转关系模式"></a>E-R图转关系模式</h1><p><img src="https://img-blog.csdnimg.cn/ac4a564dfda445f3a03983b6da03a28f.png" alt="ac4a564dfda445f3a03983b6da03a28f.png"></p>
+<p>转为关系模式</p>
+<p><img src="https://img-blog.csdnimg.cn/ab43348e9ad3416c88a04333ed7af6bb.png" alt="ab43348e9ad3416c88a04333ed7af6bb.png"></p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">AllenMirac</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://allenmirac.github.io/2023/06/20/oracle-shu-ju-ku-de-ji-chu/">https://allenmirac.github.io/2023/06/20/oracle-shu-ju-ku-de-ji-chu/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">AllenMirac</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                    <span class="chip bg-color">数据库</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="qq,qzone,wechat,weibo,douban,linkedin,twitter,facebook,google" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2023/06/20/patbasiclevelpractice-zhong-wen-1028-ren-kou-pu-cha/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="PAT_(Basic_Level)_Practice_（中文）1028_人口普查">
+                        
+                        <span class="card-title">PAT_(Basic_Level)_Practice_（中文）1028_人口普查</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-06-20
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            AllenMirac
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/c/">
+                        <span class="chip bg-color">c++</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2023/06/20/mysql-suo-yin-you-hua/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="Mysql索引优化">
+                        
+                        <span class="card-title">Mysql索引优化</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-06-20
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            AllenMirac
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                        <span class="chip bg-color">数据库</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2023</span>
+            
+            <a href="/about" target="_blank">AllenMirac</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+                <span id="translate">|&nbsp;繁/简：</span><a id="translateLink" href="javascript:translatePage();">繁</a>
+            
+            <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">55.4k</span>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/allenmirac" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:2049829115@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2049829115" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 2049829115" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+        <script type="text/javascript" src="/js/tw_cn.js"></script>
+        <script type="text/javascript">
+          var defaultEncoding = 2; //网站编写字体是否繁体，1-繁体，2-简体
+          var translateDelay = 0; //延迟时间,若不在前, 要设定延迟翻译时间, 如100表示100ms,默认为0
+          var cookieDomain = "https://allenmirac.github.io"; //Cookie地址, 一定要设定, 通常为你的网址
+          var msgToTraditionalChinese = "繁"; //此处可以更改为你想要显示的文字
+          var msgToSimplifiedChinese = "简"; //同上，但两处均不建议更改
+          var translateButtonId = "translateLink"; //默认互换id
+          translateInitilization();
+        </script>
+    
+    
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
