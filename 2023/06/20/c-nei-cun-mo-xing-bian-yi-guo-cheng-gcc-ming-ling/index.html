@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="AllenMirac">
+    <meta name="keywords" content="test, AllenMirac">
     <meta name="description" content="c++内存模型1、源代码区：存储代码的区域（类似jvm里的方法区） 2、静态区：存储静态变量和全局变量的区域（类似jvm里的方法区里的方法区） 3、栈区：存储局部变量和参数的内存区域，由系统开辟、由系统回收的内存区域 4、堆区：程序员开辟的">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>AllenMirac</title>
+    <title>test | AllenMirac</title>
     <link rel="icon" type="image/jpeg" href="/favicon.jpg">
     
 
@@ -334,12 +334,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title"></h1>
+                    <h1 class="description center-align post-title">test</h1>
                 </div>
             </div>
         </div>
@@ -361,9 +361,13 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/C/">
+                                <span class="chip bg-color">C++</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -402,7 +406,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="c-内存模型"><a href="#c-内存模型" class="headerlink" title="c++内存模型"></a>c++内存模型</h2><p>1、源代码区：存储代码的区域（类似jvm里的方法区） 2、静态区：存储<strong>静态</strong>变量和<strong>全局变量</strong>的区域（类似jvm里的方法区里的方法区） 3、栈区：存储<strong>局部变量</strong>和<strong>参数</strong>的内存区域，<strong>由系统开辟、由系统回收的内存区域</strong> 4、堆区：<strong>程序员开辟</strong>的一块内存区域用来存储对象的区域，由<strong>用户开辟和回收</strong>的内存区域。 5、常量区(字面值区)：存储const常量 指针变量能指向那些区域： 栈区、堆区、静态区、常量区、代码区</p>
-<p><img src="/c++%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8Bgcc%E5%91%BD%E4%BB%A4/aacad79859a442289a42a7b8467a614b.png" alt="aacad79859a442289a42a7b8467a614b.png"></p>
+<p><img src="/.io//aacad79859a442289a42a7b8467a614b.png" alt="aacad79859a442289a42a7b8467a614b.png"></p>
 <p>堆区和栈区的注意点：</p>
 <p>1、栈是向下增长，而堆是向上增长。</p>
 <p>2、栈由系统管理，没有内存碎片，每个元素之间都是连续的；堆区存储的是程序员new出来的变量，是动态开辟的。</p>
@@ -412,14 +416,14 @@
 <p><strong>链接过程</strong></p>
 <p>主要是解决在一个文件中引用了另外的一个文件中变量或函数的问题，它将有关的目标文件彼此相连接，使得所有的这些目标文件成为一个能够被操作系统装入执行的统一整体。</p>
 <p>在《编译原理》中我们可以了解到一个编译器对程序代码的编译主要分为下面几个过程：a) 词法分析 b) 语法分析 c) 语义分析 d) 中间代码生成 e) 代码优化 f) 目标代码生成 g) 符号表管理 h) 将多个步骤组合成趟 i) 编译器构造工具</p>
-<h2 id="GCC编译过程"><a href="#GCC编译过程" class="headerlink" title="GCC编译过程"></a>GCC编译过程</h2><p><img src="/c++%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8Bgcc%E5%91%BD%E4%BB%A4/83d6486e62afc8830623c71b51a32dc1.png" alt="83d6486e62afc8830623c71b51a32dc1.png"></p>
+<h2 id="GCC编译过程"><a href="#GCC编译过程" class="headerlink" title="GCC编译过程"></a>GCC编译过程</h2><p><img src="/.io//83d6486e62afc8830623c71b51a32dc1.png" alt="83d6486e62afc8830623c71b51a32dc1.png"></p>
 <p>在Linux下使用的gcc编译器将上面几个过程捆绑在一起，简化我们的使用，但是我们依然可以通过指定不同的参数，来分别执行各个过程：<br>命令（-o后面都是自己指定的文件名字）工作内容gcc -E hello.c -o hello.i预处理gcc -S hello.c -o hello.s编译gcc hello.s -o hello.o汇编gcc hello.o -o hello链接</p>
 <p>1.cpp的内容</p>
-<p><img src="/c++%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8Bgcc%E5%91%BD%E4%BB%A4/37e54de88a0442949d95bfd5983d6a6c.png" alt="37e54de88a0442949d95bfd5983d6a6c.png"></p>
+<p><img src="/.io//37e54de88a0442949d95bfd5983d6a6c.png" alt="37e54de88a0442949d95bfd5983d6a6c.png"></p>
 <p>执行预处理命令后： （文件名是1.cpp）</p>
-<p><img src="/c++%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8Bgcc%E5%91%BD%E4%BB%A4/a54b46b64e934fc7ab827dff5d873618.png" alt="a54b46b64e934fc7ab827dff5d873618.png"></p>
+<p><img src="/.io//a54b46b64e934fc7ab827dff5d873618.png" alt="a54b46b64e934fc7ab827dff5d873618.png"></p>
 <p>一步编译运行： </p>
-<p><img src="/c++%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8Bgcc%E5%91%BD%E4%BB%A4/72c6d674b3784babb0f0d7fdc3e8fcaf.png" alt="72c6d674b3784babb0f0d7fdc3e8fcaf.png"></p>
+<p><img src="/.io//72c6d674b3784babb0f0d7fdc3e8fcaf.png" alt="72c6d674b3784babb0f0d7fdc3e8fcaf.png"></p>
 <h2 id="参考文章："><a href="#参考文章：" class="headerlink" title="参考文章："></a>参考文章：</h2><p><a target="_blank" rel="noopener" href="https://paul.pub/cpp-memory-model/">C++ 内存模型</a></p>
 <p><a target="_blank" rel="noopener" href="https://www3.ntu.edu.sg/home/ehchua/programming/cpp/gcc_make.html">GCC and Make - A Tutorial on how to compile, link and build C&#x2F;C++ applications</a></p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Hongwei_1990/article/details/84558733">C&#x2F;C++ 编译流程（预处理、编译、汇编、链接）_deepwater_zone的博客-CSDN博客</a></p>
@@ -486,7 +490,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/C/">
+                                    <span class="chip bg-color">C++</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -572,9 +580,9 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="test">
                         
-                        <span class="card-title"></span>
+                        <span class="card-title">test</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -596,6 +604,14 @@
                     </div>
                 </div>
 
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/C/">
+                        <span class="chip bg-color">C++</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
