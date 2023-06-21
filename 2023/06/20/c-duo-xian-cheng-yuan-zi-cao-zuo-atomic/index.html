@@ -5,8 +5,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="C++_多线程：原子操作atomic, AllenMirac">
-    <meta name="description" content="原子操作atomicC++ 多线程：原子类型
-有两个线程，一个要写数据，一个读数据，如果不加锁，可能会造成读写值混乱，使用std::mutex程序执行不会导致混乱，但是每一次循环都要加锁解锁是的程序开销很大。 为了提高性能，C++11提供了">
+    <meta name="description" content="
+
+原子操作atomicC++ 多线程：原子类型
+有两个线程，一个要写数据，一个读数据，如果不加锁，可能会造成读写值混乱，使用std::mutex程序执行不会导致混乱，但是每一次循环都要加锁解锁是的程序开销很大。 为了提高性能，C++11提">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -406,7 +408,9 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="原子操作atomic"><a href="#原子操作atomic" class="headerlink" title="原子操作atomic"></a>原子操作atomic</h2><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7086226046931959838">C++ 多线程：原子类型</a></p>
+                <meta name="referrer" content="no-referrer">
+
+<h2 id="原子操作atomic"><a href="#原子操作atomic" class="headerlink" title="原子操作atomic"></a>原子操作atomic</h2><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7086226046931959838">C++ 多线程：原子类型</a></p>
 <p>有两个线程，一个要写数据，一个读数据，如果不加锁，可能会造成读写值混乱，使用<code>std::mutex</code>程序执行不会导致混乱，<strong>但是每一次循环都要加锁解锁是的程序开销很大。</strong> 为了提高性能，C++11提供了原子类型(<code>std::atomic&lt;T&gt;</code>)，它提供了多线程间的原子操作，可以把原子操作理解成一种： <strong>不需要用到互斥量加锁（无锁）技术的多线程并发编程方式。</strong> 它定义在<code>&lt;atomic&gt;</code>头文件中，原子类型是封装了一个值的类型，它的访问保证不会导致数据的竞争，并且可以用于在不同的线程之间同步内存访问。从效率上来说，原子操作要比互斥量的方式效率要高。</p>
 <p><strong>atomic类型原子操作宣告C++11来到了多线程和并行编程的时代。</strong> 相对于偏于底层的<code>pthread</code>库，C++通过定义原子类型的方式，轻松地化解了互斥访问共享数据的难题。</p>
 <p>atomic的两个方法：load()&#x2F;&#x2F;读取数据 store()&#x2F;&#x2F;存储数据 fetch_add(val)&#x2F;&#x2F;加法 fetch_sub(val)&#x2F;&#x2F;减法 exchange()</p>
@@ -782,7 +786,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">55.4k</span>
+                        class="white-color">57k</span>
             
             
             

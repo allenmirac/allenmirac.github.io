@@ -600,19 +600,18 @@
                             
                                 
 
+
+目录
 常用的协议：
-概念
-计算机网络是一个互联、自治的计算机集合
-计算机网络的功能：数据共享
-
-
-
-kb KB
-
-最高频率与最低频率之差
-吞吐量：单位时间内通过某个网络（通道或接口）的数据量
-
-发送时延是：发生在主机上，发送到信道上所需要的时
+概念 
+OSI 7层参考模型 
+TCP&#x2F;IP参考模型：网网传应
+常见面试题 1： TCP 建立连接为什么要三次握手而不是两次？
+奈氏准则与香奈定理
+编码与调制
+数据链路层
+帧定界：
+差错检测：奇偶校验（计
                             
                         </div>
                         <div class="publish-info">
@@ -657,8 +656,10 @@ kb KB
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                广播域与冲突域 一个集线器（中继器）连接的网络成为冲突域，因为每台主机都连接在了同一条线路上，所以传送信息时会冲突。 冲突域是基于第一层(物理层)
-而交换机的本质是一个多借口网桥，就是说由交换机组成的网络中，任意两台主机通信都是通过一条专有
+                                
+
+广播域与冲突域 一个集线器（中继器）连接的网络成为冲突域，因为每台主机都连接在了同一条线路上，所以传送信息时会冲突。 冲突域是基于第一层(物理层)
+而交换机的本质是一个多借口网桥，就是说由交换机组成的网络中，任意两台主机通信都是通过一条
                             
                         </div>
                         <div class="publish-info">
@@ -703,14 +704,19 @@ kb KB
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                跟腾讯架构大师学网络框架与后台架构单机服务1、单机服务：基本概念
-2、单机服务：同步阻塞
- 
-3、单机服务：异步非阻塞框架使用非阻塞IO，检测到有事件
-性能最高：不会阻塞IO，数据拷贝最少
+                                
 
+
+目录
+跟腾讯架构大师学网络框架与后台架构
+单机服务
+1、单机服务：基本概念
+2、单机服务：同步阻塞​编辑
+3、单机服务：异步非阻塞框架
 4、单机服务：典型框架：
 5、单机服务：协程框架
+6、单机服务：新玩法，NODEJS的闭包
+7、单
                             
                         </div>
                         <div class="publish-info">
@@ -755,9 +761,24 @@ kb KB
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                第二章：处理器管理操作系统学习(3)处理机调度：调度的概念、时机、切换、过程以及调度方式和基本准则 | Echo Blog
-概览1、指令系统和寄存器。
-2、特权指令和非特权指令：特权指令只能在内核态使用，非特权指令在内核态和用户态（管态和目
+                                
+
+
+目录
+第二章：处理器管理
+概览
+进程调度的层次
+进程的调度方式：
+调度的评价标准：
+典型的调度算法：
+第三章：同步、通信和死锁
+什么是进程同步？
+什么是进程互斥？
+进程同步的实现方式
+进程互斥的实现方式
+信号量和PV操作
+管程
+第二章
                             
                         </div>
                         <div class="publish-info">
@@ -802,7 +823,9 @@ kb KB
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                排序算法1、冒泡排序123456789101112template&lt;typename T&gt;void BubbleSort(T a[], int len)&#123;    for(int i=0; i&lt;len; i++)&
+                                
+
+排序算法1、冒泡排序123456789101112template&lt;typename T&gt;void BubbleSort(T a[], int len)&#123;    for(int i=0; i&lt;len; i++
                             
                         </div>
                         <div class="publish-info">
@@ -847,9 +870,11 @@ kb KB
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                string底层实现之SSOstring的构造函数
+                                
+
+string底层实现之SSOstring的构造函数
 参考资料
-Simple String Optimization，最小字符串优化，基本原理是：当分配的字节数小于16字节的时候，直接从栈上进行进行内存分配，如果大于16字节，则在堆上进行内存
+Simple String Optimization，最小字符串优化，基本原理是：当分配的字节数小于16字节的时候，直接从栈上进行进行内存分配，如果大于16字节，则在堆上进行
                             
                         </div>
                         <div class="publish-info">
@@ -894,8 +919,10 @@ Simple String Optimization，最小字符串优化，基本原理是：当分配
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                Static、#define、const、mutable、typedef代码存储区域：常量区、代码区、静态区（全局区）、堆区、栈区
-栈区向下增长，堆区向上增长。栈由系统管理，没有内存碎片，每个元素之间都是连续的，大小比较小，8k，可以修改系
+                                
+
+Static、#define、const、mutable、typedef代码存储区域：常量区、代码区、静态区（全局区）、堆区、栈区
+栈区向下增长，堆区向上增长。栈由系统管理，没有内存碎片，每个元素之间都是连续的，大小比较小，8k，可以修
                             
                         </div>
                         <div class="publish-info">
@@ -940,7 +967,17 @@ Simple String Optimization，最小字符串优化，基本原理是：当分配
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1. 前言开始的服务端的设计是每一个连接都创建一个thread去处理，但是当请求开始变多了之后，比如有1w的request到达服务端，就会 **pthread_create() **创建1w个thread，结束之后销毁线程。这样的创建，处理
+                                
+
+
+目录
+1. 前言
+2、主要思想
+3、三种不同的实现
+单 Reactor 单线程
+单 Reactor 多线程
+主从 Reactor 多线程
+1. 前言开始的服务端的设计是每一个连接都创建一个thread去处理，但是当请求开始变多了之后，
                             
                         </div>
                         <div class="publish-info">
@@ -985,9 +1022,11 @@ Simple String Optimization，最小字符串优化，基本原理是：当分配
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                Chinese-Chess中国象棋初版
+                                
+
+Chinese-Chess中国象棋初版
 实现了单人双方对战、人对战电脑、开两个客户端联机对战
-12345678910佛曰: *          写字楼里写字间，写字间里程序员； *          程序人员写程序，又拿程序换酒钱。 * 
+12345678910佛曰: *          写字楼里写字间，写字间里程序员； *          程序人员写程序，又拿程序换酒钱。 
                             
                         </div>
                         <div class="publish-info">
@@ -1032,7 +1071,21 @@ Simple String Optimization，最小字符串优化，基本原理是：当分配
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                QT 元对象系统QT 的元对象系统（The Meta-Object System）由它的元对象编译器（Meta-Object Compiler，moc）帮忙实现，moc 通过读取头文件中的 Q_OBJCET 宏来判断是否需要生成元对象代码。
+                                
+
+
+目录
+QT 元对象系统
+实验案例
+从四个方面来介绍元对象系统的奥秘
+是什么
+为什么
+怎么实现
+怎么用
+moc 使用
+引用
+欢迎大家star
+QT 元对象系统QT 的元对象系统（The Meta-Object System）由它的元对象
                             
                         </div>
                         <div class="publish-info">
@@ -1112,7 +1165,7 @@ Simple String Optimization，最小字符串优化，基本原理是：当分配
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">55.4k</span>
+                        class="white-color">57k</span>
             
             
             

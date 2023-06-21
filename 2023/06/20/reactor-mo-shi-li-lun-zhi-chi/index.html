@@ -5,7 +5,17 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Reactor模式理论支持, AllenMirac">
-    <meta name="description" content="1. 前言开始的服务端的设计是每一个连接都创建一个thread去处理，但是当请求开始变多了之后，比如有1w的request到达服务端，就会 **pthread_create() **创建1w个thread，结束之后销毁线程。这样的创建，处理">
+    <meta name="description" content="
+
+
+目录
+1. 前言
+2、主要思想
+3、三种不同的实现
+单 Reactor 单线程
+单 Reactor 多线程
+主从 Reactor 多线程
+1. 前言开始的服务端的设计是每一个连接都创建一个thread去处理，但是当请求开始变多了之后，">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -405,7 +415,17 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h2><p>开始的服务端的设计是每一个连接都创建一个thread去处理，但是当请求开始变多了之后，比如有1w的request到达服务端，就会 **pthread_create() **创建1w个thread，结束之后销毁线程。这样的创建，处理完然后销毁无疑是非常消耗资源的。</p>
+                <meta name="referrer" content="no-referrer">
+
+
+<p><strong>目录</strong></p>
+<p><a href="#1.%20%E5%89%8D%E8%A8%80">1. 前言</a></p>
+<p><a href="#2%E3%80%81%E4%B8%BB%E8%A6%81%E6%80%9D%E6%83%B3">2、主要思想</a></p>
+<p><a href="#3%E3%80%81%E4%B8%89%E7%A7%8D%E4%B8%8D%E5%90%8C%E7%9A%84%E5%AE%9E%E7%8E%B0">3、三种不同的实现</a></p>
+<p><a href="#%E5%8D%95%20Reactor%20%E5%8D%95%E7%BA%BF%E7%A8%8B">单 Reactor 单线程</a></p>
+<p><a href="#%E5%8D%95%20Reactor%20%E5%A4%9A%E7%BA%BF%E7%A8%8B">单 Reactor 多线程</a></p>
+<p><a href="#%E4%B8%BB%E4%BB%8E%20Reactor%20%E5%A4%9A%E7%BA%BF%E7%A8%8B">主从 Reactor 多线程</a></p>
+<h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h2><p>开始的服务端的设计是每一个连接都创建一个thread去处理，但是当请求开始变多了之后，比如有1w的request到达服务端，就会 **pthread_create() **创建1w个thread，结束之后销毁线程。这样的创建，处理完然后销毁无疑是非常消耗资源的。</p>
 <p>之后就升级，采用线程池处理请求，提前在一个队列中创建多个线程，从线程池取出线程处理。还有要注意，这个线程队列是全局共享的，为了避免多个线程竞争，要提前给这个线程加锁。</p>
 <p>采用线程池处理主要有两个原因：1、不用频繁的创建和销毁线程。2、线程池能处理的线程有上限，可以防止无限开辟线程而将服务器资源消耗殆尽，挂掉。</p>
 <p>线程池：<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Thread_pool">https://en.wikipedia.org/wiki/Thread_pool</a></p>
@@ -429,7 +449,7 @@
 <li>单 Reactor 单线程 +  单 Reactor 多线程 +  主从 Reactor 多线程</li>
 </ul>
 <h2 id="3、三种不同的实现"><a href="#3、三种不同的实现" class="headerlink" title="3、三种不同的实现"></a>3、三种不同的实现</h2><h3 id="单-Reactor-单线程"><a href="#单-Reactor-单线程" class="headerlink" title="单 Reactor 单线程"></a>单 Reactor 单线程</h3><p>话不多说，先看一个图片。</p>
-<p><img src="https://img-blog.csdnimg.cn/8a592a409ca64f1eba4ef26fc02d9917.png" alt="8a592a409ca64f1eba4ef26fc02d9917.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/8a592a409ca64f1eba4ef26fc02d9917.png"></p>
 <p> 首先从图中可以看到：</p>
 <ul>
 <li>Reactor 处理监听以及事件的分发+ Accept 处理连接+ Handler 处理IO事件以及业务</li>
@@ -441,7 +461,7 @@
 <p>缺点是无法利用CPU多核的能力</p>
 <p>应用场景：Redis使用的就是这种模式，但是它是在内存中处理业务的，所以处理起来很快。</p>
 <h3 id="单-Reactor-多线程"><a href="#单-Reactor-多线程" class="headerlink" title="单 Reactor 多线程"></a>单 Reactor 多线程</h3><p>看一下流程图</p>
-<p><img src="https://img-blog.csdnimg.cn/93aaef58ff03418da459b6110980b9e4.png" alt="93aaef58ff03418da459b6110980b9e4.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/93aaef58ff03418da459b6110980b9e4.png"></p>
 <p>流程：</p>
 <ul>
 <li>【<strong>Reactor</strong>】通过 select（IO多路复用接口）监听多个 Socket ，如果 Socket 有事件发生，判断事件类别后看看分配给【<strong>Acceptor</strong>】，还是【<strong>Handler</strong>】。+ 如果是建立连接事件，交付给【<strong>Acceptor</strong>】处理，【<strong>Acceptor</strong>】会创建一个【<strong>Handler</strong>】来处理这个刚连接的 Socket 的后续事件。+ 如果是处理非连接事件，交付给【<strong>Handler</strong>】处理。</li>
@@ -823,7 +843,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">55.4k</span>
+                        class="white-color">57k</span>
             
             
             

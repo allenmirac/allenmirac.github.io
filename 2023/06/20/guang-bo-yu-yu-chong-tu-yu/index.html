@@ -5,8 +5,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="广播域与冲突域, AllenMirac">
-    <meta name="description" content="广播域与冲突域 一个集线器（中继器）连接的网络成为冲突域，因为每台主机都连接在了同一条线路上，所以传送信息时会冲突。 冲突域是基于第一层(物理层)
-而交换机的本质是一个多借口网桥，就是说由交换机组成的网络中，任意两台主机通信都是通过一条专有">
+    <meta name="description" content="
+
+广播域与冲突域 一个集线器（中继器）连接的网络成为冲突域，因为每台主机都连接在了同一条线路上，所以传送信息时会冲突。 冲突域是基于第一层(物理层)
+而交换机的本质是一个多借口网桥，就是说由交换机组成的网络中，任意两台主机通信都是通过一条">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -406,12 +408,14 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="广播域与冲突域"><a href="#广播域与冲突域" class="headerlink" title="广播域与冲突域"></a>广播域与冲突域</h1><p> 一个集线器（中继器）连接的网络成为冲突域，因为每台主机都连接在了同一条线路上，所以传送信息时会冲突。 冲突域是基于第一层(物理层)</p>
+                <meta name="referrer" content="no-referrer">
+
+<h1 id="广播域与冲突域"><a href="#广播域与冲突域" class="headerlink" title="广播域与冲突域"></a>广播域与冲突域</h1><p> 一个集线器（中继器）连接的网络成为冲突域，因为每台主机都连接在了同一条线路上，所以传送信息时会冲突。 冲突域是基于第一层(物理层)</p>
 <p>而交换机的本质是一个多借口网桥，就是说由交换机组成的网络中，任意两台主机通信都是通过一条专有线路，故不会冲突。所以交换机出来的每个接口都是一个冲突域。 广播域是基于第二层(链路层)</p>
 <p>通常一个局域网VLAN算一个广播域，故路由器的每个端口产生一个广播域。</p>
 <p>例题：</p>
 <p>在下图的网络配置中，总共有（）个广播域，（）个冲突域。</p>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/58c839a3804405ab3622e4e9ded13dc3.png" alt="58c839a3804405ab3622e4e9ded13dc3.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/58c839a3804405ab3622e4e9ded13dc3.png"></p>
 <p>答案是：2个广播域，7个冲突域。</p>
 <p>解析：每个路由器的一个端口就是一个广播域和冲突域；集线器不隔离冲突域 ，也不隔离广播域；交换机隔离冲突域，不隔离广播域。所以路由器有两个端口，就有两个广播域；左边有一个冲突域，右边有6个冲突域，总共7个。</p>
 
@@ -781,7 +785,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">55.4k</span>
+                        class="white-color">57k</span>
             
             
             

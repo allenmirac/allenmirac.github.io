@@ -7,19 +7,18 @@
     <meta name="keywords" content="计算机网络, AllenMirac">
     <meta name="description" content="
 
+
+目录
 常用的协议：
-概念
-计算机网络是一个互联、自治的计算机集合
-计算机网络的功能：数据共享
-
-
-
-kb KB
-
-最高频率与最低频率之差
-吞吐量：单位时间内通过某个网络（通道或接口）的数据量
-
-发送时延是：发生在主机上，发送到信道上所需要的时">
+概念 
+OSI 7层参考模型 
+TCP&amp;#x2F;IP参考模型：网网传应
+常见面试题 1： TCP 建立连接为什么要三次握手而不是两次？
+奈氏准则与香奈定理
+编码与调制
+数据链路层
+帧定界：
+差错检测：奇偶校验（计">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -402,7 +401,7 @@ kb KB
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    7.1k
+                    7.5k
                 </div>
                 
 
@@ -421,30 +420,85 @@ kb KB
             <div id="articleContent">
                 <meta name="referrer" content="no-referrer">
 
-<h1 id="常用的协议："><a href="#常用的协议：" class="headerlink" title="常用的协议："></a>常用的协议：</h1><p><img src="https://img-blog.csdnimg.cn/fb9c783cc0c442e2a3d497680c8f4795.png" alt="fb9c783cc0c442e2a3d497680c8f4795.png"></p>
-<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p><img src="https://img-blog.csdnimg.cn/253fedbd8c504b41933283d8ff6e3119.png" alt="253fedbd8c504b41933283d8ff6e3119.png"></p>
+
+<p><strong>目录</strong></p>
+<p><a href="#%E5%B8%B8%E7%94%A8%E7%9A%84%E5%8D%8F%E8%AE%AE%EF%BC%9A">常用的协议：</a></p>
+<p><a href="#%E6%A6%82%E5%BF%B5%C2%A0">概念 </a></p>
+<p><a href="#OSI%207%E5%B1%82%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B%C2%A0">OSI 7层参考模型 </a></p>
+<p><a href="#TCP/IP%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B%EF%BC%9A%E7%BD%91%E7%BD%91%E4%BC%A0%E5%BA%94">TCP&#x2F;IP参考模型：网网传应</a></p>
+<p><a href="#%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98%201%EF%BC%9A%C2%A0TCP%20%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E8%80%8C%E4%B8%8D%E6%98%AF%E4%B8%A4%E6%AC%A1%EF%BC%9F">常见面试题 1： TCP 建立连接为什么要三次握手而不是两次？</a></p>
+<p><a href="#%E5%A5%88%E6%B0%8F%E5%87%86%E5%88%99%E4%B8%8E%E9%A6%99%E5%A5%88%E5%AE%9A%E7%90%86">奈氏准则与香奈定理</a></p>
+<p><a href="#%E7%BC%96%E7%A0%81%E4%B8%8E%E8%B0%83%E5%88%B6">编码与调制</a></p>
+<p><a href="#%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82">数据链路层</a></p>
+<p><a href="#%E5%B8%A7%E5%AE%9A%E7%95%8C%EF%BC%9A">帧定界：</a></p>
+<p><a href="#%E5%B7%AE%E9%94%99%E6%A3%80%E6%B5%8B%EF%BC%9A%E5%A5%87%E5%81%B6%E6%A0%A1%E9%AA%8C%EF%BC%88%E8%AE%A1%E7%BB%84%EF%BC%89%E3%80%82">差错检测：奇偶校验（计组）。</a></p>
+<p><a href="#%E5%8F%AF%E9%9D%A0%E4%BC%A0%E8%BE%93%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5">可靠传输的基本概念</a></p>
+<p><a href="#SW%E5%8D%8F%E8%AE%AE%EF%BC%9AStop%20and%20Wait%EF%BC%88%E5%81%9C%E6%AD%A2%E7%AD%89%E5%BE%85%E5%8D%8F%E8%AE%AE%EF%BC%89">SW协议：Stop and Wait（停止等待协议）</a></p>
+<p><a href="#%E5%9B%9E%E9%80%80N%E5%B8%A7%E5%8D%8F%E8%AE%AE%EF%BC%9AGBN%E5%8D%8F%E8%AE%AE">回退N帧协议：GBN协议</a></p>
+<p><a href="#%E9%80%89%E6%8B%A9%E9%87%8D%E4%BC%A0%E5%8D%8F%E8%AE%AE%EF%BC%9ASR%E5%8D%8F%E8%AE%AE">选择重传协议：SR协议</a></p>
+<p><a href="#%E7%82%B9%E5%AF%B9%E7%82%B9%E5%8D%8F%E8%AE%AE%EF%BC%88Point-to-Point%20Protocol%EF%BC%89">点对点协议（Point-to-Point Protocol）</a></p>
+<p><a href="#%E4%BB%8B%E8%B4%A8%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6">介质访问控制</a></p>
+<p><a href="#CSMA/CD%C2%A0%E5%8D%8F%E8%AE%AE">CSMA&#x2F;CD 协议</a></p>
+<p><a href="#CSMA/CA%E5%8D%8F%E8%AE%AE">CSMA&#x2F;CA协议</a></p>
+<p><a href="#Mac%E5%9C%B0%E5%9D%80%20IP%E5%9C%B0%E5%9D%80%20Arp%E5%8D%8F%E8%AE%AE">Mac地址 IP地址 Arp协议</a></p>
+<p><a href="#%E9%9B%86%E7%BA%BF%E5%99%A8%E3%80%81%E4%BA%A4%E6%8D%A2%E6%9C%BA%E3%80%81%E8%B7%AF%E7%94%B1%E5%99%A8">集线器、交换机、路由器</a></p>
+<p><a href="#%E4%BB%A5%E5%A4%AA%E7%BD%91%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%9A%84%E8%87%AA%E5%AD%A6%E4%B9%A0%E5%92%8C%E8%BD%AC%E5%8F%91%E5%B8%A7%E7%9A%84%E6%B5%81%E7%A8%8B%C2%A0">以太网交换机的自学习和转发帧的流程 </a></p>
+<p><a href="#%E4%BB%A5%E5%A4%AA%E7%BD%91%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%9A%84%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AE">以太网交换机的生成树协议</a></p>
+<p><a href="#%E8%99%9A%E6%8B%9F%E5%B1%80%E5%9F%9F%E7%BD%91VLAN%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%9C%BA%E5%88%B6">虚拟局域网VLAN的实现机制</a></p>
+<p><a href="#IPv4%E5%9C%B0%E5%9D%80%E7%9A%84%E6%A0%BC%E5%BC%8F">IPv4地址的格式</a></p>
+<p><a href="#%E5%88%86%E7%B1%BB%E7%BC%96%E5%88%B6%E7%9A%84IPv4%E5%9C%B0%E5%9D%80">分类编制的IPv4地址</a></p>
+<p><a href="#%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91%E7%9A%84IPv4%E5%9C%B0%E5%9D%80">划分子网的IPv4地址</a></p>
+<p><a href="#%E6%97%A0%E5%88%86%E7%B1%BB%E7%BC%96%E5%9D%80%E7%9A%84%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91CIDR">无分类编址的划分子网CIDR</a></p>
+<p><a href="#IP%E6%95%B0%E6%8D%AE%E6%8A%A5%E7%9A%84%E5%8F%91%E9%80%81%E4%B8%8E%E8%BD%AC%E5%8F%91%E8%BF%87%E7%A8%8B">IP数据报的发送与转发过程</a></p>
+<p><a href="#%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8A%E5%8F%AF%E8%83%BD%E4%BA%A7%E7%94%9F%E7%9A%84%E8%B7%AF%E7%94%B1%E7%8E%AF%E8%B7%AF%E9%97%AE%E9%A2%98">静态路由配置以及可能产生的路由环路问题</a></p>
+<p><a href="#%E5%A4%96%E9%83%A8%20BGP%20%E4%B8%8E%E5%86%85%E9%83%A8%20BGP%20%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F">外部 BGP 与内部 BGP 有什么区别？</a></p>
+<p><a href="#%E5%86%85%E9%83%A8%E7%BD%91%E5%85%B3%E5%8D%8F%E8%AE%AE%EF%BC%9A%E8%B7%AF%E7%94%B1%E9%80%89%E6%8B%A9%E5%8D%8F%E8%AE%AERIP%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86">内部网关协议：路由选择协议RIP的基本工作原理</a></p>
+<p><a href="#%E5%B9%BF%E6%92%AD%E5%9F%9F%E4%B8%8E%E5%86%B2%E7%AA%81%E5%9F%9F">广播域与冲突域</a></p>
+<p><a href="#%E5%BC%80%E6%94%BE%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84OSPF%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86">开放最短路径OSPF的基本工作原理</a></p>
+<p><a href="#%E8%BE%B9%E7%95%8C%E7%BD%91%E5%85%B3%E5%8D%8F%E8%AE%AEBGP">边界网关协议BGP</a></p>
+<p><a href="#IPVv4%E6%95%B0%E6%8D%AE%E6%8A%A5%E7%9A%84%E6%A0%BC%E5%BC%8F">IPVv4数据报的格式</a></p>
+<p><a href="#%E7%BD%91%E9%99%85%E6%8E%A7%E5%88%B6%E6%8A%A5%E6%96%87%E5%8D%8F%E8%AE%AEICMP">网际控制报文协议ICMP</a></p>
+<p><a href="#%E7%BD%91%E7%BB%9C%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2NAT%E5%92%8C%E8%99%9A%E6%8B%9F%E4%B8%93%E7%94%A8%E7%BD%91VPN">网络地址转换NAT和虚拟专用网VPN</a></p>
+<p><a href="#%E8%BF%90%E8%BE%93%E5%B1%82%E7%AE%80%E4%BB%8B">运输层简介</a></p>
+<p><a href="#%E8%BF%90%E8%BE%93%E5%B1%82%E7%AB%AF%E5%8F%A3%E5%8F%B7%E3%80%81%E5%88%86%E7%94%A8%E3%80%81%E5%A4%8D%E7%94%A8%E7%9A%84%E6%A6%82%E5%BF%B5%C2%A0">运输层端口号、分用、复用的概念 </a></p>
+<p><a href="#UDP%E5%92%8CTCP%E7%9A%84%E5%AF%B9%E6%AF%94">UDP和TCP的对比</a></p>
+<p><a href="#TCP%E7%9A%84%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6">TCP的流量控制</a></p>
+<p><a href="#TCP%E7%9A%84%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6">TCP的拥塞控制</a></p>
+<p><a href="#TCP%E5%8F%AF%E9%9D%A0%E4%BC%A0%E8%BE%93%E7%9A%84%E5%AE%9E%E7%8E%B0">TCP可靠传输的实现</a></p>
+<p><a href="#TCP%E7%9A%84%E8%BF%9E%E6%8E%A5%E5%BB%BA%E7%AB%8B%EF%BC%9A%E4%B8%89%E6%8F%A1%E6%89%8B">TCP的连接建立：三握手</a></p>
+<p><a href="#TCP%E8%BF%9E%E6%8E%A5%E7%9A%84%E9%87%8A%E6%94%BE%EF%BC%9A%E5%9B%9B%E6%8C%A5%E6%89%8B">TCP连接的释放：四挥手</a></p>
+<p><a href="#TCP%E6%8A%A5%E6%96%87%E6%AE%B5%E7%9A%84%E9%A6%96%E9%83%A8%E6%A0%BC%E5%BC%8F">TCP报文段的首部格式</a></p>
+<p><a href="#B/S%E5%92%8CPtoP%E6%96%B9%E5%BC%8F">B&#x2F;S和PtoP方式</a></p>
+<p><a href="#%E5%8A%A8%E6%80%81%E4%B8%BB%E6%9C%BA%E9%85%8D%E7%BD%AE%E5%8D%8F%E8%AE%AEDHCP">动态主机配置协议DHCP</a></p>
+<p><a href="#%E5%9F%9F%E5%90%8D%E7%B3%BB%E7%BB%9FDNS">域名系统DNS</a></p>
+<p><a href="#%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AEFTP">文件传输协议FTP</a></p>
+<p><a href="#%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6">电子邮件</a></p>
+<p><a href="#%E4%B8%87%E7%BB%B4%E7%BD%91WWW">万维网WWW</a></p>
+<p><a href="#%E5%8F%82%E8%80%83%E8%A7%86%E9%A2%91%E9%93%BE%E6%8E%A5">参考视频链接</a></p>
+<h1 id="常用的协议："><a href="#常用的协议：" class="headerlink" title="常用的协议："></a>常用的协议：</h1><p><img src="https://img-blog.csdnimg.cn/fb9c783cc0c442e2a3d497680c8f4795.png"></p>
+<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p><img src="https://img-blog.csdnimg.cn/253fedbd8c504b41933283d8ff6e3119.png"></p>
 <p>计算机网络是一个互联、自治的计算机集合</p>
 <p>计算机网络的功能：数据共享</p>
-<p><img src="https://img-blog.csdnimg.cn/e5be72d0e6a44376ab3ec718f5b1b478.png" alt="e5be72d0e6a44376ab3ec718f5b1b478.png"></p>
-<p><img src="https://img-blog.csdnimg.cn/ce799324e4064e62a435468654ec0d7e.png" alt="ce799324e4064e62a435468654ec0d7e.png"></p>
-<p><img src="https://img-blog.csdnimg.cn/0517ad2799a94e42b39006294adc9f82.png" alt="0517ad2799a94e42b39006294adc9f82.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/e5be72d0e6a44376ab3ec718f5b1b478.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/ce799324e4064e62a435468654ec0d7e.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/0517ad2799a94e42b39006294adc9f82.png"></p>
 <p>kb KB</p>
-<p><img src="https://img-blog.csdnimg.cn/c57ccbd895fe4072b13f17b2ae7241be.png" alt="c57ccbd895fe4072b13f17b2ae7241be.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/c57ccbd895fe4072b13f17b2ae7241be.png"></p>
 <p>最高频率与最低频率之差</p>
 <p>吞吐量：单位时间内通过某个网络（通道或接口）的数据量</p>
-<p><img src="https://img-blog.csdnimg.cn/e443f06f7f0c4875aba56b6c59df1c46.png" alt="e443f06f7f0c4875aba56b6c59df1c46.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/e443f06f7f0c4875aba56b6c59df1c46.png"></p>
 <p>发送时延是：发生在主机上，发送到信道上所需要的时间。</p>
 <p>传播时延：从一个主机传播到另外一个主机的时间，单位m&#x2F;s</p>
 <p>排队时延和处理时延：可以想象成机场安检的过程，发生在路由器上。</p>
-<p><img src="https://img-blog.csdnimg.cn/4af9b8c56c3e4fb787fdbee25d11be34.png" alt="4af9b8c56c3e4fb787fdbee25d11be34.png"></p>
-<p><img src="https://img-blog.csdnimg.cn/90b7e18f73ac4d759c47e70bc682e1b1.png" alt="90b7e18f73ac4d759c47e70bc682e1b1.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/4af9b8c56c3e4fb787fdbee25d11be34.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/90b7e18f73ac4d759c47e70bc682e1b1.png"></p>
 <p>协议：对等实体之间数据交换的规则</p>
 <p>接口：上层使用下层服务的入口（把酒装箱的服务）</p>
-<p><img src="https://img-blog.csdnimg.cn/2a36454f6b6644ebbd6a6fce5061c316.png" alt="2a36454f6b6644ebbd6a6fce5061c316.png"></p>
-<h1 id="OSI-7层参考模型"><a href="#OSI-7层参考模型" class="headerlink" title="OSI 7层参考模型"></a>OSI 7层参考模型</h1><p><img src="https://img-blog.csdnimg.cn/f8415f92949c449d92ed1a9bb49c4a5c.png" alt="f8415f92949c449d92ed1a9bb49c4a5c.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/2a36454f6b6644ebbd6a6fce5061c316.png"></p>
+<h1 id="OSI-7层参考模型"><a href="#OSI-7层参考模型" class="headerlink" title="OSI 7层参考模型"></a>OSI 7层参考模型</h1><p><img src="https://img-blog.csdnimg.cn/f8415f92949c449d92ed1a9bb49c4a5c.png"></p>
 <p><strong>物数网传会表应</strong></p>
-<p><img src="https://img-blog.csdnimg.cn/78a0a734d960457abedfcd34697979e9.png" alt="78a0a734d960457abedfcd34697979e9.png"></p>
-<h1 id="TCP-x2F-IP参考模型：网网传应"><a href="#TCP-x2F-IP参考模型：网网传应" class="headerlink" title="TCP&#x2F;IP参考模型：网网传应"></a>TCP&#x2F;IP参考模型：网网传应</h1><p><img src="https://img-blog.csdnimg.cn/8c2b7f35e9474184b7cf08c6b42ac46b.png" alt="8c2b7f35e9474184b7cf08c6b42ac46b.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/78a0a734d960457abedfcd34697979e9.png"></p>
+<h1 id="TCP-x2F-IP参考模型：网网传应"><a href="#TCP-x2F-IP参考模型：网网传应" class="headerlink" title="TCP&#x2F;IP参考模型：网网传应"></a>TCP&#x2F;IP参考模型：网网传应</h1><p><img src="https://img-blog.csdnimg.cn/8c2b7f35e9474184b7cf08c6b42ac46b.png"></p>
 <h1 id="常见面试题-1：-TCP-建立连接为什么要三次握手而不是两次？"><a href="#常见面试题-1：-TCP-建立连接为什么要三次握手而不是两次？" class="headerlink" title="常见面试题 1： TCP 建立连接为什么要三次握手而不是两次？"></a>常见面试题 1： TCP 建立连接为什么要三次握手而不是两次？</h1><p>答：网上大多数资料对这个问题的回答只有简单的一句：防止已过期的连接请求报文突然又传送到服务器，因而产生错误，这既不够全面也不够具体。下面给出比较详细而全面的回答：</p>
 <ul>
 <li>防止已过期的连接请求报文突然又传送到服务器，因而产生错误</li>
@@ -457,23 +511,23 @@ kb KB
 <p>第二次握手：客户端可以确认自己发送能力和接收能力正常，对方发送能力和接收能力正常；</p>
 <p>第三次握手：服务器可以确认自己发送能力和接收能力正常，对方发送能力和接收能力正常；</p>
 <p>可见三次握手才能让双方都确认自己和对方的发送和接收能力全部正常，这样就可以愉快地进行通信了。</p>
-<p><img src="https://img-blog.csdnimg.cn/9629dc61c1604c4093b56a9a17d982c1.png" alt="9629dc61c1604c4093b56a9a17d982c1.png"></p>
-<p><img src="https://img-blog.csdnimg.cn/10a15ff26ebc4156a8de2c884ea9e85f.png" alt="10a15ff26ebc4156a8de2c884ea9e85f.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/9629dc61c1604c4093b56a9a17d982c1.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/10a15ff26ebc4156a8de2c884ea9e85f.png"></p>
 <p>数据通信：从信源输入信息，转为数字信号，通过调制调解器将数字信号转为模拟信号，广域网，左右对称。</p>
-<p><img src="https://img-blog.csdnimg.cn/94b8f8920b5b448ab9761eddf6de6811.png" alt="94b8f8920b5b448ab9761eddf6de6811.png"></p>
-<p><img src="https://img-blog.csdnimg.cn/1085a3911e344b69bfba8ded8de4c670.png" alt="1085a3911e344b69bfba8ded8de4c670.png"></p>
-<p><img src="https://img-blog.csdnimg.cn/5ef2c94d86a1485991f9f5d3df1df365.png" alt="5ef2c94d86a1485991f9f5d3df1df365.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/94b8f8920b5b448ab9761eddf6de6811.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/1085a3911e344b69bfba8ded8de4c670.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/5ef2c94d86a1485991f9f5d3df1df365.png"></p>
 <h1 id="奈氏准则与香奈定理"><a href="#奈氏准则与香奈定理" class="headerlink" title="奈氏准则与香奈定理"></a>奈氏准则与香奈定理</h1><p>码间串扰：信号频率过快，导致码元间界限不明显，无法区分信号，奈氏准则可以解决。</p>
-<p><img src="https://img-blog.csdnimg.cn/3d38ada810694509851b026148777b76.png" alt="3d38ada810694509851b026148777b76.png"></p>
-<p><img src="https://img-blog.csdnimg.cn/2c657f88b5074394b682101c9828493e.png" alt="2c657f88b5074394b682101c9828493e.png"></p>
-<p><img src="https://img-blog.csdnimg.cn/2c2ff203e655476187b80311b39fdddd.png" alt="2c2ff203e655476187b80311b39fdddd.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/3d38ada810694509851b026148777b76.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/2c657f88b5074394b682101c9828493e.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/2c2ff203e655476187b80311b39fdddd.png"></p>
 <p>例题：</p>
-<p><img src="https://img-blog.csdnimg.cn/dc0dba84ce1e41ec919db0a615fb276a.png" alt="dc0dba84ce1e41ec919db0a615fb276a.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/dc0dba84ce1e41ec919db0a615fb276a.png"></p>
 <p>如何选择“Nice”和“香浓”</p>
-<p><img src="https://img-blog.csdnimg.cn/486e1151b2b8404e8d212220144f15dc.png" alt="486e1151b2b8404e8d212220144f15dc.png"></p>
-<p><img src="https://img-blog.csdnimg.cn/88cdda2b18ae43d09e0e8465c34f0c38.png" alt="88cdda2b18ae43d09e0e8465c34f0c38.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/486e1151b2b8404e8d212220144f15dc.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/88cdda2b18ae43d09e0e8465c34f0c38.png"></p>
 <p>距离近使用基带信号（发出去了就直接表达出来，比如声波），距离远使用宽带信号（衰减到了很低的频率，通过调制到高的信号）</p>
-<h1 id="编码与调制"><a href="#编码与调制" class="headerlink" title="编码与调制"></a>编码与调制</h1><p><img src="https://img-blog.csdnimg.cn/73360047c8ed4e7e8b99cd388e581edd.png" alt="73360047c8ed4e7e8b99cd388e581edd.png"></p>
+<h1 id="编码与调制"><a href="#编码与调制" class="headerlink" title="编码与调制"></a>编码与调制</h1><p><img src="https://img-blog.csdnimg.cn/73360047c8ed4e7e8b99cd388e581edd.png"></p>
 <p>一.数字数据编码为数字信号</p>
 <p>1.非归零编码【NRZ】</p>
 <p>高1低0，最普通的编码方式</p>
@@ -494,82 +548,84 @@ kb KB
 <p>比特流中插入额外的比特以打破一连串的0或1，就是用5个比特来编码4个比特的数据，之后再传送给接收方，因此称为4B&#x2F;5B。编码效率为80%。</p>
 <p>只采用16种对应的64种不同的4为码，其他的16种作为控制码（帧的开始和结束，线路的状态信息等）或保留。</p>
 <p>二.数字数据调制为模拟信号</p>
-<p><img src="https://img-blog.csdnimg.cn/f38a4b777fc247939a1596288bd1736a.png" alt="f38a4b777fc247939a1596288bd1736a.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/f38a4b777fc247939a1596288bd1736a.png"></p>
 <p>数字数据调制技术在发送端将数字信号转换为模拟信号，而在接收端将模拟信号还原为数字信号，分别对应于调制解调器的调制和解调过程。</p>
 <p>三.模拟数据编码为数字信号</p>
-<p><img src="https://img-blog.csdnimg.cn/a8461752f95549a58d9b9c0f53911614.png" alt="a8461752f95549a58d9b9c0f53911614.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/a8461752f95549a58d9b9c0f53911614.png"></p>
 <p>四、编码与调制的综述：</p>
-<p><img src="https://img-blog.csdnimg.cn/91020adbec94455197627c412481dda1.png" alt="91020adbec94455197627c412481dda1.png"></p>
-<h1 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a>数据链路层</h1><p><img src="https://img-blog.csdnimg.cn/cd4e2f3397c448c0a7d85198b9e6a486.png" alt="cd4e2f3397c448c0a7d85198b9e6a486.png"></p>
-<p><img src="https://img-blog.csdnimg.cn/cc7b9077368f41978b60e0b14a7702a3.png" alt="cc7b9077368f41978b60e0b14a7702a3.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/91020adbec94455197627c412481dda1.png"></p>
+<p> </p>
+<h1 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a>数据链路层</h1><p><img src="https://img-blog.csdnimg.cn/cd4e2f3397c448c0a7d85198b9e6a486.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/cc7b9077368f41978b60e0b14a7702a3.png"></p>
 <p>数据链路层在传输数据的时候，添加首和尾，</p>
-<p><img src="https://img-blog.csdnimg.cn/bd707318c33243c5a6db23483db7fe34.png" alt="bd707318c33243c5a6db23483db7fe34.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/bd707318c33243c5a6db23483db7fe34.png"></p>
 <p>称为数据链路层协议首部和尾部，简称帧头和帧尾。这个动作叫做封装成帧。</p>
-<p><img src="https://img-blog.csdnimg.cn/ff2f7925bb6d442997320ef7ade2ec7e.png" alt="ff2f7925bb6d442997320ef7ade2ec7e.png"></p>
-<h1 id="帧定界："><a href="#帧定界：" class="headerlink" title="帧定界："></a>帧定界：</h1><p><img src="https://img-blog.csdnimg.cn/8f8d009b0ca444ac8fa20a94122a99c6.png" alt="8f8d009b0ca444ac8fa20a94122a99c6.png"></p>
-<p><img src="https://img-blog.csdnimg.cn/d5abeaea1d9d43888f1c5f0e61f17e7b.png" alt="d5abeaea1d9d43888f1c5f0e61f17e7b.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/ff2f7925bb6d442997320ef7ade2ec7e.png"></p>
+<h1 id="帧定界："><a href="#帧定界：" class="headerlink" title="帧定界："></a>帧定界：</h1><p><img src="https://img-blog.csdnimg.cn/8f8d009b0ca444ac8fa20a94122a99c6.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/d5abeaea1d9d43888f1c5f0e61f17e7b.png"></p>
 <p>如果传输数据里面正好包含了帧定界符，数据链路层会在不是帧定界符加上转义字符，防止出现误判，认为数据传输结束了。</p>
-<h1 id="差错检测：奇偶校验（计组）。"><a href="#差错检测：奇偶校验（计组）。" class="headerlink" title="差错检测：奇偶校验（计组）。"></a>差错检测：奇偶校验（计组）。</h1><p><img src="https://img-blog.csdnimg.cn/6ea616730ac444fb82dde9478fed1ee7.png" alt="6ea616730ac444fb82dde9478fed1ee7.png"></p>
-<p><img src="https://img-blog.csdnimg.cn/35f5a4bd4a494d55ad4d251a102ce47b.png" alt="35f5a4bd4a494d55ad4d251a102ce47b.png"></p>
+<h1 id="差错检测：奇偶校验（计组）。"><a href="#差错检测：奇偶校验（计组）。" class="headerlink" title="差错检测：奇偶校验（计组）。"></a>差错检测：奇偶校验（计组）。</h1><p><img src="https://img-blog.csdnimg.cn/6ea616730ac444fb82dde9478fed1ee7.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/35f5a4bd4a494d55ad4d251a102ce47b.png"></p>
 <h1 id="可靠传输的基本概念"><a href="#可靠传输的基本概念" class="headerlink" title="可靠传输的基本概念"></a>可靠传输的基本概念</h1><p>首先直到有两种服务：不可靠服务（丢弃误码的帧）和可靠服务（不会丢弃）。</p>
-<p><img src="https://img-blog.csdnimg.cn/38b202e85d6c497a91ded7ddeb8e83b1.png" alt="38b202e85d6c497a91ded7ddeb8e83b1.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/38b202e85d6c497a91ded7ddeb8e83b1.png"></p>
 <p>可靠传输的开销比较大，要根据需求选择。</p>
 <h1 id="SW协议：Stop-and-Wait（停止等待协议）"><a href="#SW协议：Stop-and-Wait（停止等待协议）" class="headerlink" title="SW协议：Stop and Wait（停止等待协议）"></a>SW协议：Stop and Wait（停止等待协议）</h1><p>ACK是正确无误的收到发送方的全部数据之后接收方的回应，则NAK是出现误码的回应，丢弃该数据。</p>
 <p>特殊情况：每次的数据传输，发送方都会启动一个超时计数器，如果DATA在传输过程中出现丢失，等待时间操过了重传时间，发送方就会重新发送，这就叫做超时重传。解决接收方收不到分组的情况：设置一个超时计数器，如果超过了最大的重传时间，发送方重传（超时重传），如下图所示：</p>
-<p><img src="https://img-blog.csdnimg.cn/5ce2c9974adb400ab437215aa0c88dd8.png" alt="5ce2c9974adb400ab437215aa0c88dd8.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/5ce2c9974adb400ab437215aa0c88dd8.png"></p>
 <p>为了克服停止等待协议的信道利用率低的缺点，就产生了另外两种协议：后退N帧协议、选择重传协议</p>
-<p><img src="https://img-blog.csdnimg.cn/7af198b8d611413fa2a3b20225bd03aa.png" alt="7af198b8d611413fa2a3b20225bd03aa.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/7af198b8d611413fa2a3b20225bd03aa.png"></p>
 <p>总结：各种可能出现的问题的描述与解决。</p>
-<p><img src="https://img-blog.csdnimg.cn/9783f5fa0eb04a92ba3613b9acf195e0.png" alt="9783f5fa0eb04a92ba3613b9acf195e0.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/9783f5fa0eb04a92ba3613b9acf195e0.png"></p>
 <h1 id="回退N帧协议：GBN协议"><a href="#回退N帧协议：GBN协议" class="headerlink" title="回退N帧协议：GBN协议"></a>回退N帧协议：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/405573476">GBN协议</a></h1><p>如果发送方在收到ACK之前，可以连续发送多个DATA，则可以大大提高信道利用率，这是一种流水线式的传输。这个协议利用传输窗口，来限制发送方和连续发送分组个数。</p>
 <p>采用的是累计确认的方式:接收方不一定要对收到的数据分组逐个发送确认，而是可以在收到几个数据分组后，对按序到达的最后一个数据分组发送确认，ACKn表示序号为n及以前的所有数据分组都已经正确接收。</p>
 <p>在有差错的情况下：接收方利用检错码发现这个数据分组中有数据出错了，就丢弃这个数据，这样就会让接下来接受的数据序号与接受窗口的序号不匹配，这样就要把这一组的其他数据也丢弃（回退N帧的由来），全部重新发送。重新发送可以等超时计数器超时也可以根据回传的重复信号ACKn。</p>
-<p><img src="https://img-blog.csdnimg.cn/b7ecdea1a6fb4756b412ad01e3973641.png" alt="b7ecdea1a6fb4756b412ad01e3973641.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/b7ecdea1a6fb4756b412ad01e3973641.png"></p>
 <p>总结：累计确认。接收方发送ACKN代表前面N（包括N）个帧都收到了，但是如果中间出现了丢失，重传了，就会把发送窗口内的都丢弃重传。</p>
-<p><img src="https://img-blog.csdnimg.cn/065ca957ad294aeda36d771eafaa0c27.png" alt="065ca957ad294aeda36d771eafaa0c27.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/065ca957ad294aeda36d771eafaa0c27.png"></p>
+<p> </p>
 <h1 id="选择重传协议：SR协议"><a href="#选择重传协议：SR协议" class="headerlink" title="选择重传协议：SR协议"></a>选择重传协议：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/405575394">SR协议</a></h1><p>回退N帧协议的接受窗口尺寸只能等于1，因此接收方只能按序接受正确到达的DATA。</p>
 <p>为了进一步提升性能，可设法只重传出现误码的数据分组，因此，接收窗口的尺寸不应该再等于1，而应该大于1，以便接收方收下失序到达但无误码并且序号落在接收窗口内的DATA，等到所缺分组收齐后再一起送交上层，这就是选择重传协议（Selective Request）。</p>
 <p>注意：由于只重传出现误码的数据分组，接收方不能采用累计确认，要采用逐一确认。</p>
 <p>发送窗口尺寸必须满足： </p>
-<p><img src="https://img-blog.csdnimg.cn/02e7bc17425844518916d7a2d863bb00.png" alt="02e7bc17425844518916d7a2d863bb00.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/02e7bc17425844518916d7a2d863bb00.png"></p>
 <p>其中n是构成分组序号的比特数量</p>
-<p><img src="https://img-blog.csdnimg.cn/b46103aef36648c7ba2fdc7a7f592ae8.png" alt="b46103aef36648c7ba2fdc7a7f592ae8.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/b46103aef36648c7ba2fdc7a7f592ae8.png"></p>
 <ul>
 <li>如果  ：就是停止-等待协议+ 如果  ：造成接收方无法分辨新旧DATA的问题</li>
 </ul>
 <p>接收窗口的尺寸必须满足： </p>
-<p><img src="https://img-blog.csdnimg.cn/244acbd55cee453e9e7b9c2f33be9843.png" alt="244acbd55cee453e9e7b9c2f33be9843.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/244acbd55cee453e9e7b9c2f33be9843.png"></p>
 <ul>
 <li>如果</li>
 </ul>
-<p><img src="https://img-blog.csdnimg.cn/76892842442a4a9eb4aa4100205b9611.png" alt="76892842442a4a9eb4aa4100205b9611.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/76892842442a4a9eb4aa4100205b9611.png"></p>
 <p> ：与回退N帧协议相同</p>
 <ul>
 <li>如果</li>
 </ul>
-<p><img src="https://img-blog.csdnimg.cn/c292ece4bb8a4ddd9c3201bab2252eab.png" alt="c292ece4bb8a4ddd9c3201bab2252eab.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/c292ece4bb8a4ddd9c3201bab2252eab.png"></p>
 <p> ：无意义</p>
 <h1 id="点对点协议（Point-to-Point-Protocol）"><a href="#点对点协议（Point-to-Point-Protocol）" class="headerlink" title="点对点协议（Point-to-Point Protocol）"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/fudashi/p/6814652.html">点对点协议（Point-to-Point Protocol）</a></h1><p>工作在数据链路层，</p>
 <p>PPP协议的组成</p>
-<p><img src="https://img-blog.csdnimg.cn/2046a88462854af69800f667788bc4d5.png" alt="2046a88462854af69800f667788bc4d5.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/2046a88462854af69800f667788bc4d5.png"></p>
 <ul>
 <li>建立、配置数据链路连接的LCP（Link Control Protocol）+ 网络控制协议NCP（Network Control Protocol）+ 将IP数据报封装到串行链路的方法</li>
 </ul>
 <p>跟其他协议一样，也要解决数据链路层的三个基本问题：封装成帧，透明传输，差错检测。</p>
 <p>媒体接入控制</p>
-<p><img src="https://img-blog.csdnimg.cn/d32143d24fb34a1f985be0df6410a948.png" alt="d32143d24fb34a1f985be0df6410a948.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/d32143d24fb34a1f985be0df6410a948.png"></p>
 <h1 id="介质访问控制"><a href="#介质访问控制" class="headerlink" title="介质访问控制"></a>介质访问控制</h1><p>　　介质访问控制就是采取一定的措施，使得两对节点之间的通信不会发生互相干扰的情况。</p>
 <p>　　介质访问控制（就是媒体接入控制）可以分为静态划分信道和动态分配信道。</p>
 <p>　　（1）静态划分信道：也叫信道划分介质访问控制，有四种控制的方法，1、频分多路复用FDM；2、时分多路复用TDM；3、波分多路复用WDM；4、码分多路复用CDM。</p>
 <p>　　（2）动态分配信道，可以分为轮询访问控制  令牌传递协议；随机访问介质访问控制 ALOHA协议、CSMA协议、CSMA&#x2F;CD协议、CSMA&#x2F;CA协议。</p>
 <p>1、频分多路复用FDM</p>
 <p>多路复用器接受来自多个源的模拟信号，每个信号有自己独立的带宽，信号在通信的过程中自始自终都占用这个频带，在同样的时间占用不同的带宽频率，信号被组合成一个具有更大带宽的信号</p>
-<p><img src="https://img-blog.csdnimg.cn/0f6e460c8dae4d1196e922cb0c99d28f.png" alt="0f6e460c8dae4d1196e922cb0c99d28f.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/0f6e460c8dae4d1196e922cb0c99d28f.png"></p>
 <p>2、时分多路复用TDM</p>
 <p>时分多路复用TDM，信道分割的方法是信号占用的时间，将使用复用的各路信号在时间上互不重叠，在传输时把时间分成小的时隙，每一时隙由复用的一个信号占用。</p>
-<p><img src="https://img-blog.csdnimg.cn/f1c59e5bb03f49a69733cc1cbc4cc807.png" alt="f1c59e5bb03f49a69733cc1cbc4cc807.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/f1c59e5bb03f49a69733cc1cbc4cc807.png"></p>
 <p>3、波分多路复用WDM</p>
-<p><img src="https://img-blog.csdnimg.cn/151a54463c37462caadb8472f9628a66.png" alt="151a54463c37462caadb8472f9628a66.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/151a54463c37462caadb8472f9628a66.png"></p>
 <p>4、码分多路复用CDM</p>
 <p>它既共享信道的频率，也共享时间，是一种真正的动态复用技术</p>
 <h1 id="CSMA-x2F-CD-协议"><a href="#CSMA-x2F-CD-协议" class="headerlink" title="CSMA&#x2F;CD 协议"></a>CSMA&#x2F;CD 协议</h1><p>总线局域网使用的协议：CSMA&#x2F;CD协议为带有冲突检测的载波监听多路访问技术，数据链路层，协议的实质是“载波监听”和“碰撞检测”。</p>
@@ -595,190 +651,196 @@ kb KB
 <li>否则，它会等待一个回退时间段并重新启动算法。</li>
 </ul>
 <p>CMSA&#x2F;CA 防止冲突。当它等待确认时，数据不会不必要地丢失，并且避免了浪费的传输。CSMA&#x2F;CA 非常适合无线传输。</p>
-<h1 id="Mac地址-IP地址-Arp协议"><a href="#Mac地址-IP地址-Arp协议" class="headerlink" title="Mac地址 IP地址 Arp协议"></a>Mac地址 IP地址 Arp协议</h1><p><img src="https://img-blog.csdnimg.cn/985b1e00a3c4487ca861693bc211682e.png" alt="985b1e00a3c4487ca861693bc211682e.png"></p>
+<h1 id="Mac地址-IP地址-Arp协议"><a href="#Mac地址-IP地址-Arp协议" class="headerlink" title="Mac地址 IP地址 Arp协议"></a>Mac地址 IP地址 Arp协议</h1><p><img src="https://img-blog.csdnimg.cn/985b1e00a3c4487ca861693bc211682e.png"></p>
 <p>Mac地址又称为物理地址，MAC 地址由六组两位字符组成，由冒号分隔。比如00:1B:44:11:3A:B7，就是一个 MAC 地址。固化在网卡的EEPROM中，所以叫做硬件地址。</p>
 <p>IP地址：完整的 IP 寻址范围从 0.0.0.0 到 255.255.255.255。</p>
 <p>数据包的转发：数据包在转发过程中，源IP地址和目的IP地址始终保持不变，而数据在数据链路层通过ARP协议找到一条去往目的地的路，即路上要经过的路由器的MAC地址，经过一个或多个路由器（一次只能够找到下一步的MAC地址，不能一次性的把路上所有的MAC都找到），最终交付给目的地。</p>
-<p><img src="https://img-blog.csdnimg.cn/12af1a7f22e841989ec813e76d65d02f.png" alt="12af1a7f22e841989ec813e76d65d02f.png"></p>
-<p><img src="https://img-blog.csdnimg.cn/7360393ad10f481c9b0cc9eec76394c6.png" alt="7360393ad10f481c9b0cc9eec76394c6.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/12af1a7f22e841989ec813e76d65d02f.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/7360393ad10f481c9b0cc9eec76394c6.png"></p>
 <p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/news/637065">一文读懂ARP协议，从IP获取对方MAC实操</a> </p>
 <h1 id="集线器、交换机、路由器"><a href="#集线器、交换机、路由器" class="headerlink" title="集线器、交换机、路由器"></a>集线器、交换机、路由器</h1><p>集线器以广播方式发送，交换机单独发送</p>
-<p><img src="https://img-blog.csdnimg.cn/0010f4b68f3b4557a48c692e73a1c254.png" alt="0010f4b68f3b4557a48c692e73a1c254.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/0010f4b68f3b4557a48c692e73a1c254.png"></p>
 <p>集线器对接收到的信号放大、转发，交换机根据MAC地址对帧进行转发。</p>
-<p><img src="https://img-blog.csdnimg.cn/888ac41ce78d4aad86f0a111553c8722.png" alt="888ac41ce78d4aad86f0a111553c8722.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/888ac41ce78d4aad86f0a111553c8722.png"></p>
 <p><a target="_blank" rel="noopener" href="https://www.eet-china.com/mp/a73949.html">一文让你搞懂：路由器，集线器，交换机，网桥，光猫有啥区别？</a></p>
-<h1 id="以太网交换机的自学习和转发帧的流程"><a href="#以太网交换机的自学习和转发帧的流程" class="headerlink" title="以太网交换机的自学习和转发帧的流程"></a>以太网交换机的自学习和转发帧的流程</h1><p><img src="https://img-blog.csdnimg.cn/670ac883aca7420586fb8e53a850d854.png" alt="670ac883aca7420586fb8e53a850d854.png"></p>
-<p><img src="https://img-blog.csdnimg.cn/56dccf0ac6cd4672aba092571f69f144.png" alt="56dccf0ac6cd4672aba092571f69f144.png"></p>
-<h1 id="以太网交换机的生成树协议"><a href="#以太网交换机的生成树协议" class="headerlink" title="以太网交换机的生成树协议"></a>以太网交换机的生成树协议</h1><p><img src="https://img-blog.csdnimg.cn/04c2ca11663e4980982423008433654e.png" alt="04c2ca11663e4980982423008433654e.png"></p>
+<p> </p>
+<h1 id="以太网交换机的自学习和转发帧的流程"><a href="#以太网交换机的自学习和转发帧的流程" class="headerlink" title="以太网交换机的自学习和转发帧的流程"></a>以太网交换机的自学习和转发帧的流程</h1><p><img src="https://img-blog.csdnimg.cn/670ac883aca7420586fb8e53a850d854.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/56dccf0ac6cd4672aba092571f69f144.png"></p>
+<h1 id="以太网交换机的生成树协议"><a href="#以太网交换机的生成树协议" class="headerlink" title="以太网交换机的生成树协议"></a>以太网交换机的生成树协议</h1><p><img src="https://img-blog.csdnimg.cn/04c2ca11663e4980982423008433654e.png"></p>
+<p> </p>
 <h1 id="虚拟局域网VLAN的实现机制"><a href="#虚拟局域网VLAN的实现机制" class="headerlink" title="虚拟局域网VLAN的实现机制"></a>虚拟局域网VLAN的实现机制</h1><p>对以太网的MAC帧进行了扩展，插入了四个字节的VLAN标记。当交换机收到普通的以太网帧时，插入四字节的VLAN标记，转变为802.1Q帧，“打标签”。当交换机转发802.1Q帧时，会删除标签，“去标签”。</p>
-<p><img src="https://img-blog.csdnimg.cn/b6e72333ee944c81a7d86634295ad3fd.png" alt="b6e72333ee944c81a7d86634295ad3fd.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/b6e72333ee944c81a7d86634295ad3fd.png"></p>
 <p>交换机的Access端口：PVID与VID相等时才会转发，用于连接用户计算机。</p>
-<p><img src="https://img-blog.csdnimg.cn/066c241eaf2440d19b02c4536d5a2fc7.png" alt="066c241eaf2440d19b02c4536d5a2fc7.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/066c241eaf2440d19b02c4536d5a2fc7.png"></p>
 <p>Trunk端口：用于连接交换机之间或者交换机与路由器之间。</p>
-<p><img src="https://img-blog.csdnimg.cn/2deb1f838eac45ddaf908bcbaae0155e.png" alt="2deb1f838eac45ddaf908bcbaae0155e.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/2deb1f838eac45ddaf908bcbaae0155e.png"></p>
 <p>Hybird端口：发送时查看该帧是否在端口的去标签列表中，存在则去标签转发，否则直接转发；接受时</p>
-<p><img src="https://img-blog.csdnimg.cn/546a6319646a4c21a34a89b7a3e0a0d4.png" alt="546a6319646a4c21a34a89b7a3e0a0d4.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/546a6319646a4c21a34a89b7a3e0a0d4.png"></p>
 <p>虚拟局域网VLAN的实现机制</p>
 <p>对以太网的MAC帧进行了扩展，插入了四个字节的VLAN标记。当交换机收到普通的以太网帧时，插入四字节的VLAN标记，转变为802.1Q帧，“打标签”。当交换机转发802.1Q帧时，会删除标签，“去标签”。</p>
-<p><img src="https://img-blog.csdnimg.cn/f5fe83defdd34e9a82d510866262c1e4.png" alt="f5fe83defdd34e9a82d510866262c1e4.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/f5fe83defdd34e9a82d510866262c1e4.png"></p>
 <p>交换机的Access端口：PVID与VID相等时才会转发，用于连接用户计算机。</p>
-<p><img src="https://img-blog.csdnimg.cn/a1508fea46c24a8b939d5851412a688a.png" alt="a1508fea46c24a8b939d5851412a688a.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/a1508fea46c24a8b939d5851412a688a.png"></p>
 <p>Trunk端口：用于连接交换机之间或者交换机与路由器之间。</p>
-<p><img src="https://img-blog.csdnimg.cn/691a870ef6ca4d86ba6ea69e77211c55.png" alt="691a870ef6ca4d86ba6ea69e77211c55.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/691a870ef6ca4d86ba6ea69e77211c55.png"></p>
 <p>Hybird端口：发送时查看该帧是否在端口的去标签列表中，存在则去标签转发，否则直接转发；接受时</p>
-<p><img src="https://img-blog.csdnimg.cn/38dd150fd262475fad714c65b9257f80.png" alt="38dd150fd262475fad714c65b9257f80.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/38dd150fd262475fad714c65b9257f80.png"></p>
+<p> </p>
 <h1 id="IPv4地址的格式"><a href="#IPv4地址的格式" class="headerlink" title="IPv4地址的格式"></a>IPv4地址的格式</h1><p>点分十进制表示方法：</p>
-<p><img src="https://img-blog.csdnimg.cn/4f5c8548fc3743da887a612825744600.png" alt="4f5c8548fc3743da887a612825744600.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/4f5c8548fc3743da887a612825744600.png"></p>
 <p>辨别ABC类地址</p>
-<p><img src="https://img-blog.csdnimg.cn/f555fa48ed484a0a96e71dc7a1a9d533.png" alt="f555fa48ed484a0a96e71dc7a1a9d533.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/f555fa48ed484a0a96e71dc7a1a9d533.png"></p>
 <h1 id="分类编制的IPv4地址"><a href="#分类编制的IPv4地址" class="headerlink" title="分类编制的IPv4地址"></a>分类编制的IPv4地址</h1><p>小结：主机号全零是网络地址，全一是广播地址，注意ABC类地址的范围</p>
-<p><img src="https://img-blog.csdnimg.cn/a9a8afe218404f1ea23b42cb4d95f850.png" alt="a9a8afe218404f1ea23b42cb4d95f850.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/a9a8afe218404f1ea23b42cb4d95f850.png"></p>
 <h1 id="划分子网的IPv4地址"><a href="#划分子网的IPv4地址" class="headerlink" title="划分子网的IPv4地址"></a>划分子网的IPv4地址</h1><p>子网掩码：使用连续的1来代表网络号和子网号，0对应主机号，与原来的网络地址相与就可以得到网络地址。</p>
-<p><img src="https://img-blog.csdnimg.cn/2511e43a339d4f819a2ea037f1c32875.png" alt="2511e43a339d4f819a2ea037f1c32875.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/2511e43a339d4f819a2ea037f1c32875.png"></p>
 <p>划分细节：全零的和全一的要忽略掉</p>
-<p><img src="https://img-blog.csdnimg.cn/28f70672318a497db8a46837a3962ec1.png" alt="28f70672318a497db8a46837a3962ec1.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/28f70672318a497db8a46837a3962ec1.png"></p>
 <p>小结：</p>
-<p><img src="https://img-blog.csdnimg.cn/673e396d7304422ea0b042885d425ede.png" alt="673e396d7304422ea0b042885d425ede.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/673e396d7304422ea0b042885d425ede.png"></p>
 <h1 id="无分类编址的划分子网CIDR"><a href="#无分类编址的划分子网CIDR" class="headerlink" title="无分类编址的划分子网CIDR"></a>无分类编址的划分子网CIDR</h1><p>在IPv4地址后面加上斜线，表示网络前缀所占的比特数量。</p>
-<p><img src="https://img-blog.csdnimg.cn/882a3453ea464552a79e8dce6df9785f.png" alt="882a3453ea464552a79e8dce6df9785f.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/882a3453ea464552a79e8dce6df9785f.png"></p>
 <p>最长前缀匹配：</p>
-<p><img src="https://img-blog.csdnimg.cn/a9393a3c29fb4a2683702f55fa792aa8.png" alt="a9393a3c29fb4a2683702f55fa792aa8.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/a9393a3c29fb4a2683702f55fa792aa8.png"></p>
 <p>举例说明：</p>
-<p><img src="https://img-blog.csdnimg.cn/894242eb41264e69aa18392d8d32e96a.png" alt="894242eb41264e69aa18392d8d32e96a.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/894242eb41264e69aa18392d8d32e96a.png"></p>
 <p>例题2：</p>
-<p><img src="https://img-blog.csdnimg.cn/d390e4fe857d4c9fb70153f47d520bc7.png" alt="d390e4fe857d4c9fb70153f47d520bc7.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/d390e4fe857d4c9fb70153f47d520bc7.png"></p>
 <p>小结：</p>
-<p><img src="https://img-blog.csdnimg.cn/bdc1a6541ed943c9854fa7fa1e5ae5ac.png" alt="bdc1a6541ed943c9854fa7fa1e5ae5ac.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/bdc1a6541ed943c9854fa7fa1e5ae5ac.png"></p>
+<p> </p>
 <h1 id="IP数据报的发送与转发过程"><a href="#IP数据报的发送与转发过程" class="headerlink" title="IP数据报的发送与转发过程"></a>IP数据报的发送与转发过程</h1><p>如果在同一个网络中，直接交付；不在，间接交付。</p>
 <p><strong>如何判断目的主机与自己是否在同一个网络中？</strong></p>
 <p>将本机IP地址与本机子网掩码相与得到网络地址，将目的主机IP地址与本机子网掩码相与得到另外一个网络地址，看看两个网络地址是否相同。同，在一个网络；不同在不同的网络。</p>
-<p><img src="https://img-blog.csdnimg.cn/1b1eccc36c9543688b2bf826d946450f.png" alt="1b1eccc36c9543688b2bf826d946450f.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/1b1eccc36c9543688b2bf826d946450f.png"></p>
 <h1 id="静态路由配置以及可能产生的路由环路问题"><a href="#静态路由配置以及可能产生的路由环路问题" class="headerlink" title="静态路由配置以及可能产生的路由环路问题"></a>静态路由配置以及可能产生的路由环路问题</h1><p>网络管理员自己手动配置路由表。</p>
-<p><img src="https://img-blog.csdnimg.cn/87cc07ac8af4429b9dc01f721c7e5d26.png" alt="87cc07ac8af4429b9dc01f721c7e5d26.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/87cc07ac8af4429b9dc01f721c7e5d26.png"></p>
 <h1 id="外部-BGP-与内部-BGP-有什么区别？"><a href="#外部-BGP-与内部-BGP-有什么区别？" class="headerlink" title="外部 BGP 与内部 BGP 有什么区别？"></a>外部 BGP 与内部 BGP 有什么区别？</h1><p>在互联网上，路由交换和流量传输是通过外部 BGP（eBGP）进行的。自治系统也可使用 BGP 的内部版本来路由内部网络上的数据，也就是 iBGP（internal）。应该指出的是，使用内部 BGP 并非使用外部 BGP 的前提条件。自治系统可从多种内部协议中选择，来连接内部网络上的路由器。</p>
 <p>外部 BGP 就像国际运输。在国际上运送邮件时，需要遵循特定的标准和规则。邮件到达目的地国家后，必须通过目的地国家的本地邮政服务才能达到其最终目的地。每个国家都有自己的内部邮政服务，不必遵循其他国家的相同规则。同样，每个自治系统都可以有自己的内部路由协议，用于路由自身网络内部的数据。</p>
 <h1 id="内部网关协议：路由选择协议RIP的基本工作原理"><a href="#内部网关协议：路由选择协议RIP的基本工作原理" class="headerlink" title="内部网关协议：路由选择协议RIP的基本工作原理"></a>内部网关协议：路由选择协议RIP的基本工作原理</h1><p>RIP的路由条目的更新规则，先加1，然后逐渐更新</p>
-<p><img src="https://img-blog.csdnimg.cn/c124805b378f4c61a971f52a755a66ba.png" alt="c124805b378f4c61a971f52a755a66ba.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/c124805b378f4c61a971f52a755a66ba.png"></p>
 <p>使用跳数来衡量到达目的网络的距离，next hop，下一跳</p>
-<p><img src="https://img-blog.csdnimg.cn/9961223a7ffd40939ab535a9495b31bd.png" alt="9961223a7ffd40939ab535a9495b31bd.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/9961223a7ffd40939ab535a9495b31bd.png"></p>
 <h1 id="广播域与冲突域"><a href="#广播域与冲突域" class="headerlink" title="广播域与冲突域"></a>广播域与冲突域</h1><p>一个集线器（中继器）连接的网络成为冲突域，因为每台主机都连接在了同一条线路上，所以传送信息时会冲突。** 冲突域是基于第一层(物理层)**</p>
 <p>而交换机的本质是一个多借口网桥，就是说由交换机组成的网络中，任意两台主机通信都是通过一条专有线路，故不会冲突。所以交换机出来的每个接口都是一个冲突域。** 广播域是基于第二层(链路层)**</p>
 <p>通常一个局域网VLAN算一个广播域，故路由器的每个端口产生一个广播域。</p>
 <h1 id="开放最短路径OSPF的基本工作原理"><a href="#开放最短路径OSPF的基本工作原理" class="headerlink" title="开放最短路径OSPF的基本工作原理"></a>开放最短路径OSPF的基本工作原理</h1><p>在自治系统AS中可以通过OSPF将其划分成更小的区域。</p>
-<p><img src="https://img-blog.csdnimg.cn/ce148a6ff01b4569b374611147313b1d.png" alt="ce148a6ff01b4569b374611147313b1d.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/ce148a6ff01b4569b374611147313b1d.png"></p>
 <p>小结</p>
-<p><img src="https://img-blog.csdnimg.cn/e772b21b41f04d1f9b6765cf985cfb36.png" alt="e772b21b41f04d1f9b6765cf985cfb36.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/e772b21b41f04d1f9b6765cf985cfb36.png"></p>
 <h1 id="边界网关协议BGP"><a href="#边界网关协议BGP" class="headerlink" title="边界网关协议BGP"></a>边界网关协议BGP</h1><p>BGP是找到有路径就可以，不用去找最佳的路由。</p>
-<p><img src="https://img-blog.csdnimg.cn/852d8062d30a45969c981b765eaa9d47.png" alt="852d8062d30a45969c981b765eaa9d47.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/852d8062d30a45969c981b765eaa9d47.png"></p>
 <p>例题：</p>
-<p><img src="https://img-blog.csdnimg.cn/029ca4afc3144ab9ba44a69539f70932.png" alt="029ca4afc3144ab9ba44a69539f70932.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/029ca4afc3144ab9ba44a69539f70932.png"></p>
 <p>小结：</p>
-<p><img src="https://img-blog.csdnimg.cn/bd44fdb4680141fb8f2ed835a5713968.png" alt="bd44fdb4680141fb8f2ed835a5713968.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/bd44fdb4680141fb8f2ed835a5713968.png"></p>
+<p> </p>
 <h1 id="IPVv4数据报的格式"><a href="#IPVv4数据报的格式" class="headerlink" title="IPVv4数据报的格式"></a>IPVv4数据报的格式</h1><p>TTL字段的作用：防止IP数据报在网络中永久兜圈。</p>
 <p>如下图将R2的静态路由表配置错了，导致要转发给R3的转发给了R1，造成路由环路。</p>
-<p><img src="https://img-blog.csdnimg.cn/bc99ba4e538a411085020b799467e526.png" alt="bc99ba4e538a411085020b799467e526.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/bc99ba4e538a411085020b799467e526.png"></p>
 <p>当IP数据报经过一个路由器的时候：TTL字段减一，首部检验和需要更改，如果IP数据报过大，大于MTU（最大数据报单元），则要重新分片，标志字段、总长度字段、片位移字段都要修改。</p>
-<p><img src="https://img-blog.csdnimg.cn/5c0ea351cc244fa895481c3c59f08e90.png" alt="5c0ea351cc244fa895481c3c59f08e90.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/5c0ea351cc244fa895481c3c59f08e90.png"></p>
 <h1 id="网际控制报文协议ICMP"><a href="#网际控制报文协议ICMP" class="headerlink" title="网际控制报文协议ICMP"></a>网际控制报文协议ICMP</h1><p>通过ICMP来发送差错报告报文和询问报文，ICMP报文被封装在IP数据报中发送出去，有五种差错报文。</p>
 <p>ICMP的应用：PING、traceroute（TTL从1开始，到了一个中间的站点，发送一个时间超过报文）</p>
-<p><img src="https://img-blog.csdnimg.cn/e686be839f394ae7bccfbc3c3e2404a7.png" alt="e686be839f394ae7bccfbc3c3e2404a7.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/e686be839f394ae7bccfbc3c3e2404a7.png"></p>
 <h1 id="网络地址转换NAT和虚拟专用网VPN"><a href="#网络地址转换NAT和虚拟专用网VPN" class="headerlink" title="网络地址转换NAT和虚拟专用网VPN"></a>网络地址转换NAT和虚拟专用网VPN</h1><p>利用端口号和IP地址一起放入转换表中，这样可以极大程度的利用一个分配IP地址路由器与多个主机的多个服务之间通信、转发，减缓IP地址的使用。</p>
-<p><img src="https://img-blog.csdnimg.cn/7603516f32f641f28dd366cc80dcfbc0.png" alt="7603516f32f641f28dd366cc80dcfbc0.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/7603516f32f641f28dd366cc80dcfbc0.png"></p>
 <p>两个私有的网通过公有的因特网进行通信，这个时候会将原始的数据进行加密处理，然后将其封装，保证数据安全。</p>
 <p>外地员工连内网，利用专有的软件，远程接入VPN</p>
-<p><img src="https://img-blog.csdnimg.cn/5b0d54007dd2445797b0a044e4fb3548.png" alt="5b0d54007dd2445797b0a044e4fb3548.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/5b0d54007dd2445797b0a044e4fb3548.png"></p>
 <h1 id="运输层简介"><a href="#运输层简介" class="headerlink" title="运输层简介"></a>运输层简介</h1><p>通过这一层的封装，两个计算机之间的通信好像变成了它们之间两个进程之间的直接通信，端口号代表了进程的标识符（0-65535，0-2^16-1）。</p>
-<p><img src="https://img-blog.csdnimg.cn/d23f41ef64c040ea994c53cca10cb04d.png" alt="d23f41ef64c040ea994c53cca10cb04d.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/d23f41ef64c040ea994c53cca10cb04d.png"></p>
 <h1 id="运输层端口号、分用、复用的概念"><a href="#运输层端口号、分用、复用的概念" class="headerlink" title="运输层端口号、分用、复用的概念"></a>运输层端口号、分用、复用的概念</h1><p>应用层协议的常用熟知端口号。</p>
-<p><img src="https://img-blog.csdnimg.cn/43addfd97cee4ff3981f67aa4bb4bee5.png" alt="43addfd97cee4ff3981f67aa4bb4bee5.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/43addfd97cee4ff3981f67aa4bb4bee5.png"></p>
 <p>端口号只具有本地意义，不同计算机之间的相同端口号是没有联系的。</p>
-<p><img src="https://img-blog.csdnimg.cn/61d88ad2e5324e12942048bdd045f7c9.png" alt="61d88ad2e5324e12942048bdd045f7c9.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/61d88ad2e5324e12942048bdd045f7c9.png"></p>
 <h1 id="UDP和TCP的对比"><a href="#UDP和TCP的对比" class="headerlink" title="UDP和TCP的对比"></a>UDP和TCP的对比</h1><p>UDP支持单播、多播以及广播，TCP仅支持1对1的服务。</p>
 <p>UDP适用于视频通话</p>
-<p><img src="https://img-blog.csdnimg.cn/fbaf0c5aa964406ca1f04340c2a40573.png" alt="fbaf0c5aa964406ca1f04340c2a40573.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/fbaf0c5aa964406ca1f04340c2a40573.png"></p>
 <p>UDP面向报文，TCP面向字节流。</p>
-<p><img src="https://img-blog.csdnimg.cn/0ead83be92d94f65aa5131475282148f.png" alt="0ead83be92d94f65aa5131475282148f.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/0ead83be92d94f65aa5131475282148f.png"></p>
 <p>UDP首部只有8个字节，TCP首部最少20字节，最多60字节。</p>
-<p><img src="https://img-blog.csdnimg.cn/b2c80ecffebe4abdb7e1708aeed0b729.png" alt="b2c80ecffebe4abdb7e1708aeed0b729.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/b2c80ecffebe4abdb7e1708aeed0b729.png"></p>
 <p>小结：</p>
-<p><img src="https://img-blog.csdnimg.cn/f9c6c942c08744dea8b0366e1593741e.png" alt="f9c6c942c08744dea8b0366e1593741e.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/f9c6c942c08744dea8b0366e1593741e.png"></p>
 <h1 id="TCP的流量控制"><a href="#TCP的流量控制" class="headerlink" title="TCP的流量控制"></a>TCP的流量控制</h1><p>解决死锁情况的计时器：在接收方将窗口修改为0时启动，</p>
 <p>零窗口探测报文在rwnd&#x3D;0时也可以接收。</p>
 <p>大写的ACK是确认信号，返回给client，小写的ack是累计确认，表示ack号字节以前的数据都收到了。</p>
-<p><img src="https://img-blog.csdnimg.cn/c7f2754415d6437d9ca11ac1fdabaf3a.png" alt="c7f2754415d6437d9ca11ac1fdabaf3a.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/c7f2754415d6437d9ca11ac1fdabaf3a.png"></p>
 <p>例题：注意通高的接受窗口的大小是2000字节</p>
-<p><img src="https://img-blog.csdnimg.cn/e51e63d89af14aa48df52851a904e2c8.png" alt="e51e63d89af14aa48df52851a904e2c8.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/e51e63d89af14aa48df52851a904e2c8.png"></p>
 <p>小结：流量控制是为了让发送方的发送速度不要过快，利用的是滑动窗口的机制。接收方发送零窗口通知后，发送方收到后会启动持续计时器。接收方是通过rwnd的值来设置窗口大小，从而实现流量控制。</p>
-<p><img src="https://img-blog.csdnimg.cn/82dbdd4e7c8f455aa78026c42f5059d8.png" alt="82dbdd4e7c8f455aa78026c42f5059d8.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/82dbdd4e7c8f455aa78026c42f5059d8.png"></p>
 <h1 id="TCP的拥塞控制"><a href="#TCP的拥塞控制" class="headerlink" title="TCP的拥塞控制"></a>TCP的拥塞控制</h1><p>慢开始，拥塞避免：</p>
 <p>维护三个变量：拥塞窗口cwnd、发送窗口swnd，慢开始门限ssthresh。</p>
-<p><img src="https://img-blog.csdnimg.cn/4646d065760f4e4284b09047d7913e0c.png" alt="4646d065760f4e4284b09047d7913e0c.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/4646d065760f4e4284b09047d7913e0c.png"></p>
 <p>快重传算法：不等待超时重传计时器的超时，而是收到了三个连续的重复确认就将报文段立即重传。</p>
-<p><img src="https://img-blog.csdnimg.cn/c688bcccb4b34422a94ddd5bcf0fe114.png" alt="c688bcccb4b34422a94ddd5bcf0fe114.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/c688bcccb4b34422a94ddd5bcf0fe114.png"></p>
 <p>快恢复算法：收到三个重复确认就知道了只是丢失了个别的报文段，这个时候不启动慢开始算法，而是执行快恢复算法。</p>
-<p><img src="https://img-blog.csdnimg.cn/774dd5e4144e4c518f228718ace023d3.png" alt="774dd5e4144e4c518f228718ace023d3.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/774dd5e4144e4c518f228718ace023d3.png"></p>
 <p>慢开始，拥塞控制，快重传，快恢复</p>
-<p><img src="https://img-blog.csdnimg.cn/39fcf6826f94478faf3cb0cd1f34547b.png" alt="39fcf6826f94478faf3cb0cd1f34547b.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/39fcf6826f94478faf3cb0cd1f34547b.png"></p>
 <p>TCP超时重传时间的计算</p>
 <p>RTO&#x3D;RTTs+4*RTT D；</p>
 <p>出现超时重传，新RTO&#x3D;2*旧的RTO。</p>
-<p><img src="https://img-blog.csdnimg.cn/f80d68c1c0e44794b629796fd445b1b7.png" alt="f80d68c1c0e44794b629796fd445b1b7.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/f80d68c1c0e44794b629796fd445b1b7.png"></p>
 <h1 id="TCP可靠传输的实现"><a href="#TCP可靠传输的实现" class="headerlink" title="TCP可靠传输的实现"></a>TCP可靠传输的实现</h1><p>返送窗口的前沿和后沿的移动情况，</p>
-<p><img src="https://img-blog.csdnimg.cn/52e84af5653c470fbda5718335c16500.png" alt="52e84af5653c470fbda5718335c16500.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/52e84af5653c470fbda5718335c16500.png"></p>
 <p>小结：以字节为单位的滑动窗口来实现可靠传输。而对于没有按序到达的数据的处理，没有明确规定，通常是将这些数据临时保存在接收窗口中。</p>
-<p><img src="https://img-blog.csdnimg.cn/dcebef6fe5124728bd3f5b81314a1220.png" alt="dcebef6fe5124728bd3f5b81314a1220.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/dcebef6fe5124728bd3f5b81314a1220.png"></p>
 <h1 id="TCP的连接建立：三握手"><a href="#TCP的连接建立：三握手" class="headerlink" title="TCP的连接建立：三握手"></a>TCP的连接建立：三握手</h1><p>三报文握手来建立连接。</p>
-<p><img src="https://img-blog.csdnimg.cn/a5423c39832b4c94b230e67a968cbff2.png" alt="a5423c39832b4c94b230e67a968cbff2.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/a5423c39832b4c94b230e67a968cbff2.png"></p>
 <p>两次握手不可行的示意图：失效的TCP连接请求在一段时间后到达服务端，服务端也会认为是一个请求，错误的进入ESTABLISHED状态，会浪费资源。</p>
-<p><img src="https://img-blog.csdnimg.cn/e9af9490c0164a75a51f0517b827d6da.png" alt="e9af9490c0164a75a51f0517b827d6da.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/e9af9490c0164a75a51f0517b827d6da.png"></p>
 <p>所以第三次握手不是多余的；</p>
-<p><img src="https://img-blog.csdnimg.cn/4e80798d88e84c9a89df449f55496209.png" alt="4e80798d88e84c9a89df449f55496209.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/4e80798d88e84c9a89df449f55496209.png"></p>
 <p>例题：SYN&#x3D;1 ACK&#x3D;1 seq&#x3D;11221 ack&#x3D;11221</p>
-<p><img src="https://img-blog.csdnimg.cn/eeffe6784ef649fa97fb915ebac7f631.png" alt="eeffe6784ef649fa97fb915ebac7f631.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/eeffe6784ef649fa97fb915ebac7f631.png"></p>
 <p>小结：SYN&#x3D;1的报文段不能携带数据。</p>
-<p><img src="https://img-blog.csdnimg.cn/d0a78f9448c34e7bb6dba8da42a83ea2.png" alt="d0a78f9448c34e7bb6dba8da42a83ea2.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/d0a78f9448c34e7bb6dba8da42a83ea2.png"></p>
+<p> </p>
 <h1 id="TCP连接的释放：四挥手"><a href="#TCP连接的释放：四挥手" class="headerlink" title="TCP连接的释放：四挥手"></a>TCP连接的释放：四挥手</h1><p>4报文挥手，客户端最后还要经过2MSL的时间才会进入关闭状态，确保返回给服务器的ACK到达服务端，以及清理掉此次连接中的所有报文段。</p>
-<p><img src="https://img-blog.csdnimg.cn/b7a540c088e744e2b5f5c00737fce93f.png" alt="b7a540c088e744e2b5f5c00737fce93f.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/b7a540c088e744e2b5f5c00737fce93f.png"></p>
 <p>使用2*MSL时间的原因：当出现最后的确认报文段丢失的情况时，还可以收到服务端的FIN信号，否则服务器就会一直重传FIN报文段，一直收不到确认信号。</p>
-<p><img src="https://img-blog.csdnimg.cn/f2fdfceb80e44182b7f9d8ab1ff3aeb6.png" alt="f2fdfceb80e44182b7f9d8ab1ff3aeb6.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/f2fdfceb80e44182b7f9d8ab1ff3aeb6.png"></p>
 <p>保活计时器</p>
-<p><img src="https://img-blog.csdnimg.cn/b051b9fec6914671a305be27606b66a6.png" alt="b051b9fec6914671a305be27606b66a6.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/b051b9fec6914671a305be27606b66a6.png"></p>
 <h1 id="TCP报文段的首部格式"><a href="#TCP报文段的首部格式" class="headerlink" title="TCP报文段的首部格式"></a>TCP报文段的首部格式</h1><p>都有20字节的固定首部</p>
-<p><img src="https://img-blog.csdnimg.cn/0eed4e40c69b40f3bb4d6c84cc5dec1c.png" alt="0eed4e40c69b40f3bb4d6c84cc5dec1c.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/0eed4e40c69b40f3bb4d6c84cc5dec1c.png"></p>
 <h1 id="B-x2F-S和PtoP方式"><a href="#B-x2F-S和PtoP方式" class="headerlink" title="B&#x2F;S和PtoP方式"></a>B&#x2F;S和PtoP方式</h1><p>PtP方式是两边对等的，没有固定的服务端和客户端，</p>
-<p><img src="https://img-blog.csdnimg.cn/7791c8324f8f4e6aa6cd1d07ac087dfe.png" alt="7791c8324f8f4e6aa6cd1d07ac087dfe.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/7791c8324f8f4e6aa6cd1d07ac087dfe.png"></p>
 <h1 id="动态主机配置协议DHCP"><a href="#动态主机配置协议DHCP" class="headerlink" title="动态主机配置协议DHCP"></a>动态主机配置协议DHCP</h1><p>DHCP的工作过程：主要有四步，DHCP DISCOVER、DHCP OFFER、DHCP REQUEST、DHCP ACK。</p>
-<p><img src="https://img-blog.csdnimg.cn/d7332fef336047de984f5e003408675c.png" alt="d7332fef336047de984f5e003408675c.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/d7332fef336047de984f5e003408675c.png"></p>
 <p>DHCP中继代理：在主机发送广播的DHCP DISCOVER时，将路由器当成中继代理，让它给服务器发送单播DHCP DISCOVER，这样主机就可以获取到IP地址分配。如果不这样配置，路由器会直接丢弃广播的DHCP DISCOVER。</p>
-<p><img src="https://img-blog.csdnimg.cn/d2c09e54836942e4a7aa6f732c4bd777.png" alt="d2c09e54836942e4a7aa6f732c4bd777.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/d2c09e54836942e4a7aa6f732c4bd777.png"></p>
 <p>小结：</p>
-<p><img src="https://img-blog.csdnimg.cn/9ef3bdde05704fa482ae618afb99d432.png" alt="9ef3bdde05704fa482ae618afb99d432.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/9ef3bdde05704fa482ae618afb99d432.png"></p>
 <h1 id="域名系统DNS"><a href="#域名系统DNS" class="headerlink" title="域名系统DNS"></a>域名系统DNS</h1><p>域名的层次结构：树根没有域名，顶级、二级、三级、四级域名。</p>
-<p><img src="https://img-blog.csdnimg.cn/ba5b4ee5d5aa4bb086a890e1c9edda80.png" alt="ba5b4ee5d5aa4bb086a890e1c9edda80.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/ba5b4ee5d5aa4bb086a890e1c9edda80.png"></p>
 <p>域名的解析有两种：递归查询和迭代查询。</p>
-<p><img src="https://img-blog.csdnimg.cn/e48b660d791147b49924ba1b6f107ee0.png" alt="e48b660d791147b49924ba1b6f107ee0.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/e48b660d791147b49924ba1b6f107ee0.png"></p>
 <h1 id="文件传输协议FTP"><a href="#文件传输协议FTP" class="headerlink" title="文件传输协议FTP"></a>文件传输协议FTP</h1><p>三条命令，可以传输文件</p>
 <p>fpt ip; &#x2F;&#x2F;连接FTP服务器</p>
 <p>get [name]&#x2F;&#x2F;下载文件</p>
 <p>put [name]&#x2F;&#x2F;上传文件</p>
-<p><img src="https://img-blog.csdnimg.cn/582ded89c75f4f049cb95e424c0c6c9d.png" alt="582ded89c75f4f049cb95e424c0c6c9d.png"></p>
-<p><img src="https://img-blog.csdnimg.cn/73a0f218414247129ba2e59b99afa3bc.png" alt="73a0f218414247129ba2e59b99afa3bc.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/582ded89c75f4f049cb95e424c0c6c9d.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/73a0f218414247129ba2e59b99afa3bc.png"></p>
 <h1 id="电子邮件"><a href="#电子邮件" class="headerlink" title="电子邮件"></a>电子邮件</h1><p>简单邮件传送协议SMTP：simple mail transfer protocol，基于TCP连接，使用熟知端口号25，只能发送ASCII文本。</p>
-<p><img src="https://img-blog.csdnimg.cn/1ea41adb8ef0430086ed44888eaf7f66.png" alt="1ea41adb8ef0430086ed44888eaf7f66.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/1ea41adb8ef0430086ed44888eaf7f66.png"></p>
 <p>电子邮件的格式：信封和内容</p>
-<p><img src="https://img-blog.csdnimg.cn/f7bd5712d610441ba05057b7824d35fd.png" alt="f7bd5712d610441ba05057b7824d35fd.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/f7bd5712d610441ba05057b7824d35fd.png"></p>
 <p>小结：常见的邮件读取协议有POP3、IMAP。邮件读取协议是指邮件服务器读取邮件内容的时候要遵循的协议。</p>
-<p><img src="https://img-blog.csdnimg.cn/df53058638094f77b5cbbee24dabd68f.png" alt="df53058638094f77b5cbbee24dabd68f.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/df53058638094f77b5cbbee24dabd68f.png"></p>
 <h1 id="万维网WWW"><a href="#万维网WWW" class="headerlink" title="万维网WWW"></a>万维网WWW</h1><p>HTTP的报文格式：包含请求报文和响应报文</p>
-<p><img src="https://img-blog.csdnimg.cn/8e9f7489cf1f4059a447c0a5da0b232e.png" alt="8e9f7489cf1f4059a447c0a5da0b232e.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/8e9f7489cf1f4059a447c0a5da0b232e.png"></p>
 <p>万维网缓存与代理服务器：提高万维网的效率，减轻原始服务器的压力。</p>
-<p><img src="https://img-blog.csdnimg.cn/531aaa4985c5495abe4b5d2e7c7222c2.png" alt="531aaa4985c5495abe4b5d2e7c7222c2.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/531aaa4985c5495abe4b5d2e7c7222c2.png"></p>
 <p>小结：</p>
 <p>万维网使用统一资源定位符URL来指定英特网上的资源的位置：</p>
 <p>&lt;协议&gt;:&#x2F;&#x2F;&lt;主机&gt;:&lt;端口&gt;&#x2F;&lt;路径&gt;，如：<a target="_blank" rel="noopener" href="https://www.baidu.com/">https://www.baidu.com/</a></p>
 <p>HTTP是超文本传输协议，1.0采用无连接的方式，1.1采用持续连接的方式</p>
 <p>（keep-alive），</p>
-<p><img src="https://img-blog.csdnimg.cn/5f8dfed559db45589de599feb0caa3b0.png" alt="5f8dfed559db45589de599feb0caa3b0.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/5f8dfed559db45589de599feb0caa3b0.png"></p>
 <h1 id="参考视频链接"><a href="#参考视频链接" class="headerlink" title="参考视频链接"></a>参考视频链接</h1><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1c4411d7jb?p=1&vd_source=b99c7e40ffa0f64b68b706f2af755c8e">计算机网络微课堂（有字幕无背景音乐版）</a> </p>
 
                 
@@ -1149,7 +1211,7 @@ kb KB
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">55.4k</span>
+                        class="white-color">57k</span>
             
             
             

@@ -5,9 +5,24 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="操作系统基础教程, AllenMirac">
-    <meta name="description" content="第二章：处理器管理操作系统学习(3)处理机调度：调度的概念、时机、切换、过程以及调度方式和基本准则 | Echo Blog
-概览1、指令系统和寄存器。
-2、特权指令和非特权指令：特权指令只能在内核态使用，非特权指令在内核态和用户态（管态和目">
+    <meta name="description" content="
+
+
+目录
+第二章：处理器管理
+概览
+进程调度的层次
+进程的调度方式：
+调度的评价标准：
+典型的调度算法：
+第三章：同步、通信和死锁
+什么是进程同步？
+什么是进程互斥？
+进程同步的实现方式
+进程互斥的实现方式
+信号量和PV操作
+管程
+第二章">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -390,7 +405,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2k
+                    2.1k
                 </div>
                 
 
@@ -407,7 +422,24 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="第二章：处理器管理"><a href="#第二章：处理器管理" class="headerlink" title="第二章：处理器管理"></a><strong>第二章：处理器管理</strong></h1><p><a target="_blank" rel="noopener" href="https://houbb.github.io/2020/10/04/os-03-schedule">操作系统学习(3)处理机调度：调度的概念、时机、切换、过程以及调度方式和基本准则 | Echo Blog</a></p>
+                <meta name="referrer" content="no-referrer">
+
+
+<p><strong>目录</strong></p>
+<p><a href="#dyPbB">第二章：处理器管理</a></p>
+<p><a href="#j24Yd">概览</a></p>
+<p><a href="#WTiLL">进程调度的层次</a></p>
+<p><a href="#pYCho">进程的调度方式：</a></p>
+<p><a href="#BBnyp">调度的评价标准：</a></p>
+<p><a href="#Er6TJ">典型的调度算法：</a></p>
+<p><a href="#pg1lZ">第三章：同步、通信和死锁</a></p>
+<p><a href="#w5FKk">什么是进程同步？</a></p>
+<p><a href="#rcJFr">什么是进程互斥？</a></p>
+<p><a href="#ftNhX">进程同步的实现方式</a></p>
+<p><a href="#Drhyo">进程互斥的实现方式</a></p>
+<p><a href="#mbDeV">信号量和PV操作</a></p>
+<p><a href="#qAUAW">管程</a></p>
+<h1 id="第二章：处理器管理"><a href="#第二章：处理器管理" class="headerlink" title="第二章：处理器管理"></a><strong>第二章：处理器管理</strong></h1><p><a target="_blank" rel="noopener" href="https://houbb.github.io/2020/10/04/os-03-schedule">操作系统学习(3)处理机调度：调度的概念、时机、切换、过程以及调度方式和基本准则 | Echo Blog</a></p>
 <h2 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h2><p>1、指令系统和寄存器。</p>
 <p>2、特权指令和非特权指令：特权指令只能在内核态使用，非特权指令在内核态和用户态（管态和目态）都可以使用。</p>
 <p>3、内核态、用户态</p>
@@ -433,7 +465,7 @@
 <p><strong>5、时间片轮转调度算法（Round-Robin，RR）：</strong>在这种算法中，系统将所有就绪进程按到达时间的先后次序排成一个队列，进程调度程序总是选择就绪队列中第一个进程执行，即先来先服务的原则，但仅能运行一个时间片，如100ms，形成一个时间环。</p>
 <p><strong>6、多级反馈队列调度算法：</strong>它是时间片轮转调度算法和优先级调度算法的综合和发展，多个就绪队列，每个队列赋予不同的优先级，而且赋予每个队列的时间片也不相同，如第一个队列的优先级最高，时间片最短。如果是一个短作业，它在级别较高的队列就可以处理完；如果是一个长作业，第一级队列没有完成，可以转到下一个时间片更长的队列<strong>末尾</strong>，以此类推。</p>
 <h1 id="第三章：同步、通信和死锁"><a href="#第三章：同步、通信和死锁" class="headerlink" title="第三章：同步、通信和死锁"></a>第三章：同步、通信和死锁</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Shangxingya/article/details/113799732">操作系统~进程同步与进程互斥的概念和实现方式_Listen-Y的博客-CSDN博客</a></p>
-<h2 id="什么是进程同步？"><a href="#什么是进程同步？" class="headerlink" title="什么是进程同步？"></a>什么是进程同步？</h2><p><img src="https://img-blog.csdnimg.cn/img_convert/6bf12302e0c526b5e63e31f3d67167c8.png" alt="6bf12302e0c526b5e63e31f3d67167c8.png"></p>
+<h2 id="什么是进程同步？"><a href="#什么是进程同步？" class="headerlink" title="什么是进程同步？"></a>什么是进程同步？</h2><p><img src="https://img-blog.csdnimg.cn/img_convert/6bf12302e0c526b5e63e31f3d67167c8.png"></p>
 <p>请看这个管道通信的例子，显然必须先往里面写了数据之后，才可以读数据，但是读数据和写数据是异步发生的，我们不知道实际的读写数据操作谁先谁后，所以需要用进程同步来解决这种问题。</p>
 <p>同步亦称<strong>直接制约关系</strong>，它是指为完成某种任务而建立的两个或多个进程，这些进程因为需要在某些位置上协调它们的工作次序而产生的制约关系。进程间的直接制约关系就是<strong>源于它们之间的相互合作</strong>。</p>
 <h2 id="什么是进程互斥？"><a href="#什么是进程互斥？" class="headerlink" title="什么是进程互斥？"></a>什么是进程互斥？</h2><p>一句话来解释就是对共享资源（也叫临界资源）的互斥访问的控制。共享资源就是多个进程之间的需要共享的资源，在一个进程使用的时候，另外一个进程必须等待（C++中可以使用std::unique_lock<a href="std::mutex">std::mutex</a> std::lock_guard<a href="std::mutex">std::mutex</a>来实现资源的互斥锁）。</p>
@@ -829,7 +861,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">55.4k</span>
+                        class="white-color">57k</span>
             
             
             

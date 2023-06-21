@@ -5,10 +5,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="idea连接安装在虚拟机ubuntu的redis, AllenMirac">
-    <meta name="description" content="Redis的安装与开启1、Redis数据库安装过程    打开虚拟机（Ubuntu）
-2、安装 redis123$ sudo apt-get update     $ sudo apt-get install redis-server
+    <meta name="description" content="
 
-3">
+Redis的安装与开启1、Redis数据库安装过程    打开虚拟机（Ubuntu）
+2、安装 redis123$ sudo apt-get update     $ sudo apt-get install redis-server
+">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -408,7 +409,9 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Redis的安装与开启"><a href="#Redis的安装与开启" class="headerlink" title="Redis的安装与开启"></a>Redis的安装与开启</h1><h3 id="1、Redis数据库安装过程"><a href="#1、Redis数据库安装过程" class="headerlink" title="1、Redis数据库安装过程"></a>1、Redis数据库安装过程</h3><p>    打开虚拟机（Ubuntu）</p>
+                <meta name="referrer" content="no-referrer">
+
+<h1 id="Redis的安装与开启"><a href="#Redis的安装与开启" class="headerlink" title="Redis的安装与开启"></a>Redis的安装与开启</h1><h3 id="1、Redis数据库安装过程"><a href="#1、Redis数据库安装过程" class="headerlink" title="1、Redis数据库安装过程"></a>1、Redis数据库安装过程</h3><p>    打开虚拟机（Ubuntu）</p>
 <h3 id="2、安装-redis"><a href="#2、安装-redis" class="headerlink" title="2、安装 redis"></a>2、安装 redis</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get update</span><br><span class="line">     </span><br><span class="line">$ sudo apt-get install redis-server</span><br></pre></td></tr></table></figure>
 
 <h3 id="3、启动redis"><a href="#3、启动redis" class="headerlink" title="3、启动redis"></a>3、启动redis</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo service redis-server restart</span><br></pre></td></tr></table></figure>
@@ -417,20 +420,20 @@
 
 
 
-<p><img src="https://img-blog.csdnimg.cn/5ce600e5203e4b17895c781a5969d401.png" alt="5ce600e5203e4b17895c781a5969d401.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/5ce600e5203e4b17895c781a5969d401.png"></p>
 <h3 id="5、进入-redis-客户端"><a href="#5、进入-redis-客户端" class="headerlink" title="5、进入 redis 客户端"></a>5、进入 redis 客户端</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ redis-cli</span><br></pre></td></tr></table></figure>
 
-<h1 id><a href="#" class="headerlink" title></a></h1><p><img src="https://img-blog.csdnimg.cn/0b5e0f06166c48e888a0ded798a0ae33.png" alt="0b5e0f06166c48e888a0ded798a0ae33.png">
+<h1 id><a href="#" class="headerlink" title></a></h1><p><img src="https://img-blog.csdnimg.cn/0b5e0f06166c48e888a0ded798a0ae33.png">
  </p>
 <h1 id="Redis数据库Java连接"><a href="#Redis数据库Java连接" class="headerlink" title="Redis数据库Java连接"></a>Redis数据库Java连接</h1><h3 id="1、查找redis-conf文件位置"><a href="#1、查找redis-conf文件位置" class="headerlink" title="1、查找redis.conf文件位置"></a>1、查找redis.conf文件位置</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ whereis redis.conf</span><br></pre></td></tr></table></figure>
 
 <h3 id="2、修改文件配置项"><a href="#2、修改文件配置项" class="headerlink" title="2、修改文件配置项"></a>2、修改文件配置项</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> /etc/redis</span><br><span class="line">$ vim redis.conf</span><br></pre></td></tr></table></figure>
 
-<h3 id="1、注释掉bind"><a href="#1、注释掉bind" class="headerlink" title="1、注释掉bind"></a>1、注释掉bind</h3><p><img src="https://img-blog.csdnimg.cn/a41dbfca34894caa80793bc51e4936f9.png" alt="a41dbfca34894caa80793bc51e4936f9.png"></p>
+<h3 id="1、注释掉bind"><a href="#1、注释掉bind" class="headerlink" title="1、注释掉bind"></a>1、注释掉bind</h3><p><img src="https://img-blog.csdnimg.cn/a41dbfca34894caa80793bc51e4936f9.png"></p>
 <p>在56行前面加个#，注释掉 </p>
-<h3 id="2、找到protected-mode设置为no"><a href="#2、找到protected-mode设置为no" class="headerlink" title="2、找到protected-mode设置为no"></a>2、找到protected-mode设置为no</h3><p><img src="https://img-blog.csdnimg.cn/c2fdf41cd5d54ddba9e1412f17026ffa.png" alt="c2fdf41cd5d54ddba9e1412f17026ffa.png"></p>
+<h3 id="2、找到protected-mode设置为no"><a href="#2、找到protected-mode设置为no" class="headerlink" title="2、找到protected-mode设置为no"></a>2、找到protected-mode设置为no</h3><p><img src="https://img-blog.csdnimg.cn/c2fdf41cd5d54ddba9e1412f17026ffa.png"></p>
 <p>把88行最后的 yes改为no。</p>
-<h3 id="3、添加auth的密码"><a href="#3、添加auth的密码" class="headerlink" title="3、添加auth的密码"></a>3、添加auth的密码</h3><p><img src="https://img-blog.csdnimg.cn/d6029e1f6ff14dbbb72e9d3d44d06af6.png" alt="d6029e1f6ff14dbbb72e9d3d44d06af6.png"></p>
+<h3 id="3、添加auth的密码"><a href="#3、添加auth的密码" class="headerlink" title="3、添加auth的密码"></a>3、添加auth的密码</h3><p><img src="https://img-blog.csdnimg.cn/d6029e1f6ff14dbbb72e9d3d44d06af6.png"></p>
 <p>加上requirepass 123456 这一行</p>
 <h3 id="4、安装防火墙"><a href="#4、安装防火墙" class="headerlink" title="4、安装防火墙"></a>4、安装防火墙</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/RedStand/p/13228346.html#:~:text=1%EF%BC%9A%20sudo%20apt%20install%20firewalld%20%2F%2F%E5%AE%89%E8%A3%85%E9%98%B2%E7%81%AB%E5%A2%99%202%EF%BC%9Asudo%20firewall-cmd,systemctl%20reload%20firewalld%20%2F%2F%E9%87%8D%E5%90%AF%E9%98%B2%E7%81%AB%E5%A2%99%205%EF%BC%9Asudo%20firewall-cmd%20--list-all%20%2F%2F%E6%9F%A5%E7%9C%8B%E9%98%B2%E7%81%AB%E5%A2%99%E5%88%97%E8%A1%A8">Ubuntu防火墙安装与配置 - 红色立场 - 博客园</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/Adoni/p/12887983.html#:~:text=2.%E5%BC%80%E5%90%AF6379%E7%AB%AF%E5%8F%A3%20%5Broot%40vm-centos-%201%20data%5D%23%20firewall-cmd%20--zone%3D%20public,--add-port%3D%206379%20%2Ftcp%20--%20permanent%20%23%E6%98%BE%E7%A4%BA%20success%203.%E9%87%8D%E5%90%AF%E9%98%B2%E7%81%AB%E5%A2%99">Centos7开启6379端口 - 前线码农 - 博客园</a></p>
@@ -439,7 +442,7 @@
 
 <h2 id="测试文件："><a href="#测试文件：" class="headerlink" title="测试文件："></a>测试文件：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import redis.clients.jedis.Jedis;</span><br><span class="line"></span><br><span class="line">public class Main &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;哈哈黑&quot;</span>);</span><br><span class="line">        Jedis jedis=new Jedis(<span class="string">&quot;自己的虚拟机上面的地址&quot;</span>, 6379);</span><br><span class="line">        jedis.auth(<span class="string">&quot;123456&quot;</span>);</span><br><span class="line">        String v=jedis.ping();</span><br><span class="line">        System.out.println(v);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h2 id="运行结果："><a href="#运行结果：" class="headerlink" title="运行结果："></a>运行结果：</h2><p><img src="https://img-blog.csdnimg.cn/bbc8b0ff2abe4456a47f1b4183168282.png" alt="bbc8b0ff2abe4456a47f1b4183168282.png"></p>
+<h2 id="运行结果："><a href="#运行结果：" class="headerlink" title="运行结果："></a>运行结果：</h2><p><img src="https://img-blog.csdnimg.cn/bbc8b0ff2abe4456a47f1b4183168282.png"></p>
 <p>至此连接成功了，其他的操作也可以自己试一试了 </p>
 
                 
@@ -808,7 +811,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">55.4k</span>
+                        class="white-color">57k</span>
             
             
             

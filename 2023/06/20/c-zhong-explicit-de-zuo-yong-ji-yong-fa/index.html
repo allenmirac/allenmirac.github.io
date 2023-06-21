@@ -5,7 +5,15 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="C++_中explicit的作用及用法, AllenMirac">
-    <meta name="description" content="C++explicit（官网的说法）explicit specifier：explicit specifier - cppreference.com**explicit**(1)**explicit (** expression **)**">
+    <meta name="description" content="
+
+
+目录
+ C++explicit（官网的说法）
+C++explicit 清楚的说法（建议英文不好的从这里开始食用哦）
+C++explicit使用的例子（建议喜欢自己敲代码实验的从这里开始食用哦）
+总结
+C++explicit（官网的说法">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -388,7 +396,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    800
+                    860
                 </div>
                 
 
@@ -405,7 +413,15 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="C-explicit（官网的说法）"><a href="#C-explicit（官网的说法）" class="headerlink" title="C++explicit（官网的说法）"></a>C++explicit（官网的说法）</h2><p><code>explicit</code> specifier：<a target="_blank" rel="noopener" href="https://en.cppreference.com/w/cpp/language/explicit">explicit specifier - cppreference.com</a><br><code>**explicit**</code>(1)<code>**explicit (**</code> expression <code>**)**</code>(2)(since C++20)<br>expression-<a target="_blank" rel="noopener" href="https://en.cppreference.com/w/cpp/language/constant_expression#Converted_constant_expression">contextually converted constant expression of type bool</a></p>
+                <meta name="referrer" content="no-referrer">
+
+
+<p><strong>目录</strong></p>
+<p><a href="#%C2%A0C++explicit%EF%BC%88%E5%AE%98%E7%BD%91%E7%9A%84%E8%AF%B4%E6%B3%95%EF%BC%89"> C++explicit（官网的说法）</a></p>
+<p><a href="#C++explicit%20%E6%B8%85%E6%A5%9A%E7%9A%84%E8%AF%B4%E6%B3%95%EF%BC%88%E5%BB%BA%E8%AE%AE%E8%8B%B1%E6%96%87%E4%B8%8D%E5%A5%BD%E7%9A%84%E4%BB%8E%E8%BF%99%E9%87%8C%E5%BC%80%E5%A7%8B%E9%A3%9F%E7%94%A8%E5%93%A6%EF%BC%89">C++explicit 清楚的说法（建议英文不好的从这里开始食用哦）</a></p>
+<p><a href="#C++explicit%E4%BD%BF%E7%94%A8%E7%9A%84%E4%BE%8B%E5%AD%90%EF%BC%88%E5%BB%BA%E8%AE%AE%E5%96%9C%E6%AC%A2%E8%87%AA%E5%B7%B1%E6%95%B2%E4%BB%A3%E7%A0%81%E5%AE%9E%E9%AA%8C%E7%9A%84%E4%BB%8E%E8%BF%99%E9%87%8C%E5%BC%80%E5%A7%8B%E9%A3%9F%E7%94%A8%E5%93%A6%EF%BC%89">C++explicit使用的例子（建议喜欢自己敲代码实验的从这里开始食用哦）</a></p>
+<p><a href="#%E6%80%BB%E7%BB%93">总结</a></p>
+<h2 id="C-explicit（官网的说法）"><a href="#C-explicit（官网的说法）" class="headerlink" title="C++explicit（官网的说法）"></a>C++explicit（官网的说法）</h2><p><code>explicit</code> specifier：<a target="_blank" rel="noopener" href="https://en.cppreference.com/w/cpp/language/explicit">explicit specifier - cppreference.com</a><br><code>**explicit**</code>(1)<code>**explicit (**</code> expression <code>**)**</code>(2)(since C++20)<br>expression-<a target="_blank" rel="noopener" href="https://en.cppreference.com/w/cpp/language/constant_expression#Converted_constant_expression">contextually converted constant expression of type bool</a></p>
 <ol>
 <li>Specifies that a constructor or conversion function (since C++11) or deduction guide (since C++17) is explicit, that is, it cannot be used for implicit conversions and copy-initialization.</li>
 </ol>
@@ -425,9 +441,11 @@
 
 
 <p>上面三行的报错信息：（这个是我原来在另外一个账号写的博客，现在账号转移到这个了）</p>
-<p><img src="https://img-blog.csdnimg.cn/597541d462a9453d918bbb4657e54c68.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5aSc54yr56iL5bqP54y_,size_16,color_FFFFFF,t_70,g_se,x_16" alt="597541d462a9453d918bbb4657e54c68.png"></p>
-<p><img src="https://img-blog.csdnimg.cn/ea541e17239346b9abf52c487615d072.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5aSc54yr56iL5bqP54y_,size_17,color_FFFFFF,t_70,g_se,x_16" alt="ea541e17239346b9abf52c487615d072.png"></p>
-<p><img src="https://img-blog.csdnimg.cn/583c79b46bd24c49953bb1a84ba525b1.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5aSc54yr56iL5bqP54y_,size_14,color_FFFFFF,t_70,g_se,x_16" alt="583c79b46bd24c49953bb1a84ba525b1.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/597541d462a9453d918bbb4657e54c68.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5aSc54yr56iL5bqP54y_,size_16,color_FFFFFF,t_70,g_se,x_16"></p>
+<p><img src="https://img-blog.csdnimg.cn/ea541e17239346b9abf52c487615d072.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5aSc54yr56iL5bqP54y_,size_17,color_FFFFFF,t_70,g_se,x_16">
+ </p>
+<p><img src="https://img-blog.csdnimg.cn/583c79b46bd24c49953bb1a84ba525b1.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5aSc54yr56iL5bqP54y_,size_14,color_FFFFFF,t_70,g_se,x_16">
+  </p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p> explicit可以抑制内置类型隐式转换，所以在类的构造函数中，最好尽可能多用explicit关键字，防止不必要的隐式转换。  </p>
 
                 
@@ -796,7 +814,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">55.4k</span>
+                        class="white-color">57k</span>
             
             
             
