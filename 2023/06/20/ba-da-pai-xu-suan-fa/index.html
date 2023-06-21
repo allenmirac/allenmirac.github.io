@@ -569,70 +569,70 @@ const int BUCKET_NUM &#x3D; 10;&#x2F;&#x2F; 桶的个数
  *链表结构体
  *&#x2F;
 struct ListNode&#123;
-  explicit ListNode(int i&#x3D;0):mData(i),mNext(NULL)&#123;&#125;
-  ListNode* mNext;
-  int mData;
+	explicit ListNode(int i&#x3D;0):mData(i),mNext(NULL)&#123;&#125;
+	ListNode* mNext;
+	int mData;
 &#125;;
 
 &#x2F;**
  * 插入的时候是有序的，返回值是头节点
  *&#x2F;
 ListNode* insert(ListNode* head,int val)&#123;
-  ListNode dummyNode;
-  ListNode *newNode &#x3D; new ListNode(val);
-  ListNode *pre,*curr;
-  dummyNode.mNext &#x3D; head;
-  pre &#x3D; &amp;dummyNode;
-  curr &#x3D; head;
-  while(NULL!&#x3D;curr &amp;&amp; curr-&gt;mData&lt;&#x3D;val)&#123;
-    pre &#x3D; curr;
-    curr &#x3D; curr-&gt;mNext;
-  &#125;
-  newNode-&gt;mNext &#x3D; curr;
-  pre-&gt;mNext &#x3D; newNode;
-  return dummyNode.mNext;
+	ListNode dummyNode;
+	ListNode *newNode &#x3D; new ListNode(val);
+	ListNode *pre,*curr;
+	dummyNode.mNext &#x3D; head;
+	pre &#x3D; &amp;dummyNode;
+	curr &#x3D; head;
+	while(NULL!&#x3D;curr &amp;&amp; curr-&gt;mData&lt;&#x3D;val)&#123;
+		pre &#x3D; curr;
+		curr &#x3D; curr-&gt;mNext;
+	&#125;
+	newNode-&gt;mNext &#x3D; curr;
+	pre-&gt;mNext &#x3D; newNode;
+	return dummyNode.mNext;
 &#125;
 
 &#x2F;**
  * 将两个链表合并，合并后仍然保持有序
   *&#x2F;
 ListNode* Merge(ListNode *head1,ListNode *head2)&#123;
-  ListNode dummyNode;
-  ListNode *dummy &#x3D; &amp;dummyNode;
-  while(NULL!&#x3D;head1 &amp;&amp; NULL!&#x3D;head2)&#123;
-    if(head1-&gt;mData &lt;&#x3D; head2-&gt;mData)&#123;
-      dummy-&gt;mNext &#x3D; head1;
-      head1 &#x3D; head1-&gt;mNext;
-    &#125;else&#123;
-      dummy-&gt;mNext &#x3D; head2;
-      head2 &#x3D; head2-&gt;mNext;
-    &#125;
-    dummy &#x3D; dummy-&gt;mNext;
-  &#125;
-  if(NULL!&#x3D;head1) dummy-&gt;mNext &#x3D; head1;
-  if(NULL!&#x3D;head2) dummy-&gt;mNext &#x3D; head2;
-  
-  return dummyNode.mNext;
+	ListNode dummyNode;
+	ListNode *dummy &#x3D; &amp;dummyNode;
+	while(NULL!&#x3D;head1 &amp;&amp; NULL!&#x3D;head2)&#123;
+		if(head1-&gt;mData &lt;&#x3D; head2-&gt;mData)&#123;
+			dummy-&gt;mNext &#x3D; head1;
+			head1 &#x3D; head1-&gt;mNext;
+		&#125;else&#123;
+			dummy-&gt;mNext &#x3D; head2;
+			head2 &#x3D; head2-&gt;mNext;
+		&#125;
+		dummy &#x3D; dummy-&gt;mNext;
+	&#125;
+	if(NULL!&#x3D;head1) dummy-&gt;mNext &#x3D; head1;
+	if(NULL!&#x3D;head2) dummy-&gt;mNext &#x3D; head2;
+	
+	return dummyNode.mNext;
 &#125;
 
 &#x2F;**
  * 桶排序主体部分
  *&#x2F;
 void BucketSort(int n,int arr[])&#123;
-  vector&lt;ListNode*&gt; buckets(BUCKET_NUM,(ListNode*)(0));&#x2F;&#x2F; 存的是每个桶的头节点，一个桶相当于是一个有序链表
-  for(int i&#x3D;0;i&lt;n;++i)&#123;
-    int index &#x3D; arr[i]&#x2F;BUCKET_NUM; &#x2F;&#x2F; 看要将数据放在哪个桶里面
-    ListNode *head &#x3D; buckets.at(index);&#x2F;&#x2F; 局部变量
-    buckets.at(index) &#x3D; insert(head,arr[i]);&#x2F;&#x2F; 插入桶中
-  &#125;
-  ListNode *head &#x3D; buckets.at(0); &#x2F;&#x2F; 初始值是第0个桶
-  for(int i&#x3D;1;i&lt;BUCKET_NUM;++i)&#123;
-    head &#x3D; Merge(head,buckets.at(i)); &#x2F;&#x2F; 将两个桶合并
-  &#125;
-  for(int i&#x3D;0;i&lt;n;++i)&#123;
-    arr[i] &#x3D; head-&gt;mData;
-    head &#x3D; head-&gt;mNext;
-  &#125;
+	vector&lt;ListNode*&gt; buckets(BUCKET_NUM,(ListNode*)(0));&#x2F;&#x2F; 存的是每个桶的头节点，一个桶相当于是一个有序链表
+	for(int i&#x3D;0;i&lt;n;++i)&#123;
+		int index &#x3D; arr[i]&#x2F;BUCKET_NUM; &#x2F;&#x2F; 看要将数据放在哪个桶里面
+		ListNode *head &#x3D; buckets.at(index);&#x2F;&#x2F; 局部变量
+		buckets.at(index) &#x3D; insert(head,arr[i]);&#x2F;&#x2F; 插入桶中
+	&#125;
+	ListNode *head &#x3D; buckets.at(0); &#x2F;&#x2F; 初始值是第0个桶
+	for(int i&#x3D;1;i&lt;BUCKET_NUM;++i)&#123;
+		head &#x3D; Merge(head,buckets.at(i)); &#x2F;&#x2F; 将两个桶合并
+	&#125;
+	for(int i&#x3D;0;i&lt;n;++i)&#123;
+		arr[i] &#x3D; head-&gt;mData;
+		head &#x3D; head-&gt;mNext;
+	&#125;
 &#125;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 

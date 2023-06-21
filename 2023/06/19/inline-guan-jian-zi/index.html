@@ -427,21 +427,21 @@ inline关键字在函数声明和定义加上，使之称为内联函数。如�
 <span class="token keyword">class</span> <span class="token class-name">Person</span>
 <span class="token punctuation">&#123;</span>
 <span class="token keyword">public</span><span class="token operator">:</span>
-  <span class="token keyword">inline</span> <span class="token keyword">void</span> <span class="token function">display</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  string name<span class="token punctuation">;</span>
+	<span class="token keyword">inline</span> <span class="token keyword">void</span> <span class="token function">display</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	string name<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
  
 <span class="token keyword">inline</span> <span class="token keyword">void</span> <span class="token class-name">Person</span><span class="token double-colon punctuation">::</span><span class="token function">display</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token punctuation">&#123;</span>
-  cout <span class="token operator">&lt;&lt;</span> <span class="token string">"name:"</span> <span class="token operator">&lt;&lt;</span> name <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+	cout <span class="token operator">&lt;&lt;</span> <span class="token string">"name:"</span> <span class="token operator">&lt;&lt;</span> name <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span>
  
 <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token punctuation">&#123;</span>
-  Person person<span class="token punctuation">;</span>
-  person<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">"Erin"</span><span class="token punctuation">;</span>
-  person<span class="token punctuation">.</span><span class="token function">display</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+	Person person<span class="token punctuation">;</span>
+	person<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">"Erin"</span><span class="token punctuation">;</span>
+	person<span class="token punctuation">.</span><span class="token function">display</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span>
 <span class="token comment">//如果将display直接在类内定义，会被自动关联为inline函数</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 

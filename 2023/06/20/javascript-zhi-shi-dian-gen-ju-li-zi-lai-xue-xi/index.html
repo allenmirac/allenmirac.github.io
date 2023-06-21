@@ -8,12 +8,12 @@
     <meta name="description" content="
 
 立即执行函数(function()&amp;#123;
-  document.write(&#34;通常将匿名函数与事件处理程序一起使用&#34;)
+	document.write(&#34;通常将匿名函数与事件处理程序一起使用&#34;)
 &amp;#125;)();
 
 
 input标签、rowspan&amp;lt;!DOCTYPE html&amp;gt;
-&amp;lt;h">
+&amp;lt;ht">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -419,7 +419,7 @@ input标签、rowspan&amp;lt;!DOCTYPE html&amp;gt;
                 <meta name="referrer" content="no-referrer">
 
 <h2 id="立即执行函数"><a href="#立即执行函数" class="headerlink" title="立即执行函数"></a>立即执行函数</h2><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token punctuation">(</span><span class="token function">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-  document<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token string">"通常将匿名函数与事件处理程序一起使用"</span><span class="token punctuation">)</span>
+	document<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token string">"通常将匿名函数与事件处理程序一起使用"</span><span class="token punctuation">)</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
@@ -556,69 +556,69 @@ input标签、rowspan&amp;lt;!DOCTYPE html&amp;gt;
 <h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><pre class="line-numbers language-none"><code class="language-none">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
-  &lt;meta charset&#x3D;&quot;utf-8&quot;&gt;
-  &lt;title&gt;&lt;&#x2F;title&gt;
+	&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;
+	&lt;title&gt;&lt;&#x2F;title&gt;
 &lt;&#x2F;head&gt;
 &lt;body&gt;
-  函数
-  1、函数定义 与调用
-  2、函数参数 、arguments
-  3、return 返回值 结束
-  4、作用域  ：全局变量 、局部变量&lt;br&gt;
-  &lt;button name&#x3D;&quot;button&quot; id&#x3D;&#39;btn1&#39;&gt;点击&lt;&#x2F;button&gt;&lt;br&gt;&lt;br&gt;
-  &lt;script&gt;
-    &#x2F;&#x2F;1 定义 方法1 
-    &#x2F;&#x2F; document.write(&quot;123&quot;);
-    &#x2F;&#x2F;方法2  函数表达式  (匿名函数)
-    var w&#x3D;function()&#123;
-      document.write(&quot;通常将匿名函数与事件处理程序一起使用&quot;)
-    &#125;
-    &#x2F;&#x2F; w();
-    &#x2F;&#x2F; document.write(&quot;123&quot;)
-    &#x2F;&#x2F;通常将匿名函数与事件处理程序一起使用
-    btn1.onlick&#x3D;function()&#123;
-      w();
-    &#125;;
-    &#x2F;&#x2F;自调用函数-立即执行函数
-    (function()&#123;
-      document.write(&quot;通常将匿名函数与事件处理程序一起使用&quot;)
-    &#125;)();
-    document.write(&quot;&lt;br&gt;&quot;)
-    &#x2F;&#x2F;2 函数参数  直接写形参名字
-    function write(name1, name)&#123;
-      document.write(&quot;hello,&quot;+name1+&quot;&lt;br&gt;&quot;);
-      document.write(&quot;hello,&quot;+name+&quot;&lt;br&gt;&quot;);
-    &#125;
-    write(123,23)
-    
-    &#x2F;&#x2F;实参个数多于形参:只出现前面的
-    &#x2F;&#x2F; write(1,2,3,4)
-    &#x2F;&#x2F;实参少于形参:出现undefined
-    &#x2F;&#x2F; write(123)
-    &#x2F;&#x2F; arguments 对象
-    &#x2F;&#x2F; 函数有一个名为 arguments 的内置对象。实参赋给形参使用这个参数来接收.
-    &#x2F;&#x2F;arguments 对象类似于数组的结构（可以遍历，可以用下标访问）。
-    &#x2F;&#x2F;如果函数调用的参数太多，则可以使用 arguments 对象来得到这些参数。
-    function f(a, b)&#123;
-      &#x2F;&#x2F; document.write(arguments.length+&quot;&lt;br&gt;&quot;)
-      &#x2F;&#x2F; document.write(arguments[0]+&quot;&lt;br&gt;&quot;)
-      &#x2F;&#x2F; document.write(arguments[1]+&quot;&lt;br&gt;&quot;)
-      &#x2F;&#x2F; document.write(arguments[3])
-      var max&#x3D;arguments[0]
-      for(var i&#x3D;1; i&lt;arguments.length; i++)&#123;
-        if(arguments[i]&gt;max)
-          max&#x3D;arguments[i]
-      &#125;
-      document.write(max)
-    &#125;
-    f(1,2,234,3)
-    document.write(&quot;&lt;br&gt;&quot;)
-    var m &#x3D; new Map([[1, &#39;x&#39;], [2, &#39;y&#39;], [3, &#39;z&#39;]]);
-    m.forEach(function (value, key, map) &#123;
-      document.write(value+key+map+&quot;&lt;br&gt;&quot;);
-    &#125;);
-  &lt;&#x2F;script&gt;
-  
+	函数
+	1、函数定义 与调用
+	2、函数参数 、arguments
+	3、return 返回值 结束
+	4、作用域  ：全局变量 、局部变量&lt;br&gt;
+	&lt;button name&#x3D;&quot;button&quot; id&#x3D;&#39;btn1&#39;&gt;点击&lt;&#x2F;button&gt;&lt;br&gt;&lt;br&gt;
+	&lt;script&gt;
+		&#x2F;&#x2F;1 定义 方法1 
+		&#x2F;&#x2F; document.write(&quot;123&quot;);
+		&#x2F;&#x2F;方法2  函数表达式  (匿名函数)
+		var w&#x3D;function()&#123;
+			document.write(&quot;通常将匿名函数与事件处理程序一起使用&quot;)
+		&#125;
+		&#x2F;&#x2F; w();
+		&#x2F;&#x2F; document.write(&quot;123&quot;)
+		&#x2F;&#x2F;通常将匿名函数与事件处理程序一起使用
+		btn1.onlick&#x3D;function()&#123;
+			w();
+		&#125;;
+		&#x2F;&#x2F;自调用函数-立即执行函数
+		(function()&#123;
+			document.write(&quot;通常将匿名函数与事件处理程序一起使用&quot;)
+		&#125;)();
+		document.write(&quot;&lt;br&gt;&quot;)
+		&#x2F;&#x2F;2 函数参数  直接写形参名字
+		function write(name1, name)&#123;
+			document.write(&quot;hello,&quot;+name1+&quot;&lt;br&gt;&quot;);
+			document.write(&quot;hello,&quot;+name+&quot;&lt;br&gt;&quot;);
+		&#125;
+		write(123,23)
+		
+		&#x2F;&#x2F;实参个数多于形参:只出现前面的
+		&#x2F;&#x2F; write(1,2,3,4)
+		&#x2F;&#x2F;实参少于形参:出现undefined
+		&#x2F;&#x2F; write(123)
+		&#x2F;&#x2F; arguments 对象
+		&#x2F;&#x2F; 函数有一个名为 arguments 的内置对象。实参赋给形参使用这个参数来接收.
+		&#x2F;&#x2F;arguments 对象类似于数组的结构（可以遍历，可以用下标访问）。
+		&#x2F;&#x2F;如果函数调用的参数太多，则可以使用 arguments 对象来得到这些参数。
+		function f(a, b)&#123;
+			&#x2F;&#x2F; document.write(arguments.length+&quot;&lt;br&gt;&quot;)
+			&#x2F;&#x2F; document.write(arguments[0]+&quot;&lt;br&gt;&quot;)
+			&#x2F;&#x2F; document.write(arguments[1]+&quot;&lt;br&gt;&quot;)
+			&#x2F;&#x2F; document.write(arguments[3])
+			var max&#x3D;arguments[0]
+			for(var i&#x3D;1; i&lt;arguments.length; i++)&#123;
+				if(arguments[i]&gt;max)
+					max&#x3D;arguments[i]
+			&#125;
+			document.write(max)
+		&#125;
+		f(1,2,234,3)
+		document.write(&quot;&lt;br&gt;&quot;)
+		var m &#x3D; new Map([[1, &#39;x&#39;], [2, &#39;y&#39;], [3, &#39;z&#39;]]);
+		m.forEach(function (value, key, map) &#123;
+			document.write(value+key+map+&quot;&lt;br&gt;&quot;);
+		&#125;);
+	&lt;&#x2F;script&gt;
+	
 &lt;&#x2F;body&gt;
 &lt;&#x2F;html&gt;
 
@@ -626,56 +626,56 @@ input标签、rowspan&amp;lt;!DOCTYPE html&amp;gt;
 
 <h2 id="变量作用域"><a href="#变量作用域" class="headerlink" title="变量作用域"></a>变量作用域</h2><pre class="line-numbers language-none"><code class="language-none">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
-  &lt;head&gt;
-    &lt;meta charset&#x3D;&quot;utf-8&quot;&gt;
-    &lt;title&gt;&lt;&#x2F;title&gt;
-  &lt;&#x2F;head&gt;
-  &lt;body&gt;
-    JavaScript 中，变量的作用域有 全局作用域 和 局部作用域 两种。
-    1、全局变量   函数外定义的变量   没有用 var定义的变量(let)   window对象定义的变量(window.c&#x3D;1)
-    2、局部变量  函数内用var定义的变量  
-                形参
-    变量的生命周期
-      全局变量活得和您的应用程序（窗口、网页）一样久。
-      局部变量活得不长。它们在函数调用时创建，在函数完成后被删除。			
-    &lt;script&gt;			
-      &#x2F;&#x2F;1  全局变量
-      
-      var str1&#x3D;&quot; 1我是全局&quot;
-      document.write(str1)
-      
-      function fn1()&#123;
-        var str2&#x3D;&quot;我是局部&quot;  &#x2F;&#x2F;2  局部变量  使用var在函数内部定义的变量
-        let s&#x3D;&quot;123&quot;
-      &#125;
-      fn1();
-      console.log(str1);
-      &#x2F;&#x2F; console.log(s);
-      &#x2F;&#x2F;6  以下程序运行结果是:
-      &#x2F;&#x2F;对Js而言，只要变量是在同一个范围（函数）里，就视为已经声明，
-      &#x2F;&#x2F;哪怕是在变量声明前就使用
-      &#x2F;*	 var num1&#x3D;10;
-        function fn2()&#123;
+	&lt;head&gt;
+		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;
+		&lt;title&gt;&lt;&#x2F;title&gt;
+	&lt;&#x2F;head&gt;
+	&lt;body&gt;
+		JavaScript 中，变量的作用域有 全局作用域 和 局部作用域 两种。
+		1、全局变量   函数外定义的变量   没有用 var定义的变量(let)   window对象定义的变量(window.c&#x3D;1)
+		2、局部变量  函数内用var定义的变量  
+		            形参
+		变量的生命周期
+			全局变量活得和您的应用程序（窗口、网页）一样久。
+			局部变量活得不长。它们在函数调用时创建，在函数完成后被删除。			
+		&lt;script&gt;			
+			&#x2F;&#x2F;1  全局变量
+			
+			var str1&#x3D;&quot; 1我是全局&quot;
+			document.write(str1)
+			
+			function fn1()&#123;
+				var str2&#x3D;&quot;我是局部&quot;  &#x2F;&#x2F;2  局部变量  使用var在函数内部定义的变量
+				let s&#x3D;&quot;123&quot;
+			&#125;
+			fn1();
+			console.log(str1);
+			&#x2F;&#x2F; console.log(s);
+			&#x2F;&#x2F;6  以下程序运行结果是:
+			&#x2F;&#x2F;对Js而言，只要变量是在同一个范围（函数）里，就视为已经声明，
+			&#x2F;&#x2F;哪怕是在变量声明前就使用
+			&#x2F;*	 var num1&#x3D;10;
+				function fn2()&#123;
 
-          &#x2F;&#x2F;因为num1是局部的 fn1内部的。所以提升到fn1函数最前面声明
-          console.log(num1);&#x2F;&#x2F;输出？undefined
+					&#x2F;&#x2F;因为num1是局部的 fn1内部的。所以提升到fn1函数最前面声明
+					console.log(num1);&#x2F;&#x2F;输出？undefined
 
-          var num1&#x3D;20;
-        &#125;
+					var num1&#x3D;20;
+				&#125;
 
-      fn2()*&#x2F;
+			fn2()*&#x2F;
 
-      var a&#x3D;&quot;1111&quot;
-      function fn3()&#123;				
-        console.log(a);
-        var a&#x3D;&quot;2222&quot;
-        console.log(a);					
-      &#125;
-      fn3();
-      
-    &lt;&#x2F;script&gt;
+			var a&#x3D;&quot;1111&quot;
+			function fn3()&#123;				
+				console.log(a);
+				var a&#x3D;&quot;2222&quot;
+				console.log(a);					
+			&#125;
+			fn3();
+			
+		&lt;&#x2F;script&gt;
 
-  &lt;&#x2F;body&gt;
+	&lt;&#x2F;body&gt;
 &lt;&#x2F;html&gt;
 
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
@@ -684,61 +684,61 @@ input标签、rowspan&amp;lt;!DOCTYPE html&amp;gt;
 &lt;html&gt;
 
 &lt;head&gt;
-  &lt;meta charset&#x3D;&quot;utf-8&quot;&gt;
-  &lt;title&gt;&lt;&#x2F;title&gt;
+	&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;
+	&lt;title&gt;&lt;&#x2F;title&gt;
 &lt;&#x2F;head&gt;
 
 &lt;body&gt;
-  查找元素方法：
-  1 通过 id 查找元素&lt;br&gt;
-  &lt;p id&#x3D;&quot;intro&quot;&gt;Hello!&lt;&#x2F;p&gt;&lt;button name&#x3D;&quot;button&quot; id&#x3D;&#39;btn0&#39;&gt;确定&lt;&#x2F;button&gt;
-  &lt;script&gt;
-    var p &#x3D; document.getElementById(&quot;para&quot;);
-    &#x2F;&#x2F; document.write();
-    var btn0 &#x3D; document.getElementById(&quot;btn0&quot;);
-    btn0.click &#x3D; function () &#123;
-      document.write(&quot;nihao&quot;);
-    &#125;
-  &lt;&#x2F;script&gt;
-  &lt;hr&gt;
-  2、通过标签名查找元素&lt;br&gt;
+	查找元素方法：
+	1 通过 id 查找元素&lt;br&gt;
+	&lt;p id&#x3D;&quot;intro&quot;&gt;Hello!&lt;&#x2F;p&gt;&lt;button name&#x3D;&quot;button&quot; id&#x3D;&#39;btn0&#39;&gt;确定&lt;&#x2F;button&gt;
+	&lt;script&gt;
+		var p &#x3D; document.getElementById(&quot;para&quot;);
+		&#x2F;&#x2F; document.write();
+		var btn0 &#x3D; document.getElementById(&quot;btn0&quot;);
+		btn0.click &#x3D; function () &#123;
+			document.write(&quot;nihao&quot;);
+		&#125;
+	&lt;&#x2F;script&gt;
+	&lt;hr&gt;
+	2、通过标签名查找元素&lt;br&gt;
 
-  &lt;ul&gt;
-    &lt;li&gt;【#回应何时开学#】&lt;&#x2F;li&gt;
-    &lt;li&gt;【#回应何时开学#】&lt;&#x2F;li&gt;
-    &lt;li&gt;【#回应何时开学#】&lt;&#x2F;li&gt;
-    &lt;li&gt;【#回应何时开学#】&lt;&#x2F;li&gt;
-    &lt;li&gt;【#回应何时开学#】&lt;&#x2F;li&gt;
-    &lt;li&gt;【#回应何时开学#】&lt;&#x2F;li&gt;
-  &lt;&#x2F;ul&gt;
-  &lt;script&gt;
-    var lis &#x3D; document.getElementsByTagName(&#39;li&#39;);
-    console.log(lis);
-    for (var i &#x3D; 0; i &lt; lis.length; i++) &#123;
-      if (i % 2 &#x3D;&#x3D; 0) &#123;
-        lis[i].style.background &#x3D; &quot;blue&quot;;
-      &#125;
-    &#125;
-  &lt;&#x2F;script&gt;
-  &lt;hr&gt;
-  3 html5新增的 通过 CSS 选择器查找 HTML 元素:&lt;br&gt;
-  querySelectorAll() 方法 :查找匹配指定 CSS 选择器（id、类名、标签等）的所有 HTML 元素&lt;br&gt;
-  querySelector() 方法 :查找匹配指定 CSS 选择器的第一个 HTML 元素&lt;br&gt;
-  &lt;p id&#x3D;&quot;p1&quot;&gt;Hello!&lt;&#x2F;p&gt;
-  &lt;button name&#x3D;&quot;button&quot; id&#x3D;&#39;btn1&#39;&gt;确定&lt;&#x2F;button&gt;
-  &lt;p class&#x3D;&quot;imp&quot;&gt;Hello!&lt;&#x2F;p&gt;
-  &lt;p class&#x3D;&quot;imp&quot;&gt;world!&lt;&#x2F;p&gt;
-  &lt;script&gt;
-    &#x2F;&#x2F;querySelectorAll() 方法  获得class为imp的元素   .不能少
-    var p1 &#x3D; document.querySelectorAll(&#39;.imp&#39;)
-    console.log(p1)
-    &#x2F;&#x2F;querySelector（）方法   获得id为btn1的元素 #不能少
-    var p2 &#x3D; document.querySelector(&#39;#btn1&#39;)
-    console.log(p2)
-    var ps &#x3D; document.querySelectorAll(&quot;.imp&quot;);
-    console.log(ps);
-    ps[1].innerHTML &#x3D; &quot;123456789&quot;;
-  &lt;&#x2F;script&gt;
+	&lt;ul&gt;
+		&lt;li&gt;【#回应何时开学#】&lt;&#x2F;li&gt;
+		&lt;li&gt;【#回应何时开学#】&lt;&#x2F;li&gt;
+		&lt;li&gt;【#回应何时开学#】&lt;&#x2F;li&gt;
+		&lt;li&gt;【#回应何时开学#】&lt;&#x2F;li&gt;
+		&lt;li&gt;【#回应何时开学#】&lt;&#x2F;li&gt;
+		&lt;li&gt;【#回应何时开学#】&lt;&#x2F;li&gt;
+	&lt;&#x2F;ul&gt;
+	&lt;script&gt;
+		var lis &#x3D; document.getElementsByTagName(&#39;li&#39;);
+		console.log(lis);
+		for (var i &#x3D; 0; i &lt; lis.length; i++) &#123;
+			if (i % 2 &#x3D;&#x3D; 0) &#123;
+				lis[i].style.background &#x3D; &quot;blue&quot;;
+			&#125;
+		&#125;
+	&lt;&#x2F;script&gt;
+	&lt;hr&gt;
+	3 html5新增的 通过 CSS 选择器查找 HTML 元素:&lt;br&gt;
+	querySelectorAll() 方法 :查找匹配指定 CSS 选择器（id、类名、标签等）的所有 HTML 元素&lt;br&gt;
+	querySelector() 方法 :查找匹配指定 CSS 选择器的第一个 HTML 元素&lt;br&gt;
+	&lt;p id&#x3D;&quot;p1&quot;&gt;Hello!&lt;&#x2F;p&gt;
+	&lt;button name&#x3D;&quot;button&quot; id&#x3D;&#39;btn1&#39;&gt;确定&lt;&#x2F;button&gt;
+	&lt;p class&#x3D;&quot;imp&quot;&gt;Hello!&lt;&#x2F;p&gt;
+	&lt;p class&#x3D;&quot;imp&quot;&gt;world!&lt;&#x2F;p&gt;
+	&lt;script&gt;
+		&#x2F;&#x2F;querySelectorAll() 方法  获得class为imp的元素   .不能少
+		var p1 &#x3D; document.querySelectorAll(&#39;.imp&#39;)
+		console.log(p1)
+		&#x2F;&#x2F;querySelector（）方法   获得id为btn1的元素 #不能少
+		var p2 &#x3D; document.querySelector(&#39;#btn1&#39;)
+		console.log(p2)
+		var ps &#x3D; document.querySelectorAll(&quot;.imp&quot;);
+		console.log(ps);
+		ps[1].innerHTML &#x3D; &quot;123456789&quot;;
+	&lt;&#x2F;script&gt;
 &lt;&#x2F;body&gt;
 
 &lt;&#x2F;html&gt;
@@ -747,175 +747,175 @@ input标签、rowspan&amp;lt;!DOCTYPE html&amp;gt;
 <h2 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h2><pre class="line-numbers language-none"><code class="language-none">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
-  &lt;meta charset&#x3D;&quot;utf-8&quot;&gt;
-  &lt;title&gt;面向对象&lt;&#x2F;title&gt;
+	&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;
+	&lt;title&gt;面向对象&lt;&#x2F;title&gt;
 &lt;&#x2F;head&gt;
 &lt;body&gt;
-  1、什么是JavaScript对象？
-    对象是有(属性)和(方法)的集合。
-  2、创建对象的三种方式：&lt;br&gt;
-  01、使用new object()方式
-  &lt;script&gt;
-    &#x2F;&#x2F;创建
-    var person &#x3D; new Object();
-    &#x2F;&#x2F; console.log(person)
-    &#x2F;&#x2F; console.log(typeof(person))
-    &#x2F;&#x2F;设置属性和方法 
-    person.name&#x3D;&quot;123&quot;
-    person.age &#x3D; 18;
-    &#x2F;&#x2F;设置方法 
-    person.say&#x3D;function()&#123;
-      console.log(&quot;say&quot;)
-    &#125;
-    &#x2F;&#x2F;访问属性
-    &#x2F;&#x2F; console.log(person.name)
-    &#x2F;&#x2F; console.log(person.age)		
-    &#x2F;&#x2F;调用方法
-    &#x2F;&#x2F; person.say()
-  &lt;&#x2F;script&gt;
-  &lt;br&gt; 
-  01 使用字面量定义
-  var 对象&#x3D;&#123;
-    &#x2F;&#x2F;键值对的形式  键 属性名 ：值 属性值，
-    属性名 ：值，
-    &#x2F;&#x2F;方法 冒号后面跟着一个匿名函数。
-    方法:function()&#123;
-      
-    &#125;
-  &#125;
-  &lt;script&gt;
-    var person &#x3D; &#123;
-      name:&quot;123&quot;,
-      age:123,
-      say:function()&#123;
-        console.log(&quot;say&quot;)
-      &#125;
-    &#125;
-    &#x2F;&#x2F; person.say()
-  &lt;&#x2F;script&gt;
-  &lt;br&gt;
-  3、使用自定义的构造函数声明多个类型特点一致的对象
-  &#x2F;&#x2F;构造函数的语法格式：
-  &#x2F;&#x2F; function 构造函数名()&#123;
-  &#x2F;&#x2F; 	this.属性&#x3D;值;
-  &#x2F;&#x2F; 	this.方法&#x3D;function()&#123;&#125;
-  &#x2F;&#x2F; &#125;
-  &#x2F;&#x2F;new 构造函数名(); 函数名首字母要大写
-  &lt;script&gt;
-    &#x2F;&#x2F;1创建构造函数
-    function Person(name, age)&#123;
-      &#x2F;&#x2F; console.log(this);
-      this.name &#x3D; name;
-      this.age &#x3D; age;
-      this.say&#x3D;function()&#123;
-        console.log(&quot;say&quot;)
-      &#125;
-    &#125;
-    &#x2F;&#x2F;2通过构造函数new对象
-    var p1 &#x3D; new Person(&quot;hzy&quot;, 18)
-    var p2 &#x3D; new Person(&quot;hhh&quot;, 21)
-    &#x2F;&#x2F; console.log(p1.say())
-    &#x2F;&#x2F; p2.say()
-    &#x2F;&#x2F;3属性访问访问2:[&#39;属性名&#39;]
-    &#x2F;&#x2F; console.log(p1[&#39;name&#39;])
-    &#x2F;&#x2F;01什么时候 必须用[&#39;属性名&#39;]
-    &#x2F;&#x2F;属性名里包含特殊字符:
-    var obj&#x3D;&#123;	&#125;
-    obj[&#39;content-type&#39;]&#x3D;&#39;text&#x2F;css&#39;
-    &#x2F;&#x2F; obj.c-c&#x3D;&#39;123&#39;&#x2F;&#x2F;错误
-    &#x2F;&#x2F;属性名不确定
-    var Name&#x3D;&#39;123&#39;
-    obj.Name&#x3D;20;
-    &#x2F;&#x2F; console.log(obj.Name)
-    &#x2F;&#x2F; for in 遍历属性
-    &#x2F;&#x2F;for(变量 in 对象)&#123;
-    &#x2F;&#x2F;&#125;
-    &#x2F;&#x2F; for(var i in obj)&#123;
-      &#x2F;&#x2F; console.log(&#39;&#x3D;&#x3D;&#x3D;&#x3D;&#39;, i, obj.i)&#x2F;&#x2F;undefine
-      &#x2F;&#x2F; console.log(&#39;&#x3D;&#x3D;&#x3D;&#x3D;&#39;, i, obj[i])
-    &#x2F;&#x2F; &#125;
-  &lt;&#x2F;script&gt;
-  4、相关问题-对象赋值与引用
-  内存：
-    栈：局部变量  全局变量
-    堆：对象
-  &lt;script&gt;
-    &#x2F;&#x2F;01基本数据类型 在内存中的存储
-    var a&#x3D;10
-    var b&#x3D;a
-    b&#x3D;20;
-    console.log(a)
-  &lt;&#x2F;script&gt;
-  &lt;script&gt;
-    &#x2F;&#x2F;02复杂数据类型 在内存中存储
-    var obj1&#x3D;&#123;name:&quot;Tom&quot;&#125;
-    var obj2&#x3D;obj1
-    obj1.name&#x3D;&#39;123&#39;
-    console.log(obj2.name)
-  &lt;&#x2F;script&gt;
+	1、什么是JavaScript对象？
+		对象是有(属性)和(方法)的集合。
+	2、创建对象的三种方式：&lt;br&gt;
+	01、使用new object()方式
+	&lt;script&gt;
+		&#x2F;&#x2F;创建
+		var person &#x3D; new Object();
+		&#x2F;&#x2F; console.log(person)
+		&#x2F;&#x2F; console.log(typeof(person))
+		&#x2F;&#x2F;设置属性和方法 
+		person.name&#x3D;&quot;123&quot;
+		person.age &#x3D; 18;
+		&#x2F;&#x2F;设置方法 
+		person.say&#x3D;function()&#123;
+			console.log(&quot;say&quot;)
+		&#125;
+		&#x2F;&#x2F;访问属性
+		&#x2F;&#x2F; console.log(person.name)
+		&#x2F;&#x2F; console.log(person.age)		
+		&#x2F;&#x2F;调用方法
+		&#x2F;&#x2F; person.say()
+	&lt;&#x2F;script&gt;
+	&lt;br&gt; 
+	01 使用字面量定义
+	var 对象&#x3D;&#123;
+		&#x2F;&#x2F;键值对的形式  键 属性名 ：值 属性值，
+		属性名 ：值，
+		&#x2F;&#x2F;方法 冒号后面跟着一个匿名函数。
+		方法:function()&#123;
+			
+		&#125;
+	&#125;
+	&lt;script&gt;
+		var person &#x3D; &#123;
+			name:&quot;123&quot;,
+			age:123,
+			say:function()&#123;
+				console.log(&quot;say&quot;)
+			&#125;
+		&#125;
+		&#x2F;&#x2F; person.say()
+	&lt;&#x2F;script&gt;
+	&lt;br&gt;
+	3、使用自定义的构造函数声明多个类型特点一致的对象
+	&#x2F;&#x2F;构造函数的语法格式：
+	&#x2F;&#x2F; function 构造函数名()&#123;
+	&#x2F;&#x2F; 	this.属性&#x3D;值;
+	&#x2F;&#x2F; 	this.方法&#x3D;function()&#123;&#125;
+	&#x2F;&#x2F; &#125;
+	&#x2F;&#x2F;new 构造函数名(); 函数名首字母要大写
+	&lt;script&gt;
+		&#x2F;&#x2F;1创建构造函数
+		function Person(name, age)&#123;
+			&#x2F;&#x2F; console.log(this);
+			this.name &#x3D; name;
+			this.age &#x3D; age;
+			this.say&#x3D;function()&#123;
+				console.log(&quot;say&quot;)
+			&#125;
+		&#125;
+		&#x2F;&#x2F;2通过构造函数new对象
+		var p1 &#x3D; new Person(&quot;hzy&quot;, 18)
+		var p2 &#x3D; new Person(&quot;hhh&quot;, 21)
+		&#x2F;&#x2F; console.log(p1.say())
+		&#x2F;&#x2F; p2.say()
+		&#x2F;&#x2F;3属性访问访问2:[&#39;属性名&#39;]
+		&#x2F;&#x2F; console.log(p1[&#39;name&#39;])
+		&#x2F;&#x2F;01什么时候 必须用[&#39;属性名&#39;]
+		&#x2F;&#x2F;属性名里包含特殊字符:
+		var obj&#x3D;&#123;	&#125;
+		obj[&#39;content-type&#39;]&#x3D;&#39;text&#x2F;css&#39;
+		&#x2F;&#x2F; obj.c-c&#x3D;&#39;123&#39;&#x2F;&#x2F;错误
+		&#x2F;&#x2F;属性名不确定
+		var Name&#x3D;&#39;123&#39;
+		obj.Name&#x3D;20;
+		&#x2F;&#x2F; console.log(obj.Name)
+		&#x2F;&#x2F; for in 遍历属性
+		&#x2F;&#x2F;for(变量 in 对象)&#123;
+		&#x2F;&#x2F;&#125;
+		&#x2F;&#x2F; for(var i in obj)&#123;
+			&#x2F;&#x2F; console.log(&#39;&#x3D;&#x3D;&#x3D;&#x3D;&#39;, i, obj.i)&#x2F;&#x2F;undefine
+			&#x2F;&#x2F; console.log(&#39;&#x3D;&#x3D;&#x3D;&#x3D;&#39;, i, obj[i])
+		&#x2F;&#x2F; &#125;
+	&lt;&#x2F;script&gt;
+	4、相关问题-对象赋值与引用
+	内存：
+		栈：局部变量  全局变量
+		堆：对象
+	&lt;script&gt;
+		&#x2F;&#x2F;01基本数据类型 在内存中的存储
+		var a&#x3D;10
+		var b&#x3D;a
+		b&#x3D;20;
+		console.log(a)
+	&lt;&#x2F;script&gt;
+	&lt;script&gt;
+		&#x2F;&#x2F;02复杂数据类型 在内存中存储
+		var obj1&#x3D;&#123;name:&quot;Tom&quot;&#125;
+		var obj2&#x3D;obj1
+		obj1.name&#x3D;&#39;123&#39;
+		console.log(obj2.name)
+	&lt;&#x2F;script&gt;
 
-  &lt;script&gt;
-    &#x2F;&#x2F;03基本数据类型作为函数参数
-    
-    
-  &lt;&#x2F;script&gt;
-  &lt;script&gt;
-    &#x2F;&#x2F;04复杂数据类型作为函数参数
-    
-    
-  &lt;&#x2F;script&gt;
+	&lt;script&gt;
+		&#x2F;&#x2F;03基本数据类型作为函数参数
+		
+		
+	&lt;&#x2F;script&gt;
+	&lt;script&gt;
+		&#x2F;&#x2F;04复杂数据类型作为函数参数
+		
+		
+	&lt;&#x2F;script&gt;
 &lt;&#x2F;body&gt;
 &lt;&#x2F;html&gt;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="Math库"><a href="#Math库" class="headerlink" title="Math库"></a>Math库</h2><pre class="line-numbers language-none"><code class="language-none">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
-  &lt;head&gt;
-    &lt;meta charset&#x3D;&quot;utf-8&quot;&gt;
-    &lt;title&gt;&lt;&#x2F;title&gt;
-  &lt;&#x2F;head&gt;
-  &lt;body&gt;
-    Math 对象
-    Math 对象用于执行数学任务。&lt;br&gt;
-    
-    使用 Math 的属性和方法的语法：&lt;br&gt;
-    var pi_value&#x3D;Math.PI;
-    var sqrt_value&#x3D;Math.sqrt(15);&lt;br&gt;&lt;br&gt;
-    &lt;hr&gt;
-    &lt;script&gt;			
-      var i;
-      i&#x3D;Math.round(5&#x2F;2) &#x2F;&#x2F;四舍五入			
-      &#x2F;&#x2F;取整 向下取整
-      i&#x3D;Math.floor(5&#x2F;2)
-      &#x2F;&#x2F;绝对值
-      Math.abs(-100)
-      &#x2F;&#x2F;随机数 0-1之间
-      i&#x3D;Math.random()
-      &#x2F;&#x2F;产生0-10之间的随机数？
-      i&#x3D;Math.random()*10
-      &#x2F;&#x2F;产生5-10之间的随机数？
-      i&#x3D;Math.random()*5+5
-      
-      &#x2F;&#x2F;公式：取x到y之间的随机数:;
-      &#x2F;&#x2F;Math.random()*(y-x)+x
+	&lt;head&gt;
+		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;
+		&lt;title&gt;&lt;&#x2F;title&gt;
+	&lt;&#x2F;head&gt;
+	&lt;body&gt;
+		Math 对象
+		Math 对象用于执行数学任务。&lt;br&gt;
+		
+		使用 Math 的属性和方法的语法：&lt;br&gt;
+		var pi_value&#x3D;Math.PI;
+		var sqrt_value&#x3D;Math.sqrt(15);&lt;br&gt;&lt;br&gt;
+		&lt;hr&gt;
+		&lt;script&gt;			
+			var i;
+			i&#x3D;Math.round(5&#x2F;2) &#x2F;&#x2F;四舍五入			
+			&#x2F;&#x2F;取整 向下取整
+			i&#x3D;Math.floor(5&#x2F;2)
+			&#x2F;&#x2F;绝对值
+			Math.abs(-100)
+			&#x2F;&#x2F;随机数 0-1之间
+			i&#x3D;Math.random()
+			&#x2F;&#x2F;产生0-10之间的随机数？
+			i&#x3D;Math.random()*10
+			&#x2F;&#x2F;产生5-10之间的随机数？
+			i&#x3D;Math.random()*5+5
+			
+			&#x2F;&#x2F;公式：取x到y之间的随机数:;
+			&#x2F;&#x2F;Math.random()*(y-x)+x
 
-      &#x2F;&#x2F;问题：如何产生0到10之间的随机整数？
-      
-      &#x2F;&#x2F;方法：先产生0-    之间的随机数 然后        .		
-      
-      document.write(i);
-      &#x2F;&#x2F;alert(i);
-      
-      &#x2F;*练习  写一个随机点菜的小程序
-      1 创建一个数组 
-      2 随机产生数组下标
-      3 将下标对应的数组元素 输出来.
-      js中定义数组:var arr&#x3D;[&quot;鱼头豆腐&quot;,&quot;红烧排骨&quot;,&quot;土豆丝&quot;,&quot;西红柿鸡蛋汤&quot;,&quot;鸦片鱼头&quot;,&quot;小鸡炖蘑菇&quot;]
-      *&#x2F;
-    &lt;&#x2F;script&gt;
-    
-    
-  &lt;&#x2F;body&gt;
+			&#x2F;&#x2F;问题：如何产生0到10之间的随机整数？
+			
+			&#x2F;&#x2F;方法：先产生0-    之间的随机数 然后        .		
+			
+			document.write(i);
+			&#x2F;&#x2F;alert(i);
+			
+			&#x2F;*练习  写一个随机点菜的小程序
+			1 创建一个数组 
+			2 随机产生数组下标
+			3 将下标对应的数组元素 输出来.
+			js中定义数组:var arr&#x3D;[&quot;鱼头豆腐&quot;,&quot;红烧排骨&quot;,&quot;土豆丝&quot;,&quot;西红柿鸡蛋汤&quot;,&quot;鸦片鱼头&quot;,&quot;小鸡炖蘑菇&quot;]
+			*&#x2F;
+		&lt;&#x2F;script&gt;
+		
+		
+	&lt;&#x2F;body&gt;
 &lt;&#x2F;html&gt;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
@@ -923,34 +923,34 @@ input标签、rowspan&amp;lt;!DOCTYPE html&amp;gt;
 &lt;html&gt;
 
 &lt;head&gt;
-  &lt;meta charset&#x3D;&quot;utf-8&quot;&gt;
-  &lt;title&gt;&lt;&#x2F;title&gt;
+	&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;
+	&lt;title&gt;&lt;&#x2F;title&gt;
 &lt;&#x2F;head&gt;
 
 &lt;body&gt;
-  1、静态成员
-  &lt;script&gt;
-    function Person(name, age) &#123;
-      this.name &#x3D; name;
-      this.age &#x3D; age;
-      &#x2F;&#x2F;静态属性 类名.属性
-      if (!Person.count) &#123;
-        Person.count &#x3D; 0;
-      &#125;
-      Person.count++;
-    &#125;
+	1、静态成员
+	&lt;script&gt;
+		function Person(name, age) &#123;
+			this.name &#x3D; name;
+			this.age &#x3D; age;
+			&#x2F;&#x2F;静态属性 类名.属性
+			if (!Person.count) &#123;
+				Person.count &#x3D; 0;
+			&#125;
+			Person.count++;
+		&#125;
 
-    &#x2F;*设置一个属性 计算创建出多少对象
-      需要静态成员-判定在构造函数上的属性和方法
-    *&#x2F;
-    Person.print &#x3D; function()&#123;
-      alert(&quot;创建了&quot;+Person.count+&quot;对象&quot;)
-    &#125;
-    var p1&#x3D;new Person(&#39;qwe&#39;, 123)
-    var p2 &#x3D; new Person(&#39;qw&#39;, 1)
-    console.log(Person.count)
-    Person.print()
-  &lt;&#x2F;script&gt;
+		&#x2F;*设置一个属性 计算创建出多少对象
+		  需要静态成员-判定在构造函数上的属性和方法
+		*&#x2F;
+		Person.print &#x3D; function()&#123;
+			alert(&quot;创建了&quot;+Person.count+&quot;对象&quot;)
+		&#125;
+		var p1&#x3D;new Person(&#39;qwe&#39;, 123)
+		var p2 &#x3D; new Person(&#39;qw&#39;, 1)
+		console.log(Person.count)
+		Person.print()
+	&lt;&#x2F;script&gt;
 
 &lt;&#x2F;body&gt;
 
@@ -959,54 +959,54 @@ input标签、rowspan&amp;lt;!DOCTYPE html&amp;gt;
 
 <h2 id="特殊的引用类型：Boolean、Number-和-String"><a href="#特殊的引用类型：Boolean、Number-和-String" class="headerlink" title="特殊的引用类型：Boolean、Number 和 String"></a>特殊的引用类型：Boolean、Number 和 String</h2><pre class="line-numbers language-none"><code class="language-none">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
-  &lt;head&gt;
-    &lt;meta charset&#x3D;&quot;utf-8&quot;&gt;
-    &lt;title&gt;&lt;&#x2F;title&gt;
-  &lt;&#x2F;head&gt;
-  &lt;body&gt;
-    为了便于操作基本类型值，js还提供了 3 个特殊的引用类型：Boolean、Number 和 String。
-    Number 对象：基本包装类型  提供数字的对象（包括整数、浮点数等）
-    1、NaN属性：非数字（(Not a Number)。）	
-    
-    2、isNaN（）函数：判断是否为非数字
-    
-    3、toString()：把数字转为字符串
-    
-    4、把变量转换为数值
-    这三种 JavaScript 方法可用于将变量转换为数字：
+	&lt;head&gt;
+		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;
+		&lt;title&gt;&lt;&#x2F;title&gt;
+	&lt;&#x2F;head&gt;
+	&lt;body&gt;
+		为了便于操作基本类型值，js还提供了 3 个特殊的引用类型：Boolean、Number 和 String。
+		Number 对象：基本包装类型  提供数字的对象（包括整数、浮点数等）
+		1、NaN属性：非数字（(Not a Number)。）	
+		
+		2、isNaN（）函数：判断是否为非数字
+		
+		3、toString()：把数字转为字符串
+		
+		4、把变量转换为数值
+		这三种 JavaScript 方法可用于将变量转换为数字：
 
-      Number() 方法  可用于把其他类型转换为数值
-      parseInt() 方法 解析一段字符串并返回整型数值。允许空格。只返回首个数字：
-      parseFloat() 方法  解析一段字符串并返回数值。允许空格。只返回首个数字：
-    &lt;br&gt;&lt;br&gt;&lt;hr&gt;&lt;br&gt;
-    &lt;script&gt;
-      &#x2F;&#x2F;1 NaN属性
-      
-        
-      &#x2F;&#x2F;document.writeln(&quot;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&lt;br&gt;&quot;)	
-      
-      &#x2F;&#x2F;2  isNaN 判断是否为非数字
-        
-        
-      &#x2F;&#x2F;3、toString()：把数字转为字符串	
+			Number() 方法  可用于把其他类型转换为数值
+			parseInt() 方法 解析一段字符串并返回整型数值。允许空格。只返回首个数字：
+			parseFloat() 方法  解析一段字符串并返回数值。允许空格。只返回首个数字：
+		&lt;br&gt;&lt;br&gt;&lt;hr&gt;&lt;br&gt;
+		&lt;script&gt;
+			&#x2F;&#x2F;1 NaN属性
+			
+				
+			&#x2F;&#x2F;document.writeln(&quot;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&lt;br&gt;&quot;)	
+			
+			&#x2F;&#x2F;2  isNaN 判断是否为非数字
+				
+				
+			&#x2F;&#x2F;3、toString()：把数字转为字符串	
 
-      &#x2F;&#x2F;n不是数字吗？怎么会有方法
-        
-        
-      &#x2F;&#x2F; 4 Number() 方法  可用于把 其它类型转换为数值
-          &#x2F;&#x2F;布尔类型
-      
-          &#x2F;&#x2F;数字组成的字符串
-            
-        &#x2F;&#x2F;日期对象
-        
-         &#x2F;&#x2F;字母+数字字符串
-         
-        &#x2F;&#x2F;5 parseInt() 方法 解析一段字符串并返回整型数值。允许空格。只返回首个数字
-        
-        
-    &lt;&#x2F;script&gt;
-  &lt;&#x2F;body&gt;
+			&#x2F;&#x2F;n不是数字吗？怎么会有方法
+				
+				
+			&#x2F;&#x2F; 4 Number() 方法  可用于把 其它类型转换为数值
+			    &#x2F;&#x2F;布尔类型
+			
+			    &#x2F;&#x2F;数字组成的字符串
+						
+				&#x2F;&#x2F;日期对象
+				
+				 &#x2F;&#x2F;字母+数字字符串
+				 
+				&#x2F;&#x2F;5 parseInt() 方法 解析一段字符串并返回整型数值。允许空格。只返回首个数字
+				
+				
+		&lt;&#x2F;script&gt;
+	&lt;&#x2F;body&gt;
 &lt;&#x2F;html&gt;
 
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
@@ -1015,34 +1015,34 @@ input标签、rowspan&amp;lt;!DOCTYPE html&amp;gt;
 &lt;html&gt;
 
 &lt;head&gt;
-  &lt;meta charset&#x3D;&quot;utf-8&quot;&gt;
-  &lt;title&gt;&lt;&#x2F;title&gt;
+	&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;
+	&lt;title&gt;&lt;&#x2F;title&gt;
 &lt;&#x2F;head&gt;
 
 &lt;body&gt;
-  1、静态成员
-  &lt;script&gt;
-    function Person(name, age) &#123;
-      this.name &#x3D; name;
-      this.age &#x3D; age;
-      &#x2F;&#x2F;静态属性 类名.属性
-      if (!Person.count) &#123;
-        Person.count &#x3D; 0;
-      &#125;
-      Person.count++;
-    &#125;
+	1、静态成员
+	&lt;script&gt;
+		function Person(name, age) &#123;
+			this.name &#x3D; name;
+			this.age &#x3D; age;
+			&#x2F;&#x2F;静态属性 类名.属性
+			if (!Person.count) &#123;
+				Person.count &#x3D; 0;
+			&#125;
+			Person.count++;
+		&#125;
 
-    &#x2F;*设置一个属性 计算创建出多少对象
-      需要静态成员-判定在构造函数上的属性和方法
-    *&#x2F;
-    Person.print &#x3D; function()&#123;
-      alert(&quot;创建了&quot;+Person.count+&quot;对象&quot;)
-    &#125;
-    var p1&#x3D;new Person(&#39;qwe&#39;, 123)
-    var p2 &#x3D; new Person(&#39;qw&#39;, 1)
-    console.log(Person.count)
-    Person.print()
-  &lt;&#x2F;script&gt;
+		&#x2F;*设置一个属性 计算创建出多少对象
+		  需要静态成员-判定在构造函数上的属性和方法
+		*&#x2F;
+		Person.print &#x3D; function()&#123;
+			alert(&quot;创建了&quot;+Person.count+&quot;对象&quot;)
+		&#125;
+		var p1&#x3D;new Person(&#39;qwe&#39;, 123)
+		var p2 &#x3D; new Person(&#39;qw&#39;, 1)
+		console.log(Person.count)
+		Person.print()
+	&lt;&#x2F;script&gt;
 
 &lt;&#x2F;body&gt;
 
@@ -1051,214 +1051,214 @@ input标签、rowspan&amp;lt;!DOCTYPE html&amp;gt;
 
 <h2 id="原型prototype"><a href="#原型prototype" class="headerlink" title="原型prototype"></a>原型prototype</h2><pre class="line-numbers language-none"><code class="language-none">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
-  &lt;head&gt;
-    &lt;meta charset&#x3D;&quot;utf-8&quot;&gt;
-    &lt;title&gt;&lt;&#x2F;title&gt;
-  &lt;&#x2F;head&gt;
-  &lt;body&gt;
-    
-    2、构造函数问题：存在浪费内存空间问题
-    &lt;script&gt;
-      function Person(name,age)&#123;
-        this.name&#x3D;name;
-        this.age&#x3D;age;
-        this.say&#x3D;function()&#123;
-          console.log(&#39;hello&#39;);
-        &#125;
-      &#125;
-      &#x2F;&#x2F;浪费内存空间问题
-      var p1 &#x3D; new Person(&#39;abc&#39;, 123)
-      var p2 &#x3D; new Person(&#39;ab&#39;, 12)
-      &#x2F;&#x2F; console.log(p1)
-      &#x2F;&#x2F; console.log(p2)
-      
-      &#x2F;&#x2F;&#x3D;&#x3D;&#x3D;严格相等
-      &#x2F;&#x2F;如果两个值都引用同一个对象或是函数，那么相等，否则不相等
-      &#x2F;&#x2F; console.log(p1.say&#x3D;&#x3D;&#x3D;p2.say)
-    &lt;&#x2F;script&gt;
-    3 构造函数原型prototype 
-    通过原型来实现所有对象共享方法。
-    &lt;script&gt;
-      function Person(name,age)&#123;
-        this.name&#x3D;name;
-        this.age&#x3D;age;				
-      &#125;
-      &#x2F;&#x2F;每个构造函数 都有一个prototype属性,指向另外一个对象.
-      console.dir(Person)
-      &#x2F;&#x2F;我们可以把共有的方法,直接定义在prototype对象上,让所有对象实例共享.
-      &#x2F;&#x2F;通过原型添加方法
-      Person.prototype.say &#x3D; function()&#123;
-        alert(&quot;hello&quot;)
-      &#125;
-      var p1&#x3D;new Person(&quot;tom&quot;,10);
-      var p2&#x3D;new Person(&quot;jerry&quot;,10);
-      
-      console.log(p1.say&#x3D;&#x3D;&#x3D;p2.say)
-    &lt;&#x2F;script&gt;
-    
-    &lt;&#x2F;script&gt;
-  &lt;&#x2F;body&gt;
+	&lt;head&gt;
+		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;
+		&lt;title&gt;&lt;&#x2F;title&gt;
+	&lt;&#x2F;head&gt;
+	&lt;body&gt;
+		
+		2、构造函数问题：存在浪费内存空间问题
+		&lt;script&gt;
+			function Person(name,age)&#123;
+				this.name&#x3D;name;
+				this.age&#x3D;age;
+				this.say&#x3D;function()&#123;
+					console.log(&#39;hello&#39;);
+				&#125;
+			&#125;
+			&#x2F;&#x2F;浪费内存空间问题
+			var p1 &#x3D; new Person(&#39;abc&#39;, 123)
+			var p2 &#x3D; new Person(&#39;ab&#39;, 12)
+			&#x2F;&#x2F; console.log(p1)
+			&#x2F;&#x2F; console.log(p2)
+			
+			&#x2F;&#x2F;&#x3D;&#x3D;&#x3D;严格相等
+			&#x2F;&#x2F;如果两个值都引用同一个对象或是函数，那么相等，否则不相等
+			&#x2F;&#x2F; console.log(p1.say&#x3D;&#x3D;&#x3D;p2.say)
+		&lt;&#x2F;script&gt;
+		3 构造函数原型prototype 
+		通过原型来实现所有对象共享方法。
+		&lt;script&gt;
+			function Person(name,age)&#123;
+				this.name&#x3D;name;
+				this.age&#x3D;age;				
+			&#125;
+			&#x2F;&#x2F;每个构造函数 都有一个prototype属性,指向另外一个对象.
+			console.dir(Person)
+			&#x2F;&#x2F;我们可以把共有的方法,直接定义在prototype对象上,让所有对象实例共享.
+			&#x2F;&#x2F;通过原型添加方法
+			Person.prototype.say &#x3D; function()&#123;
+				alert(&quot;hello&quot;)
+			&#125;
+			var p1&#x3D;new Person(&quot;tom&quot;,10);
+			var p2&#x3D;new Person(&quot;jerry&quot;,10);
+			
+			console.log(p1.say&#x3D;&#x3D;&#x3D;p2.say)
+		&lt;&#x2F;script&gt;
+		
+		&lt;&#x2F;script&gt;
+	&lt;&#x2F;body&gt;
 &lt;&#x2F;html&gt;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="基于原型链的继承"><a href="#基于原型链的继承" class="headerlink" title="基于原型链的继承"></a>基于原型链的继承</h2><pre class="line-numbers language-none"><code class="language-none">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
-  &lt;head&gt;
-    &lt;meta charset&#x3D;&quot;utf-8&quot;&gt;
-    &lt;title&gt;&lt;&#x2F;title&gt;
-  &lt;&#x2F;head&gt;
-  &lt;body&gt;
-    1 基于原型链的继承
-    &lt;script&gt;
-      function Person(age)&#123;
-        this.age&#x3D;age				
-      &#125;
-      Person.prototype.say&#x3D;function()&#123;
-        alert(&#39;hello world&#39;);
-      &#125;
-      
-      function Student()&#123;
-      &#125;
-      &#x2F;&#x2F;继承
-      &#x2F;&#x2F;1 构造父类的实例
-      var p1&#x3D;new Person(20)
-      &#x2F;&#x2F;2 设置为子类的原型对象
-      Student.prototype&#x3D;p1
-      问题：Student.prototype.constructor指向哪个构造函数
-      &#x2F;&#x2F; console.log(Student.prototype.constructor&#x3D;&#x3D;&#x3D;p1.constructor)
-      &#x2F;&#x2F;3 修复子类函数原型的constructor指针即可
-      Student.prototype.constructor&#x3D;Student;
+	&lt;head&gt;
+		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;
+		&lt;title&gt;&lt;&#x2F;title&gt;
+	&lt;&#x2F;head&gt;
+	&lt;body&gt;
+		1 基于原型链的继承
+		&lt;script&gt;
+			function Person(age)&#123;
+				this.age&#x3D;age				
+			&#125;
+			Person.prototype.say&#x3D;function()&#123;
+				alert(&#39;hello world&#39;);
+			&#125;
+			
+			function Student()&#123;
+			&#125;
+			&#x2F;&#x2F;继承
+			&#x2F;&#x2F;1 构造父类的实例
+			var p1&#x3D;new Person(20)
+			&#x2F;&#x2F;2 设置为子类的原型对象
+			Student.prototype&#x3D;p1
+			问题：Student.prototype.constructor指向哪个构造函数
+			&#x2F;&#x2F; console.log(Student.prototype.constructor&#x3D;&#x3D;&#x3D;p1.constructor)
+			&#x2F;&#x2F;3 修复子类函数原型的constructor指针即可
+			Student.prototype.constructor&#x3D;Student;
 
-      var stu1&#x3D;new Student()
-      &#x2F;&#x2F; stu1.say()
-      &#x2F;&#x2F; console.log(stu1.age)
-    &lt;&#x2F;script&gt;
-    &lt;br&gt;
-    2 存在问题：实例共享引用类型，新创建的对象都有“玩游戏”这个变量，如p1、p2
-    &lt;script&gt;
-      function Parent() &#123;
-        	this.newArr &#x3D; [&quot;唱歌&quot;, &quot;跑步&quot;];
-      &#125;
-      function Child() &#123;
-        	this.name &#x3D; &quot;abc&quot;;
-      &#125;
-      Child.prototype &#x3D; new Parent()
-      Child.prototype.constructor &#x3D; Child
-      &#x2F;&#x2F; 对于属性不希望继承
-      var p1 &#x3D; new Child()
-      p1.newArr.push(&quot;玩游戏&quot;)
-      &#x2F;&#x2F; console.log(p1.newArr);&#x2F;&#x2F;&#x2F;
+			var stu1&#x3D;new Student()
+			&#x2F;&#x2F; stu1.say()
+			&#x2F;&#x2F; console.log(stu1.age)
+		&lt;&#x2F;script&gt;
+		&lt;br&gt;
+		2 存在问题：实例共享引用类型，新创建的对象都有“玩游戏”这个变量，如p1、p2
+		&lt;script&gt;
+			function Parent() &#123;
+			  	this.newArr &#x3D; [&quot;唱歌&quot;, &quot;跑步&quot;];
+			&#125;
+			function Child() &#123;
+			  	this.name &#x3D; &quot;abc&quot;;
+			&#125;
+			Child.prototype &#x3D; new Parent()
+			Child.prototype.constructor &#x3D; Child
+			&#x2F;&#x2F; 对于属性不希望继承
+			var p1 &#x3D; new Child()
+			p1.newArr.push(&quot;玩游戏&quot;)
+			&#x2F;&#x2F; console.log(p1.newArr);&#x2F;&#x2F;&#x2F;
 
-      var p2 &#x3D; new Child();
-      &#x2F;&#x2F; console.log(p2.newArr)
-    &lt;&#x2F;script&gt;
-    &lt;br&gt;
-    3 call函数
-    &lt;script&gt;
-      &#x2F;&#x2F;call函数
-      var demo1&#x3D;&#123;
-        name:&#39;好人:&#39;,
-        showABC:function(param1,param2)&#123;
-          console.log(this.name,param1,param2)
-        &#125;
-      &#125;
-      demo1.showABC(&#39;张三&#39;,&#39;李四&#39;)
-      var demo2&#x3D;&#123;
-        name:&#39;坏人&#39;
-      &#125;
-      &#x2F;&#x2F;call来让demo2对象 借用demo1的showABC方法
-      demo1.showABC.call(demo2, &quot;1&quot;, &#39;2&#39;)
-      
-    &lt;&#x2F;script&gt;
-    &lt;br&gt;
-    4 利用构造函数继承属性
-    &lt;script&gt;
-      function Father(uname,age)&#123;
-        this.uname&#x3D;uname;
-        this.age&#x3D;age;
-        console.log(uname, age)
-      &#125;
-      &#x2F;&#x2F; Son想要继承Father的属性
-      function Son(name, age)&#123;
-        Father.call(this, name, age)
-      &#125;
-      console.log(Son(12, 2))
-    &lt;&#x2F;script&gt;
-    
-  &lt;&#x2F;body&gt;
+			var p2 &#x3D; new Child();
+			&#x2F;&#x2F; console.log(p2.newArr)
+		&lt;&#x2F;script&gt;
+		&lt;br&gt;
+		3 call函数
+		&lt;script&gt;
+			&#x2F;&#x2F;call函数
+			var demo1&#x3D;&#123;
+				name:&#39;好人:&#39;,
+				showABC:function(param1,param2)&#123;
+					console.log(this.name,param1,param2)
+				&#125;
+			&#125;
+			demo1.showABC(&#39;张三&#39;,&#39;李四&#39;)
+			var demo2&#x3D;&#123;
+				name:&#39;坏人&#39;
+			&#125;
+			&#x2F;&#x2F;call来让demo2对象 借用demo1的showABC方法
+			demo1.showABC.call(demo2, &quot;1&quot;, &#39;2&#39;)
+			
+		&lt;&#x2F;script&gt;
+		&lt;br&gt;
+		4 利用构造函数继承属性
+		&lt;script&gt;
+			function Father(uname,age)&#123;
+				this.uname&#x3D;uname;
+				this.age&#x3D;age;
+				console.log(uname, age)
+			&#125;
+			&#x2F;&#x2F; Son想要继承Father的属性
+			function Son(name, age)&#123;
+				Father.call(this, name, age)
+			&#125;
+			console.log(Son(12, 2))
+		&lt;&#x2F;script&gt;
+		
+	&lt;&#x2F;body&gt;
 &lt;&#x2F;html&gt;
 
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="对象原型proto"><a href="#对象原型proto" class="headerlink" title="对象原型proto"></a>对象原型proto</h2><pre class="line-numbers language-none"><code class="language-none">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
-  &lt;head&gt;
-    &lt;meta charset&#x3D;&quot;utf-8&quot;&gt;
-    &lt;title&gt;&lt;&#x2F;title&gt;
-  &lt;&#x2F;head&gt;
-  &lt;body&gt;
-    
-    4 对象原型__proto__
-      请问为什么对象 可以访问原型里的方法？		
-      原因：每个对象都有一个属性__proto__指向原型prototype,
-      所以可以使用原型对象里的方法
-    &lt;script&gt;
-      function Person(name,age)&#123;
-        this.name&#x3D;name;
-        this.age&#x3D;age;				
-      &#125;
-      Person.prototype.sayHello &#x3D; function()&#123;
-        alert(&quot;Hello&quot;)
-      &#125;
-      var p1&#x3D;new Person(&quot;tom&quot;,10);
-      var p2&#x3D;new Person(&quot;jerry&quot;,10);
-      &#x2F;&#x2F; 输出__proto__属性
-      &#x2F;&#x2F; console.log(p1.__proto__)
-      &#x2F;&#x2F; console.log(p1.__proto__&#x3D;&#x3D;&#x3D;p2.__proto__)
-    &lt;&#x2F;script&gt;
-    &lt;br&gt;
-    5 原型对象的constructor构造函数
-      原型对象里面都有一个属性
-      constructor属性,constructor我们称为构造函数
-      因为它指回构造函数本身.
-      &lt;script&gt;
-        &#x2F;&#x2F; console.log(Person.prototype.constructor)
-        &#x2F;&#x2F;有时候 我们需要用写代码让constructor指向原来的构造函数
-        Person.prototype &#x3D; &#123;
-          eat: function()&#123;&#125;,
-          study:function()&#123;&#125;,
-          toString:function()&#123;&#125;
-        &#125;
-        &#x2F;&#x2F; Person.prototype.toString &#x3D; function()&#123;
-        &#x2F;&#x2F; 	alert(&quot;alert&quot;)
-        &#x2F;&#x2F; &#125;
-        &#x2F;&#x2F;打印 constructor指向了?
-        &#x2F;&#x2F; consoel.log(Person.prototype.constructor)
-        
-        &#x2F;&#x2F;可以手动让constructor指向原来的构造函数
-        
-        &#x2F;&#x2F; 父亲的父亲的父亲
-        &#x2F;&#x2F; null 继承
-        console.log(p1.__proto__.toString()&#x3D;&#x3D;&#x3D;p1.__proto__.__proto__.toString())
-        console.log(p1.__proto__.__proto__.toString())
-      &lt;&#x2F;script&gt;
-      &lt;br&gt;
-      6 原型对象的应用  扩展内置对象方法
-        数组也有原型对象
-      &lt;script&gt;
-        Array.prototype.sun &#x3D; function()&#123;
-          var sum&#x3D;0
-          for(var i&#x3D;0; i&gt;this.length; i++)&#123;
-            sum+&#x3D;i;
-          &#125;
-          console.log(&#39;sum: &#39;+sum)
-          return sum
-        &#125;
-        var arr &#x3D; [1, 2, 3, 4, 5]
-        console.log(arr.__proto__)
-      &lt;&#x2F;script&gt;
-      
-  &lt;&#x2F;body&gt;
+	&lt;head&gt;
+		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;
+		&lt;title&gt;&lt;&#x2F;title&gt;
+	&lt;&#x2F;head&gt;
+	&lt;body&gt;
+		
+		4 对象原型__proto__
+			请问为什么对象 可以访问原型里的方法？		
+			原因：每个对象都有一个属性__proto__指向原型prototype,
+			所以可以使用原型对象里的方法
+		&lt;script&gt;
+			function Person(name,age)&#123;
+				this.name&#x3D;name;
+				this.age&#x3D;age;				
+			&#125;
+			Person.prototype.sayHello &#x3D; function()&#123;
+				alert(&quot;Hello&quot;)
+			&#125;
+			var p1&#x3D;new Person(&quot;tom&quot;,10);
+			var p2&#x3D;new Person(&quot;jerry&quot;,10);
+			&#x2F;&#x2F; 输出__proto__属性
+			&#x2F;&#x2F; console.log(p1.__proto__)
+			&#x2F;&#x2F; console.log(p1.__proto__&#x3D;&#x3D;&#x3D;p2.__proto__)
+		&lt;&#x2F;script&gt;
+		&lt;br&gt;
+		5 原型对象的constructor构造函数
+			原型对象里面都有一个属性
+			constructor属性,constructor我们称为构造函数
+			因为它指回构造函数本身.
+			&lt;script&gt;
+				&#x2F;&#x2F; console.log(Person.prototype.constructor)
+				&#x2F;&#x2F;有时候 我们需要用写代码让constructor指向原来的构造函数
+				Person.prototype &#x3D; &#123;
+					eat: function()&#123;&#125;,
+					study:function()&#123;&#125;,
+					toString:function()&#123;&#125;
+				&#125;
+				&#x2F;&#x2F; Person.prototype.toString &#x3D; function()&#123;
+				&#x2F;&#x2F; 	alert(&quot;alert&quot;)
+				&#x2F;&#x2F; &#125;
+				&#x2F;&#x2F;打印 constructor指向了?
+				&#x2F;&#x2F; consoel.log(Person.prototype.constructor)
+				
+				&#x2F;&#x2F;可以手动让constructor指向原来的构造函数
+				
+				&#x2F;&#x2F; 父亲的父亲的父亲
+				&#x2F;&#x2F; null 继承
+				console.log(p1.__proto__.toString()&#x3D;&#x3D;&#x3D;p1.__proto__.__proto__.toString())
+				console.log(p1.__proto__.__proto__.toString())
+			&lt;&#x2F;script&gt;
+			&lt;br&gt;
+			6 原型对象的应用  扩展内置对象方法
+			  数组也有原型对象
+			&lt;script&gt;
+				Array.prototype.sun &#x3D; function()&#123;
+					var sum&#x3D;0
+					for(var i&#x3D;0; i&gt;this.length; i++)&#123;
+						sum+&#x3D;i;
+					&#125;
+					console.log(&#39;sum: &#39;+sum)
+					return sum
+				&#125;
+				var arr &#x3D; [1, 2, 3, 4, 5]
+				console.log(arr.__proto__)
+			&lt;&#x2F;script&gt;
+			
+	&lt;&#x2F;body&gt;
 &lt;&#x2F;html&gt;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
@@ -1392,212 +1392,212 @@ input标签、rowspan&amp;lt;!DOCTYPE html&amp;gt;
 
 <h2 id="定时器"><a href="#定时器" class="headerlink" title="定时器"></a>定时器</h2><pre class="line-numbers language-none"><code class="language-none">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
-  &lt;head&gt;
-    &lt;meta charset&#x3D;&quot;utf-8&quot;&gt;
-    &lt;title&gt;&lt;&#x2F;title&gt;
-    
-  &lt;&#x2F;head&gt;
-  &lt;body&gt;
-    BOM:浏览器对象模型 window对象 顶级对象
-    
-    1、window对象的方法：setInterval(调用函数，毫秒数)  定时器
-      方法可按照指定的周期（以毫秒计）来调用函数或计算表达式。
-      注意：调用函数有3中写法：
-              函数        函数名       字符串（&#39;函数名（）&#39;）
-    &lt;br&gt;
-    &lt;script&gt;
-      &#x2F;&#x2F;1 函数 js函数可以作为参数
-      &#x2F;&#x2F;window可以省略
-      &#x2F;&#x2F; setInterval(function()&#123;
-      &#x2F;&#x2F; 	console.log(&quot;hello&quot;)
-      &#x2F;&#x2F; &#125;, 3000)
-      &#x2F;&#x2F;2 函数名
-      function sayHello()&#123;
-        alert(&#39;hello&#39;);
-      &#125;
-      &#x2F;&#x2F; setInterval(sayHello, 3000)
-      &#x2F;&#x2F;3 字符串（&#39;函数名（）&#39;)
-      var tid &#x3D; setInterval(&quot;alert(&#39;hello&#39;)&quot;, 3000)
-      
-    &lt;&#x2F;script&gt;
-    
-    2、取消定时器： clearInterval() 
-      由 setInterval() 返回的 ID 值可用作 clearInterval() 方法的参数。&lt;br&gt;
-      
-      &lt;button id&#x3D;&#39;btn1&#39;&gt;开启&lt;&#x2F;button&gt;
-      &lt;button id&#x3D;&#39;btn2&#39;&gt;关闭&lt;&#x2F;button&gt;
-      &lt;script&gt;
-        var btn2&#x3D;document.getElementById(&quot;btn2&quot;);
-        var btn1&#x3D;document.querySelector()
-        btn2.onclick&#x3D;function()&#123;
-          clearInterval(tid)
-        &#125;
-          
-      &lt;&#x2F;script&gt;
-    
-  &lt;&#x2F;body&gt;
+	&lt;head&gt;
+		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;
+		&lt;title&gt;&lt;&#x2F;title&gt;
+		
+	&lt;&#x2F;head&gt;
+	&lt;body&gt;
+		BOM:浏览器对象模型 window对象 顶级对象
+		
+		1、window对象的方法：setInterval(调用函数，毫秒数)  定时器
+			方法可按照指定的周期（以毫秒计）来调用函数或计算表达式。
+			注意：调用函数有3中写法：
+						  函数        函数名       字符串（&#39;函数名（）&#39;）
+		&lt;br&gt;
+		&lt;script&gt;
+			&#x2F;&#x2F;1 函数 js函数可以作为参数
+			&#x2F;&#x2F;window可以省略
+			&#x2F;&#x2F; setInterval(function()&#123;
+			&#x2F;&#x2F; 	console.log(&quot;hello&quot;)
+			&#x2F;&#x2F; &#125;, 3000)
+			&#x2F;&#x2F;2 函数名
+			function sayHello()&#123;
+				alert(&#39;hello&#39;);
+			&#125;
+			&#x2F;&#x2F; setInterval(sayHello, 3000)
+			&#x2F;&#x2F;3 字符串（&#39;函数名（）&#39;)
+			var tid &#x3D; setInterval(&quot;alert(&#39;hello&#39;)&quot;, 3000)
+			
+		&lt;&#x2F;script&gt;
+		
+		2、取消定时器： clearInterval() 
+			由 setInterval() 返回的 ID 值可用作 clearInterval() 方法的参数。&lt;br&gt;
+			
+			&lt;button id&#x3D;&#39;btn1&#39;&gt;开启&lt;&#x2F;button&gt;
+			&lt;button id&#x3D;&#39;btn2&#39;&gt;关闭&lt;&#x2F;button&gt;
+			&lt;script&gt;
+				var btn2&#x3D;document.getElementById(&quot;btn2&quot;);
+				var btn1&#x3D;document.querySelector()
+				btn2.onclick&#x3D;function()&#123;
+					clearInterval(tid)
+				&#125;
+					
+			&lt;&#x2F;script&gt;
+		
+	&lt;&#x2F;body&gt;
 &lt;&#x2F;html&gt;
 
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="函数中this指针"><a href="#函数中this指针" class="headerlink" title="函数中this指针"></a>函数中this指针</h2><pre class="line-numbers language-none"><code class="language-none">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
-  &lt;head&gt;
-    &lt;meta charset&#x3D;&quot;utf-8&quot;&gt;
-    &lt;title&gt;&lt;&#x2F;title&gt;
-  &lt;&#x2F;head&gt;
-  &lt;body&gt;
-    1、this是什么？
-    函数中的this指函数的实际调用对象。&lt;hr&gt;
-    &lt;script&gt;
-      &#x2F;&#x2F; console.log(this)
-      &#x2F;&#x2F; var obj&#x3D;&#123;name:&quot;123&quot;&#125;
-      &#x2F;&#x2F; obj.fn &#x3D; function()&#123;
-      &#x2F;&#x2F; 	console.log(this)
-      &#x2F;&#x2F; 	console.log(this.name)
-      &#x2F;&#x2F; &#125;
-      &#x2F;&#x2F; &#x2F;&#x2F; obj.fn()
-      &#x2F;&#x2F; &#x2F;&#x2F; setTimeout(obj.fn, 1000)
-      &#x2F;&#x2F; console.log(typeof(obj))
-    &lt;&#x2F;script&gt;
-    2、箭头函数的this
-    箭头函数没有自己的this,它的this是外层作用域的this&lt;hr&gt;
-    &lt;script&gt;
-      function fn1()&#123;
-        console.log(&quot;fn1-&quot;,this);
-      &#125;
-      var fn2&#x3D;()&#x3D;&gt;&#123;
-        console.log(&quot;fn2&quot;,this);
-      &#125;
-      &#x2F;&#x2F; fn1()
-      &#x2F;&#x2F; fn2()
-      var obj1&#x3D;&#123;
-        name:&quot;124&quot;,
-        fn1,
-        fn2,
-        fn3:()&#x3D;&gt;&#123;
-          console.log(this)
-        &#125;
-      &#125;
-      &#x2F;&#x2F; obj1.fn1()&#x2F;&#x2F;类的this
-      &#x2F;&#x2F; obj1.fn2()&#x2F;&#x2F;外部的window
-      &#x2F;&#x2F; obj1.fn3()&#x2F;&#x2F;同样也是外部的window
-      var obj2&#x3D;&#123;
-        obj1
-      &#125;
-      console.log(obj2.obj1.fn1())
-      console.log(obj2.obj1.fn2())
-      console.log(obj2.obj1.fn3())
-    &lt;&#x2F;script&gt;
-    3、 函数是Function类的实例
-    可以通过new Function动态创建函数对象。
-    &lt;script&gt;
-      var add&#x3D; new Function(&quot;x&quot;, &quot;y&quot;, &quot;return x+y&quot;)
-      console.log(add(1, 2))
-    &lt;&#x2F;script&gt;
-  &lt;&#x2F;body&gt;
+	&lt;head&gt;
+		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;
+		&lt;title&gt;&lt;&#x2F;title&gt;
+	&lt;&#x2F;head&gt;
+	&lt;body&gt;
+		1、this是什么？
+		函数中的this指函数的实际调用对象。&lt;hr&gt;
+		&lt;script&gt;
+			&#x2F;&#x2F; console.log(this)
+			&#x2F;&#x2F; var obj&#x3D;&#123;name:&quot;123&quot;&#125;
+			&#x2F;&#x2F; obj.fn &#x3D; function()&#123;
+			&#x2F;&#x2F; 	console.log(this)
+			&#x2F;&#x2F; 	console.log(this.name)
+			&#x2F;&#x2F; &#125;
+			&#x2F;&#x2F; &#x2F;&#x2F; obj.fn()
+			&#x2F;&#x2F; &#x2F;&#x2F; setTimeout(obj.fn, 1000)
+			&#x2F;&#x2F; console.log(typeof(obj))
+		&lt;&#x2F;script&gt;
+		2、箭头函数的this
+		箭头函数没有自己的this,它的this是外层作用域的this&lt;hr&gt;
+		&lt;script&gt;
+			function fn1()&#123;
+				console.log(&quot;fn1-&quot;,this);
+			&#125;
+			var fn2&#x3D;()&#x3D;&gt;&#123;
+				console.log(&quot;fn2&quot;,this);
+			&#125;
+			&#x2F;&#x2F; fn1()
+			&#x2F;&#x2F; fn2()
+			var obj1&#x3D;&#123;
+				name:&quot;124&quot;,
+				fn1,
+				fn2,
+				fn3:()&#x3D;&gt;&#123;
+					console.log(this)
+				&#125;
+			&#125;
+			&#x2F;&#x2F; obj1.fn1()&#x2F;&#x2F;类的this
+			&#x2F;&#x2F; obj1.fn2()&#x2F;&#x2F;外部的window
+			&#x2F;&#x2F; obj1.fn3()&#x2F;&#x2F;同样也是外部的window
+			var obj2&#x3D;&#123;
+				obj1
+			&#125;
+			console.log(obj2.obj1.fn1())
+			console.log(obj2.obj1.fn2())
+			console.log(obj2.obj1.fn3())
+		&lt;&#x2F;script&gt;
+		3、 函数是Function类的实例
+		可以通过new Function动态创建函数对象。
+		&lt;script&gt;
+			var add&#x3D; new Function(&quot;x&quot;, &quot;y&quot;, &quot;return x+y&quot;)
+			console.log(add(1, 2))
+		&lt;&#x2F;script&gt;
+	&lt;&#x2F;body&gt;
 &lt;&#x2F;html&gt;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h2><pre class="line-numbers language-none"><code class="language-none">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
-  &lt;head&gt;
-    &lt;meta charset&#x3D;&quot;utf-8&quot;&gt;
-    &lt;title&gt;&lt;&#x2F;title&gt;
-  &lt;&#x2F;head&gt;
-  &lt;body&gt;
-    1、js中函数可以作为参数传递&lt;br&gt;
-    &lt;script&gt;
-      function say (str) &#123;
-        alert(str);
-      &#125;
-      &#x2F;&#x2F;01方法函数作为参数
-      &#x2F;&#x2F; 高阶函数
-      function fn(fun, str)&#123;
-        fun(str)
-      &#125;
-      &#x2F;&#x2F; fn(say, &quot;123&quot;)
-      &#x2F;&#x2F; setInterval(say, 3000, &quot;1&quot;)
-      &#x2F;&#x2F;02直接将匿名函数作为参数传递给fn1方法
-      
-      &#x2F;&#x2F; fn(function(str)&#123;
-      &#x2F;&#x2F; 	alert(str)
-      &#x2F;&#x2F; &#125;, &quot;1111111&quot;)
-    &lt;&#x2F;script&gt;
-    &lt;br&gt;
-    2、函数作为返回值
-    &lt;script&gt;
-      &#x2F;*希望test1函数执行时，可以记录一条日志
-      开闭原则：对扩展开放，对修改关闭
-      在不修改原函数的基础上，增加此功能。
-      可以通过函数作为返回值 来动态生成一个新函数*&#x2F;
-      function test1()&#123;
-        var str&#x3D;&quot;heollo&quot;
-        console.log(str)
-      &#125;
-      function outer(fun)&#123;
-        return ()&#x3D;&gt;&#123;
-          console.log(&quot;添加日志------------&quot;)
-          fun()
-        &#125;&#x2F;&#x2F;返回值是函数
-      &#125;
-      outer(test1)&#x2F;&#x2F;返回值是函数
-      var f1&#x3D;outer(test1)&#x2F;&#x2F;接受返回值
-      f1()
-    &lt;&#x2F;script&gt;
-    3、什么高阶函数&lt;br&gt;
-    
-    
-  &lt;&#x2F;body&gt;
+	&lt;head&gt;
+		&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;
+		&lt;title&gt;&lt;&#x2F;title&gt;
+	&lt;&#x2F;head&gt;
+	&lt;body&gt;
+		1、js中函数可以作为参数传递&lt;br&gt;
+		&lt;script&gt;
+			function say (str) &#123;
+				alert(str);
+			&#125;
+			&#x2F;&#x2F;01方法函数作为参数
+			&#x2F;&#x2F; 高阶函数
+			function fn(fun, str)&#123;
+				fun(str)
+			&#125;
+			&#x2F;&#x2F; fn(say, &quot;123&quot;)
+			&#x2F;&#x2F; setInterval(say, 3000, &quot;1&quot;)
+			&#x2F;&#x2F;02直接将匿名函数作为参数传递给fn1方法
+			
+			&#x2F;&#x2F; fn(function(str)&#123;
+			&#x2F;&#x2F; 	alert(str)
+			&#x2F;&#x2F; &#125;, &quot;1111111&quot;)
+		&lt;&#x2F;script&gt;
+		&lt;br&gt;
+		2、函数作为返回值
+		&lt;script&gt;
+			&#x2F;*希望test1函数执行时，可以记录一条日志
+			开闭原则：对扩展开放，对修改关闭
+			在不修改原函数的基础上，增加此功能。
+			可以通过函数作为返回值 来动态生成一个新函数*&#x2F;
+			function test1()&#123;
+				var str&#x3D;&quot;heollo&quot;
+				console.log(str)
+			&#125;
+			function outer(fun)&#123;
+				return ()&#x3D;&gt;&#123;
+					console.log(&quot;添加日志------------&quot;)
+					fun()
+				&#125;&#x2F;&#x2F;返回值是函数
+			&#125;
+			outer(test1)&#x2F;&#x2F;返回值是函数
+			var f1&#x3D;outer(test1)&#x2F;&#x2F;接受返回值
+			f1()
+		&lt;&#x2F;script&gt;
+		3、什么高阶函数&lt;br&gt;
+		
+		
+	&lt;&#x2F;body&gt;
 &lt;&#x2F;html&gt;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><pre class="line-numbers language-none"><code class="language-none">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
-  &lt;meta charset&#x3D;&quot;utf-8&quot;&gt;
-  &lt;title&gt;&lt;&#x2F;title&gt;
+	&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;
+	&lt;title&gt;&lt;&#x2F;title&gt;
 &lt;&#x2F;head&gt;
 &lt;body&gt;
-  闭包
-  01 什么是闭包：函数A中 有一个函数B，函数B中可以访问函数A中定义的变量
-  或者数据，此时就形成了闭包。
-  02 闭包的功能： 使函数内部的变量在函数执行完后，仍然存活在内存中
-  （延长了局部变量的生命周期）
-        让函数外部可以操作函数内部的数据
-  &lt;script&gt;
-    &#x2F;&#x2F;1定义一个闭包
-    function A()&#123;
-      var num&#x3D;123
-      function B()&#123;
-        console.log(num)
-      &#125;
-      B()
-    &#125;
-    &#x2F;&#x2F; A()&#x2F;&#x2F;打断点之后会出现，Closure (A)，闭包
-    &#x2F;&#x2F; console.log(num)
+	闭包
+	01 什么是闭包：函数A中 有一个函数B，函数B中可以访问函数A中定义的变量
+	或者数据，此时就形成了闭包。
+	02 闭包的功能： 使函数内部的变量在函数执行完后，仍然存活在内存中
+	（延长了局部变量的生命周期）
+				让函数外部可以操作函数内部的数据
+	&lt;script&gt;
+		&#x2F;&#x2F;1定义一个闭包
+		function A()&#123;
+			var num&#x3D;123
+			function B()&#123;
+				console.log(num)
+			&#125;
+			B()
+		&#125;
+		&#x2F;&#x2F; A()&#x2F;&#x2F;打断点之后会出现，Closure (A)，闭包
+		&#x2F;&#x2F; console.log(num)
 
-    &#x2F;&#x2F;2 在f1 外部来访问n;
-    function f1()&#123;
-      var n&#x3D;10
-      return function()&#123;
-        console.log(n)
-        return n;
-      &#125;
-    &#125;
-    &#x2F;&#x2F; console.log(n);
-    
-    &#x2F;&#x2F;console.log(&quot;函数外 输出局部变量n的值：&quot;+ );
-    
-    &#x2F;*闭包的功能： 使函数内部的变量在函数执行完后，
-    仍然存活在内存中（延长了局部变量的生命周期）
-    让函数外部可以操作函数内部的数据*&#x2F;
-    
-    &#x2F;&#x2F;3 函数执行完后 局部变量就自动释放了 ？为什么还能访问？
-    var f2&#x3D;f1()
-    f2()&#x2F;&#x2F;延长了n的作用周期
-    
-  &lt;&#x2F;script&gt;
+		&#x2F;&#x2F;2 在f1 外部来访问n;
+		function f1()&#123;
+			var n&#x3D;10
+			return function()&#123;
+				console.log(n)
+				return n;
+			&#125;
+		&#125;
+		&#x2F;&#x2F; console.log(n);
+		
+		&#x2F;&#x2F;console.log(&quot;函数外 输出局部变量n的值：&quot;+ );
+		
+		&#x2F;*闭包的功能： 使函数内部的变量在函数执行完后，
+		仍然存活在内存中（延长了局部变量的生命周期）
+		让函数外部可以操作函数内部的数据*&#x2F;
+		
+		&#x2F;&#x2F;3 函数执行完后 局部变量就自动释放了 ？为什么还能访问？
+		var f2&#x3D;f1()
+		f2()&#x2F;&#x2F;延长了n的作用周期
+		
+	&lt;&#x2F;script&gt;
 &lt;&#x2F;body&gt;
 &lt;&#x2F;html&gt;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
@@ -1606,64 +1606,64 @@ input标签、rowspan&amp;lt;!DOCTYPE html&amp;gt;
 &lt;html&gt;
 
 &lt;head&gt;
-  &lt;meta charset&#x3D;&quot;utf-8&quot;&gt;
-  &lt;title&gt;&lt;&#x2F;title&gt;
+	&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;
+	&lt;title&gt;&lt;&#x2F;title&gt;
 &lt;&#x2F;head&gt;
 
 &lt;body&gt;
-  1、案例一&lt;br&gt;
-  &lt;script&gt;
-    &#x2F;*	function f1()&#123;
-        var num&#x3D;10;
-        num++;
-        console.log(num);
-      &#125;
-      &#x2F;&#x2F;运行结果是？
-      f1()  &#x2F;&#x2F;11
-      f1()  &#x2F;&#x2F;11 12			
-      f1()*&#x2F;
+	1、案例一&lt;br&gt;
+	&lt;script&gt;
+		&#x2F;*	function f1()&#123;
+				var num&#x3D;10;
+				num++;
+				console.log(num);
+			&#125;
+			&#x2F;&#x2F;运行结果是？
+			f1()  &#x2F;&#x2F;11
+			f1()  &#x2F;&#x2F;11 12			
+			f1()*&#x2F;
 
-  &lt;&#x2F;script&gt;
-  如何实现累加？-闭包
-  &lt;script&gt;
-    function f2() &#123;
-      var n &#x3D; 10
-      return function () &#123;
-        n++
-        return n
-      &#125;
-    &#125;
-    var ff &#x3D; f2()
-    &#x2F;&#x2F; console.log(ff())
-    &#x2F;&#x2F; console.log(ff())
-    &#x2F;&#x2F; console.log(ff())
-  &lt;&#x2F;script&gt;
-  &lt;hr&gt;
-  2、案例二：下来3个按钮，点击其中一个，提示&quot;点击的是第n个按钮&quot;：&lt;br&gt;
-  &lt;button&gt;桔子1&lt;&#x2F;button&gt;
-  &lt;button&gt;苹果2&lt;&#x2F;button&gt;
-  &lt;button&gt;梨子3&lt;&#x2F;button&gt;
-  &lt;script&gt;
-    &#x2F;&#x2F;html5 通过css选择器获得页面元素
-    var btns &#x3D; document.querySelectorAll(&quot;button&quot;)
-    &#x2F;&#x2F; console.log(btns)
-    &#x2F;&#x2F; for(var i&#x3D;0; i&lt;btns.length; i++)&#123;
-    &#x2F;&#x2F; 	btns[i].index&#x3D;i+1;
-    &#x2F;&#x2F; 	&#x2F;&#x2F; 注册事件
-    &#x2F;&#x2F; 	btns[i].οnclick&#x3D;function()&#123;
-    &#x2F;&#x2F; 		alert(&quot;点击了第&quot;+this.index+&quot;个按钮&quot;)
-    &#x2F;&#x2F; 	&#125;
-    &#x2F;&#x2F; &#125;
-    &#x2F;&#x2F; console.log(i)
-    &#x2F;&#x2F;闭包来获得按钮的索引
-    for (var i &#x3D; 0; i &lt; btns.length; i++) &#123;
-      (function (index) &#123;
-        btns[index].onclick &#x3D; function () &#123;
-          alert(&quot;点击了第&quot; + (index+1) + &quot;个按钮&quot;)
-        &#125;
-      &#125;)(i + 1);
-    &#125;
-  &lt;&#x2F;script&gt;
+	&lt;&#x2F;script&gt;
+	如何实现累加？-闭包
+	&lt;script&gt;
+		function f2() &#123;
+			var n &#x3D; 10
+			return function () &#123;
+				n++
+				return n
+			&#125;
+		&#125;
+		var ff &#x3D; f2()
+		&#x2F;&#x2F; console.log(ff())
+		&#x2F;&#x2F; console.log(ff())
+		&#x2F;&#x2F; console.log(ff())
+	&lt;&#x2F;script&gt;
+	&lt;hr&gt;
+	2、案例二：下来3个按钮，点击其中一个，提示&quot;点击的是第n个按钮&quot;：&lt;br&gt;
+	&lt;button&gt;桔子1&lt;&#x2F;button&gt;
+	&lt;button&gt;苹果2&lt;&#x2F;button&gt;
+	&lt;button&gt;梨子3&lt;&#x2F;button&gt;
+	&lt;script&gt;
+		&#x2F;&#x2F;html5 通过css选择器获得页面元素
+		var btns &#x3D; document.querySelectorAll(&quot;button&quot;)
+		&#x2F;&#x2F; console.log(btns)
+		&#x2F;&#x2F; for(var i&#x3D;0; i&lt;btns.length; i++)&#123;
+		&#x2F;&#x2F; 	btns[i].index&#x3D;i+1;
+		&#x2F;&#x2F; 	&#x2F;&#x2F; 注册事件
+		&#x2F;&#x2F; 	btns[i].οnclick&#x3D;function()&#123;
+		&#x2F;&#x2F; 		alert(&quot;点击了第&quot;+this.index+&quot;个按钮&quot;)
+		&#x2F;&#x2F; 	&#125;
+		&#x2F;&#x2F; &#125;
+		&#x2F;&#x2F; console.log(i)
+		&#x2F;&#x2F;闭包来获得按钮的索引
+		for (var i &#x3D; 0; i &lt; btns.length; i++) &#123;
+			(function (index) &#123;
+				btns[index].onclick &#x3D; function () &#123;
+					alert(&quot;点击了第&quot; + (index+1) + &quot;个按钮&quot;)
+				&#125;
+			&#125;)(i + 1);
+		&#125;
+	&lt;&#x2F;script&gt;
 
 &lt;&#x2F;body&gt;
 
@@ -1764,50 +1764,50 @@ input标签、rowspan&amp;lt;!DOCTYPE html&amp;gt;
 &lt;html&gt;
 
 &lt;head&gt;
-  &lt;meta charset&#x3D;&quot;utf-8&quot;&gt;
-  &lt;title&gt;&lt;&#x2F;title&gt;
-  &lt;style&gt;
-    #div1 &#123;
-      width: 200px;
-      height: 200px;
-      background: beige;
-    &#125;
-  &lt;&#x2F;style&gt;
+	&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;
+	&lt;title&gt;&lt;&#x2F;title&gt;
+	&lt;style&gt;
+		#div1 &#123;
+			width: 200px;
+			height: 200px;
+			background: beige;
+		&#125;
+	&lt;&#x2F;style&gt;
 &lt;&#x2F;head&gt;
 
 &lt;body&gt;
-  1、event事件对象：是浏览器在事件触发时所创建的对象。
-  这个对象封装了事件相关的各种信息。
-  -通过事件对象 可以获取事件的各种信息。
-  &lt;hr&gt;
-  2、Dom中存在着多种不同类型的时间对象-他们的父对象都是Event
-  &lt;hr&gt;
+	1、event事件对象：是浏览器在事件触发时所创建的对象。
+	这个对象封装了事件相关的各种信息。
+	-通过事件对象 可以获取事件的各种信息。
+	&lt;hr&gt;
+	2、Dom中存在着多种不同类型的时间对象-他们的父对象都是Event
+	&lt;hr&gt;
 
-  &lt;div id&#x3D;&#39;div1&#39;&gt;&lt;&#x2F;div&gt;&lt;br&gt;
-  &lt;button id&#x3D;&#39;btn1&#39;&gt;按钮1&lt;&#x2F;button&gt;
-  &lt;script&gt;
-    var div1 &#x3D; document.getElementById(&#39;div1&#39;);
-      var div1 &#x3D; document.getElementById(&quot;div1&quot;)
-      var btn1 &#x3D; document.getElementById(&quot;btn1&quot;)
-      &#x2F;&#x2F; console.log(div1, btn1)		
-      
-      
-      div1.onclick&#x3D;function(event)&#123;
-        &#x2F;&#x2F; console.log(event)
-        &#x2F;&#x2F;target 触发事件的对象
-        console.log(event.target)
-        &#x2F;&#x2F;this
-        &#x2F;&#x2F; console.log(this)
-        div1.textContext&#x3D;event.clientX+&quot;  &quot;+event.clientY
-      &#125;
-      &#x2F;&#x2F;事件的另外一种方式:监听事件 绑定多个方法
-      btn1.addEventListener(&#39;click&#39;, function()&#123;
-        alert(&quot;1234&quot;)
-      &#125;)
-      btn1.addEventListener(&#39;click&#39;, function()&#123;
-        alert(&quot;12345&quot;)
-      &#125;)
-  &lt;&#x2F;script&gt;
+	&lt;div id&#x3D;&#39;div1&#39;&gt;&lt;&#x2F;div&gt;&lt;br&gt;
+	&lt;button id&#x3D;&#39;btn1&#39;&gt;按钮1&lt;&#x2F;button&gt;
+	&lt;script&gt;
+		var div1 &#x3D; document.getElementById(&#39;div1&#39;);
+			var div1 &#x3D; document.getElementById(&quot;div1&quot;)
+			var btn1 &#x3D; document.getElementById(&quot;btn1&quot;)
+			&#x2F;&#x2F; console.log(div1, btn1)		
+			
+			
+			div1.onclick&#x3D;function(event)&#123;
+				&#x2F;&#x2F; console.log(event)
+				&#x2F;&#x2F;target 触发事件的对象
+				console.log(event.target)
+				&#x2F;&#x2F;this
+				&#x2F;&#x2F; console.log(this)
+				div1.textContext&#x3D;event.clientX+&quot;  &quot;+event.clientY
+			&#125;
+			&#x2F;&#x2F;事件的另外一种方式:监听事件 绑定多个方法
+			btn1.addEventListener(&#39;click&#39;, function()&#123;
+				alert(&quot;1234&quot;)
+			&#125;)
+			btn1.addEventListener(&#39;click&#39;, function()&#123;
+				alert(&quot;12345&quot;)
+			&#125;)
+	&lt;&#x2F;script&gt;
 
 &lt;&#x2F;body&gt;
 
@@ -1818,57 +1818,57 @@ input标签、rowspan&amp;lt;!DOCTYPE html&amp;gt;
 &lt;html&gt;
 
 &lt;head&gt;
-  &lt;meta charset&#x3D;&quot;utf-8&quot;&gt;
-  &lt;title&gt;&lt;&#x2F;title&gt;
-  &lt;style&gt;
-    #div1 &#123;
-      width: 300px;
-      height: 300px;
-      background: red;
-    &#125;
-    #div2&#123;
-      width: 200px;
-      height:100px;
-      background-color: aqua;
-    &#125;
-  &lt;&#x2F;style&gt;
+	&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;
+	&lt;title&gt;&lt;&#x2F;title&gt;
+	&lt;style&gt;
+		#div1 &#123;
+			width: 300px;
+			height: 300px;
+			background: red;
+		&#125;
+		#div2&#123;
+			width: 200px;
+			height:100px;
+			background-color: aqua;
+		&#125;
+	&lt;&#x2F;style&gt;
 &lt;&#x2F;head&gt;
 
 &lt;body&gt;
 
-  3、 事件冒泡:(bubble)是指事件向上传导
-  当元素的事件被触发后，其父元素上的相同事件也同时触发。
-  事件冒泡的存在简化了代码的编写，但是有时我们并不希望冒泡存在。
-  取消事件冒泡：event.stopPropagation()
+	3、 事件冒泡:(bubble)是指事件向上传导
+	当元素的事件被触发后，其父元素上的相同事件也同时触发。
+	事件冒泡的存在简化了代码的编写，但是有时我们并不希望冒泡存在。
+	取消事件冒泡：event.stopPropagation()
 
 
-  &lt;div id&#x3D;&#39;div1&#39;&gt;
-    &lt;div id&#x3D;&quot;div2&quot;&gt;&lt;&#x2F;div&gt;
-  &lt;&#x2F;div&gt;&lt;br&gt;
-  &lt;script&gt;
-    var div1 &#x3D; document.getElementById(&#39;div1&#39;);
-    div1.onclick &#x3D; function (ev) &#123;
-      alert(&quot;div1&quot;)
-    &#125;
-    var div2 &#x3D; document.getElementById(&#39;div2&#39;);
-    div2.onclick &#x3D; function (ev) &#123;
-      &#x2F;&#x2F; 取消默认行为
-      ev.stopPropagation()
-      alert(&quot;div123&quot;)
-    &#125;
-  &lt;&#x2F;script&gt;
-  4 取消默认行为。
-  &lt;a id&#x3D;&#39;a1&#39; href&#x3D;&quot;https:&#x2F;&#x2F;www.ahut.edu.cn&quot;&gt;安工大&lt;&#x2F;a&gt;
-  &lt;script&gt;
-    var a1 &#x3D; document.getElementById(&#39;a1&#39;);
-    a1.onclick&#x3D;function(ev)&#123;
-      alert(&quot;安工大&quot;)
-      
-      &#x2F;&#x2F;取消跳转的默认行为
-      &#x2F;&#x2F; 1.return false
-      &#x2F;&#x2F; 2.ev.preventDefault()
-    &#125;
-  &lt;&#x2F;script&gt;
+	&lt;div id&#x3D;&#39;div1&#39;&gt;
+		&lt;div id&#x3D;&quot;div2&quot;&gt;&lt;&#x2F;div&gt;
+	&lt;&#x2F;div&gt;&lt;br&gt;
+	&lt;script&gt;
+		var div1 &#x3D; document.getElementById(&#39;div1&#39;);
+		div1.onclick &#x3D; function (ev) &#123;
+			alert(&quot;div1&quot;)
+		&#125;
+		var div2 &#x3D; document.getElementById(&#39;div2&#39;);
+		div2.onclick &#x3D; function (ev) &#123;
+			&#x2F;&#x2F; 取消默认行为
+			ev.stopPropagation()
+			alert(&quot;div123&quot;)
+		&#125;
+	&lt;&#x2F;script&gt;
+	4 取消默认行为。
+	&lt;a id&#x3D;&#39;a1&#39; href&#x3D;&quot;https:&#x2F;&#x2F;www.ahut.edu.cn&quot;&gt;安工大&lt;&#x2F;a&gt;
+	&lt;script&gt;
+		var a1 &#x3D; document.getElementById(&#39;a1&#39;);
+		a1.onclick&#x3D;function(ev)&#123;
+			alert(&quot;安工大&quot;)
+			
+			&#x2F;&#x2F;取消跳转的默认行为
+			&#x2F;&#x2F; 1.return false
+			&#x2F;&#x2F; 2.ev.preventDefault()
+		&#125;
+	&lt;&#x2F;script&gt;
 &lt;&#x2F;body&gt;
 
 &lt;&#x2F;html&gt;
