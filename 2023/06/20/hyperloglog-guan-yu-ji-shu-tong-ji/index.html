@@ -390,7 +390,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    523
+                    518
                 </div>
                 
 
@@ -402,6 +402,9 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
 
         
 
@@ -411,7 +414,32 @@
 
 <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>今天在复习Redis的一种在Redis 2.8.9 版本更新的结构的时候，知道了这个数据结构是基于一种优秀的算法HyperLogLog，基数统计算法（简单来说就是统计集合中的元素数量，但是对比set有了很大的优化），就去了解了一下这种算法的精妙之处。</p>
 <h2 id="HyperLogLog"><a href="#HyperLogLog" class="headerlink" title="HyperLogLog"></a>HyperLogLog</h2><p>这种数据结构在Redis这种NoSQL型数据库中可以非常省内存的去统计各种计数，比如注册 IP 数、每日访问 IP 数、页面实时UV、在线用户数，共同好友数等。这个是应用场景。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379[1]&gt; PFADD k1 a b c d 1 2 3 4 1 2 3 4 5</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line">127.0.0.1:6379[1]&gt; PFCOUNT k1</span><br><span class="line">(<span class="built_in">integer</span>) 9</span><br><span class="line">127.0.0.1:6379[1]&gt; PFADD k2 a b c d 1 2 3 </span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line">127.0.0.1:6379[1]&gt; PFMERGE k1 k2</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379[1]&gt; PFCOUNT k1</span><br><span class="line">(<span class="built_in">integer</span>) 9</span><br><span class="line">127.0.0.1:6379[1]&gt; PFADD k2 a b c 5 6 1 2 3 4</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line">127.0.0.1:6379[1]&gt; PFCOUNT k2</span><br><span class="line">(<span class="built_in">integer</span>) 10</span><br><span class="line">127.0.0.1:6379[1]&gt; keys *</span><br><span class="line">1) <span class="string">&quot;k2&quot;</span></span><br><span class="line">2) <span class="string">&quot;k1&quot;</span></span><br><span class="line">127.0.0.1:6379[1]&gt; PFCOUNT k2</span><br><span class="line">(<span class="built_in">integer</span>) 10</span><br><span class="line">127.0.0.1:6379[1]&gt; PFCOUNT k1</span><br><span class="line">(<span class="built_in">integer</span>) 9</span><br><span class="line">127.0.0.1:6379[1]&gt; PFMERGE k1 k2 </span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379[1]&gt; PFCOUNT k1</span><br><span class="line">(<span class="built_in">integer</span>) 10</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token number">127.0</span>.0.1:6379<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">></span> PFADD k1 a b c d <span class="token number">1</span> <span class="token number">2</span> <span class="token number">3</span> <span class="token number">4</span> <span class="token number">1</span> <span class="token number">2</span> <span class="token number">3</span> <span class="token number">4</span> <span class="token number">5</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span>
+<span class="token number">127.0</span>.0.1:6379<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">></span> PFCOUNT k1
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">9</span>
+<span class="token number">127.0</span>.0.1:6379<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">></span> PFADD k2 a b c d <span class="token number">1</span> <span class="token number">2</span> <span class="token number">3</span> 
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span>
+<span class="token number">127.0</span>.0.1:6379<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">></span> PFMERGE k1 k2
+OK
+<span class="token number">127.0</span>.0.1:6379<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">></span> PFCOUNT k1
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">9</span>
+<span class="token number">127.0</span>.0.1:6379<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">></span> PFADD k2 a b c <span class="token number">5</span> <span class="token number">6</span> <span class="token number">1</span> <span class="token number">2</span> <span class="token number">3</span> <span class="token number">4</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span>
+<span class="token number">127.0</span>.0.1:6379<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">></span> PFCOUNT k2
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">10</span>
+<span class="token number">127.0</span>.0.1:6379<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">></span> keys *
+<span class="token number">1</span><span class="token punctuation">)</span> <span class="token string">"k2"</span>
+<span class="token number">2</span><span class="token punctuation">)</span> <span class="token string">"k1"</span>
+<span class="token number">127.0</span>.0.1:6379<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">></span> PFCOUNT k2
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">10</span>
+<span class="token number">127.0</span>.0.1:6379<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">></span> PFCOUNT k1
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">9</span>
+<span class="token number">127.0</span>.0.1:6379<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">></span> PFMERGE k1 k2 
+OK
+<span class="token number">127.0</span>.0.1:6379<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">></span> PFCOUNT k1
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">10</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 <p>从上面的示例可以看出，有三个操作：PFADD、PFCOUNT、PFMERGE。</p>
@@ -665,6 +693,9 @@
 <script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
 
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
 
 <!-- 代码语言 -->
 
@@ -789,7 +820,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">57k</span>
+                        class="white-color">57.9k</span>
             
             
             

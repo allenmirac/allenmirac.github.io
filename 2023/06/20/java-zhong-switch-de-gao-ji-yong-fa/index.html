@@ -7,7 +7,9 @@
     <meta name="keywords" content="Java中switch的高级用法, AllenMirac">
     <meta name="description" content="
 
-switch语句的用法用法一：12345678910111213141516171819public class Main &amp;#123;    public static void main(String[] args) &amp;#123; ">
+switch语句的用法用法一：public class Main &amp;#123;
+    public static void main(String[] args) &amp;#123;
+        String fruit = &#34;appl">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -390,7 +392,7 @@ switch语句的用法用法一：12345678910111213141516171819public class Main 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    535
+                    468
                 </div>
                 
 
@@ -402,6 +404,9 @@ switch语句的用法用法一：12345678910111213141516171819public class Main 
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
 
         
 
@@ -409,22 +414,88 @@ switch语句的用法用法一：12345678910111213141516171819public class Main 
             <div id="articleContent">
                 <meta name="referrer" content="no-referrer">
 
-<h2 id="switch语句的用法"><a href="#switch语句的用法" class="headerlink" title="switch语句的用法"></a>switch语句的用法</h2><h3 id="用法一："><a href="#用法一：" class="headerlink" title="用法一："></a><strong>用法一：</strong></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">fruit</span> <span class="operator">=</span> <span class="string">&quot;apple&quot;</span>;</span><br><span class="line">        <span class="keyword">switch</span> (fruit) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&quot;apple&quot;</span>:</span><br><span class="line">            System.out.println(<span class="string">&quot;Selected apple&quot;</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&quot;pear&quot;</span>:</span><br><span class="line">            System.out.println(<span class="string">&quot;Selected pear&quot;</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&quot;mango&quot;</span>:</span><br><span class="line">            System.out.println(<span class="string">&quot;Selected mango&quot;</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            System.out.println(<span class="string">&quot;No fruit selected&quot;</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="switch语句的用法"><a href="#switch语句的用法" class="headerlink" title="switch语句的用法"></a>switch语句的用法</h2><h3 id="用法一："><a href="#用法一：" class="headerlink" title="用法一："></a><strong>用法一：</strong></h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Main</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">String</span> fruit <span class="token operator">=</span> <span class="token string">"apple"</span><span class="token punctuation">;</span>
+        <span class="token keyword">switch</span> <span class="token punctuation">(</span>fruit<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">case</span> <span class="token string">"apple"</span><span class="token operator">:</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Selected apple"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token keyword">case</span> <span class="token string">"pear"</span><span class="token operator">:</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Selected pear"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token keyword">case</span> <span class="token string">"mango"</span><span class="token operator">:</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Selected mango"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token keyword">default</span><span class="token operator">:</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"No fruit selected"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 <p>注意点：要记得写break（case语句具有穿透效应，如果不写的话，后面的会继续执行）；要记得写default（都不匹配的情况）；</p>
-<h3 id="简洁的用法："><a href="#简洁的用法：" class="headerlink" title="简洁的用法："></a><strong>简洁的用法：</strong></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public class Main&#123;</span><br><span class="line">    public static void main(String[] args)&#123;</span><br><span class="line">        String fruit=<span class="string">&quot;ban&quot;</span>;</span><br><span class="line">        switch (fruit)&#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;apple&quot;</span>-&gt;System.out.println(<span class="string">&quot;select a&quot;</span>);</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;banana&quot;</span>-&gt;System.out.println(<span class="string">&quot;select b&quot;</span>);</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;mango&quot;</span>-&gt;System.out.println(<span class="string">&quot;select mango&quot;</span>);</span><br><span class="line">            default -&gt;System.out.println(<span class="string">&quot;select none&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        // System.out.println(<span class="string">&quot;哈哈哈&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="简洁的用法："><a href="#简洁的用法：" class="headerlink" title="简洁的用法："></a><strong>简洁的用法：</strong></h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">public class Main<span class="token punctuation">&#123;</span>
+    public static void main<span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        String <span class="token assign-left variable">fruit</span><span class="token operator">=</span><span class="token string">"ban"</span><span class="token punctuation">;</span>
+        switch <span class="token punctuation">(</span>fruit<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            <span class="token keyword">case</span> <span class="token string">"apple"</span>-<span class="token operator">></span>System.out.println<span class="token punctuation">(</span><span class="token string">"select a"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token string">"banana"</span>-<span class="token operator">></span>System.out.println<span class="token punctuation">(</span><span class="token string">"select b"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token string">"mango"</span>-<span class="token operator">></span>System.out.println<span class="token punctuation">(</span><span class="token string">"select mango"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            default -<span class="token operator">></span>System.out.println<span class="token punctuation">(</span><span class="token string">"select none"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        // System.out.println<span class="token punctuation">(</span><span class="token string">"哈哈哈"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 <p>直接使用箭头来表示switch的返回值，没有了写很多break的繁琐</p>
 <p>这种简介的写法还可以直接返回值：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class Main &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        String fruit = <span class="string">&quot;a&quot;</span>;</span><br><span class="line">        int option = switch (fruit) &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;a&quot;</span> -&gt; 1;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;p&quot;</span>, <span class="string">&quot;m&quot;</span> -&gt; 2;</span><br><span class="line">            default -&gt; 0;</span><br><span class="line">        &#125;; // 注意使用赋值语句要以;结束</span><br><span class="line">        System.out.println(<span class="string">&quot;opt = &quot;</span> + option);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">public class Main <span class="token punctuation">&#123;</span>
+    public static void main<span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        String fruit <span class="token operator">=</span> <span class="token string">"a"</span><span class="token punctuation">;</span>
+        int option <span class="token operator">=</span> switch <span class="token punctuation">(</span>fruit<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">case</span> <span class="token string">"a"</span> -<span class="token operator">></span> <span class="token number">1</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token string">"p"</span>, <span class="token string">"m"</span> -<span class="token operator">></span> <span class="token number">2</span><span class="token punctuation">;</span>
+            default -<span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">;</span> // 注意使用赋值语句要以<span class="token punctuation">;</span>结束
+        System.out.println<span class="token punctuation">(</span><span class="token string">"opt = "</span> + option<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="使用yield来返回值："><a href="#使用yield来返回值：" class="headerlink" title="使用yield来返回值："></a><strong>使用yield来返回值：</strong></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public class Main &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        String fruit = <span class="string">&quot;orange&quot;</span>;</span><br><span class="line">        int opt = switch (fruit) &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;apple&quot;</span> -&gt; 1;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;pear&quot;</span>, <span class="string">&quot;mango&quot;</span> -&gt; 2;</span><br><span class="line">            default -&gt; &#123;</span><br><span class="line">                int code = fruit.hashCode();</span><br><span class="line">                yield code;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        String c=<span class="string">&quot;a&quot;</span>;</span><br><span class="line">        System.out.println(c.hashCode());</span><br><span class="line">        System.out.println(<span class="string">&quot;opt = &quot;</span> + opt);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="使用yield来返回值："><a href="#使用yield来返回值：" class="headerlink" title="使用yield来返回值："></a><strong>使用yield来返回值：</strong></h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">public class Main <span class="token punctuation">&#123;</span>
+    public static void main<span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        String fruit <span class="token operator">=</span> <span class="token string">"orange"</span><span class="token punctuation">;</span>
+        int opt <span class="token operator">=</span> switch <span class="token punctuation">(</span>fruit<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">case</span> <span class="token string">"apple"</span> -<span class="token operator">></span> <span class="token number">1</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token string">"pear"</span>, <span class="token string">"mango"</span> -<span class="token operator">></span> <span class="token number">2</span><span class="token punctuation">;</span>
+            default -<span class="token operator">></span> <span class="token punctuation">&#123;</span>
+                int code <span class="token operator">=</span> fruit.hashCode<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                yield code<span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+        String <span class="token assign-left variable">c</span><span class="token operator">=</span><span class="token string">"a"</span><span class="token punctuation">;</span>
+        System.out.println<span class="token punctuation">(</span>c.hashCode<span class="token punctuation">(</span><span class="token punctuation">))</span><span class="token punctuation">;</span>
+        System.out.println<span class="token punctuation">(</span><span class="token string">"opt = "</span> + opt<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 <p><strong>说明：</strong>其中使用了String的hashcode方法，<strong>这个方法是以31为权，每一位为字符的ASCII值进行运算，用自然溢出来等效取模，得到一个不容易重复的数字，</strong>hashcode源码如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public int <span class="function"><span class="title">hashCode</span></span>() &#123;</span><br><span class="line">    int h = <span class="built_in">hash</span>;</span><br><span class="line">    <span class="keyword">if</span> (h == 0 &amp;&amp; value.length &gt; 0) &#123;</span><br><span class="line">        char val[] = value;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (int i = 0; i &lt; value.length; i++) &#123;</span><br><span class="line">            h = 31 * h + val[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">hash</span> = h;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> h;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">public int <span class="token function-name function">hashCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    int h <span class="token operator">=</span> <span class="token builtin class-name">hash</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>h <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> value.length <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        char val<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> value<span class="token punctuation">;</span>
+
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>int i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> value.length<span class="token punctuation">;</span> i++<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            h <span class="token operator">=</span> <span class="token number">31</span> * h + val<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token builtin class-name">hash</span> <span class="token operator">=</span> h<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token builtin class-name">return</span> h<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 <p>然后还使用了yield来返回值，注意<strong>只有switch使用-&gt;的简洁写法才可以使用yield返回值。</strong></p>
@@ -672,6 +743,9 @@ switch语句的用法用法一：12345678910111213141516171819public class Main 
 <script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
 
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
 
 <!-- 代码语言 -->
 
@@ -796,7 +870,7 @@ switch语句的用法用法一：12345678910111213141516171819public class Main 
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">57k</span>
+                        class="white-color">57.9k</span>
             
             
             

@@ -399,7 +399,7 @@ QComboBoxQComboBox 主要的功能是提供一个下拉列表供选择输入，�
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    710
+                    669
                 </div>
                 
 
@@ -410,6 +410,9 @@ QComboBoxQComboBox 主要的功能是提供一个下拉列表供选择输入，�
         </div>
         <hr class="clearfix">
 
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
         
 
         
@@ -428,12 +431,31 @@ QComboBoxQComboBox 主要的功能是提供一个下拉列表供选择输入，�
 <p><a href="#%E7%A4%BA%E4%BE%8B">示例</a></p>
 <p><a href="#%E6%AC%A2%E8%BF%8E%E5%A4%A7%E5%AE%B6star">欢迎大家star</a></p>
 <h1 id="QComboBox"><a href="#QComboBox" class="headerlink" title="QComboBox"></a>QComboBox</h1><p>QComboBox 主要的功能是提供一个下拉列表供选择输入，也可以直接当作一个 QLineEdit 用作输入（<code>ui-&gt;comboBox-&gt;setEditable(true);</code>）。</p>
-<h2 id="添加项"><a href="#添加项" class="headerlink" title="添加项"></a>添加项</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">ExQComboBox::on_btnInitNameAge_clicked</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    QIcon ico;</span><br><span class="line">    ico.<span class="built_in">addFile</span>(<span class="string">&quot;:/girl.ico&quot;</span>);</span><br><span class="line">​</span><br><span class="line">    QMap&lt;QString, QString&gt; map;</span><br><span class="line">    map.<span class="built_in">insert</span>(<span class="string">&quot;张投&quot;</span>, <span class="string">&quot;16岁&quot;</span>);</span><br><span class="line">    map.<span class="built_in">insert</span>(<span class="string">&quot;张我&quot;</span>, <span class="string">&quot;17岁&quot;</span>);</span><br><span class="line">    map.<span class="built_in">insert</span>(<span class="string">&quot;张以&quot;</span>, <span class="string">&quot;18岁&quot;</span>);</span><br><span class="line">    map.<span class="built_in">insert</span>(<span class="string">&quot;张木&quot;</span>, <span class="string">&quot;19岁&quot;</span>);</span><br><span class="line">    map.<span class="built_in">insert</span>(<span class="string">&quot;张李&quot;</span>, <span class="string">&quot;20岁&quot;</span>);</span><br><span class="line">    map.<span class="built_in">insert</span>(<span class="string">&quot;张，&quot;</span>, <span class="string">&quot;21岁&quot;</span>);</span><br><span class="line">    map.<span class="built_in">insert</span>(<span class="string">&quot;张报&quot;</span>, <span class="string">&quot;22岁&quot;</span>);</span><br><span class="line">​</span><br><span class="line">    ui-&gt;comboBoxRight-&gt;<span class="built_in">clear</span>();</span><br><span class="line">    foreach(<span class="type">const</span> QString &amp;str, map.<span class="built_in">keys</span>())&#123;</span><br><span class="line">        ui-&gt;comboBoxRight-&gt;<span class="built_in">addItem</span>(ico, str, map.<span class="built_in">value</span>(str));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="添加项"><a href="#添加项" class="headerlink" title="添加项"></a>添加项</h2><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token class-name">ExQComboBox</span><span class="token double-colon punctuation">::</span><span class="token function">on_btnInitNameAge_clicked</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    QIcon ico<span class="token punctuation">;</span>
+    ico<span class="token punctuation">.</span><span class="token function">addFile</span><span class="token punctuation">(</span><span class="token string">":/girl.ico"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+​
+    QMap<span class="token operator">&lt;</span>QString<span class="token punctuation">,</span> QString<span class="token operator">></span> map<span class="token punctuation">;</span>
+    map<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span><span class="token string">"张投"</span><span class="token punctuation">,</span> <span class="token string">"16岁"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    map<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span><span class="token string">"张我"</span><span class="token punctuation">,</span> <span class="token string">"17岁"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    map<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span><span class="token string">"张以"</span><span class="token punctuation">,</span> <span class="token string">"18岁"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    map<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span><span class="token string">"张木"</span><span class="token punctuation">,</span> <span class="token string">"19岁"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    map<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span><span class="token string">"张李"</span><span class="token punctuation">,</span> <span class="token string">"20岁"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    map<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span><span class="token string">"张，"</span><span class="token punctuation">,</span> <span class="token string">"21岁"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    map<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span><span class="token string">"张报"</span><span class="token punctuation">,</span> <span class="token string">"22岁"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+​
+    ui<span class="token operator">-></span>comboBoxRight<span class="token operator">-></span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">foreach</span><span class="token punctuation">(</span><span class="token keyword">const</span> QString <span class="token operator">&amp;</span>str<span class="token punctuation">,</span> map<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        ui<span class="token operator">-></span>comboBoxRight<span class="token operator">-></span><span class="token function">addItem</span><span class="token punctuation">(</span>ico<span class="token punctuation">,</span> str<span class="token punctuation">,</span> map<span class="token punctuation">.</span><span class="token function">value</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 <p>这里用了foreach遍历map。</p>
 <p>添加具有用户数据的项 QComboBox::addltem() 函数的两种参数的原型定义如下：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">addItem</span> <span class="params">(<span class="type">const</span> QString &amp;text, <span class="type">const</span> QVariant &amp;userData = QVariant())</span></span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">addItem</span> <span class="params">(<span class="type">const</span> QIcon &amp;icon, <span class="type">const</span> QString &amp;text, <span class="type">const</span> QVariant &amp;userData = QVariant())</span></span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">addItem</span> <span class="token punctuation">(</span><span class="token keyword">const</span> QString <span class="token operator">&amp;</span>text<span class="token punctuation">,</span> <span class="token keyword">const</span> QVariant <span class="token operator">&amp;</span>userData <span class="token operator">=</span> <span class="token function">QVariant</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">void</span> <span class="token function">addItem</span> <span class="token punctuation">(</span><span class="token keyword">const</span> QIcon <span class="token operator">&amp;</span>icon<span class="token punctuation">,</span> <span class="token keyword">const</span> QString <span class="token operator">&amp;</span>text<span class="token punctuation">,</span> <span class="token keyword">const</span> QVariant <span class="token operator">&amp;</span>userData <span class="token operator">=</span> <span class="token function">QVariant</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <h2 id="常用函数"><a href="#常用函数" class="headerlink" title="常用函数"></a>常用函数</h2><p>QComboBox 存储的项是一个列表，但是 QComboBox 不提供整个列表用于访问，可以通过索引访问某个项。访问项的一些函数主要有以下几种：</p>
 <ul>
@@ -445,7 +467,10 @@ QComboBoxQComboBox 主要的功能是提供一个下拉列表供选择输入，�
 <p>QPlainTextEdit的文字内容以QTextDocument类型存储，函数document()返回这个文档对象的指针。</p>
 <p>QTextDocument是内存中的文本对象，以文本块的方式存储，一个文本块就是一个段落，每个段落以回车符结束。QTextDocument提供一些函数实现对文本内容的存取。</p>
 <h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><p>常用函数含义()appendPlainText()向QPlain TextEdit添加一行话int blockCount()获得文本块个数QTextBlock findBlockByNumber(int blockNumber)读取某一个文本块，序号从0开始，至blockCount()-1结束。</p>
-<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">ExQComboBox::onSelectDisplay</span><span class="params">(QString str)</span></span>&#123;</span><br><span class="line">    QString strData = ui-&gt;comboBoxRight-&gt;<span class="built_in">currentData</span>().<span class="built_in">toString</span>();</span><br><span class="line">    ui-&gt;plainTextEdit-&gt;<span class="built_in">appendPlainText</span>(str + <span class="string">&quot; &quot;</span> + strData);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token class-name">ExQComboBox</span><span class="token double-colon punctuation">::</span><span class="token function">onSelectDisplay</span><span class="token punctuation">(</span>QString str<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    QString strData <span class="token operator">=</span> ui<span class="token operator">-></span>comboBoxRight<span class="token operator">-></span><span class="token function">currentData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    ui<span class="token operator">-></span>plainTextEdit<span class="token operator">-></span><span class="token function">appendPlainText</span><span class="token punctuation">(</span>str <span class="token operator">+</span> <span class="token string">" "</span> <span class="token operator">+</span> strData<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h1 id="欢迎大家star"><a href="#欢迎大家star" class="headerlink" title="欢迎大家star"></a>欢迎大家star</h1><p>这里是项目的源码，是一个很好的练习的例子，可以自己敲着玩一玩，练习练习手感</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/allenmirac/QTStudy/tree/main/QTReviewQCombobox">QTStudy&#x2F;QTReviewQCombobox at main · allenmirac&#x2F;QTStudy · GitHub</a></p>
@@ -692,6 +717,9 @@ QComboBoxQComboBox 主要的功能是提供一个下拉列表供选择输入，�
 <script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
 
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
 
 <!-- 代码语言 -->
 
@@ -816,7 +844,7 @@ QComboBoxQComboBox 主要的功能是提供一个下拉列表供选择输入，�
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">57k</span>
+                        class="white-color">57.9k</span>
             
             
             

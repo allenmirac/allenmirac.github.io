@@ -7,7 +7,12 @@
     <meta name="keywords" content="c++：前置++和后置++的运算符重载、红黑树的概念、static关键字, AllenMirac">
     <meta name="description" content="
 
-前置++和后置++的运算符重载1234567891011121314151617181920212223242526272829303132#include &amp;lt;iostream&amp;gt;     using namespace st">
+前置++和后置++的运算符重载#include &amp;lt;iostream&gt;
+     using namespace std;
+ class Interge&amp;#123;
+     int a;
+ public:
+     Interge">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -390,7 +395,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    578
+                    573
                 </div>
                 
 
@@ -402,6 +407,9 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
 
         
 
@@ -409,7 +417,38 @@
             <div id="articleContent">
                 <meta name="referrer" content="no-referrer">
 
-<h2 id="前置-和后置-的运算符重载"><a href="#前置-和后置-的运算符重载" class="headerlink" title="前置++和后置++的运算符重载"></a>前置++和后置++的运算符重载</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line">     <span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"> <span class="keyword">class</span> <span class="title class_">Interge</span>&#123;</span><br><span class="line">     <span class="type">int</span> a;</span><br><span class="line"> <span class="keyword">public</span>:</span><br><span class="line">     <span class="built_in">Interge</span>(<span class="type">int</span> a):<span class="built_in">a</span>(a)&#123;&#125;</span><br><span class="line">     <span class="function"><span class="type">int</span> <span class="title">get</span><span class="params">()</span> <span class="type">const</span></span>&#123;</span><br><span class="line">         <span class="keyword">return</span> <span class="keyword">this</span>-&gt;a;</span><br><span class="line">     &#125;</span><br><span class="line">     Interge&amp; <span class="keyword">operator</span>++()&#123;</span><br><span class="line">         <span class="keyword">this</span>-&gt;a++;</span><br><span class="line">         <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">     &#125;</span><br><span class="line">     Interge <span class="keyword">operator</span>++(<span class="type">int</span>)&#123;</span><br><span class="line">         Interge temp= *<span class="keyword">this</span>;</span><br><span class="line">         <span class="keyword">this</span>-&gt;a++;</span><br><span class="line">         <span class="keyword">return</span> temp;</span><br><span class="line">     &#125;</span><br><span class="line"> ​</span><br><span class="line"> &#125;;</span><br><span class="line"> <span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">     <span class="function">Interge <span class="title">i</span><span class="params">(<span class="number">0</span>)</span></span>;</span><br><span class="line">     <span class="type">int</span> a=<span class="number">0</span>;</span><br><span class="line">     cout&lt;&lt;a++&lt;&lt;endl;</span><br><span class="line">     cout&lt;&lt;i.<span class="built_in">get</span>()&lt;&lt;endl;</span><br><span class="line">     <span class="comment">// i++;</span></span><br><span class="line">     cout&lt;&lt;i.<span class="built_in">get</span>()&lt;&lt;endl;</span><br><span class="line">     i++++;</span><br><span class="line">     <span class="comment">// ++i;</span></span><br><span class="line">     cout&lt;&lt;i.<span class="built_in">get</span>()&lt;&lt;endl;</span><br><span class="line">     <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="前置-和后置-的运算符重载"><a href="#前置-和后置-的运算符重载" class="headerlink" title="前置++和后置++的运算符重载"></a>前置++和后置++的运算符重载</h2><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
+     <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+ <span class="token keyword">class</span> <span class="token class-name">Interge</span><span class="token punctuation">&#123;</span>
+     <span class="token keyword">int</span> a<span class="token punctuation">;</span>
+ <span class="token keyword">public</span><span class="token operator">:</span>
+     <span class="token function">Interge</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">)</span><span class="token operator">:</span><span class="token function">a</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+     <span class="token keyword">int</span> <span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">&#123;</span>
+         <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token operator">-></span>a<span class="token punctuation">;</span>
+     <span class="token punctuation">&#125;</span>
+     Interge<span class="token operator">&amp;</span> <span class="token keyword">operator</span><span class="token operator">++</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+         <span class="token keyword">this</span><span class="token operator">-></span>a<span class="token operator">++</span><span class="token punctuation">;</span>
+         <span class="token keyword">return</span> <span class="token operator">*</span><span class="token keyword">this</span><span class="token punctuation">;</span>
+     <span class="token punctuation">&#125;</span>
+     Interge <span class="token keyword">operator</span><span class="token operator">++</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+         Interge temp<span class="token operator">=</span> <span class="token operator">*</span><span class="token keyword">this</span><span class="token punctuation">;</span>
+         <span class="token keyword">this</span><span class="token operator">-></span>a<span class="token operator">++</span><span class="token punctuation">;</span>
+         <span class="token keyword">return</span> temp<span class="token punctuation">;</span>
+     <span class="token punctuation">&#125;</span>
+ ​
+ <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+ <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+     Interge <span class="token function">i</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token keyword">int</span> a<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+     cout<span class="token operator">&lt;&lt;</span>a<span class="token operator">++</span><span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
+     cout<span class="token operator">&lt;&lt;</span>i<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
+     <span class="token comment">// i++;</span>
+     cout<span class="token operator">&lt;&lt;</span>i<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
+     i<span class="token operator">++</span><span class="token operator">++</span><span class="token punctuation">;</span>
+     <span class="token comment">// ++i;</span>
+     cout<span class="token operator">&lt;&lt;</span>i<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
+     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+ <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h2><p><strong>红黑树的特性</strong>:*<em>（1）每个节点或者是黑色，或者是红色。</em><em><strong>（2）根节点是黑色。</strong></em><em>（3）每个叶子节点（NIL）是黑色。 [注意：这里叶子节点，是指为空(NIL或NULL)的叶子节点！]<strong><strong>（4）如果一个节点是红色的，则它的子节点必须是黑色的。</strong></strong>（5）从一个节点到该节点的子孙节点的所有路径上包含相同数目的黑节点。</em>*</p>
 <p><strong>红黑树的应用</strong></p>
@@ -661,6 +700,9 @@
 <script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
 
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
 
 <!-- 代码语言 -->
 
@@ -785,7 +827,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">57k</span>
+                        class="white-color">57.9k</span>
             
             
             

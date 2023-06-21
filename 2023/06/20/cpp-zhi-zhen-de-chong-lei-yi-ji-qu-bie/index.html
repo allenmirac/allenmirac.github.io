@@ -391,7 +391,7 @@ CPP指针空指针在C和C++中，用0和NULL都可以表示空指针
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    681
+                    678
                 </div>
                 
 
@@ -402,6 +402,9 @@ CPP指针空指针在C和C++中，用0和NULL都可以表示空指针
         </div>
         <hr class="clearfix">
 
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
         
 
         
@@ -420,11 +423,49 @@ CPP指针空指针在C和C++中，用0和NULL都可以表示空指针
 <h2 id="野指针"><a href="#野指针" class="headerlink" title="野指针"></a>野指针</h2><p>指针只申明，但未初始化，就会出现，<code>int* p</code>，此时p就是野指针。</p>
 <p><strong>规避方法：</strong> 1）指针在定义的时候，如果没地方指，就初始化为 <code>nullptr</code> 。 2）动态分配的内存被释放后，将其置为 <code>nullptr</code> 。 3）不要返回局部变量的地址。 <strong>注意：</strong> 野指针的危害比空指针要大很多，在程序中，如果访问野指针，可能会造成程序的崩溃。是<strong>可能，不是一定（因为你也不知道它初始化到底指向了哪里）</strong>，程序的表现是不稳定，增加了调试程序的难度。</p>
 <h2 id="指针与数组名的区别"><a href="#指针与数组名的区别" class="headerlink" title="指针与数组名的区别"></a>指针与数组名的区别</h2><p>指针是一个地址占4个字节，而数组名是一种数据结构，可以通过 <code>sizeof</code> 体现出来</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()&#123;</span><br><span class="line">  int a[10];</span><br><span class="line">  int *a1;</span><br><span class="line">  cout&lt;&lt;sizeof(a)&lt;&lt;endl;//40</span><br><span class="line">  cout&lt;&lt;sizeof(a1)&lt;&lt;endl;//4</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">#include&lt;iostream&gt;
+using namespace std;
+int main()&#123;
+  int a[10];
+  int *a1;
+  cout&lt;&lt;sizeof(a)&lt;&lt;endl;&#x2F;&#x2F;40
+  cout&lt;&lt;sizeof(a1)&lt;&lt;endl;&#x2F;&#x2F;4
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 <p>但是有一种特殊情况，当数组名作为<strong>函数的参数</strong>来传递的时候，他的高贵的数组结构特性已经失去了，成了一个地地道道的只拥有4个字节的<strong>平民</strong>。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">func1</span><span class="params">(<span class="type">int</span> arr[])</span></span>&#123;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;sizeof(arr): &quot;</span>&lt;&lt;<span class="built_in">sizeof</span>(arr)&lt;&lt;endl;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;<span class="built_in">sizeof</span>(arr)/<span class="built_in">sizeof</span>(<span class="type">int</span>); i++)&#123;</span><br><span class="line">        cout&lt;&lt;arr[i]&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">func2</span><span class="params">(<span class="type">int</span> arr[], <span class="type">int</span> len)</span></span>&#123;<span class="comment">//所以一定要加上数组的长度。</span></span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;sizeof(arr): &quot;</span>&lt;&lt;<span class="built_in">sizeof</span>(arr)&lt;&lt;endl;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;len; i++)&#123;</span><br><span class="line">        cout&lt;&lt;arr[i]&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> arr[]=&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;;</span><br><span class="line">    cout&lt;&lt;<span class="built_in">sizeof</span>(arr)&lt;&lt;endl;</span><br><span class="line">    <span class="built_in">func1</span>(arr);</span><br><span class="line">    <span class="built_in">func2</span>(arr, <span class="number">5</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//20</span></span><br><span class="line"><span class="comment">//sizeof(arr): 4</span></span><br><span class="line"><span class="comment">//1</span></span><br><span class="line"><span class="comment">//sizeof(arr): 4</span></span><br><span class="line"><span class="comment">//1</span></span><br><span class="line"><span class="comment">//2</span></span><br><span class="line"><span class="comment">//3</span></span><br><span class="line"><span class="comment">//4</span></span><br><span class="line"><span class="comment">//5</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token function">func1</span><span class="token punctuation">(</span><span class="token keyword">int</span> arr<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    cout<span class="token operator">&lt;&lt;</span><span class="token string">"sizeof(arr): "</span><span class="token operator">&lt;&lt;</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">&lt;</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token operator">/</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        cout<span class="token operator">&lt;&lt;</span>arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">void</span> <span class="token function">func2</span><span class="token punctuation">(</span><span class="token keyword">int</span> arr<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">int</span> len<span class="token punctuation">)</span><span class="token punctuation">&#123;</span><span class="token comment">//所以一定要加上数组的长度。</span>
+    cout<span class="token operator">&lt;&lt;</span><span class="token string">"sizeof(arr): "</span><span class="token operator">&lt;&lt;</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">&lt;</span>len<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        cout<span class="token operator">&lt;&lt;</span>arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> arr<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+    cout<span class="token operator">&lt;&lt;</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
+    <span class="token function">func1</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">func2</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token comment">//20</span>
+<span class="token comment">//sizeof(arr): 4</span>
+<span class="token comment">//1</span>
+<span class="token comment">//sizeof(arr): 4</span>
+<span class="token comment">//1</span>
+<span class="token comment">//2</span>
+<span class="token comment">//3</span>
+<span class="token comment">//4</span>
+<span class="token comment">//5</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
@@ -670,6 +711,9 @@ CPP指针空指针在C和C++中，用0和NULL都可以表示空指针
 <script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
 
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
 
 <!-- 代码语言 -->
 
@@ -794,7 +838,7 @@ CPP指针空指针在C和C++中，用0和NULL都可以表示空指针
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">57k</span>
+                        class="white-color">57.9k</span>
             
             
             

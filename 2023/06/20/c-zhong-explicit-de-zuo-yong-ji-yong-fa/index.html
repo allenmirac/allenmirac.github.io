@@ -396,7 +396,7 @@ C++explicit（官网的说法">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    860
+                    850
                 </div>
                 
 
@@ -407,6 +407,9 @@ C++explicit（官网的说法">
         </div>
         <hr class="clearfix">
 
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
         
 
         
@@ -437,7 +440,74 @@ C++explicit（官网的说法">
 <p>      （2） explicit 关键字作用于单个参数的构造函数。</p>
 <p>    * 在C++中，explicit关键字用来修饰类的构造函数，被修饰的构造函数的类，不能发生相应的隐式类型转换</p>
 <h2 id="C-explicit使用的例子（建议喜欢自己敲代码实验的从这里开始食用哦）"><a href="#C-explicit使用的例子（建议喜欢自己敲代码实验的从这里开始食用哦）" class="headerlink" title="C++explicit使用的例子（建议喜欢自己敲代码实验的从这里开始食用哦）"></a>C++explicit使用的例子（建议喜欢自己敲代码实验的从这里开始食用哦）</h2><p> 例子</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Circle</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="built_in">Circle</span>()&#123;&#125;</span><br><span class="line">        <span class="built_in">Circle</span>(<span class="type">double</span> _a):<span class="built_in">a</span>(_a)&#123;&#125;</span><br><span class="line">        <span class="built_in">Circle</span>(<span class="type">int</span> _b, <span class="type">int</span> _c):<span class="built_in">b</span>(_b), <span class="built_in">c</span>(_c)&#123;&#125;</span><br><span class="line"> </span><br><span class="line">        <span class="built_in">Circle</span>(<span class="type">const</span> Circle&amp; A)</span><br><span class="line">        &#123;</span><br><span class="line">            a=A.a; b=A.b; c=A.c;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="type">void</span> <span class="title">Print</span><span class="params">()</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            cout&lt;&lt;a&lt;&lt;<span class="string">&quot; &quot;</span>&lt;&lt;b&lt;&lt;<span class="string">&quot; &quot;</span>&lt;&lt;c&lt;&lt;endl;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">private</span>:</span><br><span class="line">        <span class="type">double</span> a;</span><br><span class="line">        <span class="type">int</span> b;</span><br><span class="line">        <span class="type">int</span> c;</span><br><span class="line"> </span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Circle1</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="built_in">Circle1</span>()&#123;&#125;</span><br><span class="line">        <span class="function"><span class="keyword">explicit</span> <span class="title">Circle1</span><span class="params">(<span class="type">double</span> _a)</span>:a(_a)&#123;</span>&#125;</span><br><span class="line">        <span class="function"><span class="keyword">explicit</span> <span class="title">Circle1</span><span class="params">(<span class="type">int</span> _b, <span class="type">int</span> _c)</span>:b(_b), c(_c)&#123;</span>&#125;</span><br><span class="line">        <span class="function"><span class="keyword">explicit</span> <span class="title">Circle1</span><span class="params">(<span class="type">const</span> Circle1&amp; A)</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            a=A.a; b=A.b; c=A.c;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="type">void</span> <span class="title">Print</span><span class="params">()</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            cout&lt;&lt;a&lt;&lt;<span class="string">&quot; &quot;</span>&lt;&lt;b&lt;&lt;<span class="string">&quot; &quot;</span>&lt;&lt;c&lt;&lt;endl;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">private</span>:</span><br><span class="line">        <span class="type">double</span> a;</span><br><span class="line">        <span class="type">int</span> b;</span><br><span class="line">        <span class="type">int</span> c;</span><br><span class="line"> </span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="function">Circle <span class="title">q1</span><span class="params">(<span class="number">1</span>)</span></span>;</span><br><span class="line">    <span class="function">Circle <span class="title">w1</span><span class="params">(<span class="number">2</span>, <span class="number">3</span>)</span></span>;</span><br><span class="line">    q1.<span class="built_in">Print</span>();</span><br><span class="line">    w1.<span class="built_in">Print</span>();</span><br><span class="line"> </span><br><span class="line">    <span class="comment">//隐式调用, 不会报错</span></span><br><span class="line">    Circle q2 = <span class="number">1</span>;<span class="comment">// just like Circle q(1); 调用的是Circle(double _a)</span></span><br><span class="line">    Circle w2 = <span class="number">1.0</span>;<span class="comment">// just like Circle q(1.0); 调用的是Circle(double _a)</span></span><br><span class="line">    Circle e = q2;<span class="comment">// 调用的是Circle(const Circle&amp; A)</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment">//隐式调用，会报错，注意Circle1()的构造函数，都有explicit</span></span><br><span class="line">    <span class="comment">// Circle1 q3 = 1;</span></span><br><span class="line">    <span class="comment">// Circle1 w3 = 1.0;</span></span><br><span class="line">    <span class="comment">// Circle1 e1 = q3;</span></span><br><span class="line">    <span class="comment">// 以上三行都会报错。</span></span><br><span class="line"> </span><br><span class="line">    <span class="comment">//显式调用，都不会有问题</span></span><br><span class="line">    <span class="function">Circle1 <span class="title">q3</span><span class="params">(<span class="number">1</span>)</span></span>;</span><br><span class="line">    <span class="function">Circle1 <span class="title">w3</span><span class="params">(<span class="number">1.0</span>)</span></span>;</span><br><span class="line">    <span class="function">Circle1 <span class="title">e1</span><span class="params">(q3)</span></span>;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h></span></span>
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+<span class="token keyword">class</span> <span class="token class-name">Circle</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span><span class="token operator">:</span>
+        <span class="token function">Circle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+        <span class="token function">Circle</span><span class="token punctuation">(</span><span class="token keyword">double</span> _a<span class="token punctuation">)</span><span class="token operator">:</span><span class="token function">a</span><span class="token punctuation">(</span>_a<span class="token punctuation">)</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+        <span class="token function">Circle</span><span class="token punctuation">(</span><span class="token keyword">int</span> _b<span class="token punctuation">,</span> <span class="token keyword">int</span> _c<span class="token punctuation">)</span><span class="token operator">:</span><span class="token function">b</span><span class="token punctuation">(</span>_b<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">c</span><span class="token punctuation">(</span>_c<span class="token punctuation">)</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+ 
+        <span class="token function">Circle</span><span class="token punctuation">(</span><span class="token keyword">const</span> Circle<span class="token operator">&amp;</span> A<span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+            a<span class="token operator">=</span>A<span class="token punctuation">.</span>a<span class="token punctuation">;</span> b<span class="token operator">=</span>A<span class="token punctuation">.</span>b<span class="token punctuation">;</span> c<span class="token operator">=</span>A<span class="token punctuation">.</span>c<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">void</span> <span class="token function">Print</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+            cout<span class="token operator">&lt;&lt;</span>a<span class="token operator">&lt;&lt;</span><span class="token string">" "</span><span class="token operator">&lt;&lt;</span>b<span class="token operator">&lt;&lt;</span><span class="token string">" "</span><span class="token operator">&lt;&lt;</span>c<span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token keyword">private</span><span class="token operator">:</span>
+        <span class="token keyword">double</span> a<span class="token punctuation">;</span>
+        <span class="token keyword">int</span> b<span class="token punctuation">;</span>
+        <span class="token keyword">int</span> c<span class="token punctuation">;</span>
+ 
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span class="token keyword">class</span> <span class="token class-name">Circle1</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span><span class="token operator">:</span>
+        <span class="token function">Circle1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+        <span class="token keyword">explicit</span> <span class="token function">Circle1</span><span class="token punctuation">(</span><span class="token keyword">double</span> _a<span class="token punctuation">)</span><span class="token operator">:</span><span class="token function">a</span><span class="token punctuation">(</span>_a<span class="token punctuation">)</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+        <span class="token keyword">explicit</span> <span class="token function">Circle1</span><span class="token punctuation">(</span><span class="token keyword">int</span> _b<span class="token punctuation">,</span> <span class="token keyword">int</span> _c<span class="token punctuation">)</span><span class="token operator">:</span><span class="token function">b</span><span class="token punctuation">(</span>_b<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">c</span><span class="token punctuation">(</span>_c<span class="token punctuation">)</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+        <span class="token keyword">explicit</span> <span class="token function">Circle1</span><span class="token punctuation">(</span><span class="token keyword">const</span> Circle1<span class="token operator">&amp;</span> A<span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+            a<span class="token operator">=</span>A<span class="token punctuation">.</span>a<span class="token punctuation">;</span> b<span class="token operator">=</span>A<span class="token punctuation">.</span>b<span class="token punctuation">;</span> c<span class="token operator">=</span>A<span class="token punctuation">.</span>c<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">void</span> <span class="token function">Print</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+            cout<span class="token operator">&lt;&lt;</span>a<span class="token operator">&lt;&lt;</span><span class="token string">" "</span><span class="token operator">&lt;&lt;</span>b<span class="token operator">&lt;&lt;</span><span class="token string">" "</span><span class="token operator">&lt;&lt;</span>c<span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token keyword">private</span><span class="token operator">:</span>
+        <span class="token keyword">double</span> a<span class="token punctuation">;</span>
+        <span class="token keyword">int</span> b<span class="token punctuation">;</span>
+        <span class="token keyword">int</span> c<span class="token punctuation">;</span>
+ 
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    Circle <span class="token function">q1</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Circle <span class="token function">w1</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    q1<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    w1<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ 
+    <span class="token comment">//隐式调用, 不会报错</span>
+    Circle q2 <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span><span class="token comment">// just like Circle q(1); 调用的是Circle(double _a)</span>
+    Circle w2 <span class="token operator">=</span> <span class="token number">1.0</span><span class="token punctuation">;</span><span class="token comment">// just like Circle q(1.0); 调用的是Circle(double _a)</span>
+    Circle e <span class="token operator">=</span> q2<span class="token punctuation">;</span><span class="token comment">// 调用的是Circle(const Circle&amp; A)</span>
+    
+    
+    <span class="token comment">//隐式调用，会报错，注意Circle1()的构造函数，都有explicit</span>
+    <span class="token comment">// Circle1 q3 = 1;</span>
+    <span class="token comment">// Circle1 w3 = 1.0;</span>
+    <span class="token comment">// Circle1 e1 = q3;</span>
+    <span class="token comment">// 以上三行都会报错。</span>
+ 
+    <span class="token comment">//显式调用，都不会有问题</span>
+    Circle1 <span class="token function">q3</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Circle1 <span class="token function">w3</span><span class="token punctuation">(</span><span class="token number">1.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Circle1 <span class="token function">e1</span><span class="token punctuation">(</span>q3<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ 
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 <p>上面三行的报错信息：（这个是我原来在另外一个账号写的博客，现在账号转移到这个了）</p>
@@ -690,6 +760,9 @@ C++explicit（官网的说法">
 <script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
 
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
 
 <!-- 代码语言 -->
 
@@ -814,7 +887,7 @@ C++explicit（官网的说法">
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">57k</span>
+                        class="white-color">57.9k</span>
             
             
             

@@ -390,7 +390,7 @@ CSDNExporter介绍CSDN 博客导出工具, 用于将 CSDN 博客导出为 Markdo
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    738
+                    700
                 </div>
                 
 
@@ -401,6 +401,9 @@ CSDNExporter介绍CSDN 博客导出工具, 用于将 CSDN 博客导出为 Markdo
         </div>
         <hr class="clearfix">
 
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
         
 
         
@@ -415,28 +418,77 @@ CSDNExporter介绍CSDN 博客导出工具, 用于将 CSDN 博客导出为 Markdo
 </ul>
 <h2 id="修改的地方"><a href="#修改的地方" class="headerlink" title="修改的地方"></a>修改的地方</h2><p>1、将下载的博客的图片分开保存在title…assets文件中，博客中有图片的时候才会创建图片目录，只会创建一次</p>
 <p>utils.py 增加了一个参数title</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, html, title, is_win=<span class="literal">False</span></span>):</span><br><span class="line">    self.html = html</span><br><span class="line">    self.soup = BeautifulSoup(html, <span class="string">&#x27;html.parser&#x27;</span>)</span><br><span class="line">    self.outputs = []</span><br><span class="line">    self.fig_dir = <span class="string">f&#x27;./figures/<span class="subst">&#123;title&#125;</span>&#x27;</span>+<span class="string">&#x27;.assets&#x27;</span></span><br><span class="line">    self.pre = <span class="literal">False</span></span><br><span class="line">    self.equ_inline = <span class="literal">False</span></span><br><span class="line">    self.is_win = is_win</span><br><span class="line"></span><br><span class="line">    self.recursive(self.soup)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> html<span class="token punctuation">,</span> title<span class="token punctuation">,</span> is_win<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    self<span class="token punctuation">.</span>html <span class="token operator">=</span> html
+    self<span class="token punctuation">.</span>soup <span class="token operator">=</span> BeautifulSoup<span class="token punctuation">(</span>html<span class="token punctuation">,</span> <span class="token string">'html.parser'</span><span class="token punctuation">)</span>
+    self<span class="token punctuation">.</span>outputs <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    self<span class="token punctuation">.</span>fig_dir <span class="token operator">=</span> <span class="token string-interpolation"><span class="token string">f'./figures/</span><span class="token interpolation"><span class="token punctuation">&#123;</span>title<span class="token punctuation">&#125;</span></span><span class="token string">'</span></span><span class="token operator">+</span><span class="token string">'.assets'</span>
+    self<span class="token punctuation">.</span>pre <span class="token operator">=</span> <span class="token boolean">False</span>
+    self<span class="token punctuation">.</span>equ_inline <span class="token operator">=</span> <span class="token boolean">False</span>
+    self<span class="token punctuation">.</span>is_win <span class="token operator">=</span> is_win
+
+    self<span class="token punctuation">.</span>recursive<span class="token punctuation">(</span>self<span class="token punctuation">.</span>soup<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 <p>recursive(self, soup):</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">recursive</span>(<span class="params">self, soup</span>):</span><br><span class="line">    …………</span><br><span class="line">    <span class="keyword">elif</span> tag == <span class="string">&#x27;img&#x27;</span>:</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> exists(self.fig_dir): <span class="comment"># 博客中有图片的时候才会创建图片目录，只会创建一次</span></span><br><span class="line">            os.makedirs(self.fig_dir)</span><br><span class="line">    …………</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">recursive</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> soup<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    …………
+    <span class="token keyword">elif</span> tag <span class="token operator">==</span> <span class="token string">'img'</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> <span class="token keyword">not</span> exists<span class="token punctuation">(</span>self<span class="token punctuation">.</span>fig_dir<span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token comment"># 博客中有图片的时候才会创建图片目录，只会创建一次</span>
+            os<span class="token punctuation">.</span>makedirs<span class="token punctuation">(</span>self<span class="token punctuation">.</span>fig_dir<span class="token punctuation">)</span>
+    …………
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 <p>2、输入用户名就可以直接找到的用户的博客专栏，拿到所有专栏下面的文章</p>
 <p>run.bat 先将所有的categories保存在userName.txt中</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> %download_category% == <span class="string">&quot;true&quot;</span> (</span><br><span class="line">  <span class="built_in">echo</span> <span class="string">&quot;Obtain blog directory link: save in userName.txt........&quot;</span></span><br><span class="line">  python -u link.py %userName%</span><br><span class="line">)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token keyword">if</span> %download_category% <span class="token operator">==</span> <span class="token string">"true"</span> <span class="token punctuation">(</span>
+  <span class="token builtin class-name">echo</span> <span class="token string">"Obtain blog directory link: save in userName.txt........"</span>
+  python <span class="token parameter variable">-u</span> link.py %userName%
+<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 <p>再读取userName.txt文件的链接</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> /f <span class="string">&quot;tokens=* delims=&quot;</span> %%a <span class="keyword">in</span> (m0_67623521.txt) <span class="keyword">do</span> (</span><br><span class="line">  <span class="built_in">echo</span> %%a</span><br><span class="line">  <span class="keyword">if</span> %download_category% == <span class="string">&quot;true&quot;</span> (</span><br><span class="line">      <span class="built_in">echo</span> <span class="string">&quot;Download a category&quot;</span></span><br><span class="line">      python -u main.py ^</span><br><span class="line">          --category_url %%a ^</span><br><span class="line">          --start_page %start_page% ^</span><br><span class="line">          --page_num %page_num% ^</span><br><span class="line">          --markdown_dir %markdown_dir% ^</span><br><span class="line">          --pdf_dir %pdf_dir% ^</span><br><span class="line">          --combine_together ^</span><br><span class="line">          --to_pdf ^</span><br><span class="line">          --is_win 1</span><br><span class="line">          @REM --with_title ^</span><br><span class="line">          @REM --rm_cache</span><br><span class="line">   )</span><br><span class="line">)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token keyword">for</span> /f <span class="token string">"tokens=* delims="</span> %%a <span class="token keyword">in</span> <span class="token punctuation">(</span>m0_67623521.txt<span class="token punctuation">)</span> <span class="token keyword">do</span> <span class="token punctuation">(</span>
+  <span class="token builtin class-name">echo</span> %%a
+  <span class="token keyword">if</span> %download_category% <span class="token operator">==</span> <span class="token string">"true"</span> <span class="token punctuation">(</span>
+      <span class="token builtin class-name">echo</span> <span class="token string">"Download a category"</span>
+      python <span class="token parameter variable">-u</span> main.py ^
+          <span class="token parameter variable">--category_url</span> %%a ^
+          <span class="token parameter variable">--start_page</span> %start_page% ^
+          <span class="token parameter variable">--page_num</span> %page_num% ^
+          <span class="token parameter variable">--markdown_dir</span> %markdown_dir% ^
+          <span class="token parameter variable">--pdf_dir</span> %pdf_dir% ^
+          <span class="token parameter variable">--combine_together</span> ^
+          <span class="token parameter variable">--to_pdf</span> ^
+          <span class="token parameter variable">--is_win</span> <span class="token number">1</span>
+          @REM <span class="token parameter variable">--with_title</span> ^
+          @REM <span class="token parameter variable">--rm_cache</span>
+   <span class="token punctuation">)</span>
+<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 <p>link.py</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">user = sys.argv[<span class="number">1</span>] <span class="comment"># 拿到命令行下的用户名参数</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">user <span class="token operator">=</span> sys<span class="token punctuation">.</span>argv<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token comment"># 拿到命令行下的用户名参数</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
 <p>将连接写入文件</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> li <span class="keyword">in</span> lis:</span><br><span class="line">    <span class="comment"># print(&quot;####&quot;)</span></span><br><span class="line">    url = li.find(<span class="string">&quot;a&quot;</span>).attrs[<span class="string">&#x27;href&#x27;</span>]</span><br><span class="line">    title = li.find(<span class="string">&quot;span&quot;</span>).attrs[<span class="string">&#x27;title&#x27;</span>]</span><br><span class="line">    titles.append(title)</span><br><span class="line">    infos[title] = &#123;<span class="string">&quot;url&quot;</span>:url&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># print(&quot;[+]&quot;+title+url)</span></span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(user+<span class="string">&#x27;.txt&#x27;</span>,<span class="string">&#x27;a+&#x27;</span>) <span class="keyword">as</span> f:    <span class="comment">#设置文件对象</span></span><br><span class="line">        f.write(url)</span><br><span class="line">        f.write(<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">for</span> li <span class="token keyword">in</span> lis<span class="token punctuation">:</span>
+    <span class="token comment"># print("####")</span>
+    url <span class="token operator">=</span> li<span class="token punctuation">.</span>find<span class="token punctuation">(</span><span class="token string">"a"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>attrs<span class="token punctuation">[</span><span class="token string">'href'</span><span class="token punctuation">]</span>
+    title <span class="token operator">=</span> li<span class="token punctuation">.</span>find<span class="token punctuation">(</span><span class="token string">"span"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>attrs<span class="token punctuation">[</span><span class="token string">'title'</span><span class="token punctuation">]</span>
+    titles<span class="token punctuation">.</span>append<span class="token punctuation">(</span>title<span class="token punctuation">)</span>
+    infos<span class="token punctuation">[</span>title<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token string">"url"</span><span class="token punctuation">:</span>url<span class="token punctuation">&#125;</span>
+
+    <span class="token comment"># print("[+]"+title+url)</span>
+    <span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span>user<span class="token operator">+</span><span class="token string">'.txt'</span><span class="token punctuation">,</span><span class="token string">'a+'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>    <span class="token comment">#设置文件对象</span>
+        f<span class="token punctuation">.</span>write<span class="token punctuation">(</span>url<span class="token punctuation">)</span>
+        f<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">'\n'</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><p>另外要说明的是:</p>
 <ul>
@@ -696,6 +748,9 @@ CSDNExporter介绍CSDN 博客导出工具, 用于将 CSDN 博客导出为 Markdo
 <script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
 
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
 
 <!-- 代码语言 -->
 
@@ -820,7 +875,7 @@ CSDNExporter介绍CSDN 博客导出工具, 用于将 CSDN 博客导出为 Markdo
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">57k</span>
+                        class="white-color">57.9k</span>
             
             
             

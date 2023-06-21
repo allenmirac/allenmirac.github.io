@@ -7,7 +7,10 @@
     <meta name="keywords" content="八大排序算法, AllenMirac">
     <meta name="description" content="
 
-排序算法1、冒泡排序123456789101112template&amp;lt;typename T&amp;gt;void BubbleSort(T a[], int len)&amp;#123;    for(int i=0; i&amp;lt;len; i++">
+排序算法1、冒泡排序template&amp;lt;typename T&amp;gt;
+void BubbleSort(T a[], int len)&amp;#123;
+    for(int i&amp;#x3D;0; i&amp;lt;len; i++)&amp;#123;
+">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -390,7 +393,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.1k
+                    1.3k
                 </div>
                 
 
@@ -402,6 +405,9 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
 
         
 
@@ -409,23 +415,226 @@
             <div id="articleContent">
                 <meta name="referrer" content="no-referrer">
 
-<h1 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h1><h2 id="1、冒泡排序"><a href="#1、冒泡排序" class="headerlink" title="1、冒泡排序"></a>1、冒泡排序</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">template&lt;typename T&gt;</span><br><span class="line">void BubbleSort(T a[], int len)&#123;</span><br><span class="line">    for(int i=0; i&lt;len; i++)&#123;</span><br><span class="line">        for(int j=0; j&lt;len-i-1; j++)&#123;</span><br><span class="line">            if(a[j]&gt;a[j+1])</span><br><span class="line">            &#123;</span><br><span class="line">                swap(a[j], a[j+1]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h1><h2 id="1、冒泡排序"><a href="#1、冒泡排序" class="headerlink" title="1、冒泡排序"></a>1、冒泡排序</h2><pre class="line-numbers language-none"><code class="language-none">template&lt;typename T&gt;
+void BubbleSort(T a[], int len)&#123;
+    for(int i&#x3D;0; i&lt;len; i++)&#123;
+        for(int j&#x3D;0; j&lt;len-i-1; j++)&#123;
+            if(a[j]&gt;a[j+1])
+            &#123;
+                swap(a[j], a[j+1]);
+            &#125;
+        &#125;
+    &#125;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="2、选择排序"><a href="#2、选择排序" class="headerlink" title="2、选择排序"></a>2、选择排序</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">template&lt;typename T&gt;</span><br><span class="line">void SelectSort(T arr[], int len)&#123;</span><br><span class="line">    for(int i=0; i&lt;len; i++)&#123;</span><br><span class="line">        int min=i;</span><br><span class="line">        for(int j=i+1; j&lt;len; j++)&#123;</span><br><span class="line">            if(arr[j]&lt;arr[min])&#123;</span><br><span class="line">                min=j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        swap(arr[i], arr[min]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="2、选择排序"><a href="#2、选择排序" class="headerlink" title="2、选择排序"></a>2、选择排序</h2><pre class="line-numbers language-none"><code class="language-none">template&lt;typename T&gt;
+void SelectSort(T arr[], int len)&#123;
+    for(int i&#x3D;0; i&lt;len; i++)&#123;
+        int min&#x3D;i;
+        for(int j&#x3D;i+1; j&lt;len; j++)&#123;
+            if(arr[j]&lt;arr[min])&#123;
+                min&#x3D;j;
+            &#125;
+        &#125;
+        swap(arr[i], arr[min]);
+    &#125;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="3、插入排序"><a href="#3、插入排序" class="headerlink" title="3、插入排序"></a>3、插入排序</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">template&lt;typename T&gt;</span><br><span class="line">void InsertSort(T arr[], int len)&#123;</span><br><span class="line">    for(int i=1; i&lt;len; i++)&#123;</span><br><span class="line">        int key=arr[i];</span><br><span class="line">        int j=i-1;</span><br><span class="line">        while(j&gt;=0 &amp;&amp; key&lt;arr[j])&#123;</span><br><span class="line">            arr[j+1]=arr[j];</span><br><span class="line">            j--;</span><br><span class="line">        &#125;</span><br><span class="line">        arr[j+1]=key;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="3、插入排序"><a href="#3、插入排序" class="headerlink" title="3、插入排序"></a>3、插入排序</h2><pre class="line-numbers language-none"><code class="language-none">template&lt;typename T&gt;
+void InsertSort(T arr[], int len)&#123;
+    for(int i&#x3D;1; i&lt;len; i++)&#123;
+        int key&#x3D;arr[i];
+        int j&#x3D;i-1;
+        while(j&gt;&#x3D;0 &amp;&amp; key&lt;arr[j])&#123;
+            arr[j+1]&#x3D;arr[j];
+            j--;
+        &#125;
+        arr[j+1]&#x3D;key;
+    &#125;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="4、希尔排序"><a href="#4、希尔排序" class="headerlink" title="4、希尔排序"></a>4、希尔排序</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">template&lt;typename T&gt;</span><br><span class="line">void ShellSort(T arr[], int len)&#123;</span><br><span class="line">    int gap=1;</span><br><span class="line">    while(gap&lt;len/3)&#123;</span><br><span class="line">        gap=gap*3+1;</span><br><span class="line">    &#125;</span><br><span class="line">    while(gap&gt;=1)&#123;</span><br><span class="line">        for(int i=gap; i&lt;len; i++)&#123;</span><br><span class="line">            for(int j=i; j&gt;gap &amp;&amp; arr[j]&lt;arr[j-gap]; j-=gap)&#123;</span><br><span class="line">                swap(arr[j], arr[j-gap]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        gap/=3;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="4、希尔排序"><a href="#4、希尔排序" class="headerlink" title="4、希尔排序"></a>4、希尔排序</h2><pre class="line-numbers language-none"><code class="language-none">template&lt;typename T&gt;
+void ShellSort(T arr[], int len)&#123;
+    int gap&#x3D;1;
+    while(gap&lt;len&#x2F;3)&#123;
+        gap&#x3D;gap*3+1;
+    &#125;
+    while(gap&gt;&#x3D;1)&#123;
+        for(int i&#x3D;gap; i&lt;len; i++)&#123;
+            for(int j&#x3D;i; j&gt;gap &amp;&amp; arr[j]&lt;arr[j-gap]; j-&#x3D;gap)&#123;
+                swap(arr[j], arr[j-gap]);
+            &#125;
+        &#125;
+        gap&#x2F;&#x3D;3;
+    &#125;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="5、快速排序"><a href="#5、快速排序" class="headerlink" title="5、快速排序"></a>5、快速排序</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">void quickSort(int a[], int l, int r)&#123;</span><br><span class="line"></span><br><span class="line">    if (l &lt; r) &#123;</span><br><span class="line">        int i,j,x;</span><br><span class="line"></span><br><span class="line">        i = l;</span><br><span class="line">        j = r;</span><br><span class="line">        x = a[i];</span><br><span class="line">        while (i &lt; j) &#123;</span><br><span class="line">            while(i &lt; j &amp;&amp; a[j] &gt; x)</span><br><span class="line">                j--; // 从右向左找第一个小于x的数</span><br><span class="line">            if(i &lt; j)</span><br><span class="line">                a[i++] = a[j];</span><br><span class="line">            while(i &lt; j &amp;&amp; a[i] &lt; x)</span><br><span class="line">                i++; // 从左向右找第一个大于x的数</span><br><span class="line">            if(i &lt; j)</span><br><span class="line">                a[j--] = a[i];</span><br><span class="line">        &#125;</span><br><span class="line">        a[i] = x;//没有理解这一行</span><br><span class="line">        quickSort(a, l, i-1); /* 递归调用 */</span><br><span class="line">        quickSort(a, i+1, r); /* 递归调用 */</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="5、快速排序"><a href="#5、快速排序" class="headerlink" title="5、快速排序"></a>5、快速排序</h2><pre class="line-numbers language-none"><code class="language-none">void quickSort(int a[], int l, int r)&#123;
 
-<h2 id="6、堆排序"><a href="#6、堆排序" class="headerlink" title="6、堆排序"></a>6、堆排序</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">void sift_down(int arr[], int start, int end)&#123;</span><br><span class="line">    int parent = start;</span><br><span class="line">    int child = 2*start+1;</span><br><span class="line">    while(child&lt;=end)&#123;</span><br><span class="line">        if(child+1&lt;=end &amp;&amp; arr[child]&lt;arr[child+1])</span><br><span class="line">            child++;</span><br><span class="line">        if(arr[parent]&gt;arr[child])</span><br><span class="line">            return ;</span><br><span class="line">        else&#123;</span><br><span class="line">            swap(arr[parent], arr[child]);</span><br><span class="line">            //往下调整</span><br><span class="line">            parent=child;</span><br><span class="line">            child=2*parent+1;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">void heap_sort(int arr[], int len)&#123;</span><br><span class="line">    //调整为大根堆，从最后一个父元素开始(len-1-1)/2</span><br><span class="line">    for(int i=(len-1-1)/2; i&gt;=0; i--) sift_down(arr, i, len-1);</span><br><span class="line">    //将堆的根（最大值）掉换到最后一个元素（从小到大排序），在重新调整为大根堆</span><br><span class="line">    for(int i=len-1; i&gt;=0; i--)&#123;</span><br><span class="line">        swap(arr[0], arr[i]);</span><br><span class="line">        sift_down(arr, 0, i-1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+    if (l &lt; r) &#123;
+        int i,j,x;
+
+        i &#x3D; l;
+        j &#x3D; r;
+        x &#x3D; a[i];
+        while (i &lt; j) &#123;
+            while(i &lt; j &amp;&amp; a[j] &gt; x)
+                j--; &#x2F;&#x2F; 从右向左找第一个小于x的数
+            if(i &lt; j)
+                a[i++] &#x3D; a[j];
+            while(i &lt; j &amp;&amp; a[i] &lt; x)
+                i++; &#x2F;&#x2F; 从左向右找第一个大于x的数
+            if(i &lt; j)
+                a[j--] &#x3D; a[i];
+        &#125;
+        a[i] &#x3D; x;&#x2F;&#x2F;没有理解这一行
+        quickSort(a, l, i-1); &#x2F;* 递归调用 *&#x2F;
+        quickSort(a, i+1, r); &#x2F;* 递归调用 *&#x2F;
+    &#125;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="6、堆排序"><a href="#6、堆排序" class="headerlink" title="6、堆排序"></a>6、堆排序</h2><pre class="line-numbers language-none"><code class="language-none">void sift_down(int arr[], int start, int end)&#123;
+    int parent &#x3D; start;
+    int child &#x3D; 2*start+1;
+    while(child&lt;&#x3D;end)&#123;
+        if(child+1&lt;&#x3D;end &amp;&amp; arr[child]&lt;arr[child+1])
+            child++;
+        if(arr[parent]&gt;arr[child])
+            return ;
+        else&#123;
+            swap(arr[parent], arr[child]);
+            &#x2F;&#x2F;往下调整
+            parent&#x3D;child;
+            child&#x3D;2*parent+1;
+        &#125;
+    &#125;
+&#125;
+void heap_sort(int arr[], int len)&#123;
+    &#x2F;&#x2F;调整为大根堆，从最后一个父元素开始(len-1-1)&#x2F;2
+    for(int i&#x3D;(len-1-1)&#x2F;2; i&gt;&#x3D;0; i--) sift_down(arr, i, len-1);
+    &#x2F;&#x2F;将堆的根（最大值）掉换到最后一个元素（从小到大排序），在重新调整为大根堆
+    for(int i&#x3D;len-1; i&gt;&#x3D;0; i--)&#123;
+        swap(arr[0], arr[i]);
+        sift_down(arr, 0, i-1);
+    &#125;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="7、归并排序"><a href="#7、归并排序" class="headerlink" title="7、归并排序"></a>7、归并排序</h2><p>一半一半砍开来，砍成只有两个元素之后，归并。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">merge_sort1</span><span class="params">(T arr[], <span class="type">int</span> len)</span> </span>&#123;</span><br><span class="line">    T* a = arr;</span><br><span class="line">    T* b = <span class="keyword">new</span> T[len];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> seg = <span class="number">1</span>; seg &lt; len; seg += seg) &#123;<span class="comment">//区间长度</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> start = <span class="number">0</span>; start &lt; len; start += seg + seg) &#123;</span><br><span class="line">            <span class="type">int</span> low = start, mid = <span class="built_in">min</span>(start + seg, len), high = <span class="built_in">min</span>(start + seg + seg, len);</span><br><span class="line">            <span class="type">int</span> k = low;</span><br><span class="line">            <span class="type">int</span> start1 = low, end1 = mid;</span><br><span class="line">            <span class="type">int</span> start2 = mid, end2 = high;</span><br><span class="line">            <span class="keyword">while</span> (start1 &lt; end1 &amp;&amp; start2 &lt; end2)</span><br><span class="line">                b[k++] = a[start1] &lt; a[start2] ? a[start1++] : a[start2++];</span><br><span class="line">            <span class="keyword">while</span> (start1 &lt; end1)</span><br><span class="line">                b[k++] = a[start1++];</span><br><span class="line">            <span class="keyword">while</span> (start2 &lt; end2)</span><br><span class="line">                b[k++] = a[start2++];</span><br><span class="line">        &#125;</span><br><span class="line">        T* temp = a;</span><br><span class="line">        a = b;</span><br><span class="line">        b = temp;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (a != arr) &#123;<span class="comment">//这里没有看懂</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; len; i++)</span><br><span class="line">            b[i] = a[i];</span><br><span class="line">        b = a;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">delete</span>[] b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">template</span><span class="token operator">&lt;</span><span class="token keyword">typename</span> <span class="token class-name">T</span><span class="token operator">></span>
+<span class="token keyword">void</span> <span class="token function">merge_sort1</span><span class="token punctuation">(</span>T arr<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">int</span> len<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    T<span class="token operator">*</span> a <span class="token operator">=</span> arr<span class="token punctuation">;</span>
+    T<span class="token operator">*</span> b <span class="token operator">=</span> <span class="token keyword">new</span> T<span class="token punctuation">[</span>len<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> seg <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> seg <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> seg <span class="token operator">+=</span> seg<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token comment">//区间长度</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> start <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> start <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> start <span class="token operator">+=</span> seg <span class="token operator">+</span> seg<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">int</span> low <span class="token operator">=</span> start<span class="token punctuation">,</span> mid <span class="token operator">=</span> <span class="token function">min</span><span class="token punctuation">(</span>start <span class="token operator">+</span> seg<span class="token punctuation">,</span> len<span class="token punctuation">)</span><span class="token punctuation">,</span> high <span class="token operator">=</span> <span class="token function">min</span><span class="token punctuation">(</span>start <span class="token operator">+</span> seg <span class="token operator">+</span> seg<span class="token punctuation">,</span> len<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span> k <span class="token operator">=</span> low<span class="token punctuation">;</span>
+            <span class="token keyword">int</span> start1 <span class="token operator">=</span> low<span class="token punctuation">,</span> end1 <span class="token operator">=</span> mid<span class="token punctuation">;</span>
+            <span class="token keyword">int</span> start2 <span class="token operator">=</span> mid<span class="token punctuation">,</span> end2 <span class="token operator">=</span> high<span class="token punctuation">;</span>
+            <span class="token keyword">while</span> <span class="token punctuation">(</span>start1 <span class="token operator">&lt;</span> end1 <span class="token operator">&amp;&amp;</span> start2 <span class="token operator">&lt;</span> end2<span class="token punctuation">)</span>
+                b<span class="token punctuation">[</span>k<span class="token operator">++</span><span class="token punctuation">]</span> <span class="token operator">=</span> a<span class="token punctuation">[</span>start1<span class="token punctuation">]</span> <span class="token operator">&lt;</span> a<span class="token punctuation">[</span>start2<span class="token punctuation">]</span> <span class="token operator">?</span> a<span class="token punctuation">[</span>start1<span class="token operator">++</span><span class="token punctuation">]</span> <span class="token operator">:</span> a<span class="token punctuation">[</span>start2<span class="token operator">++</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">while</span> <span class="token punctuation">(</span>start1 <span class="token operator">&lt;</span> end1<span class="token punctuation">)</span>
+                b<span class="token punctuation">[</span>k<span class="token operator">++</span><span class="token punctuation">]</span> <span class="token operator">=</span> a<span class="token punctuation">[</span>start1<span class="token operator">++</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">while</span> <span class="token punctuation">(</span>start2 <span class="token operator">&lt;</span> end2<span class="token punctuation">)</span>
+                b<span class="token punctuation">[</span>k<span class="token operator">++</span><span class="token punctuation">]</span> <span class="token operator">=</span> a<span class="token punctuation">[</span>start2<span class="token operator">++</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        T<span class="token operator">*</span> temp <span class="token operator">=</span> a<span class="token punctuation">;</span>
+        a <span class="token operator">=</span> b<span class="token punctuation">;</span>
+        b <span class="token operator">=</span> temp<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>a <span class="token operator">!=</span> arr<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token comment">//这里没有看懂</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+            b<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        b <span class="token operator">=</span> a<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">delete</span><span class="token punctuation">[</span><span class="token punctuation">]</span> b<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="8、桶排序"><a href="#8、桶排序" class="headerlink" title="8、桶排序"></a>8、桶排序</h2><p>将数据放到到各个桶中，在插入数据的时候每个桶的数据保持有序，所以每个桶相当于是一个有序链表。最后将各个桶合并起来，即将各个链表Merge，形成一个有序的整体。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iterator&gt;</span><br><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;vector&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int BUCKET_NUM = 10;// 桶的个数</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> *链表结构体</span><br><span class="line"> */</span><br><span class="line">struct ListNode&#123;</span><br><span class="line">  explicit ListNode(int i=0):mData(i),mNext(NULL)&#123;&#125;</span><br><span class="line">  ListNode* mNext;</span><br><span class="line">  int mData;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 插入的时候是有序的，返回值是头节点</span><br><span class="line"> */</span><br><span class="line">ListNode* insert(ListNode* head,int val)&#123;</span><br><span class="line">  ListNode dummyNode;</span><br><span class="line">  ListNode *newNode = new ListNode(val);</span><br><span class="line">  ListNode *pre,*curr;</span><br><span class="line">  dummyNode.mNext = head;</span><br><span class="line">  pre = &amp;dummyNode;</span><br><span class="line">  curr = head;</span><br><span class="line">  while(NULL!=curr &amp;&amp; curr-&gt;mData&lt;=val)&#123;</span><br><span class="line">    pre = curr;</span><br><span class="line">    curr = curr-&gt;mNext;</span><br><span class="line">  &#125;</span><br><span class="line">  newNode-&gt;mNext = curr;</span><br><span class="line">  pre-&gt;mNext = newNode;</span><br><span class="line">  return dummyNode.mNext;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 将两个链表合并，合并后仍然保持有序</span><br><span class="line">  */</span><br><span class="line">ListNode* Merge(ListNode *head1,ListNode *head2)&#123;</span><br><span class="line">  ListNode dummyNode;</span><br><span class="line">  ListNode *dummy = &amp;dummyNode;</span><br><span class="line">  while(NULL!=head1 &amp;&amp; NULL!=head2)&#123;</span><br><span class="line">    if(head1-&gt;mData &lt;= head2-&gt;mData)&#123;</span><br><span class="line">      dummy-&gt;mNext = head1;</span><br><span class="line">      head1 = head1-&gt;mNext;</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">      dummy-&gt;mNext = head2;</span><br><span class="line">      head2 = head2-&gt;mNext;</span><br><span class="line">    &#125;</span><br><span class="line">    dummy = dummy-&gt;mNext;</span><br><span class="line">  &#125;</span><br><span class="line">  if(NULL!=head1) dummy-&gt;mNext = head1;</span><br><span class="line">  if(NULL!=head2) dummy-&gt;mNext = head2;</span><br><span class="line">  </span><br><span class="line">  return dummyNode.mNext;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 桶排序主体部分</span><br><span class="line"> */</span><br><span class="line">void BucketSort(int n,int arr[])&#123;</span><br><span class="line">  vector&lt;ListNode*&gt; buckets(BUCKET_NUM,(ListNode*)(0));// 存的是每个桶的头节点，一个桶相当于是一个有序链表</span><br><span class="line">  for(int i=0;i&lt;n;++i)&#123;</span><br><span class="line">    int index = arr[i]/BUCKET_NUM; // 看要将数据放在哪个桶里面</span><br><span class="line">    ListNode *head = buckets.at(index);// 局部变量</span><br><span class="line">    buckets.at(index) = insert(head,arr[i]);// 插入桶中</span><br><span class="line">  &#125;</span><br><span class="line">  ListNode *head = buckets.at(0); // 初始值是第0个桶</span><br><span class="line">  for(int i=1;i&lt;BUCKET_NUM;++i)&#123;</span><br><span class="line">    head = Merge(head,buckets.at(i)); // 将两个桶合并</span><br><span class="line">  &#125;</span><br><span class="line">  for(int i=0;i&lt;n;++i)&#123;</span><br><span class="line">    arr[i] = head-&gt;mData;</span><br><span class="line">    head = head-&gt;mNext;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">#include&lt;iterator&gt;
+#include&lt;iostream&gt;
+#include&lt;vector&gt;
+using namespace std;
+const int BUCKET_NUM &#x3D; 10;&#x2F;&#x2F; 桶的个数
+
+&#x2F;**
+ *链表结构体
+ *&#x2F;
+struct ListNode&#123;
+  explicit ListNode(int i&#x3D;0):mData(i),mNext(NULL)&#123;&#125;
+  ListNode* mNext;
+  int mData;
+&#125;;
+
+&#x2F;**
+ * 插入的时候是有序的，返回值是头节点
+ *&#x2F;
+ListNode* insert(ListNode* head,int val)&#123;
+  ListNode dummyNode;
+  ListNode *newNode &#x3D; new ListNode(val);
+  ListNode *pre,*curr;
+  dummyNode.mNext &#x3D; head;
+  pre &#x3D; &amp;dummyNode;
+  curr &#x3D; head;
+  while(NULL!&#x3D;curr &amp;&amp; curr-&gt;mData&lt;&#x3D;val)&#123;
+    pre &#x3D; curr;
+    curr &#x3D; curr-&gt;mNext;
+  &#125;
+  newNode-&gt;mNext &#x3D; curr;
+  pre-&gt;mNext &#x3D; newNode;
+  return dummyNode.mNext;
+&#125;
+
+&#x2F;**
+ * 将两个链表合并，合并后仍然保持有序
+  *&#x2F;
+ListNode* Merge(ListNode *head1,ListNode *head2)&#123;
+  ListNode dummyNode;
+  ListNode *dummy &#x3D; &amp;dummyNode;
+  while(NULL!&#x3D;head1 &amp;&amp; NULL!&#x3D;head2)&#123;
+    if(head1-&gt;mData &lt;&#x3D; head2-&gt;mData)&#123;
+      dummy-&gt;mNext &#x3D; head1;
+      head1 &#x3D; head1-&gt;mNext;
+    &#125;else&#123;
+      dummy-&gt;mNext &#x3D; head2;
+      head2 &#x3D; head2-&gt;mNext;
+    &#125;
+    dummy &#x3D; dummy-&gt;mNext;
+  &#125;
+  if(NULL!&#x3D;head1) dummy-&gt;mNext &#x3D; head1;
+  if(NULL!&#x3D;head2) dummy-&gt;mNext &#x3D; head2;
+  
+  return dummyNode.mNext;
+&#125;
+
+&#x2F;**
+ * 桶排序主体部分
+ *&#x2F;
+void BucketSort(int n,int arr[])&#123;
+  vector&lt;ListNode*&gt; buckets(BUCKET_NUM,(ListNode*)(0));&#x2F;&#x2F; 存的是每个桶的头节点，一个桶相当于是一个有序链表
+  for(int i&#x3D;0;i&lt;n;++i)&#123;
+    int index &#x3D; arr[i]&#x2F;BUCKET_NUM; &#x2F;&#x2F; 看要将数据放在哪个桶里面
+    ListNode *head &#x3D; buckets.at(index);&#x2F;&#x2F; 局部变量
+    buckets.at(index) &#x3D; insert(head,arr[i]);&#x2F;&#x2F; 插入桶中
+  &#125;
+  ListNode *head &#x3D; buckets.at(0); &#x2F;&#x2F; 初始值是第0个桶
+  for(int i&#x3D;1;i&lt;BUCKET_NUM;++i)&#123;
+    head &#x3D; Merge(head,buckets.at(i)); &#x2F;&#x2F; 将两个桶合并
+  &#125;
+  for(int i&#x3D;0;i&lt;n;++i)&#123;
+    arr[i] &#x3D; head-&gt;mData;
+    head &#x3D; head-&gt;mNext;
+  &#125;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
@@ -671,6 +880,9 @@
 <script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
 
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
 
 <!-- 代码语言 -->
 
@@ -795,7 +1007,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">57k</span>
+                        class="white-color">57.9k</span>
             
             
             

@@ -402,6 +402,9 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
 
         
 
@@ -413,7 +416,14 @@
 <h2 id="select"><a href="#select" class="headerlink" title="select"></a>select</h2><p>select管理多个socket的fd（文件描述符，通过这个可以找到socket），在这期间select会监听所有的socket。如果没有一个socket有事件发生，这个线程会让出cpu的阻塞等待，即让该线程可以去做别的事情。如果使用普通的conncet()、accept()、recv()或recvfrom()这种函数，如果没有事件发生，就必须要阻塞，直到事件发生。</p>
 <p>如果有事件发生，select会在他的睡眠队列里设置一个entry，当 socket 接收到网卡的数据后，就会去它的睡眠队列里遍历 entry，调用 entry 设置的 callback 方法，这个 callback 方法里就能唤醒 select !</p>
 <p><strong>select函数原型：</strong></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/select.h&gt;</span></span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">timeval</span> &#123;</span><br><span class="line">    <span class="type">time_t</span>      tv_sec;         <span class="comment">/* seconds */</span></span><br><span class="line">    <span class="type">suseconds_t</span> tv_usec;        <span class="comment">/* microseconds */</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">select</span><span class="params">(<span class="type">int</span> nfds, fd_set *readfds, fd_set *writefds,</span></span></span><br><span class="line"><span class="params"><span class="function">           fd_set *exceptfds, <span class="keyword">struct</span> timeval * timeout)</span></span>;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;sys/select.h></span></span>
+<span class="token keyword">struct</span> <span class="token class-name">timeval</span> <span class="token punctuation">&#123;</span>
+    time_t      tv_sec<span class="token punctuation">;</span>         <span class="token comment">/* seconds */</span>
+    suseconds_t tv_usec<span class="token punctuation">;</span>        <span class="token comment">/* microseconds */</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> <span class="token function">select</span><span class="token punctuation">(</span><span class="token keyword">int</span> nfds<span class="token punctuation">,</span> fd_set <span class="token operator">*</span>readfds<span class="token punctuation">,</span> fd_set <span class="token operator">*</span>writefds<span class="token punctuation">,</span>
+           fd_set <span class="token operator">*</span>exceptfds<span class="token punctuation">,</span> <span class="token keyword">struct</span> <span class="token class-name">timeval</span> <span class="token operator">*</span> timeout<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 <p> <strong>参数介绍：</strong></p>
@@ -440,7 +450,14 @@
 <li>-1：函数调用失败了+ 0：监听的所有的socket_fd里面没有发生事件的socket_fd。+ &gt;0：返回已经就绪的socket_fd。</li>
 </ul>
 <p><strong>与fd_set配合的操作函数：</strong></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将文件描述符fd从set中删除，即把set中fd对应的标志位置0</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">FD_CLR</span><span class="params">(<span class="type">int</span> fd, fd_set* set)</span></span>;</span><br><span class="line"><span class="comment">// 将文件描述符fd添加到set中，即把set中fd对应的标志位置1</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">FD_SET</span><span class="params">(<span class="type">int</span> fd, fd_set* set)</span></span>;</span><br><span class="line"><span class="comment">// 判断文件描述符fd是否在set中，即判断文件描述符fd在set中的标志位是否为1</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">FD_ISSET</span><span class="params">(<span class="type">int</span> fd, fd_set* set)</span></span>;</span><br><span class="line"><span class="comment">// 清空set，即全部置0，用于初始化set</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">FD_ZERO</span><span class="params">(fd_set* set)</span></span>;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">// 将文件描述符fd从set中删除，即把set中fd对应的标志位置0</span>
+<span class="token keyword">void</span> <span class="token function">FD_CLR</span><span class="token punctuation">(</span><span class="token keyword">int</span> fd<span class="token punctuation">,</span> fd_set<span class="token operator">*</span> set<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 将文件描述符fd添加到set中，即把set中fd对应的标志位置1</span>
+<span class="token keyword">void</span> <span class="token function">FD_SET</span><span class="token punctuation">(</span><span class="token keyword">int</span> fd<span class="token punctuation">,</span> fd_set<span class="token operator">*</span> set<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 判断文件描述符fd是否在set中，即判断文件描述符fd在set中的标志位是否为1</span>
+<span class="token keyword">void</span> <span class="token function">FD_ISSET</span><span class="token punctuation">(</span><span class="token keyword">int</span> fd<span class="token punctuation">,</span> fd_set<span class="token operator">*</span> set<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 清空set，即全部置0，用于初始化set</span>
+<span class="token keyword">void</span> <span class="token function">FD_ZERO</span><span class="token punctuation">(</span>fd_set<span class="token operator">*</span> set<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 <p>注：fd_set 是一个128个字节的数组（位图Bitmap），128*8&#x3D;1024 bit，在操作fd_set的时候，实际上操作的是每一位bit，置0还是置1，与内核中的文件描述符表的每一位都对应。</p>
@@ -453,7 +470,16 @@
 </ul>
 <h2 id="poll"><a href="#poll" class="headerlink" title="poll"></a>poll</h2><p>相对于【select】，它不使用【Bitmap】来保存已经连接的文件描述符，使用的是链表来管理，没有了1024的限制，当然还会受到系统文件描述符限制。</p>
 <p><strong>poll的函数原型：</strong></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;poll.h&gt;</span></span></span><br><span class="line"><span class="comment">// 每个委托poll检测的fd都对应这样一个结构体</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">pollfd</span> &#123;</span><br><span class="line">    <span class="type">int</span>   fd;         <span class="comment">/* 委托内核检测的文件描述符 */</span></span><br><span class="line">    <span class="type">short</span> events;     <span class="comment">/* 委托内核检测文件描述符的什么事件 */</span></span><br><span class="line">    <span class="type">short</span> revents;    <span class="comment">/* 文件描述符实际发生的事件 -&gt; 传出 */</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">pollfd</span> myfd[<span class="number">100</span>];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">poll</span><span class="params">(<span class="keyword">struct</span> pollfd *fds, <span class="type">nfds_t</span> nfds, <span class="type">int</span> timeout)</span></span>;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;poll.h></span></span>
+<span class="token comment">// 每个委托poll检测的fd都对应这样一个结构体</span>
+<span class="token keyword">struct</span> <span class="token class-name">pollfd</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span>   fd<span class="token punctuation">;</span>         <span class="token comment">/* 委托内核检测的文件描述符 */</span>
+    <span class="token keyword">short</span> events<span class="token punctuation">;</span>     <span class="token comment">/* 委托内核检测文件描述符的什么事件 */</span>
+    <span class="token keyword">short</span> revents<span class="token punctuation">;</span>    <span class="token comment">/* 文件描述符实际发生的事件 -> 传出 */</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">struct</span> <span class="token class-name">pollfd</span> myfd<span class="token punctuation">[</span><span class="token number">100</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">poll</span><span class="token punctuation">(</span><span class="token keyword">struct</span> <span class="token class-name">pollfd</span> <span class="token operator">*</span>fds<span class="token punctuation">,</span> nfds_t nfds<span class="token punctuation">,</span> <span class="token keyword">int</span> timeout<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 <p><strong>函数参数介绍：</strong></p>
@@ -487,7 +513,14 @@
 </li>
 </ul>
 <h2 id="epoll"><a href="#epoll" class="headerlink" title="epoll"></a>epoll</h2><p><strong>epoll的操作函数：</strong></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/epoll.h&gt;</span></span></span><br><span class="line"><span class="comment">// 创建epoll实例，通过一棵红黑树管理待检测集合</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">epoll_create</span><span class="params">(<span class="type">int</span> size)</span></span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">epoll_create1</span><span class="params">(<span class="type">int</span> flags)</span></span>;<span class="comment">//flag可以是::EPOLL_CLOEXEC</span></span><br><span class="line"><span class="comment">// 管理红黑树上的文件描述符(添加、修改、删除)</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">epoll_ctl</span><span class="params">(<span class="type">int</span> epfd, <span class="type">int</span> op, <span class="type">int</span> fd, <span class="keyword">struct</span> epoll_event *event)</span></span>;</span><br><span class="line"><span class="comment">// 检测epoll树中是否有就绪的文件描述符</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">epoll_wait</span><span class="params">(<span class="type">int</span> epfd, <span class="keyword">struct</span> epoll_event * events, <span class="type">int</span> maxevents, <span class="type">int</span> timeout)</span></span>;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;sys/epoll.h></span></span>
+<span class="token comment">// 创建epoll实例，通过一棵红黑树管理待检测集合</span>
+<span class="token keyword">int</span> <span class="token function">epoll_create</span><span class="token punctuation">(</span><span class="token keyword">int</span> size<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">epoll_create1</span><span class="token punctuation">(</span><span class="token keyword">int</span> flags<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//flag可以是::EPOLL_CLOEXEC</span>
+<span class="token comment">// 管理红黑树上的文件描述符(添加、修改、删除)</span>
+<span class="token keyword">int</span> <span class="token function">epoll_ctl</span><span class="token punctuation">(</span><span class="token keyword">int</span> epfd<span class="token punctuation">,</span> <span class="token keyword">int</span> op<span class="token punctuation">,</span> <span class="token keyword">int</span> fd<span class="token punctuation">,</span> <span class="token keyword">struct</span> <span class="token class-name">epoll_event</span> <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 检测epoll树中是否有就绪的文件描述符</span>
+<span class="token keyword">int</span> <span class="token function">epoll_wait</span><span class="token punctuation">(</span><span class="token keyword">int</span> epfd<span class="token punctuation">,</span> <span class="token keyword">struct</span> <span class="token class-name">epoll_event</span> <span class="token operator">*</span> events<span class="token punctuation">,</span> <span class="token keyword">int</span> maxevents<span class="token punctuation">,</span> <span class="token keyword">int</span> timeout<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 <p>在select&#x2F;poll中低效的原因之一是它们将“添加&#x2F;修改任务列表”与“等待任务列表”放在一起处理。在大部分情况下，需要监听的socket比较确定，这个时候检测去任务列表是多余的。epoll将两个步骤分开，epoll_ctl用来管理任务列表，并且使用的是红黑树结构，这种结构有利于增加、删除或修改，然后用epoll_wait检测任务列表（文件描述符）是否有事件发生，这样实现了解耦，效率大大提高。</p>
@@ -522,7 +555,19 @@
 </li>
 </ul>
 <p><strong>看一下epoll_ctl的epoll_event结构体：</strong></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 联合体, 多个变量共用同一块内存        </span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">union</span> <span class="title class_">epoll_data</span> &#123;</span><br><span class="line">   <span class="type">void</span>        *ptr;</span><br><span class="line">  <span class="type">int</span>          fd;	<span class="comment">// 通常情况下使用这个成员, 和epoll_ctl的第三个参数相同即可</span></span><br><span class="line">  <span class="type">uint32_t</span>     u32;</span><br><span class="line">  <span class="type">uint64_t</span>     u64;</span><br><span class="line">&#125; <span class="type">epoll_data_t</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">epoll_event</span> &#123;</span><br><span class="line">  <span class="type">uint32_t</span>     events;      <span class="comment">/* Epoll events */</span></span><br><span class="line">  <span class="type">epoll_data_t</span> data;        <span class="comment">/* User data variable */</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">epoll_ctl</span><span class="params">(<span class="type">int</span> epfd, <span class="type">int</span> op, <span class="type">int</span> fd, <span class="keyword">struct</span> epoll_event *event)</span></span>;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">// 联合体, 多个变量共用同一块内存        </span>
+<span class="token keyword">typedef</span> <span class="token keyword">union</span> epoll_data <span class="token punctuation">&#123;</span>
+ 	<span class="token keyword">void</span>        <span class="token operator">*</span>ptr<span class="token punctuation">;</span>
+  <span class="token keyword">int</span>          fd<span class="token punctuation">;</span>	<span class="token comment">// 通常情况下使用这个成员, 和epoll_ctl的第三个参数相同即可</span>
+  <span class="token keyword">uint32_t</span>     u32<span class="token punctuation">;</span>
+  <span class="token keyword">uint64_t</span>     u64<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span> epoll_data_t<span class="token punctuation">;</span>
+
+<span class="token keyword">struct</span> <span class="token class-name">epoll_event</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">uint32_t</span>     events<span class="token punctuation">;</span>      <span class="token comment">/* Epoll events */</span>
+  epoll_data_t data<span class="token punctuation">;</span>        <span class="token comment">/* User data variable */</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">epoll_ctl</span><span class="token punctuation">(</span><span class="token keyword">int</span> epfd<span class="token punctuation">,</span> <span class="token keyword">int</span> op<span class="token punctuation">,</span> <span class="token keyword">int</span> fd<span class="token punctuation">,</span> <span class="token keyword">struct</span> <span class="token class-name">epoll_event</span> <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 <p>**epoll_wait(int epfd, struct epoll_event * events, int maxevents, int timeout); **</p>
@@ -796,6 +841,9 @@
 <script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
 
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
 
 <!-- 代码语言 -->
 
@@ -920,7 +968,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">57k</span>
+                        class="white-color">57.9k</span>
             
             
             
