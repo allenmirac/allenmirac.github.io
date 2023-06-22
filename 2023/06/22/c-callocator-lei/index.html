@@ -420,7 +420,7 @@ std::al">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <meta name="referrer" content="no-referrer">
+                <meta name="referrer" content="no-referrer" />
 
 
 <p><strong>目录</strong></p>
@@ -432,7 +432,7 @@ std::al">
 <p><a href="#allocate%E7%94%A8%E4%BA%8E%E5%88%86%E9%85%8D%E5%8E%9F%E5%A7%8B%E5%86%85%E5%AD%98">allocate用于分配原始内存</a></p>
 <p><a href="#Return%20value">Return value</a></p>
 <p><a href="#%E5%9C%A8STL%E4%B8%AD%E4%B9%9F%E4%BC%9A%E7%94%A8allocate%E7%B1%BB">在STL中也会用allocate类</a></p>
-<h1 id="std-allocator-allocate"><a href="#std-allocator-allocate" class="headerlink" title="std::allocator::allocate"></a>std::allocator<T>::allocate</T></h1><p>(1)<br>pointer allocate( size_type n, const void * hint &#x3D; 0 ); (until C++17)<br>T* allocate( <a target="_blank" rel="noopener" href="http://en.cppreference.com/w/cpp/types/size_t">std::size_t</a> n, const void * hint); (since C++17) (deprecated) (removed in C++20)(2)<br>T* allocate( <a target="_blank" rel="noopener" href="http://en.cppreference.com/w/cpp/types/size_t">std::size_t</a> n ); (since C++17) (until C++20)<br>[[nodiscard]] constexpr T* allocate( <a target="_blank" rel="noopener" href="http://en.cppreference.com/w/cpp/types/size_t">std::size_t</a> n ); (since C++20)</p>
+<h1 id="std-allocator-allocate"><a href="#std-allocator-allocate" class="headerlink" title="std::allocator::allocate"></a>std::allocator<T>::allocate</h1><p>(1)<br>pointer allocate( size_type n, const void * hint &#x3D; 0 ); (until C++17)<br>T* allocate( <a target="_blank" rel="noopener" href="http://en.cppreference.com/w/cpp/types/size_t">std::size_t</a> n, const void * hint); (since C++17) (deprecated) (removed in C++20)(2)<br>T* allocate( <a target="_blank" rel="noopener" href="http://en.cppreference.com/w/cpp/types/size_t">std::size_t</a> n ); (since C++17) (until C++20)<br>[[nodiscard]] constexpr T* allocate( <a target="_blank" rel="noopener" href="http://en.cppreference.com/w/cpp/types/size_t">std::size_t</a> n ); (since C++20)</p>
 <h1 id="c-中的allocator类"><a href="#c-中的allocator类" class="headerlink" title="c++中的allocator类"></a>c++中的allocator类</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><ul>
 <li>它用于将内存的分配和对象的构造分离开来. 它分配的<strong>内存是原始的、未构造的.</strong>+ Throws <a target="_blank" rel="noopener" href="https://en.cppreference.com/w/cpp/memory/new/bad_alloc">std::bad_alloc</a> if allocation fails.+ 标准库中allocator类定义在头文件memory中</li>
 </ul>

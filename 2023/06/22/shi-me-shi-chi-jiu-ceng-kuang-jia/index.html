@@ -410,7 +410,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <meta name="referrer" content="no-referrer">
+                <meta name="referrer" content="no-referrer" />
 
 <h1 id="什么是持久层"><a href="#什么是持久层" class="headerlink" title="什么是持久层?"></a>什么是<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E6%8C%81%E4%B9%85%E5%B1%82&spm=1001.2101.3001.7020">持久层</a>?</h1><p>持久是相对于瞬时来说的，*** 持久层，可以理解成数据 保存在 数据库或者 硬盘一类可以保存很长时间的设备里面，不像放在内存中那样断电就消失了，也就是把数据存在持久化设备上*** ，你想一下 <a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E5%86%85%E5%AD%98&spm=1001.2101.3001.7020">内存</a>中的数据 断电就没有了，硬盘的数据 是否会像内存中的数据一样断电消失么？</p>
 <h1 id="为什么要使用持久化框架"><a href="#为什么要使用持久化框架" class="headerlink" title="为什么要使用持久化框架?"></a>为什么要使用持久化框架?</h1><p>企业应用中*** 数据很重要(各种订单数据、客户数据、库存数据之类的)，他们的数据就是财富，比应用程序本身更重要，** 所以需要把数据<strong>持久化</strong>。持久化可以通过很多方式，写文件和数据库都可以。只是现在企业一般都会选择把数据持久化到数据库中，因为可以很方便的查询统计分析，但数据库的数据最终还是会写到磁盘上的。Java 程序员为了操作数据库，** 最开始是使用JDBC*** 来进行的，但是这种方式*** 开发效率低** ，要写一堆重复代码，加上关系数据库和对象本身存在所谓的阻抗不匹配情况，所以** 为了提高开发效率，有人发明了 ORM 即 对象关系映射框架*** (Hibernate是其中的佼佼者)，对于 Java 程序员来说，就可以通过操纵对象来操纵数据库了。</p>

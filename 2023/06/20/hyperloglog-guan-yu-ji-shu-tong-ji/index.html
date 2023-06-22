@@ -410,7 +410,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <meta name="referrer" content="no-referrer">
+                <meta name="referrer" content="no-referrer" />
 
 <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>今天在复习Redis的一种在Redis 2.8.9 版本更新的结构的时候，知道了这个数据结构是基于一种优秀的算法HyperLogLog，基数统计算法（简单来说就是统计集合中的元素数量，但是对比set有了很大的优化），就去了解了一下这种算法的精妙之处。</p>
 <h2 id="HyperLogLog"><a href="#HyperLogLog" class="headerlink" title="HyperLogLog"></a>HyperLogLog</h2><p>这种数据结构在Redis这种NoSQL型数据库中可以非常省内存的去统计各种计数，比如注册 IP 数、每日访问 IP 数、页面实时UV、在线用户数，共同好友数等。这个是应用场景。</p>

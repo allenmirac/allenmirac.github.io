@@ -410,7 +410,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <meta name="referrer" content="no-referrer">
+                <meta name="referrer" content="no-referrer" />
 
 <h2 id="简单介绍"><a href="#简单介绍" class="headerlink" title="简单介绍"></a>简单介绍</h2><p>这三种模式是为了在一个线程下面尽可能多的管理很多个socket。这三种模式在不同的需求下，有着各自的优势，select和poll差不多，但并不一定是说epoll是最好的。比如我们就写个简单的几个client连接下的情况，这个时候用select就很香，代码更少一点，如果是在真实的生产环境下，肯定是用epoll好。</p>
 <h2 id="select"><a href="#select" class="headerlink" title="select"></a>select</h2><p>select管理多个socket的fd（文件描述符，通过这个可以找到socket），在这期间select会监听所有的socket。如果没有一个socket有事件发生，这个线程会让出cpu的阻塞等待，即让该线程可以去做别的事情。如果使用普通的conncet()、accept()、recv()或recvfrom()这种函数，如果没有事件发生，就必须要阻塞，直到事件发生。</p>
