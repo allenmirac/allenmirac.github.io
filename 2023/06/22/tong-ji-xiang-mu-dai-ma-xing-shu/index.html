@@ -4,12 +4,20 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Maven基础, AllenMirac">
-    <meta name="description" content="
+    <meta name="keywords" content="统计项目代码行数, AllenMirac">
+    <meta name="description" content="Ubuntu用户使用cloc在ubuntu内统计代码行数
 
-Maven简介
- 简要来说就是将几个不同的软件下面本来都不同的目录结构都用统一的目录结构，让所有的IDE在建立Maven项目的时候都使用同一个标准，构建流程也是相同的。
-其中最厉害的还是依赖管理机制：依赖管理机制就是我们之前在使用一个包">
+安装cloc工具
+
+sudo apt-get install cloc
+
+
+进入需要统计的目录内，然后执行
+
+cloc .
+
+
+然后就会显示文件目录中的文件数(files)、空白行">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -21,7 +29,7 @@ Maven简介
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Maven基础 | AllenMirac</title>
+    <title>统计项目代码行数 | AllenMirac</title>
     <link rel="icon" type="image/jpeg" href="/ZoRo.jpg">
     
 
@@ -338,12 +346,12 @@ Maven简介
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Maven基础</h1>
+                    <h1 class="description center-align post-title">统计项目代码行数</h1>
                 </div>
             </div>
         </div>
@@ -367,14 +375,23 @@ Maven简介
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Java/">
-                                <span class="chip bg-color">Java</span>
+                            <a href="/tags/c/">
+                                <span class="chip bg-color">c++</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/c/" class="post-category">
+                                c++
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -383,7 +400,7 @@ Maven简介
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-06-20
+                    2023-06-22
                 </div>
                 
 
@@ -392,7 +409,7 @@ Maven简介
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    217
+                    157
                 </div>
                 
 
@@ -412,21 +429,35 @@ Maven简介
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <meta name="referrer" content="no-referrer">
+                <h1 id="Ubuntu用户"><a href="#Ubuntu用户" class="headerlink" title="Ubuntu用户"></a>Ubuntu用户</h1><p>使用cloc在ubuntu内统计代码行数</p>
+<ol>
+<li>安装cloc工具</li>
+</ol>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> cloc<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h2 id="Maven简介"><a href="#Maven简介" class="headerlink" title="Maven简介"></a>Maven简介</h2><p><img src="https://img-blog.csdnimg.cn/b7e371e0409a48a2822253737d342140.png"></p>
-<p> 简要来说就是将几个不同的软件下面本来都不同的目录结构都用统一的目录结构，让所有的IDE在建立Maven项目的时候都使用同一个标准，构建流程也是相同的。</p>
-<p><strong>其中最厉害的还是依赖管理机制：</strong>依赖管理机制就是我们之前在使用一个包的时候要去手动下载和添加，利用Maven可以使用定位坐标来直接导入jar包，非常的方便</p>
-<p><img src="https://img-blog.csdnimg.cn/b6eb56ff047c42c4893b43aa54b2ff4f.png"></p>
-<p>当你写好了定位之后，他就会在电脑上面安装的Maven里面的仓库找到对应的jar包。 </p>
-<p> <br><img src="https://img-blog.csdnimg.cn/52a27bf0247849708341e4b847764e1a.png"></p>
-<p>仓库也分为了好多种，如果本地仓库没有jar，就会去中央仓库下载（比较慢），中央仓库的东西都是开源的jar包， </p>
-<p> <br><img src="https://img-blog.csdnimg.cn/8449d1dc5e5e4fc798c0e06ca3b20cb0.png"></p>
-<p>Idea下配置Maven： </p>
-<p> <br><img src="https://img-blog.csdnimg.cn/d943c8d86f67496292e53a518a55dec1.png"></p>
-<p>Maven坐标 </p>
-<p> <br><img src="https://img-blog.csdnimg.cn/555413f1792e47fca958ce8a0a491c15.png"></p>
-<p> </p>
+<ol start="2">
+<li>进入需要统计的目录内，然后执行</li>
+</ol>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">cloc <span class="token builtin class-name">.</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ol start="3">
+<li>然后就会显示文件目录中的文件数(files)、空白行数(blank)、注释行数(comment)和代码行数(code)。</li>
+</ol>
+<h1 id="Windows-用户"><a href="#Windows-用户" class="headerlink" title="Windows 用户"></a>Windows 用户</h1><p>也是使用cloc工具</p>
+<ol>
+<li>下载最新cloc.exe工具，官网地址：<a target="_blank" rel="noopener" href="http://cloc.sourceforge.net/">http://cloc.sourceforge.net/</a></li>
+</ol>
+<p><img src="https://s2.loli.net/2023/06/22/Plp519xOn8NyDBS.png"></p>
+<p><img src="https://s2.loli.net/2023/06/22/f2RycgumFT16pIS.png"></p>
+<p><img src="https://s2.loli.net/2023/06/22/r32Wm6QleJzScDP.png"></p>
+<ol start="2">
+<li><p>下载完成后，将cloc-1.64.exe名称修改为cloc.exe，放在需要统计代码的文件夹所在目录</p>
+<p><img src="https://s2.loli.net/2023/06/22/gdZl8Fko7QmuNHJ.png"></p>
+<p>打开终端，输入命令<code>&gt;cloc.exe Project</code>(Project即要统计代码行数的文件名)</p>
+</li>
+<li><p>显示结果<img src="https://s2.loli.net/2023/06/22/BsDR8yoI9OaYrwT.png"></p>
+</li>
+</ol>
 
                 
             </div>
@@ -453,7 +484,7 @@ Maven简介
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://allenmirac.github.io/2023/06/20/maven-ji-chu/">https://allenmirac.github.io/2023/06/20/maven-ji-chu/</a>
+                    <a href="https://allenmirac.github.io/2023/06/22/tong-ji-xiang-mu-dai-ma-xing-shu/">https://allenmirac.github.io/2023/06/22/tong-ji-xiang-mu-dai-ma-xing-shu/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -491,8 +522,8 @@ Maven简介
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Java/">
-                                    <span class="chip bg-color">Java</span>
+                                <a href="/tags/c/">
+                                    <span class="chip bg-color">c++</span>
                                 </a>
                             
                         </div>
@@ -571,17 +602,18 @@ Maven简介
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2023/06/20/mysql-suo-yin-you-hua/">
+                <a href="/2023/06/22/tong-ji-xiang-mu-dai-ma-xing-shu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="Mysql索引优化">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="统计项目代码行数">
                         
-                        <span class="card-title">Mysql索引优化</span>
+                        <span class="card-title">统计项目代码行数</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -591,22 +623,27 @@ Maven简介
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-06-20
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-06-22
+                            </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            AllenMirac
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/c/" class="post-category">
+                                    c++
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
-                        <span class="chip bg-color">数据库</span>
+                    <a href="/tags/c/">
+                        <span class="chip bg-color">c++</span>
                     </a>
                     
                 </div>
@@ -620,13 +657,13 @@ Maven简介
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/06/20/linux-wen-jian-miao-shu-fu/">
+                <a href="/2023/06/22/xian-cheng-bu-an-quan-ban-ben-de-dan-li-mo-shi-xiang-jie/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="Linux文件描述符">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="线程不安全版本的单例模式（详解）">
                         
-                        <span class="card-title">Linux文件描述符</span>
+                        <span class="card-title">线程不安全版本的单例模式（详解）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -637,7 +674,7 @@ Maven简介
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-06-20
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-06-22
                             </span>
                         <span class="publish-author">
                             
@@ -650,8 +687,8 @@ Maven简介
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Linux/">
-                        <span class="chip bg-color">Linux</span>
+                    <a href="/tags/c/">
+                        <span class="chip bg-color">c++</span>
                     </a>
                     
                 </div>
