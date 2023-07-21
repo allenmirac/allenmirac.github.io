@@ -399,7 +399,7 @@ TCP&amp;#x2F;IP参考模型：网网传应
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-07-20
+                    2023-07-21
                 </div>
                 
 
@@ -565,6 +565,8 @@ TCP&amp;#x2F;IP参考模型：网网传应
 <p>只采用16种对应的64种不同的4为码，其他的16种作为控制码（帧的开始和结束，线路的状态信息等）或保留。</p>
 <h3 id="二-数字数据调制为模拟信号"><a href="#二-数字数据调制为模拟信号" class="headerlink" title="二.数字数据调制为模拟信号"></a>二.数字数据调制为模拟信号</h3><p><img src="https://img-blog.csdnimg.cn/f38a4b777fc247939a1596288bd1736a.png"></p>
 <p>数字数据调制技术在发送端将数字信号转换为模拟信号，而在接收端将模拟信号还原为数字信号，分别对应于调制解调器的调制和解调过程。</p>
+<p>正交振幅调制QAM</p>
+<p><img src="https://s2.loli.net/2023/07/21/8Bu6zCmfFexcts1.png"></p>
 <h3 id="三-模拟数据编码为数字信号"><a href="#三-模拟数据编码为数字信号" class="headerlink" title="三.模拟数据编码为数字信号"></a>三.模拟数据编码为数字信号</h3><p><img src="https://img-blog.csdnimg.cn/a8461752f95549a58d9b9c0f53911614.png"></p>
 <h3 id="四、编码与调制的综述："><a href="#四、编码与调制的综述：" class="headerlink" title="四、编码与调制的综述："></a>四、编码与调制的综述：</h3><p><img src="https://img-blog.csdnimg.cn/91020adbec94455197627c412481dda1.png"></p>
 <h1 id="第三章：数据链路层"><a href="#第三章：数据链路层" class="headerlink" title="第三章：数据链路层"></a>第三章：数据链路层</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p><img src="https://img-blog.csdnimg.cn/cd4e2f3397c448c0a7d85198b9e6a486.png"></p>
@@ -594,52 +596,41 @@ TCP&amp;#x2F;IP参考模型：网网传应
 <p><img src="https://img-blog.csdnimg.cn/b7ecdea1a6fb4756b412ad01e3973641.png"></p>
 <p>总结：累计确认。接收方发送ACKN代表前面N（包括N）个帧都收到了，但是如果中间出现了丢失，重传了，就会把发送窗口内的都丢弃重传。</p>
 <p><img src="https://img-blog.csdnimg.cn/065ca957ad294aeda36d771eafaa0c27.png"></p>
-<h1 id="选择重传协议：SR协议"><a href="#选择重传协议：SR协议" class="headerlink" title="选择重传协议：SR协议"></a>选择重传协议：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/405575394">SR协议</a></h1><p>回退N帧协议的接受窗口尺寸只能等于1，因此接收方只能按序接受正确到达的DATA。</p>
+<h2 id="选择重传协议：SR协议"><a href="#选择重传协议：SR协议" class="headerlink" title="选择重传协议：SR协议"></a>选择重传协议：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/405575394">SR协议</a></h2><p>回退N帧协议的接受窗口尺寸只能等于1，因此接收方只能按序接受正确到达的DATA。</p>
 <p>为了进一步提升性能，可设法只重传出现误码的数据分组，因此，接收窗口的尺寸不应该再等于1，而应该大于1，以便接收方收下失序到达但无误码并且序号落在接收窗口内的DATA，等到所缺分组收齐后再一起送交上层，这就是选择重传协议（Selective Request）。</p>
 <p>注意：由于只重传出现误码的数据分组，接收方不能采用累计确认，要采用逐一确认。</p>
-<p>发送窗口尺寸必须满足： </p>
-<p><img src="https://img-blog.csdnimg.cn/02e7bc17425844518916d7a2d863bb00.png"></p>
-<p>其中n是构成分组序号的比特数量</p>
-<p><img src="https://img-blog.csdnimg.cn/b46103aef36648c7ba2fdc7a7f592ae8.png"></p>
+<p>发送窗口尺寸必须满足： <img src="https://img-blog.csdnimg.cn/02e7bc17425844518916d7a2d863bb00.png"></p>
+<p>其中n是构成分组序号的比特数量<img src="https://img-blog.csdnimg.cn/b46103aef36648c7ba2fdc7a7f592ae8.png"></p>
 <ul>
-<li>如果  ：就是停止-等待协议+ 如果  ：造成接收方无法分辨新旧DATA的问题</li>
+<li>如果  ：就是停止-等待协议</li>
+<li>如果  ：造成接收方无法分辨新旧DATA的问题</li>
 </ul>
-<p>接收窗口的尺寸必须满足： </p>
-<p><img src="https://img-blog.csdnimg.cn/244acbd55cee453e9e7b9c2f33be9843.png"></p>
+<p>接收窗口的尺寸必须满足： <img src="https://img-blog.csdnimg.cn/244acbd55cee453e9e7b9c2f33be9843.png"></p>
 <ul>
-<li>如果</li>
+<li><p>如果<img src="https://img-blog.csdnimg.cn/76892842442a4a9eb4aa4100205b9611.png">：与回退N帧协议相同</p>
+</li>
+<li><p>如果<img src="https://img-blog.csdnimg.cn/c292ece4bb8a4ddd9c3201bab2252eab.png"> ：无意义</p>
+</li>
 </ul>
-<p><img src="https://img-blog.csdnimg.cn/76892842442a4a9eb4aa4100205b9611.png"></p>
-<p> ：与回退N帧协议相同</p>
-<ul>
-<li>如果</li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/c292ece4bb8a4ddd9c3201bab2252eab.png"></p>
-<p> ：无意义</p>
-<h1 id="点对点协议（Point-to-Point-Protocol）"><a href="#点对点协议（Point-to-Point-Protocol）" class="headerlink" title="点对点协议（Point-to-Point Protocol）"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/fudashi/p/6814652.html">点对点协议（Point-to-Point Protocol）</a></h1><p>工作在数据链路层，</p>
+<h2 id="点对点协议（Point-to-Point-Protocol）"><a href="#点对点协议（Point-to-Point-Protocol）" class="headerlink" title="点对点协议（Point-to-Point Protocol）"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/fudashi/p/6814652.html">点对点协议（Point-to-Point Protocol）</a></h2><p>工作在数据链路层，</p>
 <p>PPP协议的组成</p>
 <p><img src="https://img-blog.csdnimg.cn/2046a88462854af69800f667788bc4d5.png"></p>
 <ul>
 <li>建立、配置数据链路连接的LCP（Link Control Protocol）+ 网络控制协议NCP（Network Control Protocol）+ 将IP数据报封装到串行链路的方法</li>
 </ul>
 <p>跟其他协议一样，也要解决数据链路层的三个基本问题：封装成帧，透明传输，差错检测。</p>
-<p>媒体接入控制</p>
-<p><img src="https://img-blog.csdnimg.cn/d32143d24fb34a1f985be0df6410a948.png"></p>
-<h1 id="介质访问控制"><a href="#介质访问控制" class="headerlink" title="介质访问控制"></a>介质访问控制</h1><p>　　介质访问控制就是采取一定的措施，使得两对节点之间的通信不会发生互相干扰的情况。</p>
+<h2 id="媒体接入控制"><a href="#媒体接入控制" class="headerlink" title="媒体接入控制"></a>媒体接入控制</h2><p><img src="https://img-blog.csdnimg.cn/d32143d24fb34a1f985be0df6410a948.png"></p>
+<h2 id="介质访问控制"><a href="#介质访问控制" class="headerlink" title="介质访问控制"></a>介质访问控制</h2><p>　　介质访问控制就是采取一定的措施，使得两对节点之间的通信不会发生互相干扰的情况。</p>
 <p>　　介质访问控制（就是媒体接入控制）可以分为静态划分信道和动态分配信道。</p>
 <p>　　（1）静态划分信道：也叫信道划分介质访问控制，有四种控制的方法，1、频分多路复用FDM；2、时分多路复用TDM；3、波分多路复用WDM；4、码分多路复用CDM。</p>
 <p>　　（2）动态分配信道，可以分为轮询访问控制  令牌传递协议；随机访问介质访问控制 ALOHA协议、CSMA协议、CSMA&#x2F;CD协议、CSMA&#x2F;CA协议。</p>
-<p>1、频分多路复用FDM</p>
-<p>多路复用器接受来自多个源的模拟信号，每个信号有自己独立的带宽，信号在通信的过程中自始自终都占用这个频带，在同样的时间占用不同的带宽频率，信号被组合成一个具有更大带宽的信号</p>
+<h3 id="1、频分多路复用FDM"><a href="#1、频分多路复用FDM" class="headerlink" title="1、频分多路复用FDM"></a>1、频分多路复用FDM</h3><p>多路复用器接受来自多个源的模拟信号，每个信号有自己独立的带宽，信号在通信的过程中自始自终都占用这个频带，在同样的时间占用不同的带宽频率，信号被组合成一个具有更大带宽的信号</p>
 <p><img src="https://img-blog.csdnimg.cn/0f6e460c8dae4d1196e922cb0c99d28f.png"></p>
-<p>2、时分多路复用TDM</p>
-<p>时分多路复用TDM，信道分割的方法是信号占用的时间，将使用复用的各路信号在时间上互不重叠，在传输时把时间分成小的时隙，每一时隙由复用的一个信号占用。</p>
+<h3 id="2、时分多路复用TDM"><a href="#2、时分多路复用TDM" class="headerlink" title="2、时分多路复用TDM"></a>2、时分多路复用TDM</h3><p>时分多路复用TDM，信道分割的方法是信号占用的时间，将使用复用的各路信号在时间上互不重叠，在传输时把时间分成小的时隙，每一时隙由复用的一个信号占用。</p>
 <p><img src="https://img-blog.csdnimg.cn/f1c59e5bb03f49a69733cc1cbc4cc807.png"></p>
-<p>3、波分多路复用WDM</p>
-<p><img src="https://img-blog.csdnimg.cn/151a54463c37462caadb8472f9628a66.png"></p>
-<p>4、码分多路复用CDM</p>
-<p>它既共享信道的频率，也共享时间，是一种真正的动态复用技术</p>
-<h1 id="CSMA-x2F-CD-协议"><a href="#CSMA-x2F-CD-协议" class="headerlink" title="CSMA&#x2F;CD 协议"></a>CSMA&#x2F;CD 协议</h1><p>总线局域网使用的协议：CSMA&#x2F;CD协议为带有冲突检测的载波监听多路访问技术，数据链路层，协议的实质是“载波监听”和“碰撞检测”。</p>
+<h3 id="3、波分多路复用WDM"><a href="#3、波分多路复用WDM" class="headerlink" title="3、波分多路复用WDM"></a>3、波分多路复用WDM</h3><p><img src="https://img-blog.csdnimg.cn/151a54463c37462caadb8472f9628a66.png"></p>
+<h3 id="4、码分多路复用CDM"><a href="#4、码分多路复用CDM" class="headerlink" title="4、码分多路复用CDM"></a>4、码分多路复用CDM</h3><p>它既共享信道的频率，也共享时间，是一种真正的动态复用技术</p>
+<h2 id="CSMA-x2F-CD-协议"><a href="#CSMA-x2F-CD-协议" class="headerlink" title="CSMA&#x2F;CD 协议"></a>CSMA&#x2F;CD 协议</h2><p>总线局域网使用的协议：CSMA&#x2F;CD协议为带有冲突检测的载波监听多路访问技术，数据链路层，协议的实质是“载波监听”和“碰撞检测”。</p>
 <p>载波监听就是利用电子技术检测总线上有没有其他计算机也在发送。载波监听实际上就是检测信道。在发送前，每个站不停地检测信道，是为了获得发送权；在发送中检测信道，是为了及时发现有没有其他站的发送和本站发送的碰撞，这就是碰撞检测。总之，载波监听是全程都在进行的。</p>
 <p>碰撞检测就是边发送边监听。就是网卡边发送数据边检测新岛上的信号电压的变化情况，以便判断自己在发送数据的时候其他站是否也在发送数据。当几个站同时在总线上发送数据时，总线上的信号电压变化幅度将会增大（互相叠加），当网卡检测到的信号电压超过一定的门限值时，说明总线上至少有两个站同时在发送数据，表明产生了碰撞（冲突），所以也称为冲突检测。这时，由于接收的信号已经识别不出来，所以任何一个正在发送的站就会立即停止发送数据，然后等待一段随机事件以后再次发送。</p>
 <p>CSMA&#x2F;CD 算法如下</p>
@@ -648,7 +639,7 @@ TCP&amp;#x2F;IP参考模型：网网传应
 </ul>
 <p>站点重置重传计数器并完成帧传输。</p>
 <p>尽管 CSMA&#x2F;CS 检测到冲突，但它没有减少冲突数量的机制。因此，它不适用于大型网络，因为当添加更多站点时性能会呈指数级下降。</p>
-<h1 id="CSMA-x2F-CA协议"><a href="#CSMA-x2F-CA协议" class="headerlink" title="CSMA&#x2F;CA协议"></a>CSMA&#x2F;CA协议</h1><p>载波监听多点接入 &#x2F; 碰撞避免协议（Carrier Sense Multiple Access With Collision Avoidance）</p>
+<h2 id="CSMA-x2F-CA协议"><a href="#CSMA-x2F-CA协议" class="headerlink" title="CSMA&#x2F;CA协议"></a>CSMA&#x2F;CA协议</h2><p>载波监听多点接入 &#x2F; 碰撞避免协议（Carrier Sense Multiple Access With Collision Avoidance）</p>
 <p>CSMA&#x2F;CA 的算法如下：</p>
 <ul>
 <li>当帧准备好时，发送站检查信道是空闲还是忙碌。+ 如果通道不畅通，则节点开始等待随机时间量，然后再检查是否畅通。</li>
@@ -662,7 +653,7 @@ TCP&amp;#x2F;IP参考模型：网网传应
 <li>否则，它会等待一个回退时间段并重新启动算法。</li>
 </ul>
 <p>CMSA&#x2F;CA 防止冲突。当它等待确认时，数据不会不必要地丢失，并且避免了浪费的传输。CSMA&#x2F;CA 非常适合无线传输。</p>
-<h1 id="Mac地址-IP地址-Arp协议"><a href="#Mac地址-IP地址-Arp协议" class="headerlink" title="Mac地址 IP地址 Arp协议"></a>Mac地址 IP地址 Arp协议</h1><p><img src="https://img-blog.csdnimg.cn/985b1e00a3c4487ca861693bc211682e.png"></p>
+<h2 id="Mac地址-IP地址-Arp协议"><a href="#Mac地址-IP地址-Arp协议" class="headerlink" title="Mac地址 IP地址 Arp协议"></a>Mac地址 IP地址 Arp协议</h2><p><img src="https://img-blog.csdnimg.cn/985b1e00a3c4487ca861693bc211682e.png"></p>
 <p>Mac地址又称为物理地址，MAC 地址由六组两位字符组成，由冒号分隔。比如00:1B:44:11:3A:B7，就是一个 MAC 地址。固化在网卡的EEPROM中，所以叫做硬件地址。</p>
 <p>IP地址：完整的 IP 寻址范围从 0.0.0.0 到 255.255.255.255。</p>
 <p>数据包的转发：数据包在转发过程中，源IP地址和目的IP地址始终保持不变，而数据在数据链路层通过ARP协议找到一条去往目的地的路，即路上要经过的路由器的MAC地址，经过一个或多个路由器（一次只能够找到下一步的MAC地址，不能一次性的把路上所有的MAC都找到），最终交付给目的地。</p>
