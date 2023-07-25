@@ -801,13 +801,13 @@ TCP&amp;#x2F;IP参考模型：网网传应
 <p><img src="https://img-blog.csdnimg.cn/d0a78f9448c34e7bb6dba8da42a83ea2.png"></p>
 <h2 id="TCP连接的释放：四挥手"><a href="#TCP连接的释放：四挥手" class="headerlink" title="TCP连接的释放：四挥手"></a>TCP连接的释放：四挥手</h2><p>4报文挥手，客户端最后还要经过2MSL的时间才会进入关闭状态，确保返回给服务器的ACK到达服务端，以及清理掉此次连接中的所有报文段。</p>
 <p><img src="https://img-blog.csdnimg.cn/b7a540c088e744e2b5f5c00737fce93f.png"></p>
-<p>使用2*MSL时间的原因：当出现最后的确认报文段丢失的情况时，还可以收到服务端的FIN信号，否则服务器就会一直重传FIN报文段，一直收不到确认信号。</p>
+<p>使用2*MSL时间的原因：当出现最后的确认报文段丢失的情况时，还可以收到服务端的FIN信号，否则服务器就会一直重传FIN报文段，而此时客户端已经进入了CLOSED状态，不会发送ACK，服务端这时会一直收不到确认信号。</p>
 <p><img src="https://img-blog.csdnimg.cn/f2fdfceb80e44182b7f9d8ab1ff3aeb6.png"></p>
 <p>保活计时器</p>
 <p><img src="https://img-blog.csdnimg.cn/b051b9fec6914671a305be27606b66a6.png"></p>
 <h2 id="TCP报文段的首部格式"><a href="#TCP报文段的首部格式" class="headerlink" title="TCP报文段的首部格式"></a>TCP报文段的首部格式</h2><p>都有20字节的固定首部</p>
 <p><img src="https://img-blog.csdnimg.cn/0eed4e40c69b40f3bb4d6c84cc5dec1c.png"></p>
-<h1 id="第六章：应用层"><a href="#第六章：应用层" class="headerlink" title="第六章：应用层"></a>第六章：应用层</h1><h2 id="B-x2F-S和PtoP方式"><a href="#B-x2F-S和PtoP方式" class="headerlink" title="B&#x2F;S和PtoP方式"></a>B&#x2F;S和PtoP方式</h2><p>PtP方式是两边对等的，没有固定的服务端和客户端，</p>
+<h1 id="第六章：应用层"><a href="#第六章：应用层" class="headerlink" title="第六章：应用层"></a>第六章：应用层</h1><h2 id="B-x2F-S和P2P方式"><a href="#B-x2F-S和P2P方式" class="headerlink" title="B&#x2F;S和P2P方式"></a>B&#x2F;S和P2P方式</h2><p>P2P方式是两边对等的，没有固定的服务端和客户端，</p>
 <p><img src="https://img-blog.csdnimg.cn/7791c8324f8f4e6aa6cd1d07ac087dfe.png"></p>
 <h2 id="动态主机配置协议DHCP"><a href="#动态主机配置协议DHCP" class="headerlink" title="动态主机配置协议DHCP"></a>动态主机配置协议DHCP</h2><p>DHCP的工作过程：主要有四步，DHCP DISCOVER、DHCP OFFER、DHCP REQUEST、DHCP ACK。</p>
 <p><img src="https://img-blog.csdnimg.cn/d7332fef336047de984f5e003408675c.png"></p>
@@ -825,6 +825,8 @@ TCP&amp;#x2F;IP参考模型：网网传应
 <p>put [name]&#x2F;&#x2F;上传文件</p>
 <p><img src="https://img-blog.csdnimg.cn/582ded89c75f4f049cb95e424c0c6c9d.png"></p>
 <p><img src="https://img-blog.csdnimg.cn/73a0f218414247129ba2e59b99afa3bc.png"></p>
+<p>小结</p>
+<p><img src="https://s2.loli.net/2023/07/25/ksQzKMjp46nIyLJ.png"></p>
 <h2 id="电子邮件"><a href="#电子邮件" class="headerlink" title="电子邮件"></a>电子邮件</h2><p>简单邮件传送协议SMTP：simple mail transfer protocol，基于TCP连接，使用熟知端口号25，只能发送ASCII文本。</p>
 <p><img src="https://img-blog.csdnimg.cn/1ea41adb8ef0430086ed44888eaf7f66.png"></p>
 <p>电子邮件的格式：信封和内容</p>
@@ -842,6 +844,7 @@ TCP&amp;#x2F;IP参考模型：网网传应
 <p>（keep-alive），</p>
 <p><img src="https://img-blog.csdnimg.cn/5f8dfed559db45589de599feb0caa3b0.png"></p>
 <h1 id="参考视频链接"><a href="#参考视频链接" class="headerlink" title="参考视频链接"></a>参考视频链接</h1><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1c4411d7jb?p=1&vd_source=b99c7e40ffa0f64b68b706f2af755c8e">计算机网络微课堂（有字幕无背景音乐版）</a> </p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1NT411g7n6">深入浅出计算机网络 微课视频</a></p>
 
                 
             </div>
