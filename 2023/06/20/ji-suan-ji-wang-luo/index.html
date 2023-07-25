@@ -399,14 +399,14 @@ TCP&amp;#x2F;IP参考模型：网网传应
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-07-21
+                    2023-07-25
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    7.6k
+                    7.8k
                 </div>
                 
 
@@ -660,15 +660,15 @@ TCP&amp;#x2F;IP参考模型：网网传应
 <p><img src="https://img-blog.csdnimg.cn/12af1a7f22e841989ec813e76d65d02f.png"></p>
 <p><img src="https://img-blog.csdnimg.cn/7360393ad10f481c9b0cc9eec76394c6.png"></p>
 <p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/news/637065">一文读懂ARP协议，从IP获取对方MAC实操</a> </p>
-<h1 id="集线器、交换机、路由器"><a href="#集线器、交换机、路由器" class="headerlink" title="集线器、交换机、路由器"></a>集线器、交换机、路由器</h1><p>集线器以广播方式发送，交换机单独发送</p>
+<h2 id="集线器、交换机、路由器"><a href="#集线器、交换机、路由器" class="headerlink" title="集线器、交换机、路由器"></a>集线器、交换机、路由器</h2><p>集线器以广播方式发送，交换机单独发送</p>
 <p><img src="https://img-blog.csdnimg.cn/0010f4b68f3b4557a48c692e73a1c254.png"></p>
 <p>集线器对接收到的信号放大、转发，交换机根据MAC地址对帧进行转发。</p>
 <p><img src="https://img-blog.csdnimg.cn/888ac41ce78d4aad86f0a111553c8722.png"></p>
 <p><a target="_blank" rel="noopener" href="https://www.eet-china.com/mp/a73949.html">一文让你搞懂：路由器，集线器，交换机，网桥，光猫有啥区别？</a></p>
-<h1 id="以太网交换机的自学习和转发帧的流程"><a href="#以太网交换机的自学习和转发帧的流程" class="headerlink" title="以太网交换机的自学习和转发帧的流程"></a>以太网交换机的自学习和转发帧的流程</h1><p><img src="https://img-blog.csdnimg.cn/670ac883aca7420586fb8e53a850d854.png"></p>
+<h2 id="以太网交换机的自学习和转发帧的流程"><a href="#以太网交换机的自学习和转发帧的流程" class="headerlink" title="以太网交换机的自学习和转发帧的流程"></a>以太网交换机的自学习和转发帧的流程</h2><p><img src="https://img-blog.csdnimg.cn/670ac883aca7420586fb8e53a850d854.png"></p>
 <p><img src="https://img-blog.csdnimg.cn/56dccf0ac6cd4672aba092571f69f144.png"></p>
-<h1 id="以太网交换机的生成树协议"><a href="#以太网交换机的生成树协议" class="headerlink" title="以太网交换机的生成树协议"></a>以太网交换机的生成树协议</h1><p><img src="https://img-blog.csdnimg.cn/04c2ca11663e4980982423008433654e.png"></p>
-<h1 id="虚拟局域网VLAN的实现机制"><a href="#虚拟局域网VLAN的实现机制" class="headerlink" title="虚拟局域网VLAN的实现机制"></a>虚拟局域网VLAN的实现机制</h1><p>对以太网的MAC帧进行了扩展，插入了四个字节的VLAN标记。当交换机收到普通的以太网帧时，插入四字节的VLAN标记，转变为802.1Q帧，“打标签”。当交换机转发802.1Q帧时，会删除标签，“去标签”。</p>
+<h2 id="以太网交换机的生成树协议"><a href="#以太网交换机的生成树协议" class="headerlink" title="以太网交换机的生成树协议"></a>以太网交换机的生成树协议</h2><p><img src="https://img-blog.csdnimg.cn/04c2ca11663e4980982423008433654e.png"></p>
+<h2 id="虚拟局域网VLAN的实现机制"><a href="#虚拟局域网VLAN的实现机制" class="headerlink" title="虚拟局域网VLAN的实现机制"></a>虚拟局域网VLAN的实现机制</h2><p>对以太网的MAC帧进行了扩展，插入了四个字节的VLAN标记。当交换机收到普通的以太网帧时，插入四字节的VLAN标记，转变为802.1Q帧，“打标签”。当交换机转发802.1Q帧时，会删除标签，“去标签”。</p>
 <p><img src="https://img-blog.csdnimg.cn/b6e72333ee944c81a7d86634295ad3fd.png"></p>
 <p>交换机的Access端口：PVID与VID相等时才会转发，用于连接用户计算机。</p>
 <p><img src="https://img-blog.csdnimg.cn/066c241eaf2440d19b02c4536d5a2fc7.png"></p>
@@ -685,19 +685,19 @@ TCP&amp;#x2F;IP参考模型：网网传应
 <p><img src="https://img-blog.csdnimg.cn/691a870ef6ca4d86ba6ea69e77211c55.png"></p>
 <p>Hybird端口：发送时查看该帧是否在端口的去标签列表中，存在则去标签转发，否则直接转发；接受时</p>
 <p><img src="https://img-blog.csdnimg.cn/38dd150fd262475fad714c65b9257f80.png"></p>
-<h1 id="IPv4地址的格式"><a href="#IPv4地址的格式" class="headerlink" title="IPv4地址的格式"></a>IPv4地址的格式</h1><p>点分十进制表示方法：</p>
+<h1 id="第四章：网络层"><a href="#第四章：网络层" class="headerlink" title="第四章：网络层"></a>第四章：网络层</h1><h2 id="IPv4地址的格式"><a href="#IPv4地址的格式" class="headerlink" title="IPv4地址的格式"></a>IPv4地址的格式</h2><p>点分十进制表示方法：</p>
 <p><img src="https://img-blog.csdnimg.cn/4f5c8548fc3743da887a612825744600.png"></p>
 <p>辨别ABC类地址</p>
 <p><img src="https://img-blog.csdnimg.cn/f555fa48ed484a0a96e71dc7a1a9d533.png"></p>
-<h1 id="分类编制的IPv4地址"><a href="#分类编制的IPv4地址" class="headerlink" title="分类编制的IPv4地址"></a>分类编制的IPv4地址</h1><p>小结：主机号全零是网络地址，全一是广播地址，注意ABC类地址的范围</p>
+<h2 id="分类编制的IPv4地址"><a href="#分类编制的IPv4地址" class="headerlink" title="分类编制的IPv4地址"></a>分类编制的IPv4地址</h2><p>小结：主机号全零是网络地址，全一是广播地址，注意ABC类地址的范围</p>
 <p><img src="https://img-blog.csdnimg.cn/a9a8afe218404f1ea23b42cb4d95f850.png"></p>
-<h1 id="划分子网的IPv4地址"><a href="#划分子网的IPv4地址" class="headerlink" title="划分子网的IPv4地址"></a>划分子网的IPv4地址</h1><p>子网掩码：使用连续的1来代表网络号和子网号，0对应主机号，与原来的网络地址相与就可以得到网络地址。</p>
+<h2 id="划分子网的IPv4地址"><a href="#划分子网的IPv4地址" class="headerlink" title="划分子网的IPv4地址"></a>划分子网的IPv4地址</h2><p>子网掩码：使用连续的1来代表网络号和子网号，0对应主机号，与原来的网络地址相与就可以得到网络地址。</p>
 <p><img src="https://img-blog.csdnimg.cn/2511e43a339d4f819a2ea037f1c32875.png"></p>
 <p>划分细节：全零的和全一的要忽略掉</p>
 <p><img src="https://img-blog.csdnimg.cn/28f70672318a497db8a46837a3962ec1.png"></p>
 <p>小结：</p>
 <p><img src="https://img-blog.csdnimg.cn/673e396d7304422ea0b042885d425ede.png"></p>
-<h1 id="无分类编址的划分子网CIDR"><a href="#无分类编址的划分子网CIDR" class="headerlink" title="无分类编址的划分子网CIDR"></a>无分类编址的划分子网CIDR</h1><p>在IPv4地址后面加上斜线，表示网络前缀所占的比特数量。</p>
+<h2 id="无分类编址的划分子网CIDR"><a href="#无分类编址的划分子网CIDR" class="headerlink" title="无分类编址的划分子网CIDR"></a>无分类编址的划分子网CIDR</h2><p>在IPv4地址后面加上斜线，表示网络前缀所占的比特数量。</p>
 <p><img src="https://img-blog.csdnimg.cn/882a3453ea464552a79e8dce6df9785f.png"></p>
 <p>最长前缀匹配：</p>
 <p><img src="https://img-blog.csdnimg.cn/a9393a3c29fb4a2683702f55fa792aa8.png"></p>
@@ -707,51 +707,55 @@ TCP&amp;#x2F;IP参考模型：网网传应
 <p><img src="https://img-blog.csdnimg.cn/d390e4fe857d4c9fb70153f47d520bc7.png"></p>
 <p>小结：</p>
 <p><img src="https://img-blog.csdnimg.cn/bdc1a6541ed943c9854fa7fa1e5ae5ac.png"></p>
-<h1 id="IP数据报的发送与转发过程"><a href="#IP数据报的发送与转发过程" class="headerlink" title="IP数据报的发送与转发过程"></a>IP数据报的发送与转发过程</h1><p>如果在同一个网络中，直接交付；不在，间接交付。</p>
+<h2 id="IP数据报的发送与转发过程"><a href="#IP数据报的发送与转发过程" class="headerlink" title="IP数据报的发送与转发过程"></a>IP数据报的发送与转发过程</h2><p>如果在同一个网络中，直接交付；不在，间接交付。</p>
 <p><strong>如何判断目的主机与自己是否在同一个网络中？</strong></p>
 <p>将本机IP地址与本机子网掩码相与得到网络地址，将目的主机IP地址与本机子网掩码相与得到另外一个网络地址，看看两个网络地址是否相同。同，在一个网络；不同在不同的网络。</p>
 <p><img src="https://img-blog.csdnimg.cn/1b1eccc36c9543688b2bf826d946450f.png"></p>
-<h1 id="静态路由配置以及可能产生的路由环路问题"><a href="#静态路由配置以及可能产生的路由环路问题" class="headerlink" title="静态路由配置以及可能产生的路由环路问题"></a>静态路由配置以及可能产生的路由环路问题</h1><p>网络管理员自己手动配置路由表。</p>
+<h2 id="静态路由配置以及可能产生的路由环路问题"><a href="#静态路由配置以及可能产生的路由环路问题" class="headerlink" title="静态路由配置以及可能产生的路由环路问题"></a>静态路由配置以及可能产生的路由环路问题</h2><p>网络管理员自己手动配置路由表。</p>
 <p><img src="https://img-blog.csdnimg.cn/87cc07ac8af4429b9dc01f721c7e5d26.png"></p>
-<h1 id="外部-BGP-与内部-BGP-有什么区别？"><a href="#外部-BGP-与内部-BGP-有什么区别？" class="headerlink" title="外部 BGP 与内部 BGP 有什么区别？"></a>外部 BGP 与内部 BGP 有什么区别？</h1><p>在互联网上，路由交换和流量传输是通过外部 BGP（eBGP）进行的。自治系统也可使用 BGP 的内部版本来路由内部网络上的数据，也就是 iBGP（internal）。应该指出的是，使用内部 BGP 并非使用外部 BGP 的前提条件。自治系统可从多种内部协议中选择，来连接内部网络上的路由器。</p>
+<h2 id="外部-BGP-与内部-BGP-有什么区别？"><a href="#外部-BGP-与内部-BGP-有什么区别？" class="headerlink" title="外部 BGP 与内部 BGP 有什么区别？"></a>外部 BGP 与内部 BGP 有什么区别？</h2><p>在互联网上，路由交换和流量传输是通过外部 BGP（eBGP）进行的。自治系统也可使用 BGP 的内部版本来路由内部网络上的数据，也就是 iBGP（internal）。应该指出的是，使用内部 BGP 并非使用外部 BGP 的前提条件。自治系统可从多种内部协议中选择，来连接内部网络上的路由器。</p>
 <p>外部 BGP 就像国际运输。在国际上运送邮件时，需要遵循特定的标准和规则。邮件到达目的地国家后，必须通过目的地国家的本地邮政服务才能达到其最终目的地。每个国家都有自己的内部邮政服务，不必遵循其他国家的相同规则。同样，每个自治系统都可以有自己的内部路由协议，用于路由自身网络内部的数据。</p>
-<h1 id="内部网关协议：路由选择协议RIP的基本工作原理"><a href="#内部网关协议：路由选择协议RIP的基本工作原理" class="headerlink" title="内部网关协议：路由选择协议RIP的基本工作原理"></a>内部网关协议：路由选择协议RIP的基本工作原理</h1><p>RIP的路由条目的更新规则，先加1，然后逐渐更新</p>
+<h2 id="内部网关协议：路由信息协议RIP的基本工作原理"><a href="#内部网关协议：路由信息协议RIP的基本工作原理" class="headerlink" title="内部网关协议：路由信息协议RIP的基本工作原理"></a>内部网关协议：路由信息协议RIP的基本工作原理</h2><p>RIP的路由条目的更新规则，先加1，然后逐渐更新</p>
 <p><img src="https://img-blog.csdnimg.cn/c124805b378f4c61a971f52a755a66ba.png"></p>
 <p>使用跳数来衡量到达目的网络的距离，next hop，下一跳</p>
 <p><img src="https://img-blog.csdnimg.cn/9961223a7ffd40939ab535a9495b31bd.png"></p>
-<h1 id="广播域与冲突域"><a href="#广播域与冲突域" class="headerlink" title="广播域与冲突域"></a>广播域与冲突域</h1><p>一个集线器（中继器）连接的网络成为冲突域，因为每台主机都连接在了同一条线路上，所以传送信息时会冲突。** 冲突域是基于第一层(物理层)**</p>
-<p>而交换机的本质是一个多借口网桥，就是说由交换机组成的网络中，任意两台主机通信都是通过一条专有线路，故不会冲突。所以交换机出来的每个接口都是一个冲突域。** 广播域是基于第二层(链路层)**</p>
+<h2 id="广播域与冲突域"><a href="#广播域与冲突域" class="headerlink" title="广播域与冲突域"></a>广播域与冲突域</h2><p>一个集线器（中继器）连接的网络成为冲突域，因为每台主机都连接在了同一条线路上，所以传送信息时会冲突。<strong>冲突域是基于第一层(物理层)</strong></p>
+<p>而交换机的本质是一个多借口网桥，就是说由交换机组成的网络中，任意两台主机通信都是通过一条专有线路，故不会冲突。所以交换机出来的每个接口都是一个冲突域。<strong>广播域是基于第二层(链路层)</strong></p>
 <p>通常一个局域网VLAN算一个广播域，故路由器的每个端口产生一个广播域。</p>
-<h1 id="开放最短路径OSPF的基本工作原理"><a href="#开放最短路径OSPF的基本工作原理" class="headerlink" title="开放最短路径OSPF的基本工作原理"></a>开放最短路径OSPF的基本工作原理</h1><p>在自治系统AS中可以通过OSPF将其划分成更小的区域。</p>
+<h2 id="开放最短路径OSPF的基本工作原理"><a href="#开放最短路径OSPF的基本工作原理" class="headerlink" title="开放最短路径OSPF的基本工作原理"></a>开放最短路径OSPF的基本工作原理</h2><p>在自治系统AS中可以通过OSPF将其划分成更小的区域。</p>
 <p><img src="https://img-blog.csdnimg.cn/ce148a6ff01b4569b374611147313b1d.png"></p>
-<p>小结</p>
-<p><img src="https://img-blog.csdnimg.cn/e772b21b41f04d1f9b6765cf985cfb36.png"></p>
-<h1 id="边界网关协议BGP"><a href="#边界网关协议BGP" class="headerlink" title="边界网关协议BGP"></a>边界网关协议BGP</h1><p>BGP是找到有路径就可以，不用去找最佳的路由。</p>
+<h3 id="OSPF在多点接入网络中路由邻居关系的建立"><a href="#OSPF在多点接入网络中路由邻居关系的建立" class="headerlink" title="OSPF在多点接入网络中路由邻居关系的建立"></a>OSPF在多点接入网络中路由邻居关系的建立</h3><p>选举指定路由器DR和备用的指定路由器BDR，减少网络中邻居关系之间的问候分组（Hello分组）</p>
+<p><img src="https://s2.loli.net/2023/07/24/KhRbkJlWF6VernL.png" alt="image-20230724165601768"></p>
+<h3 id="OSPF小结"><a href="#OSPF小结" class="headerlink" title="OSPF小结"></a>OSPF小结</h3><p><img src="https://img-blog.csdnimg.cn/e772b21b41f04d1f9b6765cf985cfb36.png"></p>
+<h2 id="边界网关协议BGP"><a href="#边界网关协议BGP" class="headerlink" title="边界网关协议BGP"></a>边界网关协议BGP</h2><p>BGP是找到有路径就可以，不用去找最佳的路由。</p>
 <p><img src="https://img-blog.csdnimg.cn/852d8062d30a45969c981b765eaa9d47.png"></p>
 <p>例题：</p>
 <p><img src="https://img-blog.csdnimg.cn/029ca4afc3144ab9ba44a69539f70932.png"></p>
 <p>小结：</p>
 <p><img src="https://img-blog.csdnimg.cn/bd44fdb4680141fb8f2ed835a5713968.png"></p>
-<h1 id="IPVv4数据报的格式"><a href="#IPVv4数据报的格式" class="headerlink" title="IPVv4数据报的格式"></a>IPVv4数据报的格式</h1><p>TTL字段的作用：防止IP数据报在网络中永久兜圈。</p>
+<h2 id="IPVv4数据报的格式"><a href="#IPVv4数据报的格式" class="headerlink" title="IPVv4数据报的格式"></a>IPVv4数据报的格式</h2><p>TTL字段的作用：防止IP数据报在网络中永久兜圈。</p>
 <p>如下图将R2的静态路由表配置错了，导致要转发给R3的转发给了R1，造成路由环路。</p>
 <p><img src="https://img-blog.csdnimg.cn/bc99ba4e538a411085020b799467e526.png"></p>
 <p>当IP数据报经过一个路由器的时候：TTL字段减一，首部检验和需要更改，如果IP数据报过大，大于MTU（最大数据报单元），则要重新分片，标志字段、总长度字段、片位移字段都要修改。</p>
 <p><img src="https://img-blog.csdnimg.cn/5c0ea351cc244fa895481c3c59f08e90.png"></p>
-<h1 id="网际控制报文协议ICMP"><a href="#网际控制报文协议ICMP" class="headerlink" title="网际控制报文协议ICMP"></a>网际控制报文协议ICMP</h1><p>通过ICMP来发送差错报告报文和询问报文，ICMP报文被封装在IP数据报中发送出去，有五种差错报文。</p>
+<h2 id="网际控制报文协议ICMP"><a href="#网际控制报文协议ICMP" class="headerlink" title="网际控制报文协议ICMP"></a>网际控制报文协议ICMP</h2><p>通过ICMP来发送差错报告报文和询问报文，ICMP报文被封装在IP数据报中发送出去，有五种差错报文。</p>
 <p>ICMP的应用：PING、traceroute（TTL从1开始，到了一个中间的站点，发送一个时间超过报文）</p>
 <p><img src="https://img-blog.csdnimg.cn/e686be839f394ae7bccfbc3c3e2404a7.png"></p>
-<h1 id="网络地址转换NAT和虚拟专用网VPN"><a href="#网络地址转换NAT和虚拟专用网VPN" class="headerlink" title="网络地址转换NAT和虚拟专用网VPN"></a>网络地址转换NAT和虚拟专用网VPN</h1><p>利用端口号和IP地址一起放入转换表中，这样可以极大程度的利用一个分配IP地址路由器与多个主机的多个服务之间通信、转发，减缓IP地址的使用。</p>
+<h2 id="网络地址转换NAT和虚拟专用网VPN"><a href="#网络地址转换NAT和虚拟专用网VPN" class="headerlink" title="网络地址转换NAT和虚拟专用网VPN"></a>网络地址转换NAT和虚拟专用网VPN</h2><p>利用端口号和IP地址一起放入转换表中，这样可以极大程度的利用一个分配IP地址路由器与多个主机的多个服务之间通信、转发，减缓IP地址的使用。</p>
 <p><img src="https://img-blog.csdnimg.cn/7603516f32f641f28dd366cc80dcfbc0.png"></p>
 <p>两个私有的网通过公有的因特网进行通信，这个时候会将原始的数据进行加密处理，然后将其封装，保证数据安全。</p>
 <p>外地员工连内网，利用专有的软件，远程接入VPN</p>
 <p><img src="https://img-blog.csdnimg.cn/5b0d54007dd2445797b0a044e4fb3548.png"></p>
-<h1 id="运输层简介"><a href="#运输层简介" class="headerlink" title="运输层简介"></a>运输层简介</h1><p>通过这一层的封装，两个计算机之间的通信好像变成了它们之间两个进程之间的直接通信，端口号代表了进程的标识符（0-65535，0-2^16-1）。</p>
+<h2 id="移动IP技术"><a href="#移动IP技术" class="headerlink" title="移动IP技术"></a>移动IP技术</h2><p>通俗的解释：归属代理就相当于你老家的邮局，外地代理就相当于你公司的邮局，你可能换不同公司，但你的老同学给你寄东西可以先寄给你老家，然后转交给你的公司</p>
+<p>应用场景：在移动的汽车内下载文件</p>
+<p><img src="https://s2.loli.net/2023/07/24/eyLmW7UwtFj6Tvp.png" alt="image-20230724173809610"></p>
+<h1 id="第五章：运输层"><a href="#第五章：运输层" class="headerlink" title="第五章：运输层"></a>第五章：运输层</h1><h2 id="运输层简介"><a href="#运输层简介" class="headerlink" title="运输层简介"></a>运输层简介</h2><p>通过这一层的封装，两个计算机之间的通信好像变成了它们之间两个进程之间的直接通信，端口号代表了进程的标识符（0-65535，0-2^16-1）。</p>
 <p><img src="https://img-blog.csdnimg.cn/d23f41ef64c040ea994c53cca10cb04d.png"></p>
-<h1 id="运输层端口号、分用、复用的概念"><a href="#运输层端口号、分用、复用的概念" class="headerlink" title="运输层端口号、分用、复用的概念"></a>运输层端口号、分用、复用的概念</h1><p>应用层协议的常用熟知端口号。</p>
+<h2 id="运输层端口号、分用、复用的概念"><a href="#运输层端口号、分用、复用的概念" class="headerlink" title="运输层端口号、分用、复用的概念"></a>运输层端口号、分用、复用的概念</h2><p>应用层协议的常用熟知端口号。</p>
 <p><img src="https://img-blog.csdnimg.cn/43addfd97cee4ff3981f67aa4bb4bee5.png"></p>
 <p>端口号只具有本地意义，不同计算机之间的相同端口号是没有联系的。</p>
 <p><img src="https://img-blog.csdnimg.cn/61d88ad2e5324e12942048bdd045f7c9.png"></p>
-<h1 id="UDP和TCP的对比"><a href="#UDP和TCP的对比" class="headerlink" title="UDP和TCP的对比"></a>UDP和TCP的对比</h1><p>UDP支持单播、多播以及广播，TCP仅支持1对1的服务。</p>
+<h2 id="UDP和TCP的对比"><a href="#UDP和TCP的对比" class="headerlink" title="UDP和TCP的对比"></a>UDP和TCP的对比</h2><p>UDP支持单播、多播以及广播，TCP仅支持1对1的服务。</p>
 <p>UDP适用于视频通话</p>
 <p><img src="https://img-blog.csdnimg.cn/fbaf0c5aa964406ca1f04340c2a40573.png"></p>
 <p>UDP面向报文，TCP面向字节流。</p>
@@ -760,7 +764,7 @@ TCP&amp;#x2F;IP参考模型：网网传应
 <p><img src="https://img-blog.csdnimg.cn/b2c80ecffebe4abdb7e1708aeed0b729.png"></p>
 <p>小结：</p>
 <p><img src="https://img-blog.csdnimg.cn/f9c6c942c08744dea8b0366e1593741e.png"></p>
-<h1 id="TCP的流量控制"><a href="#TCP的流量控制" class="headerlink" title="TCP的流量控制"></a>TCP的流量控制</h1><p>解决死锁情况的计时器：在接收方将窗口修改为0时启动，</p>
+<h2 id="TCP的流量控制"><a href="#TCP的流量控制" class="headerlink" title="TCP的流量控制"></a>TCP的流量控制</h2><p>解决死锁情况的计时器：在接收方将窗口修改为0时启动，</p>
 <p>零窗口探测报文在rwnd&#x3D;0时也可以接收。</p>
 <p>大写的ACK是确认信号，返回给client，小写的ack是累计确认，表示ack号字节以前的数据都收到了。</p>
 <p><img src="https://img-blog.csdnimg.cn/c7f2754415d6437d9ca11ac1fdabaf3a.png"></p>
@@ -768,7 +772,7 @@ TCP&amp;#x2F;IP参考模型：网网传应
 <p><img src="https://img-blog.csdnimg.cn/e51e63d89af14aa48df52851a904e2c8.png"></p>
 <p>小结：流量控制是为了让发送方的发送速度不要过快，利用的是滑动窗口的机制。接收方发送零窗口通知后，发送方收到后会启动持续计时器。接收方是通过rwnd的值来设置窗口大小，从而实现流量控制。</p>
 <p><img src="https://img-blog.csdnimg.cn/82dbdd4e7c8f455aa78026c42f5059d8.png"></p>
-<h1 id="TCP的拥塞控制"><a href="#TCP的拥塞控制" class="headerlink" title="TCP的拥塞控制"></a>TCP的拥塞控制</h1><p>慢开始，拥塞避免：</p>
+<h2 id="TCP的拥塞控制"><a href="#TCP的拥塞控制" class="headerlink" title="TCP的拥塞控制"></a>TCP的拥塞控制</h2><p>慢开始，拥塞避免：</p>
 <p>维护三个变量：拥塞窗口cwnd、发送窗口swnd，慢开始门限ssthresh。</p>
 <p><img src="https://img-blog.csdnimg.cn/4646d065760f4e4284b09047d7913e0c.png"></p>
 <p>快重传算法：不等待超时重传计时器的超时，而是收到了三个连续的重复确认就将报文段立即重传。</p>
@@ -781,11 +785,11 @@ TCP&amp;#x2F;IP参考模型：网网传应
 <p>RTO&#x3D;RTTs+4*RTT D；</p>
 <p>出现超时重传，新RTO&#x3D;2*旧的RTO。</p>
 <p><img src="https://img-blog.csdnimg.cn/f80d68c1c0e44794b629796fd445b1b7.png"></p>
-<h1 id="TCP可靠传输的实现"><a href="#TCP可靠传输的实现" class="headerlink" title="TCP可靠传输的实现"></a>TCP可靠传输的实现</h1><p>返送窗口的前沿和后沿的移动情况，</p>
+<h2 id="TCP可靠传输的实现"><a href="#TCP可靠传输的实现" class="headerlink" title="TCP可靠传输的实现"></a>TCP可靠传输的实现</h2><p>返送窗口的前沿和后沿的移动情况，</p>
 <p><img src="https://img-blog.csdnimg.cn/52e84af5653c470fbda5718335c16500.png"></p>
 <p>小结：以字节为单位的滑动窗口来实现可靠传输。而对于没有按序到达的数据的处理，没有明确规定，通常是将这些数据临时保存在接收窗口中。</p>
 <p><img src="https://img-blog.csdnimg.cn/dcebef6fe5124728bd3f5b81314a1220.png"></p>
-<h1 id="TCP的连接建立：三握手"><a href="#TCP的连接建立：三握手" class="headerlink" title="TCP的连接建立：三握手"></a>TCP的连接建立：三握手</h1><p>三报文握手来建立连接。</p>
+<h2 id="TCP的连接建立：三握手"><a href="#TCP的连接建立：三握手" class="headerlink" title="TCP的连接建立：三握手"></a>TCP的连接建立：三握手</h2><p>三报文握手来建立连接。</p>
 <p><img src="https://img-blog.csdnimg.cn/a5423c39832b4c94b230e67a968cbff2.png"></p>
 <p>两次握手不可行的示意图：失效的TCP连接请求在一段时间后到达服务端，服务端也会认为是一个请求，错误的进入ESTABLISHED状态，会浪费资源。</p>
 <p><img src="https://img-blog.csdnimg.cn/e9af9490c0164a75a51f0517b827d6da.png"></p>
@@ -795,39 +799,39 @@ TCP&amp;#x2F;IP参考模型：网网传应
 <p><img src="https://img-blog.csdnimg.cn/eeffe6784ef649fa97fb915ebac7f631.png"></p>
 <p>小结：SYN&#x3D;1的报文段不能携带数据。</p>
 <p><img src="https://img-blog.csdnimg.cn/d0a78f9448c34e7bb6dba8da42a83ea2.png"></p>
-<h1 id="TCP连接的释放：四挥手"><a href="#TCP连接的释放：四挥手" class="headerlink" title="TCP连接的释放：四挥手"></a>TCP连接的释放：四挥手</h1><p>4报文挥手，客户端最后还要经过2MSL的时间才会进入关闭状态，确保返回给服务器的ACK到达服务端，以及清理掉此次连接中的所有报文段。</p>
+<h2 id="TCP连接的释放：四挥手"><a href="#TCP连接的释放：四挥手" class="headerlink" title="TCP连接的释放：四挥手"></a>TCP连接的释放：四挥手</h2><p>4报文挥手，客户端最后还要经过2MSL的时间才会进入关闭状态，确保返回给服务器的ACK到达服务端，以及清理掉此次连接中的所有报文段。</p>
 <p><img src="https://img-blog.csdnimg.cn/b7a540c088e744e2b5f5c00737fce93f.png"></p>
 <p>使用2*MSL时间的原因：当出现最后的确认报文段丢失的情况时，还可以收到服务端的FIN信号，否则服务器就会一直重传FIN报文段，一直收不到确认信号。</p>
 <p><img src="https://img-blog.csdnimg.cn/f2fdfceb80e44182b7f9d8ab1ff3aeb6.png"></p>
 <p>保活计时器</p>
 <p><img src="https://img-blog.csdnimg.cn/b051b9fec6914671a305be27606b66a6.png"></p>
-<h1 id="TCP报文段的首部格式"><a href="#TCP报文段的首部格式" class="headerlink" title="TCP报文段的首部格式"></a>TCP报文段的首部格式</h1><p>都有20字节的固定首部</p>
+<h2 id="TCP报文段的首部格式"><a href="#TCP报文段的首部格式" class="headerlink" title="TCP报文段的首部格式"></a>TCP报文段的首部格式</h2><p>都有20字节的固定首部</p>
 <p><img src="https://img-blog.csdnimg.cn/0eed4e40c69b40f3bb4d6c84cc5dec1c.png"></p>
-<h1 id="B-x2F-S和PtoP方式"><a href="#B-x2F-S和PtoP方式" class="headerlink" title="B&#x2F;S和PtoP方式"></a>B&#x2F;S和PtoP方式</h1><p>PtP方式是两边对等的，没有固定的服务端和客户端，</p>
+<h1 id="第六章：应用层"><a href="#第六章：应用层" class="headerlink" title="第六章：应用层"></a>第六章：应用层</h1><h2 id="B-x2F-S和PtoP方式"><a href="#B-x2F-S和PtoP方式" class="headerlink" title="B&#x2F;S和PtoP方式"></a>B&#x2F;S和PtoP方式</h2><p>PtP方式是两边对等的，没有固定的服务端和客户端，</p>
 <p><img src="https://img-blog.csdnimg.cn/7791c8324f8f4e6aa6cd1d07ac087dfe.png"></p>
-<h1 id="动态主机配置协议DHCP"><a href="#动态主机配置协议DHCP" class="headerlink" title="动态主机配置协议DHCP"></a>动态主机配置协议DHCP</h1><p>DHCP的工作过程：主要有四步，DHCP DISCOVER、DHCP OFFER、DHCP REQUEST、DHCP ACK。</p>
+<h2 id="动态主机配置协议DHCP"><a href="#动态主机配置协议DHCP" class="headerlink" title="动态主机配置协议DHCP"></a>动态主机配置协议DHCP</h2><p>DHCP的工作过程：主要有四步，DHCP DISCOVER、DHCP OFFER、DHCP REQUEST、DHCP ACK。</p>
 <p><img src="https://img-blog.csdnimg.cn/d7332fef336047de984f5e003408675c.png"></p>
 <p>DHCP中继代理：在主机发送广播的DHCP DISCOVER时，将路由器当成中继代理，让它给服务器发送单播DHCP DISCOVER，这样主机就可以获取到IP地址分配。如果不这样配置，路由器会直接丢弃广播的DHCP DISCOVER。</p>
 <p><img src="https://img-blog.csdnimg.cn/d2c09e54836942e4a7aa6f732c4bd777.png"></p>
 <p>小结：</p>
 <p><img src="https://img-blog.csdnimg.cn/9ef3bdde05704fa482ae618afb99d432.png"></p>
-<h1 id="域名系统DNS"><a href="#域名系统DNS" class="headerlink" title="域名系统DNS"></a>域名系统DNS</h1><p>域名的层次结构：树根没有域名，顶级、二级、三级、四级域名。</p>
+<h2 id="域名系统DNS"><a href="#域名系统DNS" class="headerlink" title="域名系统DNS"></a>域名系统DNS</h2><p>域名的层次结构：树根没有域名，顶级、二级、三级、四级域名。</p>
 <p><img src="https://img-blog.csdnimg.cn/ba5b4ee5d5aa4bb086a890e1c9edda80.png"></p>
 <p>域名的解析有两种：递归查询和迭代查询。</p>
 <p><img src="https://img-blog.csdnimg.cn/e48b660d791147b49924ba1b6f107ee0.png"></p>
-<h1 id="文件传输协议FTP"><a href="#文件传输协议FTP" class="headerlink" title="文件传输协议FTP"></a>文件传输协议FTP</h1><p>三条命令，可以传输文件</p>
+<h2 id="文件传输协议FTP"><a href="#文件传输协议FTP" class="headerlink" title="文件传输协议FTP"></a>文件传输协议FTP</h2><p>三条命令，可以传输文件</p>
 <p>fpt ip; &#x2F;&#x2F;连接FTP服务器</p>
 <p>get [name]&#x2F;&#x2F;下载文件</p>
 <p>put [name]&#x2F;&#x2F;上传文件</p>
 <p><img src="https://img-blog.csdnimg.cn/582ded89c75f4f049cb95e424c0c6c9d.png"></p>
 <p><img src="https://img-blog.csdnimg.cn/73a0f218414247129ba2e59b99afa3bc.png"></p>
-<h1 id="电子邮件"><a href="#电子邮件" class="headerlink" title="电子邮件"></a>电子邮件</h1><p>简单邮件传送协议SMTP：simple mail transfer protocol，基于TCP连接，使用熟知端口号25，只能发送ASCII文本。</p>
+<h2 id="电子邮件"><a href="#电子邮件" class="headerlink" title="电子邮件"></a>电子邮件</h2><p>简单邮件传送协议SMTP：simple mail transfer protocol，基于TCP连接，使用熟知端口号25，只能发送ASCII文本。</p>
 <p><img src="https://img-blog.csdnimg.cn/1ea41adb8ef0430086ed44888eaf7f66.png"></p>
 <p>电子邮件的格式：信封和内容</p>
 <p><img src="https://img-blog.csdnimg.cn/f7bd5712d610441ba05057b7824d35fd.png"></p>
 <p>小结：常见的邮件读取协议有POP3、IMAP。邮件读取协议是指邮件服务器读取邮件内容的时候要遵循的协议。</p>
 <p><img src="https://img-blog.csdnimg.cn/df53058638094f77b5cbbee24dabd68f.png"></p>
-<h1 id="万维网WWW"><a href="#万维网WWW" class="headerlink" title="万维网WWW"></a>万维网WWW</h1><p>HTTP的报文格式：包含请求报文和响应报文</p>
+<h2 id="万维网WWW"><a href="#万维网WWW" class="headerlink" title="万维网WWW"></a>万维网WWW</h2><p>HTTP的报文格式：包含请求报文和响应报文</p>
 <p><img src="https://img-blog.csdnimg.cn/8e9f7489cf1f4059a447c0a5da0b232e.png"></p>
 <p>万维网缓存与代理服务器：提高万维网的效率，减轻原始服务器的压力。</p>
 <p><img src="https://img-blog.csdnimg.cn/531aaa4985c5495abe4b5d2e7c7222c2.png"></p>
@@ -1245,7 +1249,7 @@ TCP&amp;#x2F;IP参考模型：网网传应
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">66.5k</span>
+                        class="white-color">66.7k</span>
             
             
             
