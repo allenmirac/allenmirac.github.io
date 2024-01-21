@@ -4,18 +4,12 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Reactor模式理论支持, AllenMirac">
-    <meta name="description" content="
+    <meta name="keywords" content="Makefile 学习, AllenMirac">
+    <meta name="description" content="Makefile 学习C语言的编译过程预处理（Preprocessing）-E是让编译器在预处理之后就退出，不进行后续编译过程；-o是指定输出文件名。
+gcc -E hello.c -o hello.i
 
-
-目录
-1. 前言
-2、主要思想
-3、三种不同的实现
-单 Reactor 单线程
-单 Reactor 多线程
-主从 Reactor 多线程
-1. 前言开始的服务端的设计是每一个连接都创建一个thread去处理，但是当请求开始变多了之后，">
+编译（Compilation）
+这">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -27,7 +21,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Reactor模式理论支持 | AllenMirac</title>
+    <title>Makefile 学习 | AllenMirac</title>
     <link rel="icon" type="image/jpeg" href="/ZoRo.jpg">
     
 
@@ -344,12 +338,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Reactor模式理论支持</h1>
+                    <h1 class="description center-align post-title">Makefile 学习</h1>
                 </div>
             </div>
         </div>
@@ -373,8 +367,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Linux/">
-                                <span class="chip bg-color">Linux</span>
+                            <a href="/tags/c/">
+                                <span class="chip bg-color">c++</span>
                             </a>
                         
                     </div>
@@ -389,21 +383,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-06-20
+                    2024-01-21
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-06-21
+                    2024-01-21
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.5k
+                    1k
                 </div>
                 
 
@@ -428,67 +422,156 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <meta name="referrer" content="no-referrer" />
+                <h1 id="Makefile-学习"><a href="#Makefile-学习" class="headerlink" title="Makefile 学习"></a>Makefile 学习</h1><h1 id="C语言的编译过程"><a href="#C语言的编译过程" class="headerlink" title="C语言的编译过程"></a>C语言的编译过程</h1><h2 id="预处理（Preprocessing）"><a href="#预处理（Preprocessing）" class="headerlink" title="预处理（Preprocessing）"></a>预处理（Preprocessing）</h2><p>-E是让编译器在<strong>预处理之后</strong>就退出，不进行后续编译过程；-o是指定输出文件名。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">gcc <span class="token parameter variable">-E</span> hello.c <span class="token parameter variable">-o</span> hello.i<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="编译（Compilation）"><a href="#编译（Compilation）" class="headerlink" title="编译（Compilation）"></a>编译（Compilation）</h2><p><img src="https://s2.loli.net/2024/01/13/qWfwmgaBdeONbnZ.png"></p>
+<p>这里的编译不是指程序从源文件到二进制程序的全部过程，而是指将经过预处理文件（test.i）之后的程序转换成特定汇编（test.s）代码的过程。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">gcc <span class="token parameter variable">-S</span> hello.i <span class="token parameter variable">-o</span> hello.s<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="汇编"><a href="#汇编" class="headerlink" title="汇编"></a>汇编</h2><p>汇编过程将上一步的汇编代码转换成机器码，这一步产生的文件叫做目标文件，是二进制格式。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">gcc <span class="token parameter variable">-c</span> hello.s <span class="token parameter variable">-o</span> hello.o<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p>链接过程使用链接器将该目标文件与其他目标文件、库文件、启动文件等链接起来生成可执行文件。附加的目标文件包括静态连接库和动态连接库。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">gcc hello.o <span class="token parameter variable">-o</span> hello<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>生成可执行程序过程为成四个步骤：</p>
+<p>1、由.c文件到.i文件，这个过程叫预处理。<br>2、由.i文件到.s文件，这个过程叫编译。<br>3、由.s文件到.o文件，这个过程叫汇编。<br>4、由.o文件到可执行文件，这个过程叫链接。</p>
+<h2 id="静态库"><a href="#静态库" class="headerlink" title="静态库"></a>静态库</h2><p>在编译的过程中，会被直接载入到可执行文件中，将多个文件组成一个库，实现复用，以lib开头，以.a结尾，使用ar命令</p>
+<h2 id="动态库"><a href="#动态库" class="headerlink" title="动态库"></a>动态库</h2><p>在程序编译时并不会被连接到目标代码中，而是在程序运行是才被载入。这就带来了一个明显的好处：不同的应用程序如果调用相同的库，那么在内存里<strong>只需要有一份该共享库的实例</strong>，减小了各个模块之间的耦合程度，也减小了可执行文件的体积。</p>
+<h1 id="MakeFile"><a href="#MakeFile" class="headerlink" title="MakeFile"></a>MakeFile</h1><h2 id="基本格式"><a href="#基本格式" class="headerlink" title="基本格式"></a>基本格式</h2><pre class="line-numbers language-makefile" data-language="makefile"><code class="language-makefile"><span class="token target symbol">target ...</span> <span class="token punctuation">:</span> prerequisites ...
+    command
+    ...
+    ...<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>make debug执行下面的命令</p>
+<pre class="line-numbers language-makefile" data-language="makefile"><code class="language-makefile"><span class="token target symbol">debug</span><span class="token punctuation">:</span>
+	echo hello
+<span class="token builtin-target builtin">.PHONY</span><span class="token punctuation">:</span> clean <span class="token comment"># 伪目标</span>
+<span class="token target symbol">clean</span><span class="token punctuation">:</span>
+	rm *.o<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><pre class="line-numbers language-makefile" data-language="makefile"><code class="language-makefile">cpp <span class="token operator">:=</span> src/main.cpp
+obj <span class="token operator">:=</span> obj/main.o
+
+<span class="token target symbol"><span class="token variable">$</span>&#123;obj&#125;</span><span class="token punctuation">:</span> <span class="token variable">$</span><span class="token punctuation">&#123;</span>cpp<span class="token punctuation">&#125;</span>
+	g++ -c <span class="token variable">$</span><span class="token punctuation">&#123;</span>cpp<span class="token punctuation">&#125;</span> -o <span class="token variable">$</span><span class="token punctuation">&#123;</span>obj<span class="token punctuation">&#125;</span>
+	<span class="token comment"># $@ target的名称</span>
+	<span class="token comment"># $&lt; 第一个依赖文件</span>
+	<span class="token comment"># $^ 所有的依赖文件</span>
+
+<span class="token target symbol">compile</span><span class="token punctuation">:</span> <span class="token variable">$</span><span class="token punctuation">&#123;</span>obj<span class="token punctuation">&#125;</span>
+
+<span class="token target symbol">clean</span><span class="token punctuation">:</span>
+	rm -rf obj
+	<span class="token comment"># Windows下使用del obj</span>
+
+<span class="token builtin-target builtin">.PHONY</span><span class="token punctuation">:</span> clean debug<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="运算符号"><a href="#运算符号" class="headerlink" title="运算符号"></a>运算符号</h2><p>:&#x3D;：赋值后不可改变</p>
+<p>&#x3D; ：可以改变</p>
+<p>?&#x3D;：在变量尚未设置时才将其设置为值</p>
+<p>+&#x3D;：添加</p>
+<p>\：续行符</p>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>shell：把执行操作系统命令后的输出作为函数返回，本质上就是执行shell命令。</p>
+<pre class="line-numbers language-makefile" data-language="makefile"><code class="language-makefile">cpp_srcs <span class="token operator">:=</span> <span class="token variable">$</span><span class="token punctuation">&#123;</span>shell find src -name *.cpp<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>subst、patsubst</p>
+<p>格式：源字符串都是<code>&lt;text&gt;</code>的内容</p>
+<pre class="line-numbers language-makefile" data-language="makefile"><code class="language-makefile"><span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">subst</span> &lt;from>,&lt;to>,&lt;text><span class="token punctuation">)</span>
+<span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">patsubst</span> &lt;pattern>,&lt;replacement>,&lt;text><span class="token punctuation">)</span> <span class="token comment"># pattern中的%和replacement中的%相同</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>foreach</p>
+<pre class="line-numbers language-makefile" data-language="makefile"><code class="language-makefile"><span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">foreach</span> &lt;var>,&lt;list>,&lt;text><span class="token punctuation">)</span>
+
+<span class="token comment"># eg</span>
+names <span class="token operator">:=</span> a b c d
+files <span class="token operator">:=</span> <span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">foreach</span> n,<span class="token variable">$</span><span class="token punctuation">(</span>names<span class="token punctuation">)</span>,<span class="token variable">$</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span>.o<span class="token punctuation">)</span>
+<span class="token comment"># $(file) := a.o b.o c.o d.o </span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>dir</p>
+<pre class="line-numbers language-makefile" data-language="makefile"><code class="language-makefile"><span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">dir</span> &lt;names...><span class="token punctuation">)</span> <span class="token comment">#取目录函数</span>
+<span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">dir</span> src/foo.c hacks<span class="token punctuation">)</span> <span class="token comment"># 返回值是 src/ ./</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>notdir、filter</p>
+<pre class="line-numbers language-makefile" data-language="makefile"><code class="language-makefile"><span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">notdir</span> &lt;names...><span class="token punctuation">)</span> <span class="token comment"># 取文件函数</span>
+<span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">notdir</span> src/foo.c hacks<span class="token punctuation">)</span> <span class="token comment"># 返回值是 foo.c hacks</span>
+<span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">filter</span> &lt;pattern...>,&lt;text><span class="token punctuation">)</span> <span class="token comment"># 过滤出text中符合pattern的字符串</span>
+sources <span class="token operator">:=</span> foo.c bar.c baz.s ugh.h
+<span class="token target symbol">foo</span><span class="token punctuation">:</span> <span class="token variable">$</span><span class="token punctuation">(</span>sources<span class="token punctuation">)</span>
+	cc <span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">filter</span> %.c %.s,<span class="token variable">$</span><span class="token punctuation">(</span>sources<span class="token punctuation">)</span><span class="token punctuation">)</span> -o foo <span class="token comment"># $(filter %.c %.s,$(sources)) 返回的值是 foo.c bar.c baz.s</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="编译带有头文件的项目"><a href="#编译带有头文件的项目" class="headerlink" title="编译带有头文件的项目"></a>编译带有头文件的项目</h2><p>Makefile示例（1）：</p>
+<pre class="line-numbers language-makefile" data-language="makefile"><code class="language-makefile">cpp_srcs <span class="token operator">:=</span> <span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">shell</span> find src -name *.cpp<span class="token punctuation">)</span>
+cpp_objs <span class="token operator">:=</span> <span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">patsubst</span> src/%.cpp,objs/%.o,<span class="token variable">$</span><span class="token punctuation">(</span>cpp_srcs<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 你的头文件所在文件夹路径（建议绝对路径）</span>
+include_paths <span class="token operator">:=</span> 
+I_flag        <span class="token operator">:=</span> <span class="token variable">$</span><span class="token punctuation">(</span>include_paths<span class="token punctuation">:</span>%<span class="token operator">=</span>-I%<span class="token punctuation">)</span>
 
 
-<p><strong>目录</strong></p>
-<p><a href="#1.%20%E5%89%8D%E8%A8%80">1. 前言</a></p>
-<p><a href="#2%E3%80%81%E4%B8%BB%E8%A6%81%E6%80%9D%E6%83%B3">2、主要思想</a></p>
-<p><a href="#3%E3%80%81%E4%B8%89%E7%A7%8D%E4%B8%8D%E5%90%8C%E7%9A%84%E5%AE%9E%E7%8E%B0">3、三种不同的实现</a></p>
-<p><a href="#%E5%8D%95%20Reactor%20%E5%8D%95%E7%BA%BF%E7%A8%8B">单 Reactor 单线程</a></p>
-<p><a href="#%E5%8D%95%20Reactor%20%E5%A4%9A%E7%BA%BF%E7%A8%8B">单 Reactor 多线程</a></p>
-<p><a href="#%E4%B8%BB%E4%BB%8E%20Reactor%20%E5%A4%9A%E7%BA%BF%E7%A8%8B">主从 Reactor 多线程</a></p>
-<h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h2><p>开始的服务端的设计是每一个连接都创建一个thread去处理，但是当请求开始变多了之后，比如有1w的request到达服务端，就会 **pthread_create() **创建1w个thread，结束之后销毁线程。这样的创建，处理完然后销毁无疑是非常消耗资源的。</p>
-<p>之后就升级，采用线程池处理请求，提前在一个队列中创建多个线程，从线程池取出线程处理。还有要注意，这个线程队列是全局共享的，为了避免多个线程竞争，要提前给这个线程加锁。</p>
-<p>采用线程池处理主要有两个原因：1、不用频繁的创建和销毁线程。2、线程池能处理的线程有上限，可以防止无限开辟线程而将服务器资源消耗殆尽，挂掉。</p>
-<p>线程池：<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Thread_pool">https://en.wikipedia.org/wiki/Thread_pool</a></p>
-<p>实现：<a target="_blank" rel="noopener" href="https://github.com/progschj/ThreadPool/blob/master/ThreadPool.h">ThreadPool&#x2F;ThreadPool.h at master · progschj&#x2F;ThreadPool · GitHub</a></p>
-<p>其实在上面的模型是个【<strong>多线程模型</strong>】，其实还有一种【<strong>多进程模型</strong>】。主要思想是利用** fork()** 函数，创建子进程。父进程要处理好自己的孩子，就是在进程退出的时候要回收好资源，否则可能变成【僵尸进程】（进程只保留了相关的信息，但是占用了进程号）。怎么回收资源呢？答案是调用【**wait()<strong>】和【</strong>waitpid()**】。在这个过程中，对父进程和子进程的处理是不相同的：</p>
-<ul>
-<li>父进程：只需要管理监听的 【Socket】描述符，而不关心已经连接的【Socket】+ 子进程：只关心已经连接的【Socket】，不用管监听的【Socket】</li>
-</ul>
-<p>上面两个模型，【<strong>多线程模型</strong>】缺点主要是服务端如果同时维护多个线程是不现实的，操作系统会扛不住；【<strong>多进程模型</strong>】缺点则是在多个连接同时存在的情况下进程的上下文切换所耗费的系统资源过大。这个时候更为设计一种高效的模式是当务之急，【<strong>Reactor模式</strong>】应运而生</p>
-<h2 id="2、主要思想"><a href="#2、主要思想" class="headerlink" title="2、主要思想"></a>2、主要思想</h2><p>【<strong>Reactor模式</strong>】基于【<strong>select&#x2F;poll&#x2F;epoll</strong>】的【<strong>IO多路复用</strong>】进行了一层封装，使得我们在编写网络程序的时候，不需要考虑底层API的细节，符合当下面向对象的思想。</p>
-<p> IO复用：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/Qpa0qXxuIM8jrBqDaXmVNA">这次答应我，一举拿下 I&#x2F;O 多路复用！</a></p>
-<p>【<strong>Reactor模式</strong>】的 Reactor 的翻译是反应堆，意思是只要来了一个事件，Reactor 就有反应。</p>
-<p>Reactor主要包括两个部分：Reactor 和处理资源池。</p>
-<ul>
-<li>Reactor 负责监听事件和分发事件，事件可能是读写事件或连接事件。+ 处理资源池将Reactor 分发给他的事件，主要的流程：Read-&gt;处理业务-&gt;Send</li>
-</ul>
-<p>因此 【<strong>Reactor模式</strong>】也叫【<strong>Dispatcher 模式】</strong>，一个主线程负责监听和分发事件，其他的线程处理业务，所以这个名字应该更加的贴切。</p>
-<p>目的是减少等待，当遇到需要等待的IO的时候，先释放资源，在IO完成之后，通过事件驱动的方式没继续接下来的处理。</p>
-<p>根据 Reactor 的数量和处理资源池线程的数量不同，有 3 种典型的实现：</p>
-<ul>
-<li>单 Reactor 单线程 +  单 Reactor 多线程 +  主从 Reactor 多线程</li>
-</ul>
-<h2 id="3、三种不同的实现"><a href="#3、三种不同的实现" class="headerlink" title="3、三种不同的实现"></a>3、三种不同的实现</h2><h3 id="单-Reactor-单线程"><a href="#单-Reactor-单线程" class="headerlink" title="单 Reactor 单线程"></a>单 Reactor 单线程</h3><p>话不多说，先看一个图片。</p>
-<p><img src="https://img-blog.csdnimg.cn/8a592a409ca64f1eba4ef26fc02d9917.png"></p>
-<p> 首先从图中可以看到：</p>
-<ul>
-<li>Reactor 处理监听以及事件的分发+ Accept 处理连接+ Handler 处理IO事件以及业务</li>
-</ul>
-<p>下面详细介绍下流程：</p>
-<ul>
-<li>【<strong>Reactor</strong>】通过 select（IO多路复用接口）监听多个 Socket ，如果 Socket 有事件发生，判断事件类别后看看分配给【<strong>Acceptor</strong>】，还是【<strong>Handler</strong>】。+ 如果是建立连接事件，交付给【<strong>Acceptor</strong>】处理，【<strong>Acceptor</strong>】会创建一个【<strong>Handler</strong>】来处理这个刚连接的 Socket 的后续事件。+ 如果是处理非连接事件，交付给【<strong>Handler</strong>】处理，一般处理过程：read-&gt;业务处理-&gt;send。</li>
-</ul>
-<p>缺点是无法利用CPU多核的能力</p>
-<p>应用场景：Redis使用的就是这种模式，但是它是在内存中处理业务的，所以处理起来很快。</p>
-<h3 id="单-Reactor-多线程"><a href="#单-Reactor-多线程" class="headerlink" title="单 Reactor 多线程"></a>单 Reactor 多线程</h3><p>看一下流程图</p>
-<p><img src="https://img-blog.csdnimg.cn/93aaef58ff03418da459b6110980b9e4.png"></p>
-<p>流程：</p>
-<ul>
-<li>【<strong>Reactor</strong>】通过 select（IO多路复用接口）监听多个 Socket ，如果 Socket 有事件发生，判断事件类别后看看分配给【<strong>Acceptor</strong>】，还是【<strong>Handler</strong>】。+ 如果是建立连接事件，交付给【<strong>Acceptor</strong>】处理，【<strong>Acceptor</strong>】会创建一个【<strong>Handler</strong>】来处理这个刚连接的 Socket 的后续事件。+ 如果是处理非连接事件，交付给【<strong>Handler</strong>】处理。</li>
-</ul>
-<p>上面的三个步骤和单 Reactor 单线程方案是一样的，接下来的步骤就开始不一样了：</p>
-<ul>
-<li>【<strong>Handler</strong>】 对象不再负责业务处理，只负责数据的接收和发送，【<strong>Handler</strong>】 对象通过 read 读取到数据后，会将数据发给子线程里的 【<strong>Processor</strong>】 对象进行业务处理；+ 子线程里的 【<strong>Processor</strong>】 对象就进行业务处理，处理完后，将结果发给主线程中的 【<strong>Handler</strong>】对象，接着由 【<strong>Handler</strong>】通过 send 方法将响应结果发送给 client；</li>
-</ul>
-<h3 id="主从-Reactor-多线程"><a href="#主从-Reactor-多线程" class="headerlink" title="主从 Reactor 多线程"></a>主从 Reactor 多线程</h3><p>流程：</p>
-<ul>
-<li>主线程中的 MainReactor 对象通过 select 监控连接建立事件，收到事件后通过 Acceptor 对象中的 accept 获取连接，将新的连接分配给某个子线程；+ 子线程中的 SubReactor 对象将 MainReactor 对象分配的连接加入 select 继续进行监听，并创建一个 Handler 用于处理连接的响应事件。+ 如果有新的事件发生时，SubReactor 对象会调用当前连接对应的 Handler 对象来进行响应。+ Handler 对象通过 read -&gt; 业务处理 -&gt; send 的流程来完成完整的业务流程。</li>
-</ul>
-<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/26943938/answer/1856426252">如何深刻理解Reactor和Proactor？ - 知乎</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.modb.pro/db/189720">从Reactor模式俯瞰Nginx，你会发现你与高手的差距就在设计模式上，不在内卷上 - 墨天轮</a></p>
+<span class="token target symbol">objs/%.o</span> <span class="token punctuation">:</span> src/%.cpp
+	<span class="token operator">@</span>mkdir -p <span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">dir</span> <span class="token variable">$@</span><span class="token punctuation">)</span>
+	<span class="token operator">@</span>g++ -c <span class="token variable">$^</span> -o <span class="token variable">$@</span> <span class="token variable">$</span><span class="token punctuation">(</span>I_flag<span class="token punctuation">)</span>
+
+<span class="token target symbol">workspace/exec</span> <span class="token punctuation">:</span> <span class="token variable">$</span><span class="token punctuation">(</span>cpp_objs<span class="token punctuation">)</span>
+	<span class="token operator">@</span>mkdir -p <span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">dir</span> <span class="token variable">$@</span><span class="token punctuation">)</span>
+	<span class="token operator">@</span>g++ <span class="token variable">$^</span> -o <span class="token variable">$@</span> 
+
+<span class="token target symbol">run</span> <span class="token punctuation">:</span> workspace/exec
+	<span class="token operator">@</span>./<span class="token variable">$&lt;</span>
+
+<span class="token target symbol">debug</span> <span class="token punctuation">:</span>
+	<span class="token operator">@</span>echo <span class="token variable">$</span><span class="token punctuation">(</span>I_flag<span class="token punctuation">)</span>
+
+<span class="token target symbol">clean</span> <span class="token punctuation">:</span>
+	<span class="token operator">@</span>rm -rf objs
+
+<span class="token builtin-target builtin">.PHONY</span> <span class="token punctuation">:</span> debug run<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>Makefile示例（2）：</p>
+<pre class="line-numbers language-makefile" data-language="makefile"><code class="language-makefile"><span class="token comment"># Compiler</span>
+CXX <span class="token operator">:=</span> g++
+
+<span class="token comment"># cpp sources</span>
+cpp_srcs <span class="token operator">:=</span> <span class="token variable">$</span><span class="token punctuation">&#123;</span>shell find src -name *.cpp<span class="token punctuation">&#125;</span>
+<span class="token comment"># $(warning cpp_srcs is $&#123;cpp_srcs&#125;)</span>
+
+<span class="token comment"># cpp objects</span>
+cpp_objs <span class="token operator">:=</span> <span class="token variable">$</span><span class="token punctuation">&#123;</span>patsubst src/%.cpp,objs/%.o,<span class="token variable">$</span><span class="token punctuation">&#123;</span>cpp_srcs<span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span>
+<span class="token comment"># $(warning cpp_objs is $&#123;cpp_objs&#125;)</span>
+
+<span class="token comment"># cpp include path</span>
+include_path <span class="token operator">:=</span> /home/mirac/Desktop/Retest/<span class="token keyword">include</span>
+I_flags <span class="token operator">:=</span> <span class="token variable">$</span><span class="token punctuation">&#123;</span>include_path<span class="token punctuation">:</span>%<span class="token operator">=</span>-I%<span class="token punctuation">&#125;</span>
+<span class="token comment"># $&#123;warning I_flags is $&#123;I_flags&#125;&#125;</span>
+
+<span class="token comment"># compile option</span>
+Compile_option <span class="token operator">:=</span> -g -O3 -w
+Compile_option <span class="token operator">+=</span> <span class="token variable">$</span><span class="token punctuation">&#123;</span>I_flags<span class="token punctuation">&#125;</span>
+<span class="token comment"># $(warning Compile_option is $&#123;Compile_option&#125;)</span>
+
+<span class="token target symbol">objs/%.o</span> <span class="token punctuation">:</span> src/%.cpp
+	<span class="token operator">@</span>mkdir -p <span class="token variable">$</span><span class="token punctuation">&#123;</span>dir <span class="token variable">$@</span><span class="token punctuation">&#125;</span>
+	<span class="token operator">@</span><span class="token variable">$</span><span class="token punctuation">&#123;</span>CXX<span class="token punctuation">&#125;</span> -o <span class="token variable">$@</span> -c <span class="token variable">$^</span>  <span class="token variable">$</span><span class="token punctuation">&#123;</span>Compile_option<span class="token punctuation">&#125;</span>
+
+<span class="token target symbol">workspace/testJson</span><span class="token punctuation">:</span> <span class="token variable">$</span><span class="token punctuation">&#123;</span>cpp_objs<span class="token punctuation">&#125;</span>
+	<span class="token operator">@</span><span class="token variable">$</span><span class="token punctuation">&#123;</span>CXX<span class="token punctuation">&#125;</span> -o <span class="token variable">$@</span>  <span class="token variable">$^</span> 
+
+<span class="token target symbol">run</span> <span class="token punctuation">:</span> workspace/testJson
+	<span class="token operator">@</span>./<span class="token variable">$&lt;</span>
+
+<span class="token target symbol">debug</span><span class="token punctuation">:</span>
+	echo <span class="token variable">$</span><span class="token punctuation">&#123;</span>cpp_srcs<span class="token punctuation">&#125;</span>
+	echo <span class="token variable">$</span><span class="token punctuation">&#123;</span>cpp_objs<span class="token punctuation">&#125;</span>
+	echo <span class="token variable">$</span><span class="token punctuation">&#123;</span>I_flags<span class="token punctuation">&#125;</span>
+<span class="token comment"># @echo $&#123;CC&#125; -o $@ -c $^  $&#123;Compile_option&#125;</span>
+
+<span class="token target symbol">clean</span> <span class="token punctuation">:</span> 
+	<span class="token operator">@</span>rm -r objs
+	<span class="token operator">@</span>rm -r workspace/*
+
+<span class="token builtin-target builtin">.PHONY</span><span class="token punctuation">:</span> clean debug<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -515,7 +598,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://allenmirac.github.io/2023/06/20/reactor-mo-shi-li-lun-zhi-chi/">https://allenmirac.github.io/2023/06/20/reactor-mo-shi-li-lun-zhi-chi/</a>
+                    <a href="https://allenmirac.github.io/2024/01/21/makefile-xue-xi/">https://allenmirac.github.io/2024/01/21/makefile-xue-xi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -553,8 +636,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Linux/">
-                                    <span class="chip bg-color">Linux</span>
+                                <a href="/tags/c/">
+                                    <span class="chip bg-color">c++</span>
                                 </a>
                             
                         </div>
@@ -633,17 +716,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2023/06/20/staticdefineconstmutabletypedef/">
+                <a href="/2024/01/21/makefile-xue-xi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="Static、#define、const、mutable、typedef">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="Makefile 学习">
                         
-                        <span class="card-title">Static、#define、const、mutable、typedef</span>
+                        <span class="card-title">Makefile 学习</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -653,9 +737,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-06-20
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-21
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -664,6 +748,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -682,13 +767,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/06/20/qt-zhong-guo-xiang-qi-chu-ban/">
+                <a href="/2024/01/19/c-de-zhi-zhen-fu-xi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="QT中国象棋初版">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="C++指针复习">
                         
-                        <span class="card-title">QT中国象棋初版</span>
+                        <span class="card-title">C++指针复习</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -699,7 +784,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-06-20
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-19
                             </span>
                         <span class="publish-author">
                             
@@ -712,8 +797,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/QT/">
-                        <span class="chip bg-color">QT</span>
+                    <a href="/tags/c/">
+                        <span class="chip bg-color">c++</span>
                     </a>
                     
                 </div>
