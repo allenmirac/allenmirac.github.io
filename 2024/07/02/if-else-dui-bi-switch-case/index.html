@@ -4,18 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Reactor模式理论支持, AllenMirac">
-    <meta name="description" content="
-
-
-目录
-1. 前言
-2、主要思想
-3、三种不同的实现
-单 Reactor 单线程
-单 Reactor 多线程
-主从 Reactor 多线程
-1. 前言开始的服务端的设计是每一个连接都创建一个thread去处理，但是当请求开始变多了之后，">
+    <meta name="keywords" content="if-else对比switch-case, AllenMirac">
+    <meta name="description" content="if-else对比switch-case在听CSAPP的Lecture 06 Machine Level Programming || Control的时候，里面老师回答学生问题时，说到switch-case在汇编层面会建立一个表，然后好奇">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -27,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Reactor模式理论支持 | AllenMirac</title>
+    <title>if-else对比switch-case | AllenMirac</title>
     <link rel="icon" type="image/jpeg" href="/ZoRo.jpg">
     
 
@@ -344,12 +334,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Reactor模式理论支持</h1>
+                    <h1 class="description center-align post-title">if-else对比switch-case</h1>
                 </div>
             </div>
         </div>
@@ -373,8 +363,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Linux/">
-                                <span class="chip bg-color">Linux</span>
+                            <a href="/tags/c/">
+                                <span class="chip bg-color">c++</span>
                             </a>
                         
                     </div>
@@ -389,21 +379,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-06-20
+                    2024-07-02
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-06-21
+                    2024-07-02
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.5k
+                    1.2k
                 </div>
                 
 
@@ -428,67 +418,163 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <meta name="referrer" content="no-referrer" />
+                <h1 id="if-else对比switch-case"><a href="#if-else对比switch-case" class="headerlink" title="if-else对比switch-case"></a>if-else对比switch-case</h1><p>在听CSAPP的Lecture 06 Machine Level Programming || Control的时候，里面老师回答学生问题时，说到switch-case在汇编层面会建立一个表，然后好奇这个表是什么样子的，查询了一些资料，发现也挺有趣的。</p>
+<h2 id="代码片段"><a href="#代码片段" class="headerlink" title="代码片段"></a>代码片段</h2><p>这里对比使用的代码片段</p>
+<p><a target="_blank" rel="noopener" href="https://godbolt.org/z/7ahx7aaxT">https://godbolt.org/z/7ahx7aaxT</a></p>
+<h2 id="if-else分析"><a href="#if-else分析" class="headerlink" title="if-else分析"></a>if-else分析</h2><pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">foo_ifelse(char):
+        push    rbp
+        mov     rbp, rsp
+        mov     eax, edi
+        mov     BYTE PTR [rbp-4], al
+        cmp     BYTE PTR [rbp-4], 48
+        je      .L2
+        cmp     BYTE PTR [rbp-4], 49
+        jne     .L3
+.L2:
+        movzx   eax, BYTE PTR [rbp-4]
+        add     eax, 1
+        mov     BYTE PTR [rbp-4], al
+        jmp     .L4
+.L3:
+        cmp     BYTE PTR [rbp-4], 97
+        je      .L5
+        cmp     BYTE PTR [rbp-4], 98
+        jne     .L6
+.L5:
+        movzx   eax, BYTE PTR [rbp-4]
+        add     eax, 2
+        mov     BYTE PTR [rbp-4], al
+        jmp     .L4
+.L6:
+        cmp     BYTE PTR [rbp-4], 65
+        je      .L7
+        cmp     BYTE PTR [rbp-4], 66
+        jne     .L8
+.L7:
+        movzx   eax, BYTE PTR [rbp-4]
+        add     eax, 3
+        mov     BYTE PTR [rbp-4], al
+        jmp     .L4
+.L8:
+        movzx   eax, BYTE PTR [rbp-4]
+        add     eax, 4
+        mov     BYTE PTR [rbp-4], al
+.L4:
+        movsx   eax, BYTE PTR [rbp-4]
+        pop     rbp
+        ret<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<p>从上面可以看出，if-else是按照值一个一个的对比，重复使用cmp、je、jne等指令，如果满足条件就跳转，否则处理下一个值的分支，并不会对整个对比分支的选项进行整理与优化。</p>
+<p>可以看出，如果处理1000个，甚至10000个连续分支的话，效率是非常低的（并不对其采用二分法、哈希表的优化），这时候还需要注意把命中率高的分支放在前面。</p>
+<h2 id="switch-case分析"><a href="#switch-case分析" class="headerlink" title="switch-case分析"></a>switch-case分析</h2><h3 id="foo-switch1-char-分析："><a href="#foo-switch1-char-分析：" class="headerlink" title="foo_switch1(char)分析："></a>foo_switch1(char)分析：</h3><pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">foo_switch1(char):
+        push    rbp
+        mov     rbp, rsp
+        mov     eax, edi
+        mov     BYTE PTR [rbp-4], al
+        movsx   eax, BYTE PTR [rbp-4]
+        cmp     eax, 98
+        jg      .L11
+        cmp     eax, 97
+        jge     .L12
+        cmp     eax, 49
+        jg      .L13
+        cmp     eax, 48
+        jge     .L14
+        jmp     .L11
+.L13:
+        sub     eax, 65
+        cmp     eax, 1
+        ja      .L11
+        jmp     .L18
+.L14:
+        movzx   eax, BYTE PTR [rbp-4]
+        add     eax, 1
+        mov     BYTE PTR [rbp-4], al
+        jmp     .L16
+.L12:
+        movzx   eax, BYTE PTR [rbp-4]
+        add     eax, 2
+        mov     BYTE PTR [rbp-4], al
+        jmp     .L16
+.L18:
+        movzx   eax, BYTE PTR [rbp-4]
+        add     eax, 3
+        mov     BYTE PTR [rbp-4], al
+        jmp     .L16
+.L11:
+        movzx   eax, BYTE PTR [rbp-4]
+        add     eax, 4
+        mov     BYTE PTR [rbp-4], al
+        nop
+.L16:
+        movsx   eax, BYTE PTR [rbp-4]
+        pop     rbp
+        ret<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p><strong>目录</strong></p>
-<p><a href="#1.%20%E5%89%8D%E8%A8%80">1. 前言</a></p>
-<p><a href="#2%E3%80%81%E4%B8%BB%E8%A6%81%E6%80%9D%E6%83%B3">2、主要思想</a></p>
-<p><a href="#3%E3%80%81%E4%B8%89%E7%A7%8D%E4%B8%8D%E5%90%8C%E7%9A%84%E5%AE%9E%E7%8E%B0">3、三种不同的实现</a></p>
-<p><a href="#%E5%8D%95%20Reactor%20%E5%8D%95%E7%BA%BF%E7%A8%8B">单 Reactor 单线程</a></p>
-<p><a href="#%E5%8D%95%20Reactor%20%E5%A4%9A%E7%BA%BF%E7%A8%8B">单 Reactor 多线程</a></p>
-<p><a href="#%E4%B8%BB%E4%BB%8E%20Reactor%20%E5%A4%9A%E7%BA%BF%E7%A8%8B">主从 Reactor 多线程</a></p>
-<h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h2><p>开始的服务端的设计是每一个连接都创建一个thread去处理，但是当请求开始变多了之后，比如有1w的request到达服务端，就会 **pthread_create() **创建1w个thread，结束之后销毁线程。这样的创建，处理完然后销毁无疑是非常消耗资源的。</p>
-<p>之后就升级，采用线程池处理请求，提前在一个队列中创建多个线程，从线程池取出线程处理。还有要注意，这个线程队列是全局共享的，为了避免多个线程竞争，要提前给这个线程加锁。</p>
-<p>采用线程池处理主要有两个原因：1、不用频繁的创建和销毁线程。2、线程池能处理的线程有上限，可以防止无限开辟线程而将服务器资源消耗殆尽，挂掉。</p>
-<p>线程池：<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Thread_pool">https://en.wikipedia.org/wiki/Thread_pool</a></p>
-<p>实现：<a target="_blank" rel="noopener" href="https://github.com/progschj/ThreadPool/blob/master/ThreadPool.h">ThreadPool&#x2F;ThreadPool.h at master · progschj&#x2F;ThreadPool · GitHub</a></p>
-<p>其实在上面的模型是个【<strong>多线程模型</strong>】，其实还有一种【<strong>多进程模型</strong>】。主要思想是利用** fork()** 函数，创建子进程。父进程要处理好自己的孩子，就是在进程退出的时候要回收好资源，否则可能变成【僵尸进程】（进程只保留了相关的信息，但是占用了进程号）。怎么回收资源呢？答案是调用【**wait()<strong>】和【</strong>waitpid()**】。在这个过程中，对父进程和子进程的处理是不相同的：</p>
-<ul>
-<li>父进程：只需要管理监听的 【Socket】描述符，而不关心已经连接的【Socket】+ 子进程：只关心已经连接的【Socket】，不用管监听的【Socket】</li>
-</ul>
-<p>上面两个模型，【<strong>多线程模型</strong>】缺点主要是服务端如果同时维护多个线程是不现实的，操作系统会扛不住；【<strong>多进程模型</strong>】缺点则是在多个连接同时存在的情况下进程的上下文切换所耗费的系统资源过大。这个时候更为设计一种高效的模式是当务之急，【<strong>Reactor模式</strong>】应运而生</p>
-<h2 id="2、主要思想"><a href="#2、主要思想" class="headerlink" title="2、主要思想"></a>2、主要思想</h2><p>【<strong>Reactor模式</strong>】基于【<strong>select&#x2F;poll&#x2F;epoll</strong>】的【<strong>IO多路复用</strong>】进行了一层封装，使得我们在编写网络程序的时候，不需要考虑底层API的细节，符合当下面向对象的思想。</p>
-<p> IO复用：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/Qpa0qXxuIM8jrBqDaXmVNA">这次答应我，一举拿下 I&#x2F;O 多路复用！</a></p>
-<p>【<strong>Reactor模式</strong>】的 Reactor 的翻译是反应堆，意思是只要来了一个事件，Reactor 就有反应。</p>
-<p>Reactor主要包括两个部分：Reactor 和处理资源池。</p>
-<ul>
-<li>Reactor 负责监听事件和分发事件，事件可能是读写事件或连接事件。+ 处理资源池将Reactor 分发给他的事件，主要的流程：Read-&gt;处理业务-&gt;Send</li>
-</ul>
-<p>因此 【<strong>Reactor模式</strong>】也叫【<strong>Dispatcher 模式】</strong>，一个主线程负责监听和分发事件，其他的线程处理业务，所以这个名字应该更加的贴切。</p>
-<p>目的是减少等待，当遇到需要等待的IO的时候，先释放资源，在IO完成之后，通过事件驱动的方式没继续接下来的处理。</p>
-<p>根据 Reactor 的数量和处理资源池线程的数量不同，有 3 种典型的实现：</p>
-<ul>
-<li>单 Reactor 单线程 +  单 Reactor 多线程 +  主从 Reactor 多线程</li>
-</ul>
-<h2 id="3、三种不同的实现"><a href="#3、三种不同的实现" class="headerlink" title="3、三种不同的实现"></a>3、三种不同的实现</h2><h3 id="单-Reactor-单线程"><a href="#单-Reactor-单线程" class="headerlink" title="单 Reactor 单线程"></a>单 Reactor 单线程</h3><p>话不多说，先看一个图片。</p>
-<p><img src="https://img-blog.csdnimg.cn/8a592a409ca64f1eba4ef26fc02d9917.png"></p>
-<p> 首先从图中可以看到：</p>
-<ul>
-<li>Reactor 处理监听以及事件的分发+ Accept 处理连接+ Handler 处理IO事件以及业务</li>
-</ul>
-<p>下面详细介绍下流程：</p>
-<ul>
-<li>【<strong>Reactor</strong>】通过 select（IO多路复用接口）监听多个 Socket ，如果 Socket 有事件发生，判断事件类别后看看分配给【<strong>Acceptor</strong>】，还是【<strong>Handler</strong>】。+ 如果是建立连接事件，交付给【<strong>Acceptor</strong>】处理，【<strong>Acceptor</strong>】会创建一个【<strong>Handler</strong>】来处理这个刚连接的 Socket 的后续事件。+ 如果是处理非连接事件，交付给【<strong>Handler</strong>】处理，一般处理过程：read-&gt;业务处理-&gt;send。</li>
-</ul>
-<p>缺点是无法利用CPU多核的能力</p>
-<p>应用场景：Redis使用的就是这种模式，但是它是在内存中处理业务的，所以处理起来很快。</p>
-<h3 id="单-Reactor-多线程"><a href="#单-Reactor-多线程" class="headerlink" title="单 Reactor 多线程"></a>单 Reactor 多线程</h3><p>看一下流程图</p>
-<p><img src="https://img-blog.csdnimg.cn/93aaef58ff03418da459b6110980b9e4.png"></p>
-<p>流程：</p>
-<ul>
-<li>【<strong>Reactor</strong>】通过 select（IO多路复用接口）监听多个 Socket ，如果 Socket 有事件发生，判断事件类别后看看分配给【<strong>Acceptor</strong>】，还是【<strong>Handler</strong>】。+ 如果是建立连接事件，交付给【<strong>Acceptor</strong>】处理，【<strong>Acceptor</strong>】会创建一个【<strong>Handler</strong>】来处理这个刚连接的 Socket 的后续事件。+ 如果是处理非连接事件，交付给【<strong>Handler</strong>】处理。</li>
-</ul>
-<p>上面的三个步骤和单 Reactor 单线程方案是一样的，接下来的步骤就开始不一样了：</p>
-<ul>
-<li>【<strong>Handler</strong>】 对象不再负责业务处理，只负责数据的接收和发送，【<strong>Handler</strong>】 对象通过 read 读取到数据后，会将数据发给子线程里的 【<strong>Processor</strong>】 对象进行业务处理；+ 子线程里的 【<strong>Processor</strong>】 对象就进行业务处理，处理完后，将结果发给主线程中的 【<strong>Handler</strong>】对象，接着由 【<strong>Handler</strong>】通过 send 方法将响应结果发送给 client；</li>
-</ul>
-<h3 id="主从-Reactor-多线程"><a href="#主从-Reactor-多线程" class="headerlink" title="主从 Reactor 多线程"></a>主从 Reactor 多线程</h3><p>流程：</p>
-<ul>
-<li>主线程中的 MainReactor 对象通过 select 监控连接建立事件，收到事件后通过 Acceptor 对象中的 accept 获取连接，将新的连接分配给某个子线程；+ 子线程中的 SubReactor 对象将 MainReactor 对象分配的连接加入 select 继续进行监听，并创建一个 Handler 用于处理连接的响应事件。+ 如果有新的事件发生时，SubReactor 对象会调用当前连接对应的 Handler 对象来进行响应。+ Handler 对象通过 read -&gt; 业务处理 -&gt; send 的流程来完成完整的业务流程。</li>
-</ul>
-<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/26943938/answer/1856426252">如何深刻理解Reactor和Proactor？ - 知乎</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.modb.pro/db/189720">从Reactor模式俯瞰Nginx，你会发现你与高手的差距就在设计模式上，不在内卷上 - 墨天轮</a></p>
+<p>首先编译器分析各个分支后，先与最大值进行对比，如果比它大，则直接跳转到default分支；否则，处理其他分支。在同时处理大小写字符时，编译器还有<code>.L13</code>的分支，将小写字母sub 65转化为处理大写字母，这也是一种优化策略。</p>
+<h3 id="foo-switch2-char-分析"><a href="#foo-switch2-char-分析" class="headerlink" title="foo_switch2(char)分析"></a>foo_switch2(char)分析</h3><pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">.LC0:
+        .string &quot;a &#x3D; 1&quot;
+.LC1:
+        .string &quot;a &#x3D; 2&quot;
+.LC2:
+        .string &quot;a &#x3D; 3&quot;
+.LC3:
+        .string &quot;a &#x3D; 4&quot;
+.LC4:
+        .string &quot;a &#x3D; 5&quot;
+.LC5:
+        .string &quot;a &#x3D; 6&quot;
+.LC6:
+        .string &quot;other number&quot;
+foo_switch2(char):
+        push    rbp
+        mov     rbp, rsp
+        sub     rsp, 32
+        mov     eax, edi
+        mov     BYTE PTR [rbp-20], al
+        mov     DWORD PTR [rbp-4], 2
+        cmp     DWORD PTR [rbp-4], 6
+        ja      .L20
+        mov     eax, DWORD PTR [rbp-4]
+        mov     rax, QWORD PTR .L22[0+rax*8]
+        jmp     rax
+.L22:
+        .quad   .L20
+        .quad   .L27
+        .quad   .L26
+        .quad   .L25
+        .quad   .L24
+        .quad   .L23
+        .quad   .L21
+.L27:
+        mov     esi, OFFSET FLAT:.LC0
+        mov     edi, OFFSET FLAT:std::cout
+        call    std::basic_ostream&lt;char, std::char_traits&lt;char&gt; &gt;&amp; std::operator&lt;&lt; &lt;std::char_traits&lt;char&gt; &gt;(std::basic_ostream&lt;char, std::char_traits&lt;char&gt; &gt;&amp;, char const*)
+        mov     esi, OFFSET FLAT:std::basic_ostream&lt;char, std::char_traits&lt;char&gt; &gt;&amp; std::endl&lt;char, std::char_traits&lt;char&gt; &gt;(std::basic_ostream&lt;char, std::char_traits&lt;char&gt; &gt;&amp;)
+        mov     rdi, rax
+        call    std::basic_ostream&lt;char, std::char_traits&lt;char&gt; &gt;::operator&lt;&lt;(std::basic_ostream&lt;char, std::char_traits&lt;char&gt; &gt;&amp; (*)(std::basic_ostream&lt;char, std::char_traits&lt;char&gt; &gt;&amp;))
+        jmp     .L28
+......
+......
+.L20:
+        mov     esi, OFFSET FLAT:.LC6
+        mov     edi, OFFSET FLAT:std::cout
+        call    std::basic_ostream&lt;char, std::char_traits&lt;char&gt; &gt;&amp; std::operator&lt;&lt; &lt;std::char_traits&lt;char&gt; &gt;(std::basic_ostream&lt;char, std::char_traits&lt;char&gt; &gt;&amp;, char const*)
+        mov     esi, OFFSET FLAT:std::basic_ostream&lt;char, std::char_traits&lt;char&gt; &gt;&amp; std::endl&lt;char, std::char_traits&lt;char&gt; &gt;(std::basic_ostream&lt;char, std::char_traits&lt;char&gt; &gt;&amp;)
+        mov     rdi, rax
+        call    std::basic_ostream&lt;char, std::char_traits&lt;char&gt; &gt;::operator&lt;&lt;(std::basic_ostream&lt;char, std::char_traits&lt;char&gt; &gt;&amp; (*)(std::basic_ostream&lt;char, std::char_traits&lt;char&gt; &gt;&amp;))
+        nop
+.L28:
+        nop
+        leave
+        ret<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>省略号部分和<code>.L27</code>部分类似，只是将开始的<code>.LC0</code>做替换。</p>
+<p>首先与switch-case语句的最大值比较，如果大于可以直接跳转到default语句；否则，加载局部变量的值到eax中，根据这个值作为索引，计算跳转的地址。</p>
+<p>标记<code>.L22</code>处<code>.quad</code>表示当前位置分配了8个字节的存储空间，后面跟着的数值(或标签)会被放置在这 8 个字节的内存空间中，通常用于定义 64 位整数或指针类型的数据。此处7个<code>.quad</code>代表这段代码包含了7 个 64 位值的数据表，用于实现之前提到的 switch-case 结构中的跳转表。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>如果if-else不进行二分、哈希等优化，switch-case结构的执行效率高，是以空间（跳转表）换时间的一种策略。</p>
+<h2 id="巨人的肩膀"><a href="#巨人的肩膀" class="headerlink" title="巨人的肩膀"></a>巨人的肩膀</h2><p><a target="_blank" rel="noopener" href="https://www.jeremyjone.com/546/">https://www.jeremyjone.com/546/</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.eet-china.com/mp/a19622.html">https://www.eet-china.com/mp/a19622.html</a></p>
 
                 
             </div>
@@ -515,7 +601,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://allenmirac.github.io/2023/06/20/reactor-mo-shi-li-lun-zhi-chi/">https://allenmirac.github.io/2023/06/20/reactor-mo-shi-li-lun-zhi-chi/</a>
+                    <a href="https://allenmirac.github.io/2024/07/02/if-else-dui-bi-switch-case/">https://allenmirac.github.io/2024/07/02/if-else-dui-bi-switch-case/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -553,8 +639,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Linux/">
-                                    <span class="chip bg-color">Linux</span>
+                                <a href="/tags/c/">
+                                    <span class="chip bg-color">c++</span>
                                 </a>
                             
                         </div>
@@ -633,17 +719,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2023/06/20/staticdefineconstmutabletypedef/">
+                <a href="/2024/07/02/if-else-dui-bi-switch-case/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="Static、#define、const、mutable、typedef">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="if-else对比switch-case">
                         
-                        <span class="card-title">Static、#define、const、mutable、typedef</span>
+                        <span class="card-title">if-else对比switch-case</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -653,9 +740,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-06-20
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-07-02
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -664,6 +751,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -682,13 +770,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/06/20/qt-zhong-guo-xiang-qi-chu-ban/">
+                <a href="/2024/03/08/c-yi-nan-dian/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="QT中国象棋初版">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="C++疑难点">
                         
-                        <span class="card-title">QT中国象棋初版</span>
+                        <span class="card-title">C++疑难点</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -699,7 +787,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-06-20
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-03-08
                             </span>
                         <span class="publish-author">
                             
@@ -712,8 +800,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/QT/">
-                        <span class="chip bg-color">QT</span>
+                    <a href="/tags/c/">
+                        <span class="chip bg-color">c++</span>
                     </a>
                     
                 </div>
