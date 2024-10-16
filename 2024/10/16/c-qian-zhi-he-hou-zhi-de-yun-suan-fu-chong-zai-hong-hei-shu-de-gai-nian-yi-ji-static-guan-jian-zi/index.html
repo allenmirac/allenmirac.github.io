@@ -4,22 +4,13 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="QT_Review之元对象系统（Moc）, AllenMirac">
+    <meta name="keywords" content="c++前置和后置的运算符重载，红黑树的概念以及static关键字, AllenMirac">
     <meta name="description" content="
 
-
-目录
-QT 元对象系统
-实验案例
-从四个方面来介绍元对象系统的奥秘
-是什么
-为什么
-怎么实现
-怎么用
-moc 使用
-引用
-欢迎大家star
-QT 元对象系统QT 的元对象系统（The Meta-Object System）由它的元对象">
+c++前置和后置的运算符重载，红黑树的概念以及static关键字前置++和后置++的运算符重载#include &amp;lt;iostream&gt;
+using namespace std;
+class Interge&amp;#123;
+    int">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -31,7 +22,7 @@ QT 元对象系统QT 的元对象系统（The Meta-Object System）由它的元�
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>QT_Review之元对象系统（Moc） | AllenMirac</title>
+    <title>c++前置和后置的运算符重载，红黑树的概念以及static关键字 | AllenMirac</title>
     <link rel="icon" type="image/jpeg" href="/ZoRo.jpg">
     
 
@@ -348,12 +339,12 @@ QT 元对象系统QT 的元对象系统（The Meta-Object System）由它的元�
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">QT_Review之元对象系统（Moc）</h1>
+                    <h1 class="description center-align post-title">c++前置和后置的运算符重载，红黑树的概念以及static关键字</h1>
                 </div>
             </div>
         </div>
@@ -377,8 +368,8 @@ QT 元对象系统QT 的元对象系统（The Meta-Object System）由它的元�
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/QT/">
-                                <span class="chip bg-color">QT</span>
+                            <a href="/tags/c/">
+                                <span class="chip bg-color">c++</span>
                             </a>
                         
                     </div>
@@ -393,21 +384,21 @@ QT 元对象系统QT 的元对象系统（The Meta-Object System）由它的元�
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-06-20
+                    2024-10-16
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-06-21
+                    2024-10-16
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.1k
+                    597
                 </div>
                 
 
@@ -434,105 +425,49 @@ QT 元对象系统QT 的元对象系统（The Meta-Object System）由它的元�
             <div id="articleContent">
                 <meta name="referrer" content="no-referrer" />
 
+<h1 id="c-前置和后置的运算符重载，红黑树的概念以及static关键字"><a href="#c-前置和后置的运算符重载，红黑树的概念以及static关键字" class="headerlink" title="c++前置和后置的运算符重载，红黑树的概念以及static关键字"></a>c++前置和后置的运算符重载，红黑树的概念以及static关键字</h1><h3 id="前置-和后置-的运算符重载"><a href="#前置-和后置-的运算符重载" class="headerlink" title="前置++和后置++的运算符重载"></a>前置++和后置++的运算符重载</h3><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+<span class="token keyword">class</span> <span class="token class-name">Interge</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> a<span class="token punctuation">;</span>
+    <span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token function">Interge</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">)</span><span class="token operator">:</span><span class="token function">a</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+    <span class="token keyword">int</span> <span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token operator">-></span>a<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    Interge<span class="token operator">&amp;</span> <span class="token keyword">operator</span><span class="token operator">++</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">this</span><span class="token operator">-></span>a<span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token operator">*</span><span class="token keyword">this</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    Interge <span class="token keyword">operator</span><span class="token operator">++</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        Interge temp<span class="token operator">=</span> <span class="token operator">*</span><span class="token keyword">this</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token operator">-></span>a<span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> temp<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    Interge <span class="token function">i</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> a<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+    cout<span class="token operator">&lt;&lt;</span>a<span class="token operator">++</span><span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
+    cout<span class="token operator">&lt;&lt;</span>i<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
+    <span class="token comment">// i++;</span>
+    cout<span class="token operator">&lt;&lt;</span>i<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
+    i<span class="token operator">++</span><span class="token operator">++</span><span class="token punctuation">;</span>
+    <span class="token comment">// ++i;</span>
+    cout<span class="token operator">&lt;&lt;</span>i<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p><strong>目录</strong></p>
-<p><a href="#QT%20%E5%85%83%E5%AF%B9%E8%B1%A1%E7%B3%BB%E7%BB%9F">QT 元对象系统</a></p>
-<p><a href="#%E5%AE%9E%E9%AA%8C%E6%A1%88%E4%BE%8B">实验案例</a></p>
-<p><a href="#%E4%BB%8E%E5%9B%9B%E4%B8%AA%E6%96%B9%E9%9D%A2%E6%9D%A5%E4%BB%8B%E7%BB%8D%E5%85%83%E5%AF%B9%E8%B1%A1%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%A5%A5%E7%A7%98">从四个方面来介绍元对象系统的奥秘</a></p>
-<p><a href="#%E6%98%AF%E4%BB%80%E4%B9%88">是什么</a></p>
-<p><a href="#%E4%B8%BA%E4%BB%80%E4%B9%88">为什么</a></p>
-<p><a href="#%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0">怎么实现</a></p>
-<p><a href="#%E6%80%8E%E4%B9%88%E7%94%A8">怎么用</a></p>
-<p><a href="#moc%20%E4%BD%BF%E7%94%A8">moc 使用</a></p>
-<p><a href="#%E5%BC%95%E7%94%A8">引用</a></p>
-<p><a href="#%E6%AC%A2%E8%BF%8E%E5%A4%A7%E5%AE%B6star">欢迎大家star</a></p>
-<h1 id="QT-元对象系统"><a href="#QT-元对象系统" class="headerlink" title="QT 元对象系统"></a>QT 元对象系统</h1><p>QT 的元对象系统（The Meta-Object System）由它的元对象编译器（Meta-Object Compiler，moc）帮忙实现，moc 通过读取头文件中的 Q_OBJCET 宏来判断是否需要生成元对象代码。如果需要，则生成以 moc_ 开头的源文件，在链接（Linking）时会和源文件一起生成可执行文件。</p>
-<h2 id="实验案例"><a href="#实验案例" class="headerlink" title="实验案例"></a>实验案例</h2><p>欢迎大家star：</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/allenmirac/QTStudy/tree/main/QTReviewMoc">QTStudy&#x2F;QTReviewMoc at main · allenmirac&#x2F;QTStudy · GitHub</a></p>
-<h2 id="从四个方面来介绍元对象系统的奥秘"><a href="#从四个方面来介绍元对象系统的奥秘" class="headerlink" title="从四个方面来介绍元对象系统的奥秘"></a>从四个方面来介绍元对象系统的奥秘</h2><h2 id="是什么"><a href="#是什么" class="headerlink" title="是什么"></a>是什么</h2><ul>
-<li>从 QT 新增的关键字（signals、slots、emit）可以看出 QT 并不是标准的 C++ 语言，而是对其进行了一定程度的扩展。 +  元对象系统是 QT 核心的一部分，用于支持 QT 的 C++ 扩展（QT’s C++ extensions），它提供了用于对象间通信的信号与槽、运行时类型信息以及动态属性系统。</li>
-</ul>
-<h2 id="为什么"><a href="#为什么" class="headerlink" title="为什么"></a>为什么</h2><p>由于 QT 是标准 C++ 的一个扩展，所以编译源代码时就需要将这些扩展的语法去掉，然后交给标准 C++ 编译器，诸如 GCC、MinGW、Clang 等。</p>
-<h2 id="怎么实现"><a href="#怎么实现" class="headerlink" title="怎么实现"></a>怎么实现</h2><p>元对象系统基于以下 3 件事：</p>
+<h3 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h3><p><strong>红黑树的特性</strong>:*<em>（1）每个节点或者是黑色，或者是红色。</em><em><strong>（2）根节点是黑色。</strong></em><em>（3）每个叶子节点（NIL）是黑色。 [注意：这里叶子节点，是指为空(NIL或NULL)的叶子节点！]<strong><strong>（4）如果一个节点是红色的，则它的子节点必须是黑色的。</strong></strong>（5）从一个节点到该节点的子孙节点的所有路径上包含相同数目的黑节点。</em>*</p>
+<p><strong>红黑树的应用</strong></p>
+<p>红黑树的应用比较广泛，主要是用它来存储有序的数据，它的时间复杂度是O(log2n)，效率非常之高。<strong>例如，Java集合中的<a target="_blank" rel="noopener" href="http://www.cnblogs.com/skywang12345/p/3311268.html">TreeSet</a>和<a target="_blank" rel="noopener" href="http://www.cnblogs.com/skywang12345/p/3310928.html">TreeMap</a>，C++ STL中的set、map，以及Linux虚拟内存的管理，都是通过红黑树去实现的。</strong></p>
+<h3 id="static关键字"><a href="#static关键字" class="headerlink" title="static关键字"></a>static关键字</h3><p>总的来说</p>
 <ul>
-<li><code>QObject</code>类为使用元对象系统的 QT 对象提供了一个基类。 +  <code>Q_OBJECT</code> 宏用来在类中启用元对象特性，例如动态属性、信号、槽。 +  <code>moc</code> 为每个 QObject 子类提供实现元对象特性所需要的代码。</li>
+<li>（1）修饰变量，static 修饰的静态局部变量只执行初始化一次，延长了局部变量的生命周期，直到程序运行结束以后才释放。 </li>
+<li>（2）修饰全局变量：全局变量只能在本文件中访问，不能在其它文件中访问， <strong>extern 外部声明</strong>也不可以。 </li>
+<li>（3）修饰一个函数，则这个函数的只能在本文件中调用，不能被其他文件调用。static 修饰的变量存放在全局数据区的静态变量区，包括全局静态变量和局部静态变量，都在全局数据区分配内存。初始化的时候自动初始化为 0。 </li>
+<li>（4）不想被释放的时候，可以使用static修饰。比如修饰函数中存放在栈空间的数组，如果不想让这个数组在函数调用结束释放可以使用 static 修饰。 </li>
+<li>（5）考虑到数据安全性（当程序想要使用全局变量的时候应该先考虑使用 static）。</li>
 </ul>
-<p>moc 工具读取 C++ 源文件。如果发现源文件中有一个类或者多个类的声明中包含 Q_OBJECT 宏，它就生成一个包含了这些类所需要的元对象代码的源文件。这个新源文件的文件名为源文件名前加上 moc_。<strong>新生成的源文件必须被 #include 到源文件中，或者更常见的是编译和连接到类的实现中。</strong></p>
-<h2 id="怎么用"><a href="#怎么用" class="headerlink" title="怎么用"></a>怎么用</h2><p>元对象系统有以下特性：</p>
-<ul>
-<li><code>signals and slots</code> 一个用于对象间通信的信号与槽机制（QT 引入元对象系统最主要的原因）。 +  <code>QObject::metaObject()</code> 用来返回类关联的元对象。 +  <code>QMetaObject::className()</code> 用来在运行时获取类名，<strong>这个方法不需要原生 C++ 编译器的运行时类型信息（Runtime type information，RTTI）支持</strong>。 +  <code>QObject::inherits()</code> 用来判别一个对象是否是 QObject 继承树中的特定类的对象。 +  <code>QObject::tr()</code> 和 <code>QObject::trUtf8()</code> 提供 QT 国际化中翻译字符串的支持。 +  <code>QObject::setProperty()</code> 和 <code>QObject::property()</code> 提供动态地设置和获取属性名。 +  <code>QMetaObject::newInstance()</code> 用于构造一个类的新实例。 +  <code>qobject_cast</code> 处理继承自 QObject 类的动态转换。它不需要 RTTI 支持，并且支持跨动态库转换。转换成功返回非零指针，失败返回 nullptr。</li>
-</ul>
-<p>在 QObject 的派生类中，不使用 Q_OBJECT 宏以及没有元对象代码，上述元对象系统特性也能用。需要注意的是，QMetaObject::className() 只会返回离它最近且拥有元对象代码的祖先（即最近一个声明 Q_OBJECT 的祖先）的类名。所以建议 QObject 的派生类一律添加 Q_OBJECT 宏！</p>
-<h2 id="moc-使用"><a href="#moc-使用" class="headerlink" title="moc 使用"></a>moc 使用</h2><p>在这个案例中的使用：</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/allenmirac/QTStudy/blob/main/QTReviewMoc/expersion.h">QTStudy&#x2F;expersion.h at main · allenmirac&#x2F;QTStudy · GitHub</a></p>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">ifndef</span> <span class="token expression">EXPERSION_H</span></span>
- #define EXPERSION_H
- ​
- #include <span class="token operator">&lt;</span>QObject<span class="token operator">></span>
- ​
- <span class="token keyword">class</span> <span class="token class-name">ExPersion</span> <span class="token operator">:</span> <span class="token base-clause"><span class="token keyword">public</span> <span class="token class-name">QObject</span></span>
- <span class="token punctuation">&#123;</span>
-     Q_OBJECT
-     <span class="token comment">//Connected to the property system is an additional macro, Q_CLASSINFO(), that can be used to attach additional name--value pairs to a class's meta-object</span>
-     <span class="token function">Q_CLASSINFO</span><span class="token punctuation">(</span><span class="token string">"author"</span><span class="token punctuation">,</span><span class="token string">"hzy"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-     <span class="token function">Q_CLASSINFO</span><span class="token punctuation">(</span><span class="token string">"version"</span><span class="token punctuation">,</span> <span class="token string">"1.1.1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-     <span class="token function">Q_CLASSINFO</span><span class="token punctuation">(</span><span class="token string">"info"</span><span class="token punctuation">,</span> <span class="token string">"QT5 Meta Object and Property Example"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-     <span class="token comment">//A property behaves like a class data member, but it has additional features accessible through the Meta-Object System.</span>
-     <span class="token function">Q_PROPERTY</span><span class="token punctuation">(</span><span class="token keyword">int</span> age READ getAge WRITE setAge NOTIFY ageChanged<span class="token punctuation">)</span><span class="token punctuation">;</span>
-     <span class="token function">Q_PROPERTY</span><span class="token punctuation">(</span>QString name MEMBER m_name<span class="token punctuation">)</span><span class="token punctuation">;</span>
-     <span class="token function">Q_PROPERTY</span><span class="token punctuation">(</span><span class="token keyword">int</span> score MEMBER m_score<span class="token punctuation">)</span><span class="token punctuation">;</span>
- <span class="token keyword">public</span><span class="token operator">:</span>
-     <span class="token keyword">explicit</span> <span class="token function">ExPersion</span><span class="token punctuation">(</span>QString name<span class="token punctuation">,</span> QObject <span class="token operator">*</span>parent <span class="token operator">=</span> <span class="token keyword">nullptr</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
- ​
- <span class="token keyword">public</span><span class="token operator">:</span>
-     <span class="token keyword">int</span> <span class="token function">getAge</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-     <span class="token keyword">void</span> <span class="token function">setAge</span><span class="token punctuation">(</span><span class="token keyword">int</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
- ​
-     <span class="token keyword">void</span> <span class="token function">incAge</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
- ​
- signals<span class="token operator">:</span>
-     <span class="token keyword">void</span> <span class="token function">ageChanged</span><span class="token punctuation">(</span><span class="token keyword">int</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
- ​
- <span class="token keyword">private</span><span class="token operator">:</span>
-     <span class="token keyword">int</span> m_age <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
-     QString m_name<span class="token punctuation">;</span>
-     <span class="token keyword">int</span> m_score <span class="token operator">=</span> <span class="token number">50</span><span class="token punctuation">;</span>
- <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
- ​
- #endif <span class="token comment">// EXPERSION_H</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-<p>官方文档的Example：</p>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">MyClass</span> <span class="token operator">:</span> <span class="token base-clause"><span class="token keyword">public</span> <span class="token class-name">QObject</span></span>
- <span class="token punctuation">&#123;</span>
-     Q_OBJECT
-     <span class="token function">Q_PROPERTY</span><span class="token punctuation">(</span>Priority priority READ priority WRITE setPriority NOTIFY priorityChanged<span class="token punctuation">)</span>
- ​
- <span class="token keyword">public</span><span class="token operator">:</span>
-     <span class="token function">MyClass</span><span class="token punctuation">(</span>QObject <span class="token operator">*</span>parent <span class="token operator">=</span> <span class="token keyword">nullptr</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-     <span class="token operator">~</span><span class="token function">MyClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
- ​
-     <span class="token keyword">enum</span> <span class="token class-name">Priority</span> <span class="token punctuation">&#123;</span> High<span class="token punctuation">,</span> Low<span class="token punctuation">,</span> VeryHigh<span class="token punctuation">,</span> VeryLow <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
-     <span class="token function">Q_ENUM</span><span class="token punctuation">(</span>Priority<span class="token punctuation">)</span>
- ​
-     <span class="token keyword">void</span> <span class="token function">setPriority</span><span class="token punctuation">(</span>Priority priority<span class="token punctuation">)</span>
-     <span class="token punctuation">&#123;</span>
-         m_priority <span class="token operator">=</span> priority<span class="token punctuation">;</span>
-         emit <span class="token function">priorityChanged</span><span class="token punctuation">(</span>priority<span class="token punctuation">)</span><span class="token punctuation">;</span>
-     <span class="token punctuation">&#125;</span>
-     Priority <span class="token function">priority</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span>
-     <span class="token punctuation">&#123;</span> <span class="token keyword">return</span> m_priority<span class="token punctuation">;</span> <span class="token punctuation">&#125;</span>
- ​
- signals<span class="token operator">:</span>
-     <span class="token keyword">void</span> <span class="token function">priorityChanged</span><span class="token punctuation">(</span>Priority<span class="token punctuation">)</span><span class="token punctuation">;</span>
- ​
- <span class="token keyword">private</span><span class="token operator">:</span>
-     Priority m_priority<span class="token punctuation">;</span>
- <span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a target="_blank" rel="noopener" href="https://beyondyuanshu.github.io/2019/09/03/qt-core-the-meta-object-system.html">Qt 核心之元对象系统 - Shu’s Site</a></p>
-<p><a target="_blank" rel="noopener" href="https://doc.qt.io/qt-6/qobject.html#Q_PROPERTY">QObject Class | Qt Core 6.4.3</a></p>
-<h2 id="欢迎大家star"><a href="#欢迎大家star" class="headerlink" title="欢迎大家star"></a>欢迎大家star</h2><p><a target="_blank" rel="noopener" href="https://github.com/allenmirac/QTStudy">GitHub - allenmirac&#x2F;QTStudy: This is a repository to learn QT.</a></p>
 
                 
             </div>
@@ -559,7 +494,7 @@ QT 元对象系统QT 的元对象系统（The Meta-Object System）由它的元�
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://allenmirac.github.io/2023/06/20/qtreview-zhi-yuan-dui-xiang-xi-tong-moc/">https://allenmirac.github.io/2023/06/20/qtreview-zhi-yuan-dui-xiang-xi-tong-moc/</a>
+                    <a href="https://allenmirac.github.io/2024/10/16/c-qian-zhi-he-hou-zhi-de-yun-suan-fu-chong-zai-hong-hei-shu-de-gai-nian-yi-ji-static-guan-jian-zi/">https://allenmirac.github.io/2024/10/16/c-qian-zhi-he-hou-zhi-de-yun-suan-fu-chong-zai-hong-hei-shu-de-gai-nian-yi-ji-static-guan-jian-zi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -597,8 +532,8 @@ QT 元对象系统QT 的元对象系统（The Meta-Object System）由它的元�
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/QT/">
-                                    <span class="chip bg-color">QT</span>
+                                <a href="/tags/c/">
+                                    <span class="chip bg-color">c++</span>
                                 </a>
                             
                         </div>
@@ -677,17 +612,18 @@ QT 元对象系统QT 的元对象系统（The Meta-Object System）由它的元�
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2023/06/20/qt-zhong-guo-xiang-qi-chu-ban/">
+                <a href="/2024/10/16/c-qian-zhi-he-hou-zhi-de-yun-suan-fu-chong-zai-hong-hei-shu-de-gai-nian-yi-ji-static-guan-jian-zi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="QT中国象棋初版">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="c++前置和后置的运算符重载，红黑树的概念以及static关键字">
                         
-                        <span class="card-title">QT中国象棋初版</span>
+                        <span class="card-title">c++前置和后置的运算符重载，红黑树的概念以及static关键字</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -697,9 +633,9 @@ QT 元对象系统QT 的元对象系统（The Meta-Object System）由它的元�
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-06-20
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-10-16
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -708,11 +644,12 @@ QT 元对象系统QT 的元对象系统（The Meta-Object System）由它的元�
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/QT/">
-                        <span class="chip bg-color">QT</span>
+                    <a href="/tags/c/">
+                        <span class="chip bg-color">c++</span>
                     </a>
                     
                 </div>
@@ -726,13 +663,13 @@ QT 元对象系统QT 的元对象系统（The Meta-Object System）由它的元�
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/06/20/qtreview-zhi-qslider-hua-kuai/">
+                <a href="/2024/10/13/fu-shi-jing-yan-fen-xiang-san-ji-suan-ji-xue-ke-zhuan-ye-ji-chu-zong-he-zhi-shu-ju-jie-gou/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="QT_Review之_QSlider（滑块）">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="复试经验分享《三、计算机学科专业基础综合》之数据结构">
                         
-                        <span class="card-title">QT_Review之_QSlider（滑块）</span>
+                        <span class="card-title">复试经验分享《三、计算机学科专业基础综合》之数据结构</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -743,7 +680,7 @@ QT 元对象系统QT 的元对象系统（The Meta-Object System）由它的元�
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-06-20
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-10-13
                             </span>
                         <span class="publish-author">
                             
@@ -756,8 +693,8 @@ QT 元对象系统QT 的元对象系统（The Meta-Object System）由它的元�
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/QT/">
-                        <span class="chip bg-color">QT</span>
+                    <a href="/tags/c/">
+                        <span class="chip bg-color">c++</span>
                     </a>
                     
                 </div>
