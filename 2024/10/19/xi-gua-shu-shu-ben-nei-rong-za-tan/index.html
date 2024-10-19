@@ -4,19 +4,12 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Linux网络编程, AllenMirac">
+    <meta name="keywords" content="西瓜书书本内容杂谈, AllenMirac">
     <meta name="description" content="
 
-
-目录
-IP端格式
- C&amp;#x2F;S和B&amp;#x2F;S模式
-网络字节序转换函数
-inet_pton函数
-时间轮
-Socket：C&amp;#x2F;S模式，client server
-socket函数
-perror(const char* s">
+西瓜书书本内容杂谈把圈子变小，把语速放缓，把心放宽，把生活打理好
+只能说快速过了一遍，花了一个多星期吧，然后后边的内容是一点也看不懂了（能发现前面记得比较详细，到了后边是看不懂一点了，脑壳痛QWQ
+就不像是一本新手的入门书籍，太难受了ಥ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -28,7 +21,7 @@ perror(const char* s">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Linux网络编程 | AllenMirac</title>
+    <title>西瓜书书本内容杂谈 | AllenMirac</title>
     <link rel="icon" type="image/jpeg" href="/ZoRo.jpg">
     
 
@@ -345,12 +338,12 @@ perror(const char* s">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Linux网络编程</h1>
+                    <h1 class="description center-align post-title">西瓜书书本内容杂谈</h1>
                 </div>
             </div>
         </div>
@@ -374,8 +367,8 @@ perror(const char* s">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Linux/">
-                                <span class="chip bg-color">Linux</span>
+                            <a href="/tags/DL/">
+                                <span class="chip bg-color">DL</span>
                             </a>
                         
                     </div>
@@ -390,21 +383,21 @@ perror(const char* s">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-06-20
+                    2024-10-19
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-06-21
+                    2024-10-19
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4k
+                    4.8k
                 </div>
                 
 
@@ -431,219 +424,144 @@ perror(const char* s">
             <div id="articleContent">
                 <meta name="referrer" content="no-referrer" />
 
-
-<p><strong>目录</strong></p>
-<p><a href="#IP%E7%AB%AF%E6%A0%BC%E5%BC%8F">IP端格式</a></p>
-<p><a href="#%C2%A0C/S%E5%92%8CB/S%E6%A8%A1%E5%BC%8F"> C&#x2F;S和B&#x2F;S模式</a></p>
-<p><a href="#%E7%BD%91%E7%BB%9C%E5%AD%97%E8%8A%82%E5%BA%8F%E8%BD%AC%E6%8D%A2%E5%87%BD%E6%95%B0">网络字节序转换函数</a></p>
-<p><a href="#inet_pton%E5%87%BD%E6%95%B0">inet_pton函数</a></p>
-<p><a href="#%E6%97%B6%E9%97%B4%E8%BD%AE">时间轮</a></p>
-<p><a href="#Socket%EF%BC%9AC/S%E6%A8%A1%E5%BC%8F%EF%BC%8Cclient%20server">Socket：C&#x2F;S模式，client server</a></p>
-<p><a href="#socket%E5%87%BD%E6%95%B0">socket函数</a></p>
-<p><a href="#perror(const%20char*%20str)">perror(const char* str)</a></p>
-<p><a href="#INADDR_ANY">INADDR_ANY</a></p>
-<p><a href="#%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E6%B5%81%E7%A8%8B">函数调用流程</a></p>
-<p><a href="#%E4%B8%87%E6%81%B6%E7%9A%84%E7%BB%93%E6%9E%84%E4%BD%93sockaddr%E3%80%81sockaddr_in%E3%80%81in_addr%E3%80%81hostent">万恶的结构体sockaddr、sockaddr_in、in_addr、hostent</a></p>
-<p><a href="#hostent">hostent</a></p>
-<p><a href="#%E4%B8%BB%E6%9C%BA%E5%AD%97%E8%8A%82%E5%BA%8F%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%AD%97%E8%8A%82%E5%BA%8F">主机字节序与网络字节序</a></p>
-<p><a href="#listen%E3%80%81accept%E3%80%81connect%E5%87%BD%E6%95%B0%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB">listen、accept、connect函数之间的关系</a></p>
-<p><a href="#listen%E5%87%BD%E6%95%B0">listen函数</a></p>
-<p><a href="#connect%E5%87%BD%E6%95%B0">connect函数</a></p>
-<p><a href="#accept%E5%87%BD%E6%95%B0">accept函数</a></p>
-<p><a href="#TCP%E7%9A%84%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B">TCP的三次握手</a></p>
-<p><a href="#send%E3%80%81%E5%92%8Crecv%E5%87%BD%E6%95%B0">send、和recv函数</a></p>
-<p><a href="#TCP%E6%8A%A5%E6%96%87%E5%88%86%E5%8C%85%E5%92%8C%E7%B2%98%E5%8C%85">TCP报文分包和粘包</a></p>
-<p><a href="#Writen%E3%80%81Readn%E5%87%BD%E6%95%B0%EF%BC%9Afreecplus%E5%B0%81%E8%A3%85%E7%9A%84%E6%8A%A5%E6%96%87%E6%A0%BC%E5%BC%8F">Writen、Readn函数：freecplus封装的报文格式</a></p>
-<p><a href="#TcpWrite%E3%80%81TcpRead%EF%BC%9Afreecplus%E5%B0%81%E8%A3%85%E7%9A%84%E6%8A%A5%E6%96%87%E6%A0%BC%E5%BC%8F">TcpWrite、TcpRead：freecplus封装的报文格式</a></p>
-<p><a href="#%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1">进程间通信</a></p>
-<p><a href="#%E9%81%BF%E5%85%8D%E5%83%B5%E5%B0%B8%E8%BF%9B%E7%A8%8B">避免僵尸进程</a></p>
-<p><a href="#C/C++%E6%9C%8D%E5%8A%A1%E7%A8%8B%E5%BA%8F%E7%9A%84%E8%BF%90%E8%A1%8C%E6%97%A5%E5%BF%97">C&#x2F;C++服务程序的运行日志</a></p>
-<p><a href="#linux%E5%A4%9A%E8%BF%9B%E7%A8%8B%EF%BC%9Afork%E5%87%BD%E6%95%B0">linux多进程：fork函数</a></p>
-<p><a href="#Linux%E4%BF%A1%E5%8F%B7%E7%9A%84%E4%BD%BF%E7%94%A8">Linux信号的使用</a></p>
-<p><a href="#Linux%E5%85%B1%E4%BA%AB%E5%86%85%E5%AD%98%E7%9A%84%E5%87%BD%E6%95%B0">Linux共享内存的函数</a></p>
-<p><a href="#Linux%E5%A4%9A%E7%BA%BF%E7%A8%8B">Linux多线程</a></p>
-<p><a href="#%E5%8A%A8%E6%80%81%E5%BA%93%E4%B8%8E%E9%9D%99%E6%80%81%E5%BA%93">动态库与静态库</a></p>
-<p><a href="#argc%E4%B8%8Eargv%C2%A0">argc与argv </a></p>
-<p><a href="#Makefile%C2%A0">Makefile </a></p>
-<p><a href="#GDB%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8">GDB的简单使用</a></p>
-<p><a href="#Tcp%E9%95%BF%E8%BF%9E%E6%8E%A5%E4%B8%8E%E7%9F%AD%E8%BF%9E%E6%8E%A5">Tcp长连接与短连接</a></p>
-<p><a href="#%E7%BD%91%E7%BB%9C%E6%9C%8D%E5%8A%A1%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95">网络服务性能测试</a></p>
-<p><a href="#I/O%E5%A4%8D%E7%94%A8">I&#x2F;O复用</a></p>
-<p><a href="#select">select</a></p>
-<p><a href="#poll">poll</a></p>
-<p><a href="#epoll">epoll</a></p>
-<p><a href="#ET%E5%92%8CLT">ET和LT</a></p>
-<p><a href="#%E5%8F%82%E8%80%83">参考</a></p>
-<h1 id="IP端格式"><a href="#IP端格式" class="headerlink" title="IP端格式"></a>IP端格式</h1><p><img src="https://img-blog.csdnimg.cn/b42480313f464402a487678706b27b3d.png"></p>
-<p><img src="https://img-blog.csdnimg.cn/569097a03d034a9fa5084f418e0e380c.png"></p>
-<h1 id="C-x2F-S和B-x2F-S模式"><a href="#C-x2F-S和B-x2F-S模式" class="headerlink" title="C&#x2F;S和B&#x2F;S模式"></a>C&#x2F;S和B&#x2F;S模式</h1><p><img src="https://img-blog.csdnimg.cn/7dc13a914cfd48519e368a14e0302f6f.png"></p>
-<h1 id="网络字节序转换函数"><a href="#网络字节序转换函数" class="headerlink" title="网络字节序转换函数"></a>网络字节序转换函数</h1><p>在通信过程中，套接字是成对出现的</p>
-<p><img src="https://img-blog.csdnimg.cn/cb2a5edf6a0f423ca87e4688e45f48fa.png"></p>
-<h1 id="inet-pton函数"><a href="#inet-pton函数" class="headerlink" title="inet_pton函数"></a>inet_pton函数</h1><p>IP地址开始是点分十进制形式的，是一个字符串，如192.168.1.100，所以要将它转换为网络字节序地址需要这个inet_pton函数：本地字节序–&gt;网络字节序</p>
-<p><img src="https://img-blog.csdnimg.cn/9e082d53710a4a6b9802705c0edda703.png"></p>
-<h1 id="时间轮"><a href="#时间轮" class="headerlink" title="时间轮"></a>时间轮</h1><p>回到时间轮定时器，它主要解决的是升序链表插入效率比较低的问题，根据相关链表算法的理论，因为在有序链表插入节点的时间复杂度为O(n)，而且是单链表，意味着链表越长，插一个节点所要找到合适位置的时间开销就会越大，这样下来，时间效率是比较低的。</p>
-<p>  时间轮定时器算法有点hash的思想，插入节点是采用【取模+头插法】的方式，将插入的平均时间复杂度控制器到了O(1)，极大节省了时间开销。</p>
-<p>  不过呢，升序链表定时器虽然在插入时间复杂度上为O(n)，但是在处理超时定时器时遍历链表的效率还是要比时间轮定时器好的，时间轮定时器需要将对应槽上的链表从头到尾全部判断一次，而链表则是从头开始处理，一旦遇到未超时的，则直接结束遍历就好。但综合效率来说，时间轮还是比升序链表好很多的。</p>
-<p><img src="https://img-blog.csdnimg.cn/c7eba5257da249c8a8da1db985dd0916.png"></p>
-<h1 id="Socket：C-x2F-S模式，client-server"><a href="#Socket：C-x2F-S模式，client-server" class="headerlink" title="Socket：C&#x2F;S模式，client server"></a>Socket：C&#x2F;S模式，client server</h1><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/skynet/archive/2010/12/12/1903949.html">Linux Socket编程</a></p>
-<h1 id="socket函数"><a href="#socket函数" class="headerlink" title="socket函数"></a>socket函数</h1><p>int socket(int domain, int type, int protocol);</p>
-<p>domain是协议族，type指的是socket的类型，protocol：指定协议。</p>
-<p>第一个参数只能填AF_INET，第二个参数只能填SOCK_STREAM，第三个参数只能填0。</p>
-<p>除非系统资料耗尽，socket函数一般不会返回失败。</p>
-<p>不要忽略任何一个警告(socklen_t*) &amp;socklen）</p>
-<h1 id="perror-const-char-str"><a href="#perror-const-char-str" class="headerlink" title="perror(const char* str)"></a>perror(const char* str)</h1><p>先输出str: ，再输出错误信息</p>
-<h1 id="INADDR-ANY"><a href="#INADDR-ANY" class="headerlink" title="INADDR_ANY"></a>INADDR_ANY</h1><p>说明指定的是任意的ip地址</p>
-<h1 id="函数调用流程"><a href="#函数调用流程" class="headerlink" title="函数调用流程"></a>函数调用流程</h1><p>服务端函数调用的流程</p>
-<p>socket-&gt;bind-&gt;listen-&gt;accept-&gt;recv&#x2F;send-&gt;close</p>
-<p>客户端函数调用的流程</p>
-<p>socket-&gt;connect-&gt;send&#x2F;recv-&gt;close</p>
-<p>其中send&#x2F;recv可以进行多次交互。</p>
-<p>无论是客户端还是服务端都要创建socket</p>
-<h1 id="万恶的结构体sockaddr、sockaddr-in、in-addr、hostent"><a href="#万恶的结构体sockaddr、sockaddr-in、in-addr、hostent" class="headerlink" title="万恶的结构体sockaddr、sockaddr_in、in_addr、hostent"></a>万恶的结构体sockaddr、sockaddr_in、in_addr、hostent</h1><p><img src="https://img-blog.csdnimg.cn/f78938e3d83141988c8f3b6371c8a80e.png"></p>
-<h1 id="hostent"><a href="#hostent" class="headerlink" title="hostent"></a>hostent</h1><p><img src="https://img-blog.csdnimg.cn/ff2528fdc17143f7ab6d721e18c1dc52.png"></p>
-<p><img src="https://img-blog.csdnimg.cn/9d3c88331c9b4e5e9aaf9c202eb00c0f.png"></p>
-<h1 id="主机字节序与网络字节序"><a href="#主机字节序与网络字节序" class="headerlink" title="主机字节序与网络字节序"></a>主机字节序与网络字节序</h1><p><img src="https://img-blog.csdnimg.cn/87aae97487c84854845b85d137496729.png"></p>
-<h1 id="listen、accept、connect函数之间的关系"><a href="#listen、accept、connect函数之间的关系" class="headerlink" title="listen、accept、connect函数之间的关系"></a>listen、accept、connect函数之间的关系</h1><p><img src="https://img-blog.csdnimg.cn/91644dd71fbb42c596571f99c751de7f.png"></p>
-<h1 id="listen函数"><a href="#listen函数" class="headerlink" title="listen函数"></a>listen函数</h1><p>listen(listenfd, 5);&#x2F;&#x2F;把socket设置为监听模式，第二个参数比较复杂</p>
-<p>如果在listen前面加上sleep，结果发现不能连接上</p>
-<p><img src="https://img-blog.csdnimg.cn/60b5d714084e40749789d72c343a75e5.png"></p>
-<p><img src="https://img-blog.csdnimg.cn/38205cc98a4f48699893c9cc4c6a4fe9.png"></p>
-<p>如果在listen后面加上sleep，可以连接上</p>
-<p><img src="https://img-blog.csdnimg.cn/b27ad15f8405418382c1756d9a823917.png"></p>
-<p><img src="https://img-blog.csdnimg.cn/7efce7d888a04777834be5d6300b13f4.png"></p>
-<p>原因是：服务端在调用listen之前，客户端不能向服务端发起连接请求。</p>
-<h1 id="connect函数"><a href="#connect函数" class="headerlink" title="connect函数"></a>connect函数</h1><p>connect(sockfd, (struct sockaddr *)&amp;servaddr,sizeof(servaddr))</p>
-<p>向服务端发起连接请求</p>
-<h1 id="accept函数"><a href="#accept函数" class="headerlink" title="accept函数"></a>accept函数</h1><p>clientfd&#x3D;accept(listenfd,(struct sockaddr <em>)&amp;clientaddr,(socklen_t</em>)&amp;socklen);</p>
-<p>三个客户端连接，accept是从连接的一个队列里面取出来，如果队列里面没有，会阻塞。</p>
-<p><img src="https://img-blog.csdnimg.cn/436858fc94da46ac91a1db2b44266a15.png"></p>
-<p>把这个用死循环，才可以多客户端连接</p>
-<p><img src="https://img-blog.csdnimg.cn/905a883a82f3493991a9ec73d60e45ce.png"></p>
-<h1 id="TCP的三次握手"><a href="#TCP的三次握手" class="headerlink" title="TCP的三次握手"></a>TCP的三次握手</h1><p><img src="https://img-blog.csdnimg.cn/4b9ec7c9fe1c4c5ea0f4fbc608c9eca0.png"></p>
-<p>使用netstat -na | more命令查询端口的连接状态，</p>
-<p>在listen后面睡眠1000秒，此时启动服务端，就可以查看到ESTABLISHED状态</p>
-<p><img src="https://img-blog.csdnimg.cn/ab553db304b04e9c87fc4e03a045060a.png"></p>
-<h1 id="send、和recv函数"><a href="#send、和recv函数" class="headerlink" title="send、和recv函数"></a>send、和recv函数</h1><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/jianqiang2010/archive/2010/08/20/1804598.html">Socket send函数和recv函数详解 - 世道 - 博客园</a></p>
-<p>int send(Socket s, const char* buf, int len, int flags);</p>
-<p>int recv(Socket s, char * buf, int len, int flags);</p>
-<p>都需要通过socket套接字来实现数据的接受与发送，而不是通过send、recv函数来实现。</p>
-<p>其实这两个函数也有不成功的时候，当缓冲区满了之后，就不能正常的接收了。</p>
-<p>在发送端使用正常代码，注释掉接受的代码，只用来发送</p>
-<p>客户端注释掉发送的代码，只用来接受，而且在接受后面</p>
-<p>usleep(10000);&#x2F;&#x2F;睡眠微秒，结果在接受了八万多条数据之后，缓冲区满了，send函数在发送端阻塞了，等客户端又取出了一些数据之后才继续接受数据。</p>
-<p><img src="https://img-blog.csdnimg.cn/fa9d57ae968c438c82427ff6fcf17ca7.png"></p>
-<p><img src="https://img-blog.csdnimg.cn/66f5ddb4a1504994ad1f402cee4d207e.png"></p>
-<h1 id="TCP报文分包和粘包"><a href="#TCP报文分包和粘包" class="headerlink" title="TCP报文分包和粘包"></a>TCP报文分包和粘包</h1><p><img src="https://img-blog.csdnimg.cn/73501f88e76741b98b6e5a1b4d07a22b.png"></p>
-<p>粘包：粘包是指TCP协议中，发送方发送的若干包数据到接收方接收时粘成一包，从接收缓冲区看，后一包的数据的头紧接着前一包数据的尾。TCP是面向字节流的协议，就是没有界限的一串数据，本没有“包”的概念，“粘包”和“拆包”一说是为了有助于形象地理解这两种现象。为什么 UDP没有粘包由于UDP有消息保护边界，不会发生粘包拆包问题，因此粘包拆包问题只发生在TCP协议中。</p>
-<p>对于粘包和拆包问题，常见的解决方案有四种：</p>
+<h1 id="西瓜书书本内容杂谈"><a href="#西瓜书书本内容杂谈" class="headerlink" title="西瓜书书本内容杂谈"></a>西瓜书书本内容杂谈</h1><p>把圈子变小，把语速放缓，把心放宽，把生活打理好</p>
+<p>只能说快速过了一遍，花了一个多星期吧，然后后边的内容是一点也看不懂了（能发现前面记得比较详细，到了后边是看不懂一点了，脑壳痛QWQ</p>
+<p>就不像是一本新手的入门书籍，太难受了ಥ_ಥ，了解概念这本书也不适合，还是转为看《邱锡鹏，神经网络与深度学习》和李沐动手学AI课的实践部分，ಠ_ಠ</p>
+<h2 id="第一章-绪论"><a href="#第一章-绪论" class="headerlink" title="第一章 绪论"></a>第一章 绪论</h2><p>1、预预测的值是离散值，这类学习任务叫做“分类”，如“好瓜”，“坏瓜”；若预预测的值是连续值，这类学习任务称为“回归”。</p>
+<p>2、学得模型适用于新样本的能力，叫做“泛化”，泛化能力好，能更好的适用新样本。</p>
+<p>3、西瓜问题的假设空间自顶向下、自底向上。</p>
+<p>4、归纳偏好，对假设空间进行选择的启发式偏好，用一般性的原则来引导偏好，如”奥卡姆剃刀“法（Occam‘s razor）是一种常用的、自然科学研究中最基本的原则，即“若有多个假设与观察一致，则选择最简单的那个”，选择更为平滑的曲线。</p>
+<p>5、不同算法针对不同问题有不同的拟合性，尽管看起来很差的算法（笨拙的算法）也有非常拟合的数据，。</p>
+<p>6、所有算法的期望性能都差不多，E表示期望，下表ote表示训练集外误差（Out of Training set Error），E<sub>ote</sub>(L<sub>a</sub>|X,f)表示的就是给定数据集和真实目标函数的情况下，算法L<sub>a</sub>的训练集外误差的计算方式。（公式真的好难啊，脑壳痛QWQ）</p>
+<p><img src="https://s2.loli.net/2024/09/07/UArh6fMqCBjR8tw.png" alt="学习算法的总误差"></p>
+<p>7、NFL定理（<font color=red>No Free Lunch</font>），针对具体的问题谈论算法的优劣，裁缝做衣服</p>
+<p><img src="https://s2.loli.net/2024/09/07/FblyvzxMQLVcs6A.png" alt="NFL定理"></p>
+<p>8、历史发展过程，逻辑理论推理–&gt;”知识期”(人为的去教电脑知识)–&gt;自主学习知识，二十世纪八十年代是机器学习成为一个独立的学科领域、各种机器学习技术百花齐放。跳棋程序的发展历史：<a target="_blank" rel="noopener" href="https://blog.creaders.net/u/5477/202405/487515.html">https://blog.creaders.net/u/5477/202405/487515.html</a></p>
+<p>9、一些闪光的思想，“迁移学习”（Transfer Learning），“类比学习”（Learning By Analogy），“深度学习”（Deeping Learning）</p>
+<p>10、课后习题看的头疼，完全看不懂，习题1.2直接可以用代码来解决了，厉害</p>
+<p>11、机器学习的别称，萨缪尔（研制了一个西洋跳棋程序）将其定义为“<font color=red>不显示编程赋予计算机能力的研究领域</font>”。</p>
+<h2 id="第二章-模型评估与选择"><a href="#第二章-模型评估与选择" class="headerlink" title="第二章 模型评估与选择"></a>第二章 模型评估与选择</h2><ol>
+<li><p>术语：误差（error），训练误差（training error）和经验误差（empirical error）是指学习器在训练集上得到的误差；泛化误差（generalization error）；过拟合（overfitting）是当学习器把训练样本学得“太好”了的时候，很可能已经把训练样本自身的一些特点当作了所有潜在样本都当成了具有的一般性质；相对的是欠拟合（underfitting）。</p>
+</li>
+<li><p>进行模型评估时，需要使用特定的方法来实现训练集S和测试集T的划分，并且训练集与测试集尽可能互斥。模型评估是通过实验测试来对学习器的泛化误差进行评估，在现实任务中往往还会考虑时间开销、存储开销、可解释性等方面的因素，这里暂且只考虑泛化误差。先交叉验证集选择模型，然后训练集训练模型，最后测试集评估模型</p>
+</li>
+<li><p>评估方法：评估方法不能理解，第二次看有了下面的一些理解。<br><strong>训练集（Training Set）</strong>：用于<strong>训练</strong>模型。</p>
+<p><strong>验证集（Validation Set）</strong>：用于<strong>调整和选择</strong>模型。</p>
+<p><strong>测试集（Test Set）</strong>：用于<strong>评估</strong>最终的模型。</p>
+<p>当我们拿到数据之后，一般来说，我们把数据分成这样的三份：训练集（60%），验证集（20%），测试集（20%）。用训练集训练出模型，然后用验证集验证模型，根据情况不断调整模型，选出其中最好的模型，记录最好的模型的各项选择，然后据此再用（训练集+验证集）数据训练出一个新模型，作为最终的模型，最后用测试集<font color='red'>评估</font>最终的模型。</p>
+<ol>
+<li><strong>留一法（Leave One Out Cross Validation，LOOCV）</strong>：m个样本集合，拿出一个作为验证集，剩余m-1个作为训练集，这样进行m次当都的训练和验证，最后将m次验证结果取平均值，作为验证误差。<strong>缺点是计算量大，一般不作为实际使用</strong></li>
+<li><strong>K折交叉验证法（K-Fold Cross Validation）</strong>：把数据集分成K份，每个子集互不相交且大小相同，依次从K份中选出1份作为验证集，其余K-1份作为训练集，这样进行K次单独的模型训练和验证，最后将K次验证结果取平均值，作为此模型的验证误差。当K&#x3D;m时，就变为留一法。可见留一法是K折交叉验证的<strong>特例</strong>。根据经验，<strong>K一般取10</strong>。（在各种真实数据集上进行实验发现，10折交叉验证在偏差和方差之间取得了最佳的平衡。）</li>
+<li><strong>多次K折交叉验证（Repeated K-Fold Cross Validation）</strong>：每次用不同的划分方式划分数据集，每次划分完后的其他步骤和K折交叉验证一样。例如：10 次 10 折交叉验证，即每次进行10次模型训练和验证，这样一共做10次，也就是总共做100次模型训练和验证，最后将结果平均。这样做的目的是让结果更精确一些。（研究发现，重复K折交叉验证可以提高模型评估的精确度，同时保持较小的偏差。）</li>
+</ol>
+</li>
+<li><p>性能度量：</p>
+<ol>
+<li><p>错误率与精度</p>
+</li>
+<li><p>查准率P与查全率R：一组矛盾的度量，以P为纵轴，R为横轴，得到的曲线为P-R曲线图平衡点（Break Even Point）是查准率&#x3D;查全率，查准率和查全率是<strong>一对“鱼”与“熊掌”</strong>，一把来说，查准率高时，查全率往往偏低；而查全率高时，查准率往往偏低。</p>
+<p>例如，如果想将垃圾邮件都选取出来，可以将所有邮件都标签为垃圾邮件，那么查全率就接近于1，但这样查准率就会比较低；如果希望分类垃圾邮件的查准率足够高，那么可以让分类器尽可能挑选最有把握的垃圾邮件，但这样往往会有大量的垃圾邮件成为漏网之鱼，此时查全率就会比较低。</p>
+</li>
+<li><p>F1度量：F1是基于查准率与查全率的调和平均(harmonic mean)定义的，能够表达对于查准率和查全率 的不同偏好。<br><img src="https://s2.loli.net/2024/09/12/R6CYgjEoa2yBhqF.png" alt="P-R曲线图"><br><img src="https://i-blog.csdnimg.cn/blog_migrate/8f2cacd1d19ca535ba447d751a1e9fb1.jpeg" alt="F1度量"></p>
+</li>
+<li><p>当β&gt;0时，度量了查全率和查准率的相对重要性。β&#x3D;1，退化为标准的F1</p>
+</li>
+<li><p>二分类问题得出的分类结果可以得出“混淆矩阵”。</p>
+</li>
+<li><p>ROC曲线和AUC（度量分类中的非均衡性），</p>
+</li>
+<li><p>ROC 关注两个指标：</p>
+<p>TPR（True Positive Rate）表示在所有实际为正例（阳性）的样本中，被正确地判断为正例的比率，即：</p>
+<pre><code>TPR=TP/(TP + FN)
+</code></pre>
+<p>FPR（ False Positive Rate）表示在所有实际为反例（阴性）的样本中，被错误地判断为正例的比率，即：</p>
+<pre><code>FPR=FP/(FP + TN）
+</code></pre>
+<p>****AUC值****（Area Unser the Curve）是ROC曲线下的面积</p>
+</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/c6aeafc9bf3e9bb77a73427f37cd4e1b.jpeg" alt="ROC曲线"></p>
+<h2 id="第三章-线性模型"><a href="#第三章-线性模型" class="headerlink" title="第三章 线性模型"></a>第三章 线性模型</h2><ol>
+<li>线性回归（linear regression）：试图完成一条直线f(x)&#x3D;wx+b，并且使得f(x)接近y，如何衡量他们之间的差距，采用均方误差的方式（最常用的性能度量），在线性回归中，基于均方误差最小化来进行模型求解的方法叫做“最小二乘法”，最小二乘法就是试图找到一条直线，使所有样本到直线的欧式距离之和最小。对应的，多元线性回归（multivariate linear regression）就是对应于多个w和多个x，以向量形式来处理，</li>
+<li>对数几率回归，使用Sigmoid激活函数</li>
+</ol>
+<h2 id="第四章-决策树"><a href="#第四章-决策树" class="headerlink" title="第四章 决策树"></a>第四章 决策树</h2><p>Decision Tree是一种解决分类问题的算法，监督学习主要有两种任务：分类（连续）、回归（离散）。</p>
+<p>决策树算法采用树结构，层层推理来实现最终的分类。</p>
+<p>决策树学习的三个步骤：特征选择、决策树生成、决策树剪枝（解决过拟合问题，随机森林很大程度减少过拟合）。</p>
+<p>三种典型的决策树算法：ID3（采用信息增益）、C4.5（改进、采用信息增益比）、CART（采用基尼系数，<strong>CART树全称Classification And Regression Trees</strong>）</p>
+<p><strong>关于信息增益的理解：</strong></p>
+<p>熵：表示随机变量的不确定性</p>
+<p>条件熵：在一个条件下、随机变量的不确定性能</p>
+<p>信息增益：熵-条件熵，表示是在一个条件下，信息不确定性减少的程度。</p>
+<p>详细解释：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/22104055">信息增益到底怎么理解呢？</a></p>
+<p>剪枝处理，剪枝是决策树学习算法用于对付过拟合的主要手段，基本策略包括预剪枝、后剪枝。这里过拟合是指分支过多，训练结果“太好了”</p>
+<h2 id="第五章-神经网络"><a href="#第五章-神经网络" class="headerlink" title="第五章 神经网络"></a>第五章 神经网络</h2><p>神经网络是一种模仿人脑神经系统的数学模型，称为人工神经网络，简称神经网络．在机器学习领域，神经网络是指由很多人工神经元构成的网络结构模型，这些人工神经元之间的连接强度是可学习的参数．</p>
+<p>人脑神经元结构，典型的神经元结构可以分为细胞体和细胞突起：<br>（1） 细胞体（Soma）中的神经细胞膜上有各种受体和离子通道，胞膜的受体可与相应的化学物质神经递质结合，引起离子通透性及膜内外电位差发生改变，产生相应的生理活动：兴奋或抑制．<br>（2） 细胞突起是由细胞体延伸出来的细长部分，又可分为树突和轴突．<br>a ) 树突（Dendrite）可以接收刺激并将兴奋传入细胞体．每个神经元可以有一或多个树突．<br>b ) 轴突（Axon）可以把自身的兴奋状态从胞体传送到另一个神经元或其他组织．每个神经元只有一个轴突．</p>
+<p><img src="https://s2.loli.net/2024/10/02/oRNp8IiHZY2jaQh.png" alt="典型的神经元结构"></p>
+<p>人工神经网络是为模拟人脑神经网络而设计的一种计算模型，它从结构、实现机理和功能上模拟人脑神经网络．人工神经网络与生物神经元类似，由多个节点（人工神经元）互相连接而成，可以用来对数据之间的复杂关系进行建模。</p>
+<p>神经网络的不同节点的连接被赋予了不同的权重，每个权重代表了一个节点对另一个节点的影响大小，经过权重综合计算，将其输入到一个激活函数中得到一个<font color='red'>新的活性值（兴奋或抑制）</font>。</p>
+<p><img src="https://s2.loli.net/2024/10/02/YsZC9IbMovPrG5d.png" alt="典型的神经元结构"></p>
+<p>参考：邱锡鹏，神经网络与深度学习，机械工业出版社，<a target="_blank" rel="noopener" href="https://nndl.github.io/">https://nndl.github.io/</a>, 2020.</p>
+<h2 id="第六章-支持向量机"><a href="#第六章-支持向量机" class="headerlink" title="第六章 支持向量机"></a>第六章 支持向量机</h2><p>支持向量机（Support Vector Machine，SVM）是一个经典的二分类算法，其找到的分割超平面具有更好的鲁棒性。</p>
+<p>首先定义间隔γ表示整个数据集地所有样本到分割超平面地最小距离，γ越大，其分割超平面对两个数据集地划分就越稳定，不容易收到噪声地干扰。支持向量机的目标就是<font color='red'><strong>寻找一个超平面使得γ最大</strong></font>。</p>
+<p><img src="https://s2.loli.net/2024/10/03/ucNXTIil9OGFsx7.png" alt="SVM示例"></p>
+<p>摘自 邱锡鹏，神经网络与深度学习，机械工业出版社，<a target="_blank" rel="noopener" href="https://nndl.github.io/">https://nndl.github.io/</a>, 2020.</p>
+<h2 id="第七章-贝叶斯分类器"><a href="#第七章-贝叶斯分类器" class="headerlink" title="第七章 贝叶斯分类器"></a>第七章 贝叶斯分类器</h2><p>贝叶斯分类是一类分类算法的总称，贝叶斯算法是这类算法的核心，</p>
+<p><strong>极大似然估计（Maximum Likelihood Estimation，MLE）和贝叶斯估计（Bayesian Estimation）是统计推断中两种最常用的参数估计方法</strong>，这两种方法，也分别是频率派和贝叶斯派的观点</p>
+<p>机器学习所要实现的是基于有限的训练样本尽可能准确的估计后验概率p(c|x)，有两种方式来获取这个概率：</p>
+<ol>
+<li>判别式模型，通过直接建模来获取后验概率</li>
+<li>生成式模型，通过联合概率模型来建模，然后再获得后验概率，贝叶斯方法就是基于这个模型</li>
+</ol>
+<p>贝叶斯理论模型的<strong>最优</strong>性，选择后验概率中最大的那一个作为预测结果</p>
+<p><strong>分类：</strong>朴素贝叶斯分类器、半朴素贝叶斯分类器（独依赖估计、TAN、AODE）、贝叶斯网。</p>
+<p>通俗来讲，通过先验概率的计算后来获得后验概率的过程，其实就是通过已知的经验来判断后来的事情，经验越多，预测得到的东西也就越准。</p>
+<p>这种分类方式有一定的缺点，根本原因是，在决策过程中假设太强了，而且可能面临维度灾难，要考虑的特征过多。</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_59596937/article/details/128877355">8种异常检测算法</a></p>
+<p>课后小故事，贝叶斯怎么有这么多谜团，这也能出名，他从事数学研究的目的是为了证明上帝的存在（笑。</p>
+<h2 id="第八章-集成学习"><a href="#第八章-集成学习" class="headerlink" title="第八章 集成学习"></a>第八章 集成学习</h2><p>粗略看了一下</p>
+<p><a target="_blank" rel="noopener" href="https://easyai.tech/ai-definition/ensemble-learning/">集成学习</a></p>
+<h2 id="第九章-聚类"><a href="#第九章-聚类" class="headerlink" title="第九章 聚类"></a>第九章 聚类</h2><p>这是一种非监督学习的算法（与classification最大的区别），将不同性质的数据分成几个相同类型的数据，如何评定相同类型的数据，可以有下面这些标准：Euclidean distance, Cosine similarity, Manhattan distance, etc.</p>
+<p>聚类算法的分类：</p>
+<ol>
+<li>Centroid-based Clustering (Partitioning methods)</li>
+<li>Density-based Clustering (Model-based methods)</li>
+<li>Connectivity-based Clustering (Hierarchical clustering)</li>
+<li>Distribution-based Clustering</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/clustering-in-machine-learning/#what-is-clustering-">Clustering in Machine Learning - GeeksforGeeks</a></p>
+<h2 id="第十章-降维与度量学习"><a href="#第十章-降维与度量学习" class="headerlink" title="第十章 降维与度量学习"></a>第十章 降维与度量学习</h2><p><a target="_blank" rel="noopener" href="https://ins.sjtu.edu.cn/people/xuzhiqin/2020opti/2020machinelearning/%E7%BB%9F%E8%AE%A1%E8%AE%A1%E7%AE%97%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AD%A6%E7%94%9F%E6%95%B4%E7%90%86%E7%9A%84%E8%AE%B2%E4%B9%89/%E7%AC%AC%E5%8D%81%E4%B8%80%E8%AE%B2%E9%99%8D%E7%BB%B4%E4%B8%8E%E5%BA%A6%E9%87%8F%E5%AD%A6%E4%B9%A0.pdf">第十一讲降维与度量学习</a></p>
+<h2 id="第十一章-特征选择与稀疏学习"><a href="#第十一章-特征选择与稀疏学习" class="headerlink" title="第十一章 特征选择与稀疏学习"></a>第十一章 特征选择与稀疏学习</h2><p>在机器学习中特征选择是一个重要的“<strong>数据预处理</strong>”（<strong>data</strong> <strong>preprocessing</strong>）过程，即试图从数据集的所有特征中挑选出与当前学习任务相关的特征子集，接着再利用数据子集来训练学习器；稀疏学习则是围绕着稀疏矩阵的优良性质，来完成相应的学习任务。</p>
+<p>特征选择一般在获得数据之后首先需要进行的，因为在实际任务中经常会遇到维数灾难问题，其中提取的特征过多，大多数可能都是冗余的，所以要提取出重要特征来减少维数。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/Vay-keen/Machine-learning-learning-notes/blob/master/%E5%91%A8%E5%BF%97%E5%8D%8E%E3%80%8AMachine%20Learning%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(13)--%E7%89%B9%E5%BE%81%E9%80%89%E6%8B%A9%E4%B8%8E%E7%A8%80%E7%96%8F%E5%AD%A6%E4%B9%A0.md">周志华《Machine Learning》学习笔记(13)–特征选择与稀疏学习</a></p>
+<h2 id="第十二章-计算学习理论"><a href="#第十二章-计算学习理论" class="headerlink" title="第十二章 计算学习理论"></a>第十二章 计算学习理论</h2><p>顾名思义，Computational learning theory研究的是关于通过计算来进行学习的理论，分析学习人物的困难本质，为学习算法提供理论保证，并根据分析结果指导算法设计。</p>
+<p>PAC（Probably Approximately Correct，<font color='red'>可能近似正确</font>） 学习可以分为两部分：</p>
+<ol>
+<li>近似正确（Approximately Correct）：泛化错误小于一个界限，一般为1&#x2F;2，即，0 &lt; 𝜖 &lt;1&#x2F;2；机器学习中一个很关键的问题是期望错误和经验错误之间的差异，称为泛化错误（Generalization Error）．泛化错误可以衡量一个机器学习模型𝑓 是否可以很好地泛化到未知数据．</li>
+<li>可能（Probably）：一个学习算法<font color='red'>可能</font>以一定的概率学习到这样一个近似正确的假设。</li>
+</ol>
+<h2 id="第十三章-半监督学习"><a href="#第十三章-半监督学习" class="headerlink" title="第十三章 半监督学习"></a>第十三章 半监督学习</h2><p>在许多ML的实际应用中，很容易找到海量的无类标签的样例，但需要使用特殊设备或经过昂贵且用时非常长的实验过程进行人工标记才能得到有类标签的样本，由此产生了极少量的有类标签的样本和过剩的无类标签的样例。因此，人们尝试将大量的无类标签的样例加入到有限的有类标签的样本中一起训练来进行学习，期望能对学习性能起到改进的作用，由此产生了半监督学习(Semi-supervised Learning)。</p>
+<p>在做半监督学习(Semi-supervised Learning)的时候通常的情景如下：</p>
+<ol>
+<li>unlabeled data的数量要远大于label data</li>
+<li>直推半监督学习(Semi-supervised Learning)只处理样本空间内给定的训练数据，利用训练数据中有类标签的样本和无类标签的样例进行训练，预测训练数据中无类标签的样例的类标签</li>
+<li>归纳半监督学习(Semi-supervised Learning)处理整个样本空间中所有给定和未知的样例，同时利用训练数据中有类标签的样本和无类标签的样例，以及未知的测试样例一起进行训练，不仅预测训练数据中无类标签的样例的类标签，更主要的是预测未知的测试样例的类标签。</li>
+</ol>
+<p>半监督学习的需求非常强烈，因为在现实应用中往往能够很容易的收集到大量没有标记的样本。</p>
+<h2 id="第十四章-概率图模型"><a href="#第十四章-概率图模型" class="headerlink" title="第十四章 概率图模型"></a>第十四章 概率图模型</h2><p>概率图模型（probabilistic graphical model, PGM），是一种学习任务的框架描述，它将学习任务归结为计算变量的概率分布，巧妙的结合了图论和概率论。</p>
+<p>按照概率图中变量关系的不同，概率图模型可以大致分为两类：</p>
 <ul>
-<li>1）发送端将每个包都封装成固定的长度，比如100字节大小。如果不足100字节可通过补0或空等进行填充到指定长度；+ 2）发送端在每个包的末尾使用固定的分隔符，例如\r\n。如果发生拆包需等待多个包发送过来之后再找到其中的\r\n进行合并；例如，FTP协议；+ 3）将消息分为头部和消息体，头部中保存整个消息的长度，只有读取到足够长度的消息之后才算是读到了一个完整的消息；+ 4）通过自定义协议进行粘包和拆包的处理。</li>
+<li>贝叶斯网络：有向图模型，使用有向无环图表达关系（通常，变量间存在显式的因果关系）</li>
+<li>马尔科夫网络：无向图模型，使用无图表达关系（通常，变量间存有关系，但是难以显式表达）</li>
 </ul>
-<p>第三种方法是最常用的方法。</p>
-<h1 id="Writen、Readn函数：freecplus封装的报文格式"><a href="#Writen、Readn函数：freecplus封装的报文格式" class="headerlink" title="Writen、Readn函数：freecplus封装的报文格式"></a>Writen、Readn函数：freecplus封装的报文格式</h1><p>这两个函数指的是recv函数和send函数都存在读取的数据报文不完整的情况</p>
-<p><img src="https://img-blog.csdnimg.cn/48750a9aa42f4398a9ecd86cdc031e84.png"></p>
-<p><img src="https://img-blog.csdnimg.cn/db81aff3f9fd43468f773859e672ffd4.png"></p>
-<h1 id="TcpWrite、TcpRead：freecplus封装的报文格式"><a href="#TcpWrite、TcpRead：freecplus封装的报文格式" class="headerlink" title="TcpWrite、TcpRead：freecplus封装的报文格式"></a>TcpWrite、TcpRead：freecplus封装的报文格式</h1><p><img src="https://img-blog.csdnimg.cn/6264f37e6f624fcc831e1f7911d55935.png"></p>
-<p>报文长度+报文内容，这个就是Tcp粘包的一种最常见的解决方法。</p>
-<p>这两个函数的参数的详细解释：</p>
-<p><img src="https://img-blog.csdnimg.cn/78be6cf7cff9412fbb9389d3b8f46d86.png"></p>
-<h1 id="进程间通信"><a href="#进程间通信" class="headerlink" title="进程间通信"></a>进程间通信</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_34827674/article/details/107678226?app_version=5.7.0&code=app_1562916241&csdn_share_tail=%7B%22type%22:%22blog%22,%22rType%22:%22article%22,%22rId%22:%22107678226%22,%22source%22:%22m0_67623521%22%7D&uLinkId=usr1mkqgl919blen&utm_source=app">进程间通信</a></p>
-<p><img src="https://img-blog.csdnimg.cn/bd5ffdf56f9a48f4ad79ad566ff4a382.png"></p>
-<p><a target="_blank" rel="noopener" href="https://www.freecplus.net/d95f4eaf18eb46d19b82383519126dec.html">Linux进程间通信</a></p>
-<p>六种方式，前两者不经常使用，共享内存没有加锁的机制，所以经常与信号灯结合一起来使用，在高性能的网络服务端程序中，可以用共享内存作为的数据缓存（cache）。</p>
-<h1 id="避免僵尸进程"><a href="#避免僵尸进程" class="headerlink" title="避免僵尸进程"></a>避免僵尸进程</h1><p><a target="_blank" rel="noopener" href="https://zh.m.wikipedia.org/zh-cn/%E7%88%B6%E8%BF%9B%E7%A8%8B">僵尸进程、孤儿进程</a>，<a target="_blank" rel="noopener" href="https://www.cnblogs.com/anker/p/3271773.html">两种进程的解决办法、分别模拟产生</a></p>
-<p><strong>僵尸进程：</strong>进程退出的时候，unix将该进程的所有资源释放，但是仍然为其保留一定的信息，包括进程号（process identify），退出状态，运行时间。这个是一种机制，可以让父进程任何时候想知道子进程的状态信息的时候都可以调出来。这些信息的资源需要直到父进程调用wait&#x2F;waitpid来取信息的时候才释放，但是如果父进程不去调用wait&#x2F;waitpid，它的进程号就会一直占用，如果大量的产生僵尸进程，将因为没有可用的进程号而导致系统不能产生新的进程. 此即为僵尸进程的危害，应当避免。</p>
-<p><strong>孤儿进程</strong>是没有父进程的进程，孤儿进程这个重任就落到了init进程身上，init进程就好像是一个民政局，专门负责处理孤儿进程的善后工作。每当出现一个孤儿进程的时候，内核就把孤儿进程的父进程设置为init，而init进程会循环地wait()它的已经退出的子进程。这样，当一个孤儿进程凄凉地结束了其生命周期的时候，init进程就会代表党和政府出面处理它的一切善后工作。因此孤儿进程并不会有什么危害。</p>
-<p>两种解决方式：</p>
-<p><img src="https://img-blog.csdnimg.cn/096e5fdce86547a3892667ff067a130a.png"></p>
-<p><img src="https://img-blog.csdnimg.cn/65ae655429574b4da4de465797be3996.png"></p>
-<p><img src="https://img-blog.csdnimg.cn/af2aeb7866444e1196f7b7ea5a9e9a96.png"></p>
-<p>僵尸进程是指系统将进程退出的信息保存下来，此时占用一个进程编号，除非调用wait&#x2F;waitpid，将其释放，否则如果出现过多的僵尸进程会将进程号使用完，孤儿进程是指该进程没有父进程，从而被init进程管理，可以回收资源。</p>
-<p>我后面才知道没有模拟出僵尸进程的原因，需要多个客户端连接，使用多进程或者多线程，多进程需要fork函数才可以实现，</p>
-<p><img src="https://img-blog.csdnimg.cn/489863e0c4c644c9b870b9506346a632.png"></p>
-<p>有标志的进程就是僵尸进程。</p>
-<p>如果按Ctrl+c终止book250后，父进程退出，僵尸进程随之消失。</p>
-<p>有时使用ctrl+c的命令结束主进程是不对的，需要kill+pid。</p>
-<h1 id="C-x2F-C-服务程序的运行日志"><a href="#C-x2F-C-服务程序的运行日志" class="headerlink" title="C&#x2F;C++服务程序的运行日志"></a>C&#x2F;C++服务程序的运行日志</h1><p>tail -f demo47.log 查看日志文件，获取内容</p>
-<p>mirac@ubuntu:~&#x2F;Desktop&#x2F;网络编程$ tar zxvf freecplus_20200615.tgz -C .&#x2F;</p>
-<p>先解压文件</p>
-<h1 id="linux多进程：fork函数"><a href="#linux多进程：fork函数" class="headerlink" title="linux多进程：fork函数"></a>linux多进程：fork函数</h1><p>进程是操作系统进行资源分配和调度的一个基本单位。</p>
-<p>fork调用后，子进程与父进程是否共享变量：</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_39578364/article/details/78995433">fork调用后，子进程与父进程是否共享变量_浅浅的i的博客-CSDN博客</a></p>
-<p>不会真的共享变量，虽然地址是一样的，但是这个地址是给程序员看的虚拟地址，真正通过内核映射到实际的物理地址是不一样的。</p>
-<p>fork多个子进程：</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42929607/article/details/116426096">fork创建多个子进程_XV_的博客-CSDN博客_fork多个子进程</a></p>
-<h1 id="Linux信号的使用"><a href="#Linux信号的使用" class="headerlink" title="Linux信号的使用"></a>Linux信号的使用</h1><p><a target="_blank" rel="noopener" href="https://www.freecplus.net/eec5c39aa63b45ad946f1cc08134d9f9.html">Linux信号 (freecplus.net)</a></p>
-<p>当服务程序运行在后台的时候，直接使用Ctrl+c让程序直接退出是不好的，因为程序突然退出，还有资源没有释放，这个时候signal函数就起作用了。</p>
-<p>使用信号函数：sighandler_t signal(int signum, sighandler_t handler);</p>
-<p>第一个参数是指signum是信号的编号，第二个参数是指处理信号的函数（可以在里面编写释放资源的代码）。</p>
-<p>不需要清楚返回值。</p>
-<p>程序员关心的信号有三个：SIGINT、SIGTERM和SIGKILL。</p>
-<p>按Ctrl+c，发出SIGINT信号，信号编号是2。</p>
-<p>采用“kill 进程编号”或“killall 程序名”，发出的是SIGTERM信号，编号是15。</p>
-<p>采用“kill -9 进程编号”，发出的是SIGKILL信号，编号是9，此信号不能被忽略，也无法捕获，程序将突然死亡。</p>
-<p>所以，程序员只要设置SIGINT和SIGTERM两个信号的处理函数就可以了，这两个信号可以使用同一个处理函数，函数的代码是释放资源。</p>
-<p>demo:signal.cpp</p>
-<p><img src="https://img-blog.csdnimg.cn/3b97ff370226457a81df802f3ea26e9d.png"></p>
-<h1 id="Linux共享内存的函数"><a href="#Linux共享内存的函数" class="headerlink" title="Linux共享内存的函数"></a>Linux共享内存的函数</h1><p><a target="_blank" rel="noopener" href="https://www.freecplus.net/6cb9ad02d7d64d6eb2f8e241b1158aed.html">共享内存</a></p>
-<p>头文件：#include &lt;sys&#x2F;ipc.h&gt; #include &lt;sys&#x2F;shm.h&gt;</p>
-<p>1、shmget：获取或创建共享内存</p>
-<p>2、shmat：把共享内存连接到当前进程的地址空间</p>
-<p>3、shmdt：该函数用于将共享内存从当前进程中分离，相当于shmat函数的反操作。</p>
-<p>4、shmctl：删除共享内存</p>
-<p>要使用ipcs -m查看共享内存的信息</p>
-<p>一旦运行了程序，使用 ipcrm -m shmid，来删除共享内存，否则会一直存在</p>
-<h1 id="Linux多线程"><a href="#Linux多线程" class="headerlink" title="Linux多线程"></a>Linux多线程</h1><p><a target="_blank" rel="noopener" href="https://www.freecplus.net/c893ece166b94df4b2e185fa6f1c920c.html">多线程的函数使用、以及多线程socket</a></p>
-<p>在Linux下，采用pthread_create函数来创建一个新的线程，函数声明：</p>
-<p>函数声明：int pthread_create(pthread_t *thread, const pthread_attr_t *attr,void *(*start_routine) (void *), void *arg);</p>
-<h1 id="动态库与静态库"><a href="#动态库与静态库" class="headerlink" title="动态库与静态库"></a>动态库与静态库</h1><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/skynet/p/3372855.html">C++静态库与动态库 </a></p>
-<p>在使用的时候，都是尽量的在使用动态库，因为静态库占用空间大，静态库是将所有相关的目标文件与牵涉到的函数库被链接合成一个可执行文件，其中一个文件修改，整个项目都要重新编译以及用户也要重新下载（最大的缺点）。</p>
-<h1 id="argc与argv"><a href="#argc与argv" class="headerlink" title="argc与argv"></a>argc与argv</h1><p>.&#x2F;在终端运行代码时，加入的参数存储在argc、argv中，argc是参的个数，argv是参数的值</p>
-<h1 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a>Makefile</h1><p><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2015/02/make.html">Makefile</a>， Makefile</p>
-<h1 id="GDB的简单使用"><a href="#GDB的简单使用" class="headerlink" title="GDB的简单使用"></a>GDB的简单使用</h1><p>首先g++中加入-g参数，然后file+可执行文件的名字，run，b，c，一直使用n，最后使用quit退出。如果需要设置参数使用set args</p>
-<p><img src="https://img-blog.csdnimg.cn/0174c5ac5f254dde91e3d18f7611c9f2.png"></p>
-<p><img src="https://img-blog.csdnimg.cn/1b5ea4464d5e40f383b54505ca5a0781.png"></p>
-<p>例子：</p>
-<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6984368713940074532">GDB的例子</a>，通过测试了两个易错的面试题， int a[5]&#x3D;{0,1,2,3,4},&amp;a+1的地址是a+1的地址，即数组的后面一个位置（想象成二维数组）</p>
-<h1 id="Tcp长连接与短连接"><a href="#Tcp长连接与短连接" class="headerlink" title="Tcp长连接与短连接"></a>Tcp长连接与短连接</h1><p>长连接：建立了一次连接之后需要长时间的保持住，双方需要互相发送检测的包，</p>
-<p>流程：三次握手建立连接–》传输数据–》保持连接(心跳)–》发送数据–》保持连接(心跳)……–》4次挥手断开连接。</p>
-<p>短连接：建立一次连接，发送完数据之后就断开连接。</p>
-<p>流程：3次握手建立连接–》传输数据–》4次挥手断开连接。</p>
-<p>由于在建立连接与断开连接的过程中要消耗资源和时间的，所以在不同的场景需要使用不同的方式。</p>
-<p>对于服务器来说，服务器里的这些个长连接其实很有数据库连接池的味道，大家都是为了节省连接重复利用嘛。</p>
-<p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000021696056">（史上最通俗！）http请求怎样实现TCP长连接，以及长轮询和短轮询的区别。</a></p>
-<p>长轮询和短轮询（针对淘宝的库存量的显示的场景）</p>
-<h1 id="网络服务性能测试"><a href="#网络服务性能测试" class="headerlink" title="网络服务性能测试"></a>网络服务性能测试</h1><p>主要的性能指标：</p>
-<p>1、服务端的并发能力</p>
-<p>2、服务端的业务处理能力</p>
-<p>3、客户端接收响应的时效</p>
-<p>4、网络带宽</p>
-<h1 id="I-x2F-O复用"><a href="#I-x2F-O复用" class="headerlink" title="I&#x2F;O复用"></a>I&#x2F;O复用</h1><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6882984260672847879">彻底理解 IO 多路复用实现机制</a></p>
-<p>有三种模式：select、poll、epoll，各有适合的应用场景。</p>
-<p>env | grep LANG&#x2F;&#x2F;查看使用的编码格式</p>
-<p><a target="_blank" rel="noopener" href="https://www.51cto.com/article/702199.html">彻底搞懂 Select &#x2F; Poll &#x2F; Epoll，就这篇了！</a></p>
-<h1 id="select"><a href="#select" class="headerlink" title="select"></a>select</h1><p>socket的集合fd_set用于存放多个socket，使用select来阻塞程序，而不是在分别的recv、read、send、accept阻塞。</p>
-<p><img src="https://img-blog.csdnimg.cn/a5c7ef0fd1444f0d959e868e18fe1595.png"></p>
-<p>在tcpSelect.cpp中while(1)循环里面fd_set使用的是temp_set，因为会改变原来的read_set，只做了一个基本的了解，时间可以的话要在听一遍。</p>
-<p><img src="https://img-blog.csdnimg.cn/7b2a3663acfd43b5a21287cc400d72ed.png"></p>
-<h1 id="poll"><a href="#poll" class="headerlink" title="poll"></a>poll</h1><p>优化了参数的设置，较为简单，但是不能跨平台，效率与select差不多</p>
-<p><img src="https://img-blog.csdnimg.cn/76d6df755d374959bb6be762dbd502d0.png"></p>
-<p>不需要备份fd_set,原因就在结构体pollfd中，有一个revent（return event）作为备份。</p>
-<p><img src="https://img-blog.csdnimg.cn/ad85870369e744798eb795f92bf37520.png"></p>
-<h1 id="epoll"><a href="#epoll" class="headerlink" title="epoll"></a>epoll</h1><p>结构体</p>
-<p><img src="https://img-blog.csdnimg.cn/50a5bc0052f043aa9f29307cae802f95.png"></p>
-<h1 id="ET和LT"><a href="#ET和LT" class="headerlink" title="ET和LT"></a>ET和LT</h1><p><img src="https://img-blog.csdnimg.cn/75df840aa325426d984f3916715a5e26.png"></p>
-<p>测试水平触发：</p>
-<ul>
-<li>事件没有处理：int xx&#x3D;0; 作为计数器，指定xx&#x3D;2的时候continue，然后这个事件就没有处理，看看epoll的处理方式（默认是水平触发，所以会立即报告）。+ 事件只处理了一般：read函数sizeof(buffer)，设置成小于它的数字，这个时候缓冲区就会剩余数据没有处理完，epoll也会立即处理完。</li>
-</ul>
-<p>一样的测试方法：</p>
-<p><img src="https://img-blog.csdnimg.cn/e97712c241c6488d82e362321b3c93b7.png"></p>
-<p>需要将accept函数设置为非阻塞的模式setnoblocking</p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a target="_blank" rel="noopener" href="https://www.freecplus.net/index.html">C语言技术网 - 首页</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV11Z4y157RY/?spm_id_from=333.1007.top_right_bar_window_custom_collection.content.click&vd_source=b99c7e40ffa0f64b68b706f2af755c8e">C&#x2F;C++网络编程，从socket到epoll_哔哩哔哩_bilibili</a>  </p>
-<p><a target="_blank" rel="noopener" href="https://www.freecplus.net/0047ac4059b14d52bcc1d4df6ae8bb83.html">网络通信基础socket</a></p>
-<p><strong>上面的大部分代码都改自于</strong><a target="_blank" rel="noopener" href="https://www.freecplus.net/0047ac4059b14d52bcc1d4df6ae8bb83.html">网络通信基础socket</a> </p>
+<p><a target="_blank" rel="noopener" href="https://longaspire.github.io/blog/%E6%A6%82%E7%8E%87%E5%9B%BE%E6%A8%A1%E5%9E%8B%E6%80%BB%E8%A7%88">概率图模型总览</a></p>
+<h2 id="第十五章-规则学习"><a href="#第十五章-规则学习" class="headerlink" title="第十五章 规则学习"></a>第十五章 规则学习</h2><p>机器学习中的“<strong>规则</strong>”(rule)通常是指语义明确、能描述数据分布所隐含的客观规律或领域概念</p>
+<p>目标是产生一个能覆盖尽可能多的样例的规则集。</p>
+<p>规则集生成的过程是一个贪心搜索的过程，因此为缓解过拟合的风险，最常见的做法就是剪枝（pruning）。</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/caolanying/p/16648584.html">规则学习</a></p>
+<h2 id="第十六章-强化学习"><a href="#第十六章-强化学习" class="headerlink" title="第十六章 强化学习"></a>第十六章 强化学习</h2><p>与监督学习不同的是，强化学习不需要带标签的输入输出对，同时也无需对非最优解的精确地纠正。其关注点在于寻找探索（对未知领域的）和利用（对已有知识的）的平衡。在一个学习过程结束后，根据获得的“奖励”来学习，并且进一步预测下面的东西。</p>
 
                 
             </div>
@@ -670,7 +588,7 @@ perror(const char* s">
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://allenmirac.github.io/2023/06/20/linux-wang-luo-bian-cheng/">https://allenmirac.github.io/2023/06/20/linux-wang-luo-bian-cheng/</a>
+                    <a href="https://allenmirac.github.io/2024/10/19/xi-gua-shu-shu-ben-nei-rong-za-tan/">https://allenmirac.github.io/2024/10/19/xi-gua-shu-shu-ben-nei-rong-za-tan/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -708,8 +626,8 @@ perror(const char* s">
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Linux/">
-                                    <span class="chip bg-color">Linux</span>
+                                <a href="/tags/DL/">
+                                    <span class="chip bg-color">DL</span>
                                 </a>
                             
                         </div>
@@ -788,17 +706,18 @@ perror(const char* s">
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2023/06/20/linux-wen-jian-miao-shu-fu/">
+                <a href="/2024/10/19/xi-gua-shu-shu-ben-nei-rong-za-tan/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="Linux文件描述符">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="西瓜书书本内容杂谈">
                         
-                        <span class="card-title">Linux文件描述符</span>
+                        <span class="card-title">西瓜书书本内容杂谈</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -808,9 +727,9 @@ perror(const char* s">
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-06-20
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-10-19
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -819,11 +738,12 @@ perror(const char* s">
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Linux/">
-                        <span class="chip bg-color">Linux</span>
+                    <a href="/tags/DL/">
+                        <span class="chip bg-color">DL</span>
                     </a>
                     
                 </div>
@@ -837,13 +757,13 @@ perror(const char* s">
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/06/20/linux-ming-ling-zhi-top/">
+                <a href="/2024/10/19/shen-du-xue-xi-shu-xue-ji-chu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Linux命令之top">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="深度学习数学基础">
                         
-                        <span class="card-title">Linux命令之top</span>
+                        <span class="card-title">深度学习数学基础</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -854,7 +774,7 @@ perror(const char* s">
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-06-20
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-10-19
                             </span>
                         <span class="publish-author">
                             
@@ -867,8 +787,8 @@ perror(const char* s">
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Linux/">
-                        <span class="chip bg-color">Linux</span>
+                    <a href="/tags/DL/">
+                        <span class="chip bg-color">DL</span>
                     </a>
                     
                 </div>
