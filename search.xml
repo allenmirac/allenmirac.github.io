@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>RNN中的梯度消失与梯度爆炸问题</title>
+      <link href="/2024/11/11/rnn-zhong-de-ti-du-xiao-shi-yu-ti-du-bao-zha-wen-ti/"/>
+      <url>/2024/11/11/rnn-zhong-de-ti-du-xiao-shi-yu-ti-du-bao-zha-wen-ti/</url>
+      
+        <content type="html"><![CDATA[<meta name="referrer" content="no-referrer" /><h2 id="梯度消失与梯度爆炸问题"><a href="#梯度消失与梯度爆炸问题" class="headerlink" title="梯度消失与梯度爆炸问题"></a>梯度消失与梯度爆炸问题</h2><p>循环神经网络（Recurrent Neural Network，RNN）是一类具有短期记忆能力的神经网络．在循环神经网络中，神经元不但可以接受其他神经元的信息，也可以接受自身的信息，形成具有环路的网络结构。</p><p>在RNN中，梯度计算时需要沿时间步反向传播（BPTT，Backpropagation Through Time），这个算法即按照时间的逆序将梯度信息一步步地往前传递．当输入序列比较长时了，时间步展开导致的<strong>长链乘积</strong>会存在梯度爆炸和消失问题，也称为长程依赖问题。</p><p><img src="https://i-blog.csdnimg.cn/direct/bb91f1cda5004e5ab6515c0da7a44ba3.png" alt="简单的前馈神经网络"></p><p>上图是一个简单的循环神经网络，只有一个隐藏层的神经网络，𝒉<em>𝑡不仅和当前时刻的输入𝒙_𝑡 相关，也和上一个时刻的隐藏层状态𝒉</em>{𝑡−1} 相关</p><p><img src="https://i-blog.csdnimg.cn/direct/e22ce116b84a438d81f7c962133dfe1a.png" alt="梯度消失与爆炸"></p><h3 id="分析步骤"><a href="#分析步骤" class="headerlink" title="分析步骤"></a>分析步骤</h3><p><img src="https://i-blog.csdnimg.cn/direct/fd6a6c3c096747c6893cbd13cc237cc8.png" alt="分析步骤"></p><p>分析：</p><p>1、使用了一个4层的前馈神经网络来模拟展开的RNN。</p><p>2、若激活函数是Sigmoid，求梯度的最大值是0.25，可能会导致梯度消失问题，这时候网络就学习不到东西了，即无法更新梯度。</p><p>3、若权重设置过大了，可能出现梯度爆炸问题，梯度变成NaN。</p><p>注：最后等式括号中根据不同的激活函数有不同的导数。</p><h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>从上面的分析过程可以看出，产生梯度爆炸或者梯度消失的原因有以下3个角度：<br> 1、激活函数<br> 2、初始化的权重过大<br> 3、网络层数太深<br> 所以解决方案也是从这三个方面来处理<br> 1、用ReLU、Leaky-ReLU、P-ReLU、R-ReLU、Maxout等替代sigmoid函数<br> 2、用Batch Normalization，批量归一化。<br> 3、LSTM的结构设计也可以改善RNN中的梯度消失问题，每个记忆单元(图中A)中包括细胞状态(Ct)，遗忘门，输入门和输出门。</p><p>以上就是在看完：<br>1、李沐学AI<br>2、邱锡鹏，神经网络与深度学习<br>后对RNN的梯度爆炸与消失的理论分析，接下来可以通过论文以及具体代码来分析</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> DL </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>c++中string底层实现之SSO</title>
       <link href="/2024/11/01/c-zhong-string-di-ceng-shi-xian-zhi-sso/"/>
       <url>/2024/11/01/c-zhong-string-di-ceng-shi-xian-zhi-sso/</url>
