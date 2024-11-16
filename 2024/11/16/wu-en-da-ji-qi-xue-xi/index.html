@@ -4,11 +4,11 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="C++_多线程：原子操作atomic, AllenMirac">
+    <meta name="keywords" content="吴恩达机器学习, AllenMirac">
     <meta name="description" content="
 
-原子操作atomicC++ 多线程：原子类型
-有两个线程，一个要写数据，一个读数据，如果不加锁，可能会造成读写值混乱，使用std::mutex程序执行不会导致混乱，但是每一次循环都要加锁解锁是的程序开销很大。 为了提高性能，C++11提">
+吴恩达机器学习写的比较乱，对于一些不懂的问题都记录在下面了
+一个人在不接触对方的情况下，通过一种特殊的方式，和对方进行一系列的问答．如果在相当长时间内，他无法根据这些问题判断对方是人还是计算机，那么就可以认为这个计算机是智能的．    ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -20,7 +20,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>C++_多线程：原子操作atomic | AllenMirac</title>
+    <title>吴恩达机器学习 | AllenMirac</title>
     <link rel="icon" type="image/jpeg" href="/ZoRo.jpg">
     
 
@@ -337,12 +337,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">C++_多线程：原子操作atomic</h1>
+                    <h1 class="description center-align post-title">吴恩达机器学习</h1>
                 </div>
             </div>
         </div>
@@ -366,14 +366,23 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/c/">
-                                <span class="chip bg-color">c++</span>
+                            <a href="/tags/DL/">
+                                <span class="chip bg-color">DL</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Deep-Learning/" class="post-category">
+                                Deep Learning
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -382,21 +391,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-06-20
+                    2024-11-16
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-06-21
+                    2024-11-16
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    461
+                    4.7k
                 </div>
                 
 
@@ -423,42 +432,173 @@
             <div id="articleContent">
                 <meta name="referrer" content="no-referrer" />
 
-<h2 id="原子操作atomic"><a href="#原子操作atomic" class="headerlink" title="原子操作atomic"></a>原子操作atomic</h2><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7086226046931959838">C++ 多线程：原子类型</a></p>
-<p>有两个线程，一个要写数据，一个读数据，如果不加锁，可能会造成读写值混乱，使用<code>std::mutex</code>程序执行不会导致混乱，<strong>但是每一次循环都要加锁解锁是的程序开销很大。</strong> 为了提高性能，C++11提供了原子类型(<code>std::atomic&lt;T&gt;</code>)，它提供了多线程间的原子操作，可以把原子操作理解成一种： <strong>不需要用到互斥量加锁（无锁）技术的多线程并发编程方式。</strong> 它定义在<code>&lt;atomic&gt;</code>头文件中，原子类型是封装了一个值的类型，它的访问保证不会导致数据的竞争，并且可以用于在不同的线程之间同步内存访问。从效率上来说，原子操作要比互斥量的方式效率要高。</p>
-<p><strong>atomic类型原子操作宣告C++11来到了多线程和并行编程的时代。</strong> 相对于偏于底层的<code>pthread</code>库，C++通过定义原子类型的方式，轻松地化解了互斥访问共享数据的难题。</p>
-<p>atomic的两个方法：load()&#x2F;&#x2F;读取数据 store()&#x2F;&#x2F;存储数据 fetch_add(val)&#x2F;&#x2F;加法 fetch_sub(val)&#x2F;&#x2F;减法 exchange()</p>
-<p>可以用在指针对象上，但是只表示指针是原子类型，指针指向的数据不一定是，atomic&lt;int *&gt; ptr;</p>
-<p>关于load、store的例子：</p>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">// atomic::load/store example</span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span>       <span class="token comment">// std::cout</span></span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;atomic></span>         <span class="token comment">// std::atomic, std::memory_order_relaxed</span></span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;thread></span>         <span class="token comment">// std::thread</span></span>
+<h1 id="吴恩达机器学习"><a href="#吴恩达机器学习" class="headerlink" title="吴恩达机器学习"></a>吴恩达机器学习</h1><p>写的比较乱，对于一些不懂的问题都记录在下面了</p>
+<p>一个人在不接触对方的情况下，通过一种特殊的方式，和对方进行一系列的问答．如果在相当长时间内，他无法根据这些问题判断对方是人还是计算机，那么就可以认为这个计算机是智能的．<br>                                                                                                                                                                                ——阿兰·图灵（Alan Turing）<br>                                                                                                                                                        《Computing Machinery and Intelligence 》</p>
+<p><img src="https://s2.loli.net/2024/10/02/ypk341ajhPZQoCU.png" alt="人工智能发展史"></p>
+<p>ps: 摘自 邱锡鹏，神经网络与深度学习，机械工业出版社，<a target="_blank" rel="noopener" href="https://nndl.github.io/">https://nndl.github.io/</a>, 2020. P5</p>
+<h2 id="代价函数"><a href="#代价函数" class="headerlink" title="代价函数"></a>代价函数</h2><p>cost function，所有样本误差的平均，与损失函数不同的地方是，loss function是定义在单个样本上的误差。</p>
+<p>常用的是<font color=red>平方误差代价函数</font></p>
+<p>这里解释什么是代价，代价就是预测值与实际值之间的差距，对于多个样本来说就是代价之和，但是对于怎么处理这个和，有一定的门道，需要解决<strong>正负值、数据量</strong>与cost之间的关系，最终才采取了下面的函数</p>
+<p><img src="https://s2.loli.net/2024/09/15/UaRFvuoTnki7P9G.png" alt="代价函数"></p>
+<p>其中平方项可以抵消误差值正负数带来的影响，m是样本量，建立了代价（cost）与样本量之间的关系；1&#x2F;2是为了在对w,b求偏导（partial derivative）可以简化式子。</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/geaozhang/p/11442343.html">https://www.cnblogs.com/geaozhang/p/11442343.html</a></p>
+<h2 id="判断梯度下降是否收敛"><a href="#判断梯度下降是否收敛" class="headerlink" title="判断梯度下降是否收敛"></a>判断梯度下降是否收敛</h2><p>观察目标函数的损失函数值的变化情况，</p>
+<ol>
+<li>梯度的范数：当梯度的范数趋近于零时，可以认为算法已经收敛。设置一个阈值。</li>
+<li>目标函数值的变化</li>
+<li>迭代次数，设置最大迭代次数</li>
+<li>收敛曲线图，看图说话</li>
+</ol>
+<h2 id="激活函数"><a href="#激活函数" class="headerlink" title="激活函数"></a>激活函数</h2><p>理解不了为什么要将输出变成非线性的，如何理解为什么需要激活函数？如果你串联几个线性变换，得到的最后依旧是一个线性变换，例如，f(x)&#x3D;3x+1, g(x)&#x3D;2x+2,串联这两个函数得到的是一个f(g(x))&#x3D;6x+7，因此，如果在层之间没有一些非线性，那么即使是深层堆叠也等效于单层，你无法用它解决非常复杂的问题。相反，具有非线性激活的足够大的 DNN 在理论上可以逼近任何连续函数。（这种解释太帅啦，但是还是不能理解串联起来有什么用处，各个神经层次之间为什么需要串联以及串联和求导是什么关系）</p>
+<ol>
+<li><p>Sigmoid激活函数，也叫S形函数<br><img src="https://bkimg.cdn.bcebos.com/formula/c652f9ceaee0518a93007ca80c51c934.svg" alt="Sigmoid"></p>
+</li>
+<li><p>ReLu函数<br><img src="https://bkimg.cdn.bcebos.com/formula/061b8705cd0dd363c1752fe0d9db0faa.svg" alt="img"></p>
+</li>
+<li><p>Tanh函数<br><img src="https://bkimg.cdn.bcebos.com/formula/27dc16c40e8ca243c251fe1048fe68a9.svg" alt="img"></p>
+</li>
+</ol>
+<p>Blog：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/XDU-Lakers/p/10557496.html">https://www.cnblogs.com/XDU-Lakers/p/10557496.html</a></p>
+<h2 id="设置学习率"><a href="#设置学习率" class="headerlink" title="设置学习率"></a>设置学习率</h2><p>学习率Alpha，就是设置梯度下降的每一步的速率，不能过快也不能过慢</p>
+<h2 id="逻辑回归"><a href="#逻辑回归" class="headerlink" title="逻辑回归"></a>逻辑回归</h2><p>没看懂</p>
+<p>为了使反向传播正常工作，Rumelhart 和他的同事对 MLP 的架构进行了关键更改：他们用逻辑函数替换了阶跃函数，<em>σ</em>(<em>z</em>) &#x3D; 1 &#x2F; (1 + exp(–<em>z</em>))，也称为 S 形函数。</p>
+<h2 id="反向传播的工作原理"><a href="#反向传播的工作原理" class="headerlink" title="反向传播的工作原理"></a>反向传播的工作原理</h2><p>在 1970 年，一位名叫 Seppo Linnainmaa 的研究人员在他的硕士论文中介绍了一种自动高效计算所有梯度的技术。这个算法现在被称为<em>反向模式自动微分</em>（或简称<em>反向模式自动微分</em>）。通过网络的两次遍历（<strong>一次前向，一次后向</strong>），它能够计算神经网络中每个模型参数的误差梯度。换句话说，它可以找出如何调整每个连接权重和每个偏差以减少神经网络的误差。然后可以使用这些梯度执行梯度下降步骤。如果重复这个自动计算梯度和梯度下降步骤的过程，神经网络的误差将逐渐下降，直到最终达到最小值。这种反向模式自动微分和梯度下降的组合现在被称为<font color=red><em>反向传播</em></font>（或简称<em>反向传播</em>）。</p>
+<ul>
+<li>它一次处理一个小批量（例如，每个包含 32 个实例），并多次遍历整个训练集。每次遍历称为<em>纪元</em>。</li>
+<li>每个小批量通过输入层进入网络。然后，算法计算小批量中每个实例的第一个隐藏层中所有神经元的输出。结果传递到下一层，计算其输出并传递到下一层，依此类推，直到得到最后一层的输出，即输出层。这是<em>前向传递</em>：它与进行预测完全相同，只是所有中间结果都被保留，因为它们需要用于反向传递。</li>
+<li>接下来，算法测量网络的输出误差（即，使用比较期望输出和网络实际输出的损失函数，并返回一些误差度量）。</li>
+<li>然后计算每个输出偏差和每个连接到输出层的连接对误差的贡献。这是通过应用<em>链式法则</em>（可能是微积分中最基本的规则）进行分析的，使得这一步骤快速而精确。</li>
+<li>然后，算法测量每个下一层中每个连接贡献的误差量，再次使用链式法则，向后工作直到达到输入层。正如前面解释的那样，这个反向传递有效地测量了网络中所有连接权重和偏差的误差梯度，通过网络向后传播误差梯度（因此算法的名称）。</li>
+<li>最后，算法执行梯度下降步骤，调整网络中所有连接权重，使用刚刚计算的误差梯度。</li>
+</ul>
+<p>参考文章：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/apachecn/p/18006162">https://www.cnblogs.com/apachecn/p/18006162</a></p>
+<h2 id="numpy-dot-versus-matmul"><a href="#numpy-dot-versus-matmul" class="headerlink" title="numpy dot versus matmul"></a>numpy dot versus matmul</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
 
-std<span class="token double-colon punctuation">::</span>atomic<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token function">foo</span> <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment"># Define two vectors for the dot product</span>
+vector_a <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+vector_b <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 
-<span class="token keyword">void</span> <span class="token function">set_foo</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  foo<span class="token punctuation">.</span><span class="token function">store</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> std<span class="token double-colon punctuation">::</span>memory_order_relaxed<span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment">// set value atomically</span>
-<span class="token punctuation">&#125;</span>
+<span class="token comment"># Calculate the dot product</span>
+dot_result <span class="token operator">=</span> np<span class="token punctuation">.</span>dot<span class="token punctuation">(</span>vector_a<span class="token punctuation">,</span> vector_b<span class="token punctuation">)</span>
 
-<span class="token keyword">void</span> <span class="token function">print_foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  <span class="token keyword">int</span> x<span class="token punctuation">;</span>
-  <span class="token keyword">do</span> <span class="token punctuation">&#123;</span>
-    x <span class="token operator">=</span> foo<span class="token punctuation">.</span><span class="token function">load</span><span class="token punctuation">(</span>std<span class="token double-colon punctuation">::</span>memory_order_relaxed<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// get value atomically</span>
-  <span class="token punctuation">&#125;</span> <span class="token keyword">while</span> <span class="token punctuation">(</span>x<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"foo: "</span> <span class="token operator">&lt;&lt;</span> x <span class="token operator">&lt;&lt;</span> <span class="token char">'\n'</span><span class="token punctuation">;</span>  <span class="token comment">// 10</span>
-<span class="token punctuation">&#125;</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"Dot Product: </span><span class="token interpolation"><span class="token punctuation">&#123;</span>dot_result<span class="token punctuation">&#125;</span></span><span class="token string">"</span></span><span class="token punctuation">)</span>
 
-<span class="token keyword">int</span> <span class="token function">main</span> <span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">&#123;</span>
-  std<span class="token double-colon punctuation">::</span>thread <span class="token function">first</span> <span class="token punctuation">(</span>print_foo<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  std<span class="token double-colon punctuation">::</span>thread <span class="token function">second</span> <span class="token punctuation">(</span>set_foo<span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  first<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  second<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment"># Define two matrices for matrix multiplication</span>
+matrix_a <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+matrix_b <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">11</span><span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 
+<span class="token comment"># Perform matrix multiplication</span>
+matmul_result <span class="token operator">=</span> np<span class="token punctuation">.</span>matmul<span class="token punctuation">(</span>matrix_a<span class="token punctuation">,</span> matrix_b<span class="token punctuation">)</span>
 
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Matrix Multiplication:"</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>matmul_result<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>result：</p>
+<p>Dot Product: 41<br>Matrix Multiplication:<br>[[ 58  64]<br> [139 154]]</p>
+<p>They serve different purposes and are used for distinct mathematical operations. <code>np.dot()</code> calculates the dot product between two arrays, whereas <code>np.matmul()</code> is specifically designed for matrix multiplication.</p>
+<h2 id="正则化、偏差和方差"><a href="#正则化、偏差和方差" class="headerlink" title="正则化、偏差和方差"></a>正则化、偏差和方差</h2><p><strong>正则化系数的选择</strong></p>
+<p>选择正则化系数λ 的值时也需要思考欠拟合和过拟合的问题。不知道如何理解正规化</p>
+<p><img src="https://i.loli.net/2018/12/01/5c0270d201ec5.png" alt="选择正则化系数"></p>
+<p>通常，我们选择一系列的想要测试的 λ 值，通常是 0-10 之间的呈现 2 倍关系的值（如：0,0.01,0.02,0.04,0.08,0.15,0.32,0.64,1.28,2.56,5.12,10 共 12 个）。 我们同样把数据分为训练集、交叉验证集和测试集。</p>
+<p>之后利用公式（看不懂公式）：</p>
+<p><img src="https://i.loli.net/2018/12/01/5c02716ba966d.png" alt="正则化"></p>
+<p>来选择λ，步骤是：</p>
+<ol>
+<li>使用训练集训练12个不同程度的正则化的模型</li>
+<li>用12个模型分别对交叉验证集计算出交叉验证误差，选择误差最小的模型</li>
+</ol>
+<p>得出的结果图：<a target="_blank" rel="noopener" href="https://momodel.github.io/mlbook/09/09-5.html">https://momodel.github.io/mlbook/09/09-5.html</a></p>
+<h2 id="处理倾斜数据集"><a href="#处理倾斜数据集" class="headerlink" title="处理倾斜数据集"></a>处理倾斜数据集</h2><p>数据不平衡，比如处理不合格产品，合格率位96.4%，如果每次预测结果都是合格，准确率就可以达到96.4%，显然这种做法是不对的。</p>
+<p>可以采用混淆矩阵来处理这种分类问题，对于给定的类别， 精确度和召回率的不同组合可以给出不同的意义，还可以使用ROC曲线来预测。</p>
+<p>高质量回答：<a target="_blank" rel="noopener" href="https://towardsdatascience.com/handling-imbalanced-datasets-in-machine-learning-7a0e84220f28">https://towardsdatascience.com/handling-imbalanced-datasets-in-machine-learning-7a0e84220f28</a></p>
+<h2 id="决策树"><a href="#决策树" class="headerlink" title="决策树"></a>决策树</h2><p>Decision Tree是一种解决分类问题的算法，监督学习主要有两种任务：分类（连续）、回归（离散）。</p>
+<p>决策树算法采用树结构，层层推理来实现最终的分类。</p>
+<p>决策树学习的三个步骤：特征选择、决策树生成、决策树剪枝（解决过拟合问题，随机森林很大程度减少过拟合）。</p>
+<p>三种典型的决策树算法：ID3（采用信息增益）、C4.5（改进、采用信息增益比）、CART（采用基尼系数，<strong>CART树全称Classification And Regression Trees</strong>）</p>
+<p><strong>关于信息增益的理解：</strong></p>
+<p>熵：表示随机变量的不确定性</p>
+<p>条件熵：在一个条件下、随机变量的不确定性能</p>
+<p>信息增益：熵-条件熵，表示是在一个条件下，信息不确定性减少的程度。</p>
+<p>详细解释：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/22104055">https://www.zhihu.com/question/22104055</a></p>
+<h2 id="One-Hot编码"><a href="#One-Hot编码" class="headerlink" title="One-Hot编码"></a>One-Hot编码</h2><p>独热编码，意思就是如果是相应编码位就是1，如果否相应编码位就是0，比如男女就可以用编码：01、10，再比如操作系统的采用位示图来表示磁盘中一个盘块的使用情况。</p>
+<h2 id="回归树"><a href="#回归树" class="headerlink" title="回归树"></a>回归树</h2><p>构建方式的核心：切分方式与属性选择</p>
+<p> 递归二分法</p>
+<p><a target="_blank" rel="noopener" href="https://www.showmeai.tech/article-detail/192">https://www.showmeai.tech/article-detail/192</a></p>
+<h2 id="How-to-understand-clustering"><a href="#How-to-understand-clustering" class="headerlink" title="How to understand clustering"></a>How to understand clustering</h2><p>这是一种非监督学习的算法（与classification最大的区别），将不同性质的数据分成几个相同类型的数据，如何评定相同类型的数据，可以有下面这些标准：Euclidean distance, Cosine similarity, Manhattan distance, etc.</p>
+<p>聚类算法的分类：</p>
+<ol>
+<li>Centroid-based Clustering (Partitioning methods)</li>
+<li>Density-based Clustering (Model-based methods)</li>
+<li>Connectivity-based Clustering (Hierarchical clustering)</li>
+<li>Distribution-based Clustering</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/clustering-in-machine-learning/#what-is-clustering-">Clustering in Machine Learning - GeeksforGeeks</a></p>
+<h2 id="异常检测算法"><a href="#异常检测算法" class="headerlink" title="异常检测算法"></a>异常检测算法</h2><p>找到与数据集分布不一致的算法，离群点、异常值检测</p>
+<p>一般针对无监督异常检测，因为异常点常常是没有标签的</p>
+<p>无监督异常检测算法的思想：</p>
+<p>1、基于聚类的算法</p>
+<p>2、基于统计的算法</p>
+<p>3、基于深度的方法</p>
+<p>4、基于分类模型</p>
+<p>5、基于偏差的方法</p>
+<p>6、基于重构的算法</p>
+<p>7、基于神经网络的算法</p>
+<h2 id="丑小鸭定理"><a href="#丑小鸭定理" class="headerlink" title="丑小鸭定理"></a>丑小鸭定理</h2><p>丑小鸭定理（Ugly Duckling Theorem）是1969 年由渡边慧提出的[Watanabe,1969]．“丑小鸭与白天鹅之间的区别和两只白天鹅之间的区别一样大”．这个定理初看好像不符合常识，但是仔细思考后是非常有道理的．因为世界上不存在相似性的客观标准，一切相似性的标准都是主观的．如果从体型大小或外貌的角度来看，丑小鸭和白天鹅的区别大于两只白天鹅的区别；但是如果从基因的角度来看，丑小鸭与它父母的差别要小于它父母和其他白天鹅之间的差别．</p>
+<p>这里的“丑小鸭”是指白天鹅的幼雏，而不是“丑陋的小鸭子”．渡边慧（1910～1993），美籍日本学者，理论物理学家，也是模式识别的最早研究者之一．</p>
+<p>相似性的评定也需要主观标准，训练结果的相似性也要针对具体情况。</p>
+<p>ps: 摘自 邱锡鹏，神经网络与深度学习，机械工业出版社，<a target="_blank" rel="noopener" href="https://nndl.github.io/">https://nndl.github.io/</a>, 2020.</p>
+<h2 id="超参数"><a href="#超参数" class="headerlink" title="超参数"></a>超参数</h2><p>超参数（Hyperparameter）是机器学习和深度学习中需要在训练模型之前设置的参数，而不是通过模型训练自动学习的参数。它们影响模型的训练过程和性能表现，通常需要通过实验和调优来选择最佳值。</p>
+<p>超参数和模型参数的区别是：</p>
+<ul>
+<li><strong>模型参数</strong>：模型训练过程中从数据中学习得到的参数，例如线性回归中的权重或神经网络中的权重和偏置。</li>
+<li><strong>超参数</strong>：在训练之前设定的参数，决定了模型的结构和训练过程，如学习率、批量大小（batch size）、隐藏层的数量等。</li>
+</ul>
+<p>常见的超参数包括：</p>
+<ol>
+<li><strong>学习率（Learning Rate）</strong>：控制每次更新模型参数的步长。</li>
+<li><strong>批量大小（Batch Size）</strong>：每次更新模型时使用的样本数量。</li>
+<li><strong>优化器类型（Optimizer）</strong>：用于更新模型参数的方法，如SGD、Adam等。</li>
+<li><strong>正则化参数（Regularization Parameter）</strong>：控制模型复杂度的参数，用于防止过拟合。</li>
+<li><strong>隐藏层数量和单元数量</strong>：对于神经网络，定义每层隐藏层的神经元数量和隐藏层的个数。</li>
+</ol>
+<p>调优超参数通常通过交叉验证或网格搜索等技术进行，以找到模型性能的最佳配置。</p>
+<h2 id="梯度下降算法"><a href="#梯度下降算法" class="headerlink" title="梯度下降算法"></a>梯度下降算法</h2><p>在具体使用梯度下降法的过程中，主要有以下几种不同的变种，即：batch、mini-batch、Stochastic。其主要区别是不同的变形在训练数据的选择上。</p>
+<p><strong>批量梯度下降法</strong>(Batch Gradient Descent)针对的是整个数据集，通过对所有的样本的计算来求解梯度的方向。在每次迭代时需要计算每个样本上损失函数的梯度并求和。当训练集中的样本数量𝑁 很大时，空间复杂度比较高，每次迭代的计算开销也很大。</p>
+<p>mini-batch GD：在上述的批梯度的方式中每次迭代都要使用到所有的样本，对于数据量特别大的情况，如大规模的机器学习应用，每次迭代求解所有样本需要花费大量的计算成本。是否可以在每次的迭代过程中<strong>利用部分样本代替所有的样本</strong>呢？基于这样的思想，便出现了mini-batch的概念。</p>
+<p>BGD和SGD的对比：<strong>批量梯度下降法</strong>相当于是从真实数据分布中采集𝑁 个样本，并由它们计算出来的经验风险的梯度来近似期望风险的梯度．为了减少每次迭代的计算复杂度，我们也可以在每次迭代时只采集一个样本，计算这个样本损失函数的梯度并更新参数，即<strong>随机梯度下降法</strong>。在<strong>非凸优化问题</strong>中，随机梯度下降更容易逃离局部最优点。</p>
+<p>SGD也有一些缺点，比如可能会导致收敛不稳定和收敛速度较慢。因此，许多研究者和工程师会使用 SGD 的变种，如 <strong>动量（Momentum）</strong>、<strong>Nesterov 加速梯度（Nesterov Accelerated Gradient）</strong>、<strong>Adam</strong> 等优化器，来克服这些缺点。</p>
+<p><strong>计算梯度的过程</strong>：在神经网络中，反向模式、前向模式都是都是应用链式法则的梯度累计方式，反向模式是更为有效的计算模式。在计算时，前向传播时会有一个计算图保存着所有操作节点的及其之间的关系，这样在反向传播计算梯度时（即调用backwrad函数），PyTorch 从损失函数（通常是计算图的最后一个节点）开始，沿着计算图向后遍历。在每个节点，PyTorch 会计算当前节点的输出对输入节点的导数（即梯度），并将这些梯度累加到每个输入的 <code>.grad</code> 属性中。</p>
+<p>对于复合函数 $$f(x; w,b)&#x3D;\frac{1}{e^{-(wx+b)}+1}$$ 的计算图如下：</p>
+<p><img src="https://s2.loli.net/2024/10/27/J5zfGqeyHURiSVo.png" alt="计算图"></p>
+<p>参考：邱锡鹏，神经网络与深度学习，机械工业出版社，<a target="_blank" rel="noopener" href="https://nndl.github.io/">https://nndl.github.io/</a>, 2020.</p>
+<p>Blog：<a target="_blank" rel="noopener" href="https://blog.csdn.net/cs24k1993/article/details/79120579">批梯度下降法(Batch Gradient Descent )，小批梯度下降 (Mini-Batch GD)，随机梯度下降 (Stochastic GD)</a>，里面有几张非常形象的图片</p>
+<p><a target="_blank" rel="noopener" href="https://paperswithcode.com/method/sgd-with-momentum">SGD with Momentum</a> 没看完</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_53765658/article/details/136668114">深度学习笔记:详解优化器之随机梯度下降（SGD）</a> 没看完</p>
+<h2 id="非凸优化问题"><a href="#非凸优化问题" class="headerlink" title="非凸优化问题"></a>非凸优化问题</h2><p>在优化问题中，目标是找到使目标函数达到最小值或最大值的变量集。凸优化问题涉及的函数具有凸性质，即函数图像上的两点连线在函数图像的上方。这种情况下，局部最小值也是全局最小值，优化问题相对较为简单。然而，非凸优化问题涉及的函数图像可能出现上下凹凸，存在多个局部极小&#x2F;大值，从而使问题变得复杂而有趣。</p>
+<h2 id="神经网络的三个概念：Batch、Epoch、Iteration"><a href="#神经网络的三个概念：Batch、Epoch、Iteration" class="headerlink" title="神经网络的三个概念：Batch、Epoch、Iteration"></a>神经网络的三个概念：Batch、Epoch、Iteration</h2><p>Batch表示批次，Iteration表示迭代，Epoch表示一代</p>
+<p>Batch：batch_size将影响到模型的优化程度，选择batch_size是为了在内存效率和内存容量之间进行权衡，</p>
+<p>batch_size选择总结：过小，训练数据会难以收敛，从而导致underfitting；增大，相对处理速度加快，所需内存容量增加。所以需要权衡，找到一个合适的batch_size。</p>
+<p>Epoch：是指将全部的样本（所以的batch）都完成一次forward+一次backward，通常情况下，一个epoch是不够的，在多个epoch后，模型的weight和bias会逐渐的更新，达到理想状态。  </p>
+<p>Iteration：一个<code>iteration</code>包括了一个<code>step</code>中前向传播、损失计算、反向传播和参数更新的流程，有<code>batch_size</code>个iteration。</p>
+<p>举个栗子：训练样本数量10000，batch_size&#x3D;100，一共100个Batch，一个Batch有100个Iteration，一个Epoch有100个Barch的训练过程，但是在每个Batch都会去更新weight和bias。</p>
+<p>参考：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/43673341">https://www.zhihu.com/question/43673341</a></p>
+<h2 id="梯度消失与梯度爆炸问题"><a href="#梯度消失与梯度爆炸问题" class="headerlink" title="梯度消失与梯度爆炸问题"></a>梯度消失与梯度爆炸问题</h2><h3 id="问题产生的原因"><a href="#问题产生的原因" class="headerlink" title="问题产生的原因"></a>问题产生的原因</h3><p>循环神经网络（Recurrent Neural Network，RNN）是一类具有短期记忆能力的神经网络．在循环神经网络中，神经元不但可以接受其他神经元的信息，也可以接受自身的信息，形成具有环路的网络结构。</p>
+<p>在RNN中，梯度计算时需要沿时间步反向传播（BPTT，Backpropagation Through Time），这个算法即按照时间的逆序将梯度信息一步步地往前传递．当输入序列比较长时了，时间步展开导致的<strong>长链乘积</strong>会存在梯度爆炸和消失问题，也称为长程依赖问题。</p>
+<p><img src="https://s2.loli.net/2024/11/06/53eNQXLIskyMFW6.png" alt="简单的前馈神经网络"></p>
+<p>上图是一个简单的循环神经网络，只有一个隐藏层的神经网络，$$𝒉<em>𝑡$$ 不仅和当前时刻的输入$$𝒙_𝑡$$ 相关，也和上一个时刻的隐藏层状态$$𝒉</em>{𝑡−1} $$相关</p>
+<p><img src="https://s2.loli.net/2024/11/06/tJHswL5PTy1G6Oi.png" alt="梯度消失与爆炸"></p>
+<h3 id="分析步骤"><a href="#分析步骤" class="headerlink" title="分析步骤"></a>分析步骤</h3><p><img src="https://s2.loli.net/2024/11/06/THbBFXl3ghcQN5w.png" alt="分析步骤"></p>
+<p>分析：</p>
+<p>1、使用了一个4层的前馈神经网络来模拟展开的RNN。</p>
+<p>2、若激活函数是Sigmoid，求梯度的最大值是0.25，可能会导致梯度消失问题，这时候网络就学习不到东西了，即无法更新梯度。</p>
+<p>3、若权重设置过大了，可能出现梯度爆炸问题，梯度变成NaN。</p>
+<p>注：最后等式括号中根据不同的激活函数有不同的导数。</p>
+<p>Blog:</p>
+<p><a target="_blank" rel="noopener" href="https://medium.com/metaor-artificial-intelligence/the-exploding-and-vanishing-gradients-problem-in-time-series-6b87d558d22">https://medium.com/metaor-artificial-intelligence/the-exploding-and-vanishing-gradients-problem-in-time-series-6b87d558d22</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.linkedin.com/advice/3/how-do-you-deal-vanishing-exploding-gradient">https://www.linkedin.com/advice/3/how-do-you-deal-vanishing-exploding-gradient</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/XDU-Lakers/p/10557496.html">https://www.cnblogs.com/XDU-Lakers/p/10557496.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/imreW/p/17366268.html">https://www.cnblogs.com/imreW/p/17366268.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/zf-blog/p/12793019.html">https://www.cnblogs.com/zf-blog/p/12793019.html</a></p>
 
                 
             </div>
@@ -485,7 +625,7 @@ std<span class="token double-colon punctuation">::</span>atomic<span class="toke
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://allenmirac.github.io/2023/06/20/c-duo-xian-cheng-yuan-zi-cao-zuo-atomic/">https://allenmirac.github.io/2023/06/20/c-duo-xian-cheng-yuan-zi-cao-zuo-atomic/</a>
+                    <a href="https://allenmirac.github.io/2024/11/16/wu-en-da-ji-qi-xue-xi/">https://allenmirac.github.io/2024/11/16/wu-en-da-ji-qi-xue-xi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -523,8 +663,8 @@ std<span class="token double-colon punctuation">::</span>atomic<span class="toke
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/c/">
-                                    <span class="chip bg-color">c++</span>
+                                <a href="/tags/DL/">
+                                    <span class="chip bg-color">DL</span>
                                 </a>
                             
                         </div>
@@ -603,17 +743,18 @@ std<span class="token double-colon punctuation">::</span>atomic<span class="toke
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2023/06/20/c-nei-cun-mo-xing-bian-yi-guo-cheng-gcc-ming-ling/">
+                <a href="/2024/11/16/wu-en-da-ji-qi-xue-xi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="c++内存模型、编译过程、gcc命令">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="吴恩达机器学习">
                         
-                        <span class="card-title">c++内存模型、编译过程、gcc命令</span>
+                        <span class="card-title">吴恩达机器学习</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -623,22 +764,27 @@ std<span class="token double-colon punctuation">::</span>atomic<span class="toke
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-06-20
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-11-16
+                            </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            AllenMirac
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Deep-Learning/" class="post-category">
+                                    Deep Learning
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/c/">
-                        <span class="chip bg-color">c++</span>
+                    <a href="/tags/DL/">
+                        <span class="chip bg-color">DL</span>
                     </a>
                     
                 </div>
@@ -652,13 +798,13 @@ std<span class="token double-colon punctuation">::</span>atomic<span class="toke
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/06/20/c-de-zhi-neng-zhi-zhen/">
+                <a href="/2024/11/11/rnn-zhong-de-ti-du-xiao-shi-yu-ti-du-bao-zha-wen-ti/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="C++的智能指针">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="RNN中的梯度消失与梯度爆炸问题">
                         
-                        <span class="card-title">C++的智能指针</span>
+                        <span class="card-title">RNN中的梯度消失与梯度爆炸问题</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -669,7 +815,7 @@ std<span class="token double-colon punctuation">::</span>atomic<span class="toke
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-06-20
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-11-11
                             </span>
                         <span class="publish-author">
                             
@@ -682,8 +828,8 @@ std<span class="token double-colon punctuation">::</span>atomic<span class="toke
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/c/">
-                        <span class="chip bg-color">c++</span>
+                    <a href="/tags/DL/">
+                        <span class="chip bg-color">DL</span>
                     </a>
                     
                 </div>
