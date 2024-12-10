@@ -508,19 +508,19 @@ ptr <span class="token operator">=</span> <span class="token operator">&amp;</sp
 </ul>
 </li>
 <li><p><strong>成员函数中的 <code>const</code><strong>： 当一个成员函数后面添加 <code>const</code> 修饰符时，表示该函数</strong>不会修改对象的任何成员变量</strong>：</p>
-<pre class="line-numbers language-none"><code class="language-none">cpp复制代码class MyClass &#123;
-private:
-    int value;
-public:
-    int getValue() const &#123;
-        return value; &#x2F;&#x2F; 只读操作
-    &#125;
-&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">MyClass</span> <span class="token punctuation">&#123;</span>
+<span class="token keyword">private</span><span class="token operator">:</span>
+    <span class="token keyword">int</span> value<span class="token punctuation">;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">int</span> <span class="token function">getValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> value<span class="token punctuation">;</span> <span class="token comment">// 只读操作</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>如果尝试在 <code>const</code> 成员函数中修改任何非 <code>mutable</code> 的成员变量，编译会报错。</p>
 </li>
 <li><p><strong><code>const</code> 和数组</strong>： 声明只读的数组：</p>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">cpp复制代码<span class="token keyword">const</span> <span class="token keyword">int</span> arr<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span> <span class="token comment">// 数组的内容是只读的</span>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">const</span> <span class="token keyword">int</span> arr<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span> <span class="token comment">// 数组的内容是只读的</span>
 arr<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>                 <span class="token comment">// 错误</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
 </ol>
 <h3 id="mutable"><a href="#mutable" class="headerlink" title="mutable"></a>mutable</h3><p>mutable为可变的，易变的跟C++中的const是反义词。被mutable修饰的变量(mutable智能用于修饰类的非静态数据成员)<strong>，将永远处于可变的状态</strong>, 即使在一个const函数中</p>
