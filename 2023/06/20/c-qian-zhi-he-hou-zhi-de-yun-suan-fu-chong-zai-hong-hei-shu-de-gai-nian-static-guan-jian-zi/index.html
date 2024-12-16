@@ -459,13 +459,12 @@
      cout<span class="token operator">&lt;&lt;</span>i<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
      <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
  <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h2><p><strong>红黑树的特性</strong>:*<em>（1）每个节点或者是黑色，或者是红色。</em><em><strong>（2）根节点是黑色。</strong></em><em>（3）每个叶子节点（NIL）是黑色。 [注意：这里叶子节点，是指为空(NIL或NULL)的叶子节点！]<strong><strong>（4）如果一个节点是红色的，则它的子节点必须是黑色的。</strong></strong>（5）从一个节点到该节点的子孙节点的所有路径上包含相同数目的黑节点。</em>*</p>
+<h2 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h2><p><strong>红黑树的特性</strong>:<strong>（1）每个节点或者是黑色，或者是红色。**</strong>（2）根节点是黑色。<strong><strong>（3）每个叶子节点（NIL）是黑色。 [注意：这里叶子节点，是指为空(NIL或NULL)的叶子节点！]</strong></strong>（4）如果一个节点是红色的，则它的子节点必须是黑色的。<strong>**（5）从一个节点到该节点的子孙节点的所有路径上包含相同数目的黑节点。</strong></p>
 <p><strong>红黑树的应用</strong></p>
 <p>红黑树的应用比较广泛，主要是用它来存储有序的数据，它的时间复杂度是O(log2n)，效率非常之高。<strong>例如，Java集合中的<a target="_blank" rel="noopener" href="http://www.cnblogs.com/skywang12345/p/3311268.html">TreeSet</a>和<a target="_blank" rel="noopener" href="http://www.cnblogs.com/skywang12345/p/3310928.html">TreeMap</a>，C++ STL中的set、map，以及Linux虚拟内存的管理，都是通过红黑树去实现的。</strong></p>
 <h2 id="static关键字"><a href="#static关键字" class="headerlink" title="static关键字"></a>static关键字</h2><p>总的来说</p>
 <ul>
-<li>（1）修饰变量，static 修饰的静态局部变量只执行初始化一次，延长了局部变量的生命周期，直到程序运行结束以后才释放。 +  （2）修饰全局变量：全局变量只能在本文件中访问，不能在其它文件中访问， <strong>extern 外部声明</strong>也不可以。 +  （3）修饰一个函数，则这个函数的只能在本文件中调用，不能被其他文件调用。static 修饰的变量存放在全局数据区的静态变量区，包括全局静态变量和局部静态变量，都在全局数据区分配内存。初始化的时候自动初始化为 0。 +  （4）不想被释放的时候，可以使用static修饰。比如修饰函数中存放在栈空间的数组，如果不想让这个数组在函数调用结束释放可以使用 static 修饰。 +  （5）考虑到数据安全性（当程序想要使用全局变量的时候应该先考虑使用 static）。</li>
+<li>（1）修饰变量，static 修饰的静态局部变量只执行初始化一次，延长了局部变量的生命周期，直到程序运行结束以后才释放。 +  （2）修饰全局变量：全局变量只能在本文件中访问，不能在其它文件中访问， <strong>extern 外部声明</strong>也不可以。 +  （3）修饰一个函数，则这个函数的只能在本文件中调用，不能被其他文件调用。static 修饰的变量存放在全局数据区的静态变量区，包括全局静态变量和局部静态变量，都在全局数据区分配内存。初始化的时候自动初始化为 0。 +  （4）不想被释放的时候，可以使用static修饰。比如修饰函数中存放在栈空间的数组，如果不想让这个数组在函数调用结束释放可以使用 static 修饰。 +  （5）考虑到数据安全性（当程序想要使用全局变量的时候应该先考虑使用 static）。 </li>
 </ul>
 
                 
@@ -874,7 +873,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">123.4k</span>
+                        class="white-color">123.1k</span>
             
             
             

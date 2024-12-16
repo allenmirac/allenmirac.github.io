@@ -461,27 +461,27 @@
 <h2 id="进程调度的层次"><a href="#进程调度的层次" class="headerlink" title="进程调度的层次"></a>进程调度的层次</h2><p><strong>有三种层次：</strong></p>
 <p>1、高级调度：作业调度，内存与辅存之间的调度</p>
 <p>2、中级调度：一种缓冲机制，作用是将暂时挂起的进程重新调入内存运行。进程挂起当内存不足的时候该进程不进入内存，而是在外存等待，即挂起状态。</p>
-<p>3、低级调度：进程&#x2F;线程调度，是操作系统中最基本的一种调度。</p>
+<p>3、低级调度：进程/线程调度，是操作系统中最基本的一种调度。</p>
 <h2 id="进程的调度方式："><a href="#进程的调度方式：" class="headerlink" title="进程的调度方式："></a>进程的调度方式：</h2><p>1、非剥夺式调度，一旦开始就必须等他运行结束，实现简单，系统开销小。</p>
 <p>2、剥夺式调度：在有优先级的进程时，处理一个优先级更高的进程，这个进程就要是剥夺式进程，就是要处理更加紧急的进程任务。<strong>釆用剥夺式的调度，对提高系统吞吐率和响应效率都有明显的好处。</strong></p>
 <h2 id="调度的评价标准："><a href="#调度的评价标准：" class="headerlink" title="调度的评价标准："></a>调度的评价标准：</h2><p>1、CPU 利用率</p>
 <p>2、系统吞吐率</p>
 <p>3、周转时间：作业完成时间-作业到来时间</p>
-<p>平均作业周转时间（相加之和&#x2F;数量）、平均带权作业周转时间&#x3D;（完成时间&#x2F;所需CPU时间+…）&#x2F;size</p>
+<p>平均作业周转时间（相加之和/数量）、平均带权作业周转时间=（完成时间/所需CPU时间+…）/size</p>
 <p>4、等待时间</p>
 <p>5、响应时间</p>
 <h2 id="典型的调度算法："><a href="#典型的调度算法：" class="headerlink" title="典型的调度算法："></a>典型的调度算法：</h2><p><strong>1、先来先服务算法（First Come First Served，FCFS）：</strong>每次从就绪队列中选择最先进入该队列的进程，直到完成。</p>
 <p><strong>2、短作业优先算法（Shortest Job First，SJF）：</strong>从后备队列中选择一个或若干个估计运行时间最短的作业，将它们调入内存运行。由于一直选则最短的作业运行，最早进入但是运行时间长的作业等待时间会很长，<strong>出现饥饿现象。</strong></p>
 <p><strong>3、最短剩余时间优先算法（Shortest Remaining Time First，SRTF）：</strong>将SJF改为剥夺式算法就成为了该算法。</p>
 <p><strong>3、优先级调度算法：</strong>优先级调度算法每次从后备作业队列中选择优先级最髙的一个或几个作业，将它们调入内存，分配必要的资源，创建进程并放入就绪队列。也分为静态优先级和动态优先级，静态优先级可能会造成饥饿现象，即低优先级的进程一直推迟运行。</p>
-<p><strong>4、高响应比优先算法（Highest Response Radio First，HRRF）：</strong>该算法是对FCFS调度算法和SJF调度算法的一种综合平衡，同时考虑每个作业的等待时间和估计的运行时间。在每次进行作业调度时，先计算后备作业队列中每个作业的响应比，从中<strong>选出响应比最高</strong>的作业投入运行。其中响应比&#x3D;(等待时间 + 作业处理时间) &#x2F; 作业处理时间。</p>
+<p><strong>4、高响应比优先算法（Highest Response Radio First，HRRF）：</strong>该算法是对FCFS调度算法和SJF调度算法的一种综合平衡，同时考虑每个作业的等待时间和估计的运行时间。在每次进行作业调度时，先计算后备作业队列中每个作业的响应比，从中<strong>选出响应比最高</strong>的作业投入运行。其中响应比=(等待时间 + 作业处理时间) / 作业处理时间。</p>
 <p><strong>5、时间片轮转调度算法（Round-Robin，RR）：</strong>在这种算法中，系统将所有就绪进程按到达时间的先后次序排成一个队列，进程调度程序总是选择就绪队列中第一个进程执行，即先来先服务的原则，但仅能运行一个时间片，如100ms，形成一个时间环。</p>
 <p><strong>6、多级反馈队列调度算法：</strong>它是时间片轮转调度算法和优先级调度算法的综合和发展，多个就绪队列，每个队列赋予不同的优先级，而且赋予每个队列的时间片也不相同，如第一个队列的优先级最高，时间片最短。如果是一个短作业，它在级别较高的队列就可以处理完；如果是一个长作业，第一级队列没有完成，可以转到下一个时间片更长的队列<strong>末尾</strong>，以此类推。</p>
 <h1 id="第三章：同步、通信和死锁"><a href="#第三章：同步、通信和死锁" class="headerlink" title="第三章：同步、通信和死锁"></a>第三章：同步、通信和死锁</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Shangxingya/article/details/113799732">操作系统~进程同步与进程互斥的概念和实现方式_Listen-Y的博客-CSDN博客</a></p>
-<h2 id="什么是进程同步？"><a href="#什么是进程同步？" class="headerlink" title="什么是进程同步？"></a>什么是进程同步？</h2><p><img src="https://img-blog.csdnimg.cn/img_convert/6bf12302e0c526b5e63e31f3d67167c8.png"></p>
+<h2 id="什么是进程同步？"><a href="#什么是进程同步？" class="headerlink" title="什么是进程同步？"></a>什么是进程同步？</h2><p><img src="https://img-blog.csdnimg.cn/img_convert/6bf12302e0c526b5e63e31f3d67167c8.png" alt=""></p>
 <p>请看这个管道通信的例子，显然必须先往里面写了数据之后，才可以读数据，但是读数据和写数据是异步发生的，我们不知道实际的读写数据操作谁先谁后，所以需要用进程同步来解决这种问题。</p>
 <p>同步亦称<strong>直接制约关系</strong>，它是指为完成某种任务而建立的两个或多个进程，这些进程因为需要在某些位置上协调它们的工作次序而产生的制约关系。进程间的直接制约关系就是<strong>源于它们之间的相互合作</strong>。</p>
-<h2 id="什么是进程互斥？"><a href="#什么是进程互斥？" class="headerlink" title="什么是进程互斥？"></a>什么是进程互斥？</h2><p>一句话来解释就是对共享资源（也叫临界资源）的互斥访问的控制。共享资源就是多个进程之间的需要共享的资源，在一个进程使用的时候，另外一个进程必须等待（C++中可以使用std::unique_lock<a href="std::mutex">std::mutex</a> std::lock_guard<a href="std::mutex">std::mutex</a>来实现资源的互斥锁）。</p>
+<h2 id="什么是进程互斥？"><a href="#什么是进程互斥？" class="headerlink" title="什么是进程互斥？"></a>什么是进程互斥？</h2><p>一句话来解释就是对共享资源（也叫临界资源）的互斥访问的控制。共享资源就是多个进程之间的需要共享的资源，在一个进程使用的时候，另外一个进程必须等待（C++中可以使用std::unique_lock<std::mutex> std::lock_guard<std::mutex>来实现资源的互斥锁）。</p>
 <p>实现资源互斥，需要遵循以下原则:1.空闲让进。2.忙则等待。3.有限等待。4. 让权等待。</p>
 <h2 id="进程同步的实现方式"><a href="#进程同步的实现方式" class="headerlink" title="进程同步的实现方式"></a>进程同步的实现方式</h2><p>1、临界区：Critical Section 通过对多线程的串行化来访问公共资源或一段代码，速度快，适合控制数据访问。</p>
 <p>2、互斥量（Mutex）：为协调共同对一个共享资源的单独访问而设计的。</p>
@@ -489,9 +489,9 @@
 <p>4、事件：用来通知线程有一些事件已发生，从而启动后继任务的开始。</p>
 <h2 id="进程互斥的实现方式"><a href="#进程互斥的实现方式" class="headerlink" title="进程互斥的实现方式"></a>进程互斥的实现方式</h2><p>软件算法：Peterson算法，给每个进程设置标志，为true代表此进程要求进入临界区。</p>
 <p>硬件算法：</p>
-<p>1、中断屏蔽方法：利用“开&#x2F;关中断指令”实现（与原语的实现思想相同，即在某进程开始访问临界区到结束访问为止都不允许被中断，也就不能发生进程切换，因此也不可能发生两个线程同时访问临界区的情况)</p>
+<p>1、中断屏蔽方法：利用“开/关中断指令”实现（与原语的实现思想相同，即在某进程开始访问临界区到结束访问为止都不允许被中断，也就不能发生进程切换，因此也不可能发生两个线程同时访问临界区的情况)</p>
 <p>2、测试并设置指令：系统利用TS指令来实现临界区的上锁和开锁原语操作（不可以中断的操作）。</p>
-<p>3、对换指令：void SWAP(bool key, bool lock){ bool temp&#x3D;b; b&#x3D;a; a&#x3D;tmep;}</p>
+<p>3、对换指令：void SWAP(bool key, bool lock){ bool temp=b; b=a; a=tmep;}</p>
 <h2 id="信号量和PV操作"><a href="#信号量和PV操作" class="headerlink" title="信号量和PV操作"></a>信号量和PV操作</h2><p><strong>1、一般信号量</strong></p>
 <p><code>**typedef struct&#123; int value; struct pcb* list;&#125;**</code><strong>，</strong><code>**void P(semaphore s)&#123; s.value--; if(s.value&lt;0) sleep(s.list);&#125;**</code><strong>，</strong></p>
 <p><code>**void V(semaphore s)&#123; s.value++; if(s.value&lt;=0) wakeup(s.list);&#125;**</code></p>
@@ -914,7 +914,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">123.4k</span>
+                        class="white-color">123.1k</span>
             
             
             

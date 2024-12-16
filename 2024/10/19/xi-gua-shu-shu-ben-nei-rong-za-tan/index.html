@@ -436,7 +436,7 @@
 <p><img src="https://s2.loli.net/2024/09/07/UArh6fMqCBjR8tw.png" alt="学习算法的总误差"></p>
 <p>7、NFL定理（<font color=red>No Free Lunch</font>），针对具体的问题谈论算法的优劣，裁缝做衣服</p>
 <p><img src="https://s2.loli.net/2024/09/07/FblyvzxMQLVcs6A.png" alt="NFL定理"></p>
-<p>8、历史发展过程，逻辑理论推理–&gt;”知识期”(人为的去教电脑知识)–&gt;自主学习知识，二十世纪八十年代是机器学习成为一个独立的学科领域、各种机器学习技术百花齐放。跳棋程序的发展历史：<a target="_blank" rel="noopener" href="https://blog.creaders.net/u/5477/202405/487515.html">https://blog.creaders.net/u/5477/202405/487515.html</a></p>
+<p>8、历史发展过程，逻辑理论推理—&gt;”知识期”(人为的去教电脑知识)—&gt;自主学习知识，二十世纪八十年代是机器学习成为一个独立的学科领域、各种机器学习技术百花齐放。跳棋程序的发展历史：<a target="_blank" rel="noopener" href="https://blog.creaders.net/u/5477/202405/487515.html">https://blog.creaders.net/u/5477/202405/487515.html</a></p>
 <p>9、一些闪光的思想，“迁移学习”（Transfer Learning），“类比学习”（Learning By Analogy），“深度学习”（Deeping Learning）</p>
 <p>10、课后习题看的头疼，完全看不懂，习题1.2直接可以用代码来解决了，厉害</p>
 <p>11、机器学习的别称，萨缪尔（研制了一个西洋跳棋程序）将其定义为“<font color=red>不显示编程赋予计算机能力的研究领域</font>”。</p>
@@ -451,7 +451,7 @@
 <p>当我们拿到数据之后，一般来说，我们把数据分成这样的三份：训练集（60%），验证集（20%），测试集（20%）。用训练集训练出模型，然后用验证集验证模型，根据情况不断调整模型，选出其中最好的模型，记录最好的模型的各项选择，然后据此再用（训练集+验证集）数据训练出一个新模型，作为最终的模型，最后用测试集<font color='red'>评估</font>最终的模型。</p>
 <ol>
 <li><strong>留一法（Leave One Out Cross Validation，LOOCV）</strong>：m个样本集合，拿出一个作为验证集，剩余m-1个作为训练集，这样进行m次当都的训练和验证，最后将m次验证结果取平均值，作为验证误差。<strong>缺点是计算量大，一般不作为实际使用</strong></li>
-<li><strong>K折交叉验证法（K-Fold Cross Validation）</strong>：把数据集分成K份，每个子集互不相交且大小相同，依次从K份中选出1份作为验证集，其余K-1份作为训练集，这样进行K次单独的模型训练和验证，最后将K次验证结果取平均值，作为此模型的验证误差。当K&#x3D;m时，就变为留一法。可见留一法是K折交叉验证的<strong>特例</strong>。根据经验，<strong>K一般取10</strong>。（在各种真实数据集上进行实验发现，10折交叉验证在偏差和方差之间取得了最佳的平衡。）</li>
+<li><strong>K折交叉验证法（K-Fold Cross Validation）</strong>：把数据集分成K份，每个子集互不相交且大小相同，依次从K份中选出1份作为验证集，其余K-1份作为训练集，这样进行K次单独的模型训练和验证，最后将K次验证结果取平均值，作为此模型的验证误差。当K=m时，就变为留一法。可见留一法是K折交叉验证的<strong>特例</strong>。根据经验，<strong>K一般取10</strong>。（在各种真实数据集上进行实验发现，10折交叉验证在偏差和方差之间取得了最佳的平衡。）</li>
 <li><strong>多次K折交叉验证（Repeated K-Fold Cross Validation）</strong>：每次用不同的划分方式划分数据集，每次划分完后的其他步骤和K折交叉验证一样。例如：10 次 10 折交叉验证，即每次进行10次模型训练和验证，这样一共做10次，也就是总共做100次模型训练和验证，最后将结果平均。这样做的目的是让结果更精确一些。（研究发现，重复K折交叉验证可以提高模型评估的精确度，同时保持较小的偏差。）</li>
 </ol>
 </li>
@@ -459,12 +459,12 @@
 <ol>
 <li><p>错误率与精度</p>
 </li>
-<li><p>查准率P与查全率R：一组矛盾的度量，以P为纵轴，R为横轴，得到的曲线为P-R曲线图平衡点（Break Even Point）是查准率&#x3D;查全率，查准率和查全率是<strong>一对“鱼”与“熊掌”</strong>，一把来说，查准率高时，查全率往往偏低；而查全率高时，查准率往往偏低。</p>
+<li><p>查准率P与查全率R：一组矛盾的度量，以P为纵轴，R为横轴，得到的曲线为P-R曲线图平衡点（Break Even Point）是查准率=查全率，查准率和查全率是<strong>一对“鱼”与“熊掌”</strong>，一把来说，查准率高时，查全率往往偏低；而查全率高时，查准率往往偏低。</p>
 <p>例如，如果想将垃圾邮件都选取出来，可以将所有邮件都标签为垃圾邮件，那么查全率就接近于1，但这样查准率就会比较低；如果希望分类垃圾邮件的查准率足够高，那么可以让分类器尽可能挑选最有把握的垃圾邮件，但这样往往会有大量的垃圾邮件成为漏网之鱼，此时查全率就会比较低。</p>
 </li>
 <li><p>F1度量：F1是基于查准率与查全率的调和平均(harmonic mean)定义的，能够表达对于查准率和查全率 的不同偏好。<br><img src="https://s2.loli.net/2024/09/12/R6CYgjEoa2yBhqF.png" alt="P-R曲线图"><br><img src="https://i-blog.csdnimg.cn/blog_migrate/8f2cacd1d19ca535ba447d751a1e9fb1.jpeg" alt="F1度量"></p>
 </li>
-<li><p>当β&gt;0时，度量了查全率和查准率的相对重要性。β&#x3D;1，退化为标准的F1</p>
+<li><p>当β&gt;0时，度量了查全率和查准率的相对重要性。β=1，退化为标准的F1</p>
 </li>
 <li><p>二分类问题得出的分类结果可以得出“混淆矩阵”。</p>
 </li>
@@ -473,18 +473,16 @@
 <li><p>ROC 关注两个指标：</p>
 <p>TPR（True Positive Rate）表示在所有实际为正例（阳性）的样本中，被正确地判断为正例的比率，即：</p>
 <pre><code>TPR=TP/(TP + FN)
-</code></pre>
-<p>FPR（ False Positive Rate）表示在所有实际为反例（阴性）的样本中，被错误地判断为正例的比率，即：</p>
+</code></pre><p>FPR（ False Positive Rate）表示在所有实际为反例（阴性）的样本中，被错误地判断为正例的比率，即：</p>
 <pre><code>FPR=FP/(FP + TN）
-</code></pre>
-<p>****AUC值****（Area Unser the Curve）是ROC曲线下的面积</p>
+</code></pre><p><strong><em>\</em>AUC值**</strong>（Area Unser the Curve）是ROC曲线下的面积</p>
 </li>
 </ol>
 </li>
 </ol>
 <p><img src="https://i-blog.csdnimg.cn/blog_migrate/c6aeafc9bf3e9bb77a73427f37cd4e1b.jpeg" alt="ROC曲线"></p>
 <h2 id="第三章-线性模型"><a href="#第三章-线性模型" class="headerlink" title="第三章 线性模型"></a>第三章 线性模型</h2><ol>
-<li>线性回归（linear regression）：试图完成一条直线f(x)&#x3D;wx+b，并且使得f(x)接近y，如何衡量他们之间的差距，采用均方误差的方式（最常用的性能度量），在线性回归中，基于均方误差最小化来进行模型求解的方法叫做“最小二乘法”，最小二乘法就是试图找到一条直线，使所有样本到直线的欧式距离之和最小。对应的，多元线性回归（multivariate linear regression）就是对应于多个w和多个x，以向量形式来处理，</li>
+<li>线性回归（linear regression）：试图完成一条直线f(x)=wx+b，并且使得f(x)接近y，如何衡量他们之间的差距，采用均方误差的方式（最常用的性能度量），在线性回归中，基于均方误差最小化来进行模型求解的方法叫做“最小二乘法”，最小二乘法就是试图找到一条直线，使所有样本到直线的欧式距离之和最小。对应的，多元线性回归（multivariate linear regression）就是对应于多个w和多个x，以向量形式来处理，</li>
 <li>对数几率回归，使用Sigmoid激活函数</li>
 </ol>
 <h2 id="第四章-决策树"><a href="#第四章-决策树" class="headerlink" title="第四章 决策树"></a>第四章 决策树</h2><p>Decision Tree是一种解决分类问题的算法，监督学习主要有两种任务：分类（连续）、回归（离散）。</p>
@@ -535,11 +533,11 @@
 <h2 id="第十章-降维与度量学习"><a href="#第十章-降维与度量学习" class="headerlink" title="第十章 降维与度量学习"></a>第十章 降维与度量学习</h2><p><a target="_blank" rel="noopener" href="https://ins.sjtu.edu.cn/people/xuzhiqin/2020opti/2020machinelearning/%E7%BB%9F%E8%AE%A1%E8%AE%A1%E7%AE%97%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AD%A6%E7%94%9F%E6%95%B4%E7%90%86%E7%9A%84%E8%AE%B2%E4%B9%89/%E7%AC%AC%E5%8D%81%E4%B8%80%E8%AE%B2%E9%99%8D%E7%BB%B4%E4%B8%8E%E5%BA%A6%E9%87%8F%E5%AD%A6%E4%B9%A0.pdf">第十一讲降维与度量学习</a></p>
 <h2 id="第十一章-特征选择与稀疏学习"><a href="#第十一章-特征选择与稀疏学习" class="headerlink" title="第十一章 特征选择与稀疏学习"></a>第十一章 特征选择与稀疏学习</h2><p>在机器学习中特征选择是一个重要的“<strong>数据预处理</strong>”（<strong>data</strong> <strong>preprocessing</strong>）过程，即试图从数据集的所有特征中挑选出与当前学习任务相关的特征子集，接着再利用数据子集来训练学习器；稀疏学习则是围绕着稀疏矩阵的优良性质，来完成相应的学习任务。</p>
 <p>特征选择一般在获得数据之后首先需要进行的，因为在实际任务中经常会遇到维数灾难问题，其中提取的特征过多，大多数可能都是冗余的，所以要提取出重要特征来减少维数。</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/Vay-keen/Machine-learning-learning-notes/blob/master/%E5%91%A8%E5%BF%97%E5%8D%8E%E3%80%8AMachine%20Learning%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(13)--%E7%89%B9%E5%BE%81%E9%80%89%E6%8B%A9%E4%B8%8E%E7%A8%80%E7%96%8F%E5%AD%A6%E4%B9%A0.md">周志华《Machine Learning》学习笔记(13)–特征选择与稀疏学习</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/Vay-keen/Machine-learning-learning-notes/blob/master/%E5%91%A8%E5%BF%97%E5%8D%8E%E3%80%8AMachine%20Learning%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(13">周志华《Machine Learning》学习笔记(13)—特征选择与稀疏学习</a>—%E7%89%B9%E5%BE%81%E9%80%89%E6%8B%A9%E4%B8%8E%E7%A8%80%E7%96%8F%E5%AD%A6%E4%B9%A0.md)</p>
 <h2 id="第十二章-计算学习理论"><a href="#第十二章-计算学习理论" class="headerlink" title="第十二章 计算学习理论"></a>第十二章 计算学习理论</h2><p>顾名思义，Computational learning theory研究的是关于通过计算来进行学习的理论，分析学习人物的困难本质，为学习算法提供理论保证，并根据分析结果指导算法设计。</p>
 <p>PAC（Probably Approximately Correct，<font color='red'>可能近似正确</font>） 学习可以分为两部分：</p>
 <ol>
-<li>近似正确（Approximately Correct）：泛化错误小于一个界限，一般为1&#x2F;2，即，0 &lt; 𝜖 &lt;1&#x2F;2；机器学习中一个很关键的问题是期望错误和经验错误之间的差异，称为泛化错误（Generalization Error）．泛化错误可以衡量一个机器学习模型𝑓 是否可以很好地泛化到未知数据．</li>
+<li>近似正确（Approximately Correct）：泛化错误小于一个界限，一般为1/2，即，0 &lt; 𝜖 &lt;1/2；机器学习中一个很关键的问题是期望错误和经验错误之间的差异，称为泛化错误（Generalization Error）．泛化错误可以衡量一个机器学习模型𝑓 是否可以很好地泛化到未知数据．</li>
 <li>可能（Probably）：一个学习算法<font color='red'>可能</font>以一定的概率学习到这样一个近似正确的假设。</li>
 </ol>
 <h2 id="第十三章-半监督学习"><a href="#第十三章-半监督学习" class="headerlink" title="第十三章 半监督学习"></a>第十三章 半监督学习</h2><p>在许多ML的实际应用中，很容易找到海量的无类标签的样例，但需要使用特殊设备或经过昂贵且用时非常长的实验过程进行人工标记才能得到有类标签的样本，由此产生了极少量的有类标签的样本和过剩的无类标签的样例。因此，人们尝试将大量的无类标签的样例加入到有限的有类标签的样本中一起训练来进行学习，期望能对学习性能起到改进的作用，由此产生了半监督学习(Semi-supervised Learning)。</p>
@@ -969,7 +967,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">123.4k</span>
+                        class="white-color">123.1k</span>
             
             
             

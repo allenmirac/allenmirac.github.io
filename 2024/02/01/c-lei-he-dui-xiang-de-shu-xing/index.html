@@ -5,10 +5,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="C++类和对象的属性, AllenMirac">
-    <meta name="description" content="C++类和对象的属性千钧一发，让一根头发去承受三万斤的重量，但是它没有断。—–余华
+    <meta name="description" content="C++类和对象的属性千钧一发，让一根头发去承受三万斤的重量，但是它没有断。——-余华
 const修饰结构体指针内部值不能修改，即：只能读，不能写。防止误操作
 #include &amp;lt;iostream&gt;
-using namespace std">
+using namespace st">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -421,7 +421,7 @@ using namespace std">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="C-类和对象的属性"><a href="#C-类和对象的属性" class="headerlink" title="C++类和对象的属性"></a>C++类和对象的属性</h1><p>千钧一发，让一根头发去承受三万斤的重量，但是它没有断。—–余华</p>
+                <h1 id="C-类和对象的属性"><a href="#C-类和对象的属性" class="headerlink" title="C++类和对象的属性"></a>C++类和对象的属性</h1><p>千钧一发，让一根头发去承受三万斤的重量，但是它没有断。——-余华</p>
 <h2 id="const修饰结构体指针"><a href="#const修饰结构体指针" class="headerlink" title="const修饰结构体指针"></a>const修饰结构体指针</h2><p>内部值不能修改，即：只能读，不能写。防止误操作</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
@@ -450,9 +450,6 @@ using namespace std">
 
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-
 <h2 id="左移运算符重载"><a href="#左移运算符重载" class="headerlink" title="左移运算符重载"></a>左移运算符重载</h2><p>无法用成员函数写这个函数，因为不能把左移cout写在左边</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
@@ -477,7 +474,6 @@ using namespace std">
 
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h2 id="运算符加号重载"><a href="#运算符加号重载" class="headerlink" title="运算符加号重载"></a>运算符加号重载</h2><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">//1、成员函数重载+号</span>
 Person <span class="token keyword">operator</span><span class="token operator">+</span><span class="token punctuation">(</span>Person <span class="token operator">&amp;</span>p<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
     Person temp<span class="token punctuation">;</span>
@@ -498,12 +494,9 @@ Person p3 <span class="token operator">=</span> p1<span class="token punctuation
 
 <span class="token comment">// 全局函数调用本质</span>
 Person p3 <span class="token operator">=</span> <span class="token keyword">operator</span><span class="token operator">+</span><span class="token punctuation">(</span>p1<span class="token punctuation">,</span> p2<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-
 <h2 id="为什么有的操作符重载函数只能是成员函数"><a href="#为什么有的操作符重载函数只能是成员函数" class="headerlink" title="为什么有的操作符重载函数只能是成员函数"></a>为什么有的操作符重载函数只能是成员函数</h2><p>出自于 c++ primer 的一句话：</p>
 <blockquote>
-<p>赋值（&#x3D;）、下标（[]）、调用（()）和成员访问箭头（-&gt;）运算符必须是成员（函数）。</p>
+<p>赋值（=）、下标（[]）、调用（()）和成员访问箭头（-&gt;）运算符必须是成员（函数）。</p>
 </blockquote>
 <p>操作符重载函数规定是类的成员函数，有一个至关重要的特点：<strong>类的this指针会被绑定到运算符的左侧运算对象，成员运算符函数的显示参数比运算符对象总数少一个</strong>。</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_29344757/article/details/78820189">为什么有的操作符重载函数只能是成员函数</a></p>
@@ -543,9 +536,6 @@ MyClass <span class="token keyword">operator</span><span class="token operator">
 	cout <span class="token operator">&lt;&lt;</span> my2<span class="token punctuation">.</span><span class="token function">getA</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-
 <h2 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h2><p>构造函数也可以重载</p>
 <p>创建任何对象都要调用构造函数</p>
 <h2 id="析构顺序"><a href="#析构顺序" class="headerlink" title="析构顺序"></a>析构顺序</h2><p>当类内存在其他类成员时，构造函数顺序是先成员变量的构造函数，后本类的构造函数，析构顺序则相反</p>
@@ -633,11 +623,10 @@ MyClass <span class="token keyword">operator</span><span class="token operator">
     <span class="token function">test03</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>上面<code>Person</code>的<code>Phone</code>成员变量使用指针是因为<code>Person</code>类中的<code>Phone</code>对象是一个不完全类型，因此编译器无法确定其<strong>大小和布局</strong>。这导致在<code>Person</code>类中使用<code>Phone</code>对象时出现错误。</p>
 <h2 id="拷贝构造函数"><a href="#拷贝构造函数" class="headerlink" title="拷贝构造函数"></a>拷贝构造函数</h2><p>执行拷贝构造函数的三个时机</p>
 <p>（1）、用一个已经存在的对象来创建一个新的对象时（<strong>这是最本质的原因</strong>）</p>
-<p>Spot spot2&#x3D;spot1；</p>
+<p>Spot spot2=spot1；</p>
 <p>（2）、对象作为函数的参数（值传递，不是引用传递）时，实际上就是在调用拷贝构造函数。</p>
 <p>Spot spot3(spot2);</p>
 <p>（3）、函数的返回值是一个对象，执行return语句时，系统会自动调用拷贝构造函数创建返回值。</p>
@@ -694,7 +683,6 @@ MyClass <span class="token function">myFunction1</span><span class="token punctu
 
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>上面三个都是一次默认构造，一次拷贝构造，两次析构。<code>myFunction</code>和<code>myFunction1</code>的区别：按值传递会触发拷贝构造函数，按引用传递不会触发，但是传递返回值时会触发拷贝构造函数，所以输出结果相同</p>
 <h2 id="隐式转换"><a href="#隐式转换" class="headerlink" title="隐式转换"></a>隐式转换</h2><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
@@ -712,9 +700,8 @@ MyClass <span class="token function">myFunction1</span><span class="token punctu
     a1<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>a1&#x3D;3这行代码会调用构造函数，将3隐式转换为A类型（可以通过在A前面+explicit来验证），然后调用operator&#x3D;函数，就是上面的第一个时机。</p>
-<h2 id="C-x2F-C-数组名与指针区别"><a href="#C-x2F-C-数组名与指针区别" class="headerlink" title="C&#x2F;C++数组名与指针区别"></a>C&#x2F;C++数组名与指针区别</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/ykm0722/article/details/7031387">https://blog.csdn.net/ykm0722/article/details/7031387</a></p>
+<p>a1=3这行代码会调用构造函数，将3隐式转换为A类型（可以通过在A前面+explicit来验证），然后调用operator=函数，就是上面的第一个时机。</p>
+<h2 id="C-C-数组名与指针区别"><a href="#C-C-数组名与指针区别" class="headerlink" title="C/C++数组名与指针区别"></a>C/C++数组名与指针区别</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/ykm0722/article/details/7031387">https://blog.csdn.net/ykm0722/article/details/7031387</a></p>
 <h2 id="静态数据成员"><a href="#静态数据成员" class="headerlink" title="静态数据成员"></a>静态数据成员</h2><p>普通成员变量在类中只能声明可是不能定义，类在定义后并不分配存储空间，而是在定义类的对象的时候才分配存储空间，相反静态的数据成员和静态的成员函数是已经在内存中开辟了内存空间了，所以静态数据成员可以独立的访问在任何类对象没有建立起来都可以访问。</p>
 <p>你们班里面有10个人（10个比如高一一班的对象），体育老师分给你们一个篮球（静态成员函数），你们每个人都带了一个篮球（非静态成员数），你们都很小气，自己的球只能自己拍，要是5对5打比赛，那就只能用那个静态的篮球了（每个人都可以拿来用，但是带来的影响是对全体的）。因此，我可以说那个篮球是高一一班的成员。所以也就是说：静态成员函数是类的成员函数（因为高一二班就不能拿来玩），但是这个篮球最后还是要还给老师的，任何私人不得占有。希望这样你能明白，其实在内存空间里面说白了静态的成员的内存是唯一的一份，就是当你在类内声明他时开辟的，但是非静态函数的空间分配是在你实例化对象时创建的。</p>
 <p>静态成员变量是所有的类共有的，它有两种访问方式：</p>
@@ -747,7 +734,6 @@ MyClass <span class="token function">myFunction1</span><span class="token punctu
     p1<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h3 id="研究静态函数成员是否有this指针"><a href="#研究静态函数成员是否有this指针" class="headerlink" title="研究静态函数成员是否有this指针"></a>研究静态函数成员是否有this指针</h3><p>结论：没有，因为静态成员函数<strong>不属于某个对象</strong>，被类的所有对象共享。</p>
 <h2 id="类的组合与继承"><a href="#类的组合与继承" class="headerlink" title="类的组合与继承"></a>类的组合与继承</h2><p><strong>当一个类将要被继承时，为了方便对他的继承，往往将他的private数据成员改为protected访问权限，因为基类的private成员不方便在派生类中访问</strong></p>
 <p><strong>注意</strong>:<strong>只有构造函数初始化的时候能使用初始化列表</strong>。成员函数不行，要不然会报错</p>
@@ -787,7 +773,6 @@ MyClass <span class="token function">myFunction1</span><span class="token punctu
     Point <span class="token function">p1</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">p2</span><span class="token punctuation">(</span><span class="token number">11</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     cout <span class="token operator">&lt;&lt;</span> <span class="token function">Distance</span><span class="token punctuation">(</span>p1<span class="token punctuation">,</span> p2<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>如果子类中有与父类中同名的成员函数，直接调用是调用子类中的，子类中的同名的成员函数会覆盖父类中所有同名成员函数，如果想要访问的话，需要加上父类的作用域</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
@@ -815,9 +800,6 @@ MyClass <span class="token function">myFunction1</span><span class="token punctu
     
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-
 <h2 id="继承的时候构造析构的顺序"><a href="#继承的时候构造析构的顺序" class="headerlink" title="继承的时候构造析构的顺序"></a>继承的时候构造析构的顺序</h2><p>如果没有出现组合，构造顺序是：先按照继承的顺序构造，然后是自己的构造函数</p>
 <p>若出现组合，构造顺序：先按照继承顺序构造，然后是成员对象的构造，最后是自己的构造函数</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;iostream></span></span>
@@ -856,9 +838,6 @@ MyClass <span class="token function">myFunction1</span><span class="token punctu
     C obj<span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-
 <h2 id="多继承"><a href="#多继承" class="headerlink" title="多继承"></a>多继承</h2><p>优缺点：</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/jandunlab/article/details/14110117">(11条消息) 多继承的概念和优缺点_HappyJandun’s 学习笔录-CSDN博客_多继承的优缺点</a></p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;iostream></span></span>
@@ -896,7 +875,6 @@ MyClass <span class="token function">myFunction1</span><span class="token punctu
     <span class="token comment">// pa.sleep();     // 编译错误，sleep()定义不明确</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>多重继承的优点很明显，就是<strong>对象可以调用多个基类中的接口</strong></p>
 <p>缺点是如果派生类所继承的多个基类有相同的基类，而派生类对象需要调用这个祖先类的接口方法，就会容易出现二义性。 </p>
 <p>通常有两个解决方案：</p>
@@ -949,10 +927,9 @@ MyClass <span class="token function">myFunction1</span><span class="token punctu
     animal<span class="token operator">-></span><span class="token function">makeSomeSound</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>编译器为了实现虚函数，通常会生成虚函数表，在程序运行时通过虚函数动态的查找，然后据此调用正确的函数，这就是动态编译。vbtable是虚基表，虚基指针(vbptr)指向虚基表。</p>
 <p><strong>C++为什么要用虚函数</strong></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/noricky/article/details/80051219?ops_request_misc=%7B%22request_id%22:%22163806102216780255288237%22,%22scm%22:%2220140713.130102334.pc_all.%22%7D&request_id=163806102216780255288237&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_ecpm_v1~rank_v31_ecpm-2-80051219.first_rank_v2_pc_rank_v29&utm_term=%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E8%A6%81%E7%94%A8%E8%99%9A%E5%87%BD%E6%95%B0&spm=1018.2226.3001.4187">(3条消息) C++为什么要用虚函数_Like a lunatic-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/noricky/article/details/80051219?ops_request_misc=%7B%22request%5Fid%22%3A%22163806102216780255288237%22%2C%22scm%22%3A%2220140713.130102334.pc%5Fall.%22%7D&amp;request_id=163806102216780255288237&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_ecpm_v1~rank_v31_ecpm-2-80051219.first_rank_v2_pc_rank_v29&amp;utm_term=什么时候要用虚函数&amp;spm=1018.2226.3001.4187">(3条消息) C++为什么要用虚函数_Like a lunatic-CSDN博客</a></p>
 <p><strong>总结起来：</strong>这样做是为了当用一个基类的指针删除一个派生类的对象时，派生类的析构函数会被调用</p>
 <p>要实现多态，需要满足以下几个条件：</p>
 <ol>
@@ -963,9 +940,8 @@ MyClass <span class="token function">myFunction1</span><span class="token punctu
 <p>定义了虚函数，如果有三辈的继承：爷爷，父亲，儿子，在主函数中，定义一个基类指针，指针指向谁，就调用谁的函数————实现的就是动态多态</p>
 <h2 id="纯虚函数"><a href="#纯虚函数" class="headerlink" title="纯虚函数"></a>纯虚函数</h2><p><strong>一般语法</strong></p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span><span class="token comment">//纯虚函数，可以有函数体，可实例化的派生类必须重写它</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
 <p><strong>定义：</strong></p>
-<p>像这样用virtual关键字修饰，并且末尾加上 &#x3D;0 的格式声明的函数就是纯虚函数，还有一个重要特征，就是在当前类里这个方法不能有具体的实现，也就是不能有方法体。同时拥有纯虚函数的类会被默认定义为抽象类。</p>
+<p>像这样用virtual关键字修饰，并且末尾加上 =0 的格式声明的函数就是纯虚函数，还有一个重要特征，就是在当前类里这个方法不能有具体的实现，也就是不能有方法体。同时拥有纯虚函数的类会被默认定义为抽象类。</p>
 <blockquote>
 <p>什么是抽象类：至少拥有一个或者一个以上的纯虚函数的类，这种类不能创建对象，但是可以被继承，通常通过继承抽象类，然后通过重写纯虚函数后，方可以通过抽象父类的子类的对象来访问函数和数据成员。</p>
 </blockquote>
@@ -991,7 +967,6 @@ MyClass <span class="token function">myFunction1</span><span class="token punctu
   <span class="token function">Test</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token function">Test1</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> c<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h2 id="类模板"><a href="#类模板" class="headerlink" title="类模板"></a>类模板</h2><p>定义一个简单的Array的类模板：</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
@@ -1036,7 +1011,6 @@ MyClass <span class="token function">myFunction1</span><span class="token punctu
 
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>类模板的定义：类模板是一种通用的类的定义，通过模板可以存储不同数据类型的对象</p>
 <p><strong>为什么需要类模板：</strong>有时，有两个或多个类，其功能是相同的，仅仅是数据类型不同，如<code>vector</code>、<code>deque</code>、<code>map</code>等的实现。</p>
 <p><strong>继承中的类模板：</strong></p>
@@ -1069,7 +1043,6 @@ MyClass <span class="token function">myFunction1</span><span class="token punctu
     Derived<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token function">derived</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>结论: 子类从模板类继承的时候,需要让编译器知道 父类的数据类型具体是什么(数据类型的本质:固定大小内存块的别名)A </p>
 <p>从模板类派生时，需要具体化模板类，C++编译器需要知道父类的数据类型是什么样子的 要知道父类所占的内存多少</p>
 <h2 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h2><p>单例模式有许多种实现方法，</p>
@@ -1079,7 +1052,7 @@ MyClass <span class="token function">myFunction1</span><span class="token punctu
 <p>如果要进行线程同步，访问量比较大，或者可能访问的线程比较多时，采用饿汉实现，可以实现更好的性能。这是以空间换时间。</p>
 <p>在访问量较小时，采用懒汉实现。这是以时间换空间。</p>
 <p>CSDN博客：</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/yuexiaxiaoxi27172319/article/details/81410081?ops_request_misc=%7B%22request_id%22:%22163910357816780357234401%22,%22scm%22:%2220140713.130102334..%22%7D&request_id=163910357816780357234401&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-81410081.first_rank_v2_pc_rank_v29&utm_term=c++%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F&spm=1018.2226.3001.4187">C++设计模式(一)单例模式</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/yuexiaxiaoxi27172319/article/details/81410081?ops_request_misc=%7B%22request%5Fid%22%3A%22163910357816780357234401%22%2C%22scm%22%3A%2220140713.130102334..%22%7D&amp;request_id=163910357816780357234401&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-81410081.first_rank_v2_pc_rank_v29&amp;utm_term=c%2B%2B单例模式&amp;spm=1018.2226.3001.4187">C++设计模式(一)单例模式</a></p>
 <p>设计原则之一：开放封闭原则：对扩展开放，对修改关闭</p>
 <h2 id="组合和继承的优缺点"><a href="#组合和继承的优缺点" class="headerlink" title="组合和继承的优缺点"></a>组合和继承的优缺点</h2><p>（1）继承</p>
 <p>继承是Is a 的关系，比如说Student继承Person,则说明Student is a Person。继承的优点是子类可以重写父类的方法来方便地实现对父类的扩展。</p>
@@ -1117,10 +1090,9 @@ MyClass <span class="token function">myFunction1</span><span class="token punctu
 <span class="token keyword">public</span><span class="token operator">:</span>
   <span class="token keyword">int</span> d<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>内存布局</p>
 <p>上面这种菱形的继承体系中，如果没有virtual继承，那么D中就有两个A的成员int a；继承下来，使用的时候，就会有很多二义性。而加了virtual继承，在D中就只有A的成员int a；的一份拷贝，该拷贝不是来自B，也不是来自C，而是一份单独的拷贝，那么，编译器是怎么实现的呢？？</p>
-<p>在回答这个问题之前，先想一下，sizeof(A),sizeof(B),sizeof(C),sizeof(D)是多少？（在32位x86的linux2.6下面，或者在vc2005下面）在linux2.6下面，结果如下：sizeof(A) &#x3D; 4; sizeof(B) &#x3D; 12; sizeof(C) &#x3D; 12; sizeof(D) &#x3D; 24;sizeof（B）为什么是12呢，那是因为多了一个指针（这一点和虚函数的实现一样），那个指针是干嘛的呢？</p>
+<p>在回答这个问题之前，先想一下，sizeof(A),sizeof(B),sizeof(C),sizeof(D)是多少？（在32位x86的linux2.6下面，或者在vc2005下面）在linux2.6下面，结果如下：sizeof(A) = 4; sizeof(B) = 12; sizeof(C) = 12; sizeof(D) = 24;sizeof（B）为什么是12呢，那是因为多了一个指针（这一点和虚函数的实现一样），那个指针是干嘛的呢？</p>
 <p>那么sizeof(D)为什么是24呢？那是因为除了继承B中的b，C中的c，A中的a,和D自己的成员d之外，还继承了B，C多出来的2个指针（B和C分别有一个）。再强调一遍，D中的int a不是来自B也不是来自C，而是另外的一份从A直接靠过来的成员。</p>
 <p>如果声明了D的对象d： D d；</p>
 <p>那么d的内存布局如下：</p>
@@ -1165,11 +1137,10 @@ MyClass <span class="token function">myFunction1</span><span class="token punctu
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span>
 <span class="token comment">// 这里short的16位覆盖了a.u.x的前16位</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>​             </p>
 <p>我们都知道联合(也叫共用体)中的不同类型的变量都是放在同一个地址开始的内存单元里面，当然这个内存单元足够大，可以容下<strong>所占空间最大的那个数据类型</strong>。</p>
 <h2 id="explicit关键字"><a href="#explicit关键字" class="headerlink" title="explicit关键字"></a>explicit关键字</h2><p>在构造函数前面加上，为了防止其他类型的变量隐式转化为这个类的类型变量必须使用显式的转化</p>
-<p>vector vs &#x3D; {“hello”, “world”};比如这里就将const char转为string，但是加上<code>explicit</code>之后就不可以了</p>
+<p>vector vs = {“hello”, “world”};比如这里就将const char转为string，但是加上<code>explicit</code>之后就不可以了</p>
 <h2 id="auto关键字的缺点"><a href="#auto关键字的缺点" class="headerlink" title="auto关键字的缺点"></a>auto关键字的缺点</h2><p>auto 不利：降低代码可读性、可能得不到你预想的类型、配合decltype有意想不到的结果</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token number">2022</span><span class="token operator">-</span><span class="token number">4</span><span class="token operator">-</span><span class="token number">18</span>
 <span class="token comment">// (4)</span>
@@ -1190,11 +1161,9 @@ function<span class="token operator">&lt;</span><span class="token keyword">int<
 cout<span class="token operator">&lt;&lt;</span><span class="token function">ll1</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
 cout<span class="token operator">&lt;&lt;</span><span class="token function">ll</span><span class="token punctuation">(</span><span class="token number">11</span><span class="token punctuation">)</span><span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
 <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h2 id="lambda表达式"><a href="#lambda表达式" class="headerlink" title="lambda表达式"></a>lambda表达式</h2><p>Lambda 表达式是 C++11 引入的一个重要特性，它允许我们定义匿名函数，从而使代码更加简洁和易于阅读。</p>
 <p>Lambda 表达式的一般形式如下：</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">Copy Code<span class="token punctuation">[</span>capture list<span class="token punctuation">]</span><span class="token punctuation">(</span>parameter list<span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token keyword">return</span> type <span class="token punctuation">&#123;</span>function body<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
 <p>其中：</p>
 <ul>
 <li><code>capture list</code>：捕获列表，用于指定在函数体中使用的变量。</li>
@@ -1213,7 +1182,6 @@ cout<span class="token operator">&lt;&lt;</span><span class="token function">ll<
 
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>与 <code>auto</code> 关键字</p>
 <h2 id="单例模式-1"><a href="#单例模式-1" class="headerlink" title="单例模式"></a>单例模式</h2><h3 id="简单单例模式"><a href="#简单单例模式" class="headerlink" title="简单单例模式"></a>简单单例模式</h3><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">//懒汉模式：只有在第一次用到的时候才会实例化</span>
 <span class="token keyword">class</span> <span class="token class-name">singleton</span> <span class="token punctuation">&#123;</span>
@@ -1249,7 +1217,6 @@ singleton<span class="token operator">*</span> singleton<span class="token doubl
     <span class="token keyword">return</span> p<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span>
 <span class="token comment">// 当然这个是线程安全的，对于我们通常阐述的线程不安全，为懒汉模式</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p><code>decltype</code> 的意思是获得表达式的 <code>type</code> ，有点像 <code>typeof</code>。</p>
 <p><code>final</code> 用在类后面 <code>class Base final &#123;&#125;</code> 表示这个类是继承的最后一个类，不能有其他类继承它</p>
 <h3 id="加了锁的单例模式"><a href="#加了锁的单例模式" class="headerlink" title="加了锁的单例模式"></a>加了锁的单例模式</h3><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
@@ -1321,7 +1288,6 @@ mutex myMtx<span class="token punctuation">;</span><span class="token comment">/
     <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">auto</span><span class="token operator">&amp;</span> th <span class="token operator">:</span> threads<span class="token punctuation">)</span> th<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//等线程结束</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;thread></span>         <span class="token comment">// std::thread </span></span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;mutex></span>          <span class="token comment">// std::mutex</span></span>
@@ -1377,11 +1343,7 @@ mutex mtLock<span class="token punctuation">;</span>
 	<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">auto</span><span class="token operator">&amp;</span> th <span class="token operator">:</span> thread1<span class="token punctuation">)</span> th<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//等线程结束</span>
 	<span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="Scott-Meyer-x2F-简洁的singleton写法"><a href="#Scott-Meyer-x2F-简洁的singleton写法" class="headerlink" title="Scott Meyer&#x2F;简洁的singleton写法"></a>Scott Meyer&#x2F;简洁的singleton写法</h3><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">Singleton <span class="token operator">*</span><span class="token class-name">Singleton</span><span class="token double-colon punctuation">::</span><span class="token function">getinstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>    <span class="token keyword">static</span> Singleton p<span class="token punctuation">;</span>    <span class="token keyword">return</span> <span class="token operator">&amp;</span>p<span class="token punctuation">;</span> <span class="token punctuation">&#125;</span>               <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-
-
+<h3 id="Scott-Meyer-简洁的singleton写法"><a href="#Scott-Meyer-简洁的singleton写法" class="headerlink" title="Scott Meyer/简洁的singleton写法"></a>Scott Meyer/简洁的singleton写法</h3><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">Singleton <span class="token operator">*</span><span class="token class-name">Singleton</span><span class="token double-colon punctuation">::</span><span class="token function">getinstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>    <span class="token keyword">static</span> Singleton p<span class="token punctuation">;</span>    <span class="token keyword">return</span> <span class="token operator">&amp;</span>p<span class="token punctuation">;</span> <span class="token punctuation">&#125;</span>               <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="解耦"><a href="#解耦" class="headerlink" title="解耦"></a>解耦</h2><p><strong>程序设计经常提到的解耦，到底是要解除什么之间的耦合</strong></p>
 <p>解耦，就是将程序积木化</p>
 <p>就像我们玩的积木一样，各个积木可以<strong>组合</strong>在一起而形成一个形状，又可以<strong>拆分</strong>，又可以<strong>替换</strong>，因为基本上各个积木块都是<strong>独立</strong>的，只要他们之间的接口（形状）匹配，就可以灵活地组合在一起。</p>
@@ -1797,7 +1759,7 @@ mutex mtLock<span class="token punctuation">;</span>
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">123.4k</span>
+                        class="white-color">123.1k</span>
             
             
             

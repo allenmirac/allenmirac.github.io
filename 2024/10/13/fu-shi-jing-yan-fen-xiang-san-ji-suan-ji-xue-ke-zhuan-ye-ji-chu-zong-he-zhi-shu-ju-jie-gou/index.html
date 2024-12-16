@@ -422,7 +422,7 @@
             <div id="articleContent">
                 <meta name="referrer" content="no-referrer" />
 
-<h1 id="复试经验分享"><a href="#复试经验分享" class="headerlink" title="复试经验分享"></a>复试经验分享</h1><p>无善无恶心之体，有善有恶意之动。<br>知善知恶是良知，为善去恶是格物。<br>                                                                                                                       —-《明朝那些事儿》王守仁</p>
+<h1 id="复试经验分享"><a href="#复试经验分享" class="headerlink" title="复试经验分享"></a>复试经验分享</h1><p>无善无恶心之体，有善有恶意之动。<br>知善知恶是良知，为善去恶是格物。<br>                                                                                                                       ——《明朝那些事儿》王守仁</p>
 <h1 id="三、计算机学科专业基础综合"><a href="#三、计算机学科专业基础综合" class="headerlink" title="三、计算机学科专业基础综合"></a>三、计算机学科专业基础综合</h1><h1 id="3-1-数据结构"><a href="#3-1-数据结构" class="headerlink" title="3.1 数据结构"></a>3.1 数据结构</h1><h2 id="3-1-1-概念"><a href="#3-1-1-概念" class="headerlink" title="3.1.1 概念"></a>3.1.1 概念</h2><ul>
 <li><p><strong>时间复杂度</strong></p>
 <ul>
@@ -456,7 +456,6 @@
         <span class="token keyword">return</span> pre<span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <ul>
 <li><p>头指针 : 指向链表第一个节点的指针，具有标识作用。（必须有，否则就找不到链表，内存泄漏)</p>
 </li>
@@ -467,7 +466,7 @@
 <h2 id="3-1-4-队列"><a href="#3-1-4-队列" class="headerlink" title="3.1.4 队列"></a>3.1.4 队列</h2><p>先进先出</p>
 <ul>
 <li><strong>循环队列</strong>：解决假溢出问题，空留一个位置，用来判断队空队满。<ul>
-<li>队满条件：（Q.rear+1)%MaxSize=&#x3D;Q.front<br>队空条件： Q.front&#x3D;&#x3D;Q.rear</li>
+<li>队满条件：（Q.rear+1)%MaxSize\==Q.front<br>队空条件： Q.front==Q.rear</li>
 </ul>
 </li>
 </ul>
@@ -486,7 +485,7 @@
 </li>
 <li><p>常用性质：</p>
 <ul>
-<li>结点总数 &#x3D; 总度数 + 1</li>
+<li>结点总数 = 总度数 + 1</li>
 <li>路径：树中两个结点之间所经过的结点序列</li>
 </ul>
 </li>
@@ -556,7 +555,7 @@
 </li>
 </ul>
 <h3 id="3-1-7-2-图的存储"><a href="#3-1-7-2-图的存储" class="headerlink" title="3.1.7.2 图的存储"></a>3.1.7.2 图的存储</h3><ul>
-<li><p>邻接矩阵 : 是图的顺序存储结构，用两个数组分别存储数据元素（顶点)信息和数据元素之间的关系(边 &#x2F; 弧）的信息。图的邻接矩阵表示是唯一的，无向图的邻接矩阵是对称的。</p>
+<li><p>邻接矩阵 : 是图的顺序存储结构，用两个数组分别存储数据元素（顶点)信息和数据元素之间的关系(边 / 弧）的信息。图的邻接矩阵表示是唯一的，无向图的邻接矩阵是对称的。</p>
 </li>
 <li><p>邻接表 : 是图的链式存储结构，由单链表的表头形成的顶点表和单链表其余结点所形成的边表两部分组成。（多用于无向图）</p>
 </li>
@@ -566,8 +565,8 @@
 </li>
 </ul>
 <h3 id="3-1-7-3-最小生成树-普里姆算法和克鲁斯卡尔算法"><a href="#3-1-7-3-最小生成树-普里姆算法和克鲁斯卡尔算法" class="headerlink" title="3.1.7.3 最小生成树 : 普里姆算法和克鲁斯卡尔算法"></a>3.1.7.3 最小生成树 : 普里姆算法和克鲁斯卡尔算法</h3><ul>
-<li><strong>prim 其基本思想为</strong> : 从联通网络 N&#x3D;V.E)中某一顶点 u0 出发，选择与他关联的最小权值的<br>边，将其顶点加入到顶点集 S 中，此后就从一个顶点在 S 集中，另一个顶点不在 S 集中的所<br>有顶点中选择出权值最小的边，把对应顶点加入到 S 集中，直到所有的顶点都加入到 S 集中<br>为止。</li>
-<li><strong>kruskal 其基本思想为</strong> : 设有一个有 N 个顶点的联通网络 N&#x3D;V.E, 初试时建立一个只有 N 个顶<br>点，没有边的非连通图 T，T 中每个顶点都看作是一个联通分支，从边集 E 中选择出权值最<br>小的边且该边的两个端点不在一个联通分支中，则把该边加入到 T 中，否则就再从新选择一<br>条权值最小的边，直到所有的顶点都在一个联通分支中为止。</li>
+<li><strong>prim 其基本思想为</strong> : 从联通网络 N=V.E)中某一顶点 u0 出发，选择与他关联的最小权值的<br>边，将其顶点加入到顶点集 S 中，此后就从一个顶点在 S 集中，另一个顶点不在 S 集中的所<br>有顶点中选择出权值最小的边，把对应顶点加入到 S 集中，直到所有的顶点都加入到 S 集中<br>为止。</li>
+<li><strong>kruskal 其基本思想为</strong> : 设有一个有 N 个顶点的联通网络 N=V.E, 初试时建立一个只有 N 个顶<br>点，没有边的非连通图 T，T 中每个顶点都看作是一个联通分支，从边集 E 中选择出权值最<br>小的边且该边的两个端点不在一个联通分支中，则把该边加入到 T 中，否则就再从新选择一<br>条权值最小的边，直到所有的顶点都在一个联通分支中为止。</li>
 <li><strong>最小生成树</strong>：一个有 n 个结点的连通图的生成树是原图的极小连通子图，且包含原图中的所<br>有 n 个结点，并且有保持图联通的最少的边。如果在最小生成树添加一条边，必定成一个<br>环。</li>
 </ul>
 <h3 id="3-1-7-4-DFS-与-BFS"><a href="#3-1-7-4-DFS-与-BFS" class="headerlink" title="3.1.7.4 DFS 与 BFS"></a>3.1.7.4 DFS 与 BFS</h3><ul>
@@ -603,7 +602,6 @@
         <span class="token function">QuickSort</span><span class="token punctuation">(</span>A<span class="token punctuation">,</span> pivot <span class="token operator">+</span> <span class="token number">1</span> <span class="token punctuation">,</span> high<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <ul>
 <li><p>算法步骤</p>
 <p>  a. 从数列中挑出一个元素，称为 “基准”（pivot）;<br>  b. 重新排序数列，所有元素比基准值小的摆放在基准前面，所有元素比基准值大的摆在基准的后面（相同的数可以到任一边）。在这个分区退出之后，该基准就处于数列的中间位置。这个称为分区（partition）操作；<br>  c. 递归地（recursive）把小于基准值元素的子数列和大于基准值元素的子数列排序；</p>
@@ -614,8 +612,8 @@
 </ul>
 <ul>
 <li>快排相关问题<ul>
-<li>时间复杂度（最好 $$n<em>log_2n$$ ，最差$$n^2$$ ，平均 $$n</em>log_2n$$ ）</li>
-<li>空间复杂度（ $$log_2n$$ ~ n）</li>
+<li>时间复杂度（最好 <script type="math/tex">n*log_2n</script> ，最差<script type="math/tex">n^2</script> ，平均 <script type="math/tex">n*log_2n</script> ）</li>
+<li>空间复杂度（ <script type="math/tex">log_2n</script> ~ n）</li>
 <li>时间复杂度与两侧平衡差值有关，与处理顺序无关。（递归深度）</li>
 <li>不稳定算法，适用于顺序表</li>
 <li>特征：每完成一轮，都会有至少一个元素出现在正确的位置上。上一个枢轴元素不在两端的话，则下一趟至少有两个出现在正确位置。</li>
@@ -667,7 +665,7 @@
 </li>
 <li><p>建立公共溢出区：基本表 + 溢出表</p>
 </li>
-<li><p>装填因子：填入表中的元素个数 &#x2F; 散列表的长度。</p>
+<li><p>装填因子：填入表中的元素个数 / 散列表的长度。</p>
 <ul>
 <li>冲突是无法避免的，与装填因子无关</li>
 </ul>
@@ -1141,7 +1139,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">123.4k</span>
+                        class="white-color">123.1k</span>
             
             
             

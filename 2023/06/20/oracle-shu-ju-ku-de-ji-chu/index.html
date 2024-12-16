@@ -9,7 +9,7 @@
 
 
 目录
-小知识点 
+小知识点 
 1、dec
 2、nvl
 3、minus
@@ -436,7 +436,7 @@
 
 
 <p><strong>目录</strong></p>
-<p><a href="#%E5%B0%8F%E7%9F%A5%E8%AF%86%E7%82%B9%C2%A0">小知识点 </a></p>
+<p><a href="#%E5%B0%8F%E7%9F%A5%E8%AF%86%E7%82%B9%C2%A0">小知识点 </a></p>
 <p><a href="#1%E3%80%81dec">1、dec</a></p>
 <p><a href="#2%E3%80%81nvl">2、nvl</a></p>
 <p><a href="#3%E3%80%81minus">3、minus</a></p>
@@ -447,11 +447,11 @@
 <p><a href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E7%AC%AC%E4%B8%89%E8%8C%83%E5%BC%8F%EF%BC%9A">数据库设计第三范式：</a></p>
 <p><a href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A6%82%E5%BF%B5">数据库概念</a></p>
 <p><a href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C%E8%AF%AD%E8%A8%80">数据库操作语言</a></p>
-<p><a href="#%C2%A0%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"> 关系的基本概念</a></p>
+<p><a href="#%C2%A0%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"> 关系的基本概念</a></p>
 <p><a href="#%E5%AE%9E%E4%BD%93%E5%AE%8C%E6%95%B4%E6%80%A7">实体完整性</a></p>
 <p><a href="#%E5%8F%82%E7%85%A7%E5%AE%8C%E6%95%B4%E6%80%A7%EF%BC%9A%EF%BC%88foreign%20key%EF%BC%89%E5%8F%AF%E4%BB%A5%E6%98%AF%E7%A9%BA%E5%80%BC%EF%BC%8C">参照完整性：（foreign key）可以是空值，</a></p>
 <p><a href="#%E4%B8%80%E4%BA%9B%E5%87%BD%E6%95%B0%E6%8E%A7%E5%88%B6%E5%AD%97%E7%AC%A6">一些函数控制字符</a></p>
-<p><a href="#dual%C2%A0">dual </a></p>
+<p><a href="#dual%C2%A0">dual </a></p>
 <p><a href="#desc%E5%85%B3%E9%94%AE%E5%AD%97">desc关键字</a></p>
 <p><a href="#having%E5%92%8C%20where%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9A">having和 where的区别：</a></p>
 <p><a href="#2022%203-9">2022 3-9</a></p>
@@ -463,7 +463,7 @@
 <p><a href="#ANY%20ALL">ANY ALL</a></p>
 <p><a href="#2022-%E5%AE%9E%E9%AA%8C%E4%B8%89%E6%80%BB%E7%BB%93">2022-实验三总结</a></p>
 <p><a href="#2022-3-30">2022-3-30</a></p>
-<p><a href="#PL/SQL:">PL&#x2F;SQL:</a></p>
+<p><a href="#PL%2FSQL%3A">PL/SQL:</a></p>
 <p><a href="#select%20%E9%80%89%E6%8B%A9%E4%BA%86%E4%B8%80%E4%BA%9B%E5%88%97%E4%B9%8B%E5%90%8E%EF%BC%8C%E5%A6%82%E6%9E%9C%E9%87%8C%E9%9D%A2%E6%9C%89%E8%81%9A%E5%90%88%E5%87%BD%E6%95%B0%EF%BC%8C%E5%90%8E%E9%9D%A2%E4%B8%80%E5%AE%9A%E8%A6%81%E6%9C%89group%E5%87%BD%E6%95%B0%E5%90%A6%E5%88%99%E4%BC%9A%E6%8A%A5%E9%94%99%EF%BC%8C%E5%8E%9F%E5%9B%A0%E5%A6%82%E4%B8%8B%EF%BC%9A">select 选择了一些列之后，如果里面有聚合函数，后面一定要有group函数否则会报错，原因如下：</a></p>
 <p><a href="#2022-4-2%E5%AE%9E%E9%AA%8C%E5%9B%9B%E6%80%BB%E7%BB%93">2022-4-2实验四总结</a></p>
 <p><a href="#%E7%B4%A2%E5%BC%95%EF%BC%8C%E8%8C%83%E5%BC%8F%E5%92%8C%E9%94%81">索引，范式和锁</a></p>
@@ -477,7 +477,7 @@
 <p>参数</p>
 <p>eExpression1, eExpression2</p>
 <p>如果 eExpression1 的计算结果为 null 值，则eExpression2。如果 eExpression1 的计算结果不是 null 值，则返回 eExpression1。eExpression1 和 eExpression2 可以是任意一种数据类型。如果 eExpression1 与 eExpression2 的结果皆为 null 值，则 NVL( ) 返回 .NULL.</p>
-<h2 id="3、minus"><a href="#3、minus" class="headerlink" title="3、minus"></a>3、minus</h2><p>“minus”直接翻译为中文是“减”的意思，在Oracle中也是用来做减法操作的，只不过它不是传统意义上对数字的减法，而是对查询结果集的减法。 A minus B就意味着将结果集A去除结果集B中所包含的所有记录后的结果，即在A中存在，而在B中不存在的记录。</p>
+<h2 id="3、minus"><a href="#3、minus" class="headerlink" title="3、minus"></a>3、minus</h2><p>“minus”直接翻译为中文是“减”的意思，在Oracle中也是用来做减法操作的，只不过它不是传统意义上对数字的减法，而是对查询结果集的减法。 A minus B就意味着将结果集A去除结果集B中所包含的所有记录后的结果，即在A中存在，而在B中不存在的记录。</p>
 <h2 id="4、连接join"><a href="#4、连接join" class="headerlink" title="4、连接join"></a>4、连接join</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/lightningmn/article/details/52805457">各种join的详细简单的解释</a></p>
 <h2 id="5、数据库设计范式"><a href="#5、数据库设计范式" class="headerlink" title="5、数据库设计范式"></a>5、数据库设计范式</h2><h3 id="数据库设计第一范式：（设计出没有数据冗余和数据维护异常的数据库结构）"><a href="#数据库设计第一范式：（设计出没有数据冗余和数据维护异常的数据库结构）" class="headerlink" title="数据库设计第一范式：（设计出没有数据冗余和数据维护异常的数据库结构）"></a>数据库设计第一范式：（设计出没有数据冗余和数据维护异常的数据库结构）</h3><p>1、数据库表中的所有字段都只具有单一属性</p>
 <p>2、单一属性的列是由基本的数据类型所构成的</p>
@@ -487,34 +487,34 @@
 <h1 id="数据库概念"><a href="#数据库概念" class="headerlink" title="数据库概念"></a>数据库概念</h1><p>长期储存在计算机内，有组织，可共享的大量数据的集合，就是数据库</p>
 <p>数据库管理系统，（DBMS，databace mangement system），用于创建操作和管理数据库的应用程序</p>
 <p>:xx,dnmcg2IR</p>
-<p>数据库用来管理数据，QQ为什么能这么厉害，就是因为他有很多数据，这些数据是商业机密，使用数据库存储数据占用存储空间小，并且查询数据快Alter TABLE XS ADD ENG CHAR(20); –添加新的列</p>
-<p><img src="https://img-blog.csdnimg.cn/15e4006db5584c11b08101a50cb98bfa.png"></p>
-<h1 id="数据库操作语言"><a href="#数据库操作语言" class="headerlink" title="数据库操作语言"></a>数据库操作语言</h1><p><img src="https://img-blog.csdnimg.cn/09d8361536ab4cb38ed17e0299698244.png"></p>
-<p><img src="https://img-blog.csdnimg.cn/33e3ef2a636d4fb58cf0b625aa5bd9c7.png"></p>
-<h1 id="关系的基本概念"><a href="#关系的基本概念" class="headerlink" title="关系的基本概念"></a>关系的基本概念</h1><p><img src="https://img-blog.csdnimg.cn/c2df04e0503c423aa999b03861a20362.png"></p>
-<p><img src="https://img-blog.csdnimg.cn/039fd6a233844267a107fa07024aa4f0.png"></p>
-<p><img src="https://img-blog.csdnimg.cn/ea7ac41a57374271a169b6adfd48f5bd.png"></p>
+<p>数据库用来管理数据，QQ为什么能这么厉害，就是因为他有很多数据，这些数据是商业机密，使用数据库存储数据占用存储空间小，并且查询数据快Alter TABLE XS ADD ENG CHAR(20); —添加新的列</p>
+<p><img src="https://img-blog.csdnimg.cn/15e4006db5584c11b08101a50cb98bfa.png" alt=""></p>
+<h1 id="数据库操作语言"><a href="#数据库操作语言" class="headerlink" title="数据库操作语言"></a>数据库操作语言</h1><p><img src="https://img-blog.csdnimg.cn/09d8361536ab4cb38ed17e0299698244.png" alt=""></p>
+<p><img src="https://img-blog.csdnimg.cn/33e3ef2a636d4fb58cf0b625aa5bd9c7.png" alt=""></p>
+<h1 id="关系的基本概念"><a href="#关系的基本概念" class="headerlink" title="关系的基本概念"></a>关系的基本概念</h1><p><img src="https://img-blog.csdnimg.cn/c2df04e0503c423aa999b03861a20362.png" alt=""></p>
+<p><img src="https://img-blog.csdnimg.cn/039fd6a233844267a107fa07024aa4f0.png" alt=""></p>
+<p><img src="https://img-blog.csdnimg.cn/ea7ac41a57374271a169b6adfd48f5bd.png" alt=""></p>
 <p>自己的某一个属性（或属性集合）在其他表中是主码，则在自己表中这个属性（或属性集合）是外码</p>
 <h1 id="实体完整性"><a href="#实体完整性" class="headerlink" title="实体完整性"></a>实体完整性</h1><p>实体完整性：（primary key）不能是空值，不能重复</p>
-<p><img src="https://img-blog.csdnimg.cn/8302813b572c481b801a2869363a4d4a.png"></p>
-<h1 id="参照完整性：（foreign-key）可以是空值，"><a href="#参照完整性：（foreign-key）可以是空值，" class="headerlink" title="参照完整性：（foreign key）可以是空值，"></a>参照完整性：（foreign key）可以是空值，</h1><p><img src="https://img-blog.csdnimg.cn/8fdabac448584a039ed135d6eba7c81f.png"></p>
-<p><img src="https://img-blog.csdnimg.cn/dff81e2cc37748e188ed3ebf4ffd7cf2.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/8302813b572c481b801a2869363a4d4a.png" alt=""></p>
+<h1 id="参照完整性：（foreign-key）可以是空值，"><a href="#参照完整性：（foreign-key）可以是空值，" class="headerlink" title="参照完整性：（foreign key）可以是空值，"></a>参照完整性：（foreign key）可以是空值，</h1><p><img src="https://img-blog.csdnimg.cn/8fdabac448584a039ed135d6eba7c81f.png" alt=""></p>
+<p><img src="https://img-blog.csdnimg.cn/dff81e2cc37748e188ed3ebf4ffd7cf2.png" alt=""></p>
 <p>select id)</p>
 <p>from xs</p>
-<p>where to_char(birthday,’yyyy-mm-dd’) &#x3D;’2002-06-28’;</p>
+<p>where to_char(birthday,’yyyy-mm-dd’) =’2002-06-28’;</p>
 <p>将日期转化成char类型</p>
-<h1 id="一些函数控制字符"><a href="#一些函数控制字符" class="headerlink" title="一些函数控制字符"></a>一些函数控制字符</h1><p><img src="https://img-blog.csdnimg.cn/fb0f9125543d4da5bc2b768a0e552eb9.png"></p>
-<h1 id="dual"><a href="#dual" class="headerlink" title="dual"></a>dual</h1><p><img src="https://img-blog.csdnimg.cn/94b6e9c83d014a889e77de691d9e3670.png"></p>
+<h1 id="一些函数控制字符"><a href="#一些函数控制字符" class="headerlink" title="一些函数控制字符"></a>一些函数控制字符</h1><p><img src="https://img-blog.csdnimg.cn/fb0f9125543d4da5bc2b768a0e552eb9.png" alt=""></p>
+<h1 id="dual"><a href="#dual" class="headerlink" title="dual"></a>dual</h1><p><img src="https://img-blog.csdnimg.cn/94b6e9c83d014a889e77de691d9e3670.png" alt=""></p>
 <p>dual是一个一行一列的虚拟表，常用来计算表达式</p>
-<p><img src="https://img-blog.csdnimg.cn/038b7d1d14df47278f4c8e2a3ca2eb5f.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/038b7d1d14df47278f4c8e2a3ca2eb5f.png" alt=""></p>
 <h1 id="desc关键字"><a href="#desc关键字" class="headerlink" title="desc关键字"></a>desc关键字</h1><p>desc 查看表的结构，</p>
-<p><img src="https://img-blog.csdnimg.cn/fafe7f4917d545d58157d142942bda99.png"></p>
-<p>Alter TABLE XS ADD ENG CHAR(20); –添加新的列</p>
-<p>UPDATE XS SET ENG&#x3D;’ENGLISH’ WHERE DEPT&#x3D;’计算机’;将dept&#x3D;计算机的ENG改为‘english’ SELECT SNAME, LOWER(ENG) AS LOW_ENG–将eng属性改为小写，重新命名成LOW_ENG,函数LOWER</p>
-<p>FROM XS WHERE DEPT&#x3D;’计算机’;</p>
-<p>commit; –&gt;提交数据</p>
-<p>  rollback; –&gt;回滚数据</p>
-<p>select * from user_tables;–查询用户下的所有表</p>
+<p><img src="https://img-blog.csdnimg.cn/fafe7f4917d545d58157d142942bda99.png" alt=""></p>
+<p>Alter TABLE XS ADD ENG CHAR(20); —添加新的列</p>
+<p>UPDATE XS SET ENG=’ENGLISH’ WHERE DEPT=’计算机’;将dept=计算机的ENG改为‘english’ SELECT SNAME, LOWER(ENG) AS LOW_ENG—将eng属性改为小写，重新命名成LOW_ENG,函数LOWER</p>
+<p>FROM XS WHERE DEPT=’计算机’;</p>
+<p>commit; —&gt;提交数据</p>
+<p>  rollback; —&gt;回滚数据</p>
+<p>select * from user_tables;—查询用户下的所有表</p>
 <h1 id="having和-where的区别："><a href="#having和-where的区别：" class="headerlink" title="having和 where的区别："></a>having和 where的区别：</h1><p>where在数据分组前进行过滤，having在数据分组过后进行过滤，</p>
 <p>使用having时应该结合Group by语句，where 用于标准的行级过滤</p>
 <h1 id="2022-3-9"><a href="#2022-3-9" class="headerlink" title="2022 3-9"></a>2022 3-9</h1><pre class="line-numbers language-none"><code class="language-none">--2022 3-9
@@ -553,38 +553,35 @@ where TOTALCREDIT is null;
 commit;
 rollback;
 select * from xs;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-
-<p><img src="https://img-blog.csdnimg.cn/fa5a15a3bf3b4f3b81e3065b1f7c73f2.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/fa5a15a3bf3b4f3b81e3065b1f7c73f2.png" alt=""></p>
 <h1 id="小知识点："><a href="#小知识点：" class="headerlink" title="小知识点："></a>小知识点：</h1><p>利用已有数据表建立一个新表，但不复制数据:</p>
 <p>create TABLE S1</p>
 <p>AS</p>
-<p>SELECT * FROM STUDENT WHERE 1&#x3D;0;</p>
-<p><img src="https://img-blog.csdnimg.cn/4f2d9b6cd537477d862f33a6a762ab1a.png"></p>
-<p>UPDATE STU SET TOTALCREDIT&#x3D;NVL(TOTALCREDIT, 0)+2;</p>
+<p>SELECT * FROM STUDENT WHERE 1=0;</p>
+<p><img src="https://img-blog.csdnimg.cn/4f2d9b6cd537477d862f33a6a762ab1a.png" alt=""></p>
+<p>UPDATE STU SET TOTALCREDIT=NVL(TOTALCREDIT, 0)+2;</p>
 <p>NVL(TOTALCREDIT, 0):如果totalcredit不是空，就用原来的值，是空，就用0来代替；</p>
-<p>FROM ZLGC WHERE CATEGORY&#x3D;’课程思政示范课程’ AND COUNT(CATEGORY)&gt;50 GROUP BY SCHOOL,CATEGORY ORDER BY COUNT(CATEGORY) DESC</p>
+<p>FROM ZLGC WHERE CATEGORY=’课程思政示范课程’ AND COUNT(CATEGORY)&gt;50 GROUP BY SCHOOL,CATEGORY ORDER BY COUNT(CATEGORY) DESC</p>
 <p>ERROR: ORA-00934: 此处不允许使用分组函数</p>
-<p><img src="https://img-blog.csdnimg.cn/682e669c3da14131afbd5fbd801f7673.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/682e669c3da14131afbd5fbd801f7673.png" alt=""></p>
 <p>要使用having 来过滤分组</p>
 <h1 id="2022-3-19数据库实验心得"><a href="#2022-3-19数据库实验心得" class="headerlink" title="2022-3-19数据库实验心得"></a>2022-3-19数据库实验心得</h1><p>在本次实验中，我遇到的问题首先是1-1题目中extract函数的使用，通过从网上查询知道了，我学习到该函数的作用是将年份从date中分离出来单独计算从而得到年龄，第二个问题是2-4题目中过滤学生人数小于3的的语句，不能在group by 语句前面加where来过滤，如果使用了，错误信息是这样的，</p>
-<p><img src="https://img-blog.csdnimg.cn/2bc12af0dac646d285de4421a091a22e.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/2bc12af0dac646d285de4421a091a22e.png" alt=""></p>
 <p>查阅资料后学习到了，有group by 语句时where中不能使用聚合函数来过滤数据，此时只能使用having语句，并且having语句只能跟在group by 语句后面。这两个问题是我在本次实验中遇到的最大的难题，解决了之后，真的学习到了很多。</p>
 <p>在本次实验中，我首先在创建user用户时就遇到了，用户名或角色名是不存在的问题，然后我先想着改一下用户名为users，结果成功了，后来才从老师那里得知是用户过期了的原因，要重新编辑用户信息才可以。</p>
-<p>然后我在1-4题目中遇到了对设置组合主键，外键操作的不熟练问题，还有就是对于alter table tablename add colname VARCHAR(20)（添加列）;alter table tablename drop column colname（删除列）;alter table tablename drop constraint SYS_C007120;（去除限制）add constraint UQ_CNAME UNIQUE(CNAME)（添加限制）;这几个操作的不熟练，最后遇到的问题是赋值一表的结构到一个新表（不复制数据），从网上查阅资料后，知道了</p>
-<p>最关键的一步是：SELECT * FROM STUDENT WHERE 1&#x3D;0;设置一个不可能的条件，选择之后，就不会剩下数据了。解决了这些问题后，有很大的收获。</p>
+<p>然后我在1-4题目中遇到了对设置组合主键，外键操作的不熟练问题，还有就是对于alter table tablename add colname VARCHAR(20)（添加列）;alter table tablename drop column colname（删除列）;alter table tablename drop constraint SYS_C007120;（去除限制）add constraint UQ_CNAME UNIQUE(CNAME)（添加限制）;这几个操作的不熟练，最后遇到的问题是赋值一表的结构到一个新表（不复制数据），从网上查阅资料后，知道了</p>
+<p>最关键的一步是：SELECT * FROM STUDENT WHERE 1=0;设置一个不可能的条件，选择之后，就不会剩下数据了。解决了这些问题后，有很大的收获。</p>
 <h1 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h1><p>里面存储的是SQL语句，不是查询结果</p>
 <p>创建视图后不显示结果，要通过select语句来查询</p>
-<p><img src="https://img-blog.csdnimg.cn/9293cda35f98419d99478094baa9258e.png"></p>
-<p><img src="https://img-blog.csdnimg.cn/91378483b1f242bdb11607af8c751e13.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/9293cda35f98419d99478094baa9258e.png" alt=""></p>
+<p><img src="https://img-blog.csdnimg.cn/91378483b1f242bdb11607af8c751e13.png" alt=""></p>
 <p>视图的作用：简化查询语句</p>
-<p><img src="https://img-blog.csdnimg.cn/144c129584974adb8aafe47ccc35adff.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/144c129584974adb8aafe47ccc35adff.png" alt=""></p>
 <p>有些视图可以更新，有些不可以</p>
-<p>SELECT * FROM A NATURAL JOIN B WHERE B.B &#x3D; A.B;</p>
-<p><img src="https://img-blog.csdnimg.cn/92bb37464bbb4673a0be9fbc733367b5.png"></p>
+<p>SELECT * FROM A NATURAL JOIN B WHERE B.B = A.B;</p>
+<p><img src="https://img-blog.csdnimg.cn/92bb37464bbb4673a0be9fbc733367b5.png" alt=""></p>
 <h1 id="联结表"><a href="#联结表" class="headerlink" title="联结表"></a>联结表</h1><p>sql的left join 、right join 、inner join之间的区别</p>
-<p>　　left join(左联接) 返回包括左表中的所有记录和右表中联结字段相等的记录 </p>
+<p>　　left join(左联接) 返回包括左表中的所有记录和右表中联结字段相等的记录 </p>
 <p>　　right join(右联接) 返回包括右表中的所有记录和左表中联结字段相等的记录</p>
 <p>　　inner join(等值连接) 只返回两个表中联结字段相等的行</p>
 <pre class="line-numbers language-none"><code class="language-none">左连接
@@ -611,31 +608,28 @@ select * from student s cross join class c;
 select * from student,class;
 --加上条件，产生跟自连接一样的结果。
 select * from student s cross join class c where s.classid&#x3D;c.id;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
 <p>自然连接要注意：</p>
-<p>SELECT * FROM A NATURAL JOIN B WHERE B.B &#x3D; A.B;</p>
-<p>SELECT * FROM A NATURAL JOIN B on B.B &#x3D; A.B;</p>
+<p>SELECT * FROM A NATURAL JOIN B WHERE B.B = A.B;</p>
+<p>SELECT * FROM A NATURAL JOIN B on B.B = A.B;</p>
 <p>这两种方法都会报错，不能有限制条件。因为自然连接它自动的进行了等值比较，所以不需要加上限制条件让他们的连接起来，自然连接是一种特殊的等值连接。</p>
-<p><img src="https://img-blog.csdnimg.cn/17a828df928a41c88f0cf77da8c419ed.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/17a828df928a41c88f0cf77da8c419ed.png" alt=""></p>
 <h1 id="自然连接与等值连接的区别："><a href="#自然连接与等值连接的区别：" class="headerlink" title="自然连接与等值连接的区别："></a>自然连接与等值连接的区别：</h1><p><a target="_blank" rel="noopener" href="https://zhidao.baidu.com/question/429546959.html">sql server 等值连接和自然连接的 用法_百度知道 (baidu.com)</a></p>
-<p>SELECT * FROM A, B WHERE A.B&#x3D;B.B;</p>
+<p>SELECT * FROM A, B WHERE A.B=B.B;</p>
 <p>这是等值连接，相同的属性列会保存</p>
 <p>自然连接是一种特殊的等值内连接，它是由系统根据两表的同名字段自动作等值比较的内连接，不需要用ON关键字指定连接条件</p>
-<p><img src="https://img-blog.csdnimg.cn/f05ca09c4af44eac8406ba1c77d55cbf.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/f05ca09c4af44eac8406ba1c77d55cbf.png" alt=""></p>
 <p>SELECT * FROM A NATURAL JOIN B ;</p>
 <p>这是自然连接，自然连接是一种将相同属性列删除的等值连接</p>
-<p><img src="https://img-blog.csdnimg.cn/05a3412b170c479cb9d6558842859bd2.png"></p>
-<p>自然连接四个表 </p>
+<p><img src="https://img-blog.csdnimg.cn/05a3412b170c479cb9d6558842859bd2.png" alt=""></p>
+<p>自然连接四个表 </p>
 <pre class="line-numbers language-none"><code class="language-none">FROM STUDENT NATURAL JOIN SCORE NATURAL JOIN COURSE NATURAL JOIN TEACH WHERE COURSE.CNAME&#x3D;&#39;数学分析&#39; and TEACH.TNAME&#x3D;&#39;严敏&#39;;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<h1 id="ANY-ALL"><a href="#ANY-ALL" class="headerlink" title="ANY ALL"></a>ANY ALL</h1><p><img src="https://img-blog.csdnimg.cn/4f1fe1ece8444b5caf81e7aca6e9244e.png"></p>
+<h1 id="ANY-ALL"><a href="#ANY-ALL" class="headerlink" title="ANY ALL"></a>ANY ALL</h1><p><img src="https://img-blog.csdnimg.cn/4f1fe1ece8444b5caf81e7aca6e9244e.png" alt=""></p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zl111_1/article/details/54980639">ANY ALL的区别</a></p>
 <p>总结成一句话就是：all 是满足所有的， and and and；any 是满足其中一个就可以，or or or</p>
-<h1 id="2022-实验三总结"><a href="#2022-实验三总结" class="headerlink" title="2022-实验三总结"></a>2022-实验三总结</h1><p>在这次实验过程中遇到的问题就很多了，首先第一题就来了一个下马威，分不清三种连接的区别，搞得无从下手，最后自己弄了两个表才弄懂了前两个的区别，如下图：等值连接相同的属性会保留，而自然连接就会将它们合并，自然连接是一种特殊的等值连接，终于理解了，自己找了几个小时。还有一个就是join后面总是忘掉加上on条件，报了三四次缺少关键字错误才发现，我学会了，做这种题目时要首先弄清楚概念就很好下手了。然后就是left join 、right join、full join ，区分这几个，首先区分：主表（不会受到影响）， 辅表（只有满足条件的才会显示），left join 左为主表，右辅表；right join 则相反，最后的not exists的双重否定，更是搞得稀里糊涂，现在还是有点不明白。每一次实验都是一次不错的成长。</p>
+<h1 id="2022-实验三总结"><a href="#2022-实验三总结" class="headerlink" title="2022-实验三总结"></a>2022-实验三总结</h1><p>在这次实验过程中遇到的问题就很多了，首先第一题就来了一个下马威，分不清三种连接的区别，搞得无从下手，最后自己弄了两个表才弄懂了前两个的区别，如下图：等值连接相同的属性会保留，而自然连接就会将它们合并，自然连接是一种特殊的等值连接，终于理解了，自己找了几个小时。还有一个就是join后面总是忘掉加上on条件，报了三四次缺少关键字错误才发现，我学会了，做这种题目时要首先弄清楚概念就很好下手了。然后就是left join 、right join、full join ，区分这几个，首先区分：主表（不会受到影响）， 辅表（只有满足条件的才会显示），left join 左为主表，右辅表；right join 则相反，最后的not exists的双重否定，更是搞得稀里糊涂，现在还是有点不明白。每一次实验都是一次不错的成长。</p>
 <p>数据放到表中，表再放到库中</p>
 <p>表中的列相当于类中的属性， 每一行相当于对象</p>
-<p><img src="https://img-blog.csdnimg.cn/8be32587e3dc49f88d283b41c11d4537.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/8be32587e3dc49f88d283b41c11d4537.png" alt=""></p>
 <p>‘%’会过滤掉空值：</p>
 <p>SELECT * FROM XS;</p>
 <p>SELECT * FROM XS WHERE REMARKS LIKE ‘%’;</p>
@@ -666,8 +660,7 @@ SELECT *FROM XS WHERE TOTALCREDIT&gt;70 WITH CHECK OPTION;
 UPDATE DEPT3
 SET TOTALCREDIT&#x3D;60
 WHERE SNAME&#x3D;&#39;林一帆&#39;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h1 id="PL-x2F-SQL"><a href="#PL-x2F-SQL" class="headerlink" title="PL&#x2F;SQL:"></a>PL&#x2F;SQL:</h1><p>PL&#x2F;SQL也是一种程序语言，叫做过程化SQL语言（Procedural Language&#x2F;SQL）。PL&#x2F;SQL是Oracle数据库对SQL语句的扩展。在普通SQL语句的使用上增加了编程语言的特点，所以PL&#x2F;SQL就是把数据操作和查询语句组织在PL&#x2F;SQL代码的过程性单元中，通过逻辑判断、循环等操作实现复杂的功能或者计算的程序语言。PL&#x2F;SQL是Oracle对标准数据库语言SQL的过程化扩充，它将数据库技术和过程化程序设计语言联系起来（通俗的说，SQL与编程语言的混血儿），是一种应用开发语言，可使用循环，分支处理数据，将SQL的数据操纵功能与过程化语言数据处理功能结合起来.PL&#x2F;SQL的使用，使SQL成为一种高级程序设计语言，支持高级语言的块操作，条件判断，循环语句，嵌套等，与数据库核心的数据类型集成，使SQL 的程序设计效率更高.</p>
+<h1 id="PL-SQL"><a href="#PL-SQL" class="headerlink" title="PL/SQL:"></a>PL/SQL:</h1><p>PL/SQL也是一种程序语言，叫做过程化SQL语言（Procedural Language/SQL）。PL/SQL是Oracle数据库对SQL语句的扩展。在普通SQL语句的使用上增加了编程语言的特点，所以PL/SQL就是把数据操作和查询语句组织在PL/SQL代码的过程性单元中，通过逻辑判断、循环等操作实现复杂的功能或者计算的程序语言。PL/SQL是Oracle对标准数据库语言SQL的过程化扩充，它将数据库技术和过程化程序设计语言联系起来（通俗的说，SQL与编程语言的混血儿），是一种应用开发语言，可使用循环，分支处理数据，将SQL的数据操纵功能与过程化语言数据处理功能结合起来.PL/SQL的使用，使SQL成为一种高级程序设计语言，支持高级语言的块操作，条件判断，循环语句，嵌套等，与数据库核心的数据类型集成，使SQL 的程序设计效率更高.</p>
 <h1 id="select-选择了一些列之后，如果里面有聚合函数，后面一定要有group函数否则会报错，原因如下："><a href="#select-选择了一些列之后，如果里面有聚合函数，后面一定要有group函数否则会报错，原因如下：" class="headerlink" title="select 选择了一些列之后，如果里面有聚合函数，后面一定要有group函数否则会报错，原因如下："></a>select 选择了一些列之后，如果里面有聚合函数，后面一定要有group函数否则会报错，原因如下：</h1><p>最近写SQL的时候，有遇到过报出 ORA-00937的问题。</p>
 <p>解释：</p>
 <p>select 列表项中除了包含聚合函数外，还包含了表的某些列，那么你将必须使用group by语句，否则语法通不过。</p>
@@ -711,17 +704,16 @@ USERID INT(4) PRIMARY KEY AUTO_INCREMENT NOT NULL,
 UNAME VARCHAR(20) NOT NULL,
 UPASSWARD VARCHAR(20) NOT NULL
 )<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h1 id="2022-4-2实验四总结"><a href="#2022-4-2实验四总结" class="headerlink" title="2022-4-2实验四总结"></a>2022-4-2实验四总结</h1><p> 在本次实验中，我首先遇到的问题是创建视图时，带上WITH CHECK OPTION选项与不带的区别：如果根据视图来更改数据，一定要符合创建视图的时候的where 的条件。第二个是创建两个字段的视图 grade_avg_view，select 选择了一些列之后，如果里面有聚合函数，后面一定要有group函数否则会报错。最后一个是设置自增型的主键，在mysql中使用AUTO_INCREMENT 可以直接创建，但是在Oracle中要先创建一个递增序列，然后再创建一个触发器才可以。</p>
 <h1 id="索引，范式和锁"><a href="#索引，范式和锁" class="headerlink" title="索引，范式和锁"></a>索引，范式和锁</h1><p>索引：每个表如果设置了主键就会有有一个主键索引，在Mysql中，使用的时InnoDB引擎，每一个索引就是一颗B+树，也可以创建非主键索引，二级索引，二级索引和主键索引的不同之处在于其叶子节点上保存的值不一样，表中所有字段的值都被完整的保存在主键索引的叶子节点上，但是二级索引的叶子节点只保存对应主键的值。这里的叶子节点上只保存了主键的值，所以还需要通过获得的主键 ID 值再回到主键索引上查出所有字段的值，这个过程称作回表。</p>
 <ul>
 <li>数据库方面，能会基本的增删改查即可，外带一些基本概念，比如事务怎么处理，JDBC里批处理怎么处理。</li>
 </ul>
-<p><img src="https://img-blog.csdnimg.cn/10a6d9b39c07447986018076661b827f.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/10a6d9b39c07447986018076661b827f.png" alt=""></p>
 <p>创建表时，凡是能通过计算出来的字段都不要把它当成属性列；</p>
 <h1 id="创建函数、过程"><a href="#创建函数、过程" class="headerlink" title="创建函数、过程"></a>创建函数、过程</h1><p>存储过程不一定要有返回值，函数一定要有</p>
 <p>注意存储过程in out inout 三种参数类型，而函数只有in</p>
-<p> 创建函数：</p>
+<p> 创建函数：</p>
 <pre class="line-numbers language-none"><code class="language-none">CREATE OR REPLACE FUNCTION COUNT_CREDIT(STUNO in VARCHAR2) RETURN NUMBER
 AS
 CRED NUMBER:&#x3D;0;
@@ -757,8 +749,6 @@ end;
 &#x2F;
 后面加上一句：
 print a;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
 <p>创建过程：</p>
 <pre class="line-numbers language-none"><code class="language-none">create or replace procedure count_credi
 (stusno in varchar2 , creditj out number )--warning：in out
@@ -789,8 +779,6 @@ begin
 end;
 &#x2F;
 2、exec pro_findname(&#39;%马%&#39;);--注意这里的调用时使用%，而不是在存储过程中<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
 <p>触发器：</p>
 <p>触发器的用法</p>
 <p>触发器与存储过程和函数不同，函数和存储过程需要用户显示调用，触发器时在某个事件发生时，自动的隐式的完成，所以叫触发或者点火（firing）</p>
@@ -803,9 +791,7 @@ begin
   where sno&#x3D;:new.sno and :new.grade&gt;60;
   null;
 end;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-<p>触发器的语法 </p>
+<p>触发器的语法 </p>
 <pre class="line-numbers language-none"><code class="language-none">create trigger &lt;触发器名称&gt;
 &#123; before | after&#125;          # 之前或者之后出发
 insert | update | delete   # 指明了激活触发程序的语句的类型
@@ -814,14 +800,12 @@ for each row  # 触发器的执行间隔，for each row
 --通知触发器每隔一行执行一次动作，
 --而不是对整个表执行一次。
 &lt;触发器SQL语句&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h1 id="dbms-output-put-line的用法"><a href="#dbms-output-put-line的用法" class="headerlink" title="dbms_output.put_line的用法"></a>dbms_output.put_line的用法</h1><p>涉及到的知识点如下： 1、enable：在serveroutput on的情况下，用来使dbms_output生效(默认即打开) 2、disable：在serveroutput on的情况下，用来使dbms_output失效 3、put：将内容写到内存，等到put_line时一起输出 4、put_line：不用多说了，输出字符 5、new_line：作为一行的结束，可以理解为写入buffer时的换行符 6、get_line(value, index)：获取缓冲区的单行信息 7、get_lines(array, index)：以数组形式来获取缓冲区的多行信息</p>
 <p>oracle系统包—-dbms_output用法</p>
 <p><a target="_blank" rel="noopener" href="https://blog.51cto.com/u_15127666/3474569">博客</a></p>
-<h1 id="E-R图转关系模式"><a href="#E-R图转关系模式" class="headerlink" title="E-R图转关系模式"></a>E-R图转关系模式</h1><p><img src="https://img-blog.csdnimg.cn/ac4a564dfda445f3a03983b6da03a28f.png"></p>
+<h1 id="E-R图转关系模式"><a href="#E-R图转关系模式" class="headerlink" title="E-R图转关系模式"></a>E-R图转关系模式</h1><p><img src="https://img-blog.csdnimg.cn/ac4a564dfda445f3a03983b6da03a28f.png" alt=""></p>
 <p>转为关系模式</p>
-<p><img src="https://img-blog.csdnimg.cn/ab43348e9ad3416c88a04333ed7af6bb.png"></p>
-<p> </p>
+<p><img src="https://img-blog.csdnimg.cn/ab43348e9ad3416c88a04333ed7af6bb.png" alt=""></p>
 
                 
             </div>
@@ -1229,7 +1213,7 @@ for each row  # 触发器的执行间隔，for each row
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">123.4k</span>
+                        class="white-color">123.1k</span>
             
             
             

@@ -396,7 +396,7 @@ set serveroutput on --将output 服">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    449
+                    445
                 </div>
                 
 
@@ -426,13 +426,9 @@ set serveroutput on --将output 服">
 <h1 id="dbms-output-put-line的用法"><a href="#dbms-output-put-line的用法" class="headerlink" title="dbms_output.put_line的用法"></a><strong>dbms_output.put_line的用法</strong></h1><h1 id="涉及到的知识点如下："><a href="#涉及到的知识点如下：" class="headerlink" title="涉及到的知识点如下："></a>涉及到的知识点如下：</h1><h2 id="1、enable："><a href="#1、enable：" class="headerlink" title="1、enable："></a>1、enable：</h2><p>在serveroutput on的情况下，用来使dbms_output生效(默认即打开)</p>
 <pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">set serveroutput on --将output 服务打开
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
 <h2 id="2、disable："><a href="#2、disable：" class="headerlink" title="2、disable："></a>2、disable：</h2><p>在serveroutput on的情况下，用来使dbms_output失效</p>
 <pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">set serveroutput off --将output 服务关闭<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-
-
-<p><img src="https://img-blog.csdnimg.cn/5ccf8ce979664cd9ac2103cc09e0058e.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5aSc54yr56iL5bqP54y_,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
+<p><img src="https://img-blog.csdnimg.cn/5ccf8ce979664cd9ac2103cc09e0058e.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5aSc54yr56iL5bqP54y_,size_20,color_FFFFFF,t_70,g_se,x_16" alt=""></p>
 <h2 id="3、put："><a href="#3、put：" class="headerlink" title="3、put："></a>3、put：</h2><p>将内容写到内存，等到put_line时一起输出，new_line的时候也可以输出。</p>
 <pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">begin
   dbms_output.put_line(&#39;hello world1111111&#39;);
@@ -443,16 +439,11 @@ set serveroutput on --将output 服">
   dbms_output.put_line(&#39;Hello, Lao An &#39;);
 end;
 &#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
 <p>输出：</p>
-<p><img src="https://img-blog.csdnimg.cn/76f3c865dc57456f8a525932af924bac.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5aSc54yr56iL5bqP54y_,size_15,color_FFFFFF,t_70,g_se,x_16"></p>
+<p><img src="https://img-blog.csdnimg.cn/76f3c865dc57456f8a525932af924bac.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5aSc54yr56iL5bqP54y_,size_15,color_FFFFFF,t_70,g_se,x_16" alt=""></p>
 <h2 id="4、put-line："><a href="#4、put-line：" class="headerlink" title="4、put_line："></a>4、put_line：</h2><p>不用多说了，输出字符，并刷新buffer，前提是set severoutput on；</p>
 <pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">exec dbms_output.put_line(&#39;hello world1111111&#39;);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-
-
-<p><img src="https://img-blog.csdnimg.cn/6afc315404ed49bb9f4a3358ece7ff8a.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5aSc54yr56iL5bqP54y_,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
+<p><img src="https://img-blog.csdnimg.cn/6afc315404ed49bb9f4a3358ece7ff8a.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5aSc54yr56iL5bqP54y_,size_20,color_FFFFFF,t_70,g_se,x_16" alt=""></p>
 <h2 id="5、new-line："><a href="#5、new-line：" class="headerlink" title="5、new_line："></a>5、new_line：</h2><p>作为一行的结束，可以理解为写入buffer时的换行符</p>
 <pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">set serveroutput on
 begin
@@ -462,14 +453,11 @@ begin
   dbms_output.put_line(&#39;Hello, Lao An&#39;);
 end;
 &#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-
-<p><img src="https://img-blog.csdnimg.cn/184650230b38414d9a9c55c14a29b417.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5aSc54yr56iL5bqP54y_,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
-<p><strong>这里运用了begin+&#x2F;来执行PL&#x2F;SQL过程，我解释一下oracle中斜杠(&#x2F;)<strong>的含义 斜杠就是让</strong>服务器执行前面所写的sql脚本</strong>。如果是普通的select语句，一个分号，就可以执行了。但是如果是存储过程，那么遇到分号，就不能马上执行了。这个时候，就需要通过斜杠(&#x2F;)来执行。</p>
-<p><img src="https://img-blog.csdnimg.cn/33849042ca5845109d969979e1147cb5.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5aSc54yr56iL5bqP54y_,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
+<p><img src="https://img-blog.csdnimg.cn/184650230b38414d9a9c55c14a29b417.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5aSc54yr56iL5bqP54y_,size_20,color_FFFFFF,t_70,g_se,x_16" alt=""></p>
+<p><strong>这里运用了begin+/来执行PL/SQL过程，我解释一下oracle中斜杠(/)</strong>的含义 斜杠就是让<strong>服务器执行前面所写的sql脚本</strong>。如果是普通的select语句，一个分号，就可以执行了。但是如果是存储过程，那么遇到分号，就不能马上执行了。这个时候，就需要通过斜杠(/)来执行。</p>
+<p><img src="https://img-blog.csdnimg.cn/33849042ca5845109d969979e1147cb5.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5aSc54yr56iL5bqP54y_,size_20,color_FFFFFF,t_70,g_se,x_16" alt=""></p>
 <h2 id="6、get-line-value-index-："><a href="#6、get-line-value-index-：" class="headerlink" title="6、get_line(value, index)："></a>6、get_line(value, index)：</h2><p>获取缓冲区的单行信息。</p>
-<p>注：使用get_line时不能用put_line输出，因为put_line之后会将buffer清空。(当然在<strong>serveroutput off的情况下put_line是不影响buffer的</strong>)。</p>
+<p>注：使用get_line时不能用put_line输出，因为put_line之后会将buffer清空。(当然在<strong>serveroutput off的情况下put_line是不影响buffer的</strong>)。</p>
 <h2 id="7、get-lines-array-index-："><a href="#7、get-lines-array-index-：" class="headerlink" title="7、get_lines(array, index)："></a>7、get_lines(array, index)：</h2><p>以数组形式来获取缓冲区的多行信息</p>
 <pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">declare
    v_data dbms_output.chararr;   --先声明局部变量                       
@@ -489,10 +477,8 @@ begin
    end loop;                                           
 end;                                                
 &#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-<p> 输出：</p>
-<p><img src="https://img-blog.csdnimg.cn/91e4417305374c8199922a56fd95e2d6.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5aSc54yr56iL5bqP54y_,size_10,color_FFFFFF,t_70,g_se,x_16"></p>
+<p> 输出：</p>
+<p><img src="https://img-blog.csdnimg.cn/91e4417305374c8199922a56fd95e2d6.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5aSc54yr56iL5bqP54y_,size_10,color_FFFFFF,t_70,g_se,x_16" alt=""></p>
 
                 
             </div>
@@ -900,7 +886,7 @@ end;
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">123.4k</span>
+                        class="white-color">123.1k</span>
             
             
             

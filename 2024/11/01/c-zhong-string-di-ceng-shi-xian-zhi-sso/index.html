@@ -447,8 +447,6 @@ int main()&#123;
 
 &#125;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
 <p>这里对new进行了重载，以便我们观察是否调用的new。</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">root@***********************:~<span class="token comment"># g++ -o test test.cpp </span>
 root@***********************:~<span class="token comment"># ./test</span>
@@ -483,8 +481,6 @@ root@***********************:~<span class="token comment"># ./test</span>
 <span class="token assign-left variable">i</span><span class="token operator">=</span><span class="token number">28</span>: new <span class="token assign-left variable">size</span><span class="token operator">=</span><span class="token number">29</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span>
 <span class="token assign-left variable">i</span><span class="token operator">=</span><span class="token number">29</span>: new <span class="token assign-left variable">size</span><span class="token operator">=</span><span class="token number">30</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">=</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
 <p>这就说明当字符串长度小于16时，是在栈上面分配内存，大于16的时候，在堆上分配内存，也就是调用了new方法。</p>
 
                 
@@ -893,7 +889,7 @@ root@***********************:~<span class="token comment"># ./test</span>
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">123.4k</span>
+                        class="white-color">123.1k</span>
             
             
             

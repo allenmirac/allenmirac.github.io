@@ -7,8 +7,8 @@
     <meta name="keywords" content="C++_std::array用法, AllenMirac">
     <meta name="description" content="
 
-Array简介std::array is a container that encapsulates fixed size arrays.
-Defined in header [&amp;lt;array&amp;gt;](https://en.cpp">
+Array简介std::array is a container that encapsulates fixed size arrays.
+Defined in header [&amp;lt;array&amp;gt;](https://en.cpp">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -396,7 +396,7 @@ Defined in header [&amp;lt;array&amp;gt;](https://en.cpp">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    713
+                    711
                 </div>
                 
 
@@ -423,12 +423,10 @@ Defined in header [&amp;lt;array&amp;gt;](https://en.cpp">
             <div id="articleContent">
                 <meta name="referrer" content="no-referrer" />
 
-<h1 id="Array简介"><a href="#Array简介" class="headerlink" title="Array简介"></a>Array简介</h1><p><code>std::array</code> is a container that encapsulates fixed size arrays.</p>
-<p>Defined in header <code>[&lt;array&gt;](https://en.cppreference.com/w/cpp/header/array)</code> template&lt;<br>    class T,     <a target="_blank" rel="noopener" href="http://en.cppreference.com/w/cpp/types/size_t">std::size_t</a> N &gt; struct array;(since C++11)</p>
-<p>它是c++里面的一个容器，在使用上与普通数组相似，但是它的大小是固定的，无法像vector一样动态扩展，安全性上面也比普通数组更加安全 。</p>
+<h1 id="Array简介"><a href="#Array简介" class="headerlink" title="Array简介"></a>Array简介</h1><p><code>std::array</code> is a container that encapsulates fixed size arrays.</p>
+<p>Defined in header <code>[&lt;array&gt;](https://en.cppreference.com/w/cpp/header/array)</code> template&lt;<br>    class T,     <a target="_blank" rel="noopener" href="http://en.cppreference.com/w/cpp/types/size_t">std::size_t</a> N &gt; struct array;(since C++11)</p>
+<p>它是c++里面的一个容器，在使用上与普通数组相似，但是它的大小是固定的，无法像vector一样动态扩展，安全性上面也比普通数组更加安全 。</p>
 <h1 id="初始化方式"><a href="#初始化方式" class="headerlink" title="初始化方式"></a>初始化方式</h1><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">array&lt;int, 10&gt; arr&#x3D;&#123;1, 2, 3, 4, 5&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-
 <p>在这里，只初始化了数组的前五个值，后面的五个值都是0。</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
 #include &lt;array&gt;
@@ -443,10 +441,8 @@ int main() &#123;
     &#125;
     return 0;
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-<p>输出： </p>
-<p><img src="https://img-blog.csdnimg.cn/b69f3e004722493e84bcb6d0812ce8bf.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5aSc54yr56iL5bqP54y_,size_13,color_FFFFFF,t_70,g_se,x_16"></p>
+<p>输出： </p>
+<p><img src="https://img-blog.csdnimg.cn/b69f3e004722493e84bcb6d0812ce8bf.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5aSc54yr56iL5bqP54y_,size_13,color_FFFFFF,t_70,g_se,x_16" alt=""></p>
 <h1 id="array容器成员函数汇总"><a href="#array容器成员函数汇总" class="headerlink" title="array容器成员函数汇总"></a>array容器成员函数汇总</h1><p><strong>成员函数功能</strong></p>
 <ol>
 <li>begin()返回指向容器中第一个元素的随机访问迭代器。</li>
@@ -458,13 +454,13 @@ int main() &#123;
 <li>crend()和 rend() 功能相同，只不过在其基础上，增加了 const 属性，不能用于修改元素。</li>
 <li>size()返回容器中当前元素的数量，其值始终等于初始化 array 类的第二个模板参数 N。</li>
 <li>max_size()返回容器可容纳元素的最大数量，其值始终等于初始化 array 类的第二个模板参数 N。</li>
-<li>empty()判断容器是否为空，和通过 size()&#x3D;&#x3D;0 的判断条件功能相同，但其效率可能更快。</li>
+<li>empty()判断容器是否为空，和通过 size()==0 的判断条件功能相同，但其效率可能更快。</li>
 <li>at(n)返回容器中 n 位置处元素的引用，该函数自动检查 n 是否在有效的范围内，如果不是则抛出 out_of_range 异常。</li>
 <li>front()返回容器中第一个元素的直接引用，该函数不适用于空的 array 容器。</li>
 <li>back()返回容器中最后一个元素的直接应用，该函数同样不适用于空的 array 容器。</li>
 <li>data()返回一个指向容器首个元素的指针。利用该指针，可实现复制容器中所有元素等类似功能。</li>
 <li>fill(val)将 val 这个值赋值给容器中的每个元素。</li>
-<li>array1.swap(array2)交换 array1 和 array2 容器中的所有元素，但前提是它们具有相同的长度和类型。</li>
+<li>array1.swap(array2)交换 array1 和 array2 容器中的所有元素，但前提是它们具有相同的长度和类型。</li>
 </ol>
 
                 
@@ -873,7 +869,7 @@ int main() &#123;
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">123.4k</span>
+                        class="white-color">123.1k</span>
             
             
             

@@ -463,7 +463,6 @@
         movsx   eax, BYTE PTR [rbp-4]
         pop     rbp
         ret<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>从上面可以看出，if-else是按照值一个一个的对比，重复使用cmp、je、jne等指令，如果满足条件就跳转，否则处理下一个值的分支，并不会对整个对比分支的选项进行整理与优化。</p>
 <p>可以看出，如果处理1000个，甚至10000个连续分支的话，效率是非常低的（并不对其采用二分法、哈希表的优化），这时候还需要注意把命中率高的分支放在前面。</p>
 <h2 id="switch-case分析"><a href="#switch-case分析" class="headerlink" title="switch-case分析"></a>switch-case分析</h2><h3 id="foo-switch1-char-分析："><a href="#foo-switch1-char-分析：" class="headerlink" title="foo_switch1(char)分析："></a>foo_switch1(char)分析：</h3><pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">foo_switch1(char):
@@ -510,7 +509,6 @@
         movsx   eax, BYTE PTR [rbp-4]
         pop     rbp
         ret<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>首先编译器分析各个分支后，先与最大值进行对比，如果比它大，则直接跳转到default分支；否则，处理其他分支。在同时处理大小写字符时，编译器还有<code>.L13</code>的分支，将小写字母sub 65转化为处理大写字母，这也是一种优化策略。</p>
 <h3 id="foo-switch2-char-分析"><a href="#foo-switch2-char-分析" class="headerlink" title="foo_switch2(char)分析"></a>foo_switch2(char)分析</h3><pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">.LC0:
         .string &quot;a &#x3D; 1&quot;
@@ -568,7 +566,6 @@ foo_switch2(char):
         nop
         leave
         ret<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>省略号部分和<code>.L27</code>部分类似，只是将开始的<code>.LC0</code>做替换。</p>
 <p>首先与switch-case语句的最大值比较，如果大于可以直接跳转到default语句；否则，加载局部变量的值到eax中，根据这个值作为索引，计算跳转的地址。</p>
 <p>标记<code>.L22</code>处<code>.quad</code>表示当前位置分配了8个字节的存储空间，后面跟着的数值(或标签)会被放置在这 8 个字节的内存空间中，通常用于定义 64 位整数或指针类型的数据。此处7个<code>.quad</code>代表这段代码包含了7 个 64 位值的数据表，用于实现之前提到的 switch-case 结构中的跳转表。</p>
@@ -982,7 +979,7 @@ foo_switch2(char):
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">123.4k</span>
+                        class="white-color">123.1k</span>
             
             
             

@@ -11,9 +11,9 @@
 目录
 首先下载jar包，点击下面的官网链接下载
 连接的代码：（Mysql5.0以后，可以省略注册驱动那一步）
-DriverManager 
- 事务处理
-Statement 
+DriverManager 
+ 事务处理
+Statement 
 PrepareStatement
 首先下载jar包，点击下面">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -434,18 +434,17 @@ PrepareStatement
 <p><strong>目录</strong></p>
 <p><a href="#%E9%A6%96%E5%85%88%E4%B8%8B%E8%BD%BDjar%E5%8C%85%EF%BC%8C%E7%82%B9%E5%87%BB%E4%B8%8B%E9%9D%A2%E7%9A%84%E5%AE%98%E7%BD%91%E9%93%BE%E6%8E%A5%E4%B8%8B%E8%BD%BD">首先下载jar包，点击下面的官网链接下载</a></p>
 <p><a href="#%E8%BF%9E%E6%8E%A5%E7%9A%84%E4%BB%A3%E7%A0%81%EF%BC%9A%EF%BC%88Mysql5.0%E4%BB%A5%E5%90%8E%EF%BC%8C%E5%8F%AF%E4%BB%A5%E7%9C%81%E7%95%A5%E6%B3%A8%E5%86%8C%E9%A9%B1%E5%8A%A8%E9%82%A3%E4%B8%80%E6%AD%A5%EF%BC%89">连接的代码：（Mysql5.0以后，可以省略注册驱动那一步）</a></p>
-<p><a href="#DriverManager%C2%A0">DriverManager </a></p>
-<p><a href="#%C2%A0%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86"> 事务处理</a></p>
-<p><a href="#Statement%C2%A0">Statement </a></p>
+<p><a href="#DriverManager%C2%A0">DriverManager </a></p>
+<p><a href="#%C2%A0%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86"> 事务处理</a></p>
+<p><a href="#Statement%C2%A0">Statement </a></p>
 <p><a href="#PrepareStatement">PrepareStatement</a></p>
-<h2 id="首先下载jar包，点击下面的官网链接下载"><a href="#首先下载jar包，点击下面的官网链接下载" class="headerlink" title="首先下载jar包，点击下面的官网链接下载"></a>首先下载jar包，点击下面的官网链接下载</h2><p><a target="_blank" rel="noopener" href="https://dev.mysql.com/downloads/connector/j/">MySQL :: Download Connector&#x2F;J</a></p>
+<h2 id="首先下载jar包，点击下面的官网链接下载"><a href="#首先下载jar包，点击下面的官网链接下载" class="headerlink" title="首先下载jar包，点击下面的官网链接下载"></a>首先下载jar包，点击下面的官网链接下载</h2><p><a target="_blank" rel="noopener" href="https://dev.mysql.com/downloads/connector/j/">MySQL :: Download Connector/J</a></p>
 <p>下载完成后记得在项目里面Add as library。</p>
 <p>JDBC的步骤：</p>
-<p><img src="https://img-blog.csdnimg.cn/41851a67bdf347999af145599d9fabdc.png">
- </p>
+<p><img src="https://img-blog.csdnimg.cn/41851a67bdf347999af145599d9fabdc.png" alt=""></p>
 <h2 id="连接的代码：（Mysql5-0以后，可以省略注册驱动那一步）"><a href="#连接的代码：（Mysql5-0以后，可以省略注册驱动那一步）" class="headerlink" title="连接的代码：（Mysql5.0以后，可以省略注册驱动那一步）"></a>连接的代码：（Mysql5.0以后，可以省略注册驱动那一步）</h2><p>jar包里面包含了注册的代码</p>
-<p><img src="https://img-blog.csdnimg.cn/015df4e78e544fbcb38112d8c41a184d.png"></p>
-<p><img src="https://img-blog.csdnimg.cn/3eb5653027484d63afddee0f7f8246fe.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/015df4e78e544fbcb38112d8c41a184d.png" alt=""></p>
+<p><img src="https://img-blog.csdnimg.cn/3eb5653027484d63afddee0f7f8246fe.png" alt=""></p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>itheima<span class="token punctuation">.</span>jdbc</span><span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>sql<span class="token punctuation">.</span></span><span class="token class-name">Connection</span></span><span class="token punctuation">;</span>
@@ -476,22 +475,16 @@ PrepareStatement
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-<p> 打印成功的信息 </p>
-<p><img src="https://img-blog.csdnimg.cn/f63449695f6f49f59f89c957546fb42f.png"></p>
-<h2 id="DriverManager"><a href="#DriverManager" class="headerlink" title="DriverManager"></a>DriverManager</h2><p><img src="https://img-blog.csdnimg.cn/cfcb67744b31484b91eddf993e349246.png"></p>
+<p> 打印成功的信息 </p>
+<p><img src="https://img-blog.csdnimg.cn/f63449695f6f49f59f89c957546fb42f.png" alt=""></p>
+<h2 id="DriverManager"><a href="#DriverManager" class="headerlink" title="DriverManager"></a>DriverManager</h2><p><img src="https://img-blog.csdnimg.cn/cfcb67744b31484b91eddf993e349246.png" alt=""></p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Class</span><span class="token punctuation">.</span><span class="token function">forName</span><span class="token punctuation">(</span><span class="token string">"com.mysql.cj.jdbc.Driver"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-
-<p> 这个是最常见的注册驱动的方法，但是要注意版本（<strong>尤其注意cj加与不加</strong>）。</p>
+<p> 这个是最常见的注册驱动的方法，但是要注意版本（<strong>尤其注意cj加与不加</strong>）。</p>
 <p>另外一种注册驱动的方法：</p>
 <p><strong>System.setProperty(“jdbc.drivers”,”com.mysql.jdbc.Driver”);</strong></p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">System</span><span class="token punctuation">.</span><span class="token function">setProperty</span><span class="token punctuation">(</span><span class="token string">"jdbc.driver"</span><span class="token punctuation">,</span><span class="token string">"com.mysql.jdbc.Driver"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//系统属性指定数据库驱动  </span>
 <span class="token class-name">String</span> url<span class="token operator">=</span><span class="token string">"jdbc:mysql://localhost:3306/databasename"</span><span class="token punctuation">;</span><span class="token comment">//数据库连接子协议  </span>
 <span class="token class-name">Connection</span> conn<span class="token operator">=</span><span class="token class-name">DriverManager</span><span class="token punctuation">.</span><span class="token function">getConnection</span><span class="token punctuation">(</span>url<span class="token punctuation">,</span><span class="token string">"username"</span><span class="token punctuation">,</span><span class="token string">"password"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-
 <p>可以同时导入多个jdbc驱动，中间用冒号“：”分开</p>
 <p>比如System.setProperty(“jdbc.drivers”,”XXXDriver:XXXDriver:XXXDriver”);</p>
 <p>这样就一次注册了三个数据库驱动</p>
@@ -538,12 +531,9 @@ PrepareStatement
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-<p>这里故意抛出1&#x2F;0的错误，看看是否执行了roolback()，结果证明是正确的。try块里面的数据都没有成功执行，回滚了。 </p>
-<h2 id="Statement"><a href="#Statement" class="headerlink" title="Statement"></a>Statement</h2><p><img src="https://img-blog.csdnimg.cn/63dabf743f204232b8e37a00d024b8e4.png"></p>
-<p><img src="https://img-blog.csdnimg.cn/9a999cd5dd264ed6953a3da5a6190ddf.png">
-  </p>
+<p>这里故意抛出1/0的错误，看看是否执行了roolback()，结果证明是正确的。try块里面的数据都没有成功执行，回滚了。 </p>
+<h2 id="Statement"><a href="#Statement" class="headerlink" title="Statement"></a>Statement</h2><p><img src="https://img-blog.csdnimg.cn/63dabf743f204232b8e37a00d024b8e4.png" alt=""></p>
+<p><img src="https://img-blog.csdnimg.cn/9a999cd5dd264ed6953a3da5a6190ddf.png" alt=""></p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>itheima<span class="token punctuation">.</span>jdbc</span><span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>sql<span class="token punctuation">.</span></span><span class="token operator">*</span></span><span class="token punctuation">;</span>
@@ -577,17 +567,13 @@ PrepareStatement
         connection<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">boolean</span> <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">SQLException</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-
 <p>注意ResultSet （结果集）的next的方法返回值是boolean类型，表示还有数据的话即输出来。</p>
 <h2 id="PrepareStatement"><a href="#PrepareStatement" class="headerlink" title="PrepareStatement"></a>PrepareStatement</h2><p>作用：预编译SQL语句并且执行，预防SQL注入问题，继承于Statement。</p>
 <p>SQL注入问题：通过操作事先设置好的SQL语句，用以达到执行代码对服务器进行攻击的方法。</p>
 <p>常见的就是如下图所示的代码，只要输入的密码是下面那种情况的，都可以登录成功，不管你有没有那个用户名。</p>
-<p><img src="https://img-blog.csdnimg.cn/6fbed2f983824e34be0cbd9724212d5f.png"></p>
-<p> 演示：</p>
+<p><img src="https://img-blog.csdnimg.cn/6fbed2f983824e34be0cbd9724212d5f.png" alt=""></p>
+<p> 演示：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>itheima<span class="token punctuation">.</span>jdbc</span><span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> <span class="token import"><span class="token namespace">com<span class="token punctuation">.</span>mysql<span class="token punctuation">.</span>cj<span class="token punctuation">.</span>protocol<span class="token punctuation">.</span></span><span class="token class-name">Resultset</span></span><span class="token punctuation">;</span>
@@ -630,24 +616,18 @@ PrepareStatement
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-<p> 输出结果：</p>
-<p><img src="https://img-blog.csdnimg.cn/e56976874cea4e399b3e5768c33a3389.png"></p>
-<p> 数据库里面的数据：</p>
-<p><img src="https://img-blog.csdnimg.cn/c2fd18457e304f66bcadcdabbbf7310f.png"></p>
-<p> 明明是密码错误，怎么会输出数据呢？</p>
+<p> 输出结果：</p>
+<p><img src="https://img-blog.csdnimg.cn/e56976874cea4e399b3e5768c33a3389.png" alt=""></p>
+<p> 数据库里面的数据：</p>
+<p><img src="https://img-blog.csdnimg.cn/c2fd18457e304f66bcadcdabbbf7310f.png" alt=""></p>
+<p> 明明是密码错误，怎么会输出数据呢？</p>
 <p>我们打印一下sql语句：</p>
 <pre class="line-numbers language-none"><code class="language-none">select * from admin where name&#x3D;&#39;124&#39; and password &#x3D; &#39;&#39; or &#39;1&#39; &#x3D; &#39;1&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-
 <p>原来where的条件一直显示为真，所以相当于：</p>
 <pre class="line-numbers language-none"><code class="language-none">select * from admin<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-
-<p>解决办法： </p>
-<p><img src="https://img-blog.csdnimg.cn/8b5e0cddfb03400da4d6b240d73f290b.png"></p>
-<p> 示例：</p>
+<p>解决办法： </p>
+<p><img src="https://img-blog.csdnimg.cn/8b5e0cddfb03400da4d6b240d73f290b.png" alt=""></p>
+<p> 示例：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>itheima<span class="token punctuation">.</span>jdbc</span><span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> <span class="token import"><span class="token namespace">com<span class="token punctuation">.</span>mysql<span class="token punctuation">.</span>cj<span class="token punctuation">.</span>protocol<span class="token punctuation">.</span></span><span class="token class-name">Resultset</span></span><span class="token punctuation">;</span>
@@ -693,11 +673,9 @@ PrepareStatement
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
 <p>执行结果：</p>
-<p><img src="https://img-blog.csdnimg.cn/061484020c594aceb11c8dbfcde8279b.png"></p>
-<p> 使用? 号当作sql的占位符就可以完美解决SQL注入的问题。</p>
+<p><img src="https://img-blog.csdnimg.cn/061484020c594aceb11c8dbfcde8279b.png" alt=""></p>
+<p> 使用? 号当作sql的占位符就可以完美解决SQL注入的问题。</p>
 
                 
             </div>
@@ -1105,7 +1083,7 @@ PrepareStatement
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">123.4k</span>
+                        class="white-color">123.1k</span>
             
             
             

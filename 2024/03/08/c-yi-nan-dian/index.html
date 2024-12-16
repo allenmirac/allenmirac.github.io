@@ -439,9 +439,6 @@ Box<span class="token operator">*</span> <span class="token function">get_addres
 	<span class="token keyword">this</span> <span class="token operator">=</span> <span class="token operator">&amp;</span>box<span class="token punctuation">;</span> <span class="token comment">// error: lvalue required as left operand of assignment</span>
     <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-
 <h2 id="深拷贝问题"><a href="#深拷贝问题" class="headerlink" title="深拷贝问题"></a>深拷贝问题</h2><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;cstring></span></span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
@@ -482,9 +479,6 @@ String<span class="token operator">&amp;</span> String<span class="token double-
 
 	<span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-
 <h2 id="友元函数和运算符重载"><a href="#友元函数和运算符重载" class="headerlink" title="友元函数和运算符重载"></a>友元函数和运算符重载</h2><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;cmath></span></span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
@@ -596,9 +590,8 @@ ostream <span class="token operator">&amp;</span><span class="token keyword">ope
 	cout <span class="token operator">&lt;&lt;</span> c <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
 	<span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>其中后置++运算符返回值是局部变量，不能返回&amp;，即对象的引用，局部变量在函数运行结束后就销毁了。</p>
-<h2 id="类型转换运算符重载"><a href="#类型转换运算符重载" class="headerlink" title="类型转换运算符重载"></a>类型转换运算符重载</h2><p>可以实现两个类之间使用&#x3D;赋值</p>
+<h2 id="类型转换运算符重载"><a href="#类型转换运算符重载" class="headerlink" title="类型转换运算符重载"></a>类型转换运算符重载</h2><p>可以实现两个类之间使用=赋值</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
 
@@ -618,14 +611,11 @@ ostream <span class="token operator">&amp;</span><span class="token keyword">ope
 	a<span class="token operator">=</span>b<span class="token punctuation">;</span>
 	<span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-
 <h2 id="不能重载的运算符"><a href="#不能重载的运算符" class="headerlink" title="不能重载的运算符"></a>不能重载的运算符</h2><p>.，:: ，?:，sizeof，typeid，.* 这几个运算符不能被重载</p>
 <h2 id="C-编译器至少给一个类提供四个函数"><a href="#C-编译器至少给一个类提供四个函数" class="headerlink" title="C++编译器至少给一个类提供四个函数"></a>C++编译器至少给一个类提供四个函数</h2><p>1、构造函数</p>
 <p>2、析构函数</p>
 <p>3、拷贝构造函数</p>
-<p>4、operator&#x3D; 函数</p>
+<p>4、operator= 函数</p>
 <h2 id="多态的实现"><a href="#多态的实现" class="headerlink" title="多态的实现"></a>多态的实现</h2><p>多态实现的前提三个条件</p>
 <p>1、必须是共有继承</p>
 <p>2、通过基类指针指向派生类，并且访问派生类重写的方法。</p>
@@ -663,9 +653,6 @@ ostream <span class="token operator">&amp;</span><span class="token keyword">ope
 
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-
 <h2 id="菱形继承的问题"><a href="#菱形继承的问题" class="headerlink" title="菱形继承的问题"></a>菱形继承的问题</h2><p>继承关系画成图像一个菱形，所以就叫做菱形继承，采用<strong>虚继承</strong>来解决二义性问题。</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
@@ -700,7 +687,6 @@ ostream <span class="token operator">&amp;</span><span class="token keyword">ope
     cout <span class="token operator">&lt;&lt;</span> d<span class="token punctuation">.</span><span class="token function">getn</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
 	<span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>可以先在脑子里想一下结果，然后可以运行一下看看是否与其一致，有助于理解哦。</p>
 <h2 id="虚析构"><a href="#虚析构" class="headerlink" title="虚析构"></a>虚析构</h2><p>总的来说是为了避免内存泄漏，利用基类指针释放派生类对象的内存。也就是说，虚析构函数使得删除指向子类的父类指针时，不仅可以调用父类的的析构函数，也会调用子类的析构函数，这样就可以释放子类指针成员变量在堆中的内存，达到防止内存泄漏的目的。</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h></span></span>
@@ -769,7 +755,6 @@ ostream <span class="token operator">&amp;</span><span class="token keyword">ope
     <span class="token keyword">delete</span> pA<span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span class="token comment">//注意看构造和析构的顺序，正好是相反的</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h2 id="运用运算符delete删除一个动态对象时，是先调用析构函数还是先释放对象内存"><a href="#运用运算符delete删除一个动态对象时，是先调用析构函数还是先释放对象内存" class="headerlink" title="运用运算符delete删除一个动态对象时，是先调用析构函数还是先释放对象内存"></a>运用运算符delete删除一个动态对象时，是先调用析构函数还是先释放对象内存</h2><p>当使用 <code>delete</code> 运算符删除动态分配的对象时，会<strong>先调用对象的析构函数来执行清理操作，然后再释放对象所占用的内存。</strong></p>
 <p>如果先释放内存而不调用析构函数，就无法确保对象所占用的资源被正确释放，可能导致内存泄漏的问题，即程序无法再访问这些内存区域，但却无法再对其进行释放，造成系统资源浪费。</p>
 <h2 id="g-和gcc的区别"><a href="#g-和gcc的区别" class="headerlink" title="g++和gcc的区别"></a>g++和gcc的区别</h2><p>面试的时候，问到了gcc和g++的区别，没答上来： </p>
@@ -794,7 +779,7 @@ ostream <span class="token operator">&amp;</span><span class="token keyword">ope
 </li>
 <li><p>gcc在编译C文件时，可使用的预定义宏是比较少的    </p>
 </li>
-<li><p>gcc在编译cpp文件时&#x2F;g++在编译c文件和cpp文件时（这时候gcc和g++调用的都是cpp文件的编译器）</p>
+<li><p>gcc在编译cpp文件时/g++在编译c文件和cpp文件时（这时候gcc和g++调用的都是cpp文件的编译器）</p>
 </li>
 </ol>
 <h2 id="关于内联函数"><a href="#关于内联函数" class="headerlink" title="关于内联函数"></a>关于内联函数</h2><p>一般是加快程序执行速度，可能减小可执行文件大小，可能增加可执行文件大小。</p>
@@ -829,7 +814,6 @@ ostream <span class="token operator">&amp;</span><span class="token keyword">ope
     <span class="token function">test01</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h2 id="pointer-like-class的作用"><a href="#pointer-like-class的作用" class="headerlink" title="pointer-like-class的作用"></a>pointer-like-class的作用</h2><p><code>pointer-like-class</code>是指类似指针的类，这种类一般用来模拟指针的行为，但是与裸指针相比具有更多的功能和安全性，如智能指针（Smart Pointers）、迭代器（Iterators）。Smart Pointers有<code>std::unique_ptr</code>和<code>std::shared_ptr</code>、<code>std::weak_ptr</code>。</p>
 <h1 id="一：结构化程序设计方法"><a href="#一：结构化程序设计方法" class="headerlink" title="一：结构化程序设计方法"></a>一：结构化程序设计方法</h1><h2 id="位运算及其运用"><a href="#位运算及其运用" class="headerlink" title="位运算及其运用"></a>位运算及其运用</h2><p>判断奇数还是偶数</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> a<span class="token operator">=</span><span class="token number">11</span><span class="token punctuation">;</span>
@@ -839,17 +823,14 @@ ostream <span class="token operator">&amp;</span><span class="token keyword">ope
 <span class="token punctuation">&#125;</span><span class="token keyword">else</span><span class="token punctuation">&#123;</span>
 	cout<span class="token operator">&lt;&lt;</span> <span class="token string">"is even"</span> <span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>取出指定的位</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> a<span class="token operator">=</span><span class="token number">0b11101101</span><span class="token punctuation">;</span>
 <span class="token keyword">int</span> b<span class="token operator">=</span><span class="token number">0b1111</span><span class="token punctuation">;</span>
 cout <span class="token operator">&lt;&lt;</span> <span class="token generic-function"><span class="token function">bitset</span><span class="token generic class-name"><span class="token operator">&lt;</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">char</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token number">8</span><span class="token operator">></span></span></span><span class="token punctuation">(</span>a<span class="token operator">&amp;</span>b<span class="token punctuation">)</span><span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
 <p>判断是否为2的整数幂（0b10 0000 &amp; 0b01 1111），结果是0，说明是2的整数幂。</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> x <span class="token operator">=</span> <span class="token number">64</span><span class="token punctuation">;</span>
 <span class="token keyword">int</span> y <span class="token operator">=</span> x <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
 cout <span class="token operator">&lt;&lt;</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>x <span class="token operator">&amp;</span> y<span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token string">"no"</span> <span class="token operator">:</span> <span class="token string">"yes"</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
 <h2 id="指针数组与指向数组的指针的概念与使用"><a href="#指针数组与指向数组的指针的概念与使用" class="headerlink" title="指针数组与指向数组的指针的概念与使用"></a>指针数组与指向数组的指针的概念与使用</h2><p>a是一个指向含有三个int型数据数组的指针（如有int p[3]; a指向p是可以的 ）</p>
 <p>a1是一个函数三个int*型数据的数组（如a1可以初始化为{&amp;b, &amp;c, &amp;d}）;</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
@@ -868,18 +849,15 @@ cout <span class="token operator">&lt;&lt;</span> <span class="token punctuation
  	<span class="token function">sz</span><span class="token punctuation">(</span>a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 	<span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h2 id="引用的分类与使用"><a href="#引用的分类与使用" class="headerlink" title="引用的分类与使用"></a>引用的分类与使用</h2><p>1、初始化，定义引用时需要加&amp;，</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> a<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
 <span class="token keyword">int</span> <span class="token operator">&amp;</span>b<span class="token operator">=</span>a<span class="token punctuation">;</span><span class="token comment">//相当于给a取了一个别名</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
 <p>2、作为函数参数传递，c++在函数参数中传递数组时，直接变成了指针，因为如果将数组传递过去需要将值一个一个拷贝过去，增加了函数调用的开销，所以在 C++ 中，我们有了一种比指针更加便捷的传递聚合类型数据的方式，那就是<strong>引用（Reference）</strong>，通过这种方式传过去减少了生成副本的消耗。</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">swap</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">&amp;</span>a<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">&amp;</span>b<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
 	<span class="token keyword">int</span> temp<span class="token operator">=</span>a<span class="token punctuation">;</span>
 	a<span class="token operator">=</span>b<span class="token punctuation">;</span>
 	b<span class="token operator">=</span>temp<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>3、作为函数返回值来传递，例如重载左移运算符，需要输出多个内容就需要返回引用。</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;typeinfo></span></span>
@@ -905,7 +883,6 @@ cout <span class="token operator">&lt;&lt;</span> <span class="token punctuation
 	<span class="token function">function2</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">;</span> <span class="token comment">// OK  此时a的值变成了20</span>
 	cout<span class="token operator">&lt;&lt;</span>a<span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>重载左移运算符，返回引用才会连续输出两个值；</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
@@ -930,7 +907,6 @@ cout <span class="token operator">&lt;&lt;</span> <span class="token punctuation
 
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h2 id="变量的作用域和生命周期"><a href="#变量的作用域和生命周期" class="headerlink" title="变量的作用域和生命周期"></a>变量的作用域和生命周期</h2><p>c++的内存主要分为一下几个部分：栈区、堆区、全局区（静态区）、文字常量区、程序代码区。</p>
 <p>全局变量</p>
 <blockquote>
@@ -1000,7 +976,6 @@ cout <span class="token operator">&lt;&lt;</span> <span class="token punctuation
     <span class="token function">test02</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>使用二进制流读写文件</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;fstream></span></span>
@@ -1060,7 +1035,6 @@ cout <span class="token operator">&lt;&lt;</span> <span class="token punctuation
     <span class="token function">test02</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>从txt文件中读出的以空格为间隔的数字，并排序</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;cstdlib></span></span>
@@ -1114,9 +1088,6 @@ cout <span class="token operator">&lt;&lt;</span> <span class="token punctuation
 	<span class="token function">testReadFromTxt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 	<span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-
 <h2 id="异常处理的构造和析构函数"><a href="#异常处理的构造和析构函数" class="headerlink" title="异常处理的构造和析构函数"></a>异常处理的构造和析构函数</h2><p>若在 try 中抛出异常，在转到 catch 前，会对有关对象进行析构</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
 
@@ -1165,7 +1136,6 @@ cout <span class="token operator">&lt;&lt;</span> <span class="token punctuation
 	<span class="token punctuation">&#125;</span>
 	<span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>可以看到上面这段代码的输出结果是先对a、b析构然后再转到catch输出内容。</p>
 <h2 id="类模板与继承"><a href="#类模板与继承" class="headerlink" title="类模板与继承"></a>类模板与继承</h2><p>要注意继承的时候要加上基类的类型</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
@@ -1195,8 +1165,7 @@ cout <span class="token operator">&lt;&lt;</span> <span class="token punctuation
     <span class="token comment">// cout &lt;&lt; sizeof(Deri&lt;int>)&lt;&lt;endl;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="继承时不能被继承的函数"><a href="#继承时不能被继承的函数" class="headerlink" title="继承时不能被继承的函数"></a>继承时不能被继承的函数</h2><p>包括：构造函数、拷贝构造函数、析构函数，注意：operator&#x3D;函数是可以被继承的</p>
+<h2 id="继承时不能被继承的函数"><a href="#继承时不能被继承的函数" class="headerlink" title="继承时不能被继承的函数"></a>继承时不能被继承的函数</h2><p>包括：构造函数、拷贝构造函数、析构函数，注意：operator=函数是可以被继承的</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;cstring></span></span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
@@ -1232,8 +1201,7 @@ cout <span class="token operator">&lt;&lt;</span> <span class="token punctuation
 	b2<span class="token operator">=</span>b1<span class="token punctuation">;</span>
 	<span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>上面说明operator&#x3D;函数被继承下去了。</p>
+<p>上面说明operator=函数被继承下去了。</p>
 <h2 id="静态数据成员的只能在类外初始化"><a href="#静态数据成员的只能在类外初始化" class="headerlink" title="静态数据成员的只能在类外初始化"></a>静态数据成员的只能在类外初始化</h2><p>类内定义，类外初始化一次，然后在整个程序运行期间都可以存在</p>
 <p>原因</p>
 <p>1、静态成员变量存储在静态存储区域内，在编译阶段就为他们分配内存空间，</p>
@@ -1313,7 +1281,6 @@ cout <span class="token operator">&lt;&lt;</span> <span class="token punctuation
 	<span class="token function">testCircle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 	<span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h2 id="处理字符和字符串的输入输出操作"><a href="#处理字符和字符串的输入输出操作" class="headerlink" title="处理字符和字符串的输入输出操作"></a>处理字符和字符串的输入输出操作</h2><p>输出函数：</p>
 <ol>
 <li>putc()：将一个字符写入到指定的文件流中。</li>
@@ -1745,7 +1712,7 @@ cout <span class="token operator">&lt;&lt;</span> <span class="token punctuation
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">123.4k</span>
+                        class="white-color">123.1k</span>
             
             
             

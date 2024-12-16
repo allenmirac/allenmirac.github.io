@@ -7,8 +7,8 @@
     <meta name="keywords" content="PAT_(Basic_Level)_Practice_（中文）1054_求平均值, AllenMirac">
     <meta name="description" content="
 
-PAT (Basic Level) Practice （中文）1054 求平均值分数 20
-题目简介：本题的基本要求非常简单：给定 N 个实数，计算它们的平均值。但复杂的是有些输入数据可能是非法的。一个“合法”的输入是 [−1000,1">
+PAT (Basic Level) Practice （中文）1054 求平均值分数 20
+题目简介：本题的基本要求非常简单：给定 N 个实数，计算它们的平均值。但复杂的是有些输入数据可能是非法的。一个“合法”的输入是 [−1000,1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -396,7 +396,7 @@ PAT (Basic Level) Practice （中文）1054 求平均值分数 20
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    641
+                    636
                 </div>
                 
 
@@ -423,32 +423,27 @@ PAT (Basic Level) Practice （中文）1054 求平均值分数 20
             <div id="articleContent">
                 <meta name="referrer" content="no-referrer" />
 
-<h1 id="PAT-Basic-Level-Practice-（中文）1054-求平均值"><a href="#PAT-Basic-Level-Practice-（中文）1054-求平均值" class="headerlink" title="PAT (Basic Level) Practice （中文）1054 求平均值"></a>PAT (Basic Level) Practice （中文）1054 求平均值</h1><p>分数 20</p>
-<h3 id="题目简介："><a href="#题目简介：" class="headerlink" title="题目简介："></a>题目简介：</h3><p>本题的基本要求非常简单：给定 N 个实数，计算它们的平均值。但复杂的是有些输入数据可能是非法的。一个“合法”的输入是 [−1000,1000] 区间内的实数，并且最多精确到小数点后 2 位。当你计算平均值的时候，不能把那些非法的数据算在内。</p>
-<h3 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h3><p>输入第一行给出正整数 N（≤100）。随后一行给出 N 个实数，数字间以一个空格分隔。</p>
-<h3 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h3><p>对每个非法输入，在一行中输出 <code>ERROR: X is not a legal number</code>，其中 <code>X</code> 是输入。最后在一行中输出结果：<code>The average of K numbers is Y</code>，其中 <code>K</code> 是合法输入的个数，<code>Y</code> 是它们的平均值，精确到小数点后 2 位。如果平均值无法计算，则用 <code>Undefined</code> 替换 <code>Y</code>。如果 <code>K</code> 为 1，则输出 <code>The average of 1 number is Y</code>。</p>
+<h1 id="PAT-Basic-Level-Practice-（中文）1054-求平均值"><a href="#PAT-Basic-Level-Practice-（中文）1054-求平均值" class="headerlink" title="PAT (Basic Level) Practice （中文）1054 求平均值"></a>PAT (Basic Level) Practice （中文）1054 求平均值</h1><p>分数 20</p>
+<h3 id="题目简介："><a href="#题目简介：" class="headerlink" title="题目简介："></a>题目简介：</h3><p>本题的基本要求非常简单：给定 N 个实数，计算它们的平均值。但复杂的是有些输入数据可能是非法的。一个“合法”的输入是 [−1000,1000] 区间内的实数，并且最多精确到小数点后 2 位。当你计算平均值的时候，不能把那些非法的数据算在内。</p>
+<h3 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h3><p>输入第一行给出正整数 N（≤100）。随后一行给出 N 个实数，数字间以一个空格分隔。</p>
+<h3 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h3><p>对每个非法输入，在一行中输出 <code>ERROR: X is not a legal number</code>，其中 <code>X</code> 是输入。最后在一行中输出结果：<code>The average of K numbers is Y</code>，其中 <code>K</code> 是合法输入的个数，<code>Y</code> 是它们的平均值，精确到小数点后 2 位。如果平均值无法计算，则用 <code>Undefined</code> 替换 <code>Y</code>。如果 <code>K</code> 为 1，则输出 <code>The average of 1 number is Y</code>。</p>
 <h3 id="输入样例-1："><a href="#输入样例-1：" class="headerlink" title="输入样例 1："></a>输入样例 1：</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token number">7</span>
 <span class="token number">5</span> <span class="token parameter variable">-3.2</span> aaa <span class="token number">9999</span> <span class="token number">2.3</span>.4 <span class="token number">7.123</span> <span class="token number">2.35</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
 <h3 id="输出样例-1："><a href="#输出样例-1：" class="headerlink" title="输出样例 1："></a>输出样例 1：</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">ERROR: aaa is not a legal number
 ERROR: <span class="token number">9999</span> is not a legal number
 ERROR: <span class="token number">2.3</span>.4 is not a legal number
 ERROR: <span class="token number">7.123</span> is not a legal number
 The average of <span class="token number">3</span> numbers is <span class="token number">1.38</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h3 id="输入样例-2："><a href="#输入样例-2：" class="headerlink" title="输入样例 2："></a>输入样例 2：</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token number">2</span>
 aaa <span class="token parameter variable">-9999</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
 <h3 id="输出样例-2："><a href="#输出样例-2：" class="headerlink" title="输出样例 2："></a>输出样例 2：</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">ERROR: aaa is not a legal number
 ERROR: <span class="token parameter variable">-9999</span> is not a legal number
 The average of <span class="token number">0</span> numbers is Undefined
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-
-<p>代码长度限制        16 KB；时间限制        400 ms；内存限制        64 MB；</p>
+<p>代码长度限制        16 KB；时间限制        400 ms；内存限制        64 MB；</p>
 <h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;cstdio></span></span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;string.h></span></span>
@@ -481,13 +476,12 @@ The average of <span class="token number">0</span> numbers is Undefined
         <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"The average of 0 numbers is Undefined"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h3 id="分析：使用sprintf和sscanf函数"><a href="#分析：使用sprintf和sscanf函数" class="headerlink" title="分析：使用sprintf和sscanf函数~"></a>分析：使用sprintf和sscanf函数~</h3><p>char str[128];</p>
-<p>int num &#x3D; -150;</p>
+<p>int num = -150;</p>
 <p>int num2;</p>
-<p>&#x2F;&#x2F;数字转字符串，和printf的区别是不输出到屏幕上，而是输出到字符串里</p>
+<p>//数字转字符串，和printf的区别是不输出到屏幕上，而是输出到字符串里</p>
 <p>sprintf(str, “%d”, num);</p>
-<p>&#x2F;&#x2F;字符串转数字，和scanf的区别是不从键盘读，而是从字符串里读</p>
+<p>//字符串转数字，和scanf的区别是不从键盘读，而是从字符串里读</p>
 <p>sscanf(str, “%d”, &amp;num2);</p>
 
                 
@@ -896,7 +890,7 @@ The average of <span class="token number">0</span> numbers is Undefined
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">123.4k</span>
+                        class="white-color">123.1k</span>
             
             
             

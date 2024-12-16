@@ -437,7 +437,7 @@
 <p>因此，这个进程给新打开的文件的文件描述符是从3，开始增长的。</p>
 <h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><p>Linux、Unix的大部分系统调用都是基于文件描述符(window是基于句柄)。</p>
 <h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><p>当一个进程系统调用过多的时候，此时的文件描述符可能会不够用，可能会出现bug“Too many open files”，这样这个进程就会消耗完所有的文件资源，这时还需要一个限制，就是最大打开文件数。这个是文件描述符的系统级限制，可以使用sysctl命令或在proc文件系统中查看，表示所有用户能够打开的文件描述符的总和，还有一个是用户级限制，使用命令ulimit查看。</p>
-<h2 id="与文件描述符的产生相关的操作"><a href="#与文件描述符的产生相关的操作" class="headerlink" title="与文件描述符的产生相关的操作"></a>与文件描述符的产生相关的操作</h2><p>socket(), open(), pipe(),         read(), write(), recv(), send(),         select(), poll(), epoll(), </p>
+<h2 id="与文件描述符的产生相关的操作"><a href="#与文件描述符的产生相关的操作" class="headerlink" title="与文件描述符的产生相关的操作"></a>与文件描述符的产生相关的操作</h2><p>socket(), open(), pipe(),         read(), write(), recv(), send(),         select(), poll(), epoll(), </p>
 <p>与套接字相关的操作,<a target="_blank" rel="noopener" href="http://c.biancheng.net/view/2123.html">socket是什么？套接字是什么？</a></p>
 <ul>
 <li>connect()+ bind()+ listen()+ accept()+ getsockname()+ getpeername()+ getsockopt(), setsockopt()+ shutdown()</li>
@@ -446,14 +446,9 @@
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sysctl</span> <span class="token parameter variable">-a</span> <span class="token operator">|</span> <span class="token function">grep</span> <span class="token parameter variable">-i</span> file-max <span class="token parameter variable">--clolr</span>
 
 <span class="token function">cat</span> /proc/sys/fs/file-max<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-
 <p>用户级：</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">ulimit</span> <span class="token parameter variable">-n</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-
-
-<p><img src="https://img-blog.csdnimg.cn/27689bf9d2b84ae0ad3b1cbe35e1768e.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/27689bf9d2b84ae0ad3b1cbe35e1768e.png" alt=""></p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/cywosp/article/details/38965239">每天进步一点点——Linux中的文件描述符与打开文件之间的关系_cywosp的博客-CSDN博客</a></p>
 
                 
@@ -862,7 +857,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">123.4k</span>
+                        class="white-color">123.1k</span>
             
             
             

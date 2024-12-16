@@ -7,7 +7,7 @@
     <meta name="keywords" content="CSDN_博客导出工具,_用于将_CSDN_博客导出为_Markdown_/_PDF, AllenMirac">
     <meta name="description" content="
 
-CSDNExporter介绍CSDN 博客导出工具, 用于将 CSDN 博客导出为 Markdown &amp;#x2F; PDF 格式. 比较赞的地方在于, 它 不仅支持一篇博文的导出, 还支持将某个类目下的博文批量导出, 以及将导出的多篇博">
+CSDNExporter介绍CSDN 博客导出工具, 用于将 CSDN 博客导出为 Markdown / PDF 格式. 比较赞的地方在于, 它 不仅支持一篇博文的导出, 还支持将某个类目下的博文批量导出, 以及将导出的多篇博文汇总为 ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -395,7 +395,7 @@ CSDNExporter介绍CSDN 博客导出工具, 用于将 CSDN 博客导出为 Markdo
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    700
+                    699
                 </div>
                 
 
@@ -422,7 +422,7 @@ CSDNExporter介绍CSDN 博客导出工具, 用于将 CSDN 博客导出为 Markdo
             <div id="articleContent">
                 <meta name="referrer" content="no-referrer" />
 
-<h1 id="CSDNExporter"><a href="#CSDNExporter" class="headerlink" title="CSDNExporter"></a>CSDNExporter</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>CSDN 博客导出工具, 用于将 CSDN 博客导出为 Markdown &#x2F; PDF 格式. 比较赞的地方在于, 它 不仅支持一篇博文的导出, 还支持将某个类目下的博文批量导出, 以及将导出的多篇博文汇总为 一篇, 以便用于全局搜索, 具体效果可以查看 .</p>
+<h1 id="CSDNExporter"><a href="#CSDNExporter" class="headerlink" title="CSDNExporter"></a>CSDNExporter</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>CSDN 博客导出工具, 用于将 CSDN 博客导出为 Markdown / PDF 格式. 比较赞的地方在于, 它 不仅支持一篇博文的导出, 还支持将某个类目下的博文批量导出, 以及将导出的多篇博文汇总为 一篇, 以便用于全局搜索, 具体效果可以查看 .</p>
 <h2 id="运行脚本"><a href="#运行脚本" class="headerlink" title="运行脚本"></a>运行脚本</h2><ul>
 <li>Linux系统运行 启动脚本为 <code>./run.sh</code>, 使用 <code>chmod +x run.sh</code> 增加其可执行权限;(并没有测试)</li>
 <li>Windows系统启动 启动脚本为<code>run.bat</code>, 双击打开或者在cmd中运行<code>run.bat</code>。</li>
@@ -440,8 +440,6 @@ CSDNExporter介绍CSDN 博客导出工具, 用于将 CSDN 博客导出为 Markdo
 
     self<span class="token punctuation">.</span>recursive<span class="token punctuation">(</span>self<span class="token punctuation">.</span>soup<span class="token punctuation">)</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
 <p>recursive(self, soup):</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">recursive</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> soup<span class="token punctuation">)</span><span class="token punctuation">:</span>
     …………
@@ -450,8 +448,6 @@ CSDNExporter介绍CSDN 博客导出工具, 用于将 CSDN 博客导出为 Markdo
             os<span class="token punctuation">.</span>makedirs<span class="token punctuation">(</span>self<span class="token punctuation">.</span>fig_dir<span class="token punctuation">)</span>
     …………
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
 <p>2、输入用户名就可以直接找到的用户的博客专栏，拿到所有专栏下面的文章</p>
 <p>run.bat 先将所有的categories保存在userName.txt中</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token keyword">if</span> %download_category% <span class="token operator">==</span> <span class="token string">"true"</span> <span class="token punctuation">(</span>
@@ -459,8 +455,6 @@ CSDNExporter介绍CSDN 博客导出工具, 用于将 CSDN 博客导出为 Markdo
   python <span class="token parameter variable">-u</span> link.py %userName%
 <span class="token punctuation">)</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
-
 <p>再读取userName.txt文件的链接</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token keyword">for</span> /f <span class="token string">"tokens=* delims="</span> %%a <span class="token keyword">in</span> <span class="token punctuation">(</span>m0_67623521.txt<span class="token punctuation">)</span> <span class="token keyword">do</span> <span class="token punctuation">(</span>
   <span class="token builtin class-name">echo</span> %%a
@@ -480,13 +474,9 @@ CSDNExporter介绍CSDN 博客导出工具, 用于将 CSDN 博客导出为 Markdo
    <span class="token punctuation">)</span>
 <span class="token punctuation">)</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
 <p>link.py</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">user <span class="token operator">=</span> sys<span class="token punctuation">.</span>argv<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token comment"># 拿到命令行下的用户名参数</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-
 <p>将连接写入文件</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">for</span> li <span class="token keyword">in</span> lis<span class="token punctuation">:</span>
     <span class="token comment"># print("####")</span>
@@ -500,7 +490,6 @@ CSDNExporter介绍CSDN 博客导出工具, 用于将 CSDN 博客导出为 Markdo
         f<span class="token punctuation">.</span>write<span class="token punctuation">(</span>url<span class="token punctuation">)</span>
         f<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">'\n'</span><span class="token punctuation">)</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><p>另外要说明的是:</p>
 <ul>
 <li>安装必要的 Python 库, 如 <code>httpx</code>, <code>requests</code>, <code>BeautifulSoup</code>, <code>bs4</code>;</li>
@@ -926,7 +915,7 @@ CSDNExporter介绍CSDN 博客导出工具, 用于将 CSDN 博客导出为 Markdo
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">123.4k</span>
+                        class="white-color">123.1k</span>
             
             
             

@@ -450,16 +450,13 @@ C++内存布局以及常用关键字C++的内存空间代码存储区域：常�
     std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Square of a+1: "</span> <span class="token operator">&lt;&lt;</span> <span class="token function">SQUARE</span><span class="token punctuation">(</span>a <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>代码会被展开为：</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Square of a: "</span> <span class="token operator">&lt;&lt;</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>
 std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Square of a+1: "</span> <span class="token operator">&lt;&lt;</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>a <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span>a <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
 <p>同样逻辑使用函数实现：</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">inline</span> <span class="token keyword">int</span> <span class="token function">square</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
     <span class="token keyword">return</span> x <span class="token operator">*</span> x<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
 <p>虽然 <code>inline</code> 函数也可能避免函数调用开销，但其行为是在<strong>编译阶段</strong>由编译器决定；而宏定义是在<strong>预处理阶段</strong>直接展开。因此，宏展开比函数调用更加简单直接。</p>
 <h3 id="const"><a href="#const" class="headerlink" title="const"></a>const</h3><p>申明一个常量，在编译期间可以进行类型检查，确保其值在程序运行期间不能被修改。</p>
 <p>它还可以应用于指针、函数形参和成员函数等不同场景。</p>
@@ -468,10 +465,9 @@ std<span class="token double-colon punctuation">::</span>cout <span class="token
 <li><p><strong>定义常量</strong>：</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">const</span> <span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span> <span class="token comment">// 定义一个整型常量</span>
 a <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">;</span>           <span class="token comment">// 错误，尝试修改常量的值</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
 <p>在编译阶段，如果试图修改 <code>a</code> 的值，会报错：<br><em>“assignment of read-only variable ‘a’”</em></p>
 </li>
-<li><p>**指针中的 <code>const</code>**： <code>const</code> 在指针上下文中非常灵活，具体含义取决于其位置（需要注意理解哦：</p>
+<li><p><strong>指针中的 <code>const</code></strong>： <code>const</code> 在指针上下文中非常灵活，具体含义取决于其位置（需要注意理解哦：</p>
 <ul>
 <li><p><strong>指针指向的值不可变</strong>：</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">const</span> <span class="token keyword">int</span><span class="token operator">*</span> ptr <span class="token operator">=</span> <span class="token operator">&amp;</span>a<span class="token punctuation">;</span> <span class="token comment">// 指针指向的内容是只读的</span>
@@ -486,10 +482,11 @@ ptr <span class="token operator">=</span> <span class="token operator">&amp;</sp
 <li><p><strong>值和指针均不可变</strong>：</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">const</span> <span class="token keyword">int</span><span class="token operator">*</span> <span class="token keyword">const</span> ptr <span class="token operator">=</span> <span class="token operator">&amp;</span>a<span class="token punctuation">;</span> <span class="token comment">// 值和指针都不可更改</span>
 <span class="token operator">*</span>ptr <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">;</span>                <span class="token comment">// 错误</span>
-ptr <span class="token operator">=</span> <span class="token operator">&amp;</span>b<span class="token punctuation">;</span>                 <span class="token comment">// 错误</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
+ptr <span class="token operator">=</span> <span class="token operator">&amp;</span>b<span class="token punctuation">;</span>                 <span class="token comment">// 错误</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
 </ul>
 </li>
-<li><p>**函数参数中的 <code>const</code>**：</p>
+<li><p><strong>函数参数中的 <code>const</code></strong>：</p>
 <ul>
 <li><p><strong>传值参数</strong>： 如果函数参数是按值传递，<code>const</code> 修饰没有意义，因为传入的值本身就是副本，修改不会影响原始变量。</p>
 </li>
@@ -498,7 +495,6 @@ ptr <span class="token operator">=</span> <span class="token operator">&amp;</sp
     &#x2F;&#x2F; str 是只读的
     std::cout &lt;&lt; str &lt;&lt; std::endl;
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>好处：</p>
 <ul>
 <li>避免拷贝，提高性能。</li>
@@ -507,7 +503,7 @@ ptr <span class="token operator">=</span> <span class="token operator">&amp;</sp
 </li>
 </ul>
 </li>
-<li><p><strong>成员函数中的 <code>const</code><strong>： 当一个成员函数后面添加 <code>const</code> 修饰符时，表示该函数</strong>不会修改对象的任何成员变量</strong>：</p>
+<li><p><strong>成员函数中的 <code>const</code></strong>： 当一个成员函数后面添加 <code>const</code> 修饰符时，表示该函数<strong>不会修改对象的任何成员变量</strong>：</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">MyClass</span> <span class="token punctuation">&#123;</span>
 <span class="token keyword">private</span><span class="token operator">:</span>
     <span class="token keyword">int</span> value<span class="token punctuation">;</span>
@@ -516,12 +512,12 @@ ptr <span class="token operator">=</span> <span class="token operator">&amp;</sp
         <span class="token keyword">return</span> value<span class="token punctuation">;</span> <span class="token comment">// 只读操作</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>如果尝试在 <code>const</code> 成员函数中修改任何非 <code>mutable</code> 的成员变量，编译会报错。</p>
 </li>
 <li><p><strong><code>const</code> 和数组</strong>： 声明只读的数组：</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">const</span> <span class="token keyword">int</span> arr<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span> <span class="token comment">// 数组的内容是只读的</span>
-arr<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>                 <span class="token comment">// 错误</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+arr<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>                 <span class="token comment">// 错误</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
 </ol>
 <h3 id="mutable"><a href="#mutable" class="headerlink" title="mutable"></a>mutable</h3><p>mutable为可变的，易变的跟C++中的const是反义词。被mutable修饰的变量(mutable智能用于修饰类的非静态数据成员)<strong>，将永远处于可变的状态</strong>, 即使在一个const函数中</p>
 <p><strong><code>mutable</code> 的用法示例</strong></p>
@@ -549,18 +545,16 @@ arr<span class="token punctuation">[</span><span class="token number">0</span><s
     logger<span class="token punctuation">.</span><span class="token function">logMessage</span><span class="token punctuation">(</span><span class="token string">"Processing data"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p><strong>输出</strong>：</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Log: Program started <span class="token punctuation">(</span>Log <span class="token comment">#1)</span>
 Log: Processing data <span class="token punctuation">(</span>Log <span class="token comment">#2)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
 <p>在上面的例子中：</p>
 <ul>
 <li>类的 <code>logCount</code> 成员变量是用 <code>mutable</code> 修饰的。</li>
 <li>即使 <code>Logger</code> 对象是 <code>const</code>，<code>logCount</code> 仍然可以在 <code>logMessage</code> 函数中被修改。</li>
 </ul>
 <hr>
-<ol start="2">
+<ol>
 <li><strong>在 <code>const</code> 对象中的 <code>mutable</code> 使用</strong></li>
 </ol>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
@@ -587,10 +581,8 @@ Log: Processing data <span class="token punctuation">(</span>Log <span class="to
     std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Counter: "</span> <span class="token operator">&lt;&lt;</span> obj<span class="token punctuation">.</span><span class="token function">getCounter</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p><strong>输出</strong>：</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Counter: <span class="token number">2</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
 <p>使用 <code>mutable</code> 时应明确需求，通常用于辅助性的、不影响对象逻辑状态的数据成员。例如：</p>
 <ul>
 <li>缓存计算值。</li>
@@ -610,8 +602,6 @@ Log: Processing data <span class="token punctuation">(</span>Log <span class="to
 <span class="token keyword">typedef</span> <span class="token keyword">short</span> <span class="token keyword">int16_t</span><span class="token punctuation">;</span>
 <span class="token keyword">typedef</span> <span class="token keyword">int</span> <span class="token keyword">int32_t</span><span class="token punctuation">;</span>
 <span class="token keyword">typedef</span> <span class="token keyword">long</span> <span class="token keyword">int64_t</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
 <p>所以在程序源码中，只使用这些在头文件中声明的别名。 参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/Solomon-xm/articles/9140576.html">typedef用法详解</a></p>
 <h2 id="总结与建议"><a href="#总结与建议" class="headerlink" title="总结与建议"></a>总结与建议</h2><ul>
 <li><strong>内存管理</strong>：明确堆和栈的用途，动态内存需及时释放，避免内存泄漏。</li>
@@ -1041,7 +1031,7 @@ Log: Processing data <span class="token punctuation">(</span>Log <span class="to
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">123.4k</span>
+                        class="white-color">123.1k</span>
             
             
             

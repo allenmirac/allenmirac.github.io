@@ -7,9 +7,8 @@
     <meta name="keywords" content="Makefile 学习, AllenMirac">
     <meta name="description" content="Makefile 学习C语言的编译过程预处理（Preprocessing）-E是让编译器在预处理之后就退出，不进行后续编译过程；-o是指定输出文件名。
 gcc -E hello.c -o hello.i
-
 编译（Compilation）
-这">
+这里">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -424,17 +423,13 @@ gcc -E hello.c -o hello.i
             <div id="articleContent">
                 <h1 id="Makefile-学习"><a href="#Makefile-学习" class="headerlink" title="Makefile 学习"></a>Makefile 学习</h1><h1 id="C语言的编译过程"><a href="#C语言的编译过程" class="headerlink" title="C语言的编译过程"></a>C语言的编译过程</h1><h2 id="预处理（Preprocessing）"><a href="#预处理（Preprocessing）" class="headerlink" title="预处理（Preprocessing）"></a>预处理（Preprocessing）</h2><p>-E是让编译器在<strong>预处理之后</strong>就退出，不进行后续编译过程；-o是指定输出文件名。</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">gcc <span class="token parameter variable">-E</span> hello.c <span class="token parameter variable">-o</span> hello.i<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<h2 id="编译（Compilation）"><a href="#编译（Compilation）" class="headerlink" title="编译（Compilation）"></a>编译（Compilation）</h2><p><img src="https://s2.loli.net/2024/01/13/qWfwmgaBdeONbnZ.png"></p>
+<h2 id="编译（Compilation）"><a href="#编译（Compilation）" class="headerlink" title="编译（Compilation）"></a>编译（Compilation）</h2><p><img src="https://s2.loli.net/2024/01/13/qWfwmgaBdeONbnZ.png" alt=""></p>
 <p>这里的编译不是指程序从源文件到二进制程序的全部过程，而是指将经过预处理文件（test.i）之后的程序转换成特定汇编（test.s）代码的过程。</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">gcc <span class="token parameter variable">-S</span> hello.i <span class="token parameter variable">-o</span> hello.s<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
 <h2 id="汇编"><a href="#汇编" class="headerlink" title="汇编"></a>汇编</h2><p>汇编过程将上一步的汇编代码转换成机器码，这一步产生的文件叫做目标文件，是二进制格式。</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">gcc <span class="token parameter variable">-c</span> hello.s <span class="token parameter variable">-o</span> hello.o<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
 <h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p>链接过程使用链接器将该目标文件与其他目标文件、库文件、启动文件等链接起来生成可执行文件。附加的目标文件包括静态连接库和动态连接库。</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">gcc hello.o <span class="token parameter variable">-o</span> hello<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>生成可执行程序过程为成四个步骤：</p>
 <p>1、由.c文件到.i文件，这个过程叫预处理。<br>2、由.i文件到.s文件，这个过程叫编译。<br>3、由.s文件到.o文件，这个过程叫汇编。<br>4、由.o文件到可执行文件，这个过程叫链接。</p>
 <h2 id="静态库"><a href="#静态库" class="headerlink" title="静态库"></a>静态库</h2><p>在编译的过程中，会被直接载入到可执行文件中，将多个文件组成一个库，实现复用，以lib开头，以.a结尾，使用ar命令</p>
@@ -443,14 +438,12 @@ gcc -E hello.c -o hello.i
     command
     ...
     ...<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>make debug执行下面的命令</p>
 <pre class="line-numbers language-makefile" data-language="makefile"><code class="language-makefile"><span class="token target symbol">debug</span><span class="token punctuation">:</span>
 	echo hello
 <span class="token builtin-target builtin">.PHONY</span><span class="token punctuation">:</span> clean <span class="token comment"># 伪目标</span>
 <span class="token target symbol">clean</span><span class="token punctuation">:</span>
 	rm *.o<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><pre class="line-numbers language-makefile" data-language="makefile"><code class="language-makefile">cpp <span class="token operator">:=</span> src/main.cpp
 obj <span class="token operator">:=</span> obj/main.o
 
@@ -467,20 +460,17 @@ obj <span class="token operator">:=</span> obj/main.o
 	<span class="token comment"># Windows下使用del obj</span>
 
 <span class="token builtin-target builtin">.PHONY</span><span class="token punctuation">:</span> clean debug<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="运算符号"><a href="#运算符号" class="headerlink" title="运算符号"></a>运算符号</h2><p>:&#x3D;：赋值后不可改变</p>
-<p>&#x3D; ：可以改变</p>
-<p>?&#x3D;：在变量尚未设置时才将其设置为值</p>
-<p>+&#x3D;：添加</p>
+<h2 id="运算符号"><a href="#运算符号" class="headerlink" title="运算符号"></a>运算符号</h2><p>:=：赋值后不可改变</p>
+<p>= ：可以改变</p>
+<p>?=：在变量尚未设置时才将其设置为值</p>
+<p>+=：添加</p>
 <p>\：续行符</p>
 <h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>shell：把执行操作系统命令后的输出作为函数返回，本质上就是执行shell命令。</p>
 <pre class="line-numbers language-makefile" data-language="makefile"><code class="language-makefile">cpp_srcs <span class="token operator">:=</span> <span class="token variable">$</span><span class="token punctuation">&#123;</span>shell find src -name *.cpp<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
 <p>subst、patsubst</p>
 <p>格式：源字符串都是<code>&lt;text&gt;</code>的内容</p>
 <pre class="line-numbers language-makefile" data-language="makefile"><code class="language-makefile"><span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">subst</span> &lt;from>,&lt;to>,&lt;text><span class="token punctuation">)</span>
 <span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">patsubst</span> &lt;pattern>,&lt;replacement>,&lt;text><span class="token punctuation">)</span> <span class="token comment"># pattern中的%和replacement中的%相同</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
 <p>foreach</p>
 <pre class="line-numbers language-makefile" data-language="makefile"><code class="language-makefile"><span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">foreach</span> &lt;var>,&lt;list>,&lt;text><span class="token punctuation">)</span>
 
@@ -488,11 +478,9 @@ obj <span class="token operator">:=</span> obj/main.o
 names <span class="token operator">:=</span> a b c d
 files <span class="token operator">:=</span> <span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">foreach</span> n,<span class="token variable">$</span><span class="token punctuation">(</span>names<span class="token punctuation">)</span>,<span class="token variable">$</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span>.o<span class="token punctuation">)</span>
 <span class="token comment"># $(file) := a.o b.o c.o d.o </span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>dir</p>
 <pre class="line-numbers language-makefile" data-language="makefile"><code class="language-makefile"><span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">dir</span> &lt;names...><span class="token punctuation">)</span> <span class="token comment">#取目录函数</span>
 <span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">dir</span> src/foo.c hacks<span class="token punctuation">)</span> <span class="token comment"># 返回值是 src/ ./</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
 <p>notdir、filter</p>
 <pre class="line-numbers language-makefile" data-language="makefile"><code class="language-makefile"><span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">notdir</span> &lt;names...><span class="token punctuation">)</span> <span class="token comment"># 取文件函数</span>
 <span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">notdir</span> src/foo.c hacks<span class="token punctuation">)</span> <span class="token comment"># 返回值是 foo.c hacks</span>
@@ -500,7 +488,6 @@ files <span class="token operator">:=</span> <span class="token variable">$</spa
 sources <span class="token operator">:=</span> foo.c bar.c baz.s ugh.h
 <span class="token target symbol">foo</span><span class="token punctuation">:</span> <span class="token variable">$</span><span class="token punctuation">(</span>sources<span class="token punctuation">)</span>
 	cc <span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">filter</span> %.c %.s,<span class="token variable">$</span><span class="token punctuation">(</span>sources<span class="token punctuation">)</span><span class="token punctuation">)</span> -o foo <span class="token comment"># $(filter %.c %.s,$(sources)) 返回的值是 foo.c bar.c baz.s</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h2 id="编译带有头文件的项目"><a href="#编译带有头文件的项目" class="headerlink" title="编译带有头文件的项目"></a>编译带有头文件的项目</h2><p>Makefile示例（1）：</p>
 <pre class="line-numbers language-makefile" data-language="makefile"><code class="language-makefile">cpp_srcs <span class="token operator">:=</span> <span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">shell</span> find src -name *.cpp<span class="token punctuation">)</span>
 cpp_objs <span class="token operator">:=</span> <span class="token variable">$</span><span class="token punctuation">(</span><span class="token function">patsubst</span> src/%.cpp,objs/%.o,<span class="token variable">$</span><span class="token punctuation">(</span>cpp_srcs<span class="token punctuation">)</span><span class="token punctuation">)</span>
@@ -528,7 +515,6 @@ I_flag        <span class="token operator">:=</span> <span class="token variable
 	<span class="token operator">@</span>rm -rf objs
 
 <span class="token builtin-target builtin">.PHONY</span> <span class="token punctuation">:</span> debug run<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>Makefile示例（2）：</p>
 <pre class="line-numbers language-makefile" data-language="makefile"><code class="language-makefile"><span class="token comment"># Compiler</span>
 CXX <span class="token operator">:=</span> g++
@@ -983,7 +969,7 @@ Compile_option <span class="token operator">+=</span> <span class="token variabl
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">123.4k</span>
+                        class="white-color">123.1k</span>
             
             
             

@@ -440,7 +440,7 @@
 <p>常用的是<font color=red>平方误差代价函数</font></p>
 <p>这里解释什么是代价，代价就是预测值与实际值之间的差距，对于多个样本来说就是代价之和，但是对于怎么处理这个和，有一定的门道，需要解决<strong>正负值、数据量</strong>与cost之间的关系，最终才采取了下面的函数</p>
 <p><img src="https://s2.loli.net/2024/09/15/UaRFvuoTnki7P9G.png" alt="代价函数"></p>
-<p>其中平方项可以抵消误差值正负数带来的影响，m是样本量，建立了代价（cost）与样本量之间的关系；1&#x2F;2是为了在对w,b求偏导（partial derivative）可以简化式子。</p>
+<p>其中平方项可以抵消误差值正负数带来的影响，m是样本量，建立了代价（cost）与样本量之间的关系；1/2是为了在对w,b求偏导（partial derivative）可以简化式子。</p>
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/geaozhang/p/11442343.html">https://www.cnblogs.com/geaozhang/p/11442343.html</a></p>
 <h2 id="判断梯度下降是否收敛"><a href="#判断梯度下降是否收敛" class="headerlink" title="判断梯度下降是否收敛"></a>判断梯度下降是否收敛</h2><p>观察目标函数的损失函数值的变化情况，</p>
 <ol>
@@ -449,10 +449,9 @@
 <li>迭代次数，设置最大迭代次数</li>
 <li>收敛曲线图，看图说话</li>
 </ol>
-<h2 id="激活函数"><a href="#激活函数" class="headerlink" title="激活函数"></a>激活函数</h2><p>理解不了为什么要将输出变成非线性的，如何理解为什么需要激活函数？如果你串联几个线性变换，得到的最后依旧是一个线性变换，例如，f(x)&#x3D;3x+1, g(x)&#x3D;2x+2,串联这两个函数得到的是一个f(g(x))&#x3D;6x+7，因此，如果在层之间没有一些非线性，那么即使是深层堆叠也等效于单层，你无法用它解决非常复杂的问题。相反，具有非线性激活的足够大的 DNN 在理论上可以逼近任何连续函数。（这种解释太帅啦，但是还是不能理解串联起来有什么用处，各个神经层次之间为什么需要串联以及串联和求导是什么关系）</p>
+<h2 id="激活函数"><a href="#激活函数" class="headerlink" title="激活函数"></a>激活函数</h2><p>理解不了为什么要将输出变成非线性的，如何理解为什么需要激活函数？如果你串联几个线性变换，得到的最后依旧是一个线性变换，例如，f(x)=3x+1, g(x)=2x+2,串联这两个函数得到的是一个f(g(x))=6x+7，因此，如果在层之间没有一些非线性，那么即使是深层堆叠也等效于单层，你无法用它解决非常复杂的问题。相反，具有非线性激活的足够大的 DNN 在理论上可以逼近任何连续函数。（这种解释太帅啦，但是还是不能理解串联起来有什么用处，各个神经层次之间为什么需要串联以及串联和求导是什么关系）</p>
 <ol>
-<li><p>Sigmoid激活函数，也叫S形函数<br><img src="https://bkimg.cdn.bcebos.com/formula/c652f9ceaee0518a93007ca80c51c934.svg" alt="Sigmoid"></p>
-</li>
+<li>Sigmoid激活函数，也叫S形函数<br><img src="https://bkimg.cdn.bcebos.com/formula/c652f9ceaee0518a93007ca80c51c934.svg" alt="Sigmoid"></li>
 <li><p>ReLu函数<br><img src="https://bkimg.cdn.bcebos.com/formula/061b8705cd0dd363c1752fe0d9db0faa.svg" alt="img"></p>
 </li>
 <li><p>Tanh函数<br><img src="https://bkimg.cdn.bcebos.com/formula/27dc16c40e8ca243c251fe1048fe68a9.svg" alt="img"></p>
@@ -461,7 +460,7 @@
 <p>Blog：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/XDU-Lakers/p/10557496.html">https://www.cnblogs.com/XDU-Lakers/p/10557496.html</a></p>
 <h2 id="设置学习率"><a href="#设置学习率" class="headerlink" title="设置学习率"></a>设置学习率</h2><p>学习率Alpha，就是设置梯度下降的每一步的速率，不能过快也不能过慢</p>
 <h2 id="逻辑回归"><a href="#逻辑回归" class="headerlink" title="逻辑回归"></a>逻辑回归</h2><p>没看懂</p>
-<p>为了使反向传播正常工作，Rumelhart 和他的同事对 MLP 的架构进行了关键更改：他们用逻辑函数替换了阶跃函数，<em>σ</em>(<em>z</em>) &#x3D; 1 &#x2F; (1 + exp(–<em>z</em>))，也称为 S 形函数。</p>
+<p>为了使反向传播正常工作，Rumelhart 和他的同事对 MLP 的架构进行了关键更改：他们用逻辑函数替换了阶跃函数，<em>σ</em>(<em>z</em>) = 1 / (1 + exp(–<em>z</em>))，也称为 S 形函数。</p>
 <h2 id="反向传播的工作原理"><a href="#反向传播的工作原理" class="headerlink" title="反向传播的工作原理"></a>反向传播的工作原理</h2><p>在 1970 年，一位名叫 Seppo Linnainmaa 的研究人员在他的硕士论文中介绍了一种自动高效计算所有梯度的技术。这个算法现在被称为<em>反向模式自动微分</em>（或简称<em>反向模式自动微分</em>）。通过网络的两次遍历（<strong>一次前向，一次后向</strong>），它能够计算神经网络中每个模型参数的误差梯度。换句话说，它可以找出如何调整每个连接权重和每个偏差以减少神经网络的误差。然后可以使用这些梯度执行梯度下降步骤。如果重复这个自动计算梯度和梯度下降步骤的过程，神经网络的误差将逐渐下降，直到最终达到最小值。这种反向模式自动微分和梯度下降的组合现在被称为<font color=red><em>反向传播</em></font>（或简称<em>反向传播</em>）。</p>
 <ul>
 <li>它一次处理一个小批量（例如，每个包含 32 个实例），并多次遍历整个训练集。每次遍历称为<em>纪元</em>。</li>
@@ -492,7 +491,6 @@ matmul_result <span class="token operator">=</span> np<span class="token punctua
 
 <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Matrix Multiplication:"</span><span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>matmul_result<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>result：</p>
 <p>Dot Product: 41<br>Matrix Multiplication:<br>[[ 58  64]<br> [139 154]]</p>
 <p>They serve different purposes and are used for distinct mathematical operations. <code>np.dot()</code> calculates the dot product between two arrays, whereas <code>np.matmul()</code> is specifically designed for matrix multiplication.</p>
@@ -568,24 +566,24 @@ matmul_result <span class="token operator">=</span> np<span class="token punctua
 <p>BGD和SGD的对比：<strong>批量梯度下降法</strong>相当于是从真实数据分布中采集𝑁 个样本，并由它们计算出来的经验风险的梯度来近似期望风险的梯度．为了减少每次迭代的计算复杂度，我们也可以在每次迭代时只采集一个样本，计算这个样本损失函数的梯度并更新参数，即<strong>随机梯度下降法</strong>。在<strong>非凸优化问题</strong>中，随机梯度下降更容易逃离局部最优点。</p>
 <p>SGD也有一些缺点，比如可能会导致收敛不稳定和收敛速度较慢。因此，许多研究者和工程师会使用 SGD 的变种，如 <strong>动量（Momentum）</strong>、<strong>Nesterov 加速梯度（Nesterov Accelerated Gradient）</strong>、<strong>Adam</strong> 等优化器，来克服这些缺点。</p>
 <p><strong>计算梯度的过程</strong>：在神经网络中，反向模式、前向模式都是都是应用链式法则的梯度累计方式，反向模式是更为有效的计算模式。在计算时，前向传播时会有一个计算图保存着所有操作节点的及其之间的关系，这样在反向传播计算梯度时（即调用backwrad函数），PyTorch 从损失函数（通常是计算图的最后一个节点）开始，沿着计算图向后遍历。在每个节点，PyTorch 会计算当前节点的输出对输入节点的导数（即梯度），并将这些梯度累加到每个输入的 <code>.grad</code> 属性中。</p>
-<p>对于复合函数 $$f(x; w,b)&#x3D;\frac{1}{e^{-(wx+b)}+1}$$ 的计算图如下：</p>
+<p>对于复合函数 <script type="math/tex">f(x; w,b)=\frac{1}{e^{-(wx+b)}+1}</script> 的计算图如下：</p>
 <p><img src="https://s2.loli.net/2024/10/27/J5zfGqeyHURiSVo.png" alt="计算图"></p>
 <p>参考：邱锡鹏，神经网络与深度学习，机械工业出版社，<a target="_blank" rel="noopener" href="https://nndl.github.io/">https://nndl.github.io/</a>, 2020.</p>
 <p>Blog：<a target="_blank" rel="noopener" href="https://blog.csdn.net/cs24k1993/article/details/79120579">批梯度下降法(Batch Gradient Descent )，小批梯度下降 (Mini-Batch GD)，随机梯度下降 (Stochastic GD)</a>，里面有几张非常形象的图片</p>
 <p><a target="_blank" rel="noopener" href="https://paperswithcode.com/method/sgd-with-momentum">SGD with Momentum</a> 没看完</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_53765658/article/details/136668114">深度学习笔记:详解优化器之随机梯度下降（SGD）</a> 没看完</p>
-<h2 id="非凸优化问题"><a href="#非凸优化问题" class="headerlink" title="非凸优化问题"></a>非凸优化问题</h2><p>在优化问题中，目标是找到使目标函数达到最小值或最大值的变量集。凸优化问题涉及的函数具有凸性质，即函数图像上的两点连线在函数图像的上方。这种情况下，局部最小值也是全局最小值，优化问题相对较为简单。然而，非凸优化问题涉及的函数图像可能出现上下凹凸，存在多个局部极小&#x2F;大值，从而使问题变得复杂而有趣。</p>
+<h2 id="非凸优化问题"><a href="#非凸优化问题" class="headerlink" title="非凸优化问题"></a>非凸优化问题</h2><p>在优化问题中，目标是找到使目标函数达到最小值或最大值的变量集。凸优化问题涉及的函数具有凸性质，即函数图像上的两点连线在函数图像的上方。这种情况下，局部最小值也是全局最小值，优化问题相对较为简单。然而，非凸优化问题涉及的函数图像可能出现上下凹凸，存在多个局部极小/大值，从而使问题变得复杂而有趣。</p>
 <h2 id="神经网络的三个概念：Batch、Epoch、Iteration"><a href="#神经网络的三个概念：Batch、Epoch、Iteration" class="headerlink" title="神经网络的三个概念：Batch、Epoch、Iteration"></a>神经网络的三个概念：Batch、Epoch、Iteration</h2><p>Batch表示批次，Iteration表示迭代，Epoch表示一代</p>
 <p>Batch：batch_size将影响到模型的优化程度，选择batch_size是为了在内存效率和内存容量之间进行权衡，</p>
 <p>batch_size选择总结：过小，训练数据会难以收敛，从而导致underfitting；增大，相对处理速度加快，所需内存容量增加。所以需要权衡，找到一个合适的batch_size。</p>
 <p>Epoch：是指将全部的样本（所以的batch）都完成一次forward+一次backward，通常情况下，一个epoch是不够的，在多个epoch后，模型的weight和bias会逐渐的更新，达到理想状态。  </p>
 <p>Iteration：一个<code>iteration</code>包括了一个<code>step</code>中前向传播、损失计算、反向传播和参数更新的流程，有<code>batch_size</code>个iteration。</p>
-<p>举个栗子：训练样本数量10000，batch_size&#x3D;100，一共100个Batch，一个Batch有100个Iteration，一个Epoch有100个Barch的训练过程，但是在每个Batch都会去更新weight和bias。</p>
+<p>举个栗子：训练样本数量10000，batch_size=100，一共100个Batch，一个Batch有100个Iteration，一个Epoch有100个Barch的训练过程，但是在每个Batch都会去更新weight和bias。</p>
 <p>参考：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/43673341">https://www.zhihu.com/question/43673341</a></p>
 <h2 id="梯度消失与梯度爆炸问题"><a href="#梯度消失与梯度爆炸问题" class="headerlink" title="梯度消失与梯度爆炸问题"></a>梯度消失与梯度爆炸问题</h2><h3 id="问题产生的原因"><a href="#问题产生的原因" class="headerlink" title="问题产生的原因"></a>问题产生的原因</h3><p>循环神经网络（Recurrent Neural Network，RNN）是一类具有短期记忆能力的神经网络．在循环神经网络中，神经元不但可以接受其他神经元的信息，也可以接受自身的信息，形成具有环路的网络结构。</p>
 <p>在RNN中，梯度计算时需要沿时间步反向传播（BPTT，Backpropagation Through Time），这个算法即按照时间的逆序将梯度信息一步步地往前传递．当输入序列比较长时了，时间步展开导致的<strong>长链乘积</strong>会存在梯度爆炸和消失问题，也称为长程依赖问题。</p>
 <p><img src="https://s2.loli.net/2024/11/06/53eNQXLIskyMFW6.png" alt="简单的前馈神经网络"></p>
-<p>上图是一个简单的循环神经网络，只有一个隐藏层的神经网络，$$𝒉<em>𝑡$$ 不仅和当前时刻的输入$$𝒙_𝑡$$ 相关，也和上一个时刻的隐藏层状态$$𝒉</em>{𝑡−1} $$相关</p>
+<p>上图是一个简单的循环神经网络，只有一个隐藏层的神经网络，<script type="math/tex">𝒉_𝑡</script> 不仅和当前时刻的输入<script type="math/tex">𝒙_𝑡</script> 相关，也和上一个时刻的隐藏层状态<script type="math/tex">𝒉_{𝑡−1}</script>相关</p>
 <p><img src="https://s2.loli.net/2024/11/06/tJHswL5PTy1G6Oi.png" alt="梯度消失与爆炸"></p>
 <h3 id="分析步骤"><a href="#分析步骤" class="headerlink" title="分析步骤"></a>分析步骤</h3><p><img src="https://s2.loli.net/2024/11/06/THbBFXl3ghcQN5w.png" alt="分析步骤"></p>
 <p>分析：</p>
@@ -601,7 +599,7 @@ matmul_result <span class="token operator">=</span> np<span class="token punctua
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/zf-blog/p/12793019.html">https://www.cnblogs.com/zf-blog/p/12793019.html</a></p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>主要将平时遇到的问题来记录，并且加以补充和整理，参考了多本书籍，</p>
 <p>如：邱锡鹏，神经网络与深度学习，机械工业出版社，<a target="_blank" rel="noopener" href="https://nndl.github.io/">https://nndl.github.io/</a>, 2020.以及 艾伯特深度学习 中文版[aibbt.com]等</p>
-<p>对于许多的博客中比较好理解的内容也进行了摘录(*^_^*)</p>
+<p>对于许多的博客中比较好理解的内容也进行了摘录(*\^_^*)</p>
 <p>可忙，可闲，可急，可缓。</p>
 <p>张弛之间，便是生活。</p>
 
@@ -1015,7 +1013,7 @@ matmul_result <span class="token operator">=</span> np<span class="token punctua
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">123.4k</span>
+                        class="white-color">123.1k</span>
             
             
             

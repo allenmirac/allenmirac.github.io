@@ -426,7 +426,7 @@ Static、#define、const、mutable、typedef代码存储区域：常量区、代
 <h1 id="Static、-define、const、mutable、typedef"><a href="#Static、-define、const、mutable、typedef" class="headerlink" title="Static、#define、const、mutable、typedef"></a>Static、#define、const、mutable、typedef</h1><p>代码存储区域：常量区、代码区、静态区（全局区）、堆区、栈区</p>
 <p>栈区向下增长，堆区向上增长。<strong>栈由系统管理，没有内存碎片，每个元素之间都是连续的，大小比较小，8k，可以修改系统参数</strong>，堆区存储动态开辟的变量。</p>
 <p>还有一个内核空间，但是它不与用户直接交互（内核区）。</p>
-<p><img src="https://img-blog.csdnimg.cn/03ce5015530048e18593741047e6988d.png#pic_center"></p>
+<p><img src="https://img-blog.csdnimg.cn/03ce5015530048e18593741047e6988d.png#pic_center" alt=""></p>
 <h2 id="static"><a href="#static" class="headerlink" title="static"></a>static</h2><p>修饰局部变量：局部变量的存储区域改变、变为静态区，生命周期改为程序结束才销毁。</p>
 <p>修饰全局变量：全局变量只能在本文件中访问，不能在其它文件中访问， <strong>extern 外部声明</strong>也不可以。</p>
 <p>修饰成员变量：静态成员变量不属于实体的类对象，要在类外初始化</p>
@@ -444,8 +444,6 @@ Static、#define、const、mutable、typedef代码存储区域：常量区、代
 <span class="token keyword">typedef</span> <span class="token keyword">int</span> <span class="token keyword">int32_t</span><span class="token punctuation">;</span>
 <span class="token keyword">typedef</span> <span class="token keyword">long</span> <span class="token keyword">int64_t</span><span class="token punctuation">;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
 <p>所以在程序源码中，只使用这些在头文件中声明的别名。 参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/Solomon-xm/articles/9140576.html">typedef用法详解</a></p>
 
                 
@@ -854,7 +852,7 @@ Static、#define、const、mutable、typedef代码存储区域：常量区、代
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">123.4k</span>
+                        class="white-color">123.1k</span>
             
             
             

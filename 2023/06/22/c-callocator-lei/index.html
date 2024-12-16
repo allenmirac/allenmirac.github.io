@@ -435,43 +435,39 @@ std::al">
 
 <p><strong>目录</strong></p>
 <p><a href="#firstHeading">std::allocator::allocate</a></p>
-<p><a href="#c++%E4%B8%AD%E7%9A%84allocator%E7%B1%BB">c++中的allocator类</a></p>
+<p><a href="#c%2B%2B%E4%B8%AD%E7%9A%84allocator%E7%B1%BB">c++中的allocator类</a></p>
 <p><a href="#%E6%A6%82%E8%BF%B0">概述</a></p>
 <p><a href="#allocator%E7%94%A8%E6%B3%95">allocator用法</a></p>
 <p><a href="#%E8%AF%A6%E8%A7%A3">详解</a></p>
 <p><a href="#allocate%E7%94%A8%E4%BA%8E%E5%88%86%E9%85%8D%E5%8E%9F%E5%A7%8B%E5%86%85%E5%AD%98">allocate用于分配原始内存</a></p>
 <p><a href="#Return%20value">Return value</a></p>
 <p><a href="#%E5%9C%A8STL%E4%B8%AD%E4%B9%9F%E4%BC%9A%E7%94%A8allocate%E7%B1%BB">在STL中也会用allocate类</a></p>
-<h1 id="std-allocator-allocate"><a href="#std-allocator-allocate" class="headerlink" title="std::allocator::allocate"></a>std::allocator<T>::allocate</h1><p>(1)<br>pointer allocate( size_type n, const void * hint &#x3D; 0 ); (until C++17)<br>T* allocate( <a target="_blank" rel="noopener" href="http://en.cppreference.com/w/cpp/types/size_t">std::size_t</a> n, const void * hint); (since C++17) (deprecated) (removed in C++20)(2)<br>T* allocate( <a target="_blank" rel="noopener" href="http://en.cppreference.com/w/cpp/types/size_t">std::size_t</a> n ); (since C++17) (until C++20)<br>[[nodiscard]] constexpr T* allocate( <a target="_blank" rel="noopener" href="http://en.cppreference.com/w/cpp/types/size_t">std::size_t</a> n ); (since C++20)</p>
+<h1 id="std-allocator-allocate"><a href="#std-allocator-allocate" class="headerlink" title="std::allocator::allocate"></a>std::allocator<T>::allocate</h1><p>(1)<br>pointer allocate( size_type n, const void <em> hint = 0 ); (until C++17)<br>T</em> allocate( <a target="_blank" rel="noopener" href="http://en.cppreference.com/w/cpp/types/size_t">std::size_t</a> n, const void <em> hint); (since C++17) (deprecated) (removed in C++20)(2)<br>T</em> allocate( <a target="_blank" rel="noopener" href="http://en.cppreference.com/w/cpp/types/size_t">std::size_t</a> n ); (since C++17) (until C++20)<br>[[nodiscard]] constexpr T* allocate( <a target="_blank" rel="noopener" href="http://en.cppreference.com/w/cpp/types/size_t">std::size_t</a> n ); (since C++20)</p>
 <h1 id="c-中的allocator类"><a href="#c-中的allocator类" class="headerlink" title="c++中的allocator类"></a>c++中的allocator类</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><ul>
-<li>它用于将内存的分配和对象的构造分离开来. 它分配的<strong>内存是原始的、未构造的.</strong>+ Throws <a target="_blank" rel="noopener" href="https://en.cppreference.com/w/cpp/memory/new/bad_alloc">std::bad_alloc</a> if allocation fails.+ 标准库中allocator类定义在头文件memory中</li>
+<li>它用于将内存的分配和对象的构造分离开来. 它分配的<strong>内存是原始的、未构造的.</strong>+ Throws <a target="_blank" rel="noopener" href="https://en.cppreference.com/w/cpp/memory/new/bad_alloc">std::bad_alloc</a> if allocation fails.+ 标准库中allocator类定义在头文件memory中</li>
 </ul>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">allocator&lt;string&gt; alloc;  &#x2F;&#x2F; 定义了一个可以分配string的allocator对象
 auto const p &#x3D; alloc.allocate(n);  &#x2F;&#x2F; 分配n个未初始化的string内存，即为n个空string分配了内存，分配的内存是原始的、未构造的<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
 <h1 id="allocator用法"><a href="#allocator用法" class="headerlink" title="allocator用法"></a>allocator用法</h1><ul>
-<li>allocator a &#x2F;&#x2F; 定义了一个名为a的allocator对象，它可以为类型T的对象分配内存+ a.allocate(n) &#x2F;&#x2F; 分配能保存<strong>n个类型为T的对象的内存</strong>+ a.deallocate(p, n) &#x2F;&#x2F; <strong>释放T*指针p地址开始的内存</strong>，这块内存保存了n个类型为T的对象，p必须是一个先前由allocate返回的指针，且n必须是p创建时所要求的大小，且<strong>在调用该函数之前必须销毁在这片内存上创建的对象</strong>，这是因为在创建的过程中我们分配的是最原始的内存，所以在释放内存的时候也只能严格释放<strong>这片最原始的内存</strong>+ a.construct(p, args) &#x2F;&#x2F; p必须是一个类型为T<em>的指针，指向一片原始内存，arg将被传递给类型为T的构造函数，用来在p指向的原始内存上构建对象+ a.destory(p) &#x2F;&#x2F; p为T</em>类型的指针，用于对p指向的对象执行析构函数</li>
+<li>allocator a // 定义了一个名为a的allocator对象，它可以为类型T的对象分配内存+ a.allocate(n) // 分配能保存<strong>n个类型为T的对象的内存</strong>+ a.deallocate(p, n) // <strong>释放T*指针p地址开始的内存</strong>，这块内存保存了n个类型为T的对象，p必须是一个先前由allocate返回的指针，且n必须是p创建时所要求的大小，且<strong>在调用该函数之前必须销毁在这片内存上创建的对象</strong>，这是因为在创建的过程中我们分配的是最原始的内存，所以在释放内存的时候也只能严格释放<strong>这片最原始的内存</strong>+ a.construct(p, args) // p必须是一个类型为T<em>的指针，指向一片原始内存，arg将被传递给类型为T的构造函数，用来在p指向的原始内存上构建对象+ a.destory(p) // p为T</em>类型的指针，用于对p指向的对象执行析构函数</li>
 </ul>
 <h1 id="详解"><a href="#详解" class="headerlink" title="详解"></a>详解</h1><ul>
 <li><h2 id="allocate用于分配原始内存"><a href="#allocate用于分配原始内存" class="headerlink" title="allocate用于分配原始内存"></a>allocate用于<strong>分配原始内存</strong></h2></li>
-<li><p>正如前面说到，allocate出来的内存是最原始的，未构造的内存. 它的construct成员函数接受一个指针和零个或多个额外的参数，在<strong>给定位置构造对象</strong>， 额外的参数是用于初始化构造对象的</p>
-</li>
+</ul>
+<ul>
+<li>正如前面说到，allocate出来的内存是最原始的，未构造的内存. 它的construct成员函数接受一个指针和零个或多个额外的参数，在<strong>给定位置构造对象</strong>， 额外的参数是用于初始化构造对象的</li>
 </ul>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">auto q &#x3D; p;  &#x2F;&#x2F; q指向最后构造的元素之后的位置
 alloc.construct(q++);  &#x2F;&#x2F; *q为空字符串
 alloc.construct(q++, 10, &#39;c&#39;);  &#x2F;&#x2F; *q为cccccccccc
 alloc.construct(q++, &quot;hi&quot;);  &#x2F;&#x2F; *q为hi
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
-
 <ul>
 <li>用完对象后，<strong>必须对这种构造的对象调用destory销毁</strong>，它接受一个指针，对指向的对象执行析构函数</li>
 </ul>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">while(q !&#x3D; p)
 	alloc.destory(--q);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p> 循环开始处，q是指向最后构造的元素之后的一个位置，调用destory之前我们先对q进行递减操作，所以第一次调用destory销毁的是最后一个元素，依次执行销毁操作直到q和p相等. 我们只能对真正构造了的元素进行destory操作，一旦元素被销毁，就可以重新使用这部分内存来保存其他string或归还给系统，释放内存通过调用deallocate完成 </p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">alloc.deallocate(p, n)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p> 其中p不能为空，必须指向allocate分配的内存，而且大小参数n也必须与调用allocate分配内存时提供的大小参数相等。 +  ### Return value<br> Pointer to the first element of an array of <code>n</code> objects of type <code>T</code> whose elements have not been constructed yet.  就是返回未构造的第一个元素 </p>
+<p> 循环开始处，q是指向最后构造的元素之后的一个位置，调用destory之前我们先对q进行递减操作，所以第一次调用destory销毁的是最后一个元素，依次执行销毁操作直到q和p相等. 我们只能对真正构造了的元素进行destory操作，一旦元素被销毁，就可以重新使用这部分内存来保存其他string或归还给系统，释放内存通过调用deallocate完成<br><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">alloc.deallocate(p, n)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><br> 其中p不能为空，必须指向allocate分配的内存，而且大小参数n也必须与调用allocate分配内存时提供的大小参数相等。 +  ### Return value<br> Pointer to the first element of an array of <code>n</code> objects of type <code>T</code> whose elements have not been constructed yet.  就是返回未构造的第一个元素 </p>
 <h1 id="在STL中也会用allocate类"><a href="#在STL中也会用allocate类" class="headerlink" title="在STL中也会用allocate类"></a>在STL中也会用allocate类</h1><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;memory></span></span>
 
 <span class="token keyword">template</span> <span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token class-name">T</span><span class="token operator">></span> <span class="token keyword">class</span> <span class="token class-name">Vector</span> <span class="token punctuation">&#123;</span>
@@ -517,9 +513,6 @@ alloc.construct(q++, &quot;hi&quot;);  &#x2F;&#x2F; *q为hi
     first_free <span class="token operator">=</span> elements <span class="token operator">+</span> size<span class="token punctuation">;</span>
     end <span class="token operator">=</span> elements <span class="token operator">+</span> newcapacity<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-
 
                 
             </div>
@@ -927,7 +920,7 @@ alloc.construct(q++, &quot;hi&quot;);  &#x2F;&#x2F; *q为hi
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">123.4k</span>
+                        class="white-color">123.1k</span>
             
             
             

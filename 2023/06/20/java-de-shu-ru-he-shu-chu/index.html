@@ -8,7 +8,7 @@
     <meta name="description" content="
 
 输出写在前面：
-最近在切换平台来记录我的学习，而且马上期末考试了，复习的任务有点重，要抓紧复习，所以写博客的时间大大减少了。But I will continue to study. 
+最近在切换平台来记录我的学习，而且马上期末考试了，复习的任务有点重，要抓紧复习，所以写博客的时间大大减少了。But I will continue to study. 
 1、在java代码中总是出现System.out.">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -425,15 +425,13 @@
                 <meta name="referrer" content="no-referrer" />
 
 <h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h2><p><strong>写在前面：</strong></p>
-<p>最近在切换平台来记录我的学习，而且马上期末考试了，复习的任务有点重，要抓紧复习，所以写博客的时间大大减少了。But I will continue to study. </p>
+<p>最近在切换平台来记录我的学习，而且马上期末考试了，复习的任务有点重，要抓紧复习，所以写博客的时间大大减少了。But I will continue to study. </p>
 <p>1、在java代码中总是出现System.out.println(xxx);其实println是print line的缩写，表示的意思是输出并且换行。</p>
 <p>2、如果输出后不想换行，可以使用print();</p>
 <h2 id="格式化输出"><a href="#格式化输出" class="headerlink" title="格式化输出"></a>格式化输出</h2><p>1、由于计算机能看懂的我们不一定可以看懂所以就有了格式化的输出，让我们很好的知道输出的是什么。</p>
 <p>（1）使用println来实现格式化输出。</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token number">12800000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token comment">//输出：1.28E7</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-
 <p>（2）还有可以使用像c语言类似的函数printf(“%?\n”,xxx)；</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Main</span><span class="token punctuation">&#123;</span>
     <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
@@ -442,9 +440,7 @@
         <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%.5f\n"</span><span class="token punctuation">,</span> pi<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//显示5位小数,3.14159</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-<p><strong>格式化输出</strong><br><strong>占位符****说明</strong>%d格式化输出整数%x格式化输出16进制数%f格式化输出浮点数%e格式化输出以科学计数法表示的数%s格式化输出字符串</p>
+<p><strong>格式化输出</strong><br><strong>占位符**</strong>说明**%d格式化输出整数%x格式化输出16进制数%f格式化输出浮点数%e格式化输出以科学计数法表示的数%s格式化输出字符串</p>
 <p>详细的格式化参数可以去参考JDK文档<a target="_blank" rel="noopener" href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Formatter.html#syntax">java.util.Formatter</a>。</p>
 <h2 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h2><p>输入对比输出就比较复杂了，我们直接看一个例子</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Scanner</span>
@@ -458,8 +454,6 @@
         <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Hi, %s, you are %d\n"</span><span class="token punctuation">,</span> name<span class="token punctuation">,</span> age<span class="token punctuation">)</span><span class="token punctuation">;</span>格式化输出
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
 <p>首先，我们通过<code>import</code>语句导入<code>java.util.Scanner</code>，<code>import</code>是导入某个类的语句，必须放到Java源代码的开头，现在我还没有学习到。</p>
 <p>然后，创建<code>Scanner</code>对象并传入<code>System.in</code>。<code>System.out</code>代表标准输出流，而<code>System.in</code>代表标准输入流。直接使用<code>System.in</code>读取用户输入虽然是可以的，但需要更复杂的代码，而通过<code>Scanner</code>就可以简化后续的代码。</p>
 <p>有了<code>Scanner</code>对象后，要读取用户输入的字符串，使用<code>scanner.nextLine()</code>，要读取用户输入的整数，使用<code>scanner.nextInt()</code>。<code>Scanner</code>会自动转换数据类型，因此不必手动转换。</p>
@@ -870,7 +864,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">123.4k</span>
+                        class="white-color">123.1k</span>
             
             
             

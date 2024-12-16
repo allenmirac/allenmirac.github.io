@@ -448,23 +448,23 @@ QT 元对象系统QT 的元对象系统（The Meta-Object System）由它的元�
 <p><a href="#%E6%AC%A2%E8%BF%8E%E5%A4%A7%E5%AE%B6star">欢迎大家star</a></p>
 <h1 id="QT-元对象系统"><a href="#QT-元对象系统" class="headerlink" title="QT 元对象系统"></a>QT 元对象系统</h1><p>QT 的元对象系统（The Meta-Object System）由它的元对象编译器（Meta-Object Compiler，moc）帮忙实现，moc 通过读取头文件中的 Q_OBJCET 宏来判断是否需要生成元对象代码。如果需要，则生成以 moc_ 开头的源文件，在链接（Linking）时会和源文件一起生成可执行文件。</p>
 <h2 id="实验案例"><a href="#实验案例" class="headerlink" title="实验案例"></a>实验案例</h2><p>欢迎大家star：</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/allenmirac/QTStudy/tree/main/QTReviewMoc">QTStudy&#x2F;QTReviewMoc at main · allenmirac&#x2F;QTStudy · GitHub</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/allenmirac/QTStudy/tree/main/QTReviewMoc">QTStudy/QTReviewMoc at main · allenmirac/QTStudy · GitHub</a></p>
 <h2 id="从四个方面来介绍元对象系统的奥秘"><a href="#从四个方面来介绍元对象系统的奥秘" class="headerlink" title="从四个方面来介绍元对象系统的奥秘"></a>从四个方面来介绍元对象系统的奥秘</h2><h2 id="是什么"><a href="#是什么" class="headerlink" title="是什么"></a>是什么</h2><ul>
-<li>从 QT 新增的关键字（signals、slots、emit）可以看出 QT 并不是标准的 C++ 语言，而是对其进行了一定程度的扩展。 +  元对象系统是 QT 核心的一部分，用于支持 QT 的 C++ 扩展（QT’s C++ extensions），它提供了用于对象间通信的信号与槽、运行时类型信息以及动态属性系统。</li>
+<li>从 QT 新增的关键字（signals、slots、emit）可以看出 QT 并不是标准的 C++ 语言，而是对其进行了一定程度的扩展。 +  元对象系统是 QT 核心的一部分，用于支持 QT 的 C++ 扩展（QT’s C++ extensions），它提供了用于对象间通信的信号与槽、运行时类型信息以及动态属性系统。 </li>
 </ul>
 <h2 id="为什么"><a href="#为什么" class="headerlink" title="为什么"></a>为什么</h2><p>由于 QT 是标准 C++ 的一个扩展，所以编译源代码时就需要将这些扩展的语法去掉，然后交给标准 C++ 编译器，诸如 GCC、MinGW、Clang 等。</p>
 <h2 id="怎么实现"><a href="#怎么实现" class="headerlink" title="怎么实现"></a>怎么实现</h2><p>元对象系统基于以下 3 件事：</p>
 <ul>
-<li><code>QObject</code>类为使用元对象系统的 QT 对象提供了一个基类。 +  <code>Q_OBJECT</code> 宏用来在类中启用元对象特性，例如动态属性、信号、槽。 +  <code>moc</code> 为每个 QObject 子类提供实现元对象特性所需要的代码。</li>
+<li><code>QObject</code>类为使用元对象系统的 QT 对象提供了一个基类。 +  <code>Q_OBJECT</code> 宏用来在类中启用元对象特性，例如动态属性、信号、槽。 +  <code>moc</code> 为每个 QObject 子类提供实现元对象特性所需要的代码。 </li>
 </ul>
 <p>moc 工具读取 C++ 源文件。如果发现源文件中有一个类或者多个类的声明中包含 Q_OBJECT 宏，它就生成一个包含了这些类所需要的元对象代码的源文件。这个新源文件的文件名为源文件名前加上 moc_。<strong>新生成的源文件必须被 #include 到源文件中，或者更常见的是编译和连接到类的实现中。</strong></p>
 <h2 id="怎么用"><a href="#怎么用" class="headerlink" title="怎么用"></a>怎么用</h2><p>元对象系统有以下特性：</p>
 <ul>
-<li><code>signals and slots</code> 一个用于对象间通信的信号与槽机制（QT 引入元对象系统最主要的原因）。 +  <code>QObject::metaObject()</code> 用来返回类关联的元对象。 +  <code>QMetaObject::className()</code> 用来在运行时获取类名，<strong>这个方法不需要原生 C++ 编译器的运行时类型信息（Runtime type information，RTTI）支持</strong>。 +  <code>QObject::inherits()</code> 用来判别一个对象是否是 QObject 继承树中的特定类的对象。 +  <code>QObject::tr()</code> 和 <code>QObject::trUtf8()</code> 提供 QT 国际化中翻译字符串的支持。 +  <code>QObject::setProperty()</code> 和 <code>QObject::property()</code> 提供动态地设置和获取属性名。 +  <code>QMetaObject::newInstance()</code> 用于构造一个类的新实例。 +  <code>qobject_cast</code> 处理继承自 QObject 类的动态转换。它不需要 RTTI 支持，并且支持跨动态库转换。转换成功返回非零指针，失败返回 nullptr。</li>
+<li><code>signals and slots</code> 一个用于对象间通信的信号与槽机制（QT 引入元对象系统最主要的原因）。 +  <code>QObject::metaObject()</code> 用来返回类关联的元对象。 +  <code>QMetaObject::className()</code> 用来在运行时获取类名，<strong>这个方法不需要原生 C++ 编译器的运行时类型信息（Runtime type information，RTTI）支持</strong>。 +  <code>QObject::inherits()</code> 用来判别一个对象是否是 QObject 继承树中的特定类的对象。 +  <code>QObject::tr()</code> 和 <code>QObject::trUtf8()</code> 提供 QT 国际化中翻译字符串的支持。 +  <code>QObject::setProperty()</code> 和 <code>QObject::property()</code> 提供动态地设置和获取属性名。 +  <code>QMetaObject::newInstance()</code> 用于构造一个类的新实例。 +  <code>qobject_cast</code> 处理继承自 QObject 类的动态转换。它不需要 RTTI 支持，并且支持跨动态库转换。转换成功返回非零指针，失败返回 nullptr。 </li>
 </ul>
 <p>在 QObject 的派生类中，不使用 Q_OBJECT 宏以及没有元对象代码，上述元对象系统特性也能用。需要注意的是，QMetaObject::className() 只会返回离它最近且拥有元对象代码的祖先（即最近一个声明 Q_OBJECT 的祖先）的类名。所以建议 QObject 的派生类一律添加 Q_OBJECT 宏！</p>
 <h2 id="moc-使用"><a href="#moc-使用" class="headerlink" title="moc 使用"></a>moc 使用</h2><p>在这个案例中的使用：</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/allenmirac/QTStudy/blob/main/QTReviewMoc/expersion.h">QTStudy&#x2F;expersion.h at main · allenmirac&#x2F;QTStudy · GitHub</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/allenmirac/QTStudy/blob/main/QTReviewMoc/expersion.h">QTStudy/expersion.h at main · allenmirac/QTStudy · GitHub</a></p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">ifndef</span> <span class="token expression">EXPERSION_H</span></span>
  #define EXPERSION_H
  ​
@@ -500,8 +500,6 @@ QT 元对象系统QT 的元对象系统（The Meta-Object System）由它的元�
  <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
  ​
  #endif <span class="token comment">// EXPERSION_H</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
 <p>官方文档的Example：</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">MyClass</span> <span class="token operator">:</span> <span class="token base-clause"><span class="token keyword">public</span> <span class="token class-name">QObject</span></span>
  <span class="token punctuation">&#123;</span>
@@ -529,10 +527,9 @@ QT 元对象系统QT 的元对象系统（The Meta-Object System）由它的元�
  <span class="token keyword">private</span><span class="token operator">:</span>
      Priority m_priority<span class="token punctuation">;</span>
  <span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a target="_blank" rel="noopener" href="https://beyondyuanshu.github.io/2019/09/03/qt-core-the-meta-object-system.html">Qt 核心之元对象系统 - Shu’s Site</a></p>
 <p><a target="_blank" rel="noopener" href="https://doc.qt.io/qt-6/qobject.html#Q_PROPERTY">QObject Class | Qt Core 6.4.3</a></p>
-<h2 id="欢迎大家star"><a href="#欢迎大家star" class="headerlink" title="欢迎大家star"></a>欢迎大家star</h2><p><a target="_blank" rel="noopener" href="https://github.com/allenmirac/QTStudy">GitHub - allenmirac&#x2F;QTStudy: This is a repository to learn QT.</a></p>
+<h2 id="欢迎大家star"><a href="#欢迎大家star" class="headerlink" title="欢迎大家star"></a>欢迎大家star</h2><p><a target="_blank" rel="noopener" href="https://github.com/allenmirac/QTStudy">GitHub - allenmirac/QTStudy: This is a repository to learn QT.</a></p>
 
                 
             </div>
@@ -940,7 +937,7 @@ QT 元对象系统QT 的元对象系统（The Meta-Object System）由它的元�
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">123.4k</span>
+                        class="white-color">123.1k</span>
             
             
             

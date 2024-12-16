@@ -7,7 +7,7 @@
     <meta name="keywords" content="1015_Reversible_Primes（20）, AllenMirac">
     <meta name="description" content="
 
-1015_Reversible_Primes（20）DescribeA reversible prime in any number system is a prime whose “reverse” in that number sy">
+1015_Reversible_Primes（20）DescribeA reversible prime in any number system is a prime whose “reverse” in that number sy">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -422,25 +422,22 @@
             <div id="articleContent">
                 <meta name="referrer" content="no-referrer" />
 
-<h1 id="1015-Reversible-Primes（20）"><a href="#1015-Reversible-Primes（20）" class="headerlink" title="1015_Reversible_Primes（20）"></a>1015_Reversible_Primes（20）</h1><h3 id="Describe"><a href="#Describe" class="headerlink" title="Describe"></a>Describe</h3><p>A <strong>reversible prime</strong> in any number system is a prime whose “reverse” in that number system is also a prime. For example in the decimal system 73 is a reversible prime because its reverse 37 is also a prime.</p>
-<p>Now given any two positive integers N (&lt;105) and D (1&lt;D≤10), you are supposed to tell if N is a reversible prime with radix D.</p>
-<h3 id="Input-Specification"><a href="#Input-Specification" class="headerlink" title="Input Specification:"></a>Input Specification:</h3><p>The input file consists of several test cases. Each case occupies a line which contains two integers N and D. The input is finished by a negative N.</p>
-<h3 id="Output-Specification"><a href="#Output-Specification" class="headerlink" title="Output Specification:"></a>Output Specification:</h3><p>For each test case, print in one line <code>Yes</code> if N is a reversible prime with radix D, or <code>No</code> if not.</p>
+<h1 id="1015-Reversible-Primes（20）"><a href="#1015-Reversible-Primes（20）" class="headerlink" title="1015_Reversible_Primes（20）"></a>1015_Reversible_Primes（20）</h1><h3 id="Describe"><a href="#Describe" class="headerlink" title="Describe"></a>Describe</h3><p>A <strong>reversible prime</strong> in any number system is a prime whose “reverse” in that number system is also a prime. For example in the decimal system 73 is a reversible prime because its reverse 37 is also a prime.</p>
+<p>Now given any two positive integers N (&lt;105) and D (1&lt;D≤10), you are supposed to tell if N is a reversible prime with radix D.</p>
+<h3 id="Input-Specification"><a href="#Input-Specification" class="headerlink" title="Input Specification:"></a>Input Specification:</h3><p>The input file consists of several test cases. Each case occupies a line which contains two integers N and D. The input is finished by a negative N.</p>
+<h3 id="Output-Specification"><a href="#Output-Specification" class="headerlink" title="Output Specification:"></a>Output Specification:</h3><p>For each test case, print in one line <code>Yes</code> if N is a reversible prime with radix D, or <code>No</code> if not.</p>
 <h3 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input:"></a>Sample Input:</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token number">73</span> <span class="token number">10</span>
 <span class="token number">23</span> <span class="token number">2</span>
 <span class="token number">23</span> <span class="token number">10</span>
 <span class="token parameter variable">-2</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h3 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output:"></a>Sample Output:</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Yes
 Yes
 No
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-
-<p>代码长度限制                        16 KB</p>
-<p>时间限制                                400 ms</p>
-<p>内存限制                                64 MB</p>
+<p>代码长度限制                        16 KB</p>
+<p>时间限制                                400 ms</p>
+<p>内存限制                                64 MB</p>
 <h3 id="Code："><a href="#Code：" class="headerlink" title="Code："></a>Code：</h3><p>刚开始题目都没有看懂，总是不能理解radix是什么意思，做题目做少了（下次看到radix就想到可能需要进制的转换）我很想知道我总是最后一个测试点过不去，刚开始只得到了16分，是因为判断素数的时候没有把1考虑进去，加上之后还是只有18分😭，希望在评论区有大佬可以帮我找到错误。</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;iostream></span></span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;stdio.h></span></span>
@@ -496,8 +493,6 @@ No
     <span class="token punctuation">&#125;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
 <p>在这里贴上柳神的代码，思路基本一样的。</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;cstdio></span></span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;cmath></span></span>
@@ -531,7 +526,6 @@ No
     <span class="token punctuation">&#125;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 
                 
             </div>
@@ -939,7 +933,7 @@ No
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">123.4k</span>
+                        class="white-color">123.1k</span>
             
             
             

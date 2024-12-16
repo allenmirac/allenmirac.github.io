@@ -448,8 +448,6 @@
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
 <p>上面的代码编译会出错，原因是父类没有合适的构造方法来调用初始化三个参数的构造函数。</p>
 <p>在继承的时候，如果不显式指定父类的构造方法，会自动调用super()方法；</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Student</span> <span class="token keyword">extends</span> <span class="token class-name">Person</span> <span class="token punctuation">&#123;</span>
@@ -460,28 +458,21 @@
         <span class="token keyword">this</span><span class="token punctuation">.</span>score <span class="token operator">=</span> score<span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
 <p>改为这样就可以运行了。</p>
 <h2 id="阻止继承"><a href="#阻止继承" class="headerlink" title="阻止继承"></a>阻止继承</h2><h3 id="语法："><a href="#语法：" class="headerlink" title="语法："></a>语法：</h3><p><strong>1、sealed关键字：</strong>下面的就是说明了Person只可以由Man，和Woman两个类继承，不可以随便继承</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">public sealed class Person permits Man, Women <span class="token punctuation">&#123;</span>
     <span class="token punctuation">..</span>.
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-
 <p><strong>2、 final关键字：</strong>Man是最后的儿子，他不可以被其他类继承。</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">public final class Man extends Penson<span class="token punctuation">&#123;</span>
     <span class="token punctuation">..</span>.
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
 <h2 id="向上转型（upcasting）"><a href="#向上转型（upcasting）" class="headerlink" title="向上转型（upcasting）"></a>向上转型（upcasting）</h2><p>比如上面的Person：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Person</span> p<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token class-name">Student</span> stu <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Student</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token class-name">Person</span> p1<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Student</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// upcasting, ok</span>
 <span class="token class-name">Object</span> ob1<span class="token operator">=</span>p<span class="token punctuation">;</span> <span class="token comment">// upcasting, ok</span>
 <span class="token class-name">Object</span> ob2<span class="token operator">=</span>stu<span class="token punctuation">;</span> <span class="token comment">// upcasting, ok</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
 <p>这种指向是可以的，父类指向子类（反过来是不可以的）。</p>
 <p><strong>注意：上面的例子的继承树是这样子的：Student&gt;Person&gt;object（所以叫做向上转型），在java中所有的类都是继承于object。</strong></p>
 <h2 id="向下转型（downcasting）"><a href="#向下转型（downcasting）" class="headerlink" title="向下转型（downcasting）"></a>向下转型（downcasting）</h2><p>例子：</p>
@@ -489,7 +480,6 @@
 <span class="token class-name">Person</span> p2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token class-name">Student</span> stu1 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">Student</span><span class="token punctuation">)</span> p1<span class="token punctuation">;</span> <span class="token comment">// ok</span>
 <span class="token class-name">Student</span> stu2 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">Student</span><span class="token punctuation">)</span> p2<span class="token punctuation">;</span> <span class="token comment">// runtime error! ClassCastException!</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h2 id="instanceof操作符"><a href="#instanceof操作符" class="headerlink" title="instanceof操作符"></a><code>instanceof</code>操作符</h2><p>为了避免向下转型出错，Java提供了<code>instanceof</code>操作符，可以先判断一个实例究竟是不是某种类型：</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Person p <span class="token operator">=</span> new Person<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 System.out.println<span class="token punctuation">(</span>p instanceof Person<span class="token punctuation">)</span><span class="token punctuation">;</span> // <span class="token boolean">true</span>
@@ -502,8 +492,6 @@ System.out.println<span class="token punctuation">(</span>s instanceof Student<s
 Student n <span class="token operator">=</span> null<span class="token punctuation">;</span>
 System.out.println<span class="token punctuation">(</span>n instanceof Student<span class="token punctuation">)</span><span class="token punctuation">;</span> // <span class="token boolean">false</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
 <p><code>instanceof</code>实际上判断一个变量所指向的实例是否是指定类型，或者这个类型的子类。如果一个引用变量为<code>null</code>，那么对任何<code>instanceof</code>的判断都为<code>false</code>。</p>
 <p>利用<code>instanceof</code>，在向下转型前可以先判断：</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Person p <span class="token operator">=</span> new Student<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -511,8 +499,6 @@ System.out.println<span class="token punctuation">(</span>n instanceof Student<s
     // 只有判断成功才会向下转型:
     Student s <span class="token operator">=</span> <span class="token punctuation">(</span>Student<span class="token punctuation">)</span> p<span class="token punctuation">;</span> // 一定会成功
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
 
                 
             </div>
@@ -920,7 +906,7 @@ System.out.println<span class="token punctuation">(</span>n instanceof Student<s
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">123.4k</span>
+                        class="white-color">123.1k</span>
             
             
             

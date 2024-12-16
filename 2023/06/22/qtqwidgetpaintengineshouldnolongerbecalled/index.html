@@ -10,9 +10,9 @@
 
 目录
 由来
-注意下面我的创建过程： 
+注意下面我的创建过程： 
 下面是解决方法：
- 产生这个错误的原因：
+ 产生这个错误的原因：
 由来今天在QT Creater使用QPainter的时候出现了这个错误，在引用输出窗口还有这么一些错误
 
 之前在使用其他类的时候，直接在widget.h中">
@@ -433,11 +433,11 @@
 
 <p><strong>目录</strong></p>
 <p><a href="#%E7%94%B1%E6%9D%A5">由来</a></p>
-<p><a href="#%E6%B3%A8%E6%84%8F%E4%B8%8B%E9%9D%A2%E6%88%91%E7%9A%84%E5%88%9B%E5%BB%BA%E8%BF%87%E7%A8%8B%EF%BC%9A%C2%A0">注意下面我的创建过程： </a></p>
+<p><a href="#%E6%B3%A8%E6%84%8F%E4%B8%8B%E9%9D%A2%E6%88%91%E7%9A%84%E5%88%9B%E5%BB%BA%E8%BF%87%E7%A8%8B%EF%BC%9A%C2%A0">注意下面我的创建过程： </a></p>
 <p><a href="#%E4%B8%8B%E9%9D%A2%E6%98%AF%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95%EF%BC%9A">下面是解决方法：</a></p>
-<p><a href="#%C2%A0%E4%BA%A7%E7%94%9F%E8%BF%99%E4%B8%AA%E9%94%99%E8%AF%AF%E7%9A%84%E5%8E%9F%E5%9B%A0%EF%BC%9A"> 产生这个错误的原因：</a></p>
+<p><a href="#%C2%A0%E4%BA%A7%E7%94%9F%E8%BF%99%E4%B8%AA%E9%94%99%E8%AF%AF%E7%9A%84%E5%8E%9F%E5%9B%A0%EF%BC%9A"> 产生这个错误的原因：</a></p>
 <h2 id="由来"><a href="#由来" class="headerlink" title="由来"></a>由来</h2><p>今天在QT Creater使用QPainter的时候出现了这个错误，在引用输出窗口还有这么一些错误</p>
-<p><img src="https://img-blog.csdnimg.cn/d4c9c9eaba8d46789d0896411d73845e.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5aSc54yr56iL5bqP54y_,size_18,color_FFFFFF,t_70,g_se,x_16"></p>
+<p><img src="https://img-blog.csdnimg.cn/d4c9c9eaba8d46789d0896411d73845e.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5aSc54yr56iL5bqP54y_,size_18,color_FFFFFF,t_70,g_se,x_16" alt=""></p>
 <p>之前在使用其他类的时候，直接在widget.h中的MainWindow中写都可以运行像这样</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &quot;mainwindow.h&quot;
 #include &quot;ui_mainwindow.h&quot;
@@ -482,16 +482,14 @@ MainWindow::~MainWindow()
     delete ui;
 &#125;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-<h2 id="注意下面我的创建过程："><a href="#注意下面我的创建过程：" class="headerlink" title="注意下面我的创建过程："></a><strong>注意下面我的创建过程：</strong></h2><p><img src="https://img-blog.csdnimg.cn/df90169dccb34d2c98305119b73c16fd.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5aSc54yr56iL5bqP54y_,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
-<p><img src="https://img-blog.csdnimg.cn/790e51f20a0747b7b0383ad851bf85e4.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5aSc54yr56iL5bqP54y_,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
-<p><img src="https://img-blog.csdnimg.cn/3549f541aa1c4b829ec037504a448ea8.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5aSc54yr56iL5bqP54y_,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
-<p><img src="https://img-blog.csdnimg.cn/c64d24b5f45a4ab9a435e4f4ca2caac0.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5aSc54yr56iL5bqP54y_,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
-<p>** 注意这一步**：</p>
-<p><img src="https://img-blog.csdnimg.cn/57fac6cc320a41da80e11097ec5aad22.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5aSc54yr56iL5bqP54y_,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
-<p> 然后我在QWidget.cpp中写了下面的代码</p>
-<p><img src="https://img-blog.csdnimg.cn/0cf0563fb3424b9497d8a7eb9c94d29c.png"></p>
+<h2 id="注意下面我的创建过程："><a href="#注意下面我的创建过程：" class="headerlink" title="注意下面我的创建过程："></a><strong>注意下面我的创建过程：</strong></h2><p><img src="https://img-blog.csdnimg.cn/df90169dccb34d2c98305119b73c16fd.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5aSc54yr56iL5bqP54y_,size_20,color_FFFFFF,t_70,g_se,x_16" alt=""></p>
+<p><img src="https://img-blog.csdnimg.cn/790e51f20a0747b7b0383ad851bf85e4.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5aSc54yr56iL5bqP54y_,size_20,color_FFFFFF,t_70,g_se,x_16" alt=""></p>
+<p><img src="https://img-blog.csdnimg.cn/3549f541aa1c4b829ec037504a448ea8.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5aSc54yr56iL5bqP54y_,size_20,color_FFFFFF,t_70,g_se,x_16" alt=""></p>
+<p><img src="https://img-blog.csdnimg.cn/c64d24b5f45a4ab9a435e4f4ca2caac0.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5aSc54yr56iL5bqP54y_,size_20,color_FFFFFF,t_70,g_se,x_16" alt=""></p>
+<p><strong> 注意这一步</strong>：</p>
+<p><img src="https://img-blog.csdnimg.cn/57fac6cc320a41da80e11097ec5aad22.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5aSc54yr56iL5bqP54y_,size_20,color_FFFFFF,t_70,g_se,x_16" alt=""></p>
+<p> 然后我在QWidget.cpp中写了下面的代码</p>
+<p><img src="https://img-blog.csdnimg.cn/0cf0563fb3424b9497d8a7eb9c94d29c.png" alt=""></p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &quot;ui_widget.h&quot;
 #include &lt;ui_widget.h&gt;
 
@@ -522,16 +520,10 @@ Widget::~Widget()
     delete ui;
 &#125;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-
-<p> 然后就出现了上面的错误。</p>
+<p> 然后就出现了上面的错误。</p>
 <h2 id="下面是解决方法："><a href="#下面是解决方法：" class="headerlink" title="下面是解决方法："></a><strong>下面是解决方法：</strong></h2><p><strong>首先在QWidget.h中加入这个函数的申明</strong></p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">void paintEvent(QPaintEvent *);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-
-
-<p> 然后再QWidget.cpp中定义这个函数，此时就可以使用QPainter类了</p>
+<p> 然后再QWidget.cpp中定义这个函数，此时就可以使用QPainter类了</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &quot;widget.h&quot;
 #include &quot;ui_widget.h&quot;
 
@@ -563,11 +555,8 @@ Widget::~Widget()
     delete ui;
 &#125;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-
-<p>**运行结果如下： **</p>
-<p><img src="https://img-blog.csdnimg.cn/0ef6cebd17a440108de64de391623118.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5aSc54yr56iL5bqP54y_,size_12,color_FFFFFF,t_70,g_se,x_16"></p>
+<p><strong>运行结果如下： </strong></p>
+<p><img src="https://img-blog.csdnimg.cn/0ef6cebd17a440108de64de391623118.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5aSc54yr56iL5bqP54y_,size_12,color_FFFFFF,t_70,g_se,x_16" alt=""></p>
 <h2 id="产生这个错误的原因："><a href="#产生这个错误的原因：" class="headerlink" title="产生这个错误的原因："></a>产生这个错误的原因：</h2><p>在这里很好地解释了这一点：<br><a target="_blank" rel="noopener" href="https://forum.qt.io/topic/64693/unable-to-paint-on-qt-widget-shows-error-paintengine-should-no-longer-be-called/3">https://forum.qt.io/topic/64693/unable-to-paint-on-qt-widget-shows-error-paintengine-should-no-longer-be-called/3</a></p>
 <p>简而言之：不要尝试直接从输入事件处理程序进行绘制，而是在您的小部件中重载 paintEvent 方法并在那里创建 QPainter。仅使用输入事件来修改内部数据模型，并在paintEvent 中使用QPainter 将其显示在输出路径上。</p>
 
@@ -977,7 +966,7 @@ Widget::~Widget()
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">123.4k</span>
+                        class="white-color">123.1k</span>
             
             
             

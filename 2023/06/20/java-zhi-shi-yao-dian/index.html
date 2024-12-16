@@ -432,7 +432,7 @@ Write Once Run Anyway
 <p>平台无关性：Java引进虚拟机（JVM，Java Virtual Machine）概念。</p>
 <p>安全性：没有指针，内存由系统分配。</p>
 <p>动态转载：类运行时是动态装载的。</p>
-<p>编译过程：<br><img src="https://img-blog.csdnimg.cn/fa3f9661e063421d96d0a8c57d16ff19.png"></p>
+<p>编译过程：<br><img src="https://img-blog.csdnimg.cn/fa3f9661e063421d96d0a8c57d16ff19.png" alt=""></p>
 <p>JRE： Java Runtime Environment JDK：Java Development Kit</p>
 <p>JRE和JDK的区别：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/mark5/p/11063047.html">https://www.cnblogs.com/mark5/p/11063047.html</a></p>
 <h1 id="第2章-Java语言基础"><a href="#第2章-Java语言基础" class="headerlink" title="第2章 Java语言基础"></a>第2章 Java语言基础</h1><p>数据类型名称位长字节型byte8短整型short16整型int32长整型long64单精度型float32双精度型double64字符型char16布尔型boolean1</p>
@@ -452,8 +452,6 @@ a<span class="token punctuation">[</span><span class="token number">1</span><spa
     <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
 <p>数组复制：<code>System.arraycopy(src, srcPos, dest, destPos, length);</code>；</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">int</span> array<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token number">10</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">&lt;</span><span class="token number">10</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
@@ -465,8 +463,6 @@ a<span class="token punctuation">[</span><span class="token number">1</span><spa
     <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token string">"\t"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
 <p>数组排序：<code>import java.util.Random; import static java.util.Arrays.sort;</code>；</p>
 <p>Random的使用：<a target="_blank" rel="noopener" href="http://c.biancheng.net/view/867.html">http://c.biancheng.net/view/867.html</a></p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Random</span> r <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -479,12 +475,11 @@ array<span class="token punctuation">[</span>i<span class="token punctuation">]<
 <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span>array<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">"\t"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h1 id="第4章-类与对象"><a href="#第4章-类与对象" class="headerlink" title="第4章.类与对象"></a>第4章.类与对象</h1><p>用关键字<strong>static修饰</strong>的方法称为类方法，又称为静态方法。不用static修饰的方法称为实例方法，又称为对象方法。</p>
 <p><strong>类方法只能操作类变量，不能操作实例变量。</strong></p>
-<p>Java的值传递还是引用传递：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/457bfc91df79%EF%BC%8Chttps://www.javadude.com/articles/passbyvalue.htm">https://www.jianshu.com/p/457bfc91df79，https://www.javadude.com/articles/passbyvalue.htm</a></p>
+<p>Java的值传递还是引用传递：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/457bfc91df79，https://www.javadude.com/articles/passbyvalue.htm">https://www.jianshu.com/p/457bfc91df79，https://www.javadude.com/articles/passbyvalue.htm</a></p>
 <p>“primitives are passed by value, objects are passed by reference”.</p>
-<p>java常用的包：<strong>看看就行了</strong><br>序号包名功能描述1java.langjava的核心类库，包含了运行java程序必不可少的系统类，如基本数据类型、基本数学函数、字符串处理、线程、异常处理类等，系统缺省加载这个包。2java.iojava语言的标准输入&#x2F;输出类库，如基本输入&#x2F;输出流、文件输入&#x2F;输出、过滤输入&#x2F;输出流等等。3java.utilJava的实用工具类库Java.util包。在这个包中，Java提供了一些实用的方法和数据结构。例如，Java提供日期(Data)类、日历(Calendar)类4java.awt.image处理和操纵来自于网上的图片的java工具类库。5java.net实现网络功能的类库有Socket类、ServerSocket类。6java.awt构建图形用户界面(GUI)的类库，低级绘图操作Graphics类，图形界面组件和布局管理7java.awt.eventGUI事件处理包 。8java.sql实现JDBC的类库。</p>
+<p>java常用的包：<strong>看看就行了</strong><br>序号包名功能描述1java.langjava的核心类库，包含了运行java程序必不可少的系统类，如基本数据类型、基本数学函数、字符串处理、线程、异常处理类等，系统缺省加载这个包。2java.iojava语言的标准输入/输出类库，如基本输入/输出流、文件输入/输出、过滤输入/输出流等等。3java.utilJava的实用工具类库Java.util包。在这个包中，Java提供了一些实用的方法和数据结构。例如，Java提供日期(Data)类、日历(Calendar)类4java.awt.image处理和操纵来自于网上的图片的java工具类库。5java.net实现网络功能的类库有Socket类、ServerSocket类。6java.awt构建图形用户界面(GUI)的类库，低级绘图操作Graphics类，图形界面组件和布局管理7java.awt.eventGUI事件处理包 。8java.sql实现JDBC的类库。</p>
 <p>import的使用：当定义包后，<strong>在同一个包中的类是默认隐式导入的。</strong>但如果一个类访问来自另一个包中的类，则前者必须显示通过import语句导入后者后才能使用。</p>
 <p>基本类型的封装类：<strong>使用范型数据的时候只能使用封装的类。</strong><br>原始类型封装类静态的常用方法booleanBooleanBoolean.parseBoolean(String str)charCharacterisDigit(char ch);isLetter(char ch);isLowerCase(char ch);toLowerCase(char ch)byteByteByte.parseByte(String str)shortShortShort.parseShort(String str)intIntegerInteger.parseInt(String str)longLongLong.parseLong(String str)floatFloatFloat.parseFloat(String str)doubleDoubleDouble.parseDouble(String str)</p>
 <h1 id="第5章面向对象高级特性"><a href="#第5章面向对象高级特性" class="headerlink" title="第5章面向对象高级特性"></a>第5章面向对象高级特性</h1><p>实操：<a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/wiki/1252599548343744/1255943520012800">https://www.liaoxuefeng.com/wiki/1252599548343744/1255943520012800</a></p>
@@ -495,7 +490,7 @@ array<span class="token punctuation">[</span>i<span class="token punctuation">]<
 </ul>
 <p><strong>转型与多态：</strong></p>
 <ul>
-<li>上转型：子类对象到父类对象的类型转换，即把创建的子类对象放到父类的对象变量中，该过程是自动完成的，有些像基本类型的自动类型转换。 +  下转型：父类对象到子类对象的转换，必须使用强制转换。 +  多态：是指同一个操作被不同类型对象调用时可能产生不同的行为。</li>
+<li>上转型：子类对象到父类对象的类型转换，即把创建的子类对象放到父类的对象变量中，该过程是自动完成的，有些像基本类型的自动类型转换。 +  下转型：父类对象到子类对象的转换，必须使用强制转换。 +  多态：是指同一个操作被不同类型对象调用时可能产生不同的行为。 </li>
 </ul>
 <p><strong>final关键字：</strong></p>
 <p>final的本义是“最终”，final可以修饰变量、一般方法和类 。</p>
@@ -505,16 +500,16 @@ array<span class="token punctuation">[</span>i<span class="token punctuation">]<
 <p><strong>抽象类（abstract class ）和接口（interface）：</strong></p>
 <p>相同点有：</p>
 <ul>
-<li>都包含抽象方法，这些方法在继承抽象类或实现接口的类中都要具体实现，<strong>如果有一个不实现，该类就是抽象类，还是不能创建实例对象。</strong> +  抽象类和接口都包含抽象方法，不能用new创建对象实例，两者都可以通过上转型对象或接口回调方式实现多态机制。</li>
+<li>都包含抽象方法，这些方法在继承抽象类或实现接口的类中都要具体实现，<strong>如果有一个不实现，该类就是抽象类，还是不能创建实例对象。</strong> +  抽象类和接口都包含抽象方法，不能用new创建对象实例，两者都可以通过上转型对象或接口回调方式实现多态机制。 </li>
 </ul>
 <p>不同点有：</p>
 <ul>
-<li>声明方式不同，接口使用interface关键字，而抽象类使用abstract class关键字。 +  成员变量不同，接口中只能有静态常量，而抽象类中不受限制。 +  成员方法不同，接口中的方法均是public abstract；而抽象类中抽象方法必须加上修饰符abstract。另外，接口中不能定义静态方法，而抽象类可以。</li>
+<li>声明方式不同，接口使用interface关键字，而抽象类使用abstract class关键字。 +  成员变量不同，接口中只能有静态常量，而抽象类中不受限制。 +  成员方法不同，接口中的方法均是public abstract；而抽象类中抽象方法必须加上修饰符abstract。另外，接口中不能定义静态方法，而抽象类可以。 </li>
 </ul>
 <p><strong>内部类：</strong></p>
 <p>如果一个类A的内部定义了一个类B，那么类A称为外部类或外嵌类，而类B称为内部类或内嵌类 。</p>
 <p><strong>匿名对象和类：</strong></p>
-<p>new 类名（[实参列表]）{&#x2F;&#x2F;；类体</p>
+<p>new 类名（[实参列表]）{//；类体</p>
 <p>继承“类名”的子类</p>
 <p>}</p>
 <p>对象只能使用一次。</p>
@@ -527,7 +522,7 @@ array<span class="token punctuation">[</span>i<span class="token punctuation">]<
 <p>数组下标越界异常：ArrayIndexOutOfBoundsException</p>
 <h1 id="第6章-OOP程序设计的基本原则"><a href="#第6章-OOP程序设计的基本原则" class="headerlink" title="第6章.OOP程序设计的基本原则"></a>第6章.OOP程序设计的基本原则</h1><p>知识点：了解就行</p>
 <ul>
-<li>对象的抽象+ 单一职责原则+ 迪米特原则+ 接口隔离原则+ 开放-封闭原则+ 里氏替换原则+ 合成&#x2F;聚合复用原则</li>
+<li>对象的抽象+ 单一职责原则+ 迪米特原则+ 接口隔离原则+ 开放-封闭原则+ 里氏替换原则+ 合成/聚合复用原则</li>
 </ul>
 <h1 id="第7章-常用类"><a href="#第7章-常用类" class="headerlink" title="第7章 常用类"></a>第7章 常用类</h1><p>常用的方法在java.md里面有。</p>
 <p>知识点：</p>
@@ -954,7 +949,7 @@ array<span class="token punctuation">[</span>i<span class="token punctuation">]<
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">123.4k</span>
+                        class="white-color">123.1k</span>
             
             
             

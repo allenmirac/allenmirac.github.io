@@ -463,54 +463,39 @@
 <p><a href="#%E4%BA%8B%E5%8A%A1%E7%B1%BB%E6%9C%8D%E5%8A%A1">事务类服务</a></p>
 <p><a href="#%E5%B1%95%E6%9C%9B">展望</a></p>
 <p><a href="#%E8%A7%86%E9%A2%91%E9%93%BE%E6%8E%A5">视频链接</a></p>
-<h1 id="跟腾讯架构大师学网络框架与后台架构"><a href="#跟腾讯架构大师学网络框架与后台架构" class="headerlink" title="跟腾讯架构大师学网络框架与后台架构"></a>跟腾讯架构大师学网络框架与后台架构</h1><h2 id="单机服务"><a href="#单机服务" class="headerlink" title="单机服务"></a>单机服务</h2><h2 id="1、单机服务：基本概念"><a href="#1、单机服务：基本概念" class="headerlink" title="1、单机服务：基本概念"></a>1、单机服务：基本概念</h2><p><img src="https://img-blog.csdnimg.cn/55d5b77b35c94c63a074bf1fe72bc547.png"></p>
-<h2 id="2、单机服务：同步阻塞"><a href="#2、单机服务：同步阻塞" class="headerlink" title="2、单机服务：同步阻塞"></a>2、单机服务：同步阻塞</h2><p><img src="https://img-blog.csdnimg.cn/c06c9be4fdb84121a914af18173b0411.png"></p>
-<p> </p>
+<h1 id="跟腾讯架构大师学网络框架与后台架构"><a href="#跟腾讯架构大师学网络框架与后台架构" class="headerlink" title="跟腾讯架构大师学网络框架与后台架构"></a>跟腾讯架构大师学网络框架与后台架构</h1><h2 id="单机服务"><a href="#单机服务" class="headerlink" title="单机服务"></a>单机服务</h2><h2 id="1、单机服务：基本概念"><a href="#1、单机服务：基本概念" class="headerlink" title="1、单机服务：基本概念"></a>1、单机服务：基本概念</h2><p><img src="https://img-blog.csdnimg.cn/55d5b77b35c94c63a074bf1fe72bc547.png" alt=""></p>
+<h2 id="2、单机服务：同步阻塞"><a href="#2、单机服务：同步阻塞" class="headerlink" title="2、单机服务：同步阻塞"></a>2、单机服务：同步阻塞</h2><p><img src="https://img-blog.csdnimg.cn/c06c9be4fdb84121a914af18173b0411.png" alt=""></p>
 <h2 id="3、单机服务：异步非阻塞框架"><a href="#3、单机服务：异步非阻塞框架" class="headerlink" title="3、单机服务：异步非阻塞框架"></a>3、单机服务：异步非阻塞框架</h2><p>使用非阻塞IO，检测到有事件</p>
 <p>性能最高：不会阻塞IO，数据拷贝最少</p>
-<p><img src="https://img-blog.csdnimg.cn/483f1de6bcde4b9281ff41ab37eaf348.png"></p>
-<p> </p>
-<h2 id="4、单机服务：典型框架："><a href="#4、单机服务：典型框架：" class="headerlink" title="4、单机服务：典型框架："></a>4、单机服务：典型框架：</h2><p><img src="https://img-blog.csdnimg.cn/b1c58c550e9340d0bfbebb1f7b7d0c5a.png"></p>
-<p> </p>
-<h2 id="5、单机服务：协程框架"><a href="#5、单机服务：协程框架" class="headerlink" title="5、单机服务：协程框架"></a>5、单机服务：协程框架</h2><p><img src="https://img-blog.csdnimg.cn/31fe20c831fe4b33b0b134a5128ff38d.png"></p>
-<h2 id="6、单机服务：新玩法，NODEJS的闭包"><a href="#6、单机服务：新玩法，NODEJS的闭包" class="headerlink" title="6、单机服务：新玩法，NODEJS的闭包"></a>6、单机服务：新玩法，NODEJS的闭包</h2><p>利用上层来保存，可以直接使用上层的局部变量，回调的地狱。<br><img src="https://img-blog.csdnimg.cn/11117a7ab6fd407ba560e135ae68596f.png"></p>
-<p> </p>
-<h2 id="7、单机服务：几种典型框架对比"><a href="#7、单机服务：几种典型框架对比" class="headerlink" title="7、单机服务：几种典型框架对比"></a>7、单机服务：几种典型框架对比</h2><p><code>nodejs</code>可能比多线程同步高<br><img src="https://img-blog.csdnimg.cn/ca91f235d577474f836476480ce1e930.png"></p>
-<p> </p>
-<h2 id="8、单机服务：网络框架的监控"><a href="#8、单机服务：网络框架的监控" class="headerlink" title="8、单机服务：网络框架的监控"></a>8、单机服务：网络框架的监控</h2><p>监控点多一点，出现问题的时候就比较快的找到问题所在。<br><img src="https://img-blog.csdnimg.cn/139325a2cf4946a0b38c94151d912130.png"></p>
-<p> </p>
-<h2 id="9、单机服务：从C10K问题到C10M问题"><a href="#9、单机服务：从C10K问题到C10M问题" class="headerlink" title="9、单机服务：从C10K问题到C10M问题"></a>9、单机服务：从C10K问题到C10M问题</h2><p><img src="https://img-blog.csdnimg.cn/b2a3871eb49b4fc1ade8c358631c58c7.png"></p>
-<p> </p>
-<h2 id="10、单机服务：神器"><a href="#10、单机服务：神器" class="headerlink" title="10、单机服务：神器"></a>10、单机服务：神器</h2><p><img src="https://img-blog.csdnimg.cn/072d7bf470a24c48aa11b026356333d0.png"></p>
-<p> </p>
-<h2 id="Cache-类服务"><a href="#Cache-类服务" class="headerlink" title="Cache 类服务"></a>Cache 类服务</h2><h2 id="1、Cache类服务：基本概念"><a href="#1、Cache类服务：基本概念" class="headerlink" title="1、Cache类服务：基本概念"></a>1、Cache类服务：基本概念</h2><p><img src="https://img-blog.csdnimg.cn/109c7607980b4f0b9cc76c3e342419ea.png"></p>
-<p> </p>
-<h2 id="2、Cache类：Local-Cache"><a href="#2、Cache类：Local-Cache" class="headerlink" title="2、Cache类：Local Cache"></a>2、Cache类：Local Cache</h2><p><img src="https://img-blog.csdnimg.cn/700ccc63c546415cb75bdb8357c0edba.png"></p>
-<p> </p>
-<h2 id="3、Cache类：分布式Cache"><a href="#3、Cache类：分布式Cache" class="headerlink" title="3、Cache类：分布式Cache"></a>3、Cache类：分布式Cache</h2><p><img src="https://img-blog.csdnimg.cn/2cc03bdf362d4b5498f36feba06a82c6.png"></p>
-<p> </p>
-<h2 id="存储类"><a href="#存储类" class="headerlink" title="存储类"></a>存储类</h2><h2 id="1、存储类：基本概念"><a href="#1、存储类：基本概念" class="headerlink" title="1、存储类：基本概念"></a>1、存储类：基本概念</h2><p><img src="https://img-blog.csdnimg.cn/bb3e5b4c1cfd42da99ad8660782f4711.png"></p>
-<p> </p>
-<h2 id="2、存储类：SQL"><a href="#2、存储类：SQL" class="headerlink" title="2、存储类：SQL"></a>2、存储类：SQL</h2><p><img src="https://img-blog.csdnimg.cn/e6bd6d57996b46edab4bac05c96059b7.png"></p>
-<p> </p>
+<p><img src="https://img-blog.csdnimg.cn/483f1de6bcde4b9281ff41ab37eaf348.png" alt=""></p>
+<h2 id="4、单机服务：典型框架："><a href="#4、单机服务：典型框架：" class="headerlink" title="4、单机服务：典型框架："></a>4、单机服务：典型框架：</h2><p><img src="https://img-blog.csdnimg.cn/b1c58c550e9340d0bfbebb1f7b7d0c5a.png" alt=""></p>
+<h2 id="5、单机服务：协程框架"><a href="#5、单机服务：协程框架" class="headerlink" title="5、单机服务：协程框架"></a>5、单机服务：协程框架</h2><p><img src="https://img-blog.csdnimg.cn/31fe20c831fe4b33b0b134a5128ff38d.png" alt=""></p>
+<h2 id="6、单机服务：新玩法，NODEJS的闭包"><a href="#6、单机服务：新玩法，NODEJS的闭包" class="headerlink" title="6、单机服务：新玩法，NODEJS的闭包"></a>6、单机服务：新玩法，NODEJS的闭包</h2><p>利用上层来保存，可以直接使用上层的局部变量，回调的地狱。<br><img src="https://img-blog.csdnimg.cn/11117a7ab6fd407ba560e135ae68596f.png" alt=""></p>
+<h2 id="7、单机服务：几种典型框架对比"><a href="#7、单机服务：几种典型框架对比" class="headerlink" title="7、单机服务：几种典型框架对比"></a>7、单机服务：几种典型框架对比</h2><p><code>nodejs</code>可能比多线程同步高<br><img src="https://img-blog.csdnimg.cn/ca91f235d577474f836476480ce1e930.png" alt=""></p>
+<h2 id="8、单机服务：网络框架的监控"><a href="#8、单机服务：网络框架的监控" class="headerlink" title="8、单机服务：网络框架的监控"></a>8、单机服务：网络框架的监控</h2><p>监控点多一点，出现问题的时候就比较快的找到问题所在。<br><img src="https://img-blog.csdnimg.cn/139325a2cf4946a0b38c94151d912130.png" alt=""></p>
+<h2 id="9、单机服务：从C10K问题到C10M问题"><a href="#9、单机服务：从C10K问题到C10M问题" class="headerlink" title="9、单机服务：从C10K问题到C10M问题"></a>9、单机服务：从C10K问题到C10M问题</h2><p><img src="https://img-blog.csdnimg.cn/b2a3871eb49b4fc1ade8c358631c58c7.png" alt=""></p>
+<h2 id="10、单机服务：神器"><a href="#10、单机服务：神器" class="headerlink" title="10、单机服务：神器"></a>10、单机服务：神器</h2><p><img src="https://img-blog.csdnimg.cn/072d7bf470a24c48aa11b026356333d0.png" alt=""></p>
+<h2 id="Cache-类服务"><a href="#Cache-类服务" class="headerlink" title="Cache 类服务"></a>Cache 类服务</h2><h2 id="1、Cache类服务：基本概念"><a href="#1、Cache类服务：基本概念" class="headerlink" title="1、Cache类服务：基本概念"></a>1、Cache类服务：基本概念</h2><p><img src="https://img-blog.csdnimg.cn/109c7607980b4f0b9cc76c3e342419ea.png" alt=""></p>
+<h2 id="2、Cache类：Local-Cache"><a href="#2、Cache类：Local-Cache" class="headerlink" title="2、Cache类：Local Cache"></a>2、Cache类：Local Cache</h2><p><img src="https://img-blog.csdnimg.cn/700ccc63c546415cb75bdb8357c0edba.png" alt=""></p>
+<h2 id="3、Cache类：分布式Cache"><a href="#3、Cache类：分布式Cache" class="headerlink" title="3、Cache类：分布式Cache"></a>3、Cache类：分布式Cache</h2><p><img src="https://img-blog.csdnimg.cn/2cc03bdf362d4b5498f36feba06a82c6.png" alt=""></p>
+<h2 id="存储类"><a href="#存储类" class="headerlink" title="存储类"></a>存储类</h2><h2 id="1、存储类：基本概念"><a href="#1、存储类：基本概念" class="headerlink" title="1、存储类：基本概念"></a>1、存储类：基本概念</h2><p><img src="https://img-blog.csdnimg.cn/bb3e5b4c1cfd42da99ad8660782f4711.png" alt=""></p>
+<h2 id="2、存储类：SQL"><a href="#2、存储类：SQL" class="headerlink" title="2、存储类：SQL"></a>2、存储类：SQL</h2><p><img src="https://img-blog.csdnimg.cn/e6bd6d57996b46edab4bac05c96059b7.png" alt=""></p>
 <h2 id="3、存储类：NOSQL"><a href="#3、存储类：NOSQL" class="headerlink" title="3、存储类：NOSQL"></a>3、存储类：NOSQL</h2><p>有持久化与非持久化的选择，可能是一个状态，不需要落地</p>
 <p>很容易扩展，平行扩展。</p>
 <p>弱一致性</p>
-<p>远程数据库redis，文档数据库mongoDB。<br><img src="https://img-blog.csdnimg.cn/c25102f873a24480a778b3a58da602f9.png"></p>
-<p>while key-value ?<br><img src="https://img-blog.csdnimg.cn/fec8269f285e4e6da4a8a49bb15fc303.png"></p>
+<p>远程数据库redis，文档数据库mongoDB。<br><img src="https://img-blog.csdnimg.cn/c25102f873a24480a778b3a58da602f9.png" alt=""></p>
+<p>while key-value ?<br><img src="https://img-blog.csdnimg.cn/fec8269f285e4e6da4a8a49bb15fc303.png" alt=""></p>
 <p>CAP理论</p>
-<p><img src="https://img-blog.csdnimg.cn/64cedc466e6b4d6882d99ec59c83add4.png"></p>
+<p><img src="https://img-blog.csdnimg.cn/64cedc466e6b4d6882d99ec59c83add4.png" alt=""></p>
 <h2 id="4、存储类：如何不丢数据"><a href="#4、存储类：如何不丢数据" class="headerlink" title="4、存储类：如何不丢数据"></a>4、存储类：如何不丢数据</h2><p>master-slave：master宕机之后，将slave转为master。</p>
-<p>流水+快照：<br><img src="https://img-blog.csdnimg.cn/8ff2e265f1db4cb0a8c76eca039d4280.png"></p>
-<h2 id="5、存储类：其他存储"><a href="#5、存储类：其他存储" class="headerlink" title="5、存储类：其他存储"></a>5、存储类：其他存储</h2><p><img src="https://img-blog.csdnimg.cn/528f7b7b26294fba8d2d7f141e4d5104.png"></p>
-<p> </p>
-<h2 id="通讯类服务"><a href="#通讯类服务" class="headerlink" title="通讯类服务"></a>通讯类服务</h2><p><img src="https://img-blog.csdnimg.cn/93692cb56a4243d28efa848aa37650c6.png"></p>
-<h2 id="计算类服务"><a href="#计算类服务" class="headerlink" title="计算类服务"></a>计算类服务</h2><h2 id=""><a href="#" class="headerlink" title=""></a></h2><p><img src="https://img-blog.csdnimg.cn/70fe9f09378f46b8b1a4ffa8f09afffa.png"></p>
-<h2 id="寻址类服务"><a href="#寻址类服务" class="headerlink" title="寻址类服务"></a>寻址类服务</h2><p><img src="https://img-blog.csdnimg.cn/03e85d73e2fd4f56b4e722c772c1afc2.png">
- </p>
-<h2 id="事务类服务"><a href="#事务类服务" class="headerlink" title="事务类服务"></a>事务类服务</h2><p><img src="https://img-blog.csdnimg.cn/08d39e57acf44e27bf6d3882f0d297b4.png"></p>
-<h2 id="展望"><a href="#展望" class="headerlink" title="展望"></a>展望</h2><p><img src="https://img-blog.csdnimg.cn/ab4c9fbdbfb343d2bf966f36f3016d72.png"></p>
-<h2 id="视频链接"><a href="#视频链接" class="headerlink" title="视频链接"></a>视频链接</h2><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Jv41117Zu/?spm_id_from=333.1007.top_right_bar_window_custom_collection.content.click&vd_source=b99c7e40ffa0f64b68b706f2af755c8e">跟腾讯架构大师学网络框架与后台架构_哔哩哔哩_bilibili</a></p>
+<p>流水+快照：<br><img src="https://img-blog.csdnimg.cn/8ff2e265f1db4cb0a8c76eca039d4280.png" alt=""></p>
+<h2 id="5、存储类：其他存储"><a href="#5、存储类：其他存储" class="headerlink" title="5、存储类：其他存储"></a>5、存储类：其他存储</h2><p><img src="https://img-blog.csdnimg.cn/528f7b7b26294fba8d2d7f141e4d5104.png" alt=""></p>
+<h2 id="通讯类服务"><a href="#通讯类服务" class="headerlink" title="通讯类服务"></a>通讯类服务</h2><p><img src="https://img-blog.csdnimg.cn/93692cb56a4243d28efa848aa37650c6.png" alt=""></p>
+<h2 id="计算类服务"><a href="#计算类服务" class="headerlink" title="计算类服务"></a>计算类服务</h2><h2 id=""><a href="#" class="headerlink" title=" "></a> </h2><p><img src="https://img-blog.csdnimg.cn/70fe9f09378f46b8b1a4ffa8f09afffa.png" alt=""></p>
+<h2 id="寻址类服务"><a href="#寻址类服务" class="headerlink" title="寻址类服务"></a>寻址类服务</h2><p><img src="https://img-blog.csdnimg.cn/03e85d73e2fd4f56b4e722c772c1afc2.png" alt=""></p>
+<h2 id="事务类服务"><a href="#事务类服务" class="headerlink" title="事务类服务"></a>事务类服务</h2><p><img src="https://img-blog.csdnimg.cn/08d39e57acf44e27bf6d3882f0d297b4.png" alt=""></p>
+<h2 id="展望"><a href="#展望" class="headerlink" title="展望"></a>展望</h2><p><img src="https://img-blog.csdnimg.cn/ab4c9fbdbfb343d2bf966f36f3016d72.png" alt=""></p>
+<h2 id="视频链接"><a href="#视频链接" class="headerlink" title="视频链接"></a>视频链接</h2><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Jv41117Zu/?spm_id_from=333.1007.top_right_bar_window_custom_collection.content.click&amp;vd_source=b99c7e40ffa0f64b68b706f2af755c8e">跟腾讯架构大师学网络框架与后台架构_哔哩哔哩_bilibili</a></p>
 
                 
             </div>
@@ -918,7 +903,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">123.4k</span>
+                        class="white-color">123.1k</span>
             
             
             

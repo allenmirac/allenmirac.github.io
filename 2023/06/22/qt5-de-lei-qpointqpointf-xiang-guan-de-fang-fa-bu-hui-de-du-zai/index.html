@@ -399,7 +399,7 @@ QPointQPoint官网链接
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    418
+                    417
                 </div>
                 
 
@@ -428,25 +428,23 @@ QPointQPoint官网链接
 
 <h1 id="QPoint"><a href="#QPoint" class="headerlink" title="QPoint"></a>QPoint</h1><p><a target="_blank" rel="noopener" href="https://doc.qt.io/qt-5/qpoint.html">QPoint官网链接</a></p>
 <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>QPoint 类使用整数精度来定义平面中的一个点</p>
-<h2 id="包含的成员"><a href="#包含的成员" class="headerlink" title="包含的成员"></a>包含的成员</h2><p><img src="https://img-blog.csdnimg.cn/0043bcf801d74b6c952319df2648a945.png"></p>
+<h2 id="包含的成员"><a href="#包含的成员" class="headerlink" title="包含的成员"></a>包含的成员</h2><p><img src="https://img-blog.csdnimg.cn/0043bcf801d74b6c952319df2648a945.png" alt=""></p>
 <p>我觉得你可能<strong>看不懂</strong>的成员使用的方法：</p>
 <p>1、dotProduct(const QPoint &amp;, const QPoint &amp;):int，参数是两个点的坐标，return 他们两点之间的点积，即进行向量的点乘运算，即x1<em>x2+y1</em>y2。</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">QPoint p<span class="token punctuation">(</span> <span class="token number">3</span>, <span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 QPoint q<span class="token punctuation">(</span>-1, <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 int lengthSquared <span class="token operator">=</span> QPoint::dotProduct<span class="token punctuation">(</span>p, q<span class="token punctuation">)</span><span class="token punctuation">;</span>   // lengthSquared becomes <span class="token number">25</span>
 // -3+28<span class="token operator">=</span><span class="token number">25</span>，可以用来计算两条直线之间的角度<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
-
 <p>2、isNull()const : bool，如果 x 和 y 坐标都设置为 0，则返回 true，否则返回 false。</p>
-<p>3、manhattanLength() const : int ，曼哈顿长度，返回的是他们的曼哈顿距离d(i,j)&#x3D;|xi-xj|+|yi-yj|。</p>
+<p>3、manhattanLength() const : int ，曼哈顿长度，返回的是他们的曼哈顿距离d(i,j)=|xi-xj|+|yi-yj|。</p>
 <p>4、rx()，ry()，则是对一个点的x，y坐标单独拿出来进行更改</p>
 <p>5、transPosed(): const QPoint，交换一个点的x，y坐标（exchanged）。</p>
 <h1 id="QPointF"><a href="#QPointF" class="headerlink" title="QPointF"></a>QPointF</h1><h2 id="简介-1"><a href="#简介-1" class="headerlink" title="简介"></a>简介</h2><p>第一眼看上去以为是一个新的类，结果发现就是Float QPoint（哈哈😁），用法的话相信你认真看完前面的QPoint后，这一个类的使用也会恍然大悟。QPointF在浮点精度上表征平面上的点，绝大部分操作都是与QPoint相类似的，细微的差别在于运算符重载以及提供了QPoint与QPointF的相互转换。</p>
-<h2 id="成员函数"><a href="#成员函数" class="headerlink" title="成员函数"></a>成员函数</h2><p><img src="https://img-blog.csdnimg.cn/292ce357d1b04be7843cc413ca582df2.png"></p>
+<h2 id="成员函数"><a href="#成员函数" class="headerlink" title="成员函数"></a>成员函数</h2><p><img src="https://img-blog.csdnimg.cn/292ce357d1b04be7843cc413ca582df2.png" alt=""></p>
 <p>看完这张图你就会发现QPointF的用法和QPoint基本一样的，里面的很多方法和QPoint一样都是对运算符的重载。</p>
 <p>几个要注意的函数：</p>
 <p>1、toPoint() const由浮点精度转化为整数精度</p>
-<p>2、构造函数那里QPointF(const QPoint&amp; point)由是为了从整数精度转化为浮点精度。</p>
+<p>2、构造函数那里QPointF(const QPoint&amp; point)由是为了从整数精度转化为浮点精度。</p>
 
                 
             </div>
@@ -854,7 +852,7 @@ int lengthSquared <span class="token operator">=</span> QPoint::dotProduct<span 
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">123.4k</span>
+                        class="white-color">123.1k</span>
             
             
             

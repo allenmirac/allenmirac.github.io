@@ -429,7 +429,7 @@ CPP指针空指针在C和C++中，用0和NULL都可以表示空指针
 <p>NULL空指针被分配的区域是一个空闲的区域，没有对应的物理空间与之对应，所以对这段空间来说，任何读操作都是非法的，并且<strong>无论何时</strong>都要保证这个区域都没有与之对应的地址（空指针区域）。</p>
 <p><strong>2、C++ 11 的 nullptr</strong></p>
 <p>由于 使用 0 和 <code>NULL</code> 表示空指针会出现歧义，C++ 11 推荐使用 <code>nullptr</code> ，也就是 <code>(void *)0</code>。</p>
-<p><strong>注意：</strong> 在 Linux 平台下，要使用<code>nullptr </code>编译需要加上 <code>-std=C++11</code>参数</p>
+<p><strong>注意：</strong> 在 Linux 平台下，要使用<code>nullptr</code>编译需要加上 <code>-std=C++11</code>参数</p>
 <h2 id="野指针"><a href="#野指针" class="headerlink" title="野指针"></a>野指针</h2><p>指针只申明，但未初始化，就会出现，<code>int* p</code>，此时p就是野指针。</p>
 <p><strong>规避方法：</strong> 1）指针在定义的时候，如果没地方指，就初始化为 <code>nullptr</code> 。 2）动态分配的内存被释放后，将其置为 <code>nullptr</code> 。 3）不要返回局部变量的地址。 <strong>注意：</strong> 野指针的危害比空指针要大很多，在程序中，如果访问野指针，可能会造成程序的崩溃。是<strong>可能，不是一定（因为你也不知道它初始化到底指向了哪里）</strong>，程序的表现是不稳定，增加了调试程序的难度。</p>
 <h2 id="指针与数组名的区别"><a href="#指针与数组名的区别" class="headerlink" title="指针与数组名的区别"></a>指针与数组名的区别</h2><p>指针是一个地址占4个字节，而数组名是一种数据结构，可以通过 <code>sizeof</code> 体现出来</p>
@@ -442,8 +442,6 @@ int main()&#123;
   cout&lt;&lt;sizeof(a1)&lt;&lt;endl;&#x2F;&#x2F;4
 &#125;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
 <p>但是有一种特殊情况，当数组名作为<strong>函数的参数</strong>来传递的时候，他的高贵的数组结构特性已经失去了，成了一个地地道道的只拥有4个字节的<strong>平民</strong>。</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
@@ -476,8 +474,6 @@ int main()&#123;
 <span class="token comment">//4</span>
 <span class="token comment">//5</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
 
                 
             </div>
@@ -885,7 +881,7 @@ int main()&#123;
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">123.4k</span>
+                        class="white-color">123.1k</span>
             
             
             

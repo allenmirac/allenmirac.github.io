@@ -446,8 +446,6 @@ C++的智能指针前言C++STL（Standard Template Library）一共提供了四�
 <span class="token punctuation">&#125;</span>
 <span class="token comment">// 12345</span>
 <span class="token comment">// 12345</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
 <p>创建智能指针的方法：通过构造函数指定、通过 reset 方法重新指定、通过 release 方法释放所有权、通过移动语义转移所有权（move），unique_ptr 还可能没有对象，这种情况被称为 empty。</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#include &lt;iostream></span>
 <span class="token comment">#include &lt;memory></span>
@@ -469,12 +467,9 @@ int <span class="token function-name function">main</span><span class="token pun
 // <span class="token number">1234</span>
 // <span class="token number">123</span>
 // <span class="token number">1234</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h2 id="2、auto-ptr"><a href="#2、auto-ptr" class="headerlink" title="2、auto_ptr"></a>2、auto_ptr</h2><h4 id="引入问题"><a href="#引入问题" class="headerlink" title="引入问题"></a>引入问题</h4><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">auto_ptr<span class="token operator">&lt;</span> string<span class="token operator">></span> <span class="token function">p1</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token function">string</span> <span class="token punctuation">(</span><span class="token string">"string1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 auto_ptr<span class="token operator">&lt;</span>string<span class="token operator">></span> p2<span class="token punctuation">;</span>
 p2<span class="token operator">=</span>p1<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-
 <p>如果上面的指针是普通的指针，那么就会面临一个问题，就是delete的时候会删除有两次，<strong>解决方案有多种：</strong></p>
 <p>1、重载复制运算符，将其定义为深复制，这样他们俩就会指向不同的地方，缺点是会浪费空间。</p>
 <p>2、建立所有全概念。将指针定义为只可以有一个对象拥有，赋值运算符直接将所有权转移。这就是用于 auto_ptr 和 unique_ptr 的策略，但 unique_ptr 的策略更严格。</p>
@@ -492,9 +487,7 @@ p2<span class="token operator">=</span>p1<span class="token punctuation">;</span
     <span class="token keyword">void</span> <span class="token function">setX</span><span class="token punctuation">(</span><span class="token keyword">int</span> xVal<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> x <span class="token operator">=</span> xVal<span class="token punctuation">;</span> <span class="token punctuation">&#125;</span>
     <span class="token keyword">void</span> <span class="token function">setY</span><span class="token punctuation">(</span><span class="token keyword">int</span> yVal<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> y <span class="token operator">=</span> yVal<span class="token punctuation">;</span> <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-<p><strong>实现：</strong> </p>
+<p><strong>实现：</strong> </p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">SmartPtr</span> <span class="token punctuation">&#123;</span>
 <span class="token keyword">public</span><span class="token operator">:</span>
 	<span class="token comment">//构造函数</span>
@@ -535,8 +528,7 @@ p2<span class="token operator">=</span>p1<span class="token punctuation">;</span
 	RefPtr<span class="token operator">*</span> rp<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="4、weak-ptr"><a href="#4、weak-ptr" class="headerlink" title="4、weak_ptr"></a>4、weak_ptr</h2><p>这个智能指针只能算是一个辅助类的指针，没有重载 operator* 和 operator-&gt; ，因此取名为 weak，表明其是功能较弱的智能指针。<strong>它的最大作用在于协助 shared_ptr 工作，可获得资源的观测权，像旁观者那样观测资源的使用情况。观察者意味着 weak_ptr 只对 shared_ptr 进行引用，而不改变其引用计数，当被观察的 shared_ptr 失效后，相应的 weak_ptr 也相应失效。</strong></p>
+<h2 id="4、weak-ptr"><a href="#4、weak-ptr" class="headerlink" title="4、weak_ptr"></a>4、weak_ptr</h2><p>这个智能指针只能算是一个辅助类的指针，没有重载 operator<em> 和 operator-&gt; ，因此取名为 weak，表明其是功能较弱的智能指针。<em>*它的最大作用在于协助 shared_ptr 工作，可获得资源的观测权，像旁观者那样观测资源的使用情况。观察者意味着 weak_ptr 只对 shared_ptr 进行引用，而不改变其引用计数，当被观察的 shared_ptr 失效后，相应的 weak_ptr 也相应失效。</em></em></p>
 <p>解决循环引用的问题，用法：</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">weak_ptr<span class="token operator">&lt;</span>T<span class="token operator">></span> w<span class="token punctuation">;</span>	 	<span class="token comment">//创建空 weak_ptr，可以指向类型为 T 的对象</span>
 weak_ptr<span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token function">w</span><span class="token punctuation">(</span>sp<span class="token punctuation">)</span><span class="token punctuation">;</span>	<span class="token comment">//与 shared_ptr 指向相同的对象，shared_ptr 引用计数不变。T必须能转换为 sp 指向的类型</span>
@@ -545,10 +537,8 @@ w<span class="token punctuation">.</span><span class="token function">reset</spa
 w<span class="token punctuation">.</span><span class="token function">use_count</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>		<span class="token comment">//返回与 w 共享对象的 shared_ptr 的数量</span>
 w<span class="token punctuation">.</span><span class="token function">expired</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>		<span class="token comment">//若 w.use_count() 为 0，返回 true，否则返回 false</span>
 w<span class="token punctuation">.</span><span class="token function">lock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>			<span class="token comment">//如果 expired() 为 true，返回一个空 shared_ptr，否则返回非空 shared_ptr</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
 <p>weak_ptr 对象引用资源时不会增加引用计数，但是它能够通过 lock() 方法来判断它所管理的资源是否被释放。</p>
-<h2 id="参考文章："><a href="#参考文章：" class="headerlink" title="参考文章："></a>参考文章：</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/K346K346/article/details/81478223?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522165743267316781432922953%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=165743267316781432922953&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-81478223-null-null.142%5Ev32%5Eexperiment_2_v1,185%5Ev2%5Econtrol&utm_term=c++%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88&spm=1018.2226.3001.4187">C++ STL 四种智能指针_恋喵大鲤鱼的博客-CSDN博客_智能指针</a></p>
+<h2 id="参考文章："><a href="#参考文章：" class="headerlink" title="参考文章："></a>参考文章：</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/K346K346/article/details/81478223?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522165743267316781432922953%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=165743267316781432922953&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-81478223-null-null.142%5Ev32%5Eexperiment_2_v1,185%5Ev2%5Econtrol&amp;utm_term=c%2B%2B%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88&amp;spm=1018.2226.3001.4187">C++ STL 四种智能指针_恋喵大鲤鱼的博客-CSDN博客_智能指针</a></p>
 
                 
             </div>
@@ -964,7 +954,7 @@ w<span class="token punctuation">.</span><span class="token function">lock</span
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">123.4k</span>
+                        class="white-color">123.1k</span>
             
             
             

@@ -395,7 +395,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.7k
+                    2.6k
                 </div>
                 
 
@@ -434,9 +434,7 @@
 
 <span class="token keyword">int</span> <span class="token function">select</span><span class="token punctuation">(</span><span class="token keyword">int</span> nfds<span class="token punctuation">,</span> fd_set <span class="token operator">*</span>readfds<span class="token punctuation">,</span> fd_set <span class="token operator">*</span>writefds<span class="token punctuation">,</span>
            fd_set <span class="token operator">*</span>exceptfds<span class="token punctuation">,</span> <span class="token keyword">struct</span> <span class="token class-name">timeval</span> <span class="token operator">*</span> timeout<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-<p> <strong>参数介绍：</strong></p>
+<p> <strong>参数介绍：</strong></p>
 <ul>
 <li><p>nfds：委托给内核处理的后面三个fd_set的最大值+1，也是遍历的时候的最大值。+ readfds：传入内核处理文件描述符的读集合，内核只需要检测这些文件描述符的读缓冲区。 </p>
 </li>
@@ -468,9 +466,7 @@
 <span class="token keyword">void</span> <span class="token function">FD_ISSET</span><span class="token punctuation">(</span><span class="token keyword">int</span> fd<span class="token punctuation">,</span> fd_set<span class="token operator">*</span> set<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token comment">// 清空set，即全部置0，用于初始化set</span>
 <span class="token keyword">void</span> <span class="token function">FD_ZERO</span><span class="token punctuation">(</span>fd_set<span class="token operator">*</span> set<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-<p>注：fd_set 是一个128个字节的数组（位图Bitmap），128*8&#x3D;1024 bit，在操作fd_set的时候，实际上操作的是每一位bit，置0还是置1，与内核中的文件描述符表的每一位都对应。</p>
+<p>注：fd_set 是一个128个字节的数组（位图Bitmap），128*8=1024 bit，在操作fd_set的时候，实际上操作的是每一位bit，置0还是置1，与内核中的文件描述符表的每一位都对应。</p>
 <ul>
 <li>0代表不检测这个文件描述符的状态（读缓冲区，写缓冲区等）+ 1代表检测这个文件描述符的状态（读缓冲区，写缓冲区等）</li>
 </ul>
@@ -490,8 +486,6 @@
 
 <span class="token keyword">struct</span> <span class="token class-name">pollfd</span> myfd<span class="token punctuation">[</span><span class="token number">100</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 <span class="token keyword">int</span> <span class="token function">poll</span><span class="token punctuation">(</span><span class="token keyword">struct</span> <span class="token class-name">pollfd</span> <span class="token operator">*</span>fds<span class="token punctuation">,</span> nfds_t nfds<span class="token punctuation">,</span> <span class="token keyword">int</span> timeout<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
 <p><strong>函数参数介绍：</strong></p>
 <ul>
 <li><p>fds: 这是一个 struct pollfd 类型的数组，里边存储了待检测的文件描述符的信息，这个数组中有三个成员： </p>
@@ -519,8 +513,7 @@
 </li>
 <li><p>events参数对应select中的readfds、writefds、exceptfds的传入状态+ revents参数对应select中的readfds、writefds、exceptfds的传出状态</p>
 </li>
-<li><p>与select相差不大，需要的时间复杂度一样</p>
-</li>
+<li>与select相差不大，需要的时间复杂度一样</li>
 </ul>
 <h2 id="epoll"><a href="#epoll" class="headerlink" title="epoll"></a>epoll</h2><p><strong>epoll的操作函数：</strong></p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;sys/epoll.h></span></span>
@@ -531,23 +524,20 @@
 <span class="token keyword">int</span> <span class="token function">epoll_ctl</span><span class="token punctuation">(</span><span class="token keyword">int</span> epfd<span class="token punctuation">,</span> <span class="token keyword">int</span> op<span class="token punctuation">,</span> <span class="token keyword">int</span> fd<span class="token punctuation">,</span> <span class="token keyword">struct</span> <span class="token class-name">epoll_event</span> <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token comment">// 检测epoll树中是否有就绪的文件描述符</span>
 <span class="token keyword">int</span> <span class="token function">epoll_wait</span><span class="token punctuation">(</span><span class="token keyword">int</span> epfd<span class="token punctuation">,</span> <span class="token keyword">struct</span> <span class="token class-name">epoll_event</span> <span class="token operator">*</span> events<span class="token punctuation">,</span> <span class="token keyword">int</span> maxevents<span class="token punctuation">,</span> <span class="token keyword">int</span> timeout<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-<p>在select&#x2F;poll中低效的原因之一是它们将“添加&#x2F;修改任务列表”与“等待任务列表”放在一起处理。在大部分情况下，需要监听的socket比较确定，这个时候检测去任务列表是多余的。epoll将两个步骤分开，epoll_ctl用来管理任务列表，并且使用的是红黑树结构，这种结构有利于增加、删除或修改，然后用epoll_wait检测任务列表（文件描述符）是否有事件发生，这样实现了解耦，效率大大提高。</p>
+<p>在select/poll中低效的原因之一是它们将“添加/修改任务列表”与“等待任务列表”放在一起处理。在大部分情况下，需要监听的socket比较确定，这个时候检测去任务列表是多余的。epoll将两个步骤分开，epoll_ctl用来管理任务列表，并且使用的是红黑树结构，这种结构有利于增加、删除或修改，然后用epoll_wait检测任务列表（文件描述符）是否有事件发生，这样实现了解耦，效率大大提高。</p>
 <p><strong>epoll_create(int size):</strong></p>
 <ul>
 <li><p>参数：一般指定为大于0的数就可以+ 返回值： </p>
 </li>
 <li><p>失败：-1，创建错误+ 成功：一个文件描述符，通过这个就可以访问epoll实例</p>
 </li>
-<li><p>用法：int epfd &#x3D; epoll_create(100);</p>
-</li>
+<li>用法：int epfd = epoll_create(100);</li>
 </ul>
 <p><strong>epoll_create1(int flags):</strong></p>
 <ul>
 <li>参数：flags 可以设置为0 或者EPOLL_CLOEXEC，为0时函数表现与epoll_create一致，设置为EPOLL_CLOEXEC标志与open 时的O_CLOEXEC 标志类似，即进程被替换时会关闭文件描述符。+ 返回值：与epoll_create类似</li>
 </ul>
-<p>*<em>epoll_ctl(int epfd, int op, int fd, struct epoll_event <em>event):</em></em></p>
+<p><strong>epoll_ctl(int epfd, int op, int fd, struct epoll_event *event):</strong></p>
 <ul>
 <li><p>参数： </p>
 </li>
@@ -555,14 +545,13 @@
 </li>
 <li><p>EPOLL_CTL_ADD：添加一个fd+ EPOLL_CTL_DEL：删除一个fd+ EPOLL_CTL_MOD：修改一个fd</p>
 </li>
-<li><p>fd是文件描述符，即要添加 &#x2F; 修改 &#x2F; 删除的文件描述符+ event是epoll 事件，用来修饰第三个参数对应的文件描述符的，指定检测这个文件描述符的什么事件 </p>
+<li><p>fd是文件描述符，即要添加 / 修改 / 删除的文件描述符+ event是epoll 事件，用来修饰第三个参数对应的文件描述符的，指定检测这个文件描述符的什么事件 </p>
 </li>
 <li><p>events：委托 epoll 检测的事件 </p>
 </li>
 <li><p>EPOLLIN：读事件，接收数据，检测读缓冲区，如果有数据该文件描述符就绪+ EPOLLOUT：写事件，发送数据，检测写缓冲区，如果可写该文件描述符就绪+ EPOLLERR：异常事件</p>
 </li>
-<li><p>data：用户数据变量，这是一个联合体类型，通常情况下使用里边的 fd 成员，用于存储待检测的文件描述符的值，在调用 epoll_wait() 函数的时候这个值会被传出。</p>
-</li>
+<li>data：用户数据变量，这是一个联合体类型，通常情况下使用里边的 fd 成员，用于存储待检测的文件描述符的值，在调用 epoll_wait() 函数的时候这个值会被传出。</li>
 </ul>
 <p><strong>看一下epoll_ctl的epoll_event结构体：</strong></p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">// 联合体, 多个变量共用同一块内存        </span>
@@ -578,9 +567,7 @@
 	epoll_data_t data<span class="token punctuation">;</span>        <span class="token comment">/* User data variable */</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
 <span class="token keyword">int</span> <span class="token function">epoll_ctl</span><span class="token punctuation">(</span><span class="token keyword">int</span> epfd<span class="token punctuation">,</span> <span class="token keyword">int</span> op<span class="token punctuation">,</span> <span class="token keyword">int</span> fd<span class="token punctuation">,</span> <span class="token keyword">struct</span> <span class="token class-name">epoll_event</span> <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-<p>**epoll_wait(int epfd, struct epoll_event * events, int maxevents, int timeout); **</p>
+<p><strong>epoll_wait(int epfd, struct epoll_event * events, int maxevents, int timeout); </strong></p>
 <ul>
 <li><p>函数参数： </p>
 </li>
@@ -594,14 +581,13 @@
 </li>
 <li><p>等于 0：函数是阻塞被强制解除了，没有检测到满足条件的文件描述符+ 大于 0：检测到的已就绪的文件描述符的总个数</p>
 </li>
-<li><p>失败：返回 - 1</p>
-</li>
+<li>失败：返回 - 1</li>
 </ul>
 <p><strong>epoll的两种模式 LT 和 ET</strong></p>
-<p>二者的差异在于 level-trigger 模式下只要某个socket处于 readable&#x2F;writable 状态，无论什么时候进行 epoll_wait 都会返回该 socket；而 edge-trigger 模式下只有某个 socket 从 unreadable 变为 readable 或从unwritable 变为 writable 时，epoll_wait 才会返回该 socket。</p>
+<p>二者的差异在于 level-trigger 模式下只要某个socket处于 readable/writable 状态，无论什么时候进行 epoll_wait 都会返回该 socket；而 edge-trigger 模式下只有某个 socket 从 unreadable 变为 readable 或从unwritable 变为 writable 时，epoll_wait 才会返回该 socket。</p>
 <p>所以, 在epoll的ET模式下, 正确的读写方式为:</p>
-<p>读: 只要可读, 就一直读, 直到返回0, 或者 errno &#x3D; EAGAIN</p>
-<p>写: 只要可写, 就一直写, 直到数据发送完, 或者 errno &#x3D; EAGAIN</p>
+<p>读: 只要可读, 就一直读, 直到返回0, 或者 errno = EAGAIN</p>
+<p>写: 只要可写, 就一直写, 直到数据发送完, 或者 errno = EAGAIN</p>
 <p>Wikipedia：<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Epoll">https://en.wikipedia.org/wiki/Epoll</a></p>
 <p>Man手册：<a target="_blank" rel="noopener" href="https://man7.org/linux/man-pages/man7/epoll.7.html">epoll(7) - Linux manual page</a></p>
 <p>Epoll详细解释系列：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/63179839">如果这篇文章说不清epoll的本质，那就过来掐死我吧！ （1） - 知乎</a></p>
@@ -1015,7 +1001,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">123.4k</span>
+                        class="white-color">123.1k</span>
             
             
             

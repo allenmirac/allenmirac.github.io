@@ -435,10 +435,10 @@
 <p>所以上述关系中（Sno）（Sname）可以叫做候选键。</p>
 <h1 id="主键"><a href="#主键" class="headerlink" title="主键"></a>主键</h1><p>定义：在关系模式中的<strong>若干个候选键</strong>中，随意指定一个作为关键字，此关键字即为<strong>主键（Primary Key）</strong>。</p>
 <p>分析：student(Sno, Sname, Sage, Ssex)</p>
-<p>　　主键很好理解，<strong>就在在候选键的基础上任意选择一个作为主键（理解这点就明白了什么可以当主键了）</strong>，同时衍生出<strong>复合主键</strong>和<strong>联合主键</strong> ，假设我们没有学号字段，如果可以通过姓名，年龄，性别一同找到某个特定的学生，那么就称(name, age, sex)为复合主键，全部由主键构成的称为联合主键。</p>
+<p>　　主键很好理解，<strong>就在在候选键的基础上任意选择一个作为主键（理解这点就明白了什么可以当主键了）</strong>，同时衍生出<strong>复合主键</strong>和<strong>联合主键</strong> ，假设我们没有学号字段，如果可以通过姓名，年龄，性别一同找到某个特定的学生，那么就称(name, age, sex)为复合主键，全部由主键构成的称为联合主键。</p>
 <p>　　因此上述关系模式中，姓名，和年龄也能唯一确定学生，那么主键有：</p>
 <p>　　例：(Sno), (Sname)，复合主键（Sname，Sage）</p>
-<h1 id="外键"><a href="#外键" class="headerlink" title="外键"></a>外键</h1><p>定义：可以把一张表的数据与另一张表关联起来，这种列称为**<code>外键</code>（Foreign Key）**。</p>
+<h1 id="外键"><a href="#外键" class="headerlink" title="外键"></a>外键</h1><p>定义：可以把一张表的数据与另一张表关联起来，这种列称为<strong><code>外键</code>（Foreign Key）</strong>。</p>
 <p>分析：student(Sno, Sname, Sage, Ssex,SCredit), score(Sno, Tno, Sco)</p>
 <p>　　外键是建立在两个关系模式中的，从上述定义中可用知道，某关系模式中主键一定是其候选键，那对于另一关系，只要原关系的主键只表示普通属性，那它就是另一属性的外键，上表中Sno就是score的外键，他把两个表关联起来了。</p>
 
@@ -848,7 +848,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">123.4k</span>
+                        class="white-color">123.1k</span>
             
             
             

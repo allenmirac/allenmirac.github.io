@@ -404,7 +404,7 @@ QComboBoxQComboBox 主要的功能是提供一个下拉列表供选择输入，�
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    669
+                    664
                 </div>
                 
 
@@ -460,20 +460,17 @@ QComboBoxQComboBox 主要的功能是提供一个下拉列表供选择输入，�
         ui<span class="token operator">-></span>comboBoxRight<span class="token operator">-></span><span class="token function">addItem</span><span class="token punctuation">(</span>ico<span class="token punctuation">,</span> str<span class="token punctuation">,</span> map<span class="token punctuation">.</span><span class="token function">value</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
 <p>这里用了foreach遍历map。</p>
 <p>添加具有用户数据的项 QComboBox::addltem() 函数的两种参数的原型定义如下：</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">addItem</span> <span class="token punctuation">(</span><span class="token keyword">const</span> QString <span class="token operator">&amp;</span>text<span class="token punctuation">,</span> <span class="token keyword">const</span> QVariant <span class="token operator">&amp;</span>userData <span class="token operator">=</span> <span class="token function">QVariant</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token keyword">void</span> <span class="token function">addItem</span> <span class="token punctuation">(</span><span class="token keyword">const</span> QIcon <span class="token operator">&amp;</span>icon<span class="token punctuation">,</span> <span class="token keyword">const</span> QString <span class="token operator">&amp;</span>text<span class="token punctuation">,</span> <span class="token keyword">const</span> QVariant <span class="token operator">&amp;</span>userData <span class="token operator">=</span> <span class="token function">QVariant</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
 <h2 id="常用函数"><a href="#常用函数" class="headerlink" title="常用函数"></a>常用函数</h2><p>QComboBox 存储的项是一个列表，但是 QComboBox 不提供整个列表用于访问，可以通过索引访问某个项。访问项的一些函数主要有以下几种：</p>
 <ul>
-<li>int currentlndex()：返回当前项的序号，第一个项的序号为0。 +  QString currentText()：返回当前项的文字。 +  QVariant currentData(int role &#x3D; Qt::UserRole)：返回当前项的关联数据，数据的缺省角色为 role &#x3D; Qt::UserRole，角色的意义在后续章节会详细介绍。 +  QString itemText(int index)：返回指定索引号的项的文字。 +  QVariant itemData(int index, int role &#x3D; Qt%:UserRole)：返回指定索引号的项的关联数据。 +  int count()：返回项的个数。</li>
+<li>int currentlndex()：返回当前项的序号，第一个项的序号为0。 +  QString currentText()：返回当前项的文字。 +  QVariant currentData(int role = Qt::UserRole)：返回当前项的关联数据，数据的缺省角色为 role = Qt::UserRole，角色的意义在后续章节会详细介绍。 +  QString itemText(int index)：返回指定索引号的项的文字。 +  QVariant itemData(int index, int role = Qt%:UserRole)：返回指定索引号的项的关联数据。 +  int count()：返回项的个数。 </li>
 </ul>
 <p>在一个 QComboBox 组件上选择项发生变化时，会发射如下两个信号：<br>void currentlndexChanged(int index)<br>void currentlndexChanged(const QString &amp;text)</p>
 <h1 id="QPlainTextEdit"><a href="#QPlainTextEdit" class="headerlink" title="QPlainTextEdit"></a>QPlainTextEdit</h1><p>QPlainTextEdit 是一个多行文本编辑器，用于显示和编辑多行简单文本。</p>
-<p>QPlainTextEdit 提供**cut( )、copy( )、paste( )、undo( )、redo( )、clear( )、selectAll( )**等标准编辑功 能的槽函数，QPlainTextEdit还提供一个标准的右键快捷菜单。</p>
+<p>QPlainTextEdit 提供<strong>cut( )、copy( )、paste( )、undo( )、redo( )、clear( )、selectAll( )</strong>等标准编辑功 能的槽函数，QPlainTextEdit还提供一个标准的右键快捷菜单。</p>
 <p>QPlainTextEdit的文字内容以QTextDocument类型存储，函数document()返回这个文档对象的指针。</p>
 <p>QTextDocument是内存中的文本对象，以文本块的方式存储，一个文本块就是一个段落，每个段落以回车符结束。QTextDocument提供一些函数实现对文本内容的存取。</p>
 <h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><p>常用函数含义()appendPlainText()向QPlain TextEdit添加一行话int blockCount()获得文本块个数QTextBlock findBlockByNumber(int blockNumber)读取某一个文本块，序号从0开始，至blockCount()-1结束。</p>
@@ -481,9 +478,8 @@ QComboBoxQComboBox 主要的功能是提供一个下拉列表供选择输入，�
     QString strData <span class="token operator">=</span> ui<span class="token operator">-></span>comboBoxRight<span class="token operator">-></span><span class="token function">currentData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     ui<span class="token operator">-></span>plainTextEdit<span class="token operator">-></span><span class="token function">appendPlainText</span><span class="token punctuation">(</span>str <span class="token operator">+</span> <span class="token string">" "</span> <span class="token operator">+</span> strData<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h1 id="欢迎大家star"><a href="#欢迎大家star" class="headerlink" title="欢迎大家star"></a>欢迎大家star</h1><p>这里是项目的源码，是一个很好的练习的例子，可以自己敲着玩一玩，练习练习手感</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/allenmirac/QTStudy/tree/main/QTReviewQCombobox">QTStudy&#x2F;QTReviewQCombobox at main · allenmirac&#x2F;QTStudy · GitHub</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/allenmirac/QTStudy/tree/main/QTReviewQCombobox">QTStudy/QTReviewQCombobox at main · allenmirac/QTStudy · GitHub</a></p>
 
                 
             </div>
@@ -891,7 +887,7 @@ QComboBoxQComboBox 主要的功能是提供一个下拉列表供选择输入，�
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">123.4k</span>
+                        class="white-color">123.1k</span>
             
             
             
