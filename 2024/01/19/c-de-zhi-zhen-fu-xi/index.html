@@ -5,13 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="C++指针复习, AllenMirac">
-    <meta name="description" content="const修饰指针#include &amp;lt;iostream&gt;
-
-using namespace std;
-
-class Rectangle&amp;#123;
-  public:
-  Rectangle(int length, int width">
+    <meta name="description" content="CPP指针深析指针对于初学者往往是很难以琢磨的东西，因为它并不如变量那么抽象，而是更贴近底层的真实结构。指针操作往往会出现各种各样的岔子，最常见的便是”segmentation fault”。所以这里辨析了各种指针类型，实践出真知，下面的例">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -378,6 +372,15 @@ class Rectangle&amp;#123;
                 </div>
                 <div class="col s5 right-align">
                     
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/c-%E5%9F%BA%E7%A1%80/" class="post-category">
+                                c++基础
+                            </a>
+                        
+                    </div>
+                    
                 </div>
             </div>
 
@@ -392,14 +395,14 @@ class Rectangle&amp;#123;
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-03-21
+                    2024-12-16
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2k
+                    9.4k
                 </div>
                 
 
@@ -424,13 +427,131 @@ class Rectangle&amp;#123;
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="const修饰指针"><a href="#const修饰指针" class="headerlink" title="const修饰指针"></a>const修饰指针</h2><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
+                <h1 id="CPP指针深析"><a href="#CPP指针深析" class="headerlink" title="CPP指针深析"></a>CPP指针深析</h1><p>指针对于初学者往往是很难以琢磨的东西，因为它并不如变量那么抽象，而是更贴近底层的真实结构。指针操作往往会出现各种各样的岔子，最常见的便是”segmentation fault”。所以这里辨析了各种指针类型，实践出真知，下面的例子如果自己敲下来就更好了😁😁😁</p>
+<p>指针是C++中强大的工具，灵活但容易出错，同时也是一把“双刃剑”。</p>
+<hr>
+<h2 id="1-指针的基本概念"><a href="#1-指针的基本概念" class="headerlink" title="1. 指针的基本概念"></a><strong>1. 指针的基本概念</strong></h2><p>指针是一种保存地址的变量。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span><span class="token operator">*</span> p <span class="token operator">=</span> <span class="token operator">&amp;</span>a<span class="token punctuation">;</span> <span class="token comment">// p保存a的地址</span>
+std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Value of a: "</span> <span class="token operator">&lt;&lt;</span> <span class="token operator">*</span>p <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span> <span class="token comment">// 解引用获取a的值</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li><code>&amp;</code>：取地址符，获取变量地址。</li>
+<li><code>*</code>：解引用符，通过地址访问变量值。</li>
+</ul>
+<p><strong>注意</strong>：未初始化的指针称为野指针，会导致未定义行为。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span><span class="token operator">*</span> p<span class="token punctuation">;</span> <span class="token comment">// 未初始化</span>
+std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token operator">*</span>p <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span> <span class="token comment">// 未定义行为</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<hr>
+<h2 id="2-指针的分类与使用"><a href="#2-指针的分类与使用" class="headerlink" title="2. 指针的分类与使用"></a><strong>2. 指针的分类与使用</strong></h2><h3 id="2-1-空指针"><a href="#2-1-空指针" class="headerlink" title="2.1 空指针"></a><strong>2.1 空指针</strong></h3><p>空指针（<code>nullptr</code>）指向“无效”地址，避免野指针问题。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span><span class="token operator">*</span> p <span class="token operator">=</span> <span class="token keyword">nullptr</span><span class="token punctuation">;</span> 
+<span class="token keyword">if</span> <span class="token punctuation">(</span>p <span class="token operator">==</span> <span class="token keyword">nullptr</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Pointer is null"</span> <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>注意</strong>：解引用空指针会引发运行时错误。</p>
+<hr>
+<h3 id="2-2-常量指针和指针常量"><a href="#2-2-常量指针和指针常量" class="headerlink" title="2.2 常量指针和指针常量"></a><strong>2.2 常量指针和指针常量</strong></h3><ul>
+<li><strong>常量指针</strong>：指向的值不能修改。</li>
+</ul>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">const</span> <span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token keyword">int</span><span class="token operator">*</span> p <span class="token operator">=</span> <span class="token operator">&amp;</span>a<span class="token punctuation">;</span> 
+<span class="token comment">//*p = 20; // 错误，值不可修改</span>
+p <span class="token operator">=</span> <span class="token keyword">nullptr</span><span class="token punctuation">;</span> <span class="token comment">// 指针本身可以指向其他地址</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li><strong>指针常量</strong>：指针的地址不能修改。</li>
+</ul>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> b <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">,</span> c <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span><span class="token operator">*</span> <span class="token keyword">const</span> p <span class="token operator">=</span> <span class="token operator">&amp;</span>b<span class="token punctuation">;</span>
+<span class="token comment">//p = &amp;c; // 错误，指针地址不可修改</span>
+<span class="token operator">*</span>p <span class="token operator">=</span> <span class="token number">30</span><span class="token punctuation">;</span> <span class="token comment">// 正确，值可以修改</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li><strong>指向常量的指针常量</strong>：</li>
+</ul>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">const</span> <span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token keyword">int</span><span class="token operator">*</span> <span class="token keyword">const</span> p <span class="token operator">=</span> <span class="token operator">&amp;</span>a<span class="token punctuation">;</span>
+<span class="token comment">//*p = 20; // 错误</span>
+<span class="token comment">//p = &amp;b; // 错误</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<hr>
+<h3 id="2-3-指针与数组"><a href="#2-3-指针与数组" class="headerlink" title="2.3 指针与数组"></a><strong>2.3 指针与数组</strong></h3><p>指针与数组关系密切，数组名即为首元素地址：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> arr<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span><span class="token operator">*</span> p <span class="token operator">=</span> arr<span class="token punctuation">;</span>
+std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> p<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span> <span class="token comment">// 输出 2</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>使用指针操作数组：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">3</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token operator">*</span><span class="token punctuation">(</span>p <span class="token operator">+</span> i<span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token string">" "</span><span class="token punctuation">;</span> <span class="token comment">// 依次输出数组元素</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<hr>
+<h3 id="2-4-指针与函数"><a href="#2-4-指针与函数" class="headerlink" title="2.4 指针与函数"></a><strong>2.4 指针与函数</strong></h3><p>指针可用于传递函数参数，实现高效操作：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">swap</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token operator">*</span> x<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">*</span> y<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> temp <span class="token operator">=</span> <span class="token operator">*</span>x<span class="token punctuation">;</span>
+    <span class="token operator">*</span>x <span class="token operator">=</span> <span class="token operator">*</span>y<span class="token punctuation">;</span>
+    <span class="token operator">*</span>y <span class="token operator">=</span> temp<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">,</span> b <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">;</span>
+<span class="token function">swap</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>a<span class="token punctuation">,</span> <span class="token operator">&amp;</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> a <span class="token operator">&lt;&lt;</span> <span class="token string">" "</span> <span class="token operator">&lt;&lt;</span> b <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span> <span class="token comment">// 输出 20 10</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<hr>
+<h3 id="2-5-动态内存分配与指针"><a href="#2-5-动态内存分配与指针" class="headerlink" title="2.5 动态内存分配与指针"></a><strong>2.5 动态内存分配与指针</strong></h3><p>通过<code>new</code>和<code>delete</code>动态分配内存：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span><span class="token operator">*</span> p <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">(</span><span class="token number">42</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token operator">*</span>p <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span> <span class="token comment">// 输出 42</span>
+<span class="token keyword">delete</span> p<span class="token punctuation">;</span> <span class="token comment">// 释放内存</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>动态数组：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span><span class="token operator">*</span> arr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">5</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token keyword">delete</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arr<span class="token punctuation">;</span> <span class="token comment">// 释放动态数组</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>注意</strong>：</p>
+<ul>
+<li>忘记释放内存会导致内存泄漏。</li>
+<li>使用<code>delete</code>释放后，不要再解引用。</li>
+</ul>
+<hr>
+<h3 id="2-6-指针与多级指针"><a href="#2-6-指针与多级指针" class="headerlink" title="2.6 指针与多级指针"></a><strong>2.6 指针与多级指针</strong></h3><p>多级指针是指向指针的指针：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span><span class="token operator">*</span> p1 <span class="token operator">=</span> <span class="token operator">&amp;</span>a<span class="token punctuation">;</span>
+<span class="token keyword">int</span><span class="token operator">*</span><span class="token operator">*</span> p2 <span class="token operator">=</span> <span class="token operator">&amp;</span>p1<span class="token punctuation">;</span> <span class="token comment">// p2指向p1</span>
+std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token operator">*</span><span class="token operator">*</span>p2 <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span> <span class="token comment">// 输出10</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<hr>
+<h3 id="3-常见问题与调试技巧"><a href="#3-常见问题与调试技巧" class="headerlink" title="3. 常见问题与调试技巧"></a><strong>3. 常见问题与调试技巧</strong></h3><ol>
+<li><p><strong>空指针解引用</strong></p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span><span class="token operator">*</span> p <span class="token operator">=</span> <span class="token keyword">nullptr</span><span class="token punctuation">;</span>
+std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token operator">*</span>p <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span> <span class="token comment">// segmentation fault</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+<li><p><strong>指针越界</strong></p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> arr<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span><span class="token operator">*</span> p <span class="token operator">=</span> arr <span class="token operator">+</span> <span class="token number">3</span><span class="token punctuation">;</span> <span class="token comment">// 超出数组范围</span>
+std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token operator">*</span>p <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span> <span class="token comment">// 未定义行为</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p><strong>野指针</strong></p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span><span class="token operator">*</span> p<span class="token punctuation">;</span>
+<span class="token keyword">delete</span> p<span class="token punctuation">;</span> <span class="token comment">// p未指向有效地址</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+</ol>
+<p><strong>调试方法</strong>：</p>
+<ul>
+<li>检查<code>nullptr</code>。</li>
+<li>使用工具（如Valgrind）检测内存泄漏。</li>
+<li>避免无意义的解引用操作。</li>
+</ul>
+<hr>
+<h2 id="4-总结"><a href="#4-总结" class="headerlink" title="4. 总结"></a><strong>4. 总结</strong></h2><p>指针的强大功能伴随着复杂性和风险。通过反复实践和注重细节，可以掌握指针的精髓，写出高效可靠的C++代码。初学者特别要注意避免未定义行为，同时养成良好的编码习惯。</p>
+<h2 id="const修饰指针"><a href="#const修饰指针" class="headerlink" title="const修饰指针"></a>const修饰指针</h2><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
 
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
 
 <span class="token keyword">class</span> <span class="token class-name">Rectangle</span><span class="token punctuation">&#123;</span>
   <span class="token keyword">public</span><span class="token operator">:</span>
-  <span class="token function">Rectangle</span><span class="token punctuation">(</span><span class="token keyword">int</span> length<span class="token punctuation">,</span> <span class="token keyword">int</span> width<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>chang<span class="token operator">=</span>length<span class="token punctuation">;</span> kuan<span class="token operator">=</span>width<span class="token punctuation">;</span><span class="token punctuation">&#125;</span>
+  	<span class="token function">Rectangle</span><span class="token punctuation">(</span><span class="token keyword">int</span> length<span class="token punctuation">,</span> <span class="token keyword">int</span> width<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>chang<span class="token operator">=</span>length<span class="token punctuation">;</span> kuan<span class="token operator">=</span>width<span class="token punctuation">;</span><span class="token punctuation">&#125;</span>
     <span class="token keyword">void</span> <span class="token function">SetLength</span><span class="token punctuation">(</span><span class="token keyword">int</span> length<span class="token punctuation">)</span><span class="token punctuation">&#123;</span> chang<span class="token operator">=</span>length<span class="token punctuation">;</span><span class="token punctuation">&#125;</span>
     <span class="token keyword">int</span> <span class="token function">GetLength</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">&#123;</span> <span class="token keyword">return</span> chang<span class="token punctuation">;</span><span class="token punctuation">&#125;</span>
   <span class="token keyword">private</span><span class="token operator">:</span>
@@ -467,35 +588,181 @@ class Rectangle&amp;#123;
 
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<p>这段代码通过一些实例讲解了<code>const</code>修饰指针的不同用法，并结合类的<code>const</code>方法，展示了指针常量和指向常量的指针的区别。以下是代码运行的核心分析：</p>
+<hr>
+<h3 id="核心概念解析"><a href="#核心概念解析" class="headerlink" title="核心概念解析"></a><strong>核心概念解析</strong></h3><h4 id="1-const修饰指针的两种情况"><a href="#1-const修饰指针的两种情况" class="headerlink" title="1. const修饰指针的两种情况"></a>1. <code>const</code>修饰指针的两种情况</h4><ol>
+<li><p><strong>指向常量的指针（<code>const</code>修饰指向内容）</strong></p>
+<ul>
+<li>指针可以指向不同地址，但指向的内容不可修改。</li>
+</ul>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">const</span> <span class="token keyword">int</span> <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token operator">&amp;</span>a<span class="token punctuation">;</span> <span class="token comment">// 或 int const *p = &amp;a;</span>
+p <span class="token operator">=</span> <span class="token operator">&amp;</span>b<span class="token punctuation">;</span>           <span class="token comment">// OK: 修改指针地址</span>
+<span class="token operator">*</span>p <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>          <span class="token comment">// 错误: 修改指向内容</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p><strong>指针常量（<code>const</code>修饰指针本身）</strong></p>
+<ul>
+<li>指针地址不可修改，但指向的内容可以改。</li>
+</ul>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> <span class="token operator">*</span><span class="token keyword">const</span> p <span class="token operator">=</span> <span class="token operator">&amp;</span>a<span class="token punctuation">;</span>
+p <span class="token operator">=</span> <span class="token operator">&amp;</span>b<span class="token punctuation">;</span>           <span class="token comment">// 错误: 修改指针地址</span>
+<span class="token operator">*</span>p <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>          <span class="token comment">// OK: 修改指向内容</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
+</ol>
+<hr>
+<h4 id="2-类中的const方法"><a href="#2-类中的const方法" class="headerlink" title="2. 类中的const方法"></a>2. 类中的<code>const</code>方法</h4><ul>
+<li><p><code>const</code>方法：</p>
+<p> 方法后加<code>const</code>，表示该方法不会修改类的成员变量。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> <span class="token function">GetLength</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span> <span class="token comment">// 只读方法</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>如果通过<code>const</code>对象（或<code>const</code>指针）调用方法，只能调用<code>const</code>方法。</p>
+</li>
+</ul>
+<hr>
+<h3 id="代码行为解析"><a href="#代码行为解析" class="headerlink" title="代码行为解析"></a>代码行为解析</h3><h4 id="（1）创建普通对象和指针"><a href="#（1）创建普通对象和指针" class="headerlink" title="（1）创建普通对象和指针"></a>（1）创建普通对象和指针</h4><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">Rectangle <span class="token operator">*</span>rec <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Rectangle</span><span class="token punctuation">(</span><span class="token number">123</span><span class="token punctuation">,</span> <span class="token number">456</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+Rectangle <span class="token operator">*</span>rec1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Rectangle</span><span class="token punctuation">(</span><span class="token number">789</span><span class="token punctuation">,</span> <span class="token number">456</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+cout <span class="token operator">&lt;&lt;</span> rec<span class="token operator">-></span><span class="token function">GetLength</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span> <span class="token comment">// 输出 123</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li><code>rec</code>是普通指针，能自由调用非<code>const</code>方法。</li>
+</ul>
+<h4 id="（2）指向常量的指针"><a href="#（2）指向常量的指针" class="headerlink" title="（2）指向常量的指针"></a>（2）指向常量的指针</h4><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">const</span> Rectangle <span class="token operator">*</span>pRec <span class="token operator">=</span> rec<span class="token punctuation">;</span> <span class="token comment">// pRec指向一个常量对象</span>
+cout <span class="token operator">&lt;&lt;</span> pRec<span class="token operator">-></span><span class="token function">GetLength</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span> <span class="token comment">// 输出 123</span>
+pRec <span class="token operator">=</span> rec1<span class="token punctuation">;</span> <span class="token comment">// OK: 修改指针地址</span>
+cout <span class="token operator">&lt;&lt;</span> pRec<span class="token operator">-></span><span class="token function">GetLength</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span> <span class="token comment">// 输出 789</span>
+<span class="token comment">// pRec->SetLength(456); // 错误: 无法调用非const方法</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li><code>pRec</code>只能调用<code>const</code>方法（<code>GetLength</code>），但可以指向其他<code>Rectangle</code>对象。</li>
+</ul>
+<h4 id="（3）指针常量"><a href="#（3）指针常量" class="headerlink" title="（3）指针常量"></a><strong>（3）指针常量</strong></h4><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">Rectangle <span class="token operator">*</span><span class="token keyword">const</span> pRec1 <span class="token operator">=</span> rec<span class="token punctuation">;</span> <span class="token comment">// pRec1为指针常量</span>
+cout <span class="token operator">&lt;&lt;</span> pRec1<span class="token operator">-></span><span class="token function">GetLength</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span> <span class="token comment">// 输出 123</span>
+pRec1<span class="token operator">-></span><span class="token function">SetLength</span><span class="token punctuation">(</span><span class="token number">789</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// OK: 可调用非const方法修改内容</span>
+cout <span class="token operator">&lt;&lt;</span> pRec1<span class="token operator">-></span><span class="token function">GetLength</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span> <span class="token comment">// 输出 789</span>
+<span class="token comment">// pRec1 = rec1; // 错误: 无法修改指针地址</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li><code>pRec1</code>的指向地址不可修改，但其内容可以更改。</li>
+</ul>
+<h4 id="（4）普通指针调用非const方法"><a href="#（4）普通指针调用非const方法" class="headerlink" title="（4）普通指针调用非const方法"></a><strong>（4）普通指针调用非<code>const</code>方法</strong></h4><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">Rectangle <span class="token operator">*</span>pPrec0 <span class="token operator">=</span> rec<span class="token punctuation">;</span>
+pPrec0<span class="token operator">-></span><span class="token function">SetLength</span><span class="token punctuation">(</span><span class="token number">789</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 调用非const方法</span>
+cout <span class="token operator">&lt;&lt;</span> pRec<span class="token operator">-></span><span class="token function">GetLength</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span> <span class="token comment">// 输出 789</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li><code>pPrec0</code>是普通指针，可以自由调用非<code>const</code>方法。</li>
+</ul>
+<hr>
+<h3 id="输出结果"><a href="#输出结果" class="headerlink" title="输出结果"></a>输出结果</h3><p>最终输出如下：</p>
+<pre class="line-numbers language-none"><code class="language-none">123
+123
+789
+123
+789<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<hr>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h3><ul>
+<li><strong><code>const</code>修饰指针的用法：</strong> 分清指向内容和指针本身谁是常量。</li>
+<li><strong>类的<code>const</code>方法：</strong> 适用于保护类状态，在需要只读访问时尤为重要。</li>
+<li><strong>实践建议：</strong> 在需要只读访问的场景下，优先使用<code>const</code>指针和<code>const</code>方法，提高代码的安全性和可维护性。</li>
+</ul>
 <h2 id="一维数组指针的区别"><a href="#一维数组指针的区别" class="headerlink" title="一维数组指针的区别"></a>一维数组指针的区别</h2><p>a代表首地址，在sizeof和&amp;a时当成了数组整体</p>
-<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#include &lt;iostream&gt;
-using namespace std;
-#define sz(type) cout&lt;&lt;sizeof(type)&lt;&lt;endl;
-int main()&#123;
-  int a[3]&#x3D;&#123;12,13,14&#125;;
-  sz(a);
-  cout&lt;&lt;a&lt;&lt;endl;
-  cout&lt;&lt;&amp;a&lt;&lt;endl;
-  cout&lt;&lt;&amp;a[0]&lt;&lt;endl;
-  &#x2F;*
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name function">sz</span><span class="token expression"><span class="token punctuation">(</span>type<span class="token punctuation">)</span> cout<span class="token operator">&lt;&lt;</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>type<span class="token punctuation">)</span><span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span></span></span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+  <span class="token keyword">int</span> a<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token number">12</span><span class="token punctuation">,</span><span class="token number">13</span><span class="token punctuation">,</span><span class="token number">14</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+  <span class="token function">sz</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  cout<span class="token operator">&lt;&lt;</span>a<span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
+  cout<span class="token operator">&lt;&lt;</span><span class="token operator">&amp;</span>a<span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
+  cout<span class="token operator">&lt;&lt;</span><span class="token operator">&amp;</span>a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
+  <span class="token comment">/*
   12
   0x9ffdb4
   0x9ffdb4
   0x9ffdb4
-  *&#x2F;
+  */</span>
 
-  cout&lt;&lt;endl;
-  cout&lt;&lt;a&lt;&lt;&quot; &quot;&lt;&lt;a+1&lt;&lt;&quot; &quot;&lt;&lt;a+2&lt;&lt;endl;            &#x2F;&#x2F;a &#x3D; &amp;a[0] !&#x3D; &amp;a
-  cout&lt;&lt;&amp;a&lt;&lt;&quot; &quot;&lt;&lt;&amp;a+1&lt;&lt;&quot; &quot;&lt;&lt;&amp;a+2&lt;&lt;endl;
-  cout&lt;&lt;&amp;a[0]&lt;&lt;&quot; &quot;&lt;&lt;&amp;a[0]+1&lt;&lt;&quot; &quot;&lt;&lt;&amp;a[0]+2&lt;&lt;endl;
-  &#x2F;*
-  0x9ffdb4 0x9ffdb8 0x9ffdbc  &#x2F;&#x2F;步长是4，一个int
-  0x9ffdb4 0x9ffdc0 0x9ffdcc  &#x2F;&#x2F;步长是12，三个int，也就是数组长度
-  0x9ffdb4 0x9ffdb8 0x9ffdbc  &#x2F;&#x2F;步长是4，一个int
-  *&#x2F;
-  return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  cout<span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
+  cout<span class="token operator">&lt;&lt;</span>a<span class="token operator">&lt;&lt;</span><span class="token string">" "</span><span class="token operator">&lt;&lt;</span>a<span class="token operator">+</span><span class="token number">1</span><span class="token operator">&lt;&lt;</span><span class="token string">" "</span><span class="token operator">&lt;&lt;</span>a<span class="token operator">+</span><span class="token number">2</span><span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>            <span class="token comment">//a = &amp;a[0] != &amp;a</span>
+  cout<span class="token operator">&lt;&lt;</span><span class="token operator">&amp;</span>a<span class="token operator">&lt;&lt;</span><span class="token string">" "</span><span class="token operator">&lt;&lt;</span><span class="token operator">&amp;</span>a<span class="token operator">+</span><span class="token number">1</span><span class="token operator">&lt;&lt;</span><span class="token string">" "</span><span class="token operator">&lt;&lt;</span><span class="token operator">&amp;</span>a<span class="token operator">+</span><span class="token number">2</span><span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
+  cout<span class="token operator">&lt;&lt;</span><span class="token operator">&amp;</span>a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">&lt;&lt;</span><span class="token string">" "</span><span class="token operator">&lt;&lt;</span><span class="token operator">&amp;</span>a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">+</span><span class="token number">1</span><span class="token operator">&lt;&lt;</span><span class="token string">" "</span><span class="token operator">&lt;&lt;</span><span class="token operator">&amp;</span>a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">+</span><span class="token number">2</span><span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
+  <span class="token comment">/*
+  0x9ffdb4 0x9ffdb8 0x9ffdbc  //步长是4，一个int
+  0x9ffdb4 0x9ffdc0 0x9ffdcc  //步长是12，三个int，也就是数组长度
+  0x9ffdb4 0x9ffdb8 0x9ffdbc  //步长是4，一个int
+  */</span>
+  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<p>这个代码的核心在于区分一维数组的 <strong>数组名</strong> 和 <strong>数组地址</strong> 的概念，并通过<code>sizeof</code>和地址输出展示了它们的差异。下面详细解析这段代码及其输出。</p>
+<hr>
+<h3 id="核心概念解析-1"><a href="#核心概念解析-1" class="headerlink" title="核心概念解析"></a><strong>核心概念解析</strong></h3><h4 id="1-数组名-a"><a href="#1-数组名-a" class="headerlink" title="1. 数组名 a"></a><strong>1. 数组名 <code>a</code></strong></h4><ul>
+<li>数组名（如 <code>a</code>）是一个特殊的指针，<strong>默认指向数组的首元素</strong>，即 <code>&amp;a[0]</code>。</li>
+<li>但在某些特定场景中，<code>a</code>表现为整个数组的标志，比如 <code>sizeof(a)</code> 和 <code>&amp;a</code>。</li>
+</ul>
+<hr>
+<h4 id="2-sizeof-的作用"><a href="#2-sizeof-的作用" class="headerlink" title="2. sizeof 的作用"></a><strong>2. <code>sizeof</code> 的作用</strong></h4><ul>
+<li><code>sizeof(a)</code>：计算数组整体的字节大小（数组长度 × 元素大小）。</li>
+<li><code>sizeof(&amp;a)</code>：计算指向数组的指针的大小，与平台有关（通常是4字节或8字节）。</li>
+</ul>
+<h4 id="3-amp-a-和-a-的区别"><a href="#3-amp-a-和-a-的区别" class="headerlink" title="3. &amp;a 和 a 的区别"></a><strong>3. <code>&amp;a</code> 和 <code>a</code> 的区别</strong></h4><ul>
+<li><code>a</code> 是指向首元素的指针，等同于 <code>&amp;a[0]</code>。</li>
+<li><code>&amp;a</code> 是整个数组的地址，表示一个数组整体。</li>
+</ul>
+<p>两者类型不同：</p>
+<ul>
+<li><code>a</code> 的类型是 <code>int*</code>，步长是单个元素的大小（<code>sizeof(int)</code>）。</li>
+<li><code>&amp;a</code> 的类型是 <code>int(*)[3]</code>，步长是整个数组的大小（<code>sizeof(a)</code>）。</li>
+</ul>
+<hr>
+<h4 id="4-地址运算"><a href="#4-地址运算" class="headerlink" title="4. 地址运算"></a><strong>4. 地址运算</strong></h4><ol>
+<li>**<code>a + i</code>**：表示第 <code>i</code> 个元素的地址。</li>
+<li>**<code>&amp;a + i</code>**：表示第 <code>i</code> 个数组的地址，步长是数组大小（即 3 × <code>sizeof(int)</code>）。</li>
+<li>**<code>&amp;a[0] + i</code>**：等价于 <code>a + i</code>，表示第 <code>i</code> 个元素的地址。</li>
+</ol>
+<hr>
+<h3 id="代码解析及输出"><a href="#代码解析及输出" class="headerlink" title="代码解析及输出"></a><strong>代码解析及输出</strong></h3><h4 id="sizeof-示例"><a href="#sizeof-示例" class="headerlink" title="sizeof 示例"></a><strong><code>sizeof</code> 示例</strong></h4><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token function">sz</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 数组整体大小：3 × sizeof(int) = 12（假设int为4字节）</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>输出：</p>
+<pre class="line-numbers language-none"><code class="language-none">12<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<hr>
+<h4 id="地址比较"><a href="#地址比较" class="headerlink" title="地址比较"></a><strong>地址比较</strong></h4><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">cout <span class="token operator">&lt;&lt;</span> a <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>       <span class="token comment">// 数组首元素地址：&amp;a[0]</span>
+cout <span class="token operator">&lt;&lt;</span> <span class="token operator">&amp;</span>a <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>      <span class="token comment">// 数组整体地址</span>
+cout <span class="token operator">&lt;&lt;</span> <span class="token operator">&amp;</span>a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>   <span class="token comment">// 数组首元素地址：&amp;a[0]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>输出：</p>
+<pre class="line-numbers language-none"><code class="language-none">0x9ffdb4  &#x2F;&#x2F; 假设是数组的首地址，a 等价于 &amp;a[0]
+0x9ffdb4  &#x2F;&#x2F; &amp;a 表示数组整体的地址，与首地址相同，但意义不同
+0x9ffdb4  &#x2F;&#x2F; &amp;a[0] 是首元素地址<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<hr>
+<h4 id="地址偏移"><a href="#地址偏移" class="headerlink" title="地址偏移"></a><strong>地址偏移</strong></h4><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">cout <span class="token operator">&lt;&lt;</span> a <span class="token operator">&lt;&lt;</span> <span class="token string">" "</span> <span class="token operator">&lt;&lt;</span> a<span class="token operator">+</span><span class="token number">1</span> <span class="token operator">&lt;&lt;</span> <span class="token string">" "</span> <span class="token operator">&lt;&lt;</span> a<span class="token operator">+</span><span class="token number">2</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>  <span class="token comment">// 步长是单个元素的大小</span>
+cout <span class="token operator">&lt;&lt;</span> <span class="token operator">&amp;</span>a <span class="token operator">&lt;&lt;</span> <span class="token string">" "</span> <span class="token operator">&lt;&lt;</span> <span class="token operator">&amp;</span>a<span class="token operator">+</span><span class="token number">1</span> <span class="token operator">&lt;&lt;</span> <span class="token string">" "</span> <span class="token operator">&lt;&lt;</span> <span class="token operator">&amp;</span>a<span class="token operator">+</span><span class="token number">2</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span> <span class="token comment">// 步长是整个数组的大小</span>
+cout <span class="token operator">&lt;&lt;</span> <span class="token operator">&amp;</span>a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">&lt;&lt;</span> <span class="token string">" "</span> <span class="token operator">&lt;&lt;</span> <span class="token operator">&amp;</span>a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">+</span><span class="token number">1</span> <span class="token operator">&lt;&lt;</span> <span class="token string">" "</span> <span class="token operator">&lt;&lt;</span> <span class="token operator">&amp;</span>a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">+</span><span class="token number">2</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span> <span class="token comment">// 步长是单个元素的大小</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>输出：</p>
+<pre class="line-numbers language-none"><code class="language-none">0x9ffdb4 0x9ffdb8 0x9ffdbc  &#x2F;&#x2F; a，步长是4字节（1个int大小）
+0x9ffdb4 0x9ffdc0 0x9ffdcc  &#x2F;&#x2F; &amp;a，步长是12字节（整个数组大小）
+0x9ffdb4 0x9ffdb8 0x9ffdbc  &#x2F;&#x2F; &amp;a[0]，步长是4字节（1个int大小）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<hr>
+<h3 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a><strong>总结</strong></h3><ol>
+<li><strong><code>a</code> 与 <code>&amp;a</code> 的区别</strong>：<ul>
+<li><code>a</code> 是指向首元素的指针，类型是 <code>int*</code>，步长是单个元素的大小。</li>
+<li><code>&amp;a</code> 是指向整个数组的指针，类型是 <code>int(*)[3]</code>，步长是整个数组的大小。</li>
+</ul>
+</li>
+<li><strong><code>sizeof</code> 的结果</strong>：<ul>
+<li><code>sizeof(a)</code> 是数组整体大小，等于 <code>数组长度 × 单元素大小</code>。</li>
+<li><code>sizeof(&amp;a)</code> 是指针大小，通常是 4 或 8 字节。</li>
+</ul>
+</li>
+<li><strong>地址运算步长</strong>：<ul>
+<li><code>a + 1</code> 或 <code>&amp;a[0] + 1</code>，步长是单个元素的大小（<code>sizeof(int)</code>）。</li>
+<li><code>&amp;a + 1</code>，步长是整个数组的大小（<code>sizeof(a)</code>）。</li>
+</ul>
+</li>
+</ol>
+<p>通过这些例子可以清楚地理解一维数组在指针操作中的差异，更好地避免误用。</p>
 <h2 id="二维数组指针的区别"><a href="#二维数组指针的区别" class="headerlink" title="二维数组指针的区别"></a>二维数组指针的区别</h2><p>注意与一维指针类比区别开来。</p>
 <p>指针有减法和比较运算，没有加法运算。</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
@@ -527,6 +794,157 @@ int main()&#123;
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<p>这段代码分析了二维数组中的指针及其不同地址步长的含义。以下从<strong>二维数组的本质</strong>入手，结合代码详细解析指针在二维数组中的行为及其与一维数组的区别。</p>
+<hr>
+<h3 id="二维数组指针核心概念"><a href="#二维数组指针核心概念" class="headerlink" title="二维数组指针核心概念"></a><strong>二维数组指针核心概念</strong></h3><h4 id="1-二维数组的内存布局"><a href="#1-二维数组的内存布局" class="headerlink" title="1. 二维数组的内存布局"></a><strong>1. 二维数组的内存布局</strong></h4><p>二维数组本质上是连续的内存块，可以看成是<strong>若干行一维数组的集合</strong>。<br> 例如，<code>int a[2][3]</code> 表示有两行，每行三个整型元素。</p>
+<pre class="line-numbers language-none"><code class="language-none">a[2][3] &#x3D; &#123; &#123;12, 13, 14&#125;, &#123;112, 113, 114&#125; &#125;
+内存布局: [12, 13, 14, 112, 113, 114]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<ul>
+<li><code>a[i]</code> 是指向第 <code>i</code> 行（即一维数组）的指针。</li>
+<li><code>a[i][j]</code> 是指向第 <code>i</code> 行第 <code>j</code> 列的具体元素。</li>
+</ul>
+<hr>
+<h4 id="2-各指针的含义"><a href="#2-各指针的含义" class="headerlink" title="2. 各指针的含义"></a><strong>2. 各指针的含义</strong></h4><table>
+<thead>
+<tr>
+<th>表达式</th>
+<th>含义</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>a</code></td>
+<td>二维数组首地址，等价于 <code>&amp;a[0]</code></td>
+<td><code>int (*)[3]</code></td>
+</tr>
+<tr>
+<td><code>a[0]</code></td>
+<td>第一行首地址，等价于 <code>&amp;a[0][0]</code></td>
+<td><code>int*</code></td>
+</tr>
+<tr>
+<td><code>&amp;a[0]</code></td>
+<td>第一行的地址（整体的地址）</td>
+<td><code>int (*)[3]</code></td>
+</tr>
+<tr>
+<td><code>&amp;a[0][0]</code></td>
+<td>第一行第一个元素的地址</td>
+<td><code>int*</code></td>
+</tr>
+<tr>
+<td><code>&amp;a</code></td>
+<td>整个二维数组的地址</td>
+<td><code>int (*)[2][3]</code></td>
+</tr>
+</tbody></table>
+<hr>
+<h4 id="3-步长的区别"><a href="#3-步长的区别" class="headerlink" title="3. 步长的区别"></a><strong>3. 步长的区别</strong></h4><ul>
+<li><strong><code>a</code> 或 <code>&amp;a[0]</code> 的步长：</strong> <code>sizeof(a[0])</code>，即一行的大小，等于 <code>3 × sizeof(int)</code>。</li>
+<li><strong><code>a[0]</code> 或 <code>&amp;a[0][0]</code> 的步长：</strong> <code>sizeof(int)</code>，即单个元素的大小。</li>
+<li><strong><code>&amp;a</code> 的步长：</strong> <code>sizeof(a)</code>，即整个二维数组的大小，等于 <code>2 × 3 × sizeof(int)</code>。</li>
+</ul>
+<hr>
+<h3 id="代码解析与输出"><a href="#代码解析与输出" class="headerlink" title="代码解析与输出"></a><strong>代码解析与输出</strong></h3><h4 id="1-使用-sizeof-查看大小"><a href="#1-使用-sizeof-查看大小" class="headerlink" title="1. 使用 sizeof 查看大小"></a><strong>1. 使用 <code>sizeof</code> 查看大小</strong></h4><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token function">sz</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>       <span class="token comment">// 整个二维数组的大小: 2 × 3 × sizeof(int) = 24（假设 int 是 4 字节）</span>
+<span class="token function">sz</span><span class="token punctuation">(</span>a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// 一行的大小: 3 × sizeof(int) = 12</span>
+<span class="token function">sz</span><span class="token punctuation">(</span>a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 单个元素的大小: sizeof(int) = 4</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>输出：</p>
+<pre class="line-numbers language-none"><code class="language-none">24
+12
+4<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<hr>
+<h4 id="2-各指针的地址输出"><a href="#2-各指针的地址输出" class="headerlink" title="2. 各指针的地址输出"></a><strong>2. 各指针的地址输出</strong></h4><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">cout <span class="token operator">&lt;&lt;</span> a <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>          <span class="token comment">// 等价于 &amp;a[0]，指向第一行</span>
+cout <span class="token operator">&lt;&lt;</span> <span class="token operator">&amp;</span>a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>      <span class="token comment">// 等价于 a</span>
+cout <span class="token operator">&lt;&lt;</span> a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>       <span class="token comment">// 等价于 &amp;a[0][0]，指向第一行首元素</span>
+cout <span class="token operator">&lt;&lt;</span> <span class="token operator">&amp;</span>a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>   <span class="token comment">// 第一行首元素地址</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>输出：</p>
+<pre class="line-numbers language-none"><code class="language-none">0x9ffdb4  &#x2F;&#x2F; 数组首地址
+0x9ffdb4  &#x2F;&#x2F; 等价于 &amp;a[0]
+0x9ffdb4  &#x2F;&#x2F; 第一行首元素地址
+0x9ffdb4  &#x2F;&#x2F; 第一行首元素地址<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<hr>
+<h4 id="3-步长分析"><a href="#3-步长分析" class="headerlink" title="3. 步长分析"></a><strong>3. 步长分析</strong></h4><h5 id="1-a-和-amp-a-0-的步长"><a href="#1-a-和-amp-a-0-的步长" class="headerlink" title="(1) a 和 &amp;a[0] 的步长"></a><strong>(1) <code>a</code> 和 <code>&amp;a[0]</code> 的步长</strong></h5><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">cout <span class="token operator">&lt;&lt;</span> <span class="token string">"a: "</span> <span class="token operator">&lt;&lt;</span> a <span class="token operator">&lt;&lt;</span> <span class="token string">" "</span> <span class="token operator">&lt;&lt;</span> a <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+cout <span class="token operator">&lt;&lt;</span> <span class="token string">"&amp;a[0]:"</span> <span class="token operator">&lt;&lt;</span> <span class="token operator">&amp;</span>a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">&lt;&lt;</span> <span class="token string">" "</span> <span class="token operator">&lt;&lt;</span> <span class="token operator">&amp;</span>a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<ul>
+<li><code>a + 1</code> 或 <code>&amp;a[0] + 1</code>：跳过一行，步长是 <code>3 × sizeof(int)</code>。</li>
+</ul>
+<p>输出：</p>
+<pre class="line-numbers language-none"><code class="language-none">a: 0x9ffdb4 0x9ffdc0  &#x2F;&#x2F; 步长是12字节（一行大小）
+&amp;a[0]: 0x9ffdb4 0x9ffdc0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h5 id="2-a-0-和-amp-a-0-0-的步长"><a href="#2-a-0-和-amp-a-0-0-的步长" class="headerlink" title="(2) a[0] 和 &amp;a[0][0] 的步长"></a><strong>(2) <code>a[0]</code> 和 <code>&amp;a[0][0]</code> 的步长</strong></h5><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">cout <span class="token operator">&lt;&lt;</span> <span class="token string">"a[0]: "</span> <span class="token operator">&lt;&lt;</span> a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">&lt;&lt;</span> <span class="token string">" "</span> <span class="token operator">&lt;&lt;</span> a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+cout <span class="token operator">&lt;&lt;</span> <span class="token string">"&amp;a[0][0]: "</span> <span class="token operator">&lt;&lt;</span> <span class="token operator">&amp;</span>a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">&lt;&lt;</span> <span class="token string">" "</span> <span class="token operator">&lt;&lt;</span> <span class="token operator">&amp;</span>a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<ul>
+<li><code>a[0] + 1</code> 或 <code>&amp;a[0][0] + 1</code>：跳过一个元素，步长是 <code>sizeof(int)</code>。</li>
+</ul>
+<p>输出：</p>
+<pre class="line-numbers language-none"><code class="language-none">a[0]: 0x9ffdb4 0x9ffdb8  &#x2F;&#x2F; 步长是4字节（一个int大小）
+&amp;a[0][0]: 0x9ffdb4 0x9ffdb8<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h5 id="3-amp-a-的步长"><a href="#3-amp-a-的步长" class="headerlink" title="(3) &amp;a 的步长"></a><strong>(3) <code>&amp;a</code> 的步长</strong></h5><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">cout <span class="token operator">&lt;&lt;</span> <span class="token string">"&amp;a: "</span> <span class="token operator">&lt;&lt;</span> <span class="token operator">&amp;</span>a <span class="token operator">&lt;&lt;</span> <span class="token string">" "</span> <span class="token operator">&lt;&lt;</span> <span class="token operator">&amp;</span>a <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li><code>&amp;a + 1</code>：跳过整个二维数组，步长是 <code>sizeof(a)</code>。</li>
+</ul>
+<p>输出：</p>
+<pre class="line-numbers language-none"><code class="language-none">&amp;a: 0x9ffdb4 0x9ffdd8  &#x2F;&#x2F; 步长是24字节（整个数组大小）<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<hr>
+<h3 id="与一维数组的区别"><a href="#与一维数组的区别" class="headerlink" title="与一维数组的区别"></a><strong>与一维数组的区别</strong></h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>一维数组</th>
+<th>二维数组</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>数组名类型</td>
+<td><code>int*</code></td>
+<td><code>int (*)[列数]</code></td>
+</tr>
+<tr>
+<td><code>a + 1</code> 步长</td>
+<td>一个元素大小</td>
+<td>一行的大小</td>
+</tr>
+<tr>
+<td><code>&amp;a + 1</code> 步长</td>
+<td>整个数组大小</td>
+<td>整个二维数组的大小</td>
+</tr>
+<tr>
+<td>行地址</td>
+<td>不适用</td>
+<td><code>&amp;a[行号]</code> 表示行的整体地址</td>
+</tr>
+<tr>
+<td>元素地址</td>
+<td><code>&amp;a[索引]</code></td>
+<td><code>&amp;a[行号][列号]</code> 表示元素地址</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="总结-2"><a href="#总结-2" class="headerlink" title="总结"></a><strong>总结</strong></h3><ol>
+<li><strong>二维数组的数组名</strong>：<code>a</code> 是指向第0行的指针，类型为 <code>int (*)[列数]</code>，步长是单行大小。</li>
+<li>行与元素的指针：<ul>
+<li><code>a[i]</code> 是指向第 <code>i</code> 行首元素的指针，类型为 <code>int*</code>。</li>
+<li><code>&amp;a[i]</code> 是第 <code>i</code> 行整体的地址，类型为 <code>int (*)[列数]</code>。</li>
+</ul>
+</li>
+<li>地址运算步长：<ul>
+<li><code>a + 1</code> 或 <code>&amp;a[0] + 1</code> 跳过一行，步长是 <code>列数 × 元素大小</code>。</li>
+<li><code>&amp;a + 1</code> 跳过整个二维数组，步长是 <code>行数 × 列数 × 元素大小</code>。</li>
+</ul>
+</li>
+</ol>
 <h2 id="指针作为函数的参数"><a href="#指针作为函数的参数" class="headerlink" title="指针作为函数的参数"></a>指针作为函数的参数</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/ykm0722/article/details/7031387">https://blog.csdn.net/ykm0722/article/details/7031387</a></p>
 <p>使用swap（交换两个变量的值）作为演示，实现Swap的四种方法。当数组名作为<strong>函数的参数</strong>来传递的时候，他的高贵的数组结构特性已经失去了，成了一个地地道道的只拥有4个字节的平民。</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
@@ -562,19 +980,295 @@ int main()&#123;
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<p>这段代码展示了<strong>使用指针作为函数参数</strong>以及多种方式实现 <code>swap</code> 函数的机制和细节。以下是对代码和相关概念的详细解析。</p>
+<hr>
+<h3 id="1-多种实现-swap-的方式"><a href="#1-多种实现-swap-的方式" class="headerlink" title="1. 多种实现 swap 的方式"></a><strong>1. 多种实现 <code>swap</code> 的方式</strong></h3><h4 id="1-宏定义实现"><a href="#1-宏定义实现" class="headerlink" title="(1) 宏定义实现"></a><strong>(1) 宏定义实现</strong></h4><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name function">SWAP</span><span class="token expression"><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> temp<span class="token punctuation">)</span> <span class="token punctuation">(</span>temp<span class="token operator">=</span>a<span class="token punctuation">,</span> a<span class="token operator">=</span>b<span class="token punctuation">,</span> b<span class="token operator">=</span>temp<span class="token punctuation">)</span><span class="token punctuation">;</span></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>使用 <strong>宏定义</strong> 的方式实现变量交换。</li>
+<li>优点：代码简单直观。</li>
+<li>缺点：<ul>
+<li><strong>缺乏类型安全性</strong>：没有检查参数类型，一旦传递复杂类型可能出错。</li>
+<li><strong>调试困难</strong>：宏替换发生在预处理阶段，容易导致调试不便。</li>
+</ul>
+</li>
+</ul>
+<p>示例：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">float</span> a <span class="token operator">=</span> <span class="token number">12.1</span><span class="token punctuation">,</span> b <span class="token operator">=</span> <span class="token number">13.2</span><span class="token punctuation">,</span> temp<span class="token punctuation">;</span>
+<span class="token function">SWAP</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> temp<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<hr>
+<h4 id="2-使用指针参数"><a href="#2-使用指针参数" class="headerlink" title="(2) 使用指针参数"></a><strong>(2) 使用指针参数</strong></h4><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">func</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>x<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">*</span>y<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+  <span class="token keyword">int</span> z <span class="token operator">=</span> <span class="token operator">*</span>x<span class="token punctuation">;</span>
+  <span class="token operator">*</span>x <span class="token operator">=</span> <span class="token operator">*</span>y<span class="token punctuation">;</span>
+  <span class="token operator">*</span>y <span class="token operator">=</span> z<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>通过指针传递变量地址，实现值交换。</li>
+<li>优点：函数可以直接操作实参的值，而非副本。</li>
+<li>缺点：调用时需要传递地址，使用稍显繁琐。</li>
+</ul>
+<p>调用示例：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">,</span> b <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+<span class="token function">func</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>a<span class="token punctuation">,</span> <span class="token operator">&amp;</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<hr>
+<h4 id="3-使用引用参数"><a href="#3-使用引用参数" class="headerlink" title="(3) 使用引用参数"></a><strong>(3) 使用引用参数</strong></h4><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">func1</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">&amp;</span>x<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">&amp;</span>y<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+  <span class="token keyword">int</span> z <span class="token operator">=</span> x<span class="token punctuation">;</span>
+  x <span class="token operator">=</span> y<span class="token punctuation">;</span>
+  y <span class="token operator">=</span> z<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>通过 <strong>引用传递</strong>，实现值交换。</li>
+<li>优点：<ul>
+<li>代码更简洁，调用方式与值传递类似（不需要显式取地址）。</li>
+<li>不需要额外的解引用操作，性能略优。</li>
+</ul>
+</li>
+<li>缺点：不支持引用常量或数组。</li>
+</ul>
+<p>调用示例：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">,</span> b <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+<span class="token function">func1</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<hr>
+<h4 id="4-使用模板"><a href="#4-使用模板" class="headerlink" title="(4) 使用模板"></a><strong>(4) 使用模板</strong></h4><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">template</span><span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token class-name">T</span><span class="token operator">></span>
+<span class="token keyword">void</span> <span class="token function">Swap</span><span class="token punctuation">(</span>T <span class="token operator">&amp;</span>a<span class="token punctuation">,</span> T <span class="token operator">&amp;</span>b<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+  T temp <span class="token operator">=</span> a<span class="token punctuation">;</span>
+  a <span class="token operator">=</span> b<span class="token punctuation">;</span>
+  b <span class="token operator">=</span> temp<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>使用 <strong>C++模板</strong> 泛化 <code>swap</code> 函数，支持多种数据类型。</li>
+<li>优点：<ul>
+<li>代码复用性强，适用于任何支持赋值操作的类型（如整型、浮点型、类对象等）。</li>
+<li>类型安全。</li>
+</ul>
+</li>
+<li>缺点：略增加编译时间。</li>
+</ul>
+<p>调用示例：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">float</span> a <span class="token operator">=</span> <span class="token number">12.1</span><span class="token punctuation">,</span> b <span class="token operator">=</span> <span class="token number">13.2</span><span class="token punctuation">;</span>
+<span class="token function">Swap</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<hr>
+<h3 id="2-特殊点：数组名作为函数参数"><a href="#2-特殊点：数组名作为函数参数" class="headerlink" title="2. 特殊点：数组名作为函数参数"></a><strong>2. 特殊点：数组名作为函数参数</strong></h3><p>在 C++ 中，<strong>数组名作为函数参数传递时，会退化为指针</strong>。以下是具体表现：</p>
+<h4 id="数组名的特性"><a href="#数组名的特性" class="headerlink" title="数组名的特性"></a><strong>数组名的特性</strong></h4><ol>
+<li><strong>数组名本质</strong>：数组名是数组首元素的地址，但它保留了数组的整体大小信息。</li>
+<li><strong>传递到函数中</strong>：当数组名作为参数时，它退化为普通指针，数组大小信息丢失。</li>
+</ol>
+<h4 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a><strong>示例代码</strong></h4><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">processArray</span><span class="token punctuation">(</span><span class="token keyword">int</span> arr<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  cout <span class="token operator">&lt;&lt;</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span> <span class="token comment">// 输出指针大小</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">int</span> arr<span class="token punctuation">[</span><span class="token number">10</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token number">0</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+  cout <span class="token operator">&lt;&lt;</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span> <span class="token comment">// 输出数组大小 (40)</span>
+  <span class="token function">processArray</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">;</span>           <span class="token comment">// 数组退化为指针 (4或8)</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="输出"><a href="#输出" class="headerlink" title="输出"></a><strong>输出</strong></h4><pre class="line-numbers language-none"><code class="language-none">40    &#x2F;&#x2F; 数组实际大小：10 × sizeof(int)
+4     &#x2F;&#x2F; 指针大小（32位系统）或 8（64位系统）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h4 id="结论"><a href="#结论" class="headerlink" title="结论"></a><strong>结论</strong></h4><ul>
+<li>在函数内无法通过 <code>sizeof</code> 获取数组的长度。</li>
+<li>如果需要数组长度，通常需要显式传递数组大小作为参数。</li>
+</ul>
+<hr>
+<h3 id="3-代码解析与输出"><a href="#3-代码解析与输出" class="headerlink" title="3. 代码解析与输出"></a><strong>3. 代码解析与输出</strong></h3><h4 id="1-宏交换-SWAP"><a href="#1-宏交换-SWAP" class="headerlink" title="(1) 宏交换 SWAP"></a><strong>(1) 宏交换 <code>SWAP</code></strong></h4><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">float</span> a <span class="token operator">=</span> <span class="token number">12.1</span><span class="token punctuation">,</span> b <span class="token operator">=</span> <span class="token number">13.2</span><span class="token punctuation">,</span> temp<span class="token punctuation">;</span>
+<span class="token function">SWAP</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> temp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+cout <span class="token operator">&lt;&lt;</span> a <span class="token operator">&lt;&lt;</span> <span class="token string">" "</span> <span class="token operator">&lt;&lt;</span> b <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>输出：</p>
+<pre class="line-numbers language-none"><code class="language-none">13.2 12.1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<hr>
+<h4 id="2-指针传递"><a href="#2-指针传递" class="headerlink" title="(2) 指针传递"></a><strong>(2) 指针传递</strong></h4><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">,</span> b <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+<span class="token function">func</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>a<span class="token punctuation">,</span> <span class="token operator">&amp;</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+cout <span class="token operator">&lt;&lt;</span> a <span class="token operator">&lt;&lt;</span> <span class="token string">" "</span> <span class="token operator">&lt;&lt;</span> b <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>输出：</p>
+<pre class="line-numbers language-none"><code class="language-none">10 5<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<hr>
+<h4 id="3-引用传递"><a href="#3-引用传递" class="headerlink" title="(3) 引用传递"></a><strong>(3) 引用传递</strong></h4><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">,</span> b <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+<span class="token function">func1</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+cout <span class="token operator">&lt;&lt;</span> a <span class="token operator">&lt;&lt;</span> <span class="token string">" "</span> <span class="token operator">&lt;&lt;</span> b <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>输出：</p>
+<pre class="line-numbers language-none"><code class="language-none">10 5<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<hr>
+<h4 id="4-模板函数"><a href="#4-模板函数" class="headerlink" title="(4) 模板函数"></a><strong>(4) 模板函数</strong></h4><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">float</span> a <span class="token operator">=</span> <span class="token number">12.1</span><span class="token punctuation">,</span> b <span class="token operator">=</span> <span class="token number">13.2</span><span class="token punctuation">;</span>
+<span class="token function">Swap</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+cout <span class="token operator">&lt;&lt;</span> a <span class="token operator">&lt;&lt;</span> <span class="token string">" "</span> <span class="token operator">&lt;&lt;</span> b <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>输出：</p>
+<pre class="line-numbers language-none"><code class="language-none">13.2 12.1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<hr>
+<h3 id="总结-3"><a href="#总结-3" class="headerlink" title="总结"></a><strong>总结</strong></h3><ol>
+<li><strong>宏定义</strong>：代码简单，但缺乏类型安全，不推荐。</li>
+<li><strong>指针传递</strong>：显式操作地址，适合 C 风格代码。</li>
+<li><strong>引用传递</strong>：代码更现代化，推荐使用。</li>
+<li><strong>模板</strong>：支持泛型交换，适用于复杂类型，是最通用的方式。</li>
+</ol>
+<p>通过这些实现方式，可以灵活选择适合需求的方案，同时理解数组在函数参数中退化为指针的行为，有助于写出更清晰、可靠的代码。</p>
 <h2 id="指针作为返回值"><a href="#指针作为返回值" class="headerlink" title="指针作为返回值"></a>指针作为返回值</h2><p>要作为返回值，必须保证调用后返回的指针不会销毁，否则就是野指针。</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
-<span class="token keyword">int</span> a<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment">//全局变量默认初始化为0</span>
-<span class="token keyword">int</span> <span class="token operator">*</span> <span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-  <span class="token keyword">return</span> a<span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> a<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// 全局数组，自动初始化为0</span>
+
+<span class="token keyword">int</span><span class="token operator">*</span> <span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">return</span> a<span class="token punctuation">;</span> <span class="token comment">// 返回全局变量的地址</span>
 <span class="token punctuation">&#125;</span>
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-  <span class="token keyword">int</span> a<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
-  cout<span class="token operator">&lt;&lt;</span><span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">&lt;&lt;</span><span class="token string">" "</span><span class="token operator">&lt;&lt;</span><span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment">// 局部变量</span>
+  cout <span class="token operator">&lt;&lt;</span> <span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">&lt;&lt;</span> <span class="token string">" "</span> <span class="token operator">&lt;&lt;</span> <span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>这段代码主要展示了<strong>指针作为函数返回值</strong>的机制，并且提到了一个非常关键的问题——<strong>返回指针的生命周期</strong>。以下是详细解析。</p>
+<hr>
+<h3 id="1-指针作为返回值的关键点"><a href="#1-指针作为返回值的关键点" class="headerlink" title="1. 指针作为返回值的关键点"></a><strong>1. 指针作为返回值的关键点</strong></h3><ul>
+<li><strong>指针返回值</strong>是函数返回一个地址，调用者可以通过这个地址访问存储在该位置的值。</li>
+<li><strong>安全性问题</strong>：如果返回的指针指向了函数的局部变量，则在函数返回后，该局部变量会被销毁，导致指针成为<strong>野指针</strong>，可能引发不可预期的错误。</li>
+</ul>
+<hr>
+<h3 id="2-示例代码解析"><a href="#2-示例代码解析" class="headerlink" title="2. 示例代码解析"></a><strong>2. 示例代码解析</strong></h3><h4 id="2-1-全局数组的特点"><a href="#2-1-全局数组的特点" class="headerlink" title="2.1 全局数组的特点"></a>2.1 全局数组的特点</h4><ol>
+<li><strong>全局变量的生命周期</strong><ul>
+<li>全局变量的生命周期贯穿整个程序运行周期，直到程序结束才会被销毁。</li>
+<li>因此返回全局变量的地址是安全的，不会出现野指针。</li>
+</ul>
+</li>
+<li><strong>全局数组的初始化</strong><ul>
+<li>如果没有显式赋值，全局数组中的元素会被初始化为 <code>0</code>（默认值）。</li>
+<li>这里 <code>int a[3] = &#123;0, 0, 0&#125;</code>。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h4 id="2-2-函数-func-的返回值"><a href="#2-2-函数-func-的返回值" class="headerlink" title="2.2 函数 func() 的返回值"></a><strong>2.2 函数 <code>func()</code> 的返回值</strong></h4><ul>
+<li><code>func()</code> 返回全局数组 <code>a</code> 的首地址。</li>
+<li>在主函数 <code>main()</code> 中，通过 <code>func()</code> 可以访问全局数组的内容。</li>
+<li><strong>优点</strong>：返回全局数组的地址是安全的。</li>
+<li><strong>缺点</strong>：如果多个地方修改了同一全局变量，会导致数据不可预测。</li>
+</ul>
+<hr>
+<h4 id="2-3-局部变量作为返回值的风险"><a href="#2-3-局部变量作为返回值的风险" class="headerlink" title="2.3 局部变量作为返回值的风险"></a><strong>2.3 局部变量作为返回值的风险</strong></h4><p>以下是一个反面例子：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span><span class="token operator">*</span> <span class="token function">unsafeFunc</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">int</span> localVar <span class="token operator">=</span> <span class="token number">42</span><span class="token punctuation">;</span> <span class="token comment">// 局部变量</span>
+  <span class="token keyword">return</span> <span class="token operator">&amp;</span>localVar<span class="token punctuation">;</span>  <span class="token comment">// 返回局部变量地址</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>调用时：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span><span class="token operator">*</span> ptr <span class="token operator">=</span> <span class="token function">unsafeFunc</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+cout <span class="token operator">&lt;&lt;</span> <span class="token operator">*</span>ptr <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span> <span class="token comment">// 未定义行为</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<ul>
+<li>问题：<ul>
+<li><code>localVar</code> 是函数的局部变量，在函数返回时，它会被销毁。</li>
+<li>返回的地址指向一个已经被释放的内存区域，结果是未定义行为。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="2-4-全局变量的安全返回"><a href="#2-4-全局变量的安全返回" class="headerlink" title="2.4 全局变量的安全返回"></a><strong>2.4 全局变量的安全返回</strong></h4><p>代码：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span><span class="token operator">*</span> <span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">return</span> a<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>安全性：返回的是全局数组的地址，不会有生命周期问题。</li>
+<li>数据访问：<ul>
+<li><code>func()[0]</code> 等价于访问全局数组 <code>a[0]</code>。</li>
+<li>默认值 <code>0</code> 会被输出。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="3-输出结果"><a href="#3-输出结果" class="headerlink" title="3. 输出结果"></a><strong>3. 输出结果</strong></h3><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> a<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// 全局数组，初始化为 &#123;0, 0, 0&#125;</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  cout <span class="token operator">&lt;&lt;</span> <span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">&lt;&lt;</span> <span class="token string">" "</span> <span class="token operator">&lt;&lt;</span> <span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>输出结果：</p>
+<pre class="line-numbers language-none"><code class="language-none">0 0<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<hr>
+<h3 id="4-常见场景及建议"><a href="#4-常见场景及建议" class="headerlink" title="4. 常见场景及建议"></a><strong>4. 常见场景及建议</strong></h3><h4 id="4-1-返回全局变量指针"><a href="#4-1-返回全局变量指针" class="headerlink" title="4.1 返回全局变量指针"></a><strong>4.1 返回全局变量指针</strong></h4><p>适用场景：</p>
+<ul>
+<li>需要函数返回一个共享的全局数据结构。</li>
+<li>确保所有访问点都使用相同的全局数据。</li>
+</ul>
+<p>注意：</p>
+<ul>
+<li>全局变量的使用需要小心，容易导致代码耦合高、可维护性低。</li>
+</ul>
+<hr>
+<h4 id="4-2-返回动态分配的内存"><a href="#4-2-返回动态分配的内存" class="headerlink" title="4.2 返回动态分配的内存"></a><strong>4.2 返回动态分配的内存</strong></h4><p>如果需要函数动态生成数据，可以使用动态分配：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span><span class="token operator">*</span> <span class="token function">createArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">int</span><span class="token operator">*</span> arr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">&#123;</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span> <span class="token comment">// 动态分配数组</span>
+  <span class="token keyword">return</span> arr<span class="token punctuation">;</span>                     <span class="token comment">// 返回数组首地址</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">int</span><span class="token operator">*</span> arr <span class="token operator">=</span> <span class="token function">createArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  cout <span class="token operator">&lt;&lt;</span> arr<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">&lt;&lt;</span> <span class="token string">" "</span> <span class="token operator">&lt;&lt;</span> arr<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">&lt;&lt;</span> <span class="token string">" "</span> <span class="token operator">&lt;&lt;</span> arr<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+  <span class="token keyword">delete</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arr<span class="token punctuation">;</span> <span class="token comment">// 使用完毕释放内存</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<p><strong>优点</strong>：</p>
+<ul>
+<li>数据独立于函数栈帧，生命周期可控。</li>
+<li>灵活性高，可在堆上存储大数据。</li>
+</ul>
+<p><strong>注意</strong>：</p>
+<ul>
+<li>调用者负责释放动态分配的内存，否则可能导致内存泄漏。</li>
+</ul>
+<hr>
+<h4 id="4-3-返回局部静态变量的指针"><a href="#4-3-返回局部静态变量的指针" class="headerlink" title="4.3 返回局部静态变量的指针"></a><strong>4.3 返回局部静态变量的指针</strong></h4><p>静态变量具有全局生命周期，但作用域受限于定义所在的函数。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span><span class="token operator">*</span> <span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">static</span> <span class="token keyword">int</span> localStaticVar <span class="token operator">=</span> <span class="token number">42</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token operator">&amp;</span>localStaticVar<span class="token punctuation">;</span> <span class="token comment">// 返回局部静态变量地址</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">int</span><span class="token operator">*</span> ptr <span class="token operator">=</span> <span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  cout <span class="token operator">&lt;&lt;</span> <span class="token operator">*</span>ptr <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span> <span class="token comment">// 安全访问</span>
+  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>优点</strong>：</p>
+<ul>
+<li>静态变量不会被销毁，返回地址是安全的。</li>
+<li>避免了全局变量的污染。</li>
+</ul>
+<hr>
+<h3 id="5-总结"><a href="#5-总结" class="headerlink" title="5. 总结"></a><strong>5. 总结</strong></h3><ol>
+<li><strong>返回值类型分析</strong>：<ul>
+<li><strong>全局变量</strong>：安全，但可能引入全局状态问题。</li>
+<li><strong>局部变量</strong>：危险，容易导致野指针。</li>
+<li><strong>动态分配内存</strong>：安全，但需手动管理内存。</li>
+<li><strong>静态变量</strong>：安全，但需注意多线程安全问题。</li>
+</ul>
+</li>
+<li><strong>建议</strong>：<ul>
+<li>尽量避免使用全局变量。</li>
+<li>优先考虑返回动态分配的内存或局部静态变量。</li>
+<li>在多线程环境下，需注意同步访问问题。</li>
+</ul>
+</li>
+</ol>
+<p>通过理解指针生命周期和作用域，能更好地写出健壮和高效的代码。</p>
 <h2 id="字符数组指针"><a href="#字符数组指针" class="headerlink" title="字符数组指针"></a>字符数组指针</h2><p>1、str和p是不相同的！！</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;cstring></span></span>
@@ -701,8 +1395,7 @@ int main()&#123;
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="函数指针深度辨析"><a href="#函数指针深度辨析" class="headerlink" title="函数指针深度辨析"></a>函数指针深度辨析</h2><p>！！！！！！！！！！！！！</p>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
+<h2 id="函数指针深度辨析"><a href="#函数指针深度辨析" class="headerlink" title="函数指针深度辨析"></a>函数指针深度辨析</h2><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
 <span class="token keyword">void</span> <span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
   cout<span class="token operator">&lt;&lt;</span><span class="token string">"func"</span><span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
@@ -730,8 +1423,159 @@ int main()&#123;
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<p>这段代码试图对函数指针的使用进行深度探索，并分析各种形式下的打印结果。然而，这里涉及到一些误用和未定义行为，下面是详细的解析。</p>
+<hr>
+<h3 id="1-函数指针的基本概念"><a href="#1-函数指针的基本概念" class="headerlink" title="1. 函数指针的基本概念"></a><strong>1. 函数指针的基本概念</strong></h3><ul>
+<li><p><strong>函数指针</strong>是一种特殊的指针，用于存储函数的入口地址。</p>
+</li>
+<li><p>定义函数指针的语法：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">返回值类型 <span class="token punctuation">(</span><span class="token operator">*</span>指针名<span class="token punctuation">)</span><span class="token punctuation">(</span>参数列表<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
+<p>示例：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token punctuation">(</span><span class="token operator">*</span>pFunc<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 定义一个返回值为void，参数为空的函数指针</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+</ul>
+<hr>
+<h3 id="2-示例代码解析-1"><a href="#2-示例代码解析-1" class="headerlink" title="2. 示例代码解析"></a><strong>2. 示例代码解析</strong></h3><p>代码片段：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  cout <span class="token operator">&lt;&lt;</span> <span class="token string">"func"</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
+<span class="token keyword">int</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> b<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">return</span> a <span class="token operator">+</span> b<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">void</span> <span class="token punctuation">(</span><span class="token operator">*</span>pFunc<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token operator">&amp;</span>func<span class="token punctuation">;</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%p\n"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>pFunc<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// 打印函数指针变量的地址</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%p\n"</span><span class="token punctuation">,</span> pFunc<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// 打印函数的入口地址</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%p\n"</span><span class="token punctuation">,</span> <span class="token operator">*</span>pFunc<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// 正确调用：实际上是调用了函数</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%p\n"</span><span class="token punctuation">,</span> <span class="token operator">*</span><span class="token operator">*</span>pFunc<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 错误：未定义行为</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%p\n"</span><span class="token punctuation">,</span> <span class="token operator">*</span><span class="token operator">*</span><span class="token operator">*</span>pFunc<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 错误：未定义行为</span>
+
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"----------\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%p\n"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>func<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 打印函数的入口地址（与 pFunc 相同）</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%p\n"</span><span class="token punctuation">,</span> func<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 打印函数的入口地址（与 &amp;func 相同）</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%p\n"</span><span class="token punctuation">,</span> <span class="token operator">*</span>func<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 错误：未定义行为</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%p\n"</span><span class="token punctuation">,</span> <span class="token operator">*</span><span class="token operator">*</span>func<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 错误：未定义行为</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%p\n"</span><span class="token punctuation">,</span> <span class="token operator">*</span><span class="token operator">*</span><span class="token operator">*</span>func<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 错误：未定义行为</span>
+
+  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<hr>
+<h3 id="3-逐行解析与结果"><a href="#3-逐行解析与结果" class="headerlink" title="3. 逐行解析与结果"></a><strong>3. 逐行解析与结果</strong></h3><h4 id="3-1-第一部分：pFunc-的打印"><a href="#3-1-第一部分：pFunc-的打印" class="headerlink" title="3.1 第一部分：pFunc 的打印"></a><strong>3.1 第一部分：<code>pFunc</code> 的打印</strong></h4><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token punctuation">(</span><span class="token operator">*</span>pFunc<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token operator">&amp;</span>func<span class="token punctuation">;</span>
+<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%p\n"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>pFunc<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 打印函数指针变量 pFunc 的地址</span>
+<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%p\n"</span><span class="token punctuation">,</span> pFunc<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 打印函数的入口地址</span>
+<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%p\n"</span><span class="token punctuation">,</span> <span class="token operator">*</span>pFunc<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 函数调用，实际输出 "func"</span>
+<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%p\n"</span><span class="token punctuation">,</span> <span class="token operator">*</span><span class="token operator">*</span>pFunc<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 错误：未定义行为</span>
+<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%p\n"</span><span class="token punctuation">,</span> <span class="token operator">*</span><span class="token operator">*</span><span class="token operator">*</span>pFunc<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 错误：未定义行为</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li><p>**<code>&amp;pFunc</code>**：打印的是指针变量 <code>pFunc</code> 的地址（不是函数的地址）。</p>
+</li>
+<li><p>**<code>pFunc</code>**：打印的是函数 <code>func</code> 的入口地址，和 <code>&amp;func</code> 相同。</p>
+</li>
+<li><p><code>*pFunc</code></p>
+<p>：</p>
+<ul>
+<li>函数指针解引用后实际是调用该函数，即会输出 <code>&quot;func&quot;</code>，<strong>但不能使用 <code>%p</code> 打印返回值</strong>。</li>
+<li><code>%p</code> 是打印指针地址，而函数返回值类型是 <code>void</code>，这会导致未定义行为。</li>
+</ul>
+</li>
+<li><p><code>**pFunc</code> 和 <code>***pFunc</code></p>
+<p>：</p>
+<ul>
+<li>解引用次数超出函数指针的定义范围，属于未定义行为。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="3-2-第二部分：func-的打印"><a href="#3-2-第二部分：func-的打印" class="headerlink" title="3.2 第二部分：func 的打印"></a><strong>3.2 第二部分：<code>func</code> 的打印</strong></h4><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%p\n"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>func<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 打印函数的入口地址</span>
+<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%p\n"</span><span class="token punctuation">,</span> func<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 打印函数的入口地址</span>
+<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%p\n"</span><span class="token punctuation">,</span> <span class="token operator">*</span>func<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 错误：未定义行为</span>
+<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%p\n"</span><span class="token punctuation">,</span> <span class="token operator">*</span><span class="token operator">*</span>func<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 错误：未定义行为</span>
+<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%p\n"</span><span class="token punctuation">,</span> <span class="token operator">*</span><span class="token operator">*</span><span class="token operator">*</span>func<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 错误：未定义行为</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li><p>**<code>&amp;func</code> 和 <code>func</code>**：对于函数名 <code>func</code>，它既表示函数入口地址，也是函数指针常量。</p>
+</li>
+<li><p><code>*func</code>、<code>**func</code> 和 <code>***func</code></p>
+<p>：</p>
+<ul>
+<li>函数名不能被多次解引用，尝试这样操作会导致编译错误或未定义行为。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="4-函数指针的正确使用方式"><a href="#4-函数指针的正确使用方式" class="headerlink" title="4. 函数指针的正确使用方式"></a><strong>4. 函数指针的正确使用方式</strong></h3><h4 id="4-1-使用函数指针调用函数"><a href="#4-1-使用函数指针调用函数" class="headerlink" title="4.1 使用函数指针调用函数"></a><strong>4.1 使用函数指针调用函数</strong></h4><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  cout <span class="token operator">&lt;&lt;</span> <span class="token string">"This is func"</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">void</span> <span class="token punctuation">(</span><span class="token operator">*</span>pFunc<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> func<span class="token punctuation">;</span>  <span class="token comment">// 函数指针指向函数</span>
+  <span class="token function">pFunc</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                 <span class="token comment">// 使用函数指针调用函数</span>
+  <span class="token punctuation">(</span><span class="token operator">*</span>pFunc<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>              <span class="token comment">// 解引用后调用（等价于 pFunc()）</span>
+
+  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="4-2-函数指针作为参数"><a href="#4-2-函数指针作为参数" class="headerlink" title="4.2 函数指针作为参数"></a><strong>4.2 函数指针作为参数</strong></h4><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> b<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">return</span> a <span class="token operator">+</span> b<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">int</span> <span class="token function">subtract</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> b<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">return</span> a <span class="token operator">-</span> b<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">// 函数指针作为参数</span>
+<span class="token keyword">int</span> <span class="token function">calculate</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token punctuation">(</span><span class="token operator">*</span>operation<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">int</span> x<span class="token punctuation">,</span> <span class="token keyword">int</span> y<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">return</span> <span class="token function">operation</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  cout <span class="token operator">&lt;&lt;</span> <span class="token function">calculate</span><span class="token punctuation">(</span>add<span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>      <span class="token comment">// 输出 8</span>
+  cout <span class="token operator">&lt;&lt;</span> <span class="token function">calculate</span><span class="token punctuation">(</span>subtract<span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span> <span class="token comment">// 输出 2</span>
+
+  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="4-3-函数指针作为返回值"><a href="#4-3-函数指针作为返回值" class="headerlink" title="4.3 函数指针作为返回值"></a><strong>4.3 函数指针作为返回值</strong></h4><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> b<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">return</span> a <span class="token operator">+</span> b<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">int</span> <span class="token function">subtract</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> b<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">return</span> a <span class="token operator">-</span> b<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">int</span> <span class="token punctuation">(</span><span class="token operator">*</span><span class="token function">getOperation</span><span class="token punctuation">(</span><span class="token keyword">bool</span> isAdd<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">return</span> isAdd <span class="token operator">?</span> add <span class="token operator">:</span> subtract<span class="token punctuation">;</span> <span class="token comment">// 返回函数指针</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">int</span> <span class="token punctuation">(</span><span class="token operator">*</span>operation<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token function">getOperation</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 返回 add</span>
+  cout <span class="token operator">&lt;&lt;</span> <span class="token function">operation</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>                 <span class="token comment">// 输出 8</span>
+
+  operation <span class="token operator">=</span> <span class="token function">getOperation</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 返回 subtract</span>
+  cout <span class="token operator">&lt;&lt;</span> <span class="token function">operation</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span> <span class="token comment">// 输出 2</span>
+
+  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<hr>
+<h3 id="5-总结-1"><a href="#5-总结-1" class="headerlink" title="5. 总结"></a><strong>5. 总结</strong></h3><h4 id="5-1-函数指针的特性"><a href="#5-1-函数指针的特性" class="headerlink" title="5.1 函数指针的特性"></a><strong>5.1 函数指针的特性</strong></h4><ol>
+<li>函数指针存储函数入口地址，可用于动态调用。</li>
+<li>解引用函数指针后可以调用函数，但额外多次解引用是未定义行为。</li>
+<li>函数名本身可以隐式转换为函数指针。</li>
+</ol>
+<h4 id="5-2-打印函数指针"><a href="#5-2-打印函数指针" class="headerlink" title="5.2 打印函数指针"></a><strong>5.2 打印函数指针</strong></h4><ul>
+<li><code>%p</code> 适用于打印函数指针地址或函数入口地址。</li>
+<li>解引用函数指针后不能直接打印，解引用后应调用函数。</li>
+</ul>
+<h4 id="5-3-函数指针的用法"><a href="#5-3-函数指针的用法" class="headerlink" title="5.3 函数指针的用法"></a><strong>5.3 函数指针的用法</strong></h4><ul>
+<li>函数指针常用于回调机制、动态选择操作、简化代码结构。</li>
+<li>小心未定义行为（如多次解引用、返回局部指针等）。</li>
+</ul>
+<p>通过合理使用函数指针，可以提高代码的灵活性和可扩展性。</p>
 <h2 id="结构体内存对齐"><a href="#结构体内存对齐" class="headerlink" title="结构体内存对齐"></a>结构体内存对齐</h2><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
 
@@ -767,6 +1611,8 @@ int main()&#123;
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+
+
 <h2 id="结构体指针"><a href="#结构体指针" class="headerlink" title="结构体指针"></a>结构体指针</h2><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;cstring></span></span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
@@ -789,6 +1635,97 @@ int main()&#123;
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<p>这段代码演示了 <strong>结构体指针的基本用法</strong>，以及通过 <code>malloc</code> 动态分配内存来操作结构体的一个实例。以下是代码的分步解析：</p>
+<hr>
+<h3 id="1-代码运行及输出"><a href="#1-代码运行及输出" class="headerlink" title="1. 代码运行及输出"></a><strong>1. 代码运行及输出</strong></h3><h4 id="1-1-静态分配的结构体"><a href="#1-1-静态分配的结构体" class="headerlink" title="1.1 静态分配的结构体"></a><strong>1.1 静态分配的结构体</strong></h4><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">Stu s<span class="token punctuation">;</span>
+s<span class="token punctuation">.</span>a <span class="token operator">=</span> <span class="token number">12</span><span class="token punctuation">;</span>
+<span class="token function">strcpy</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span>c<span class="token punctuation">,</span> <span class="token string">"121"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+cout <span class="token operator">&lt;&lt;</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+cout <span class="token operator">&lt;&lt;</span> s<span class="token punctuation">.</span>a <span class="token operator">&lt;&lt;</span> <span class="token string">"--"</span> <span class="token operator">&lt;&lt;</span> s<span class="token punctuation">.</span>c <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li><p><strong><code>Stu</code> 结构体内存布局</strong>（假设 64 位系统）：</p>
+<pre class="line-numbers language-none"><code class="language-none">int a       -&gt; 4 字节
+char c[13]  -&gt; 13 字节
+填充        -&gt; 3 字节（以满足 4 字节对齐）
+总大小      -&gt; 20 字节<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p><strong><code>sizeof(s)</code> 输出</strong>：<code>20</code>（总大小包含对齐后的填充字节）。</p>
+</li>
+<li><p><strong><code>s.a</code> 和 <code>s.c</code> 的值</strong>：分别为 <code>12</code> 和字符串 <code>&quot;121&quot;</code>。</p>
+</li>
+</ul>
+<h4 id="1-2-动态分配的结构体"><a href="#1-2-动态分配的结构体" class="headerlink" title="1.2 动态分配的结构体"></a><strong>1.2 动态分配的结构体</strong></h4><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">Stu <span class="token operator">*</span>pStu <span class="token operator">=</span> <span class="token punctuation">(</span>Stu <span class="token operator">*</span><span class="token punctuation">)</span><span class="token function">malloc</span><span class="token punctuation">(</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>Stu<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+pStu<span class="token operator">-></span>a <span class="token operator">=</span> <span class="token number">11</span><span class="token punctuation">;</span>
+<span class="token function">strcpy</span><span class="token punctuation">(</span>pStu<span class="token operator">-></span>c<span class="token punctuation">,</span> <span class="token string">"qwe"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+cout <span class="token operator">&lt;&lt;</span> pStu<span class="token operator">-></span>a <span class="token operator">&lt;&lt;</span> <span class="token string">"---"</span> <span class="token operator">&lt;&lt;</span> pStu<span class="token operator">-></span>c <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>动态分配了大小为 <code>sizeof(Stu)</code> 的内存块。</li>
+<li>使用箭头操作符 (<code>-&gt;</code>) 对结构体的成员进行赋值和访问。</li>
+<li>输出：<code>11---qwe</code>。</li>
+</ul>
+<hr>
+<h3 id="2-关键知识点"><a href="#2-关键知识点" class="headerlink" title="2. 关键知识点"></a><strong>2. 关键知识点</strong></h3><h4 id="2-1-结构体的静态分配"><a href="#2-1-结构体的静态分配" class="headerlink" title="2.1 结构体的静态分配"></a><strong>2.1 结构体的静态分配</strong></h4><ul>
+<li>定义 <code>Stu s;</code> 会在栈上分配内存，其生命周期由当前作用域决定。</li>
+<li>通过点操作符 (<code>.</code>) 访问和操作结构体的成员。</li>
+<li>对齐填充：<ul>
+<li>为了提高 CPU 访问效率，系统通常要求结构体成员对齐到其最大类型大小的倍数（此处为 4 字节）。</li>
+<li><code>char c[13]</code> 后需要填充 3 字节，确保结构体总大小为 4 的倍数。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="2-2-结构体的动态分配"><a href="#2-2-结构体的动态分配" class="headerlink" title="2.2 结构体的动态分配"></a><strong>2.2 结构体的动态分配</strong></h4><ul>
+<li>使用 <code>malloc</code> 分配内存时，内存是从堆上分配的，<strong>生命周期由程序员手动控制</strong>（需注意释放内存以防止内存泄漏）。</li>
+<li>动态分配的结构体需要通过 <strong>指针访问</strong>，使用箭头操作符 (<code>-&gt;</code>) 访问成员。</li>
+</ul>
+<h4 id="2-3-内存管理注意事项"><a href="#2-3-内存管理注意事项" class="headerlink" title="2.3 内存管理注意事项"></a><strong>2.3 内存管理注意事项</strong></h4><ol>
+<li><p><strong>动态分配的内存需要释放</strong>：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token function">free</span><span class="token punctuation">(</span>pStu<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>否则会造成内存泄漏。</p>
+</li>
+<li><p><strong>避免使用未初始化的内存</strong>： 动态分配后，内存中的值是未定义的，需显式赋值或初始化。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">Stu <span class="token operator">*</span>pStu <span class="token operator">=</span> <span class="token punctuation">(</span>Stu <span class="token operator">*</span><span class="token punctuation">)</span><span class="token function">malloc</span><span class="token punctuation">(</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>Stu<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">memset</span><span class="token punctuation">(</span>pStu<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>Stu<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 初始化为 0</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+<li><p><strong>使用 <code>malloc</code> 时注意类型转换</strong>： 在 C++ 中，最好使用 <code>new</code> 而不是 <code>malloc</code>：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">Stu <span class="token operator">*</span>pStu <span class="token operator">=</span> <span class="token keyword">new</span> Stu<span class="token punctuation">;</span>
+<span class="token keyword">delete</span> pStu<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>或者可以使用现代的智能指针来管理动态内存，避免手动释放的麻烦。</p>
+</li>
+</ol>
+<hr>
+<h3 id="3-输出结果（假设-64-位系统）"><a href="#3-输出结果（假设-64-位系统）" class="headerlink" title="3. 输出结果（假设 64 位系统）"></a><strong>3. 输出结果（假设 64 位系统）</strong></h3><p>运行程序时会得到如下输出：</p>
+<pre class="line-numbers language-none"><code class="language-none">20
+12--121
+11---qwe<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<hr>
+<h3 id="4-推荐改进"><a href="#4-推荐改进" class="headerlink" title="4. 推荐改进"></a><strong>4. 推荐改进</strong></h3><h4 id="4-1-替换-malloc"><a href="#4-1-替换-malloc" class="headerlink" title="4.1 替换 malloc"></a><strong>4.1 替换 <code>malloc</code></strong></h4><p>C++ 提供了更安全的内存分配方法，可以用 <code>new</code> 替换 <code>malloc</code>：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">Stu <span class="token operator">*</span>pStu <span class="token operator">=</span> <span class="token keyword">new</span> Stu<span class="token punctuation">;</span>
+pStu<span class="token operator">-></span>a <span class="token operator">=</span> <span class="token number">11</span><span class="token punctuation">;</span>
+<span class="token function">strcpy</span><span class="token punctuation">(</span>pStu<span class="token operator">-></span>c<span class="token punctuation">,</span> <span class="token string">"qwe"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+cout <span class="token operator">&lt;&lt;</span> pStu<span class="token operator">-></span>a <span class="token operator">&lt;&lt;</span> <span class="token string">"---"</span> <span class="token operator">&lt;&lt;</span> pStu<span class="token operator">-></span>c <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+<span class="token keyword">delete</span> pStu<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="4-2-使用智能指针"><a href="#4-2-使用智能指针" class="headerlink" title="4.2 使用智能指针"></a><strong>4.2 使用智能指针</strong></h4><p>使用 <code>std::unique_ptr</code> 或 <code>std::shared_ptr</code> 来管理动态分配的结构体：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;memory></span></span>
+
+std<span class="token double-colon punctuation">::</span>unique_ptr<span class="token operator">&lt;</span>Stu<span class="token operator">></span> pStu <span class="token operator">=</span> std<span class="token double-colon punctuation">::</span><span class="token generic-function"><span class="token function">make_unique</span><span class="token generic class-name"><span class="token operator">&lt;</span>Stu<span class="token operator">></span></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+pStu<span class="token operator">-></span>a <span class="token operator">=</span> <span class="token number">11</span><span class="token punctuation">;</span>
+<span class="token function">strcpy</span><span class="token punctuation">(</span>pStu<span class="token operator">-></span>c<span class="token punctuation">,</span> <span class="token string">"qwe"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+cout <span class="token operator">&lt;&lt;</span> pStu<span class="token operator">-></span>a <span class="token operator">&lt;&lt;</span> <span class="token string">"---"</span> <span class="token operator">&lt;&lt;</span> pStu<span class="token operator">-></span>c <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>这样可以自动释放内存，无需手动调用 <code>delete</code> 或 <code>free</code>。</p>
+<hr>
+<h3 id="5-总结-2"><a href="#5-总结-2" class="headerlink" title="5. 总结"></a><strong>5. 总结</strong></h3><ol>
+<li><strong>动态分配的内存需手动管理</strong>，推荐使用现代 C++ 的 <code>new/delete</code> 或智能指针代替 <code>malloc/free</code>。</li>
+<li>结构体的大小受对齐规则影响，可以通过调整成员顺序减少填充字节。</li>
+<li>对动态分配的结构体指针，尽量初始化，避免出现未定义行为。</li>
+</ol>
 
                 
             </div>
@@ -1200,7 +2137,7 @@ int main()&#123;
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">113.5k</span>
+                        class="white-color">120.8k</span>
             
             
             
