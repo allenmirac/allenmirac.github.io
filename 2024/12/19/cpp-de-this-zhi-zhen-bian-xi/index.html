@@ -4,10 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="什么是持久层框架, AllenMirac">
-    <meta name="description" content="
-
-什么是持久层?持久是相对于瞬时来说的， 持久层，可以理解成数据 保存在 数据库或者 硬盘一类可以保存很长时间的设备里面，不像放在内存中那样断电就消失了，也就是把数据存在持久化设备上 ，你想一下 内存中的数据 断电就没有了，硬盘的数据 是">
+    <meta name="keywords" content="CPP 的this指针辨析, AllenMirac">
+    <meta name="description" content="C++ 的 this 指针指针在这里面是非常难理解的东西，所以要根据例子，自己实践。在你没有去具体了解之前，不要轻易下结论。最近，看了《在山的那边》，又有一点新感悟( •̀ ω •́ )✧
+this指针调用成员函数时，成员函数通过一个名为 ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>什么是持久层框架 | AllenMirac</title>
+    <title>CPP 的this指针辨析 | AllenMirac</title>
     <link rel="icon" type="image/jpeg" href="/ZoRo.jpg">
     
 
@@ -336,12 +335,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">什么是持久层框架</h1>
+                    <h1 class="description center-align post-title">CPP 的this指针辨析</h1>
                 </div>
             </div>
         </div>
@@ -365,14 +364,23 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
-                                <span class="chip bg-color">数据库</span>
+                            <a href="/tags/c/">
+                                <span class="chip bg-color">c++</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/c-%E5%9F%BA%E7%A1%80/" class="post-category">
+                                c++基础
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -381,21 +389,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-06-22
+                    2024-12-19
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-06-22
+                    2024-12-19
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    384
+                    587
                 </div>
                 
 
@@ -420,10 +428,76 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <meta name="referrer" content="no-referrer" />
-
-<h1 id="什么是持久层"><a href="#什么是持久层" class="headerlink" title="什么是持久层?"></a>什么是<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E6%8C%81%E4%B9%85%E5%B1%82&amp;spm=1001.2101.3001.7020">持久层</a>?</h1><p>持久是相对于瞬时来说的，<strong><em> 持久层，可以理解成数据 保存在 数据库或者 硬盘一类可以保存很长时间的设备里面，不像放在内存中那样断电就消失了，也就是把数据存在持久化设备上</em></strong> ，你想一下 <a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E5%86%85%E5%AD%98&amp;spm=1001.2101.3001.7020">内存</a>中的数据 断电就没有了，硬盘的数据 是否会像内存中的数据一样断电消失么？</p>
-<h1 id="为什么要使用持久化框架"><a href="#为什么要使用持久化框架" class="headerlink" title="为什么要使用持久化框架?"></a>为什么要使用持久化框架?</h1><p>企业应用中<strong>* 数据很重要(各种订单数据、客户数据、库存数据之类的)，他们的数据就是财富，比应用程序本身更重要，</strong> 所以需要把数据<strong>持久化</strong>。持久化可以通过很多方式，写文件和数据库都可以。只是现在企业一般都会选择把数据持久化到数据库中，因为可以很方便的查询统计分析，但数据库的数据最终还是会写到磁盘上的。Java 程序员为了操作数据库，<strong> 最开始是使用JDBC*</strong> 来进行的，但是这种方式<strong>* 开发效率低</strong> ，要写一堆重复代码，加上关系数据库和对象本身存在所谓的阻抗不匹配情况，所以<strong> 为了提高开发效率，有人发明了 ORM 即 对象关系映射框架*</strong> (Hibernate是其中的佼佼者)，对于 Java 程序员来说，就可以通过操纵对象来操纵数据库了。</p>
+                <h2 id="C-的-this-指针"><a href="#C-的-this-指针" class="headerlink" title="C++ 的 this 指针"></a>C++ 的 this 指针</h2><p>指针在这里面是非常难理解的东西，所以要根据例子，自己实践。<br>在你没有去具体了解之前，不要轻易下结论。<br>最近，看了《在山的那边》，又有一点新感悟( •̀ ω •́ )✧</p>
+<h3 id="this指针"><a href="#this指针" class="headerlink" title="this指针"></a>this指针</h3><p>调用成员函数时，成员函数通过一个名为 this 的隐式参数来访问调用它的那个对象，用请求该函数的对象地址初始化 this ，this 的指向总是自己这个对象，所以 this 是一个常量指针</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">Box<span class="token operator">*</span> <span class="token function">get_address</span><span class="token punctuation">(</span><span class="token punctuation">)</span>   <span class="token comment">//得到this的地址</span>
+<span class="token punctuation">&#123;</span>
+	<span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+Box<span class="token operator">*</span> <span class="token function">get_address</span><span class="token punctuation">(</span><span class="token punctuation">)</span>   <span class="token comment">//得到this的地址</span>
+<span class="token punctuation">&#123;</span>
+	Box box<span class="token punctuation">;</span>
+	<span class="token keyword">this</span> <span class="token operator">=</span> <span class="token operator">&amp;</span>box<span class="token punctuation">;</span> <span class="token comment">// error: lvalue required as left operand of assignment</span>
+    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>在 C++ 中，<code>this</code> 指针是一个隐式传递给非静态成员函数的常量指针，用于指向调用该函数的对象。以下是对你的代码和 <code>this</code> 的特性总结：</p>
+<h4 id="特性："><a href="#特性：" class="headerlink" title="特性："></a>特性：</h4><ol>
+<li><strong><code>this</code> 是一个隐式指针</strong>：<ul>
+<li>每个非静态成员函数都有一个隐式的 <code>this</code> 指针，用来访问调用该成员函数的对象。</li>
+<li><code>this</code> 指针的类型为 <code>ClassName* const</code>，即常量指针，不能被修改。</li>
+</ul>
+</li>
+<li><strong><code>this</code> 指针的用途</strong>：<ul>
+<li>访问成员变量和成员函数。</li>
+<li>返回对象自身的地址。</li>
+<li>在需要对象指针的场景下传递 <code>this</code>。</li>
+</ul>
+</li>
+<li><strong>静态成员函数中没有 <code>this</code> 指针</strong>：<ul>
+<li>静态成员函数不与任何特定对象绑定，因此没有 <code>this</code> 指针。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h4 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h4><ol>
+<li><p><strong>正确的用法</strong>：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">Box<span class="token operator">*</span> <span class="token function">get_address</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 返回当前对象的地址</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>解释</strong>：</p>
+<ul>
+<li>函数中 <code>this</code> 指针指向调用该函数的对象。</li>
+<li>返回 <code>this</code> 时即返回调用该函数的对象地址。</li>
+<li>这是一个有效的用法。</li>
+</ul>
+</li>
+<li><p><strong>错误的用法</strong>：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">Box<span class="token operator">*</span> <span class="token function">get_address</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 
+<span class="token punctuation">&#123;</span>
+    Box box<span class="token punctuation">;</span>
+    <span class="token keyword">this</span> <span class="token operator">=</span> <span class="token operator">&amp;</span>box<span class="token punctuation">;</span> <span class="token comment">// 错误: 赋值操作试图修改 `this`</span>
+    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>错误原因</strong>：</p>
+<ul>
+<li><code>this</code> 是一个常量指针，不能被赋值。</li>
+<li><code>this</code> 的作用是固定指向当前调用对象，任何试图修改 <code>this</code> 都会导致编译错误。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ul>
+<li><code>this</code> 指针的值是无法更改的，它始终指向当前对象。</li>
+<li>如果需要返回一个新对象的地址，应该直接返回新对象的地址而不是试图修改 <code>this</code>。</li>
+</ul>
+<p>正确示例：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">Box<span class="token operator">*</span> <span class="token function">create_new_box</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    Box<span class="token operator">*</span> box <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Box</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> box<span class="token punctuation">;</span> <span class="token comment">// 返回新对象的地址</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -450,7 +524,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://allenmirac.github.io/2023/06/22/shi-me-shi-chi-jiu-ceng-kuang-jia/">https://allenmirac.github.io/2023/06/22/shi-me-shi-chi-jiu-ceng-kuang-jia/</a>
+                    <a href="https://allenmirac.github.io/2024/12/19/cpp-de-this-zhi-zhen-bian-xi/">https://allenmirac.github.io/2024/12/19/cpp-de-this-zhi-zhen-bian-xi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -488,8 +562,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
-                                    <span class="chip bg-color">数据库</span>
+                                <a href="/tags/c/">
+                                    <span class="chip bg-color">c++</span>
                                 </a>
                             
                         </div>
@@ -568,17 +642,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2023/06/22/shi-jian-chuo-de-jian-dan-han-yi/">
+                <a href="/2024/12/19/cpp-de-this-zhi-zhen-bian-xi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="时间戳的简单含义">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="CPP 的this指针辨析">
                         
-                        <span class="card-title">时间戳的简单含义</span>
+                        <span class="card-title">CPP 的this指针辨析</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -588,22 +663,27 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-06-22
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-12-19
+                            </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            AllenMirac
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/c-%E5%9F%BA%E7%A1%80/" class="post-category">
+                                    c++基础
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
-                        <span class="chip bg-color">数据库</span>
+                    <a href="/tags/c/">
+                        <span class="chip bg-color">c++</span>
                     </a>
                     
                 </div>
@@ -617,13 +697,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/06/22/pai-xu-zhi-xi-er-pai-xu/">
+                <a href="/2024/12/16/li-jie-zheng-ze-hua-lai-fang-zhi-mo-xing-guo-ni-he-yi-ji-l1-zheng-ze-hua-de-mo-ni-guo-cheng/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="排序之希尔排序">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="理解正则化来防止模型过拟合以及L1正则化的模拟过程">
                         
-                        <span class="card-title">排序之希尔排序</span>
+                        <span class="card-title">理解正则化来防止模型过拟合以及L1正则化的模拟过程</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -634,12 +714,16 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-06-22
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-12-16
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            AllenMirac
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/DL%E5%9F%BA%E7%A1%80/" class="post-category">
+                                    DL基础
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -647,8 +731,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%B3%95%E5%AD%A6/">
-                        <span class="chip bg-color">法学</span>
+                    <a href="/tags/DL/">
+                        <span class="chip bg-color">DL</span>
                     </a>
                     
                 </div>
