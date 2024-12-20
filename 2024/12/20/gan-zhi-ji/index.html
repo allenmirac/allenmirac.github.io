@@ -1,0 +1,1383 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="感知机, AllenMirac">
+    <meta name="description" content="感知机重新学习了下感知机的基础，自己实现了一遍代码，手算了下面的更新参数的过程，对感知机模型的了解更深入了。感知机学习的对偶形式还没有看完。
+导师上次批评的基础是不是就是指这种，但是这种东西是否考虑的太深入了，不需要了解这么多内容，会用就可">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>感知机 | AllenMirac</title>
+    <link rel="icon" type="image/jpeg" href="/ZoRo.jpg">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/allen1.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">AllenMirac</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/allen1.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">AllenMirac</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/allenmirac" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/allenmirac" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">感知机</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/DL/">
+                                <span class="chip bg-color">DL</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/DL%E5%9F%BA%E7%A1%80/" class="post-category">
+                                DL基础
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2024-12-20
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2024-12-20
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    2.9k
+                </div>
+                
+
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="感知机"><a href="#感知机" class="headerlink" title="感知机"></a>感知机</h2><p>重新学习了下感知机的基础，自己实现了一遍代码，手算了下面的更新参数的过程，对感知机模型的了解更深入了。感知机学习的对偶形式还没有看完。</p>
+<p>导师上次批评的基础是不是就是指这种，但是这种东西是否考虑的太深入了，不需要了解这么多内容，会用就可以，所以在犹豫是否像下面这样更新《统计学习方法》后续章节（整理要花好久的时间( •̀ ω •́ )✧）。论文任务依旧在压着(┬┬﹏┬┬)，还是继续快速看完书，论文也不能落下&lt;(￣︶￣)↗[GO!]</p>
+<p>感知机学习是机器学习中的一种经典算法，用于线性可分数据的分类，是二分类的线性分类模型，输入时实例的特征向量，输出可以取+1 和 -1二值。</p>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><p>以下是一个简单的例子，帮助理解感知机学习的过程：</p>
+<p>假设我们有一个二维平面上的数据集，分为两类：</p>
+<ul>
+<li>类别 +1 （正类）：点 (2,3) 和 (3,4)</li>
+<li>类别 −1 （负类）：点 (1,1) 和 (2,1)</li>
+</ul>
+<p>目标是学习一个直线分类器，将这两类分开。感知机模型的假设形式为：</p>
+<script type="math/tex; mode=display">y = \text{sign}(w_1x_1 + w_2x_2 + b)</script><p>其中：</p>
+<ul>
+<li><script type="math/tex">w_1, w_2</script> 是感知机的权重；</li>
+<li><script type="math/tex">b</script> 是偏置；</li>
+<li><script type="math/tex">{sign}(\cdot)</script> 是符号函数，用于确定分类。</li>
+</ul>
+<hr>
+<h3 id="感知机学习步骤"><a href="#感知机学习步骤" class="headerlink" title="感知机学习步骤"></a><strong>感知机学习步骤</strong></h3><ol>
+<li><p><strong>初始化参数</strong><br> 初始化<script type="math/tex">w_1 = 0, w_2 = 0, b = 0</script>。</p>
+</li>
+<li><p><strong>遍历样本并更新参数</strong><br> 对于每个样本 <script type="math/tex">(x_1, x_2)</script> 和其对应的标签 y，根据以下规则更新权重和偏置：</p>
+<script type="math/tex; mode=display">w \leftarrow w + \eta y x</script><script type="math/tex; mode=display">b \leftarrow b + \eta y</script><p>其中，<script type="math/tex">\eta</script> 是学习率（假设<script type="math/tex">\eta = 1</script>）。</p>
+</li>
+<li><p><strong>循环更新直到分类正确</strong><br> 不断重复以上更新，直到所有样本分类正确。</p>
+</li>
+</ol>
+<h3 id="第1轮更新"><a href="#第1轮更新" class="headerlink" title="第1轮更新"></a>第1轮更新</h3><p>初始参数：</p>
+<script type="math/tex; mode=display">w_1 = 0, \; w_2 = 0, \; b = 0</script><p>遍历样本并逐一更新：</p>
+<ol>
+<li><p><strong>样本 (2,3),y=+1：</strong></p>
+<p>分类错误，更新参数：</p>
+<script type="math/tex; mode=display">w_1 = 0 + 1 \cdot 2 = 2, w_2 = 0 + 1 \cdot 3 = 3, b = 0 + 1 \cdot 1 = 1</script></li>
+<li><p><strong>样本 (1,1),y=−1：</strong></p>
+<p>z=2⋅1+3⋅1+1=6, y′=sign(6)=+1</p>
+<p>预测错误，更新参数：</p>
+<script type="math/tex; mode=display">w_1\leftarrow w_1 + \eta y x_1 = 2 + 1 \cdot (-1) \cdot 1 = 1</script><script type="math/tex; mode=display">w_2\leftarrow w_2 + \eta y x_2 = 3 + 1 \cdot (-1) \cdot 1 = 2</script><script type="math/tex; mode=display">b \leftarrow b + \eta y = 1 + 1 \cdot (-1) = 0</script><p>更新后参数为：</p>
+<script type="math/tex; mode=display">w_1 = 1, \; w_2 = 2, \; b = 0</script></li>
+<li><p><strong>样本 (3,4),y=+1(3, 4), y = +1：</strong></p>
+<p>z=1⋅3+2⋅4+0=11, y′=sign(11)=+1</p>
+<p>预测正确，无需更新。</p>
+</li>
+<li><p><strong>样本 (2,1),y=−1(2, 1), y = -1：</strong></p>
+<p>z=1⋅2+2⋅1+0=4, y′=sign(4)=+1</p>
+<p>预测错误，更新参数：</p>
+<script type="math/tex; mode=display">w_1 \leftarrow w_1 + \eta y x_1 = 1 + 1 \cdot (-1) \cdot 2 = -1</script><script type="math/tex; mode=display">w_2 \leftarrow w_2 + \eta y x_2 = 2 + 1 \cdot (-1) \cdot 1 = 1</script><script type="math/tex; mode=display">b \leftarrow b + \eta y = 0 + 1 \cdot (-1) = -1</script><p>更新后参数为：</p>
+<script type="math/tex; mode=display">w_1 = -1, \; w_2 = 1, \; b = -1</script></li>
+</ol>
+<hr>
+<h3 id="第2轮遍历"><a href="#第2轮遍历" class="headerlink" title="第2轮遍历"></a><strong>第2轮遍历</strong></h3><ol>
+<li><p><strong>样本 (2,3),y=+1(2, 3), y = +1：</strong></p>
+<script type="math/tex; mode=display">z = -1 \cdot 2 + 1 \cdot 3 - 1 = 0, \quad y' = \text{sign}(0) = +1</script><p>预测正确，无需更新。</p>
+</li>
+<li><p><strong>样本 (1,1),y=−1(1, 1), y = -1：</strong></p>
+<script type="math/tex; mode=display">z = -1 \cdot 1 + 1 \cdot 1 - 1 = -1, \quad y' = \text{sign}(-1) = -1</script><p>预测正确，无需更新。</p>
+</li>
+<li><p><strong>样本 (3,4),y=+1(3, 4), y = +1：</strong></p>
+<script type="math/tex; mode=display">z = -1 \cdot 3 + 1 \cdot 4 - 1 = 0, \quad y' = \text{sign}(0) = +1</script><p>预测正确，无需更新。</p>
+</li>
+<li><p><strong>样本 (2,1),y=−1(2, 1), y = -1：</strong></p>
+<script type="math/tex; mode=display">z = -1 \cdot 2 + 1 \cdot 1 - 1 = -2, \quad y' = \text{sign}(-2) = -1</script><p>预测正确，无需更新。</p>
+</li>
+</ol>
+<p>在 <strong>默认情况下</strong>，当 z=0 时，约定 sign(0)=+1。</p>
+<hr>
+<h3 id="分类器收敛"><a href="#分类器收敛" class="headerlink" title="分类器收敛"></a><strong>分类器收敛</strong></h3><p>在第2轮遍历后，所有样本均分类正确，最终分类器参数为：</p>
+<script type="math/tex; mode=display">w_1 = -1, \; w_2 = 1, \; b = -1</script><p><strong>最终分类器：</strong></p>
+<script type="math/tex; mode=display">y = \text{sign}(-x_1 + x_2 - 1)</script><p>对应的分割线为：</p>
+<script type="math/tex; mode=display">x_2 - x_1 - 1 = 0 \quad \text{或} \quad x_2 = x_1 + 1</script><h3 id="更新权重过程的理解"><a href="#更新权重过程的理解" class="headerlink" title="更新权重过程的理解"></a>更新权重过程的理解</h3><p>更新权重的过程实际上是将分类超平面向误分类点的一侧移动，以减少误分类样本的符号距离。具体来说：</p>
+<ol>
+<li><p><strong>误分类点的位置</strong>：</p>
+<ul>
+<li>对于一个误分类点，其符号距离 <script type="math/tex">y_i (\mathbf{w}^\top \mathbf{x}_i + b) \leq 0</script>。这意味着当前分类超平面无法正确划分该点（例如，正类点在超平面负侧，或负类点在超平面正侧）。</li>
+</ul>
+</li>
+<li><p><strong>权重更新公式</strong>：</p>
+<ul>
+<li>更新公式为： <script type="math/tex">\mathbf{w} \leftarrow \mathbf{w} + \eta y_i \mathbf{x}_i</script> 其中，η\etaη 是学习率，<script type="math/tex">y_i</script>是标签，<script type="math/tex">\mathbf{x}_i</script> 是误分类样本的特征。</li>
+</ul>
+</li>
+<li><p><strong>更新的直观含义</strong>：</p>
+<ul>
+<li>如果<script type="math/tex">y_i = 1</script>（正类点被误分类为负类），更新方向为正向移动<script type="math/tex">\mathbf{x}_i</script>，将超平面向该点靠近。</li>
+<li>如果 <script type="math/tex">y_i = -1</script>（负类点被误分类为正类），更新方向为负向移动 <script type="math/tex">\mathbf{x}_i</script>，使超平面远离该点。</li>
+</ul>
+<p>这种调整使得误分类点在更新后更接近正确侧（即符号距离 <script type="math/tex">y_i (\mathbf{w}^\top \mathbf{x}_i + b)</script> 增大）。</p>
+</li>
+<li><p><strong>偏置的作用</strong>：</p>
+<ul>
+<li><p>偏置更新公式为：</p>
+<script type="math/tex; mode=display">b \leftarrow b + \eta y_i</script><ul>
+<li>这相当于平移超平面整体，而不改变其方向。</li>
+<li>偏置调整确保误分类点在更新后更加贴近正确分类侧。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>整体效果</strong>：</p>
+<ul>
+<li>权重更新推动超平面朝向修正误分类点的方向移动。</li>
+<li>通过逐步调整，最终的分类超平面会使误分类样本越来越少，直到所有样本正确分类（或达到停止条件）。</li>
+</ul>
+</li>
+</ol>
+<h3 id="学习策略损失函数"><a href="#学习策略损失函数" class="headerlink" title="学习策略损失函数"></a>学习策略损失函数</h3><p>在上面的例子中，并没有使用损失函数。在感知机学习中，损失函数的选择决定了学习策略的优化目标。感知机使用的是<strong>感知机损失函数</strong>，这是专为线性分类问题设计的一种简单损失函数。</p>
+<p><strong>第一种损失函数</strong>：</p>
+<p>感知机的损失函数为：</p>
+<script type="math/tex; mode=display">L(w, b) = -\sum_{i \in \mathcal{M}} y_i \cdot (w^\top x_i + b)</script><p>其中：</p>
+<ul>
+<li>M是所有被分类错误的样本集合；</li>
+<li><script type="math/tex">y_i</script>是样本 i 的真实标签；</li>
+<li><script type="math/tex">w^\top x_i + b</script>是样本的预测得分。</li>
+</ul>
+<p><strong>关键点：</strong>只有分类错误的样本才会产生损失。</p>
+<p><strong>第二种损失函数</strong>：</p>
+<p>如果感知机的损失函数是所有误分类点到超平面 S的总距离，那么损失函数的形式会与几何距离相关。</p>
+<h3 id="基于误分类点的总距离损失函数"><a href="#基于误分类点的总距离损失函数" class="headerlink" title="基于误分类点的总距离损失函数"></a><strong>基于误分类点的总距离损失函数</strong></h3><p>如果损失函数是误分类点到超平面的总距离，则可以写为：</p>
+<script type="math/tex; mode=display">L(w, b) = \sum_{i \in \mathcal{M}} \frac{-y_i (w^\top x_i + b)}{\|w\|},</script><p>其中：</p>
+<ul>
+<li>M 是所有被误分类的样本集合；</li>
+<li><script type="math/tex">y_i (w^\top x_i + b) \leq 0</script>表示样本 i 被误分类；</li>
+<li>分子部分 <script type="math/tex">-y_i (w^\top x_i + b)</script>是点 <script type="math/tex">x_i</script> 到超平面的符号距离；</li>
+<li>分母 <script type="math/tex">\|w\|</script> 使得距离规范化为几何距离。</li>
+</ul>
+<h3 id="最终代码实现"><a href="#最终代码实现" class="headerlink" title="最终代码实现"></a>最终代码实现</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+
+<span class="token keyword">class</span> <span class="token class-name">PerceptronWithPerceptronLoss</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> input_dim<span class="token punctuation">,</span> learning_rate<span class="token operator">=</span><span class="token number">0.01</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>w <span class="token operator">=</span> np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randn<span class="token punctuation">(</span>input_dim<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">0.01</span> <span class="token comment"># 初始化随机权重</span>
+        self<span class="token punctuation">.</span>b <span class="token operator">=</span> np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randn<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">0.01</span> <span class="token comment"># 随机初始化偏置</span>
+        self<span class="token punctuation">.</span>lr <span class="token operator">=</span> <span class="token number">0.01</span>
+    
+    <span class="token comment"># margin: 即使所有样本都被正确分类，也会进行少量训练迭代</span>
+    <span class="token comment"># 这种改动可以让模型在早期训练阶段对靠近分界面的样本进行优化</span>
+    <span class="token comment"># 提升模型的决策边界稳定性。</span>
+    <span class="token keyword">def</span> <span class="token function">compute_loss</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> X<span class="token punctuation">,</span> y<span class="token punctuation">,</span> margin<span class="token operator">=</span><span class="token number">1e-5</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        score <span class="token operator">=</span> y <span class="token operator">*</span> <span class="token punctuation">(</span>np<span class="token punctuation">.</span>dot<span class="token punctuation">(</span>X<span class="token punctuation">,</span> self<span class="token punctuation">.</span>w<span class="token punctuation">)</span><span class="token operator">+</span>self<span class="token punctuation">.</span>b<span class="token punctuation">)</span>
+        mask <span class="token operator">=</span> score <span class="token operator">&lt;=</span> margin
+        total_loss <span class="token operator">=</span> <span class="token operator">-</span>np<span class="token punctuation">.</span><span class="token builtin">sum</span><span class="token punctuation">(</span>score<span class="token punctuation">[</span>mask<span class="token punctuation">]</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> total_loss<span class="token punctuation">,</span> mask
+    
+    <span class="token keyword">def</span> <span class="token function">update_parameters</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> X<span class="token punctuation">,</span> y<span class="token punctuation">,</span> mask<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        misclassified_X <span class="token operator">=</span> X<span class="token punctuation">[</span>mask<span class="token punctuation">]</span>
+        misclassified_y <span class="token operator">=</span> y<span class="token punctuation">[</span>mask<span class="token punctuation">]</span>
+        self<span class="token punctuation">.</span>w <span class="token operator">+=</span> np<span class="token punctuation">.</span><span class="token builtin">sum</span><span class="token punctuation">(</span>misclassified_y<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span> <span class="token boolean">None</span><span class="token punctuation">]</span><span class="token operator">*</span>misclassified_X<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">*</span> self<span class="token punctuation">.</span>lr
+        self<span class="token punctuation">.</span>b <span class="token operator">+=</span> np<span class="token punctuation">.</span><span class="token builtin">sum</span><span class="token punctuation">(</span>misclassified_y<span class="token punctuation">)</span><span class="token operator">*</span>self<span class="token punctuation">.</span>lr
+        <span class="token keyword">print</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>w<span class="token punctuation">,</span> self<span class="token punctuation">.</span>b<span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">fit</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> X<span class="token punctuation">,</span> y<span class="token punctuation">,</span> epochs<span class="token operator">=</span><span class="token number">100</span><span class="token punctuation">,</span> tolerance<span class="token operator">=</span><span class="token number">1e-4</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        prev_loss <span class="token operator">=</span> <span class="token builtin">float</span><span class="token punctuation">(</span><span class="token string">'inf'</span><span class="token punctuation">)</span>
+        <span class="token keyword">for</span> epoch <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>epochs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            loss<span class="token punctuation">,</span> mask <span class="token operator">=</span> self<span class="token punctuation">.</span>compute_loss<span class="token punctuation">(</span>X<span class="token punctuation">,</span> y<span class="token punctuation">)</span>
+            <span class="token keyword">if</span> loss <span class="token operator">&lt;</span> tolerance <span class="token keyword">or</span> <span class="token builtin">abs</span><span class="token punctuation">(</span>prev_loss <span class="token operator">-</span> loss<span class="token punctuation">)</span> <span class="token operator">&lt;</span> tolerance<span class="token punctuation">:</span>
+                <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"Converged at epoch </span><span class="token interpolation"><span class="token punctuation">&#123;</span>epoch<span class="token punctuation">&#125;</span></span><span class="token string">"</span></span><span class="token punctuation">)</span>
+                <span class="token keyword">break</span>
+            self<span class="token punctuation">.</span>update_parameters<span class="token punctuation">(</span>X<span class="token punctuation">,</span> y<span class="token punctuation">,</span> mask<span class="token punctuation">)</span>
+            prev_loss <span class="token operator">=</span> loss
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"Epoch </span><span class="token interpolation"><span class="token punctuation">&#123;</span>epoch<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">&#125;</span></span><span class="token string">, Loss </span><span class="token interpolation"><span class="token punctuation">&#123;</span>loss<span class="token punctuation">&#125;</span></span><span class="token string">"</span></span><span class="token punctuation">)</span>
+    <span class="token keyword">def</span> <span class="token function">predict</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> X<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> np<span class="token punctuation">.</span>sign<span class="token punctuation">(</span>np<span class="token punctuation">.</span>dot<span class="token punctuation">(</span>X<span class="token punctuation">,</span> self<span class="token punctuation">.</span>w<span class="token punctuation">)</span><span class="token operator">+</span>self<span class="token punctuation">.</span>b<span class="token punctuation">)</span>
+    
+
+X <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+y <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+model <span class="token operator">=</span> PerceptronWithPerceptronLoss<span class="token punctuation">(</span>input_dim<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span> learning_rate<span class="token operator">=</span><span class="token number">0.01</span><span class="token punctuation">)</span>
+model<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>X<span class="token punctuation">,</span> y<span class="token punctuation">,</span> epochs<span class="token operator">=</span><span class="token number">50</span><span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Final weights:"</span><span class="token punctuation">,</span> model<span class="token punctuation">.</span>w<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Final bias:"</span><span class="token punctuation">,</span> model<span class="token punctuation">.</span>b<span class="token punctuation">)</span>
+
+predicts <span class="token operator">=</span> model<span class="token punctuation">.</span>predict<span class="token punctuation">(</span>X<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Predict:"</span><span class="token punctuation">,</span> predicts<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这个实现对原始感知机算法做了一些改进，尤其是引入了 <strong>margin 参数</strong> 来优化模型训练。这可以在训练初期增强模型对靠近决策边界的样本的敏感性，使得模型收敛到更稳健的决策边界。以下是代码运行的关键点和解释：</p>
+<hr>
+<h4 id="关键点解析"><a href="#关键点解析" class="headerlink" title="关键点解析"></a><strong>关键点解析</strong></h4><h5 id="1-随机初始化权重和偏置"><a href="#1-随机初始化权重和偏置" class="headerlink" title="1. 随机初始化权重和偏置"></a>1. <strong>随机初始化权重和偏置</strong></h5><pre class="line-numbers language-python" data-language="python"><code class="language-python">self<span class="token punctuation">.</span>w <span class="token operator">=</span> np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randn<span class="token punctuation">(</span>input_dim<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">0.01</span>
+self<span class="token punctuation">.</span>b <span class="token operator">=</span> np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randn<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">0.01</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ul>
+<li>权重 w 和偏置 b被随机初始化为较小值，通常服从标准正态分布再乘以 0.01。</li>
+<li>这样的初始化避免了原始实现中全零初始化导致的梯度为零问题，同时确保初始状态具有足够的小扰动。</li>
+</ul>
+<hr>
+<h5 id="2-加入-margin-参数"><a href="#2-加入-margin-参数" class="headerlink" title="2. 加入 margin 参数"></a>2. <strong>加入 margin 参数</strong></h5><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">compute_loss</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> X<span class="token punctuation">,</span> y<span class="token punctuation">,</span> margin<span class="token operator">=</span><span class="token number">1e-5</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    score <span class="token operator">=</span> y <span class="token operator">*</span> <span class="token punctuation">(</span>np<span class="token punctuation">.</span>dot<span class="token punctuation">(</span>X<span class="token punctuation">,</span> self<span class="token punctuation">.</span>w<span class="token punctuation">)</span> <span class="token operator">+</span> self<span class="token punctuation">.</span>b<span class="token punctuation">)</span> <span class="token comment"># 误分类之后才会出现负数的情况</span>
+    mask <span class="token operator">=</span> score <span class="token operator">&lt;=</span> margin <span class="token comment"># 表示误分类的位置</span>
+    total_loss <span class="token operator">=</span> <span class="token operator">-</span>np<span class="token punctuation">.</span><span class="token builtin">sum</span><span class="token punctuation">(</span>score<span class="token punctuation">[</span>mask<span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> total_loss<span class="token punctuation">,</span> mask<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>作用：<ul>
+<li>即使所有样本都被正确分类（score &gt; 0），margin 的存在确保决策边界仍然对靠近边界的样本进行优化。</li>
+<li>这可以提升模型的泛化能力，使得决策边界更加稳健。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h5 id="3-参数更新"><a href="#3-参数更新" class="headerlink" title="3. 参数更新"></a>3. <strong>参数更新</strong></h5><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">update_parameters</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> X<span class="token punctuation">,</span> y<span class="token punctuation">,</span> mask<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    misclassified_X <span class="token operator">=</span> X<span class="token punctuation">[</span>mask<span class="token punctuation">]</span>
+    misclassified_y <span class="token operator">=</span> y<span class="token punctuation">[</span>mask<span class="token punctuation">]</span>
+    self<span class="token punctuation">.</span>w <span class="token operator">+=</span> np<span class="token punctuation">.</span><span class="token builtin">sum</span><span class="token punctuation">(</span>misclassified_y<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span> <span class="token boolean">None</span><span class="token punctuation">]</span> <span class="token operator">*</span> misclassified_X<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">*</span> self<span class="token punctuation">.</span>lr
+    self<span class="token punctuation">.</span>b <span class="token operator">+=</span> np<span class="token punctuation">.</span><span class="token builtin">sum</span><span class="token punctuation">(</span>misclassified_y<span class="token punctuation">)</span> <span class="token operator">*</span> self<span class="token punctuation">.</span>lr<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li><strong>作用：</strong><ul>
+<li>仅对误分类或边界附近的样本（由 maskmask 定义）进行权重和偏置更新，提升计算效率。</li>
+<li>更新公式遵循感知机规则，即朝误分类样本方向调整决策边界。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h5 id="4-训练收敛条件"><a href="#4-训练收敛条件" class="headerlink" title="4. 训练收敛条件"></a>4. <strong>训练收敛条件</strong></h5><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">if</span> loss <span class="token operator">&lt;</span> tolerance <span class="token keyword">or</span> <span class="token builtin">abs</span><span class="token punctuation">(</span>prev_loss <span class="token operator">-</span> loss<span class="token punctuation">)</span> <span class="token operator">&lt;</span> tolerance<span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"Converged at epoch </span><span class="token interpolation"><span class="token punctuation">&#123;</span>epoch<span class="token punctuation">&#125;</span></span><span class="token string">"</span></span><span class="token punctuation">)</span>
+    <span class="token keyword">break</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>作用：<ul>
+<li>当总损失 loss低于设定阈值 tolerance，或者当前损失和上一轮损失的变化幅度小于阈值时，认为模型已收敛。</li>
+<li>这种方法可以防止训练陷入无限迭代。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h5 id="5-预测"><a href="#5-预测" class="headerlink" title="5. 预测"></a>5. <strong>预测</strong></h5><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">predict</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> X<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> np<span class="token punctuation">.</span>sign<span class="token punctuation">(</span>np<span class="token punctuation">.</span>dot<span class="token punctuation">(</span>X<span class="token punctuation">,</span> self<span class="token punctuation">.</span>w<span class="token punctuation">)</span> <span class="token operator">+</span> self<span class="token punctuation">.</span>b<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ul>
+<li>作用：<ul>
+<li>根据当前权重和偏置计算每个样本的得分，并通过符号函数 sign(z) 将得分转换为类别标签。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="运行结果分析"><a href="#运行结果分析" class="headerlink" title="运行结果分析"></a><strong>运行结果分析</strong></h4><ol>
+<li><p><strong>初始权重和偏置：</strong> 随机初始化导致每次运行结果可能不同，但 margin 的引入确保即便初始值不同，最终模型的表现会较为稳健。</p>
+</li>
+<li><p><strong>训练过程：</strong></p>
+<ul>
+<li>输出的权重 w 和偏置 b 会逐渐调整，直到所有样本正确分类，或者靠近边界的样本满足 margin 要求。</li>
+<li>如果所有样本早期就满足要求，训练过程可能会提前终止。</li>
+</ul>
+</li>
+<li><p><strong>预测结果：</strong></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">Predict<span class="token punctuation">:</span> <span class="token punctuation">[</span> <span class="token number">1.</span> <span class="token operator">-</span><span class="token number">1.</span>  <span class="token number">1.</span> <span class="token operator">-</span><span class="token number">1.</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li>说明模型成功学习到数据的线性分割规则。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h4 id="改进后的优点"><a href="#改进后的优点" class="headerlink" title="改进后的优点"></a><strong>改进后的优点</strong></h4><ul>
+<li><strong>稳健性提升：</strong> margin 确保模型在早期对靠近决策边界的样本进行优化，增强了分界面的鲁棒性。</li>
+<li><strong>防止陷入局部最优：</strong> 随机初始化避免权重和偏置均为零时模型无法更新的问题。</li>
+<li><strong>高效性：</strong> 每次仅更新误分类样本，有效减少无关计算。</li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h3><ul>
+<li><strong>每次随机初始化会导致训练结果不同，主要因为初始参数影响了优化路径和决策边界的位置。</strong></li>
+<li><strong>可以通过固定随机种子、正则化、多次训练取平均等方法减小这种随机性。</strong></li>
+<li>如果数据线性可分，不同的随机初始化只会影响最终分界面的具体位置，但所有分界面都能正确分类数据。如果数据不可线性分割，随机初始化的影响会更大，因此可以考虑正则化或改用其他方法。</li>
+</ul>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">AllenMirac</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://allenmirac.github.io/2024/12/20/gan-zhi-ji/">https://allenmirac.github.io/2024/12/20/gan-zhi-ji/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">AllenMirac</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/DL/">
+                                    <span class="chip bg-color">DL</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="qq,qzone,wechat,weibo,douban,linkedin,twitter,facebook,google" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2024/12/20/gan-zhi-ji/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="感知机">
+                        
+                        <span class="card-title">感知机</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-12-20
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/DL%E5%9F%BA%E7%A1%80/" class="post-category">
+                                    DL基础
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/DL/">
+                        <span class="chip bg-color">DL</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2024/12/19/cpp-de-this-zhi-zhen-bian-xi/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="CPP 的this指针辨析">
+                        
+                        <span class="card-title">CPP 的this指针辨析</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-12-19
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/c-%E5%9F%BA%E7%A1%80/" class="post-category">
+                                    c++基础
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/c/">
+                        <span class="chip bg-color">c++</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE' || selection.getRangeAt(0).commonAncestorContainer.nodeName === 'CODE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: AllenMirac<br />'
+            + '文章作者: AllenMirac<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('1'),
+            headingSelector: 'h1, h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+    });
+</script>
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2023-2024</span>
+            
+            <a href="/about" target="_blank">AllenMirac</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+                <span id="translate">|&nbsp;繁/简：</span><a id="translateLink" href="javascript:translatePage();">繁</a>
+            
+            <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">126.6k</span>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/allenmirac" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:2049829115@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2049829115" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 2049829115" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+        <script type="text/javascript" src="/js/tw_cn.js"></script>
+        <script type="text/javascript">
+          var defaultEncoding = 2; //网站编写字体是否繁体，1-繁体，2-简体
+          var translateDelay = 0; //延迟时间,若不在前, 要设定延迟翻译时间, 如100表示100ms,默认为0
+          var cookieDomain = "https://allenmirac.github.io"; //Cookie地址, 一定要设定, 通常为你的网址
+          var msgToTraditionalChinese = "繁"; //此处可以更改为你想要显示的文字
+          var msgToSimplifiedChinese = "简"; //同上，但两处均不建议更改
+          var translateButtonId = "translateLink"; //默认互换id
+          translateInitilization();
+        </script>
+    
+    
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
