@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>组合数学知识点概括</title>
+      <link href="/2024/12/24/zu-he-shu-xue-zhi-shi-dian-gai-gua/"/>
+      <url>/2024/12/24/zu-he-shu-xue-zhi-shi-dian-gai-gua/</url>
+      
+        <content type="html"><![CDATA[<h1 id="组合数学知识点概括"><a href="#组合数学知识点概括" class="headerlink" title="组合数学知识点概括"></a>组合数学知识点概括</h1><p>明天下午组合数学考试，整理一些知识点，课本是：组合数学(第5版)卢开澄卢华明编著</p><h2 id="第一章排列与组合"><a href="#第一章排列与组合" class="headerlink" title="第一章排列与组合"></a>第一章排列与组合</h2><p>允许重复的组合 P20</p><p><img src="https://s2.loli.net/2024/12/24/bKNise2JQUvVDq8.png" alt=""></p><p>线性方程组整数解个数 P21</p><p><img src="https://s2.loli.net/2024/12/24/MuFOdAf4bvs35St.png" alt=""></p><p>圆桌排列的公式，例题，下面的公式有误</p><p><img src="https://s2.loli.net/2024/12/24/lVPbg52KCoU9Wkx.png" alt=""></p><p>例题2</p><p><img src="https://s2.loli.net/2024/12/24/ElPqg9ISHNTGOzU.png" alt=""></p><p>字典序法，画树状图或者使用公式</p><p>数学归纳法证明题，例题</p><p><img src="https://s2.loli.net/2024/12/24/6hQwnyHCfJN9uze.png" alt=""></p><h2 id="第二章递推关系和母函数"><a href="#第二章递推关系和母函数" class="headerlink" title="第二章递推关系和母函数"></a>第二章递推关系和母函数</h2><p>这里题型和内容比较难，需要多做题，熟悉各种题型（给出已知无穷序列求母函数，已知母函数求递推关系或是求它的第一二项a0、a1，递推关系等号右边等于0，递推关系等号右边等于常数，递推关系等号右边等于几的n次方的形式）</p><p>母函数定义 P46</p><p><img src="https://s2.loli.net/2024/12/24/5HiGPRS1jbtm8ON.png" alt=""></p><p>使用的泰勒公式  P47</p><p><img src="https://s2.loli.net/2024/12/24/82Jd3olvnrkFb5V.png" alt=""></p><p>线性常系数齐次递推关系 P55</p><p><img src="https://s2.loli.net/2024/12/24/p2IcMR7eAPzGbuB.png" alt=""></p><p>三种：不同实数根、不同复数根、二重根</p><p>常系数非齐次递推关系 P62、 例题2-17，2-18 P65</p><p><img src="https://s2.loli.net/2024/12/24/bYihmWd26uZ7zO1.png" alt=""></p><p>第一第二类 Strling 公式 P102</p><p><img src="https://s2.loli.net/2024/12/24/yJcaG3PUobHuYRL.png" alt=""></p><p>常用性质：理解记忆（比如第六个性质的证明） P102</p><p><img src="https://s2.loli.net/2024/12/24/CAfZv9qdOaFBtSX.png" alt=""></p><p>上面第六个性质的证明</p><p><img src="https://s2.loli.net/2024/12/24/s9tfewF7ijkvqNR.png" alt=""></p><p>第二类Strling数满足的递推关系 P103</p><p><img src="https://s2.loli.net/2024/12/24/j3t9cNUKbRBanHg.png" alt=""></p><h2 id="第三章容斥原理和鸽巢原理"><a href="#第三章容斥原理和鸽巢原理" class="headerlink" title="第三章容斥原理和鸽巢原理"></a>第三章容斥原理和鸽巢原理</h2><p>容斥原理：韦恩图，<script type="math/tex">A_1, A_2, ...</script>将这些集合的绝对值写出来，交集也写出来，然后画图。被整除的数的数目的注意要留下最小公约数，比如10000能被4和6整除的数的数目：10000/(4<em>6/2)=833（向下取整，floor(10000/(4\</em>6/2))）.</p><p>例题：</p><p><img src="https://s2.loli.net/2024/12/24/wzy8lLpUXoMRWsB.png" alt=""></p><p>鸽巢原理：n+1只鸽子飞向n个鸽巢，一定存在两只鸽子飞向了同一个鸽巢。先划分好集合，可以按个位数、余数、奇偶数……</p><p>证明题很难，如：</p><p><img src="https://s2.loli.net/2024/12/24/fU7L53CTtDMZubE.png" alt="容斥原理证明题"></p><p>棋盘多项式和有限制条件的排列 P130</p><p><img src="https://s2.loli.net/2024/12/24/FfqoxTQbGR1WiDt.png" alt="棋盘多项式的三个公式"></p><p>一些可以手动推导的棋盘多项式 P130</p><p><img src="https://s2.loli.net/2024/12/24/wi4mStejdbYvu7X.png" alt=""></p><p>棋盘多项式的第四个公式：简化计算 P131</p><p><img src="https://s2.loli.net/2024/12/24/NMEPrcbtdZTjWSI.png" alt=""></p><p>有禁区的排列</p><p><img src="https://s2.loli.net/2024/12/24/O46Xbmswk9oayS8.png" alt=""></p><p>例如：<script type="math/tex">1+4x+4x^2+x^3</script>，方案数是：3!-4*2!+4*1!-0!=1种</p><h2 id="第四章Burnside引理和Poyla定理"><a href="#第四章Burnside引理和Poyla定理" class="headerlink" title="第四章Burnside引理和Poyla定理"></a>第四章Burnside引理和Poyla定理</h2><p>前面群和域的概念很难理解</p><p>Poyla定理 P186</p><p><img src="https://s2.loli.net/2024/12/24/pMyVdvoSO1Tfwzt.png" alt=""></p><p>例题，不好理解：</p><p><img src="https://s2.loli.net/2024/12/24/OMNQqZKPBIoearn.png" alt=""></p><h2 id="第五章区组设计"><a href="#第五章区组设计" class="headerlink" title="第五章区组设计"></a>第五章区组设计</h2><p>拉丁方与正交拉丁方，构建正交拉丁方的过程（写出加法和乘法三线表，注意取余操作） P205</p><p><img src="https://s2.loli.net/2024/12/24/tCsZLSEBrMya3qg.png" alt=""></p><p>BIBD，均匀不完全的区组设计，记住两个公式</p><p><img src="https://s2.loli.net/2024/12/24/8M93FiowOgcHrDY.png" alt=""></p><p>每个条件的首字母含义：</p><ol><li>b - <strong>Blocks（区组数）</strong>：区组的总数。</li><li>v - <strong>Varieties（处理数）</strong>：实验中的不同处理种类数目。</li><li>r - <strong>Repetition（重复次数）</strong>：每个处理在所有区组中的出现次数。</li><li>k - <strong>Keys（区组大小）</strong>：每个区组中分配的处理数量。</li><li>λ - <strong>Links（组合频率）</strong>：每对处理组合在区组中共同出现的次数。</li></ol><p>第一个公式代表元素出现的总和 </p><h2 id="资料"><a href="#资料" class="headerlink" title="资料"></a>资料</h2><p>[<a href="https://www.cnblogs.com/mooleetzi/p/11330256.html">组合数学常用公式总结</a>]</p><p>[<a href="https://github.com/allenmirac/StudyinDailyLife">组合数学(第5版)卢开澄卢华明编著</a>]</p><p>[<a href="https://github.com/allenmirac/StudyinDailyLife">组合数学课后习题及历年试题思路与答案</a>]</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 组合数学知识点概括 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 组合数学 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>感知机</title>
       <link href="/2024/12/20/gan-zhi-ji/"/>
       <url>/2024/12/20/gan-zhi-ji/</url>
