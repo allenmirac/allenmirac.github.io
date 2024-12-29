@@ -4,17 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="C++_中explicit的作用及用法（虽然简单，但是还是有用的）, AllenMirac">
-    <meta name="description" content="
-
-
-目录
- C++explicit（官网的说法）
-explicit specifier
-C++explicit 清楚的说法（建议英文不好的从这里开始食用哦）
-explicit作用:
-explicit使用注意事项:
-C++explicit使">
+    <meta name="keywords" content="Linux文件描述符, AllenMirac">
+    <meta name="description" content="Linux文件描述符Linux 系统中，把一切都看做是文件，当进程打开现有文件或创建新文件时，内核向进程返回一个文件描述符（file descriptor，fd）[1, 4]，在windows下面，这玩意儿叫file handle，句柄。
+">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -26,7 +18,7 @@ C++explicit使">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>C++_中explicit的作用及用法（虽然简单，但是还是有用的） | AllenMirac</title>
+    <title>Linux文件描述符 | AllenMirac</title>
     <link rel="icon" type="image/jpeg" href="/ZoRo.jpg">
     
 
@@ -348,7 +340,7 @@ C++explicit使">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">C++_中explicit的作用及用法（虽然简单，但是还是有用的）</h1>
+                    <h1 class="description center-align post-title">Linux文件描述符</h1>
                 </div>
             </div>
         </div>
@@ -372,14 +364,23 @@ C++explicit使">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/c/">
-                                <span class="chip bg-color">c++</span>
+                            <a href="/tags/Linux/">
+                                <span class="chip bg-color">Linux</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Linux%E5%9F%BA%E7%A1%80/" class="post-category">
+                                Linux基础
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -388,21 +389,21 @@ C++explicit使">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-06-22
+                    2024-12-29
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-06-22
+                    2024-12-29
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    886
+                    4.3k
                 </div>
                 
 
@@ -427,104 +428,166 @@ C++explicit使">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <meta name="referrer" content="no-referrer" />
+                <h2 id="Linux文件描述符"><a href="#Linux文件描述符" class="headerlink" title="Linux文件描述符"></a>Linux文件描述符</h2><p>Linux 系统中，把一切都看做是文件，当进程打开现有文件或创建新文件时，内核向进程返回一个文件描述符（file descriptor，fd）[1, 4]，在windows下面，这玩意儿叫file handle，句柄。</p>
+<p>文件描述符（file descriptor）就是内核为了高效管理这些已经被打开的文件所创建的索引，其是一个非负整数（通常是小整数），用于指代被打开的文件，所有执行I/O操作的系统调用都通过文件描述符来实现。同时还规定系统刚刚启动的时候，0是标准输入，1是标准输出，2是标准错误。这意味着如果此时去打开一个新的文件，它的文件描述符会是3，再打开一个文件文件描述符就是4……[2]。</p>
+<p>可以简单理解成系统维护的文件描述符表是一个数组，下标就是索引（文件描述符），数组内容就是一个个指向文件的指针（如0 -&gt; stdin，1 -&gt; stdout，2-&gt; stderr）。</p>
+<p>掌握它，有助于深入理解 Linux 文件系统、I/O 操作，<br>以及进程间通信（如<strong>管道（pipe）</strong>、<strong>套接字（Socket）</strong>）的实现，可以去Ubuntu系统中简单完成下面的例子。&lt;(￣︶￣)↗[GO!]</p>
+<h2 id="用户程序与内核交互的基本过程"><a href="#用户程序与内核交互的基本过程" class="headerlink" title="用户程序与内核交互的基本过程"></a>用户程序与内核交互的基本过程</h2><h3 id="1-打开文件"><a href="#1-打开文件" class="headerlink" title="1. 打开文件"></a>1. 打开文件</h3><p>当一个用户程序需要访问某个文件时，它会通过系统调用（如 open()）请求内核打开该文件。<br>内核会根据文件路径在文件系统中查找文件，并为该文件分配一个文件描述符。这个文件描述符是一个整数，表示该文件在内核中的唯一标识符。<br>内核维护着一个叫做 文件表（file table）的数据结构，文件描述符实际上就是对这个表中的一个条目的引用。</p>
+<h3 id="2-使用文件描述符读写文件"><a href="#2-使用文件描述符读写文件" class="headerlink" title="2. 使用文件描述符读写文件"></a>2. 使用文件描述符读写文件</h3><p>用户程序使用文件描述符来进行后续的文件操作。例如：<br>读取文件：用户程序调用 read(fd, …) 系统调用，内核通过文件描述符 fd 查找对应的文件，并从磁盘中读取数据，将数据返回给用户程序。<br>写入文件：用户程序调用 write(fd, …) 系统调用，内核通过文件描述符 fd 查找文件，向文件中写入数据。<br>文件描述符使得内核能够识别哪个文件需要被操作，从而实现文件与程序的交互。</p>
+<h3 id="3-文件描述符与文件表"><a href="#3-文件描述符与文件表" class="headerlink" title="3. 文件描述符与文件表"></a>3. 文件描述符与文件表</h3><p>内核通过文件描述符和文件表来管理已打开的文件。每个进程都有一个 文件描述符表，它是一个数组，其中每个索引对应一个文件描述符。这个文件描述符指向内核的文件表项，每个文件表项包含文件的状态信息（例如当前文件指针、文件权限等）。</p>
+<h3 id="4-文件操作的内核层处理"><a href="#4-文件操作的内核层处理" class="headerlink" title="4. 文件操作的内核层处理"></a>4. 文件操作的内核层处理</h3><p>用户程序和内核之间的交互通常通过系统调用来实现，文件描述符是这些系统调用的接口。内核会根据文件描述符执行相应的操作：<br>打开文件时，内核会创建或查找该文件的内核对象，并更新文件描述符。<br>对文件进行读写操作时，内核通过文件描述符在文件表中查找文件对象，然后执行 I/O 操作（例如读取磁盘或写入磁盘）。</p>
+<h3 id="5-关闭文件"><a href="#5-关闭文件" class="headerlink" title="5. 关闭文件"></a>5. 关闭文件</h3><p>当用户程序完成文件操作后，它会通过系统调用 close(fd) 来关闭文件描述符。<br>内核会释放文件描述符所占用的资源，关闭文件的文件表项，并更新进程的文件描述符表。</p>
+<h3 id="通过文件描述符交互的具体例子"><a href="#通过文件描述符交互的具体例子" class="headerlink" title="通过文件描述符交互的具体例子"></a>通过文件描述符交互的具体例子</h3><p>假设一个程序需要从文件中读取数据并进行处理，下面的示例代码：<br><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;fcntl.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;unistd.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
 
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> fd <span class="token operator">=</span> <span class="token function">open</span><span class="token punctuation">(</span><span class="token string">"example.txt"</span><span class="token punctuation">,</span> O_RDONLY<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>fd <span class="token operator">==</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token function">perror</span><span class="token punctuation">(</span><span class="token string">"open"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
 
-<p><strong>目录</strong></p>
-<p><a href="#%C2%A0C%2B%2Bexplicit%EF%BC%88%E5%AE%98%E7%BD%91%E7%9A%84%E8%AF%B4%E6%B3%95%EF%BC%89"> C++explicit（官网的说法）</a></p>
-<p><a href="#firstHeading">explicit specifier</a></p>
-<p><a href="#C%2B%2Bexplicit%20%E6%B8%85%E6%A5%9A%E7%9A%84%E8%AF%B4%E6%B3%95%EF%BC%88%E5%BB%BA%E8%AE%AE%E8%8B%B1%E6%96%87%E4%B8%8D%E5%A5%BD%E7%9A%84%E4%BB%8E%E8%BF%99%E9%87%8C%E5%BC%80%E5%A7%8B%E9%A3%9F%E7%94%A8%E5%93%A6%EF%BC%89">C++explicit 清楚的说法（建议英文不好的从这里开始食用哦）</a></p>
-<p><a href="#explicit%E4%BD%9C%E7%94%A8%3A">explicit作用:</a></p>
-<p><a href="#explicit%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9%3A">explicit使用注意事项:</a></p>
-<p><a href="#C%2B%2Bexplicit%E4%BD%BF%E7%94%A8%E7%9A%84%E4%BE%8B%E5%AD%90%EF%BC%88%E5%BB%BA%E8%AE%AE%E5%96%9C%E6%AC%A2%E8%87%AA%E5%B7%B1%E6%95%B2%E4%BB%A3%E7%A0%81%E5%AE%9E%E9%AA%8C%E7%9A%84%E4%BB%8E%E8%BF%99%E9%87%8C%E5%BC%80%E5%A7%8B%E9%A3%9F%E7%94%A8%E5%93%A6%EF%BC%89">C++explicit使用的例子（建议喜欢自己敲代码实验的从这里开始食用哦）</a></p>
-<p><a href="#%E4%BE%8B%E5%AD%90">例子</a></p>
-<p><a href="#%C2%A0%E4%B8%8A%E9%9D%A2%E4%B8%89%E8%A1%8C%E7%9A%84%E6%8A%A5%E9%94%99%E4%BF%A1%E6%81%AF%EF%BC%9A"> 上面三行的报错信息：</a></p>
-<p><a href="#%E6%80%BB%E7%BB%93">总结</a></p>
-<h1 id="C-explicit（官网的说法）"><a href="#C-explicit（官网的说法）" class="headerlink" title="C++explicit（官网的说法）"></a>C++explicit（官网的说法）</h1><h1 id="explicit-specifier"><a href="#explicit-specifier" class="headerlink" title="explicit specifier"></a><code>explicit</code> specifier</h1><p><code>**explicit**</code>(1)<code>**explicit (**</code> expression <code>**)**</code>(2)(since C++20)<br>expression-<a target="_blank" rel="noopener" href="https://en.cppreference.com/w/cpp/language/constant_expression#Converted_constant_expression">contextually converted constant expression of type bool</a></p>
-<p>1) Specifies that a constructor or conversion function (since C++11) or <a target="_blank" rel="noopener" href="https://en.cppreference.com/w/cpp/language/ctad">deduction guide</a> (since C++17) is explicit, that is, it cannot be used for <a target="_blank" rel="noopener" href="https://en.cppreference.com/w/cpp/language/implicit_cast">implicit conversions</a> and <a target="_blank" rel="noopener" href="https://en.cppreference.com/w/cpp/language/copy_initialization">copy-initialization</a>.</p>
-<p>翻译：指定构造函数或转换函数 (C++11 起) 或推导指南 (C++17 起) 是显式的，也就是说，它不能用于隐式转换和复制初始化。</p>
-<p>2) The explicit specifier may be used with a constant expression. The function is explicit if and only if that constant expression evaluates to true. (since C++20)</p>
-<p>翻译：显式说明符可以与常量表达式一起使用。当且仅当该常量表达式的计算结果为真时，该函数才是显式的。 </p>
-<p>The explicit specifier may only appear within the decl-specifier-seq of the declaration of a constructor or conversion function (since C++11) within its class definition.</p>
-<p>翻译：显式说明符只能出现在其类定义中的构造函数或转换函数（C++11 起）声明的 decl-specifier-seq 中。</p>
-<h1 id="C-explicit-清楚的说法（建议英文不好的从这里开始食用哦）"><a href="#C-explicit-清楚的说法（建议英文不好的从这里开始食用哦）" class="headerlink" title="C++explicit 清楚的说法（建议英文不好的从这里开始食用哦）"></a>C++explicit 清楚的说法（建议英文不好的从这里开始食用哦）</h1><h2 id="explicit作用"><a href="#explicit作用" class="headerlink" title="explicit作用:"></a><strong>explicit作用:</strong></h2><p>在C++中，explicit关键字用来<strong>修饰类的构造函数</strong>，被修饰的构造函数的类，不能发生相应的隐式类型转换，只能以显式的方式进行类型转换。</p>
-<h2 id="explicit使用注意事项"><a href="#explicit使用注意事项" class="headerlink" title="explicit使用注意事项:"></a>explicit使用注意事项:</h2><pre><code>  （1）explicit 关键字只能用于类内部的构造函数声明上。
+    <span class="token keyword">char</span> buffer<span class="token punctuation">[</span><span class="token number">128</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    ssize_t bytesRead <span class="token operator">=</span> <span class="token function">read</span><span class="token punctuation">(</span>fd<span class="token punctuation">,</span> buffer<span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>buffer<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>bytesRead <span class="token operator">==</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token function">perror</span><span class="token punctuation">(</span><span class="token string">"read"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">close</span><span class="token punctuation">(</span>fd<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
 
-  （2） explicit 关键字作用于单个参数的构造函数。
+    <span class="token function">write</span><span class="token punctuation">(</span>STDOUT_FILENO<span class="token punctuation">,</span> buffer<span class="token punctuation">,</span> bytesRead<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-* 在C++中，explicit关键字用来修饰类的构造函数，被修饰的构造函数的类，不能发生相应的隐式类型转换
-</code></pre><h1 id="C-explicit使用的例子（建议喜欢自己敲代码实验的从这里开始食用哦）"><a href="#C-explicit使用的例子（建议喜欢自己敲代码实验的从这里开始食用哦）" class="headerlink" title="C++explicit使用的例子（建议喜欢自己敲代码实验的从这里开始食用哦）"></a>C++explicit使用的例子（建议喜欢自己敲代码实验的从这里开始食用哦）</h1><h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
-using namespace std;
-class Circle
-&#123;
-    public:
-        Circle()&#123;&#125;
-        Circle(double _a):a(_a)&#123;&#125;
-        Circle(int _b, int _c):b(_b), c(_c)&#123;&#125;
-
-        Circle(const Circle&amp; A)
-        &#123;
-            a&#x3D;A.a; b&#x3D;A.b; c&#x3D;A.c;
-        &#125;
-        void Print()
-        &#123;
-            cout&lt;&lt;a&lt;&lt;&quot; &quot;&lt;&lt;b&lt;&lt;&quot; &quot;&lt;&lt;c&lt;&lt;endl;
-        &#125;
-    private:
-        double a;
-        int b;
-        int c;
-
-&#125;;
-class Circle1
-&#123;
-    public:
-        Circle1()&#123;&#125;
-        explicit Circle1(double _a):a(_a)&#123;&#125;
-        explicit Circle1(int _b, int _c):b(_b), c(_c)&#123;&#125;
-        explicit Circle1(const Circle1&amp; A)
-        &#123;
-            a&#x3D;A.a; b&#x3D;A.b; c&#x3D;A.c;
-        &#125;
-        void Print()
-        &#123;
-            cout&lt;&lt;a&lt;&lt;&quot; &quot;&lt;&lt;b&lt;&lt;&quot; &quot;&lt;&lt;c&lt;&lt;endl;
-        &#125;
-    private:
-        double a;
-        int b;
-        int c;
-
-&#125;;
-int main()
-&#123;
-    Circle q1(1);
-    Circle w1(2, 3);
-    q1.Print();
-    w1.Print();
-
-    &#x2F;&#x2F;隐式调用, 不会报错
-    Circle q2 &#x3D; 1;&#x2F;&#x2F; just like Circle q(1); 调用的是Circle(double _a)
-    Circle w2 &#x3D; 1.0;&#x2F;&#x2F; just like Circle q(1.0); 调用的是Circle(double _a)
-    Circle e &#x3D; q2;&#x2F;&#x2F; 调用的是Circle(const Circle&amp; A)
-    
-    
-    &#x2F;&#x2F;隐式调用，会报错，注意Circle1()的构造函数，都有explicit
-    &#x2F;&#x2F; Circle1 q3 &#x3D; 1;
-    &#x2F;&#x2F; Circle1 w3 &#x3D; 1.0;
-    &#x2F;&#x2F; Circle1 e1 &#x3D; q3;
-    &#x2F;&#x2F; 以上三行都会报错。
-
-    &#x2F;&#x2F;显式调用，都不会有问题
-    Circle1 q3(1);
-    Circle1 w3(1.0);
-    Circle1 e1(q3);
-
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="上面三行的报错信息："><a href="#上面三行的报错信息：" class="headerlink" title="上面三行的报错信息："></a>上面三行的报错信息：</h2><p><img src="https://img-blog.csdnimg.cn/597541d462a9453d918bbb4657e54c68.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5aSc54yr56iL5bqP54y_,size_16,color_FFFFFF,t_70,g_se,x_16" alt=""></p>
-<p><img src="https://img-blog.csdnimg.cn/ea541e17239346b9abf52c487615d072.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5aSc54yr56iL5bqP54y_,size_17,color_FFFFFF,t_70,g_se,x_16" alt=""></p>
-<p><img src="https://img-blog.csdnimg.cn/583c79b46bd24c49953bb1a84ba525b1.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5aSc54yr56iL5bqP54y_,size_14,color_FFFFFF,t_70,g_se,x_16" alt=""></p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>explicit可以<strong>抑制</strong>内置类型隐式转换，所以在类的构造函数中，<strong>最好尽可能多用explicit关键字，</strong>防止不必要的隐式转换。</p>
+    <span class="token function">close</span><span class="token punctuation">(</span>fd<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><br>在这个例子中，文件描述符的作用可以从以下几个步骤看到：</p>
+<ul>
+<li>打开文件时，<code>open()</code> 系统调用将返回一个文件描述符（fd），这个文件描述符在内核中表示 example.txt 文件的句柄。</li>
+<li>读取文件时，<code>read()</code> 系统调用使用文件描述符 fd 来访问内核中的文件表项，执行 I/O 操作并将文件数据读取到 buffer 中。</li>
+<li>写入数据时，通过 <code>write(STDOUT_FILENO, ...)</code> 输出数据，STDOUT_FILENO 是标准输出的文件描述符（通常是 1）。</li>
+<li>关闭文件时，<code>close(fd)</code> 系统调用会释放文件描述符所占用的资源，告知内核文件已经关闭。</li>
+</ul>
+<p>通过文件描述符，程序可以与操作系统内核进行有效的通信，完成文件系统和其他 I/O 操作。</p>
+<h2 id="Linux上查看文件描述符列表"><a href="#Linux上查看文件描述符列表" class="headerlink" title="Linux上查看文件描述符列表"></a>Linux上查看文件描述符列表</h2><p>在 Linux 上使用 vim 打开文件时，操作系统通过文件描述符与文件系统进行交互。下面是一个具体例子。</p>
+<h3 id="打开文件（使用-Vim）"><a href="#打开文件（使用-Vim）" class="headerlink" title="打开文件（使用 Vim）"></a>打开文件（使用 Vim）</h3><p>首先，你使用 vim 打开一个文件（例如 <code>helloworld.cpp</code>）：<br><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> helloworld.cpp<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><br>这时，Vim 会启动并打开 <code>helloworld.cpp</code> 文件。在内核中，Vim 会使用文件描述符来与文件系统交互，即读取和编辑 <code>helloworld.cpp</code> 文件的内容。</p>
+<hr>
+<h3 id="在新-Shell-中查找-Vim-进程的-PID"><a href="#在新-Shell-中查找-Vim-进程的-PID" class="headerlink" title="在新 Shell 中查找 Vim 进程的 PID"></a>在新 Shell 中查找 Vim 进程的 PID</h3><p>接着，你可以打开另一个终端（Shell），通过 <code>pidof</code> 命令获取正在运行的 Vim 进程的进程 ID（PID）：<br><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pidof <span class="token function">vim</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><br>假设返回的 PID 是 <code>40133</code>，说明 Vim 进程的进程号是 <code>40133</code>。</p>
+<h3 id="查看-Vim-进程的文件描述符"><a href="#查看-Vim-进程的文件描述符" class="headerlink" title="查看 Vim 进程的文件描述符"></a>查看 Vim 进程的文件描述符</h3><p>Linux 系统中的每个进程都有一个对应的 /proc/[pid]/fd 目录，里面列出了该进程打开的所有文件的文件描述符。你可以通过以下命令查看 Vim 进程所使用的文件描述符列表：<br><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">ll /proc/40133/fd<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><br>这里，<code>12345</code> 是你之前通过 <code>pidof vim</code> 命令获得的 Vim 进程的 PID。</p>
+<p><code>ll</code> 命令会列出该目录下的文件，其中每个文件都对应着一个打开的文件描述符（文件句柄）。输出会类似于：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">total <span class="token number">0</span>
+dr-x------ <span class="token number">2</span> allen allen  <span class="token number">0</span> Dec <span class="token number">29</span> <span class="token number">15</span>:58 ./
+dr-xr-xr-x <span class="token number">9</span> allen allen  <span class="token number">0</span> Dec <span class="token number">29</span> <span class="token number">15</span>:58 <span class="token punctuation">..</span>/
+lrwx------ <span class="token number">1</span> allen allen <span class="token number">64</span> Dec <span class="token number">29</span> <span class="token number">15</span>:58 <span class="token number">0</span> -<span class="token operator">></span> /dev/pts/8
+lrwx------ <span class="token number">1</span> allen allen <span class="token number">64</span> Dec <span class="token number">29</span> <span class="token number">15</span>:58 <span class="token number">1</span> -<span class="token operator">></span> /dev/pts/8
+l-wx------ <span class="token number">1</span> allen allen <span class="token number">64</span> Dec <span class="token number">29</span> <span class="token number">15</span>:58 <span class="token number">19</span> -<span class="token operator">></span> /home/allen/.vscode-server/data/logs/20241229T150828/ptyhost.log
+lrwx------ <span class="token number">1</span> allen allen <span class="token number">64</span> Dec <span class="token number">29</span> <span class="token number">15</span>:58 <span class="token number">2</span> -<span class="token operator">></span> /dev/pts/8
+l-wx------ <span class="token number">1</span> allen allen <span class="token number">64</span> Dec <span class="token number">29</span> <span class="token number">15</span>:58 <span class="token number">20</span> -<span class="token operator">></span> /home/allen/.vscode-server/data/logs/20241229T150828/remoteagent.log
+lrwx------ <span class="token number">1</span> allen allen <span class="token number">64</span> Dec <span class="token number">29</span> <span class="token number">15</span>:58 <span class="token number">21</span> -<span class="token operator">></span> /dev/ptmx
+lrwx------ <span class="token number">1</span> allen allen <span class="token number">64</span> Dec <span class="token number">29</span> <span class="token number">15</span>:58 <span class="token number">22</span> -<span class="token operator">></span> /dev/ptmx
+lrwx------ <span class="token number">1</span> allen allen <span class="token number">64</span> Dec <span class="token number">29</span> <span class="token number">15</span>:58 <span class="token number">23</span> -<span class="token operator">></span> /dev/ptmx
+lrwx------ <span class="token number">1</span> allen allen <span class="token number">64</span> Dec <span class="token number">29</span> <span class="token number">15</span>:58 <span class="token number">4</span> -<span class="token operator">></span> /home/allen/CPP/.helloworld.cpp.swp<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这里的输出解释如下：</p>
+<ul>
+<li><p>0，1，2：这是标准输入、标准输出和标准错误，它们通常会指向终端设备（如 <code>/dev/pts/8</code>）。这些文件描述符是系统默认打开的，用于处理进程的 I/O 操作。</p>
+</li>
+<li><p>4：这个文件描述符指向你用 Vim 打开的文件 <code>helloworld.cpp</code>。可以看到，<code>/home/allen/CPP/.helloworld.cpp.swp</code> 是文件描述符 4 对应的目标文件。</p>
+</li>
+</ul>
+<p>说明：</p>
+<ul>
+<li>在 Linux 中，每个进程都会为打开的文件、管道、设备、套接字等分配一个文件描述符，文件描述符的值通常是从 0 开始递增的。</li>
+<li>标准输入（0）、标准输出（1）、标准错误（2）是系统自动打开的，而打开的文件 <code>helloworld.cpp</code> 在 Vim 进程中会被分配到文件描述符 3 及以后。</li>
+</ul>
+<p>可以看到新打开的 <code>helloworld.cpp</code> 的文件描述符，竟然是4，而不是从3开始，这里面有一番学问，涉及    <code>vim</code> 的原理。因为vim这种编辑器的原理是先打开源文件并拷贝，然后关闭源文件再打开自己的副本，修改完文件保存的时候直接将副本重命名覆盖源文件。所以打开源文件的时候用的文件描述符3，然后打开自己的副本是时候就该用文件描述符4了，然后关闭源文件，文件描述符3就被释放了，我们查看的时候就只剩下了4，这里它指向的是vim创建的副本文件[3]（这里有更详细的解释，这里是一个通俗的理解）。</p>
+<h3 id="检查文件描述符的具体信息"><a href="#检查文件描述符的具体信息" class="headerlink" title="检查文件描述符的具体信息"></a>检查文件描述符的具体信息</h3><p>可以通过查看符号链接来了解更多细节，例如，可以用 <code>readlink</code> 命令查看文件描述符指向的文件路径：<br><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">readlink /proc/40133/fd/4<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></p>
+<h2 id="深入理解-Linux-中的文件描述符及其背后的数据结构"><a href="#深入理解-Linux-中的文件描述符及其背后的数据结构" class="headerlink" title="深入理解 Linux 中的文件描述符及其背后的数据结构"></a>深入理解 Linux 中的文件描述符及其背后的数据结构</h2><p>要深入理解 Linux 中的文件描述符及其背后的数据结构，我们需要了解内核如何通过三个核心数据结构来管理文件描述符：</p>
+<ol>
+<li><strong>进程级的文件描述符表</strong>（Process File Descriptor Table）</li>
+<li><strong>系统级的打开文件描述符表</strong>（System-wide Open File Table）</li>
+<li><strong>文件系统的 i-node 表</strong>（File System i-node Table）</li>
+</ol>
+<p>这三个数据结构[4]共同工作，使得 Linux 系统能够高效地管理文件 I/O 操作，并确保每个进程对文件的访问是独立且有序的。</p>
+<hr>
+<h3 id="1-进程级的文件描述符表"><a href="#1-进程级的文件描述符表" class="headerlink" title="1. 进程级的文件描述符表"></a>1. 进程级的文件描述符表</h3><p>每个运行中的进程都有一个 <strong>进程控制块（PCB）</strong>，它包含了与进程相关的各种信息。在这个 PCB 中，<strong>文件描述符表</strong>（也称为 <strong>文件描述符数组</strong>）是一个非常重要的数据结构。</p>
+<ul>
+<li><p><strong>文件描述符表的功能</strong>：每个进程的文件描述符表记录着该进程所打开的文件描述符。文件描述符是一个整数，它对应着进程所打开的文件、套接字、管道等资源。</p>
+</li>
+<li><p><strong>表的结构</strong>：文件描述符表是一个数组，每个文件描述符对应数组中的一个位置。例如，标准输入、标准输出、标准错误默认分别对应文件描述符 0、1、2，而其他文件则由内核为每个进程分配一个较大的文件描述符，如 3、4、5 等。</p>
+</li>
+<li><p><strong>进程独立性</strong>：进程级文件描述符表是进程私有的。不同进程之间是独立的，进程 A 使用文件描述符 3 打开的文件，进程 B 如果也打开了一个文件，可能也会被分配文件描述符 3。它们的文件描述符对应的是不同的文件资源。</p>
+</li>
+</ul>
+<p><strong>进程级文件描述符表的关键点</strong>：</p>
+<ul>
+<li>每个进程都维护一个自己的文件描述符表。</li>
+<li>文件描述符表的每个条目对应一个打开的文件或资源。</li>
+<li>文件描述符表存储的只是文件描述符与内核内部文件对象的引用。</li>
+</ul>
+<hr>
+<h3 id="2-系统级的打开文件描述符表"><a href="#2-系统级的打开文件描述符表" class="headerlink" title="2. 系统级的打开文件描述符表"></a>2. 系统级的打开文件描述符表</h3><p>系统级的 <strong>打开文件描述符表</strong> 是内核维护的一个全局数据结构，用来管理系统中所有进程共享的文件资源。每当一个进程打开文件时，内核会在此表中创建一项记录，表示这个文件被打开。</p>
+<p><strong>该表中的每项记录包含以下信息</strong>：</p>
+<ul>
+<li><p><strong>当前文件偏移量</strong>：每个文件都有一个当前的读取或写入位置。当进程执行 <code>read()</code> 或 <code>write()</code> 操作时，内核会根据该文件的偏移量进行相应的读写操作。在每次读取时，偏移量会自动更新，也可以通过 <code>lseek()</code> 系统调用显式地修改偏移量。</p>
+</li>
+<li><p><strong>打开文件时的标识</strong>：由 <code>open()</code> 系统调用的 <code>flags</code> 参数指定，如只读、只写、读写等。内核在打开文件时会记录这些标识，用于后续的访问控制。</p>
+</li>
+<li><p><strong>文件访问模式</strong>：当进程通过 <code>open()</code> 打开文件时，内核会记录文件的访问模式（如只读模式 <code>O_RDONLY</code>，只写模式 <code>O_WRONLY</code>，读写模式 <code>O_RDWR</code>）以及其他访问权限（如 <code>O_APPEND</code>、<code>O_NONBLOCK</code> 等）。</p>
+</li>
+<li><p><strong>与信号驱动相关的设置</strong>：某些文件（如终端设备）可以通过信号驱动模式进行 I/O 操作。这些设置会记录在系统级的打开文件表中，以便内核在合适的时机处理信号。</p>
+</li>
+<li><p><strong>与文件的 i-node 关联</strong>：系统级的打开文件描述符表项会保存指向文件系统 <strong>i-node</strong> 表项的指针。i-node 表项包含了该文件的元数据（如文件大小、权限、时间戳等）。</p>
+</li>
+</ul>
+<p><strong>关键点</strong>：</p>
+<ul>
+<li>每个进程打开文件时，系统级打开文件表会创建相应的记录。</li>
+<li>所有进程共享系统级的打开文件描述符表，通过这个表来管理文件的偏移量和访问模式等信息。</li>
+</ul>
+<hr>
+<h3 id="3-文件系统的-i-node-表"><a href="#3-文件系统的-i-node-表" class="headerlink" title="3. 文件系统的 i-node 表"></a>3. 文件系统的 i-node 表</h3><p><strong>i-node</strong> 是 <strong>索引节点</strong>（Index Node）的缩写，是文件系统用来存储文件元数据的一种数据结构。每个文件都有一个对应的 i-node，i-node 不存储文件的内容，而是存储与文件相关的各种属性和元数据。</p>
+<p><strong>i-node 表包含以下内容</strong>：</p>
+<ul>
+<li><p><strong>文件类型</strong>：例如普通文件、目录文件、符号链接、套接字、FIFO 等。</p>
+</li>
+<li><p><strong>文件权限</strong>：表示文件的访问权限（如读、写、执行权限）。</p>
+</li>
+<li><p><strong>文件大小</strong>：文件的实际大小（字节数）。</p>
+</li>
+<li><p><strong>时间戳</strong>：包括文件的创建时间、修改时间和访问时间（如 <code>ctime</code>、<code>mtime</code>、<code>atime</code> 等）。</p>
+</li>
+<li><p><strong>指向文件数据块的指针</strong>：i-node 会存储指向文件实际数据块的指针（对于小文件直接存储指针，对于大文件使用间接块）。这些指针帮助操作系统在磁盘上定位文件内容。</p>
+</li>
+<li><p><strong>文件锁列表</strong>：如果文件被加锁，i-node 会存储一个指向锁信息的指针。</p>
+</li>
+<li><p><strong>引用计数</strong>：记录有多少个进程或文件描述符正在使用该文件。如果引用计数为 0，则表示该文件可以被删除。</p>
+</li>
+</ul>
+<p><strong>i-node 的关键点</strong>：</p>
+<ul>
+<li>i-node 存储文件的元数据，而不存储文件的实际内容。</li>
+<li>每个文件在文件系统中都有唯一的 i-node。</li>
+<li>文件的内容由磁盘上的数据块来存储，而 i-node 中存储的是指向这些数据块的指针。</li>
+</ul>
+<hr>
+<h3 id="文件描述符如何协同工作"><a href="#文件描述符如何协同工作" class="headerlink" title="文件描述符如何协同工作"></a>文件描述符如何协同工作</h3><p>文件描述符表、系统级的打开文件描述符表和 i-node 表相互协作来管理文件资源：</p>
+<ol>
+<li><p><strong>进程级文件描述符表</strong> 存储进程所打开的文件描述符，它是进程私有的。当进程通过 <code>open()</code> 打开一个文件时，内核会在进程的文件描述符表中分配一个文件描述符，并且该文件描述符指向 <strong>系统级的打开文件描述符表</strong> 中的一个记录。</p>
+</li>
+<li><p><strong>系统级的打开文件描述符表</strong> 存储所有打开文件的状态信息，如文件偏移量、访问模式等，并且每个表项都会指向对应文件的 <strong>i-node</strong>。</p>
+</li>
+<li><p><strong>i-node 表</strong> 存储文件的元数据（如权限、大小等）以及文件内容所在的磁盘位置。每个打开的文件都会通过 i-node 来访问文件的实际数据。</p>
+</li>
+</ol>
+<p>当进程进行文件操作时（如 <code>read()</code>、<code>write()</code>），操作首先通过进程级的文件描述符表查找对应的文件描述符，然后在系统级的打开文件描述符表中查找该文件的状态信息，并通过 i-node 访问文件的实际数据。</p>
+<hr>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li><strong>进程级的文件描述符表</strong>：每个进程独立维护，记录当前进程打开的文件描述符。</li>
+<li><strong>系统级的打开文件描述符表</strong>：所有进程共享，记录文件的状态信息和 i-node 引用。</li>
+<li><strong>文件系统的 i-node 表</strong>：记录文件的元数据和实际数据的位置信息。</li>
+</ul>
+<p>这三个数据结构协作，使得 Linux 系统能够高效且灵活地管理文件 I/O 操作，确保进程之间的文件访问独立且有序，并且能够在多进程环境中正确地管理文件资源。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>[1、<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/143430585">理解Linux的文件描述符FD与Inode</a>]<br>[2、<a target="_blank" rel="noopener" href="https://wiyi.org/linux-file-descriptor.html">理解linux中的file descriptor(文件描述符)</a>]<br>[3、<a target="_blank" rel="noopener" href="https://yushuaige.github.io/2020/08/14/%E5%BD%BB%E5%BA%95%E5%BC%84%E6%87%82%20Linux%20%E4%B8%8B%E7%9A%84%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6%EF%BC%88fd%EF%BC%89/">彻底弄懂 Linux 下的文件描述符（fd）</a>]<br>[4、<a target="_blank" rel="noopener" href="https://c.biancheng.net/view/3066.html">Linux文件描述符到底是什么？</a>]</p>
 
                 
             </div>
@@ -551,7 +614,7 @@ int main()
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://allenmirac.github.io/2023/06/22/c-zhong-explicit-de-zuo-yong-ji-yong-fa-sui-ran-jian-dan-dan-shi-huan-shi-you-yong-de/">https://allenmirac.github.io/2023/06/22/c-zhong-explicit-de-zuo-yong-ji-yong-fa-sui-ran-jian-dan-dan-shi-huan-shi-you-yong-de/</a>
+                    <a href="https://allenmirac.github.io/2024/12/29/linux-wen-jian-miao-shu-fu/">https://allenmirac.github.io/2024/12/29/linux-wen-jian-miao-shu-fu/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -589,8 +652,8 @@ int main()
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/c/">
-                                    <span class="chip bg-color">c++</span>
+                                <a href="/tags/Linux/">
+                                    <span class="chip bg-color">Linux</span>
                                 </a>
                             
                         </div>
@@ -669,17 +732,18 @@ int main()
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2023/06/22/c-zhong-shu-ju-lei-xing-da-xiao-suo-zhan-yong-zi-jie-shu/">
+                <a href="/2024/12/29/linux-wen-jian-miao-shu-fu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="C++_中数据类型大小（所占用字节数）">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="Linux文件描述符">
                         
-                        <span class="card-title">C++_中数据类型大小（所占用字节数）</span>
+                        <span class="card-title">Linux文件描述符</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -689,22 +753,27 @@ int main()
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-06-22
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-12-29
+                            </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            AllenMirac
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Linux%E5%9F%BA%E7%A1%80/" class="post-category">
+                                    Linux基础
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/c/">
-                        <span class="chip bg-color">c++</span>
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
                     </a>
                     
                 </div>
@@ -718,13 +787,13 @@ int main()
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/06/22/c-stdarray-yong-fa/">
+                <a href="/2024/12/28/linux-top-zhi-ling/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="C++_std::array用法">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Linux top指令">
                         
-                        <span class="card-title">C++_std::array用法</span>
+                        <span class="card-title">Linux top指令</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -735,12 +804,16 @@ int main()
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-06-22
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-12-28
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            AllenMirac
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Linux%E5%9F%BA%E7%A1%80/" class="post-category">
+                                    Linux基础
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -748,8 +821,8 @@ int main()
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/c/">
-                        <span class="chip bg-color">c++</span>
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
                     </a>
                     
                 </div>
