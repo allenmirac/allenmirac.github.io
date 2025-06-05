@@ -1,1 +1,31 @@
 /* Here is your custom css styles. */
+/* 统一预处理器和代码块样式 */
+pre, pre code {
+  font-family: 'Fira Code', 'Courier New', monospace;
+  font-size: 14px;
+  line-height: 1.5; /* 修复行高 */
+  padding: 1em;
+  background-color: #272822;
+  white-space: pre;
+  overflow-x: auto;
+  display: block; /* 确保 pre 和 code 均为 block 而不是 inline */
+  color: #e8eaf6;
+  border-radius: 4px;
+}
+
+/* 可选：防止嵌套时 code 冲突 */
+pre code {
+  display: block;
+  padding: 0;
+  margin: 0;
+  background: none;
+  line-height: inherit;
+  border: none;
+}
+
+/* 修复选中高亮区域太大问题 */
+pre code::selection,
+pre::selection {
+  background: rgba(100, 100, 255, 0.2); /* 蓝色阴影选中区域 */
+  color: inherit;
+}
