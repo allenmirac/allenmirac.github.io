@@ -396,7 +396,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-12-29
+                    2024-12-30
                 </div>
                 
 
@@ -473,7 +473,7 @@
 <h3 id="打开文件（使用-Vim）"><a href="#打开文件（使用-Vim）" class="headerlink" title="打开文件（使用 Vim）"></a>打开文件（使用 Vim）</h3><p>首先，你使用 vim 打开一个文件（例如 <code>helloworld.cpp</code>）：<br><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> helloworld.cpp<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><br>这时，Vim 会启动并打开 <code>helloworld.cpp</code> 文件。在内核中，Vim 会使用文件描述符来与文件系统交互，即读取和编辑 <code>helloworld.cpp</code> 文件的内容。</p>
 <hr>
 <h3 id="在新-Shell-中查找-Vim-进程的-PID"><a href="#在新-Shell-中查找-Vim-进程的-PID" class="headerlink" title="在新 Shell 中查找 Vim 进程的 PID"></a>在新 Shell 中查找 Vim 进程的 PID</h3><p>接着，你可以打开另一个终端（Shell），通过 <code>pidof</code> 命令获取正在运行的 Vim 进程的进程 ID（PID）：<br><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pidof <span class="token function">vim</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><br>假设返回的 PID 是 <code>40133</code>，说明 Vim 进程的进程号是 <code>40133</code>。</p>
-<h3 id="查看-Vim-进程的文件描述符"><a href="#查看-Vim-进程的文件描述符" class="headerlink" title="查看 Vim 进程的文件描述符"></a>查看 Vim 进程的文件描述符</h3><p>Linux 系统中的每个进程都有一个对应的 /proc/[pid]/fd 目录，里面列出了该进程打开的所有文件的文件描述符。你可以通过以下命令查看 Vim 进程所使用的文件描述符列表：<br><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">ll /proc/40133/fd<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><br>这里，<code>12345</code> 是你之前通过 <code>pidof vim</code> 命令获得的 Vim 进程的 PID。</p>
+<h3 id="查看-Vim-进程的文件描述符"><a href="#查看-Vim-进程的文件描述符" class="headerlink" title="查看 Vim 进程的文件描述符"></a>查看 Vim 进程的文件描述符</h3><p>Linux 系统中的每个进程都有一个对应的 /proc/[pid]/fd 目录，里面列出了该进程打开的所有文件的文件描述符。你可以通过以下命令查看 Vim 进程所使用的文件描述符列表：<br><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">ll /proc/40133/fd<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><br>这里，<code>40133</code> 是你之前通过 <code>pidof vim</code> 命令获得的 Vim 进程的 PID。</p>
 <p><code>ll</code> 命令会列出该目录下的文件，其中每个文件都对应着一个打开的文件描述符（文件句柄）。输出会类似于：</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">total <span class="token number">0</span>
 dr-x------ <span class="token number">2</span> allen allen  <span class="token number">0</span> Dec <span class="token number">29</span> <span class="token number">15</span>:58 ./
@@ -994,7 +994,7 @@ lrwx------ <span class="token number">1</span> allen allen <span class="token nu
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2023-2024</span>
+                <span id="year">2023-2025</span>
             
             <a href="/about" target="_blank">AllenMirac</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
