@@ -5,17 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="统计项目代码行数, AllenMirac">
-    <meta name="description" content="Ubuntu用户使用cloc在ubuntu内统计代码行数
-
-安装cloc工具
-
-sudo apt-get install cloc
-
-进入需要统计的目录内，然后执行
-
-cloc .
-
-然后就会显示文件目录中的文件数(files)、空白行数(">
+    <meta name="description" content="Cloc工具介绍cloc是一款优秀的命令行工具，用于计算项目中的代码行数，注释行数，空白行数，全称是：Count Lines of Code。
+该工具在统计的时候也可以指定代码输出的格式以及各种参数的配置，比如输出CSV格式，可以在命令行后">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -385,8 +376,8 @@ cloc .
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/c/" class="post-category">
-                                c++
+                            <a href="/categories/%E5%B7%A5%E5%85%B7/" class="post-category">
+                                工具
                             </a>
                         
                     </div>
@@ -405,14 +396,14 @@ cloc .
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-06-22
+                    2025-06-06
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    157
+                    276
                 </div>
                 
 
@@ -437,27 +428,27 @@ cloc .
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Ubuntu用户"><a href="#Ubuntu用户" class="headerlink" title="Ubuntu用户"></a>Ubuntu用户</h1><p>使用cloc在ubuntu内统计代码行数</p>
+                <h1 id="Cloc工具介绍"><a href="#Cloc工具介绍" class="headerlink" title="Cloc工具介绍"></a>Cloc工具介绍</h1><p><code>cloc</code>是一款优秀的命令行工具，用于计算项目中的代码行数，注释行数，空白行数，全称是：Count Lines of Code。</p>
+<p>该工具在统计的时候也可以指定代码输出的格式以及各种参数的配置，比如输出CSV格式，可以在命令行后面加上<code>--csv</code>，比如还可以指定统计的条件，<code>--include-ext</code>，填写需要统计的扩展名字：<code>c</code>、<code>cpp</code>、<code>py</code>。</p>
+<h1 id="Ubuntu用户"><a href="#Ubuntu用户" class="headerlink" title="Ubuntu用户"></a>Ubuntu用户</h1><p>使用<code>cloc</code>在ubuntu内统计代码行数</p>
 <ol>
-<li>安装cloc工具</li>
+<li><p>安装<code>cloc</code>工具</p>
+ <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> cloc<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>进入需要统计的目录内，然后执行</p>
+ <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">cloc <span class="token builtin class-name">.</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>然后就会显示文件目录中的文件数(files)、空白行数(blank)、注释行数(comment)和代码行数(code)。</p>
+</li>
 </ol>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> cloc<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h1 id="Windows-用户"><a href="#Windows-用户" class="headerlink" title="Windows 用户"></a>Windows 用户</h1><p>也是使用<code>cloc</code>工具</p>
 <ol>
-<li>进入需要统计的目录内，然后执行</li>
-</ol>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">cloc <span class="token builtin class-name">.</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<ol>
-<li>然后就会显示文件目录中的文件数(files)、空白行数(blank)、注释行数(comment)和代码行数(code)。</li>
-</ol>
-<h1 id="Windows-用户"><a href="#Windows-用户" class="headerlink" title="Windows 用户"></a>Windows 用户</h1><p>也是使用cloc工具</p>
-<ol>
-<li>下载最新cloc.exe工具，官网地址：<a target="_blank" rel="noopener" href="http://cloc.sourceforge.net/">http://cloc.sourceforge.net/</a></li>
-</ol>
-<p><img src="https://s2.loli.net/2023/06/22/Plp519xOn8NyDBS.png" alt=""></p>
-<p><img src="https://s2.loli.net/2023/06/22/f2RycgumFT16pIS.png" alt=""></p>
-<p><img src="https://s2.loli.net/2023/06/22/r32Wm6QleJzScDP.png" alt=""></p>
-<ol>
-<li><p>下载完成后，将cloc-1.64.exe名称修改为cloc.exe，放在需要统计代码的文件夹所在目录</p>
+<li><p>下载最新<code>cloc.exe</code>工具，官网地址：<a target="_blank" rel="noopener" href="http://cloc.sourceforge.net/">http://cloc.sourceforge.net/</a></p>
+<p> <img src="https://s2.loli.net/2023/06/22/Plp519xOn8NyDBS.png" alt=""></p>
+<p> <img src="https://s2.loli.net/2023/06/22/f2RycgumFT16pIS.png" alt=""></p>
+<p> <img src="https://s2.loli.net/2023/06/22/r32Wm6QleJzScDP.png" alt=""></p>
+</li>
+<li><p>下载完成后，将<code>cloc-1.64.exe</code>名称修改为<code>cloc.exe</code>，放在需要统计代码的文件夹所在目录</p>
 <p><img src="https://s2.loli.net/2023/06/22/gdZl8Fko7QmuNHJ.png" alt=""></p>
 <p>打开终端，输入命令<code>&gt;cloc.exe Project</code>(Project即要统计代码行数的文件名)</p>
 </li>
@@ -875,7 +866,7 @@ cloc .
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">132.2k</span>
+                        class="white-color">132.4k</span>
             
             
             
