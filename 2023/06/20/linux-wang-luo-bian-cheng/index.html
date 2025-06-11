@@ -7,18 +7,12 @@
     <meta name="keywords" content="Linux网络编程, AllenMirac">
     <meta name="description" content="
 
+网络通信结构IP端格式
 
-目录
-IP端格式
- C/S和B/S模式
-网络字节序转换函数
-inet_pton函数
-时间轮
-Socket：C/S模式，client server
-socket函数
-perror(const char* str)
-INADDR_ANY
-">
+C/S和B/S模式
+网络字节序转换函数在通信过程中，套接字是成对出现的
+
+inet_pton函数IP地址开始是点分十进制形式的，是一个字符串，如192.168.1.100，所以要将它转换为网络字节序地址需要这个">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -376,14 +370,23 @@ INADDR_ANY
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Linux/">
-                                <span class="chip bg-color">Linux</span>
+                            <a href="/tags/Linux%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">
+                                <span class="chip bg-color">Linux网络编程</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1%E6%9D%82%E8%B0%88/" class="post-category">
+                                网络通信杂谈
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -399,14 +402,14 @@ INADDR_ANY
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-06-21
+                    2025-06-11
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.9k
+                    3.8k
                 </div>
                 
 
@@ -433,80 +436,37 @@ INADDR_ANY
             <div id="articleContent">
                 <meta name="referrer" content="no-referrer" />
 
-
-<p><strong>目录</strong></p>
-<p><a href="#IP%E7%AB%AF%E6%A0%BC%E5%BC%8F">IP端格式</a></p>
-<p><a href="#%C2%A0C%2FS%E5%92%8CB%2FS%E6%A8%A1%E5%BC%8F"> C/S和B/S模式</a></p>
-<p><a href="#%E7%BD%91%E7%BB%9C%E5%AD%97%E8%8A%82%E5%BA%8F%E8%BD%AC%E6%8D%A2%E5%87%BD%E6%95%B0">网络字节序转换函数</a></p>
-<p><a href="#inet_pton%E5%87%BD%E6%95%B0">inet_pton函数</a></p>
-<p><a href="#%E6%97%B6%E9%97%B4%E8%BD%AE">时间轮</a></p>
-<p><a href="#Socket%EF%BC%9AC%2FS%E6%A8%A1%E5%BC%8F%EF%BC%8Cclient%20server">Socket：C/S模式，client server</a></p>
-<p><a href="#socket%E5%87%BD%E6%95%B0">socket函数</a></p>
-<p><a href="#perror%28const%20char*%20str%29">perror(const char* str)</a></p>
-<p><a href="#INADDR_ANY">INADDR_ANY</a></p>
-<p><a href="#%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E6%B5%81%E7%A8%8B">函数调用流程</a></p>
-<p><a href="#%E4%B8%87%E6%81%B6%E7%9A%84%E7%BB%93%E6%9E%84%E4%BD%93sockaddr%E3%80%81sockaddr_in%E3%80%81in_addr%E3%80%81hostent">万恶的结构体sockaddr、sockaddr_in、in_addr、hostent</a></p>
-<p><a href="#hostent">hostent</a></p>
-<p><a href="#%E4%B8%BB%E6%9C%BA%E5%AD%97%E8%8A%82%E5%BA%8F%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%AD%97%E8%8A%82%E5%BA%8F">主机字节序与网络字节序</a></p>
-<p><a href="#listen%E3%80%81accept%E3%80%81connect%E5%87%BD%E6%95%B0%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB">listen、accept、connect函数之间的关系</a></p>
-<p><a href="#listen%E5%87%BD%E6%95%B0">listen函数</a></p>
-<p><a href="#connect%E5%87%BD%E6%95%B0">connect函数</a></p>
-<p><a href="#accept%E5%87%BD%E6%95%B0">accept函数</a></p>
-<p><a href="#TCP%E7%9A%84%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B">TCP的三次握手</a></p>
-<p><a href="#send%E3%80%81%E5%92%8Crecv%E5%87%BD%E6%95%B0">send、和recv函数</a></p>
-<p><a href="#TCP%E6%8A%A5%E6%96%87%E5%88%86%E5%8C%85%E5%92%8C%E7%B2%98%E5%8C%85">TCP报文分包和粘包</a></p>
-<p><a href="#Writen%E3%80%81Readn%E5%87%BD%E6%95%B0%EF%BC%9Afreecplus%E5%B0%81%E8%A3%85%E7%9A%84%E6%8A%A5%E6%96%87%E6%A0%BC%E5%BC%8F">Writen、Readn函数：freecplus封装的报文格式</a></p>
-<p><a href="#TcpWrite%E3%80%81TcpRead%EF%BC%9Afreecplus%E5%B0%81%E8%A3%85%E7%9A%84%E6%8A%A5%E6%96%87%E6%A0%BC%E5%BC%8F">TcpWrite、TcpRead：freecplus封装的报文格式</a></p>
-<p><a href="#%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1">进程间通信</a></p>
-<p><a href="#%E9%81%BF%E5%85%8D%E5%83%B5%E5%B0%B8%E8%BF%9B%E7%A8%8B">避免僵尸进程</a></p>
-<p><a href="#C%2FC%2B%2B%E6%9C%8D%E5%8A%A1%E7%A8%8B%E5%BA%8F%E7%9A%84%E8%BF%90%E8%A1%8C%E6%97%A5%E5%BF%97">C/C++服务程序的运行日志</a></p>
-<p><a href="#linux%E5%A4%9A%E8%BF%9B%E7%A8%8B%EF%BC%9Afork%E5%87%BD%E6%95%B0">linux多进程：fork函数</a></p>
-<p><a href="#Linux%E4%BF%A1%E5%8F%B7%E7%9A%84%E4%BD%BF%E7%94%A8">Linux信号的使用</a></p>
-<p><a href="#Linux%E5%85%B1%E4%BA%AB%E5%86%85%E5%AD%98%E7%9A%84%E5%87%BD%E6%95%B0">Linux共享内存的函数</a></p>
-<p><a href="#Linux%E5%A4%9A%E7%BA%BF%E7%A8%8B">Linux多线程</a></p>
-<p><a href="#%E5%8A%A8%E6%80%81%E5%BA%93%E4%B8%8E%E9%9D%99%E6%80%81%E5%BA%93">动态库与静态库</a></p>
-<p><a href="#argc%E4%B8%8Eargv%C2%A0">argc与argv </a></p>
-<p><a href="#Makefile%C2%A0">Makefile </a></p>
-<p><a href="#GDB%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8">GDB的简单使用</a></p>
-<p><a href="#Tcp%E9%95%BF%E8%BF%9E%E6%8E%A5%E4%B8%8E%E7%9F%AD%E8%BF%9E%E6%8E%A5">Tcp长连接与短连接</a></p>
-<p><a href="#%E7%BD%91%E7%BB%9C%E6%9C%8D%E5%8A%A1%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95">网络服务性能测试</a></p>
-<p><a href="#I%2FO%E5%A4%8D%E7%94%A8">I/O复用</a></p>
-<p><a href="#select">select</a></p>
-<p><a href="#poll">poll</a></p>
-<p><a href="#epoll">epoll</a></p>
-<p><a href="#ET%E5%92%8CLT">ET和LT</a></p>
-<p><a href="#%E5%8F%82%E8%80%83">参考</a></p>
-<h1 id="IP端格式"><a href="#IP端格式" class="headerlink" title="IP端格式"></a>IP端格式</h1><p><img src="https://img-blog.csdnimg.cn/b42480313f464402a487678706b27b3d.png" alt=""></p>
+<h1 id="网络通信结构"><a href="#网络通信结构" class="headerlink" title="网络通信结构"></a>网络通信结构</h1><h2 id="IP端格式"><a href="#IP端格式" class="headerlink" title="IP端格式"></a>IP端格式</h2><p><img src="https://img-blog.csdnimg.cn/b42480313f464402a487678706b27b3d.png" alt=""></p>
 <p><img src="https://img-blog.csdnimg.cn/569097a03d034a9fa5084f418e0e380c.png" alt=""></p>
-<h1 id="C-S和B-S模式"><a href="#C-S和B-S模式" class="headerlink" title="C/S和B/S模式"></a>C/S和B/S模式</h1><p><img src="https://img-blog.csdnimg.cn/7dc13a914cfd48519e368a14e0302f6f.png" alt=""></p>
-<h1 id="网络字节序转换函数"><a href="#网络字节序转换函数" class="headerlink" title="网络字节序转换函数"></a>网络字节序转换函数</h1><p>在通信过程中，套接字是成对出现的</p>
+<h2 id="C-S和B-S模式"><a href="#C-S和B-S模式" class="headerlink" title="C/S和B/S模式"></a>C/S和B/S模式</h2><p><img src="https://img-blog.csdnimg.cn/7dc13a914cfd48519e368a14e0302f6f.png" alt=""></p>
+<h2 id="网络字节序转换函数"><a href="#网络字节序转换函数" class="headerlink" title="网络字节序转换函数"></a>网络字节序转换函数</h2><p>在通信过程中，套接字是成对出现的</p>
 <p><img src="https://img-blog.csdnimg.cn/cb2a5edf6a0f423ca87e4688e45f48fa.png" alt=""></p>
-<h1 id="inet-pton函数"><a href="#inet-pton函数" class="headerlink" title="inet_pton函数"></a>inet_pton函数</h1><p>IP地址开始是点分十进制形式的，是一个字符串，如192.168.1.100，所以要将它转换为网络字节序地址需要这个inet_pton函数：本地字节序—&gt;网络字节序</p>
+<h2 id="inet-pton函数"><a href="#inet-pton函数" class="headerlink" title="inet_pton函数"></a>inet_pton函数</h2><p>IP地址开始是点分十进制形式的，是一个字符串，如192.168.1.100，所以要将它转换为网络字节序地址需要这个inet_pton函数：本地字节序—&gt;网络字节序</p>
 <p><img src="https://img-blog.csdnimg.cn/9e082d53710a4a6b9802705c0edda703.png" alt=""></p>
-<h1 id="时间轮"><a href="#时间轮" class="headerlink" title="时间轮"></a>时间轮</h1><p>回到时间轮定时器，它主要解决的是升序链表插入效率比较低的问题，根据相关链表算法的理论，因为在有序链表插入节点的时间复杂度为O(n)，而且是单链表，意味着链表越长，插一个节点所要找到合适位置的时间开销就会越大，这样下来，时间效率是比较低的。</p>
+<h2 id="时间轮"><a href="#时间轮" class="headerlink" title="时间轮"></a>时间轮</h2><p>回到时间轮定时器，它主要解决的是升序链表插入效率比较低的问题，根据相关链表算法的理论，因为在有序链表插入节点的时间复杂度为O(n)，而且是单链表，意味着链表越长，插一个节点所要找到合适位置的时间开销就会越大，这样下来，时间效率是比较低的。</p>
 <p>  时间轮定时器算法有点hash的思想，插入节点是采用【取模+头插法】的方式，将插入的平均时间复杂度控制器到了O(1)，极大节省了时间开销。</p>
 <p>  不过呢，升序链表定时器虽然在插入时间复杂度上为O(n)，但是在处理超时定时器时遍历链表的效率还是要比时间轮定时器好的，时间轮定时器需要将对应槽上的链表从头到尾全部判断一次，而链表则是从头开始处理，一旦遇到未超时的，则直接结束遍历就好。但综合效率来说，时间轮还是比升序链表好很多的。</p>
 <p><img src="https://img-blog.csdnimg.cn/c7eba5257da249c8a8da1db985dd0916.png" alt=""></p>
-<h1 id="Socket：C-S模式，client-server"><a href="#Socket：C-S模式，client-server" class="headerlink" title="Socket：C/S模式，client server"></a>Socket：C/S模式，client server</h1><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/skynet/archive/2010/12/12/1903949.html">Linux Socket编程</a></p>
-<h1 id="socket函数"><a href="#socket函数" class="headerlink" title="socket函数"></a>socket函数</h1><p>int socket(int domain, int type, int protocol);</p>
+<h2 id="Socket：C-S模式，client-server"><a href="#Socket：C-S模式，client-server" class="headerlink" title="Socket：C/S模式，client server"></a>Socket：C/S模式，client server</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/skynet/archive/2010/12/12/1903949.html">Linux Socket编程</a></p>
+<h2 id="socket函数"><a href="#socket函数" class="headerlink" title="socket函数"></a>socket函数</h2><p>int socket(int domain, int type, int protocol);</p>
 <p>domain是协议族，type指的是socket的类型，protocol：指定协议。</p>
 <p>第一个参数只能填AF_INET，第二个参数只能填SOCK_STREAM，第三个参数只能填0。</p>
 <p>除非系统资料耗尽，socket函数一般不会返回失败。</p>
 <p>不要忽略任何一个警告(socklen_t*) &amp;socklen）</p>
-<h1 id="perror-const-char-str"><a href="#perror-const-char-str" class="headerlink" title="perror(const char* str)"></a>perror(const char* str)</h1><p>先输出str: ，再输出错误信息</p>
-<h1 id="INADDR-ANY"><a href="#INADDR-ANY" class="headerlink" title="INADDR_ANY"></a>INADDR_ANY</h1><p>说明指定的是任意的ip地址</p>
-<h1 id="函数调用流程"><a href="#函数调用流程" class="headerlink" title="函数调用流程"></a>函数调用流程</h1><p>服务端函数调用的流程</p>
+<h2 id="perror-const-char-str"><a href="#perror-const-char-str" class="headerlink" title="perror(const char* str)"></a>perror(const char* str)</h2><p>先输出str: ，再输出错误信息</p>
+<h2 id="INADDR-ANY"><a href="#INADDR-ANY" class="headerlink" title="INADDR_ANY"></a>INADDR_ANY</h2><p>说明指定的是任意的ip地址</p>
+<h2 id="函数调用流程"><a href="#函数调用流程" class="headerlink" title="函数调用流程"></a>函数调用流程</h2><p>服务端函数调用的流程</p>
 <p>socket-&gt;bind-&gt;listen-&gt;accept-&gt;recv/send-&gt;close</p>
 <p>客户端函数调用的流程</p>
 <p>socket-&gt;connect-&gt;send/recv-&gt;close</p>
 <p>其中send/recv可以进行多次交互。</p>
 <p>无论是客户端还是服务端都要创建socket</p>
-<h1 id="万恶的结构体sockaddr、sockaddr-in、in-addr、hostent"><a href="#万恶的结构体sockaddr、sockaddr-in、in-addr、hostent" class="headerlink" title="万恶的结构体sockaddr、sockaddr_in、in_addr、hostent"></a>万恶的结构体sockaddr、sockaddr_in、in_addr、hostent</h1><p><img src="https://img-blog.csdnimg.cn/f78938e3d83141988c8f3b6371c8a80e.png" alt=""></p>
-<h1 id="hostent"><a href="#hostent" class="headerlink" title="hostent"></a>hostent</h1><p><img src="https://img-blog.csdnimg.cn/ff2528fdc17143f7ab6d721e18c1dc52.png" alt=""></p>
+<h2 id="万恶的结构体sockaddr、sockaddr-in、in-addr、hostent"><a href="#万恶的结构体sockaddr、sockaddr-in、in-addr、hostent" class="headerlink" title="万恶的结构体sockaddr、sockaddr_in、in_addr、hostent"></a>万恶的结构体sockaddr、sockaddr_in、in_addr、hostent</h2><p><img src="https://img-blog.csdnimg.cn/f78938e3d83141988c8f3b6371c8a80e.png" alt=""></p>
+<h2 id="hostent"><a href="#hostent" class="headerlink" title="hostent"></a>hostent</h2><p><img src="https://img-blog.csdnimg.cn/ff2528fdc17143f7ab6d721e18c1dc52.png" alt=""></p>
 <p><img src="https://img-blog.csdnimg.cn/9d3c88331c9b4e5e9aaf9c202eb00c0f.png" alt=""></p>
-<h1 id="主机字节序与网络字节序"><a href="#主机字节序与网络字节序" class="headerlink" title="主机字节序与网络字节序"></a>主机字节序与网络字节序</h1><p><img src="https://img-blog.csdnimg.cn/87aae97487c84854845b85d137496729.png" alt=""></p>
-<h1 id="listen、accept、connect函数之间的关系"><a href="#listen、accept、connect函数之间的关系" class="headerlink" title="listen、accept、connect函数之间的关系"></a>listen、accept、connect函数之间的关系</h1><p><img src="https://img-blog.csdnimg.cn/91644dd71fbb42c596571f99c751de7f.png" alt=""></p>
-<h1 id="listen函数"><a href="#listen函数" class="headerlink" title="listen函数"></a>listen函数</h1><p>listen(listenfd, 5);//把socket设置为监听模式，第二个参数比较复杂</p>
+<h2 id="主机字节序与网络字节序"><a href="#主机字节序与网络字节序" class="headerlink" title="主机字节序与网络字节序"></a>主机字节序与网络字节序</h2><p><img src="https://img-blog.csdnimg.cn/87aae97487c84854845b85d137496729.png" alt=""></p>
+<h1 id="网络通信相关函数"><a href="#网络通信相关函数" class="headerlink" title="网络通信相关函数"></a>网络通信相关函数</h1><h2 id="listen、accept、connect函数之间的关系"><a href="#listen、accept、connect函数之间的关系" class="headerlink" title="listen、accept、connect函数之间的关系"></a>listen、accept、connect函数之间的关系</h2><p><img src="https://img-blog.csdnimg.cn/91644dd71fbb42c596571f99c751de7f.png" alt=""></p>
+<h2 id="listen函数"><a href="#listen函数" class="headerlink" title="listen函数"></a>listen函数</h2><p>listen(listenfd, 5);//把socket设置为监听模式，第二个参数比较复杂</p>
 <p>如果在listen前面加上sleep，结果发现不能连接上</p>
 <p><img src="https://img-blog.csdnimg.cn/60b5d714084e40749789d72c343a75e5.png" alt=""></p>
 <p><img src="https://img-blog.csdnimg.cn/38205cc98a4f48699893c9cc4c6a4fe9.png" alt=""></p>
@@ -514,18 +474,18 @@ INADDR_ANY
 <p><img src="https://img-blog.csdnimg.cn/b27ad15f8405418382c1756d9a823917.png" alt=""></p>
 <p><img src="https://img-blog.csdnimg.cn/7efce7d888a04777834be5d6300b13f4.png" alt=""></p>
 <p>原因是：服务端在调用listen之前，客户端不能向服务端发起连接请求。</p>
-<h1 id="connect函数"><a href="#connect函数" class="headerlink" title="connect函数"></a>connect函数</h1><p>connect(sockfd, (struct sockaddr *)&amp;servaddr,sizeof(servaddr))</p>
+<h2 id="connect函数"><a href="#connect函数" class="headerlink" title="connect函数"></a>connect函数</h2><p>connect(sockfd, (struct sockaddr *)&amp;servaddr,sizeof(servaddr))</p>
 <p>向服务端发起连接请求</p>
-<h1 id="accept函数"><a href="#accept函数" class="headerlink" title="accept函数"></a>accept函数</h1><p>clientfd=accept(listenfd,(struct sockaddr <em>)&amp;clientaddr,(socklen_t</em>)&amp;socklen);</p>
+<h2 id="accept函数"><a href="#accept函数" class="headerlink" title="accept函数"></a>accept函数</h2><p>clientfd=accept(listenfd,(struct sockaddr <em>)&amp;clientaddr,(socklen_t</em>)&amp;socklen);</p>
 <p>三个客户端连接，accept是从连接的一个队列里面取出来，如果队列里面没有，会阻塞。</p>
 <p><img src="https://img-blog.csdnimg.cn/436858fc94da46ac91a1db2b44266a15.png" alt=""></p>
 <p>把这个用死循环，才可以多客户端连接</p>
 <p><img src="https://img-blog.csdnimg.cn/905a883a82f3493991a9ec73d60e45ce.png" alt=""></p>
-<h1 id="TCP的三次握手"><a href="#TCP的三次握手" class="headerlink" title="TCP的三次握手"></a>TCP的三次握手</h1><p><img src="https://img-blog.csdnimg.cn/4b9ec7c9fe1c4c5ea0f4fbc608c9eca0.png" alt=""></p>
+<h2 id="TCP的三次握手"><a href="#TCP的三次握手" class="headerlink" title="TCP的三次握手"></a>TCP的三次握手</h2><p><img src="https://img-blog.csdnimg.cn/4b9ec7c9fe1c4c5ea0f4fbc608c9eca0.png" alt=""></p>
 <p>使用netstat -na | more命令查询端口的连接状态，</p>
 <p>在listen后面睡眠1000秒，此时启动服务端，就可以查看到ESTABLISHED状态</p>
 <p><img src="https://img-blog.csdnimg.cn/ab553db304b04e9c87fc4e03a045060a.png" alt=""></p>
-<h1 id="send、和recv函数"><a href="#send、和recv函数" class="headerlink" title="send、和recv函数"></a>send、和recv函数</h1><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/jianqiang2010/archive/2010/08/20/1804598.html">Socket send函数和recv函数详解 - 世道 - 博客园</a></p>
+<h2 id="send、和recv函数"><a href="#send、和recv函数" class="headerlink" title="send、和recv函数"></a>send、和recv函数</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/jianqiang2010/archive/2010/08/20/1804598.html">Socket send函数和recv函数详解 - 世道 - 博客园</a></p>
 <p>int send(Socket s, const char* buf, int len, int flags);</p>
 <p>int recv(Socket s, char * buf, int len, int flags);</p>
 <p>都需要通过socket套接字来实现数据的接受与发送，而不是通过send、recv函数来实现。</p>
@@ -535,25 +495,28 @@ INADDR_ANY
 <p>usleep(10000);//睡眠微秒，结果在接受了八万多条数据之后，缓冲区满了，send函数在发送端阻塞了，等客户端又取出了一些数据之后才继续接受数据。</p>
 <p><img src="https://img-blog.csdnimg.cn/fa9d57ae968c438c82427ff6fcf17ca7.png" alt=""></p>
 <p><img src="https://img-blog.csdnimg.cn/66f5ddb4a1504994ad1f402cee4d207e.png" alt=""></p>
-<h1 id="TCP报文分包和粘包"><a href="#TCP报文分包和粘包" class="headerlink" title="TCP报文分包和粘包"></a>TCP报文分包和粘包</h1><p><img src="https://img-blog.csdnimg.cn/73501f88e76741b98b6e5a1b4d07a22b.png" alt=""></p>
+<h2 id="TCP报文分包和粘包"><a href="#TCP报文分包和粘包" class="headerlink" title="TCP报文分包和粘包"></a>TCP报文分包和粘包</h2><p><img src="https://img-blog.csdnimg.cn/73501f88e76741b98b6e5a1b4d07a22b.png" alt=""></p>
 <p>粘包：粘包是指TCP协议中，发送方发送的若干包数据到接收方接收时粘成一包，从接收缓冲区看，后一包的数据的头紧接着前一包数据的尾。TCP是面向字节流的协议，就是没有界限的一串数据，本没有“包”的概念，“粘包”和“拆包”一说是为了有助于形象地理解这两种现象。为什么 UDP没有粘包由于UDP有消息保护边界，不会发生粘包拆包问题，因此粘包拆包问题只发生在TCP协议中。</p>
 <p>对于粘包和拆包问题，常见的解决方案有四种：</p>
 <ul>
-<li>1）发送端将每个包都封装成固定的长度，比如100字节大小。如果不足100字节可通过补0或空等进行填充到指定长度；+ 2）发送端在每个包的末尾使用固定的分隔符，例如\r\n。如果发生拆包需等待多个包发送过来之后再找到其中的\r\n进行合并；例如，FTP协议；+ 3）将消息分为头部和消息体，头部中保存整个消息的长度，只有读取到足够长度的消息之后才算是读到了一个完整的消息；+ 4）通过自定义协议进行粘包和拆包的处理。</li>
+<li>1）发送端将每个包都封装成固定的长度，比如100字节大小。如果不足100字节可通过补0或空等进行填充到指定长度；</li>
+<li>2）发送端在每个包的末尾使用固定的分隔符，例如\r\n。如果发生拆包需等待多个包发送过来之后再找到其中的\r\n进行合并；例如，FTP协议；</li>
+<li>3）将消息分为头部和消息体，头部中保存整个消息的长度，只有读取到足够长度的消息之后才算是读到了一个完整的消息；</li>
+<li>4）通过自定义协议进行粘包和拆包的处理。</li>
 </ul>
 <p>第三种方法是最常用的方法。</p>
-<h1 id="Writen、Readn函数：freecplus封装的报文格式"><a href="#Writen、Readn函数：freecplus封装的报文格式" class="headerlink" title="Writen、Readn函数：freecplus封装的报文格式"></a>Writen、Readn函数：freecplus封装的报文格式</h1><p>这两个函数指的是recv函数和send函数都存在读取的数据报文不完整的情况</p>
+<h2 id="Writen、Readn函数：freecplus封装的报文格式"><a href="#Writen、Readn函数：freecplus封装的报文格式" class="headerlink" title="Writen、Readn函数：freecplus封装的报文格式"></a>Writen、Readn函数：freecplus封装的报文格式</h2><p>这两个函数指的是recv函数和send函数都存在读取的数据报文不完整的情况</p>
 <p><img src="https://img-blog.csdnimg.cn/48750a9aa42f4398a9ecd86cdc031e84.png" alt=""></p>
 <p><img src="https://img-blog.csdnimg.cn/db81aff3f9fd43468f773859e672ffd4.png" alt=""></p>
-<h1 id="TcpWrite、TcpRead：freecplus封装的报文格式"><a href="#TcpWrite、TcpRead：freecplus封装的报文格式" class="headerlink" title="TcpWrite、TcpRead：freecplus封装的报文格式"></a>TcpWrite、TcpRead：freecplus封装的报文格式</h1><p><img src="https://img-blog.csdnimg.cn/6264f37e6f624fcc831e1f7911d55935.png" alt=""></p>
+<h2 id="TcpWrite、TcpRead：freecplus封装的报文格式"><a href="#TcpWrite、TcpRead：freecplus封装的报文格式" class="headerlink" title="TcpWrite、TcpRead：freecplus封装的报文格式"></a>TcpWrite、TcpRead：freecplus封装的报文格式</h2><p><img src="https://img-blog.csdnimg.cn/6264f37e6f624fcc831e1f7911d55935.png" alt=""></p>
 <p>报文长度+报文内容，这个就是Tcp粘包的一种最常见的解决方法。</p>
 <p>这两个函数的参数的详细解释：</p>
 <p><img src="https://img-blog.csdnimg.cn/78be6cf7cff9412fbb9389d3b8f46d86.png" alt=""></p>
-<h1 id="进程间通信"><a href="#进程间通信" class="headerlink" title="进程间通信"></a>进程间通信</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_34827674/article/details/107678226?app_version=5.7.0&amp;code=app_1562916241&amp;csdn_share_tail=%7B%22type%22%3A%22blog%22%2C%22rType%22%3A%22article%22%2C%22rId%22%3A%22107678226%22%2C%22source%22%3A%22m0_67623521%22%7D&amp;uLinkId=usr1mkqgl919blen&amp;utm_source=app">进程间通信</a></p>
+<h1 id="多线程基础"><a href="#多线程基础" class="headerlink" title="多线程基础"></a>多线程基础</h1><h2 id="进程间通信"><a href="#进程间通信" class="headerlink" title="进程间通信"></a>进程间通信</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_34827674/article/details/107678226?app_version=5.7.0&amp;code=app_1562916241&amp;csdn_share_tail=%7B%22type%22%3A%22blog%22%2C%22rType%22%3A%22article%22%2C%22rId%22%3A%22107678226%22%2C%22source%22%3A%22m0_67623521%22%7D&amp;uLinkId=usr1mkqgl919blen&amp;utm_source=app">进程间通信</a></p>
 <p><img src="https://img-blog.csdnimg.cn/bd5ffdf56f9a48f4ad79ad566ff4a382.png" alt=""></p>
 <p><a target="_blank" rel="noopener" href="https://www.freecplus.net/d95f4eaf18eb46d19b82383519126dec.html">Linux进程间通信</a></p>
 <p>六种方式，前两者不经常使用，共享内存没有加锁的机制，所以经常与信号灯结合一起来使用，在高性能的网络服务端程序中，可以用共享内存作为的数据缓存（cache）。</p>
-<h1 id="避免僵尸进程"><a href="#避免僵尸进程" class="headerlink" title="避免僵尸进程"></a>避免僵尸进程</h1><p><a target="_blank" rel="noopener" href="https://zh.m.wikipedia.org/zh-cn/%E7%88%B6%E8%BF%9B%E7%A8%8B">僵尸进程、孤儿进程</a>，<a target="_blank" rel="noopener" href="https://www.cnblogs.com/anker/p/3271773.html">两种进程的解决办法、分别模拟产生</a></p>
+<h2 id="避免僵尸进程"><a href="#避免僵尸进程" class="headerlink" title="避免僵尸进程"></a>避免僵尸进程</h2><p><a target="_blank" rel="noopener" href="https://zh.m.wikipedia.org/zh-cn/%E7%88%B6%E8%BF%9B%E7%A8%8B">僵尸进程、孤儿进程</a>，<a target="_blank" rel="noopener" href="https://www.cnblogs.com/anker/p/3271773.html">两种进程的解决办法、分别模拟产生</a></p>
 <p><strong>僵尸进程：</strong>进程退出的时候，unix将该进程的所有资源释放，但是仍然为其保留一定的信息，包括进程号（process identify），退出状态，运行时间。这个是一种机制，可以让父进程任何时候想知道子进程的状态信息的时候都可以调出来。这些信息的资源需要直到父进程调用wait/waitpid来取信息的时候才释放，但是如果父进程不去调用wait/waitpid，它的进程号就会一直占用，如果大量的产生僵尸进程，将因为没有可用的进程号而导致系统不能产生新的进程. 此即为僵尸进程的危害，应当避免。</p>
 <p><strong>孤儿进程</strong>是没有父进程的进程，孤儿进程这个重任就落到了init进程身上，init进程就好像是一个民政局，专门负责处理孤儿进程的善后工作。每当出现一个孤儿进程的时候，内核就把孤儿进程的父进程设置为init，而init进程会循环地wait()它的已经退出的子进程。这样，当一个孤儿进程凄凉地结束了其生命周期的时候，init进程就会代表党和政府出面处理它的一切善后工作。因此孤儿进程并不会有什么危害。</p>
 <p>两种解决方式：</p>
@@ -566,16 +529,13 @@ INADDR_ANY
 <p>有标志的进程就是僵尸进程。</p>
 <p>如果按Ctrl+c终止book250后，父进程退出，僵尸进程随之消失。</p>
 <p>有时使用ctrl+c的命令结束主进程是不对的，需要kill+pid。</p>
-<h1 id="C-C-服务程序的运行日志"><a href="#C-C-服务程序的运行日志" class="headerlink" title="C/C++服务程序的运行日志"></a>C/C++服务程序的运行日志</h1><p>tail -f demo47.log 查看日志文件，获取内容</p>
-<p>mirac@ubuntu:~/Desktop/网络编程$ tar zxvf freecplus_20200615.tgz -C ./</p>
-<p>先解压文件</p>
-<h1 id="linux多进程：fork函数"><a href="#linux多进程：fork函数" class="headerlink" title="linux多进程：fork函数"></a>linux多进程：fork函数</h1><p>进程是操作系统进行资源分配和调度的一个基本单位。</p>
+<h2 id="linux多进程：fork函数"><a href="#linux多进程：fork函数" class="headerlink" title="linux多进程：fork函数"></a>linux多进程：fork函数</h2><p>进程是操作系统进行资源分配和调度的一个基本单位。</p>
 <p>fork调用后，子进程与父进程是否共享变量：</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_39578364/article/details/78995433">fork调用后，子进程与父进程是否共享变量_浅浅的i的博客-CSDN博客</a></p>
 <p>不会真的共享变量，虽然地址是一样的，但是这个地址是给程序员看的虚拟地址，真正通过内核映射到实际的物理地址是不一样的。</p>
 <p>fork多个子进程：</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42929607/article/details/116426096">fork创建多个子进程_XV_的博客-CSDN博客_fork多个子进程</a></p>
-<h1 id="Linux信号的使用"><a href="#Linux信号的使用" class="headerlink" title="Linux信号的使用"></a>Linux信号的使用</h1><p><a target="_blank" rel="noopener" href="https://www.freecplus.net/eec5c39aa63b45ad946f1cc08134d9f9.html">Linux信号 (freecplus.net)</a></p>
+<h2 id="Linux信号的使用"><a href="#Linux信号的使用" class="headerlink" title="Linux信号的使用"></a>Linux信号的使用</h2><p><a target="_blank" rel="noopener" href="https://www.freecplus.net/eec5c39aa63b45ad946f1cc08134d9f9.html">Linux信号 (freecplus.net)</a></p>
 <p>当服务程序运行在后台的时候，直接使用Ctrl+c让程序直接退出是不好的，因为程序突然退出，还有资源没有释放，这个时候signal函数就起作用了。</p>
 <p>使用信号函数：sighandler_t signal(int signum, sighandler_t handler);</p>
 <p>第一个参数是指signum是信号的编号，第二个参数是指处理信号的函数（可以在里面编写释放资源的代码）。</p>
@@ -587,7 +547,7 @@ INADDR_ANY
 <p>所以，程序员只要设置SIGINT和SIGTERM两个信号的处理函数就可以了，这两个信号可以使用同一个处理函数，函数的代码是释放资源。</p>
 <p>demo:signal.cpp</p>
 <p><img src="https://img-blog.csdnimg.cn/3b97ff370226457a81df802f3ea26e9d.png" alt=""></p>
-<h1 id="Linux共享内存的函数"><a href="#Linux共享内存的函数" class="headerlink" title="Linux共享内存的函数"></a>Linux共享内存的函数</h1><p><a target="_blank" rel="noopener" href="https://www.freecplus.net/6cb9ad02d7d64d6eb2f8e241b1158aed.html">共享内存</a></p>
+<h2 id="Linux共享内存的函数"><a href="#Linux共享内存的函数" class="headerlink" title="Linux共享内存的函数"></a>Linux共享内存的函数</h2><p><a target="_blank" rel="noopener" href="https://www.freecplus.net/6cb9ad02d7d64d6eb2f8e241b1158aed.html">共享内存</a></p>
 <p>头文件：#include <sys/ipc.h> #include <sys/shm.h></p>
 <p>1、shmget：获取或创建共享内存</p>
 <p>2、shmat：把共享内存连接到当前进程的地址空间</p>
@@ -595,19 +555,19 @@ INADDR_ANY
 <p>4、shmctl：删除共享内存</p>
 <p>要使用ipcs -m查看共享内存的信息</p>
 <p>一旦运行了程序，使用 ipcrm -m shmid，来删除共享内存，否则会一直存在</p>
-<h1 id="Linux多线程"><a href="#Linux多线程" class="headerlink" title="Linux多线程"></a>Linux多线程</h1><p><a target="_blank" rel="noopener" href="https://www.freecplus.net/c893ece166b94df4b2e185fa6f1c920c.html">多线程的函数使用、以及多线程socket</a></p>
+<h2 id="Linux多线程"><a href="#Linux多线程" class="headerlink" title="Linux多线程"></a>Linux多线程</h2><p><a target="_blank" rel="noopener" href="https://www.freecplus.net/c893ece166b94df4b2e185fa6f1c920c.html">多线程的函数使用、以及多线程socket</a></p>
 <p>在Linux下，采用pthread_create函数来创建一个新的线程，函数声明：</p>
 <p>函数声明：int pthread_create(pthread_t <em>thread, const pthread_attr_t </em>attr,void <em>(</em>start_routine) (void <em>), void </em>arg);</p>
-<h1 id="动态库与静态库"><a href="#动态库与静态库" class="headerlink" title="动态库与静态库"></a>动态库与静态库</h1><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/skynet/p/3372855.html">C++静态库与动态库 </a></p>
+<h1 id="编译与链接"><a href="#编译与链接" class="headerlink" title="编译与链接"></a>编译与链接</h1><h2 id="动态库与静态库"><a href="#动态库与静态库" class="headerlink" title="动态库与静态库"></a>动态库与静态库</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/skynet/p/3372855.html">C++静态库与动态库 </a></p>
 <p>在使用的时候，都是尽量的在使用动态库，因为静态库占用空间大，静态库是将所有相关的目标文件与牵涉到的函数库被链接合成一个可执行文件，其中一个文件修改，整个项目都要重新编译以及用户也要重新下载（最大的缺点）。</p>
-<h1 id="argc与argv"><a href="#argc与argv" class="headerlink" title="argc与argv"></a>argc与argv</h1><p>./在终端运行代码时，加入的参数存储在argc、argv中，argc是参的个数，argv是参数的值</p>
-<h1 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a>Makefile</h1><p><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2015/02/make.html">Makefile</a>， Makefile</p>
-<h1 id="GDB的简单使用"><a href="#GDB的简单使用" class="headerlink" title="GDB的简单使用"></a>GDB的简单使用</h1><p>首先g++中加入-g参数，然后file+可执行文件的名字，run，b，c，一直使用n，最后使用quit退出。如果需要设置参数使用set args</p>
+<h2 id="argc与argv"><a href="#argc与argv" class="headerlink" title="argc与argv"></a>argc与argv</h2><p>./在终端运行代码时，加入的参数存储在argc、argv中，argc是参数的个数，argv是参数的值</p>
+<h2 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a>Makefile</h2><p><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2015/02/make.html">Makefile</a>， Makefile用于自动化编译过程，将整个编译由编写好的Makefile规则来自动编译，现在也由更方便的工具，如CMake（编写编译链，自动生成Makefile文件）。</p>
+<h2 id="GDB的简单使用"><a href="#GDB的简单使用" class="headerlink" title="GDB的简单使用"></a>GDB的简单使用</h2><p>首先g++中加入-g参数，然后file+可执行文件的名字，run，b，c，一直使用n，最后使用quit退出。如果需要设置参数使用set args</p>
 <p><img src="https://img-blog.csdnimg.cn/0174c5ac5f254dde91e3d18f7611c9f2.png" alt=""></p>
 <p><img src="https://img-blog.csdnimg.cn/1b5ea4464d5e40f383b54505ca5a0781.png" alt=""></p>
 <p>例子：</p>
 <p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6984368713940074532">GDB的例子</a>，通过测试了两个易错的面试题， int a[5]={0,1,2,3,4},&amp;a+1的地址是a+1的地址，即数组的后面一个位置（想象成二维数组）</p>
-<h1 id="Tcp长连接与短连接"><a href="#Tcp长连接与短连接" class="headerlink" title="Tcp长连接与短连接"></a>Tcp长连接与短连接</h1><p>长连接：建立了一次连接之后需要长时间的保持住，双方需要互相发送检测的包，</p>
+<h2 id="Tcp长连接与短连接"><a href="#Tcp长连接与短连接" class="headerlink" title="Tcp长连接与短连接"></a>Tcp长连接与短连接</h2><p>长连接：建立了一次连接之后需要长时间的保持住，双方需要互相发送检测的包，</p>
 <p>流程：三次握手建立连接—》传输数据—》保持连接(心跳)—》发送数据—》保持连接(心跳)……—》4次挥手断开连接。</p>
 <p>短连接：建立一次连接，发送完数据之后就断开连接。</p>
 <p>流程：3次握手建立连接—》传输数据—》4次挥手断开连接。</p>
@@ -615,37 +575,38 @@ INADDR_ANY
 <p>对于服务器来说，服务器里的这些个长连接其实很有数据库连接池的味道，大家都是为了节省连接重复利用嘛。</p>
 <p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000021696056">（史上最通俗！）http请求怎样实现TCP长连接，以及长轮询和短轮询的区别。</a></p>
 <p>长轮询和短轮询（针对淘宝的库存量的显示的场景）</p>
-<h1 id="网络服务性能测试"><a href="#网络服务性能测试" class="headerlink" title="网络服务性能测试"></a>网络服务性能测试</h1><p>主要的性能指标：</p>
+<h2 id="网络服务性能测试"><a href="#网络服务性能测试" class="headerlink" title="网络服务性能测试"></a>网络服务性能测试</h2><p>主要的性能指标：</p>
 <p>1、服务端的并发能力</p>
 <p>2、服务端的业务处理能力</p>
 <p>3、客户端接收响应的时效</p>
 <p>4、网络带宽</p>
-<h1 id="I-O复用"><a href="#I-O复用" class="headerlink" title="I/O复用"></a>I/O复用</h1><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6882984260672847879">彻底理解 IO 多路复用实现机制</a></p>
+<h2 id="I-O复用"><a href="#I-O复用" class="headerlink" title="I/O复用"></a>I/O复用</h2><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6882984260672847879">彻底理解 IO 多路复用实现机制</a></p>
 <p>有三种模式：select、poll、epoll，各有适合的应用场景。</p>
 <p>env | grep LANG//查看使用的编码格式</p>
 <p><a target="_blank" rel="noopener" href="https://www.51cto.com/article/702199.html">彻底搞懂 Select / Poll / Epoll，就这篇了！</a></p>
-<h1 id="select"><a href="#select" class="headerlink" title="select"></a>select</h1><p>socket的集合fd_set用于存放多个socket，使用select来阻塞程序，而不是在分别的recv、read、send、accept阻塞。</p>
+<h2 id="select"><a href="#select" class="headerlink" title="select"></a>select</h2><p>socket的集合fd_set用于存放多个socket，使用select来阻塞程序，而不是在分别的recv、read、send、accept阻塞。</p>
 <p><img src="https://img-blog.csdnimg.cn/a5c7ef0fd1444f0d959e868e18fe1595.png" alt=""></p>
 <p>在tcpSelect.cpp中while(1)循环里面fd_set使用的是temp_set，因为会改变原来的read_set，只做了一个基本的了解，时间可以的话要在听一遍。</p>
 <p><img src="https://img-blog.csdnimg.cn/7b2a3663acfd43b5a21287cc400d72ed.png" alt=""></p>
-<h1 id="poll"><a href="#poll" class="headerlink" title="poll"></a>poll</h1><p>优化了参数的设置，较为简单，但是不能跨平台，效率与select差不多</p>
+<h2 id="poll"><a href="#poll" class="headerlink" title="poll"></a>poll</h2><p>优化了参数的设置，较为简单，但是不能跨平台，效率与select差不多</p>
 <p><img src="https://img-blog.csdnimg.cn/76d6df755d374959bb6be762dbd502d0.png" alt=""></p>
 <p>不需要备份fd_set,原因就在结构体pollfd中，有一个revent（return event）作为备份。</p>
 <p><img src="https://img-blog.csdnimg.cn/ad85870369e744798eb795f92bf37520.png" alt=""></p>
-<h1 id="epoll"><a href="#epoll" class="headerlink" title="epoll"></a>epoll</h1><p>结构体</p>
+<h2 id="epoll"><a href="#epoll" class="headerlink" title="epoll"></a>epoll</h2><p>结构体</p>
 <p><img src="https://img-blog.csdnimg.cn/50a5bc0052f043aa9f29307cae802f95.png" alt=""></p>
-<h1 id="ET和LT"><a href="#ET和LT" class="headerlink" title="ET和LT"></a>ET和LT</h1><p><img src="https://img-blog.csdnimg.cn/75df840aa325426d984f3916715a5e26.png" alt=""></p>
+<h2 id="ET和LT"><a href="#ET和LT" class="headerlink" title="ET和LT"></a>ET和LT</h2><p><img src="https://img-blog.csdnimg.cn/75df840aa325426d984f3916715a5e26.png" alt=""></p>
 <p>测试水平触发：</p>
 <ul>
-<li>事件没有处理：int xx=0; 作为计数器，指定xx=2的时候continue，然后这个事件就没有处理，看看epoll的处理方式（默认是水平触发，所以会立即报告）。+ 事件只处理了一般：read函数sizeof(buffer)，设置成小于它的数字，这个时候缓冲区就会剩余数据没有处理完，epoll也会立即处理完。</li>
+<li>事件没有处理：int xx=0; 作为计数器，指定xx=2的时候continue，然后这个事件就没有处理，看看epoll的处理方式（默认是水平触发，所以会立即报告）。</li>
+<li>事件只处理了一般：read函数sizeof(buffer)，设置成小于它的数字，这个时候缓冲区就会剩余数据没有处理完，epoll也会立即处理完。</li>
 </ul>
 <p>一样的测试方法：</p>
 <p><img src="https://img-blog.csdnimg.cn/e97712c241c6488d82e362321b3c93b7.png" alt=""></p>
 <p>需要将accept函数设置为非阻塞的模式setnoblocking</p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a target="_blank" rel="noopener" href="https://www.freecplus.net/index.html">C语言技术网 - 首页</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV11Z4y157RY/?spm_id_from=333.1007.top_right_bar_window_custom_collection.content.click&amp;vd_source=b99c7e40ffa0f64b68b706f2af755c8e">C/C++网络编程，从socket到epoll_哔哩哔哩_bilibili</a>  </p>
-<p><a target="_blank" rel="noopener" href="https://www.freecplus.net/0047ac4059b14d52bcc1d4df6ae8bb83.html">网络通信基础socket</a></p>
-<p><strong>上面的大部分代码都改自于</strong><a target="_blank" rel="noopener" href="https://www.freecplus.net/0047ac4059b14d52bcc1d4df6ae8bb83.html">网络通信基础socket</a> </p>
+<h1 id="参考内容"><a href="#参考内容" class="headerlink" title="参考内容"></a>参考内容</h1><p>【1】<a target="_blank" rel="noopener" href="https://www.freecplus.net/index.html">C语言技术网 - 首页</a></p>
+<p>【2】<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV11Z4y157RY">C/C++网络编程，从socket到epoll_哔哩哔哩_bilibili</a></p>
+<p>【3】<a target="_blank" rel="noopener" href="https://www.freecplus.net/0047ac4059b14d52bcc1d4df6ae8bb83.html">网络通信基础socket</a></p>
+<p>【4】<strong>上面的大部分代码都改自于</strong><a target="_blank" rel="noopener" href="https://www.freecplus.net/0047ac4059b14d52bcc1d4df6ae8bb83.html">网络通信基础socket</a></p>
 
                 
             </div>
@@ -710,8 +671,8 @@ INADDR_ANY
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Linux/">
-                                    <span class="chip bg-color">Linux</span>
+                                <a href="/tags/Linux%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">
+                                    <span class="chip bg-color">Linux网络编程</span>
                                 </a>
                             
                         </div>
@@ -815,8 +776,12 @@ INADDR_ANY
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            AllenMirac
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Java/" class="post-category">
+                                    Java
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -824,8 +789,8 @@ INADDR_ANY
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Java/">
-                        <span class="chip bg-color">Java</span>
+                    <a href="/tags/Maven/">
+                        <span class="chip bg-color">Maven</span>
                     </a>
                     
                 </div>
@@ -839,13 +804,13 @@ INADDR_ANY
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/06/20/linux-ming-ling-zhi-top/">
+                <a href="/2023/06/20/java-zhong-switch-de-gao-ji-yong-fa/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Linux命令之top">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="Java中switch的高级用法">
                         
-                        <span class="card-title">Linux命令之top</span>
+                        <span class="card-title">Java中switch的高级用法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -860,8 +825,12 @@ INADDR_ANY
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            AllenMirac
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Java/" class="post-category">
+                                    Java
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -869,8 +838,8 @@ INADDR_ANY
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Linux/">
-                        <span class="chip bg-color">Linux</span>
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
                     </a>
                     
                 </div>
@@ -1053,7 +1022,7 @@ INADDR_ANY
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">132.4k</span>
+                        class="white-color">132.8k</span>
             
             
             
