@@ -397,7 +397,7 @@ for(int i=0;i&amp;lt;num;">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-06-11
+                    2025-06-12
                 </div>
                 
 
@@ -577,7 +577,43 @@ for(int i=0;i&amp;lt;num;">
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>该代码保存奇数位置的样本，这样就将播放速度加速，也就是变成了两倍速。同时为了便于更好的检查输出的样本值的波形图变化，使用了ffmpeg库的<code>showwavespic</code>滤镜，生成指定分辨率的音频波形图文件</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">ffmpeg <span class="token parameter variable">-i</span> output_l.wav <span class="token parameter variable">-filter_complex</span> <span class="token string">"showwavespic=s=1280x240"</span> <span class="token parameter variable">-c:v</span> png <span class="token parameter variable">-y</span> output_l_waveform.png<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>命令参数解释：<br>| 命令部分                                  | 说明                                                         |<br>| ————————————————————- | —————————————————————————————— |<br>| ffmpeg                                    | FFmpeg 是一个用于处理多媒体文件的命令行工具，支持音频和视频的转换、处理和滤镜应用。 |<br>| -i output_l.wav                           | -i 参数指定输入文件，这里是 output_l.wav，一个音频文件（通常为 WAV 格式）。FFmpeg 将使用此文件作为处理源。 |<br>| -filter_complex “showwavespic=s=1280x240” | -filter_complex 用于应用复杂的滤镜处理。 使用 showwavespic 滤镜，从音频生成波形图。 showwavespic 生成一张表示音频波形的静态图像。 s=1280x240 设置输出图像分辨率为 1280 像素宽、240 像素高。 |<br>| -c:v png                                  | -c:v 指定输出视频的编码格式，这里使用 png，表示输出为一张 PNG 图像。 PNG 是一种无损图像格式，非常适合保存波形图。 |<br>| -y                                        | -y 参数指示 FFmpeg 如果输出文件（output_l_waveform.png）已存在，则自动覆盖，无需用户确认。 |<br>| output_l_waveform.png                     | 输出文件的名称，生成一张包含输入音频波形可视化的 PNG 图像。  |</p>
+<p>命令参数解释：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令部分</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ffmpeg</td>
+<td>FFmpeg 是一个用于处理多媒体文件的命令行工具，支持音频和视频的转换、处理和滤镜应用。</td>
+</tr>
+<tr>
+<td>-i output_l.wav</td>
+<td>-i 参数指定输入文件，这里是 output_l.wav，一个音频文件（通常为 WAV 格式）。FFmpeg 将使用此文件作为处理源。</td>
+</tr>
+<tr>
+<td>-filter_complex “showwavespic=s=1280x240”</td>
+<td>-filter_complex 用于应用复杂的滤镜处理。 使用 showwavespic 滤镜，从音频生成波形图。 showwavespic 生成一张表示音频波形的静态图像。 s=1280x240 设置输出图像分辨率为 1280 像素宽、240 像素高。</td>
+</tr>
+<tr>
+<td>-c:v png</td>
+<td>-c:v 指定输出视频的编码格式，这里使用 png，表示输出为一张 PNG 图像。 PNG 是一种无损图像格式，非常适合保存波形图。</td>
+</tr>
+<tr>
+<td>-y</td>
+<td>-y 参数指示 FFmpeg 如果输出文件（output_l_waveform.png）已存在，则自动覆盖，无需用户确认。</td>
+</tr>
+<tr>
+<td>output_l_waveform.png</td>
+<td>输出文件的名称，生成一张包含输入音频波形可视化的 PNG 图像。</td>
+</tr>
+</tbody>
+</table>
+</div>
 <p>（3）、<code>simplest_pcm16le_to_pcm8</code>函数：</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">while</span><span class="token punctuation">(</span><span class="token function">fread</span><span class="token punctuation">(</span>sample<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span>fp<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
     <span class="token keyword">short</span> <span class="token operator">*</span>samplenum16<span class="token operator">=</span><span class="token constant">NULL</span><span class="token punctuation">;</span>
