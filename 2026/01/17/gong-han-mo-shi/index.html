@@ -4,11 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="C++ inline关键字, AllenMirac">
-    <meta name="description" content="
-
-inline关键字在函数声明和定义加上，使之称为内联函数。如果一些简单的函数直接在类中声明并且定义，编译器可以将其优化为内联函数。
-注：内联函数可以减少函数的执行时间：原因是它可以在使用时直接进行替换（像宏一样展开），从而避免出现参数压">
+    <meta name="keywords" content="工厂模式, AllenMirac">
+    <meta name="description" content="工厂模式前言在我实现工厂模式的代码时，我遇到了实现这个模型的一些问题，并且继续深究之后，发现理论与实际的基础都缺乏，并因此记录下这次完整的学习过程。
+工厂模式封装创建类的过程，使用统一的接口来实例化不同的产品类，符合开放封闭的原则（对接口开">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -20,7 +18,7 @@ inline关键字在函数声明和定义加上，使之称为内联函数。如�
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>C++ inline关键字 | AllenMirac</title>
+    <title>工厂模式 | AllenMirac</title>
     <link rel="icon" type="image/jpeg" href="/ZoRo.jpg">
     
 
@@ -337,12 +335,12 @@ inline关键字在函数声明和定义加上，使之称为内联函数。如�
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">C++ inline关键字</h1>
+                    <h1 class="description center-align post-title">工厂模式</h1>
                 </div>
             </div>
         </div>
@@ -378,8 +376,8 @@ inline关键字在函数声明和定义加上，使之称为内联函数。如�
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/c-%E5%9F%BA%E7%A1%80/" class="post-category">
-                                c++基础
+                            <a href="/categories/c-%E8%BF%9B%E9%98%B6/" class="post-category">
+                                c++进阶
                             </a>
                         
                     </div>
@@ -391,21 +389,21 @@ inline关键字在函数声明和定义加上，使之称为内联函数。如�
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-06-20
+                    2026-01-17
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-06-11
+                    2026-01-17
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    803
+                    814
                 </div>
                 
 
@@ -430,74 +428,105 @@ inline关键字在函数声明和定义加上，使之称为内联函数。如�
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <meta name="referrer" content="no-referrer" />
-
-<h2 id="inline关键字"><a href="#inline关键字" class="headerlink" title="inline关键字"></a>inline关键字</h2><p>在函数声明和定义加上，使之称为内联函数。如果一些简单的函数直接在类中声明并且定义，编译器可以将其优化为内联函数。</p>
-<p>注：内联函数可以减少函数的执行时间：原因是它可以在使用时直接进行替换（像宏一样展开），从而避免出现参数压栈、代码生成等操作，但是如果函数体过大，编译器就不会将其作为内联函数，即使加了关键字inline，同时内联函数不能递归。</p>
-<p>inline关键字声明的函数依旧是函数，所以会有类型检查，可以消除C语言宏的一些缺点。</p>
-<p>关键字inline必须与函数定义放在一起才能使函数成为内联函数，仅仅将inline放在函数声明前面不起任何作用。<strong>inline是一种“用于实现”的关键字，而不是一种“用于声明”的关键字。</strong></p>
-<p><strong>示例一</strong></p>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">ifndef</span> <span class="token expression">EXAMPLE_H</span></span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">EXAMPLE_H</span></span>
- 
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;atomic></span></span>
- 
-<span class="token comment">// function included in multiple source files must be inline</span>
-<span class="token keyword">inline</span> <span class="token keyword">int</span> <span class="token function">sum</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> b<span class="token punctuation">)</span>
-<span class="token punctuation">&#123;</span>
-    <span class="token keyword">return</span> a <span class="token operator">+</span> b<span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
- 
-<span class="token comment">// variable with external linkage included in multiple source files must be inline</span>
-<span class="token keyword">inline</span> std<span class="token double-colon punctuation">::</span>atomic<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token function">counter</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
- 
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">endif</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"example.h"</span></span>
- 
-<span class="token keyword">int</span> <span class="token function">a</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">&#123;</span>
-    <span class="token operator">++</span>counter<span class="token punctuation">;</span>
-    <span class="token keyword">return</span> <span class="token function">sum</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"example.h"</span></span>
- 
-<span class="token keyword">int</span> <span class="token function">b</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">&#123;</span>
-    <span class="token operator">++</span>counter<span class="token punctuation">;</span>
-    <span class="token keyword">return</span> <span class="token function">sum</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><strong>示例二</strong></p>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span>  </span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;string></span>  </span>
- 
+                <h1 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在我实现工厂模式的代码时，我遇到了实现这个模型的一些问题，并且继续深究之后，发现理论与实际的基础都缺乏，并因此记录下这次完整的学习过程。</p>
+<p>工厂模式封装创建类的过程，使用统一的接口来实例化不同的产品类，符合开放封闭的原则（对接口开放，对修改封闭），解决的是创建“什么对象”的问题，单例模式解决的是创建“多少对象“的问题。</p>
+<h2 id="实现工厂模式"><a href="#实现工厂模式" class="headerlink" title="实现工厂模式"></a>实现工厂模式</h2><p>正确代码示例：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
- 
-<span class="token keyword">class</span> <span class="token class-name">Person</span>
-<span class="token punctuation">&#123;</span>
-<span class="token keyword">public</span><span class="token operator">:</span>
-	<span class="token keyword">inline</span> <span class="token keyword">void</span> <span class="token function">display</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-	string name<span class="token punctuation">;</span>
+
+<span class="token keyword">enum</span> <span class="token class-name">ProductType</span> <span class="token punctuation">&#123;</span>
+    TypeA<span class="token punctuation">,</span>
+    TypeB<span class="token punctuation">,</span>
+    TypeC
 <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
- 
-<span class="token keyword">inline</span> <span class="token keyword">void</span> <span class="token class-name">Person</span><span class="token double-colon punctuation">::</span><span class="token function">display</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">&#123;</span>
-	cout <span class="token operator">&lt;&lt;</span> <span class="token string">"name:"</span> <span class="token operator">&lt;&lt;</span> name <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Product</span> <span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token comment">// 错误修复1：删除构造函数的virtual关键字</span>
+    <span class="token function">Product</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+    <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">eat</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">// 纯虚函数，标记抽象类</span>
+    <span class="token comment">// 错误修复2：为纯虚析构提供空实现</span>
+    <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">Product</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">ProductA</span> <span class="token operator">:</span> <span class="token base-clause"><span class="token keyword">public</span> <span class="token class-name">Product</span></span> <span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token function">ProductA</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Produce A"</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">void</span> <span class="token function">eat</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> cout <span class="token operator">&lt;&lt;</span> <span class="token string">"eat A"</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span> <span class="token punctuation">&#125;</span>
+    <span class="token operator">~</span><span class="token function">ProductA</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        cout <span class="token operator">&lt;&lt;</span> <span class="token string">"~ProductA"</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">ProductB</span> <span class="token operator">:</span> <span class="token base-clause"><span class="token keyword">public</span> <span class="token class-name">Product</span></span> <span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token function">ProductB</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Produce B"</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">void</span> <span class="token function">eat</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> cout <span class="token operator">&lt;&lt;</span> <span class="token string">"eat B"</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span> <span class="token punctuation">&#125;</span>
+    <span class="token operator">~</span><span class="token function">ProductB</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        cout <span class="token operator">&lt;&lt;</span> <span class="token string">"~ProductB"</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Factory</span> <span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token function">Factory</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">product</span><span class="token punctuation">(</span><span class="token keyword">nullptr</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+    Product<span class="token operator">*</span> <span class="token function">produceProduct</span><span class="token punctuation">(</span>ProductType productType<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// 错误修复3：创建新对象前释放旧对象，避免内存泄漏</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>product<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">delete</span> product<span class="token punctuation">;</span>
+            product <span class="token operator">=</span> <span class="token keyword">nullptr</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">switch</span> <span class="token punctuation">(</span>productType<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">case</span> TypeA<span class="token operator">:</span>
+                product <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">ProductA</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> TypeB<span class="token operator">:</span>
+                product <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">ProductB</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token keyword">default</span><span class="token operator">:</span>
+                product <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">ProductA</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> product<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token operator">~</span><span class="token function">Factory</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>product<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">delete</span> product<span class="token punctuation">;</span>
+            product <span class="token operator">=</span> <span class="token keyword">nullptr</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token keyword">private</span><span class="token operator">:</span>
+    Product<span class="token operator">*</span> product<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">void</span> <span class="token function">testFuncEat</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    Factory f<span class="token punctuation">;</span>
+    Product<span class="token operator">*</span> p <span class="token operator">=</span> f<span class="token punctuation">.</span><span class="token function">produceProduct</span><span class="token punctuation">(</span>TypeA<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    p<span class="token operator">-></span><span class="token function">eat</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span>
- 
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">&#123;</span>
-	Person person<span class="token punctuation">;</span>
-	person<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">"Erin"</span><span class="token punctuation">;</span>
-	person<span class="token punctuation">.</span><span class="token function">display</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-	<span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
-<span class="token comment">//如果将display直接在类内定义，会被自动关联为inline函数</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><h3 id="慎用-inline"><a href="#慎用-inline" class="headerlink" title="慎用 inline"></a>慎用 inline</h3><p>内联能提高函数的执行效率，为什么不把所有的函数都定义成内联函数？如果所有的函数都是内联函数，还用得着”内联”这个关键字吗？  内联是以<strong>代码膨胀（复制）</strong>为代价，仅仅省去了函数调用的开销，从而提高函数的执行效率。  如果执行函数体内代码的时间，相比于函数调用的开销较大，那么效率的收获会很少。另一方面，每一处内联函数的调用都要复制代码，将使程序的总代码量增大，消耗更多的内存空间。</p>
-<p><strong>以下情况不宜使用内联：</strong>  </p>
-<p>（1）如果函数体内的代码<strong>比较长</strong>，使用内联将导致<strong>内存消耗代价较高</strong>。  </p>
-<p>（2）如果函数体内出现<strong>循环</strong>，那么执行函数体内代码的时间要比函数调用的开销大。类的构造函数和析构函数容易让人误解成使用内联更有效。要当心<strong>构造函数和析构函数可能会隐藏一些行为</strong>，如”偷偷地”执行了<strong>基类或成员对象</strong>的构造函数和析构函数。所以<strong>不要随便地将构造函数和析构函数的定义体放在类声明中</strong>。一个好的编译器将会根据函数的定义体，自动地取消不值得的内联（这进一步说明了 inline 不应该出现在函数的声明中）。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/inline/10566989">百度百科-验证</a></p>
-<p><a target="_blank" rel="noopener" href="https://en.cppreference.com/w/cpp/language/inline">inline specifier - cppreference.com</a></p>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token function">testFuncEat</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>其中需要修复的地方就是我之前放下的错误：</p>
+<h2 id="犯下的错误与思考"><a href="#犯下的错误与思考" class="headerlink" title="犯下的错误与思考"></a>犯下的错误与思考</h2><h3 id="错误一"><a href="#错误一" class="headerlink" title="错误一"></a>错误一</h3><p>构造函数不能声明为：virtual</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">virtual</span> <span class="token function">Product</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span> <span class="token comment">// 错误1：构造函数声明为virtual</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>虚表指针的初始化时机就是在构造函数中，virtual关键字用于支持运行时多态，依赖对象的虚函数表（vtable）。但构造函数的作用是创建并初始化对象，在对象完全创建前，虚函数表尚未初始化，无法实现多态；且调用构造函数时必须明确具体类类型，无法延迟决定调用哪个构造函数，C++标准禁止构造函数为虚函数。</p>
+<h3 id="错误二"><a href="#错误二" class="headerlink" title="错误二"></a>错误二</h3><p>析构函数无法无法定义为纯虚函数</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">Product</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span> <span class="token comment">// 错误2：纯虚析构仅声明未定义</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>纯虚析构的<code>=0</code>仅用于标记类为抽象类，而非“无需实现”。析构函数遵循“先子类、后父类”的链式调用规则，子类析构执行完后会自动调用父类析构，若父类纯虚析构无实现，链接器会找不到对应函数体，导致报错。</p>
+<h3 id="错误三"><a href="#错误三" class="headerlink" title="错误三"></a>错误三</h3><p>构建新的对象前没有考虑原始资源的释放。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">// 修复3：创建新对象前释放旧对象，避免内存泄漏</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>product<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">delete</span> product<span class="token punctuation">;</span>
+    product <span class="token operator">=</span> <span class="token keyword">nullptr</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>明确内存释放责任，由Factory统一管理product指针的生命周期，外部仅使用指针，不执行delete操作；同时在Factory创建新对象前，释放旧对象，避免内存泄漏。</p>
 
                 
             </div>
@@ -524,7 +553,7 @@ inline关键字在函数声明和定义加上，使之称为内联函数。如�
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://allenmirac.github.io/2023/06/20/c-inline-guan-jian-zi/">https://allenmirac.github.io/2023/06/20/c-inline-guan-jian-zi/</a>
+                    <a href="https://allenmirac.github.io/2026/01/17/gong-han-mo-shi/">https://allenmirac.github.io/2026/01/17/gong-han-mo-shi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -642,17 +671,18 @@ inline关键字在函数声明和定义加上，使之称为内联函数。如�
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2023/06/20/cpp-zhi-zhen-de-chong-lei-yi-ji-qu-bie/">
+                <a href="/2026/01/17/gong-han-mo-shi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="CPP指针的种类以及区别">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="工厂模式">
                         
-                        <span class="card-title">CPP指针的种类以及区别</span>
+                        <span class="card-title">工厂模式</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -662,9 +692,9 @@ inline关键字在函数声明和定义加上，使之称为内联函数。如�
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-06-20
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2026-01-17
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -677,6 +707,7 @@ inline关键字在函数声明和定义加上，使之称为内联函数。如�
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -695,13 +726,13 @@ inline关键字在函数声明和定义加上，使之称为内联函数。如�
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/06/20/1020-yue-bing-25pat-yi-ji-zhen-ti/">
+                <a href="/2026/01/17/cong-bian-yi-qi-jie-xi-cheng-xu-nei-cun-bu-ju/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="1020._月饼_(25)-PAT乙级真题">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="从编译期解析程序内存布局">
                         
-                        <span class="card-title">1020._月饼_(25)-PAT乙级真题</span>
+                        <span class="card-title">从编译期解析程序内存布局</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -712,14 +743,14 @@ inline关键字在函数声明和定义加上，使之称为内联函数。如�
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-06-20
+                                <i class="far fa-clock fa-fw icon-date"></i>2026-01-17
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
-                                    算法
+                            <a href="/categories/c-%E8%BF%9B%E9%98%B6/" class="post-category">
+                                    c++进阶
                                 </a>
                             
                             
@@ -729,8 +760,8 @@ inline关键字在函数声明和定义加上，使之称为内联函数。如�
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%B3%95%E5%AD%A6/">
-                        <span class="chip bg-color">法学</span>
+                    <a href="/tags/c/">
+                        <span class="chip bg-color">c++</span>
                     </a>
                     
                 </div>
