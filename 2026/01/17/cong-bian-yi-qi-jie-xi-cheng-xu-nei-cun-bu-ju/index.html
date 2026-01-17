@@ -4,31 +4,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Mysql索引优化, AllenMirac">
-    <meta name="description" content="
-
-Mysql索引分类
-
-
-索引优化
-
-
-查看执行计划：possible keys，key，主要看table以后的数据
-
-
-越往下越差。
-
-
-优化策略
-
-
-
-
-
-
-
-
-">
+    <meta name="keywords" content="从编译期解析程序内存布局, AllenMirac">
+    <meta name="description" content="从编译期解析程序内存布局前言理解C++程序的内存布局是掌握底层原理的核心，我以一段简单的main程序为例，拆解程序运行期间的内存分区、变量/字符串的存储位置，以及从编译到运行程序，如何精准访问变量的完整过程。
+程序：
+#include &amp;l">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -40,7 +19,7 @@ Mysql索引分类
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Mysql索引优化 | AllenMirac</title>
+    <title>从编译期解析程序内存布局 | AllenMirac</title>
     <link rel="icon" type="image/jpeg" href="/ZoRo.jpg">
     
 
@@ -357,12 +336,12 @@ Mysql索引分类
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Mysql索引优化</h1>
+                    <h1 class="description center-align post-title">从编译期解析程序内存布局</h1>
                 </div>
             </div>
         </div>
@@ -386,8 +365,8 @@ Mysql索引分类
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
-                                <span class="chip bg-color">数据库</span>
+                            <a href="/tags/c/">
+                                <span class="chip bg-color">c++</span>
                             </a>
                         
                     </div>
@@ -398,8 +377,8 @@ Mysql索引分类
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/MySQL/" class="post-category">
-                                MySQL
+                            <a href="/categories/c-%E8%BF%9B%E9%98%B6/" class="post-category">
+                                c++进阶
                             </a>
                         
                     </div>
@@ -411,21 +390,21 @@ Mysql索引分类
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-06-20
+                    2026-01-17
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-06-11
+                    2026-01-17
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    36
+                    1.3k
                 </div>
                 
 
@@ -450,29 +429,114 @@ Mysql索引分类
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <meta name="referrer" content="no-referrer" />
-
-<h2 id="Mysql索引分类"><a href="#Mysql索引分类" class="headerlink" title="Mysql索引分类"></a>Mysql索引分类</h2><p><img src="https://img-blog.csdnimg.cn/06214fd7ae2040dd973af7b6316b1b2b.png" alt=""></p>
-<p><img src="https://img-blog.csdnimg.cn/c5213620e0dc448fbbd9df27f2c50d79.png" alt=""></p>
-<p><img src="https://img-blog.csdnimg.cn/98e3fa0f9b404b729ad2742866740cec.png" alt=""></p>
-<h2 id="索引优化"><a href="#索引优化" class="headerlink" title="索引优化"></a>索引优化</h2><p><img src="https://img-blog.csdnimg.cn/7f070dcd225941d5afd2f0a97bc4fa62.png" alt=""></p>
-<p><img src="https://img-blog.csdnimg.cn/d0d2640627a045aa91f9a3f8f8188103.png" alt=""></p>
-<p><img src="https://img-blog.csdnimg.cn/99282b1cdb584c9aaec1e7d8091c1580.png" alt=""></p>
-<p>查看执行计划：possible keys，key，主要看table以后的数据</p>
-<p><img src="https://img-blog.csdnimg.cn/4863bb8d00b549509f3f5bafb2576da9.png" alt=""></p>
-<p><img src="https://img-blog.csdnimg.cn/c41ba2a28fb742fdae0759e134356ec0.png" alt=""></p>
-<p>越往下越差。</p>
-<p><img src="https://img-blog.csdnimg.cn/8adbddf6b3e04a629c24466bfb0a20d2.png" alt=""></p>
-<p><img src="https://img-blog.csdnimg.cn/6427916d35e345da89a12ae2e9a023a2.png" alt=""></p>
-<h2 id="优化策略"><a href="#优化策略" class="headerlink" title="优化策略"></a>优化策略</h2><p><img src="https://img-blog.csdnimg.cn/d2f5b7a5b20c4130904b1d9b6e50fc1e.png" alt=""></p>
-<p><img src="https://img-blog.csdnimg.cn/4d23b7cc5a77485999f555d3a220b2d6.png" alt=""></p>
-<p><img src="https://img-blog.csdnimg.cn/48f4227505d746778fe0ce3aa3486c91.png" alt=""></p>
-<p><img src="https://img-blog.csdnimg.cn/9ff64e5768d240d1acc3bdc07fb9bcea.png" alt=""></p>
-<p><img src="https://img-blog.csdnimg.cn/79bd0d750c0a4409add7fd5ff8ed7f2b.png" alt=""></p>
-<p><img src="https://img-blog.csdnimg.cn/c51c0ab7f5904e8ca6e1b5b9e7163f16.png" alt=""></p>
-<p><img src="https://img-blog.csdnimg.cn/1f84cfcf848d435ba26e2535fc0d06f3.png" alt=""></p>
-<p><img src="https://img-blog.csdnimg.cn/ee16ab87fe264f0ebb6adb9d76621ed1.png" alt=""></p>
-<p><img src="https://img-blog.csdnimg.cn/ddb9ac0d7565479aa30a7216c826a333.png" alt=""></p>
+                <h1 id="从编译期解析程序内存布局"><a href="#从编译期解析程序内存布局" class="headerlink" title="从编译期解析程序内存布局"></a>从编译期解析程序内存布局</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>理解C++程序的内存布局是掌握底层原理的核心，我以一段简单的<code>main</code>程序为例，拆解程序运行期间的内存分区、变量/字符串的存储位置，以及从编译到运行程序，如何精准访问变量的完整过程。</p>
+<p>程序：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> a<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>          <span class="token comment">// 局部变量a</span>
+    cout<span class="token operator">&lt;&lt;</span><span class="token string">"hello"</span><span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span> <span class="token comment">// 字符串字面量"hello"</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="C-程序的核心分区"><a href="#C-程序的核心分区" class="headerlink" title="C++程序的核心分区"></a>C++程序的核心分区</h2><p>运行中的C++程序，虚拟内存会划分为5个核心区域，不同的数据严格划分到对应区域</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>内存区域</th>
+<th>存放内容</th>
+<th>读写属性</th>
+<th>生命周期</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>代码段</td>
+<td>编译后的机器指令、只读常量（如字符串字面量）</td>
+<td>RO</td>
+<td>程序启动到退出</td>
+</tr>
+<tr>
+<td>数据段</td>
+<td>已初始化的全局/静态变量（非 0）</td>
+<td>RW</td>
+<td>程序启动到退出</td>
+</tr>
+<tr>
+<td>未初始化的数据段</td>
+<td>未初始化 / 初始化为 0 的全局 / 静态变量</td>
+<td>RW</td>
+<td>程序启动到退出</td>
+</tr>
+<tr>
+<td>堆</td>
+<td>动态分配的内存（new/malloc）</td>
+<td>RW</td>
+<td>new 分配/ delete 删除</td>
+</tr>
+<tr>
+<td>栈</td>
+<td>局部变量、函数参数、返回地址等</td>
+<td>RW</td>
+<td>程序启动到退出</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="示例中变量的内存位置"><a href="#示例中变量的内存位置" class="headerlink" title="示例中变量的内存位置"></a>示例中变量的内存位置</h2><p>变量”hello”存储在代码段的只读区域，在程序的整个运行期间，变量地址固定且只读。</p>
+<p>变量”a”存储在栈中，当main程序运行时，系统为main程序启动栈帧，该变量的内存位置会在栈帧中，一般是四个字节，填充为0，需要存取改变量的值时就需要通过栈基址寄存器+偏移量计算得出其中的虚拟内存地址，转换为实际物理地址后进行存取。</p>
+<h2 id="从编译到运行变量程序访问变量a的完整流程"><a href="#从编译到运行变量程序访问变量a的完整流程" class="headerlink" title="从编译到运行变量程序访问变量a的完整流程"></a>从编译到运行变量程序访问变量a的完整流程</h2><h3 id="4-1-编译期（源码-→-目标文件-o）"><a href="#4-1-编译期（源码-→-目标文件-o）" class="headerlink" title="4.1 编译期（源码 → 目标文件.o）"></a>4.1 编译期（源码 → 目标文件.o）</h3><p>编译器（如 g++）执行 “预处理→编译→汇编” 三步：</p>
+<ol>
+<li><p><strong>预处理</strong>：处理<code>#include</code>、<code>using namespace std</code>等，展开头文件，生成纯 C++ 代码；</p>
+</li>
+<li><p>编译（前端）</p>
+<p>语法 / 语义分析后，识别<code>a</code>是<code>main</code>函数的局部变量，为其分配相对栈帧的偏移量（如<code>ebp-4</code>，<code>ebp</code>是栈帧基址寄存器）；</p>
+<blockquote>
+<p>  此时不关心<code>a</code>的绝对地址，仅记录 “<code>a</code>在 main 栈帧中，距离栈帧基址<code>ebp</code>偏移 - 4 字节”；</p>
+</blockquote>
+</li>
+<li><p>汇编（后端）</p>
+<p>转为汇编指令（核心片段）：</p>
+<pre class="line-numbers language-asm" data-language="asm"><code class="language-asm">main:
+push ebp        ; 保存上一级栈帧基址
+mov  ebp, esp   ; 建立当前栈帧基址（ebp指向栈顶）
+sub  esp, 4     ; 栈顶esp向下移动4字节，为a分配空间（栈向低地址增长）
+mov  dword ptr [ebp-4], 0 ; 将0写入[ebp-4]（即a的位置）
+; cout&lt;&lt;&quot;hello&quot;的汇编指令...
+mov  esp, ebp   ; 销毁栈帧
+pop  ebp
+ret<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>可见，编译后<code>a</code>已被转换为 “栈帧基址 + 偏移量” 的形式，不再是源码中的变量名。</p>
+</li>
+</ol>
+<h3 id="4-2-链接期（目标文件-o-→-可执行文件）"><a href="#4-2-链接期（目标文件-o-→-可执行文件）" class="headerlink" title="4.2 链接期（目标文件.o → 可执行文件）"></a>4.2 链接期（目标文件.o → 可执行文件）</h3><p>链接器将目标文件与 C++ 标准库（如<code>iostream</code>）链接，生成可执行文件（如 a.out）：</p>
+<ol>
+<li>确定代码段、数据段等的<strong>虚拟地址布局</strong>（如代码段起始地址<code>0x400000</code>）；</li>
+<li>字符串<code>&quot;hello&quot;</code>被放入可执行文件的只读数据段，记录其在代码段的偏移量；</li>
+<li>局部变量<code>a</code>无需额外处理（地址依赖运行时栈帧）。</li>
+</ol>
+<h3 id="4-3-加载期（可执行文件-→-内存）"><a href="#4-3-加载期（可执行文件-→-内存）" class="headerlink" title="4.3 加载期（可执行文件 → 内存）"></a>4.3 加载期（可执行文件 → 内存）</h3><p>执行<code>./a.out</code>时，操作系统完成：</p>
+<ol>
+<li>创建新进程，分配<strong>虚拟地址空间</strong>（32 位系统通常 4GB，64 位更大）；</li>
+<li>将可执行文件的代码段、数据段加载到虚拟内存对应区域；</li>
+<li>初始化栈空间，为<code>main</code>函数准备栈帧，设置栈指针<code>esp</code>和基址指针<code>ebp</code>的初始值。</li>
+</ol>
+<h3 id="4-4-运行期（CPU-执行指令访问-a）"><a href="#4-4-运行期（CPU-执行指令访问-a）" class="headerlink" title="4.4 运行期（CPU 执行指令访问 a）"></a>4.4 运行期（CPU 执行指令访问 a）</h3><p>CPU 执行汇编指令时，通过 “栈帧基址 + 偏移量” 精准访问<code>a</code>：</p>
+<ol>
+<li><code>push ebp</code>：保存上一级栈帧基址；</li>
+<li><code>mov ebp, esp</code>：<code>ebp</code>成为<code>main</code>栈帧基址（固定不变）；</li>
+<li><code>sub esp, 4</code>：预留 4 字节空间给<code>a</code>，<code>[ebp-4]</code>即为<code>a</code>的虚拟内存地址；</li>
+<li><code>mov dword ptr [ebp-4], 0</code>：将<code>0</code>写入<code>a</code>的内存单元，完成赋值；</li>
+<li>若读取<code>a</code>（如<code>cout&lt;&lt;a</code>），CPU 执行<code>mov eax, dword ptr [ebp-4]</code>，将<code>a</code>的值加载到寄存器<code>eax</code>后输出。</li>
+</ol>
+<h2 id="用通俗例子理解链接过程"><a href="#用通俗例子理解链接过程" class="headerlink" title="用通俗例子理解链接过程"></a>用通俗例子理解链接过程</h2><p>把整个流程比作 “组装汽车”：</p>
+<ul>
+<li><strong>你的源代码</strong>：汽车的 “设计图纸”；</li>
+<li><strong>编译阶段</strong>：把图纸转换成 “汽车零件”（目标文件.o，二进制指令 / 数据）；</li>
+<li><strong>C++ 标准库</strong>：工厂提前生产好的通用零件（如轮胎、方向盘，对应<code>cout</code>、<code>endl</code>的二进制实现）；</li>
+<li><strong>链接阶段</strong>：把你的零件（main 函数的指令）和标准库的通用零件（<code>cout</code>的指令）组装成完整的 “汽车”（可执行文件）；</li>
+<li><strong>放入的内容</strong>：不是 “轮胎的设计图纸”（源代码），而是 “轮胎实物”（编译后的二进制指令 / 数据）。</li>
+</ul>
 
                 
             </div>
@@ -499,7 +563,7 @@ Mysql索引分类
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://allenmirac.github.io/2023/06/20/mysql-suo-yin-you-hua/">https://allenmirac.github.io/2023/06/20/mysql-suo-yin-you-hua/</a>
+                    <a href="https://allenmirac.github.io/2026/01/17/cong-bian-yi-qi-jie-xi-cheng-xu-nei-cun-bu-ju/">https://allenmirac.github.io/2026/01/17/cong-bian-yi-qi-jie-xi-cheng-xu-nei-cun-bu-ju/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -537,8 +601,8 @@ Mysql索引分类
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
-                                    <span class="chip bg-color">数据库</span>
+                                <a href="/tags/c/">
+                                    <span class="chip bg-color">c++</span>
                                 </a>
                             
                         </div>
@@ -617,17 +681,18 @@ Mysql索引分类
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2023/06/20/oracle-shu-ju-ku-de-ji-chu/">
+                <a href="/2026/01/17/cong-bian-yi-qi-jie-xi-cheng-xu-nei-cun-bu-ju/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Oracle数据库的基础">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="从编译期解析程序内存布局">
                         
-                        <span class="card-title">Oracle数据库的基础</span>
+                        <span class="card-title">从编译期解析程序内存布局</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -637,26 +702,27 @@ Mysql索引分类
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-06-20
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2026-01-17
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Oracle/" class="post-category">
-                                    Oracle
+                            <a href="/categories/c-%E8%BF%9B%E9%98%B6/" class="post-category">
+                                    c++进阶
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
-                        <span class="chip bg-color">数据库</span>
+                    <a href="/tags/c/">
+                        <span class="chip bg-color">c++</span>
                     </a>
                     
                 </div>
@@ -670,13 +736,13 @@ Mysql索引分类
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/06/20/maven-ji-chu/">
+                <a href="/2026/01/09/shen-kao-bei-he-qian-kao-bei-de-zai-ci-bian-xi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="Maven基础">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="深拷贝和浅拷贝的再次辨析">
                         
-                        <span class="card-title">Maven基础</span>
+                        <span class="card-title">深拷贝和浅拷贝的再次辨析</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -687,14 +753,14 @@ Mysql索引分类
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-06-20
+                                <i class="far fa-clock fa-fw icon-date"></i>2026-01-09
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Java/" class="post-category">
-                                    Java
+                            <a href="/categories/c-%E8%BF%9B%E9%98%B6/" class="post-category">
+                                    c++进阶
                                 </a>
                             
                             
@@ -704,8 +770,8 @@ Mysql索引分类
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Maven/">
-                        <span class="chip bg-color">Maven</span>
+                    <a href="/tags/c/">
+                        <span class="chip bg-color">c++</span>
                     </a>
                     
                 </div>
