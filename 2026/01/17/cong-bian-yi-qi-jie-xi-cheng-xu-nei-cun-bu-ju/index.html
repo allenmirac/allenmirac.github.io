@@ -487,7 +487,7 @@
 <p>变量”a”存储在栈中，当main程序运行时，系统为main程序启动栈帧，该变量的内存位置会在栈帧中，一般是四个字节，填充为0，需要存取改变量的值时就需要通过栈基址寄存器+偏移量计算得出其中的虚拟内存地址，转换为实际物理地址后进行存取。</p>
 <h2 id="从编译到运行变量程序访问变量a的完整流程"><a href="#从编译到运行变量程序访问变量a的完整流程" class="headerlink" title="从编译到运行变量程序访问变量a的完整流程"></a>从编译到运行变量程序访问变量a的完整流程</h2><h3 id="4-1-编译期（源码-→-目标文件-o）"><a href="#4-1-编译期（源码-→-目标文件-o）" class="headerlink" title="4.1 编译期（源码 → 目标文件.o）"></a>4.1 编译期（源码 → 目标文件.o）</h3><p>编译器（如 g++）执行 “预处理→编译→汇编” 三步：</p>
 <ol>
-<li><p><strong>预处理</strong>：处理<code>#include</code>、<code>using namespace std</code>等，展开头文件，生成纯 C++ 代码；</p>
+<li><p>预处理：处理<code>#include</code>、<code>using namespace std</code>等，展开头文件，生成纯 C++ 代码；</p>
 </li>
 <li><p>编译（前端）</p>
 <p>语法 / 语义分析后，识别<code>a</code>是<code>main</code>函数的局部变量，为其分配相对栈帧的偏移量（如<code>ebp-4</code>，<code>ebp</code>是栈帧基址寄存器）；</p>
@@ -531,10 +531,10 @@ ret<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
 </ol>
 <h2 id="用通俗例子理解链接过程"><a href="#用通俗例子理解链接过程" class="headerlink" title="用通俗例子理解链接过程"></a>用通俗例子理解链接过程</h2><p>把整个流程比作 “组装汽车”：</p>
 <ul>
-<li><strong>你的源代码</strong>：汽车的 “设计图纸”；</li>
+<li><strong>源代码</strong>：汽车的 “设计图纸”；</li>
 <li><strong>编译阶段</strong>：把图纸转换成 “汽车零件”（目标文件.o，二进制指令 / 数据）；</li>
 <li><strong>C++ 标准库</strong>：工厂提前生产好的通用零件（如轮胎、方向盘，对应<code>cout</code>、<code>endl</code>的二进制实现）；</li>
-<li><strong>链接阶段</strong>：把你的零件（main 函数的指令）和标准库的通用零件（<code>cout</code>的指令）组装成完整的 “汽车”（可执行文件）；</li>
+<li><strong>链接阶段</strong>：把零件（main 函数的指令）和标准库的通用零件（<code>cout</code>的指令）组装成完整的 “汽车”（可执行文件）；</li>
 <li><strong>放入的内容</strong>：不是 “轮胎的设计图纸”（源代码），而是 “轮胎实物”（编译后的二进制指令 / 数据）。</li>
 </ul>
 
@@ -954,7 +954,7 @@ ret<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">138.1k</span>
+                        class="white-color">138k</span>
             
             
             
